@@ -1,2 +1,18 @@
 .planning/
 .claude/
+
+# OS / editor artifacts
+.DS_Store
+.idea/
+.vscode/
+
+# Node / JS toolchain
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
