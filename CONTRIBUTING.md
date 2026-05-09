@@ -10,7 +10,7 @@ In rough priority order:
 2. **`WHAT-CHANGED.md` updates** — a tool released a new version that affects a lesson. Note it.
 3. **Freshness fixes** — a screenshot, command, or version reference is stale. PR a correction.
 4. **Vocab/glossary fills** — a lesson uses a term that isn't yet in `GLOSSARY.md`. PR an entry.
-5. **Voice fixes** — you spotted tutorial fiction (`"in just a few clicks…"`) or filler (`"In today's fast-paced world…"`). PR a rewrite.
+5. **Voice fixes** — you spotted tutorial fiction (the *frictionless-clicks* trope where reality has ten steps and bureaucracy) or filler (the *fast-paced-world* opener that says nothing). PR a rewrite.
 
 ## What we do NOT want yet
 
