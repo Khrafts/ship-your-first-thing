@@ -11,6 +11,22 @@ Each entry has the format:
 
 ---
 
+## 2026-05-08 — Phase 1 close
+
+**What changed:** Phase 1 (Foundation & Front Door) closed. Module 0 (5 lessons) and Module 1 (3 bundles) ship with the locked nine-element lesson anatomy and M0-variant baseline. All eight cross-cutting artifacts (README, SETUP, GLOSSARY, CHEATSHEET, COMMON-ISSUES, BUDGET, CONTRIBUTING, WHAT-CHANGED, plus standalone VERSIONS) shipped at Phase-1 depth. Editorial pass via `scripts/voice-lint.sh` returned clean on first run (zero violations across the full Phase 1 surface). Phase 1 success criteria #1–#5 satisfied.
+
+**Affected lessons / artifacts:** All Phase 1 deliverables. The following invariants are now enforceable on every future PR via `scripts/voice-lint.sh`:
+- No tutorial fiction (LESSON-12)
+- No filler prose (LESSON-12)
+- No GitHub-specific admonitions (D-18 SSG-portability)
+- Every `GLOSSARY.md#anchor` used in any lesson resolves to a `### anchor` entry
+
+**What learners should do:** No action. Phase 2 (Toolchain & The Loop) is the next phase to land; until then, Module 0 and Module 1 are the available content.
+
+**What contributors should do:** Run `./scripts/voice-lint.sh` before opening a PR that touches course markdown. The lint step is documented in `CONTRIBUTING.md` as part of this same plan.
+
+---
+
 ## 2026-05-08 — V1 baseline
 
 **What changed:** Initial release of the course's v1 baseline. Module 0 (Welcome) and Module 1 (Mental models) ship with the locked nine-element lesson anatomy. Cross-cutting artifacts (README, SETUP, BUDGET, GLOSSARY, CHEATSHEET, COMMON-ISSUES, CONTRIBUTING, VERSIONS) ship with seed content sufficient for Phase 1 + linkable from Phase 2 onward. Dual MIT (code) + CC BY 4.0 (prose) licensing committed.

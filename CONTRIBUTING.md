@@ -28,6 +28,22 @@ In rough priority order:
    - **Why** (one sentence)
    - **Tested how** (the command you ran or the lesson section you re-read)
 
+### Before you push: run the voice lint
+
+From the repo root:
+
+```bash
+./scripts/voice-lint.sh
+```
+
+The script enforces (and exits non-zero on violation):
+- No tutorial fiction phrases (the *frictionless-clicks* trope) — LESSON-12
+- No filler prose (the *fast-paced-world* opener) — LESSON-12
+- No GitHub-specific admonitions like the bracketed-bang note syntax — Phase 1 D-18 (universal `> **Note:**` blockquotes only)
+- Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md`
+
+If the script reports violations, fix them before pushing.
+
 ## Issue tags
 
 - `freshness` — a tool, version, or upstream behavior changed and a lesson is now stale. The maintainer triages these in the quarterly smoke-test (below).
