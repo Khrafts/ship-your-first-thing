@@ -120,4 +120,4 @@ You sketched the data path of one click — which is a tiny version of what desi
 ## Navigation
 
 [← Previous: How the web works](./01-how-the-web-works.md)
-[Next: Who can do what, how it goes live →](./03-who-can-do-what.md)
+[Next: Who can do what →](./03-who-can-do-what.md)
