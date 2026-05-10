@@ -29,13 +29,32 @@ deviations: []                        # per D-02: list any anatomy elements the 
      lesson is at a different depth.
      Redefine after long gaps. -->
 
-<!-- LESSON-11 — Use Mermaid for spatial or relational concepts. Standard fenced block:
+<!-- LESSON-11 — Use Mermaid for spatial or relational concepts. Standard fenced block.
+
+     For Module 1 (mental-model lessons), use the simple-first / bridge-second convention introduced in Plan 01-7: every technical Mermaid (one that uses HTTP / SQL / schema / `=` annotations / `Build server`-style hybrid labels) MUST be preceded by a sibling simple-form Mermaid that uses ONLY the lesson's analogy nouns. Separate the two with a one-line italic blockquote callout: `> *Bridge to the real terms:*`. Example:
+
      ```mermaid
      flowchart LR
-       A[Customer] --> B[Waiter]
-       B --> C[Kitchen]
+       Customer[Customer]
+       Waiter[Waiter]
+       Kitchen[Kitchen]
+       Customer -->|orders| Waiter
+       Waiter -->|brings ticket| Kitchen
      ```
--->
+
+     > *Bridge to the real terms:* The same picture with what each part is really called.
+
+     ```mermaid
+     flowchart LR
+       Customer["Customer<br/>= browser"]
+       Waiter["Waiter<br/>= HTTP"]
+       Kitchen["Kitchen<br/>= server"]
+       Customer -->|orders| Waiter
+       Waiter -->|brings ticket| Kitchen
+     ```
+
+     The corresponding `diagrams/*.md` standalone source mirrors the order of forms in the lesson body. For Module 2+ (toolchain, the loop, building), the bridge convention is optional — by Module 2 the learner has the vocabulary to read technical diagrams directly. Use the bridge convention only when introducing a NEW concept whose terminology has not been taught yet. M0 lessons stay diagram-light per existing convention. -->
+
 
 ## Exercise
 
@@ -74,5 +93,6 @@ deviations: []                        # per D-02: list any anatomy elements the 
 - **D-02 deviations rule:** If you skip or shorten any anatomy element, add it to the front-matter `deviations: []` array AND drop a `> **Deviation note:**` blockquote near the affected section explaining why.
 - **D-04 vocab callout pattern:** `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#term))` — auditable by grep. The `../../` prefix assumes the lesson lives at `modules/NN-slug/lesson.md` (two directories deep from repo root); adjust the relative path if your lesson is at a different depth. The GLOSSARY anchor is the contract that ensures GLOSSARY.md mirrors lesson vocabulary.
 - **Audience-aware vocabulary contract:** Every technical noun in lesson prose must be classified per `docs/audience-vocabulary.md`: Safe (use freely), Requires-callout (apply the D-04 pattern on first use), or Forbidden (do not use; defer to a later module). The contract is incremental — every term that becomes safe in module N is safe in modules N+1 and onward. If you introduce a new technical noun, update `docs/audience-vocabulary.md` AND `GLOSSARY.md` in the same PR. `scripts/voice-lint.sh` (Plan 01-8) verifies first-use of Requires-callout terms and absence of Forbidden terms.
+- **Diagram convention (M1+, Plan 01-7):** Simple-first / bridge-second. Every technical Mermaid is preceded by a simple-form sibling using only analogy nouns; the two are separated by `> *Bridge to the real terms:*`. M0 stays diagram-light. M2+ uses the bridge convention only when introducing new technical vocabulary. The corresponding `diagrams/*.md` standalone source mirrors the lesson order.
 - **D-05 Loop check intent framing for M1:** Module 1 is pre-loop. Every M1 Loop check names `intent`.
 - **D-18 SSG-portability rules:** standard ` ```mermaid ` fences; universal `> **Note:**` / `> **Warning:**` blockquotes (NOT the GitHub-flavored bracketed-bang admonition syntax — that breaks under non-GitHub renderers like Next.js/Docusaurus); relative internal links; YAML front-matter; repo-relative image paths.
