@@ -46,6 +46,21 @@ sequenceDiagram
   participant Door as Door staff
   participant Backroom as VIP backroom
   Visitor->>Door: Hi, I'm Alice. Here's my ID.
+  Door->>Door: Checks the ID (real? photo matches?)
+  Door->>Door: Checks the VIP list
+  Door-->>Visitor: Stamps the hand
+  Visitor->>Backroom: Shows the stamp
+  Backroom-->>Visitor: Lets the visitor in
+```
+
+> *Bridge to the real terms:* Checking the ID is *authentication*. Checking the VIP list is *authorization*. The hand stamp is a *session token* — usually carried by the browser as a *cookie* the server set during sign-in.
+
+```mermaid
+sequenceDiagram
+  participant Visitor
+  participant Door as Door staff
+  participant Backroom as VIP backroom
+  Visitor->>Door: Hi, I'm Alice. Here's my ID.
   Door->>Door: Verify ID (authentication)
   Door->>Door: Check VIP list (authorization)
   Door-->>Visitor: Hand stamp (session token)

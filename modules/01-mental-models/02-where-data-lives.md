@@ -50,6 +50,18 @@ Here's the filing cabinet up close:
 
 ```mermaid
 flowchart TB
+  subgraph Cabinet[Filing cabinet]
+    direction LR
+    UsersDrawer["Drawer: users"]
+    PostsDrawer["Drawer: posts"]
+    UsersDrawer -.->|each post card<br/>names a user card| PostsDrawer
+  end
+```
+
+> *Bridge to the real terms:* Each drawer is a *table*; each card is a *row*; the dotted line is a *foreign key*. The labels on every card (`id`, `email`, `display_name`) are the *schema* — the printed template at the top of every card in a drawer.
+
+```mermaid
+flowchart TB
   subgraph DB[Filing cabinet — database]
     direction LR
     Users["Drawer: users<br/>id | email | display_name"]
@@ -61,6 +73,19 @@ flowchart TB
 Notice the dotted line from `posts` back to `users`. That's a **foreign key** (one-line definition: a field in one row that points at the id of a row in another drawer, [→ GLOSSARY](../../GLOSSARY.md#foreign-key)). The `posts` drawer doesn't store the author's display name — it stores the author's `id`, and to find the display name, you walk over to the `users` drawer and look up the row with that id. This is what relational databases mean by "relational": rows in one drawer reference rows in another, and the database knows how to join them.
 
 And here's the question-and-answer pattern up close, from your browser's perspective:
+
+```mermaid
+sequenceDiagram
+  participant Customer as Customer
+  participant Receptionist as Receptionist
+  participant Cabinet as Filing cabinet
+  Customer->>Receptionist: hands over a form:<br/>"what posts has Alice written?"
+  Receptionist->>Cabinet: opens the posts drawer,<br/>finds Alice's cards
+  Cabinet-->>Receptionist: hands over the cards
+  Receptionist-->>Customer: hands back a paper:<br/>"here are Alice's posts"
+```
+
+> *Bridge to the real terms:* In a real web app, the customer is your browser, the receptionist is the server (the API), and the filing cabinet is the database. The form the customer hands over is an HTTP request; the language the receptionist uses to talk to the cabinet is SQL.
 
 ```mermaid
 sequenceDiagram

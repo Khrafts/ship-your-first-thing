@@ -30,6 +30,16 @@ The plumbing of opening night looks like this:
 
 ```mermaid
 flowchart LR
+  Kitchen[Private kitchen] -->|recipes filed| Binder[Recipe binder]
+  Binder -->|read by| PrepCooks[Prep cooks]
+  PrepCooks -->|set up| Restaurant[Public restaurant]
+  Restaurant -->|opens to| Public[Anyone walking in]
+```
+
+> *Bridge to the real terms:* The private kitchen is your laptop running localhost. The recipe binder is GitHub, where you push your code. The prep cooks are the build server (Vercel's). The public restaurant is the live deployed site at a public URL. The whole pipeline — committed code, then build, then live URL — is called CI/CD.
+
+```mermaid
+flowchart LR
   Localhost["Localhost<br/>= private kitchen"] -->|git push| GitHub["GitHub<br/>= recipe binder"]
   GitHub -->|trigger| Build["Build server<br/>= prep cooks"]
   Build -->|deploy| Vercel["Vercel<br/>= public restaurant"]

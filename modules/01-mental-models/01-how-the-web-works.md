@@ -42,6 +42,19 @@ So the round trip looks like this:
 
 ```mermaid
 flowchart LR
+  Customer[Customer]
+  Waiter[Waiter]
+  Kitchen[Kitchen]
+  Customer -->|orders| Waiter
+  Waiter -->|delivers| Customer
+  Waiter -->|brings ticket| Kitchen
+  Kitchen -->|cooks| Waiter
+```
+
+> *Bridge to the real terms:* The same picture with what each part is really called.
+
+```mermaid
+flowchart LR
   Customer["Customer<br/>= browser"]
   Waiter["Waiter<br/>= HTTP request/response"]
   Kitchen["Kitchen<br/>= server"]
@@ -68,6 +81,24 @@ When you load a page and see "404," you're seeing the slip from the kitchen sayi
 What's actually on the dish? When you load `example.com`, the kitchen hands the waiter a slab of **HTML** (one-line definition: the markup language that describes the structure of a webpage, [→ GLOSSARY](../../GLOSSARY.md#html)).
 
 HTML is just text — a tree of elements like `<h1>`, `<p>`, `<img>`. Your browser reads the HTML and starts drawing the page. As it reads, it sees references to other resources — `<link rel="stylesheet" href="style.css">` says "I need this CSS file too." So the browser sends *another* request for `style.css`. And another for any images. And another for any JavaScript files. Loading one page often means a dozen round trips.
+
+```mermaid
+sequenceDiagram
+  participant Customer
+  participant Waiter
+  participant Kitchen
+  Customer->>Waiter: orders the main dish
+  Waiter->>Kitchen: brings the ticket
+  Kitchen-->>Waiter: hands over the dish
+  Waiter-->>Customer: delivers the dish
+  Note over Customer: dish has parts; customer<br/>asks waiter for each
+  Customer->>Waiter: orders the side dish
+  Waiter->>Kitchen: brings the side ticket
+  Kitchen-->>Waiter: hands over the side
+  Waiter-->>Customer: delivers the side
+```
+
+> *Bridge to the real terms:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands.
 
 ```mermaid
 sequenceDiagram
