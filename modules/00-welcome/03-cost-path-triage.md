@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 03
 est_minutes: 15
 prereqs: ["01-welcome", "02-hardware-check"]
-updated: "2026-05-08"
+updated: "2026-05-09"
 deviations: []
 ---
 
@@ -16,7 +16,7 @@ By the end of this lesson, you will have picked one of the three named cost path
 
 ## Why this matters
 
-The biggest reason learners quit this kind of course mid-Module-4 is **cost shock**: the free trial runs out, a single prompt has just eaten 30% of a daily budget, and panic kicks in. This lesson prevents that. The triage takes ten minutes; doing it now saves you from creating two accounts, paying for a subscription you don't need, or burning through a free tier in three days because nobody told you the loop has a token cost.
+The biggest reason learners quit this kind of course mid-Module-4 is **cost shock**: the free trial runs out, a single message to the AI has just eaten 30% of a daily budget, and panic kicks in. This lesson prevents that. The triage takes ten minutes; doing it now saves you from creating two accounts, paying for a subscription you don't need, or burning through a free tier in three days because nobody told you that talking to the AI costs something every time.
 
 ## Core read
 
@@ -36,9 +36,9 @@ The triage is short. Walk through the questions in order. Stop at the first path
 >
 > If **no** (you want to spend less even though you have the budget) → continue to Question 3.
 
-### Question 3: Are you willing to learn token-discipline habits (`/clear`, `/compact`, `/tokens`)?
+### Question 3: Are you willing to learn **token-discipline** (the set of habits that keep AI-coding sessions cheap on pay-per-token plans, [→ GLOSSARY](../../GLOSSARY.md#token-discipline))?
 
-> If **no** → **Path 2: Gemini CLI free tier**. The free tier is genuinely free; rate limits enforce the discipline by default. Skip to "If you picked Path 2."
+> If **no** → **Path 2: Gemini CLI free tier**. The **free tier** (the portion of a paid service you can use at no cost, capped by hours, requests, or rate limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) is genuinely free; **rate limits** (caps on how many calls you can make to a service in a window of time, [→ GLOSSARY](../../GLOSSARY.md#rate-limit)) enforce the discipline by default. Skip to "If you picked Path 2."
 >
 > If **yes** → continue to Question 4.
 
@@ -46,7 +46,7 @@ The triage is short. Walk through the questions in order. Stop at the first path
 
 > If **yes** (rate limits are fine) → **Path 2: Gemini CLI free tier**. $0. Tied to Google's free-tier behavior. Phase 2 of this course re-verifies the current daily/monthly caps before lessons are authored.
 >
-> If **no** (you'd rather pay a little to avoid rate limits) → **Path 3: Claude Code via Anthropic API (token-careful)**. $30–$200 total over the course depending on discipline. You will use Claude Sonnet (not Opus) by default; you will `/clear` between unrelated tasks; you will watch `/tokens` like a hawk. Module 3 covers the discipline.
+> If **no** (you'd rather pay a little to avoid rate limits) → **Path 3: Claude Code via Anthropic API (token-careful)**. $30–$200 total over the course depending on discipline. You will use Claude Sonnet (not Opus) by default; you will reset the conversation between unrelated tasks; you will watch the running token count like a hawk. Module 3 covers the discipline in depth.
 
 That's the whole tree. Five questions, three paths.
 

@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 04
 est_minutes: 20
 prereqs: ["03-cost-path-triage"]
-updated: "2026-05-08"
+updated: "2026-05-09"
 deviations: []
 ---
 
@@ -35,7 +35,7 @@ If GitHub asks for email verification or phone verification and the message does
 > - Path 3 learners: do **not** subscribe to Pro. Add a small amount of API credit (start with $10–$20) and bookmark the usage dashboard. You'll need it.
 
 > If you picked **Path 2 (Gemini CLI free tier)**:
-> Create or sign into a Google account. Then visit [ai.google.dev](https://ai.google.dev) (the Google AI Studio surface) and generate a Gemini API key. Save the key in a place you'll remember; you'll plug it into Gemini CLI in Phase 2.
+> Create or sign into a Google account. Then visit [ai.google.dev](https://ai.google.dev) (the Google AI Studio surface) and generate a Gemini **API key** (a long string that identifies your account when a program calls a paid or rate-limited service on your behalf — treat it like a password, [→ GLOSSARY](../../GLOSSARY.md#api-key)). Save the key in a place you'll remember; you'll plug it into Gemini CLI in Phase 2.
 
 **Accounts you do NOT need yet:**
 
@@ -46,9 +46,9 @@ That's it. One or two accounts, depending on path.
 
 ### What "save the key" means
 
-For the Gemini CLI path: when you generate an API key, you'll see a long string starting with `AI...`. Treat it like a password. Don't paste it into a chat. Don't commit it to a public repo. The course will teach you environment-variable hygiene in Module 4 (`Pitfall 12: NEXT_PUBLIC leaks` is real and named); for now, save the key in your password manager.
+For the Gemini CLI path: when you generate an API key, you'll see a long string starting with `AI...`. Treat it like a password. Don't paste it into a chat. Don't put it anywhere public. Module 4 covers a category of bug where keys accidentally end up in places they shouldn't; for now, save the key in your password manager.
 
-For the Anthropic API path: same hygiene applies. The key looks like `sk-ant-...`.
+For the Anthropic API path: same care applies. The key looks like `sk-ant-...`.
 
 ### Why we don't make you create Supabase / Vercel yet
 
