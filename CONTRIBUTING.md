@@ -40,9 +40,19 @@ The script enforces (and exits non-zero on violation):
 - No tutorial fiction phrases (the *frictionless-clicks* trope) — LESSON-12
 - No filler prose (the *fast-paced-world* opener) — LESSON-12
 - No GitHub-specific admonitions like the bracketed-bang note syntax — Phase 1 D-18 (universal `> **Note:**` blockquotes only)
-- Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md`
+- Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md` (case-insensitive)
+- Every relative path from a lesson to a repo-root cross-cutting doc (`GLOSSARY.md`, `BUDGET.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`, `CONTRIBUTING.md`, `WHAT-CHANGED.md`, `VERSIONS.md`, `LICENSING.md`, `README.md`, `SETUP.md`) resolves to a real file (the broken-relative-path check catches the bare-`GLOSSARY.md#anchor` 404 bug shape) — added in Plan 01-8
+- Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the M0/M1 prose has known gaps against the strict contract — those are surfaced as `WARN` lines and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. — added in Plan 01-8
 
-If the script reports violations, fix them before pushing.
+If the script reports violations, fix them before pushing. `WARN` lines do not fail the lint but flag content that the strict contract would reject; please fix new `WARN` lines you introduce.
+
+To verify the lint itself, run:
+
+```bash
+./scripts/voice-lint.sh --self-test
+```
+
+This iterates over `scripts/voice-lint-fixtures/` and asserts every fixture trips the check it targets. If `--self-test` fails, a lint check has regressed — fix the check, not the fixture.
 
 ## Issue tags
 
