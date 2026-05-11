@@ -53,7 +53,7 @@ sequenceDiagram
   Backroom-->>Visitor: Lets the visitor in
 ```
 
-> *Bridge to the real terms:* Checking the ID is *authentication*. Checking the VIP list is *authorization*. The hand stamp is a *session token* — usually carried by the browser as a *cookie* the server set during sign-in.
+> *Peek ahead — skim, optional:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. These four names get hands-on treatment in Module 4, where you add sign-in and per-row access rules to your project. For now, "door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough — don't try to internalize the technical labels today.
 
 ```mermaid
 sequenceDiagram

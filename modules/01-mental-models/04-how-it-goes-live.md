@@ -36,7 +36,7 @@ flowchart LR
   Restaurant -->|opens to| Public[Anyone walking in]
 ```
 
-> *Bridge to the real terms:* The private kitchen is your laptop running localhost. The recipe binder is GitHub, where you push your code. The prep cooks are the build server (Vercel's). The public restaurant is the live deployed site at a public URL. The whole pipeline — committed code, then build, then live URL — is called CI/CD.
+> *Peek ahead — skim, optional:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll run this pipeline yourself in Module 5; for now the kitchen-to-restaurant picture is the one to hold onto. The technical labels are scaffolding for later, not a quiz today.
 
 ```mermaid
 flowchart LR

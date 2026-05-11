@@ -51,7 +51,7 @@ flowchart LR
   Kitchen -->|cooks| Waiter
 ```
 
-> *Bridge to the real terms:* The same picture with what each part is really called.
+> *Peek ahead — skim, optional:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll write your first API route by hand. Don't try to memorize them here — if the labeled diagram feels heavy, glance and move on. The restaurant picture is the one that has to stick.
 
 ```mermaid
 flowchart LR
@@ -98,7 +98,7 @@ sequenceDiagram
   Waiter-->>Customer: delivers the side
 ```
 
-> *Bridge to the real terms:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands.
+> *Peek ahead — skim, optional:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands. The `GET /` shape and status codes (`200 OK`, `404 Not Found`) get hands-on coverage in Module 3 — for now, the round-trip picture is what matters.
 
 ```mermaid
 sequenceDiagram

@@ -58,7 +58,7 @@ flowchart TB
   end
 ```
 
-> *Bridge to the real terms:* Each drawer is a *table*; each card is a *row*; the dotted line is a *foreign key*. The labels on every card (`id`, `email`, `display_name`) are the *schema* — the printed template at the top of every card in a drawer.
+> *Peek ahead — skim, optional:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names land hands-on in Module 3 when you write your first queries. For now, the filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
 
 ```mermaid
 flowchart TB
@@ -85,7 +85,7 @@ sequenceDiagram
   Receptionist-->>Customer: hands back a paper — "here are Alice's posts"
 ```
 
-> *Bridge to the real terms:* In a real web app, the customer is your browser, the receptionist is the server (the API), and the filing cabinet is the database. The form the customer hands over is an HTTP request; the language the receptionist uses to talk to the cabinet is SQL.
+> *Peek ahead — skim, optional:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. All four — API, HTTP request, SQL, database — get hands-on coverage in Module 3. Skim the labels, don't memorize them; the receptionist-and-form picture is what carries the concept.
 
 ```mermaid
 sequenceDiagram
