@@ -51,7 +51,10 @@ flowchart LR
   Kitchen -->|cooks| Waiter
 ```
 
-> *Peek ahead — skim, optional:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll write your first API route by hand. Don't try to memorize them here — if the labeled diagram feels heavy, glance and move on. The restaurant picture is the one that has to stick.
+<details>
+<summary>Optional: same picture with the technical labels (you'll meet these properly in Module 3)</summary>
+
+> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll write your first API route by hand. If the labeled diagram feels heavy, close this and move on — the restaurant picture is the one that has to stick.
 
 ```mermaid
 flowchart LR
@@ -63,6 +66,8 @@ flowchart LR
   Waiter -->|brings ticket| Kitchen
   Kitchen -->|cooks| Waiter
 ```
+
+</details>
 
 The order ticket has a specific shape. It says: "what kind of ticket is this?" and "what dish are you asking for?"
 
@@ -98,7 +103,10 @@ sequenceDiagram
   Waiter-->>Customer: delivers the side
 ```
 
-> *Peek ahead — skim, optional:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands. The `GET /` shape and status codes (`200 OK`, `404 Not Found`) get hands-on coverage in Module 3 — for now, the round-trip picture is what matters.
+<details>
+<summary>Optional: same round trip with the technical labels (Module 3 hands-on)</summary>
+
+> *Peek ahead — skim, don't memorize:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands. The `GET /` shape and status codes (`200 OK`, `404 Not Found`) get hands-on coverage in Module 3 — for now, the round-trip picture is what matters.
 
 ```mermaid
 sequenceDiagram
@@ -113,6 +121,8 @@ sequenceDiagram
   Server-->>Browser: 200 OK + JavaScript
   Browser->>Browser: Renders the page
 ```
+
+</details>
 
 A few things tend to confuse beginners and are worth noticing now.
 

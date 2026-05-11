@@ -53,7 +53,10 @@ sequenceDiagram
   Backroom-->>Visitor: Lets the visitor in
 ```
 
-> *Peek ahead — skim, optional:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. These four names get hands-on treatment in Module 4, where you add sign-in and per-row access rules to your project. For now, "door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough — don't try to internalize the technical labels today.
+<details>
+<summary>Optional: same door staff with the technical labels (Module 4 hands-on)</summary>
+
+> *Peek ahead — skim, don't memorize:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. These four names get hands-on treatment in Module 4, where you add sign-in and per-row access rules to your project. "Door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough today.
 
 ```mermaid
 sequenceDiagram
@@ -67,6 +70,8 @@ sequenceDiagram
   Visitor->>Backroom: Hand stamp shown
   Backroom-->>Visitor: Access granted
 ```
+
+</details>
 
 In this course, the thread project (Phase 3) uses a sign-in flow that emails you a clickable link — no passwords. The mechanism is named and built in Phase 3; for now, just know that "sign-in" can mean "prove you can read mail at this address." From the analogy: instead of an ID card, the door staff has access to your mailbox; if you can prove you can read mail at `alice@example.com`, you're Alice. It's not perfect (mailbox compromise = identity compromise) but it's simple and learnable.
 

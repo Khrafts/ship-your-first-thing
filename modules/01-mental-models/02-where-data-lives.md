@@ -58,7 +58,10 @@ flowchart TB
   end
 ```
 
-> *Peek ahead — skim, optional:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names land hands-on in Module 3 when you write your first queries. For now, the filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
+<details>
+<summary>Optional: same filing cabinet with the technical labels (Module 3 hands-on)</summary>
+
+> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names land hands-on in Module 3 when you write your first queries. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
 
 ```mermaid
 flowchart TB
@@ -69,6 +72,8 @@ flowchart TB
     Users -.->|author_id references users.id| Posts
   end
 ```
+
+</details>
 
 Notice the dotted line from `posts` back to `users`. That's a **foreign key** (one-line definition: a field in one row that points at the id of a row in another drawer, [→ GLOSSARY](../../GLOSSARY.md#foreign-key)). The `posts` drawer doesn't store the author's display name — it stores the author's `id`, and to find the display name, you walk over to the `users` drawer and look up the row with that id. This is what relational databases mean by "relational": rows in one drawer reference rows in another, and the database knows how to join them.
 
@@ -85,7 +90,10 @@ sequenceDiagram
   Receptionist-->>Customer: hands back a paper — "here are Alice's posts"
 ```
 
-> *Peek ahead — skim, optional:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. All four — API, HTTP request, SQL, database — get hands-on coverage in Module 3. Skim the labels, don't memorize them; the receptionist-and-form picture is what carries the concept.
+<details>
+<summary>Optional: same question-and-answer with the technical labels (Module 3 hands-on)</summary>
+
+> *Peek ahead — skim, don't memorize:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. All four — API, HTTP request, SQL, database — get hands-on coverage in Module 3. The receptionist-and-form picture is what carries the concept.
 
 ```mermaid
 sequenceDiagram
@@ -97,6 +105,8 @@ sequenceDiagram
   DB-->>Server: rows
   Server-->>Browser: JSON [{ id, author_id, body }, ...]
 ```
+
+</details>
 
 The browser never speaks SQL. The browser only ever speaks **HTTP** — it sends a request to a URL, and gets back a response. The server is the thing that knows how to translate the browser's HTTP request into a database query, and the database's response back into an HTTP response.
 

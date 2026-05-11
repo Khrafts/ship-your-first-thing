@@ -36,7 +36,10 @@ flowchart LR
   Restaurant -->|opens to| Public[Anyone walking in]
 ```
 
-> *Peek ahead — skim, optional:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll run this pipeline yourself in Module 5; for now the kitchen-to-restaurant picture is the one to hold onto. The technical labels are scaffolding for later, not a quiz today.
+<details>
+<summary>Optional: same pipeline with the technical labels (Module 5 hands-on)</summary>
+
+> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll run this pipeline yourself in Module 5; the kitchen-to-restaurant picture is the one to hold onto today.
 
 ```mermaid
 flowchart LR
@@ -45,6 +48,8 @@ flowchart LR
   Build -->|deploy| Vercel["Vercel<br/>= public restaurant"]
   Vercel -->|public URL| Customers[Anyone on the internet]
 ```
+
+</details>
 
 The recipes get committed to **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and pushed to **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
 

@@ -31,7 +31,9 @@ deviations: []                        # per D-02: list any anatomy elements the 
 
 <!-- LESSON-11 — Use Mermaid for spatial or relational concepts. Standard fenced block.
 
-     For Module 1 (mental-model lessons), use the simple-first / bridge-second convention introduced in Plan 01-7: every technical Mermaid (one that uses HTTP / SQL / schema / `=` annotations / `Build server`-style hybrid labels) MUST be preceded by a sibling simple-form Mermaid that uses ONLY the lesson's analogy nouns. Between them, a peek-ahead callout frames the technical diagram as optional, names the technical terms it introduces, and points at the later module where the learner will meet those terms hands-on. The pattern: `> *Peek ahead — skim, optional:* {analogy → real-term mapping}. You'll meet **{term-1}**, **{term-2}**, ... properly in Module N (where the learner uses them hands-on). {Skim hint.}`
+     For Module 1 (mental-model lessons), use the simple-first / bridge-collapsed convention introduced in Plan 01-7 (and tightened post-UAT): every technical Mermaid (one that uses HTTP / SQL / schema / `=` annotations / `Build server`-style hybrid labels) MUST be (a) preceded by a sibling simple-form Mermaid that uses ONLY the lesson's analogy nouns, and (b) wrapped in a `<details><summary>...</summary> ... </details>` disclosure so the technical diagram is collapsed by default. The summary line frames the disclosure as optional and names which later module covers those technical terms hands-on. Inside the disclosure, a `> *Peek ahead — skim, don't memorize:*` callout carries the analogy→real-term mapping, then the Mermaid block.
+
+     **Critical formatting:** blank lines are required (a) after `<summary>`, (b) before the ` ```mermaid ` fence, (c) after the closing ` ``` `, and (d) before `</details>`. Without them GFM treats the body as raw HTML and the fenced Mermaid block will not render.
 
      Example:
 
@@ -44,7 +46,10 @@ deviations: []                        # per D-02: list any anatomy elements the 
        Waiter -->|brings ticket| Kitchen
      ```
 
-     > *Peek ahead — skim, optional:* The same picture with the real names labeled. You'll meet **HTTP**, **server**, and **browser** properly in Module 3. Don't try to memorize them here — if the labeled diagram feels heavy, glance and move on.
+     <details>
+     <summary>Optional: same picture with the technical labels (Module 3 hands-on)</summary>
+
+     > *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **server**, and **browser** properly in Module 3. If the labeled diagram feels heavy, close this and move on.
 
      ```mermaid
      flowchart LR
@@ -55,7 +60,9 @@ deviations: []                        # per D-02: list any anatomy elements the 
        Waiter -->|brings ticket| Kitchen
      ```
 
-     The corresponding `diagrams/*.md` standalone source mirrors the order of forms in the lesson body. For Module 2+ (toolchain, the loop, building), the bridge convention is optional — by Module 2 the learner has the vocabulary to read technical diagrams directly. Use the bridge convention only when introducing a NEW concept whose terminology has not been taught yet. M0 lessons stay diagram-light per existing convention. -->
+     </details>
+
+     The corresponding `diagrams/*.md` standalone source mirrors the order of forms in the lesson body, but uses plain H3 section headers (`### Bridge to the real terms`) instead of `<details>` wrapping — those files are reference docs for contributors, not learner-facing prose. For Module 2+ (toolchain, the loop, building), the bridge convention is optional — by Module 2 the learner has the vocabulary to read technical diagrams directly. Use the disclosure pattern only when introducing a NEW concept whose terminology has not been taught yet. M0 lessons stay diagram-light per existing convention. -->
 
 
 ## Exercise
@@ -95,6 +102,6 @@ deviations: []                        # per D-02: list any anatomy elements the 
 - **D-02 deviations rule:** If you skip or shorten any anatomy element, add it to the front-matter `deviations: []` array AND drop a `> **Deviation note:**` blockquote near the affected section explaining why.
 - **D-04 vocab callout pattern:** `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#term))` — auditable by grep. The `../../` prefix assumes the lesson lives at `modules/NN-slug/lesson.md` (two directories deep from repo root); adjust the relative path if your lesson is at a different depth. The GLOSSARY anchor is the contract that ensures GLOSSARY.md mirrors lesson vocabulary.
 - **Audience-aware vocabulary contract:** Every technical noun in lesson prose must be classified per `docs/audience-vocabulary.md`: Safe (use freely), Requires-callout (apply the D-04 pattern on first use), or Forbidden (do not use; defer to a later module). The contract is incremental — every term that becomes safe in module N is safe in modules N+1 and onward. If you introduce a new technical noun, update `docs/audience-vocabulary.md` AND `GLOSSARY.md` in the same PR. `scripts/voice-lint.sh` (Plan 01-8) verifies first-use of Requires-callout terms and absence of Forbidden terms.
-- **Diagram convention (M1+, Plan 01-7):** Simple-first / bridge-second. Every technical Mermaid is preceded by a simple-form sibling using only analogy nouns; the two are separated by a peek-ahead callout that frames the technical diagram as optional and names which later module covers those technical terms hands-on. Pattern: `> *Peek ahead — skim, optional:* {mapping}. You'll meet **{term-1}**, **{term-2}**, ... properly in Module N. {Skim hint.}`. The peek-ahead framing is load-bearing — a learner who feels they must absorb every technical label on first pass will reintroduce the very jargon M1 is designed to defer. M0 stays diagram-light. M2+ uses the bridge convention only when introducing new technical vocabulary. The corresponding `diagrams/*.md` standalone source mirrors the lesson order.
+- **Diagram convention (M1+, Plan 01-7, post-UAT tightening):** Simple-first / bridge-collapsed. Every technical Mermaid is preceded by a simple-form sibling using only analogy nouns AND wrapped in a `<details><summary>...</summary> ... </details>` disclosure so the technical diagram is collapsed by default. The summary names which later module covers those technical terms hands-on. Inside the disclosure: a `> *Peek ahead — skim, don't memorize:*` callout with the analogy→real-term mapping, then the Mermaid block. Blank lines required around the fenced code block inside the disclosure or GFM will not render the Mermaid. This collapse-by-default treatment is load-bearing — a learner who sees both diagrams side-by-side feels obligated to absorb the technical labels and reintroduces the very jargon M1 is designed to defer. M0 stays diagram-light. M2+ uses the disclosure pattern only when introducing new technical vocabulary. The corresponding `diagrams/*.md` standalone source files use plain H3 section headers and stay open (their audience is contributors, not learners).
 - **D-05 Loop check intent framing for M1:** Module 1 is pre-loop. Every M1 Loop check names `intent`.
 - **D-18 SSG-portability rules:** standard ` ```mermaid ` fences; universal `> **Note:**` / `> **Warning:**` blockquotes (NOT the GitHub-flavored bracketed-bang admonition syntax — that breaks under non-GitHub renderers like Next.js/Docusaurus); relative internal links; YAML front-matter; repo-relative image paths.
