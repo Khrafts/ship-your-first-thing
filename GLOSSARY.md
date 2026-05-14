@@ -110,6 +110,12 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 A three-digit number summarizing how an HTTP request went. *Example: `200 OK` means success; `404 Not Found` means the resource doesn't exist; `500 Internal Server Error` means the server crashed.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
+## I
+
+### ide
+An editor that bundles a text editor, a file browser, a terminal, and language-aware tooling into one program. The "I" is for "integrated." *Example: Visual Studio Code (VS Code), the editor inside your Codespace, is the IDE this course uses.*
+Used in: [Module 2 — The IDE](./modules/02-toolchain/01-ide.md).
+
 ## L
 
 ### localhost
