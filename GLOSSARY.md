@@ -106,6 +106,10 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ## E
 
+### error-message-anatomy
+The structure of a typical error message: a description on top followed by a stack trace listing file paths and line numbers. *Example: a `TypeError: Cannot read properties of undefined` with stack frames pointing at `app/components/InteractiveButton.tsx:5:18`.*
+Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
+
 ### evaluate
 The "evaluate" step of the agent loop — reading the agent's output and deciding if it matches your intent. *Example: the agent says it added today's date; you check the page and confirm the date is there.*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
@@ -317,6 +321,10 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 ### sql
 Structured Query Language — the standard way to ask a relational database for rows. *Example: `SELECT * FROM posts ORDER BY created_at DESC`.*
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
+
+### stack-trace
+A list of every function call leading to an error, top to bottom — the most recent call at the top. Most lines mention library code; one or two lines mention YOUR files. *Example: Module 3.5 Lesson 3 teaches finding the first line that mentions a file from your project as the file pointer.*
+Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
 
 ### steer
 The "steer" step of the agent loop — course-correcting when the agent's output does not match your intent. *Example: "The date appeared above the tagline; please put it below" is a steer.*
