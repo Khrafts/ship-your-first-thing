@@ -112,6 +112,10 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 
 ## F
 
+### file-tree
+The hierarchical structure of files and folders in a project, displayed as an indented list in an editor's left panel. *Example: a Next.js project's file tree shows `app/`, `app/components/`, `package.json`, and `tsconfig.json` at a glance.*
+Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+
 ### foreign-key
 A field in one row that points at the id of a row in another table. *Example: a `posts` row's `author_id` points at a row in the `users` table.*
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
