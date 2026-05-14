@@ -111,6 +111,11 @@ node <file.js>
 ## Package management
 
 ```bash
+npm --version
+```
+*Print the installed npm version. Sanity check after opening a fresh Codespace — npm and Node ship together but are separate tools, so their version numbers differ. This course pins npm 10.x (bundled with Node 20.x LTS, see `VERSIONS.md`).*
+
+```bash
 npm install
 ```
 *Read `package.json` and download every dependency into `node_modules/`. The first command to run after cloning a fresh project that uses npm.*
@@ -146,6 +151,11 @@ git add . && git commit -m "describe what changed"
 git push
 ```
 *Send your commits to GitHub. Push frequently — Codespaces lose your work if you delete them without pushing first.*
+
+```bash
+git pull
+```
+*Fetch commits from a remote host (like GitHub) and merge them into your local copy. Codespaces usually run this automatically when you open them; outside Codespaces, run it at the start of each session if you commit from more than one machine.*
 
 ```bash
 git reset --hard HEAD
