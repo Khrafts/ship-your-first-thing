@@ -62,6 +62,10 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 Anthropic's command-line AI coding agent; this course's recommended primary agent. *Example: install on macOS or Linux with `curl -fsSL https://claude.ai/install.sh | bash`; on Windows in PowerShell with `irm https://claude.ai/install.ps1 | iex`.*
 Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
 
+### client-component
+A Next.js file that runs in the browser and supports interactivity — `useState`, `onClick`, forms, anything that responds to user input. Marked by `'use client'` on the first line. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app uses `useState` and an `onClick` handler, so it's a Client Component.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+
 ### code-editor
 A program that lets you read and edit source files with niceties like syntax highlighting, search across files, and integrated tools. *Example: Visual Studio Code (VS Code) is the editor a Codespace presents in your browser.*
 Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md).
@@ -99,6 +103,10 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 ### diff-summary
 A one-line per-file report from an AI coding agent showing the filename and the number of lines added or removed. *Example: `Modified: app/components/Footer.tsx (+1 line, -1 line)` — the filename plus the counts; you do not have to open the file to spot a wrong-file edit.*
 Used in: [Module 3.5 — Spotting wrong-file edits](./modules/03.5-reading-code/02-spotting-wrong-file-edits.md).
+
+### directive
+A special single line at the top of a file that changes how the file is treated by its framework. *Example: `'use client'` is a directive that tells Next.js a file is a Client Component.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
 
 ### dns
 Domain Name System — the system that translates a human-readable URL into the IP address of the actual server. *Example: when you type `example.com`, DNS resolves it to `93.184.216.34` so the browser knows which server to ask.*
@@ -171,6 +179,10 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 ### http-status-code
 A three-digit number summarizing how an HTTP request went. *Example: `200 OK` means success; `404 Not Found` means the resource doesn't exist; `500 Internal Server Error` means the server crashed.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
+
+### hydration
+In Module 3.5's floor, the symptom term for "the server-rendered HTML and the client-rendered HTML do not agree." Most often caused by a Client Component file missing `'use client'` on line 1. *Example: a "Hydration failed" error in the browser console is usually a missing `'use client'` directive.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
 
 ## I
 
@@ -282,6 +294,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 A program that runs continuously, waiting for requests, and sends back responses.
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md), [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
+### server-component
+A Next.js file that renders on the server before sending HTML to the browser; the default in App Router. No `'use client'` directive needed. *Example: `app/components/StaticHero.tsx` in Module 3.5's sample-app is pure JSX with no interactivity, so it stays a Server Component.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+
 ### session
 A remembered "yes, you're you" so an app doesn't re-check identity on every request. Lives between authentication and the next sign-out. *Example: after you log in, the app remembers you for the next 24 hours.*
 Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do-what.md).
@@ -345,6 +361,10 @@ Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triag
 ### url
 The address that names what you're asking for on the web. *Example: `https://example.com/about`.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
+
+### use-client
+A Next.js directive — `'use client'` on the first line of a file — that flips the file from Server Component to Client Component. *Example: a file using `useState`, `onClick`, or any other React hook or DOM event handler needs `'use client'` on line 1.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
 
 ## V
 
