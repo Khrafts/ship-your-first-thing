@@ -96,6 +96,10 @@ Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-pack
 The act of moving an app from a developer's laptop (localhost) to a public server so anyone on the internet can reach it. *Example: pushing to GitHub and letting Vercel build and host the result.*
 Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
 
+### diff-summary
+A one-line per-file report from an AI coding agent showing the filename and the number of lines added or removed. *Example: `Modified: app/components/Footer.tsx (+1 line, -1 line)` — the filename plus the counts; you do not have to open the file to spot a wrong-file edit.*
+Used in: [Module 3.5 — Spotting wrong-file edits](./modules/03.5-reading-code/02-spotting-wrong-file-edits.md).
+
 ### dns
 Domain Name System — the system that translates a human-readable URL into the IP address of the actual server. *Example: when you type `example.com`, DNS resolves it to `93.184.216.34` so the browser knows which server to ask.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
@@ -111,6 +115,10 @@ An AI-agent session where you ask the agent to actually make the change. Distinc
 Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ## F
+
+### file-panel
+The editor's source-control or file-tree panel showing which files have just changed, often with an `M` marker or color highlight. *Example: when an AI coding agent edits `app/components/Footer.tsx` inside a Codespace, VS Code's source-control panel shows that file with an `M` marker so you can spot the change at a glance.*
+Used in: [Module 3.5 — Spotting wrong-file edits](./modules/03.5-reading-code/02-spotting-wrong-file-edits.md).
 
 ### file-tree
 The hierarchical structure of files and folders in a project, displayed as an indented list in an editor's left panel. *Example: a Next.js project's file tree shows `app/`, `app/components/`, `package.json`, and `tsconfig.json` at a glance.*
