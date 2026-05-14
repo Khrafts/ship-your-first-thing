@@ -136,6 +136,10 @@ Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 �
 
 ## H
 
+### hallucination
+When an AI agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing. *Example: in Module 3 Lesson 3, both agents invented "favorite books" for a list, even though neither agent has any way of knowing the learner's actual favorites.*
+Used in: [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
+
 ### html
 The markup language that describes the structure of a webpage — a tree of elements like headings, paragraphs, links, and images. *Example: `<h1>Hello</h1>` is an HTML element.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).

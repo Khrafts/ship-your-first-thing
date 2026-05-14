@@ -11,6 +11,18 @@ Each entry has the format:
 
 ---
 
+## 2026-05-14 — Phase 2 Wave 3 M3 L3 transcripts captured
+
+**What changed:** Module 3 Lesson 3 (`modules/03-the-loop/03-reading-plans-recognizing-wrong.md`) shipped, with paired Claude Code + Gemini CLI captures from 2026-05-14 (D-28). The lesson teaches the EVALUATE step of the agent loop using observation-based detection (D-30) — five patterns: visual divergence, output divergence, plan-vs-actual divergence, narration divergence, error messages. The worked example is the deliberately under-specified ask "Add a list of 3 favorite books below the button," engineered to produce hallucinations from both agents. The lesson SHIPS the hallucinated book titles verbatim — recognizing the hallucination is the point; M3 L4 walks through the steer that replaces them with placeholder text. New GLOSSARY anchor: `hallucination`. The scratch/index.html starter is progressed to include the hallucinated list (D-31 L3 progression).
+
+**Affected lessons / artifacts:** `modules/03-the-loop/03-reading-plans-recognizing-wrong.md` (new); `modules/03-the-loop/scratch/index.html` (static `<ul>` with three book titles added). One new GLOSSARY anchor: `hallucination`. Capture brief at `screenshots/m3/03-reading-plans-recognizing-wrong/CAPTURE.md`.
+
+**What learners should do:** Your agent will almost certainly invent DIFFERENT book titles than the lesson shows. That is fine — the point is recognizing that the agent invented anything at all. The lesson's `> **Last captured:** 2026-05-14.` callout sets expectations.
+
+**What contributors should do:** The transcripts are real captures, not idealized (D-28). If a re-capture is needed (e.g., Claude Code 2.x or Gemini CLI's output shape changes), open a PR that re-runs the L3 ask against `modules/03-the-loop/scratch/index.html` in its post-L2 state, replaces the lesson's transcript placeholders with the new verbatim captures, bumps the `updated:` and `Last captured:` dates, and adds a new WHAT-CHANGED entry. The lesson is engineered around real hallucinations — do NOT clean them up; the L3 hallucination IS the pedagogy.
+
+---
+
 ## 2026-05-14 — Phase 2 Wave 3 M3 L2 transcripts captured
 
 **What changed:** Module 3 Lesson 2 (`modules/03-the-loop/02-planning-vs-execution.md`) shipped, with paired Claude Code + Gemini CLI captures from 2026-05-14 (D-28). The lesson teaches planning vs execution conversations and introduces the six core slash commands (`/clear`, `/compact`, `/context`, `/cost` for Claude Code; `/clear`, `/compress`, `/stats` for Gemini CLI). The scratch/index.html starter is progressed to include a show/hide button below the date (D-31 L2 progression).
