@@ -30,6 +30,38 @@ Plan: I want to {feature}. The constraints are {list}. The current state is in {
 ```
 *Show running session spend (Claude Code). Path 3 learners check this regularly.*
 
+## Terminal basics
+
+```bash
+pwd
+```
+*Print working directory — where am I? Run this when you've been `cd`-ing around and lost track.*
+
+```bash
+ls
+```
+*List files in the current directory. Add a path to peek into a folder without `cd`-ing into it: `ls modules`.*
+
+```bash
+cd <directory>
+```
+*Change into a directory. `cd ..` moves up one level; `cd` alone goes home.*
+
+```bash
+clear
+```
+*Wipe the visible terminal output. Cosmetic — your command history is still there (up arrow).*
+
+```bash
+mkdir <name>
+```
+*Make a new (empty) directory. Errors if the directory already exists.*
+
+```bash
+rmdir <name>
+```
+*Remove an EMPTY directory. Safer than `rm -rf` for cleanup; errors if the directory isn't empty.*
+
 ## Git basics
 
 ```bash
