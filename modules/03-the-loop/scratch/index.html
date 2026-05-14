@@ -9,8 +9,16 @@
   <p>{your tagline}</p>
   <div id="content"></div>
   <script>
-    // The AI agent edits this section across Module 3 lessons.
-    // Starts empty — Module 3 Lesson 1 asks the agent to add today's date below the tagline.
+    // Module 3 Lesson 1 — the AI agent added today's date below the tagline.
+    // This is the post-L1 state shipped with the course; the lesson author will
+    // replace this block with the verbatim code from the captured capture session
+    // (see screenshots/m3/01-introducing-the-loop/CAPTURE.md). Real captures only
+    // per D-28 — the snippet below is a representative example to keep the file
+    // shape concrete until the capture lands.
+    const dateEl = document.createElement('p');
+    dateEl.id = 'date';
+    dateEl.textContent = new Date().toLocaleDateString();
+    document.querySelector('p').after(dateEl);
   </script>
 </body>
 </html>
