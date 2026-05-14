@@ -192,6 +192,12 @@ Used in: [Module 2 — The runtime (Node)](./modules/02-toolchain/03-runtime-nod
 The standard package manager for JavaScript code; bundled with Node. *Example: `npm install` downloads everything listed in `package.json` into a `node_modules/` folder.*
 Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-package-manager-npm.md).
 
+## O
+
+### over-engineering
+When an AI agent does MORE than asked — suggesting frameworks, libraries, image lookups, or fancy designs for a small request. The fix is a scope-tightening steer that names the limit ("no frameworks", "inline CSS only", "nothing else"). *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" prompted both agents to suggest CSS frameworks and image lookups — over-engineering compared to the simple inline-CSS solution the learner wanted.*
+Used in: [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
+
 ## P
 
 ### package
