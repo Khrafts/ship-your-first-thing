@@ -4,7 +4,7 @@ module: "03.5-reading-code"
 lesson_number: 03
 est_minutes: 35
 prereqs: ["02-spotting-wrong-file-edits"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,11 +16,13 @@ By the end of this lesson, you will be able to look at any error message and fin
 
 ## Why this matters
 
-When an AI agent's code fails — a typo, a missing import, a missing directive — your browser or terminal shows an error. The full error is long: dozens of lines, most of them inside libraries you did not write. The skill of this lesson is finding the ONE line that points back at your code, opening that file, and pasting the error back to the agent as a steer. Module 3 Lesson 4 covered feeding errors back to the agent generally; this lesson tightens the "find the file pointer first" step that makes the steer precise.
+You hand a contractor a long, dense invoice — say a hospital bill or a tax form — and at the top of the document, before all the unfamiliar codes and references, there's a small section that says "Item in question: page 4, line 14." You don't have to read the rest. You jump to page 4, line 14, and you see the specific line the dispute is about. Code errors are the same shape: a dense receipt with one circled line. This lesson teaches you to find the circled line — the file path and line number that points at YOUR code — and to ignore the rest until you need it.
 
 ## Core read
 
-When code fails, you get an error message. A long one. Most of the lines are a **stack trace** (a one-line definition: a list of every function call leading to an error, top to bottom — the most recent call at the top, [→ GLOSSARY](../../GLOSSARY.md#stack-trace)). Most of those calls are inside libraries — React, Next.js, the browser itself — that you did not write. The skill at this lesson's floor is NOT reading every line. It is finding the ONE LINE that points at YOUR file.
+Picture the receipt again. The full invoice runs four pages; you don't have the vocabulary for most of it; you don't need to. Near the top, one line names exactly the page and line the question is about. You jump there. You read that one line. You make your call. Error messages publish the same kind of pointer every time, and the same jumping move is the whole skill.
+
+When code fails, you get an error message. A long one. Most of the lines are a **stack trace** (a one-line definition: a list of every function call leading to an error, top to bottom — the most recent call at the top, [→ GLOSSARY](../../GLOSSARY.md#stack-trace)). Most of those calls are inside libraries — React, Next.js, the browser itself — that you did not write. The skill at this lesson's floor is NOT reading every line. It is finding the ONE LINE that points at YOUR file — the receipt's circled line.
 
 ### The "first line that mentions YOUR file" rule
 
