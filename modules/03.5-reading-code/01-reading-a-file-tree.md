@@ -4,7 +4,7 @@ module: "03.5-reading-code"
 lesson_number: 01
 est_minutes: 35
 prereqs: ["04-steering-and-recovery"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,9 +16,11 @@ By the end of this lesson, you will be able to open the file tree of a Next.js p
 
 ## Why this matters
 
-Module 3 taught you to recognize wrong output by looking at the page. Module 3.5 layers code-reading detection on top of that — but starting at the project's shape, not the code-line level. When an AI agent works on your project, it shows which files it changed. You do not need to read the changes line by line to spot "wait, that is the wrong folder." Reading the structure of a project is the first detection skill on the code side of the loop. It takes about thirty minutes to learn and saves hours of debugging in Phase 3.
+Picture walking into an unfamiliar office building. The lobby has a directory on the wall — "Reception: floor 1; Accounting: floor 2; Engineering: floor 3; Storage: basement." You haven't walked into any of those offices, but at a glance you can tell which floor you'd visit to fix an invoice. When an AI agent works on your project, it shows you which files it changed; without a sense of the SHAPE of the project, you're standing in the lobby of an unfamiliar building, with no way to tell whether the agent went to the right floor. This lesson teaches you to read the lobby directory — the file tree — in about thirty minutes, no walking-into-offices required.
 
 ## Core read
+
+Picture the lobby directory again. You haven't walked into any of the offices on those floors — you only read the signage. The signage gives you the building's SHAPE: what each floor is for, which floor you'd visit to fix what, and which floor is just storage. Code projects publish the same kind of lobby directory. It is called a file tree.
 
 A **file tree** (a one-line definition: the hierarchical structure of files and folders in a project, displayed as an indented list in your editor's left panel, [→ GLOSSARY](../../GLOSSARY.md#file-tree)) is the first thing you see when you open a project. At a glance, it tells you the project's shape — what kind of app it is, where the pages live, where the reusable pieces live, what is configuration and what is content. This lesson teaches reading the shape without going into the contents.
 
