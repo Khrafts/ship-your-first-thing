@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 04
 est_minutes: 35
 prereqs: ["03-runtime-node"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,17 +16,19 @@ By the end of this lesson, you will be able to read a small `package.json` file 
 
 ## Why this matters
 
-Almost no real web app is written from scratch. Every project pulls in code other people wrote — for date handling, for talking to a database, for routing requests, for hundreds of small jobs each line of code in the project no longer has to do itself. A **package manager** (a tool that downloads and tracks the code your project depends on, [→ GLOSSARY](../../GLOSSARY.md#package-manager)) is the tool that brings that code in. npm is the standard package manager for JavaScript code, and it ships alongside Node. Naming it now means the next Module 2 lesson (saving versions of the text the runtime will run) and the thread project you build in Phase 3 both make sense — they both assume a `package.json` and a `node_modules/`.
+You live in an apartment with a corner store on speed-dial: text the list — milk, eggs, soap — and someone shows up at your door with a bag containing exactly those items. Real web apps work the same way; almost no project writes everything from scratch, so each one keeps a short list of "things I need" and lets a tool fetch them. This lesson teaches you to read that list (`package.json`) and recognize the bags the delivery brings (`node_modules/`).
 
 ## Core read
 
 You don't want to rewrite what others have written.
 
+Picture it again. You live in an apartment with a corner store on speed-dial. Need milk, eggs, soap? You text the list, somebody shows up with a bag. You didn't drive across town; you didn't manufacture the soap. You wrote a list; somebody else fetched. The list stays short and tidy; the bags pile up by the door. The tool that does the fetching for a software project is a **package manager** (a tool that downloads and tracks the code your project depends on, [→ GLOSSARY](../../GLOSSARY.md#package-manager)).
+
 Imagine you're building a small web app and you need to show a date in a friendly format — "May 14, 2026" instead of `2026-05-14T07:35:12.000Z`. You could write the conversion yourself: split the string apart, look up the month name from the number, pad the day with a leading zero where needed, handle the edge cases. Or you could pull in a tiny library someone else has already written, tested against thousands of edge cases, and shared with the world. The library is one function call away. The second path is faster, more correct, and easier to maintain. That's the everyday motivation behind every package manager: someone else has already solved the small problem, and reaching for their solution is the right move.
 
-The thing that handles the pulling-in is **npm** (the standard package manager for JavaScript, bundled with Node, [→ GLOSSARY](../../GLOSSARY.md#npm)). What npm actually moves around is a **package** (a bundled bit of reusable code, published to a registry so any project can pull it in, [→ GLOSSARY](../../GLOSSARY.md#package)) — a unit of code with a name, a version, and the code itself, ready to be installed. When your project says "I need this package to run," that named package is called a **dependency** (a package your project NEEDS to run, declared in `package.json`, [→ GLOSSARY](../../GLOSSARY.md#dependency)). Four words, one story: a package manager (npm) installs packages, and the packages your project lists as needed are its dependencies.
+The thing that does the pulling-in for JavaScript code is **npm** (the standard package manager for JavaScript, bundled with Node, [→ GLOSSARY](../../GLOSSARY.md#npm)) — npm is the delivery service. The corner store itself is the npm registry, a central server with millions of items on the shelves, run at `registry.npmjs.org`. What npm actually moves around is a **package** (a bundled bit of reusable code, published to a registry so any project can pull it in, [→ GLOSSARY](../../GLOSSARY.md#package)) — a unit of code with a name, a version, and the code itself, ready to be installed. When your project says "I need this package to run," that named package is called a **dependency** (a package your project NEEDS to run, declared in `package.json`, [→ GLOSSARY](../../GLOSSARY.md#dependency)). Four words, one story: a package manager (npm) installs packages, and the packages your project lists as needed are its dependencies.
 
-Every JavaScript project that uses npm has a file called `package.json` at its root. The file lists the project's name, its own version, and the packages it depends on. Here's a real example from a tiny project this course ships in Module 3.5:
+This file is the shopping list. Every JavaScript project that uses npm has a file called `package.json` at its root. The file lists the project's name, its own version, and the packages it depends on. Here's a real example from a tiny project this course ships in Module 3.5:
 
 ```json
 {
@@ -42,9 +44,9 @@ Every JavaScript project that uses npm has a file called `package.json` at its r
 }
 ```
 
-Walk through the fields one by one. `name` is the project's name — `sample-app` is a deliberately boring placeholder. `version` is the project's own version (`0.0.1` is the convention for "first draft, nothing released yet"). `private: true` says "this project is not meant to be published to the npm registry; it's just for me." `description` is a one-line description, and this one warns Module 3.5 readers in advance not to install it (more on that warning below). The interesting field is `dependencies`: three rows, each `package-name: version`. This project says "I need the package `next` at version 16.2.6, the package `react` at version 19.2.6, and the package `react-dom` at version 19.2.6." Those three are everything this project needs to run.
+Walk through the fields one by one. `name` is the project's name — `sample-app` is a deliberately boring placeholder. `version` is the project's own version (`0.0.1` is the convention for "first draft, nothing released yet"). `private: true` says "this project is not meant to be published to the npm registry; it's just for me." `description` is a one-line description, and this one warns Module 3.5 readers in advance not to install it (more on that warning below). The interesting field is `dependencies` — these are the items on the list. Three rows, each `package-name: version`. This project says "I need the package `next` at version 16.2.6, the package `react` at version 19.2.6, and the package `react-dom` at version 19.2.6." Those three are everything this project needs to run.
 
-When you run `npm install` against a project, npm reads `package.json` and downloads exactly the packages listed in `dependencies` — plus every package those packages themselves depend on (and every package those packages depend on, and so on) — into a folder called `node_modules/` at the project root. The `node_modules/` folder is where the downloaded code actually lives once it lands on your machine.
+When you run `npm install` against a project, npm reads `package.json` and downloads exactly the packages listed in `dependencies` — plus every package those packages themselves depend on (and every package those packages depend on, and so on) — into a folder called `node_modules/` at the project root. The `node_modules/` folder is where the downloaded code actually lives once it lands on your machine. Picture the bags piling up by your front door after the delivery — that's `node_modules/`. Huge in volume; not something you carry with you.
 
 A mental-model paragraph that's worth holding. Think of `package.json` as your project's shopping list: short, tidy, easy to read at a glance. Think of `node_modules/` as the pantry — where the groceries actually sit after npm has gone to the store and brought them home. The pantry can be huge (hundreds of megabytes; thousands of files), but the shopping list stays short. The shopping list gets tracked by the version-control tool you'll meet in the next lesson; the pantry doesn't — `node_modules/` shows up in nearly every project's ignore list. If you delete `node_modules/` and re-run `npm install`, npm rebuilds the pantry from the shopping list. That whole loop — list, install, rebuild — is the package manager's job.
 
