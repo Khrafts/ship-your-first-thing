@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 06
 est_minutes: 40
 prereqs: ["05-git-and-github"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,13 +16,15 @@ By the end of this lesson, you will be able to name the two AI coding agents thi
 
 ## Why this matters
 
-Module 2 Lessons 1 through 5 named the tools you OPERATE: the IDE, the terminal, the runtime, the package manager, git. This last Module 2 lesson names the tool that operates them WITH you — an AI coding agent. Module 3 (which starts after this) is the full unpacking of what to actually DO with the agent. This lesson names the surface so the next module can name the moves.
+Picture a junior teammate who started yesterday. They know the language, they type fast, they're not afraid of work — but they don't know your project, your priorities, or your judgment yet, so before every task you brief them on what to do and what to skip. They go work; they come back with a result; you read what they did. Sometimes they nailed it; sometimes they "improved" something you didn't ask them to touch. This lesson introduces the two AI coding agents this course teaches as that junior teammate, installs the one you picked in Module 0, and puts the file-hygiene in place so the briefing-and-checking rhythm has somewhere safe to land.
 
 ## Core read
 
 You want to delegate the writing.
 
-You can write code yourself — and by Module 4 you will be reading enough code to recognize when the agent is wrong. But writing it line by line, from scratch, is slow, and most of the code in a real project is the same sort of glue most projects need. An AI coding agent reads your files, drafts the changes, runs your tests when you have them, and shows you what changed. You stay in the seat of decisions — what should this do? did it work? what next? — and the agent moves the keyboard.
+Picture that junior teammate from a moment ago. They know the language, they type fast, they're not afraid of work — but they don't know your project, your priorities, or your judgment yet. Before each task you brief them: this is the file. This is what I want the output to look like. Here's what to skip. They go work; they come back with a result; you read what they did. Sometimes they nailed it. Sometimes they took an unexpected turn — they "improved" something you didn't ask them to touch, or "fixed" a thing that wasn't broken. Your job is to direct them and check their work, every time. That brief → check → re-brief rhythm IS the working day with an AI coding agent.
+
+You can write code yourself — and by Module 4 you will be reading enough code to recognize when the agent is wrong. But writing it line by line, from scratch, is slow, and most of the code in a real project is the same sort of glue most projects need. An AI coding agent reads your files, drafts the changes, runs your tests when you have them, and shows you what changed. You stay in the seat of decisions — what should this do? did it work? what next? — and the teammate moves the keyboard.
 
 The category is one you have already met. Module 0's welcome lesson named **AI coding agent** as a program that reads your project files, plans changes, and writes code on your behalf, guided by a conversation with you. This lesson names the two specific agents this course uses. The first is **Claude Code** (Anthropic's command-line AI coding agent; this course's recommended primary agent, [→ GLOSSARY](../../GLOSSARY.md#claude-code)). The second is **Gemini CLI** (Google's open-source command-line AI coding agent; this course's genuinely-free path, [→ GLOSSARY](../../GLOSSARY.md#gemini-cli)). Both run in the same terminal panel you met in Module 2 Lesson 2. Both read your files. Both edit your files. They differ in the cost ceiling and in some keystroke names — both important enough that the course teaches the durable loop on both surfaces.
 
@@ -52,9 +54,9 @@ For Gemini CLI on any platform with Node 20 or newer:
 npm install -g @google/gemini-cli
 ```
 
-After install, you run the agent the same way you ran `node` or `git` in earlier lessons — by typing its name in the terminal. Claude Code starts with `claude` (optionally followed by what you want it to do). Gemini CLI starts with `gemini`. Both open a conversational session inside your terminal. Module 3 walks the first session step by step. For now, the entry point is the realization that the agent is a CLI tool — same kind of program as `npm`, `node`, `git` — runnable from the same terminal you opened in Lesson 2.
+After install, you run the agent the same way you ran `node` or `git` in earlier lessons — by typing its name in the terminal. Claude Code starts with `claude` (optionally followed by what you want it to do). Gemini CLI starts with `gemini`. Both open a conversational session inside your terminal. When you type `claude` or `gemini`, you're at the briefing window — the cursor is waiting for your first instruction. Module 3 walks the first session step by step. For now, the entry point is the realization that the agent is a CLI tool — same kind of program as `npm`, `node`, `git` — runnable from the same terminal you opened in Lesson 2.
 
-Inside the agent's session, you can type ordinary requests like "add today's date below the tagline" and the agent works on them. You can ALSO type **slash commands** (short keywords starting with `/` that control the session itself rather than asking the agent to do work, [→ GLOSSARY](../../GLOSSARY.md#slash-command)) — things for clearing the conversation, compressing the running history, or checking your spend. `CHEATSHEET.md` already lists the ones this course teaches. Module 3 covers when to reach for each one; this lesson just names the category so the word "slash command" is not a surprise when it shows up.
+Inside the agent's session, you can type ordinary requests like "add today's date below the tagline" and the agent works on them. You can ALSO type **slash commands** (short keywords starting with `/` that control the session itself rather than asking the agent to do work, [→ GLOSSARY](../../GLOSSARY.md#slash-command)) — things for clearing the conversation, compressing the running history, or checking your spend. Even a teammate needs a "reset" button: the slash commands are how you tell the agent "forget what we just talked about" or "compress what we've said so far." `CHEATSHEET.md` already lists the ones this course teaches. Module 3 covers when to reach for each one; this lesson just names the category so the word "slash command" is not a surprise when it shows up.
 
 AI agents need to READ your project files to be useful. Most of the time that is exactly what you want — they need to see `app/page.tsx` to edit it. Sometimes you do NOT want them to see something: a `.env` file with secret API keys, internal notes in a `.planning/` folder, the thousands of files inside `node_modules/` that confuse rather than help. That is what an ignore-file is for: a list of paths the agent should skip.
 
