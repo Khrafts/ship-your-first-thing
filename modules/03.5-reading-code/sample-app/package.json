@@ -1,0 +1,11 @@
+{
+  "name": "sample-app",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Reference scaffold for Module 3.5. DO NOT run npm install — see README.md.",
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  }
+}

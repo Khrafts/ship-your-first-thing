@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Page</title>
+</head>
+<body>
+  <h1>{your name}</h1>
+  <p>{your tagline}</p>
+  <div id="content"></div>
+  <!--
+    Module 3 Lesson 4 — final M3 state.
+    Lesson 1 added today's date below the tagline (script block below).
+    Lesson 2 added a button that hides or shows the date (script block below).
+    Lesson 3 added a static <ul> with three hallucinated book titles in this
+    spot (the agent invented them because the ask was under-specified).
+    Lesson 4 ran two steers against that list: (a) replace the invented
+    titles with placeholder text, then (b) add inline CSS to give the list
+    a wooden background and some line spacing — the "real bookshelf" ask
+    after scoping it back from over-engineering.
+    Per D-28 the lesson author will swap this block with the verbatim agent
+    output from the captured Phase C session — see
+    screenshots/m3/04-steering-and-recovery/CAPTURE.md. The inline CSS and
+    placeholder text below are a representative example to keep the file
+    shape concrete until the real capture lands.
+    Per D-31 this entire scratch/ directory is throwaway. The lesson ends
+    with: "you can delete the scratch directory now — your real project
+    starts in Module 4."
+  -->
+  <ul style="background-color: #8b5a2b; color: #fff; padding: 1em 2em; line-height: 1.5em; border-radius: 4px; list-style: none;">
+    <li>add your three favorite books here</li>
+    <li>add your three favorite books here</li>
+    <li>add your three favorite books here</li>
+  </ul>
+  <script>
+    // Module 3 Lesson 1 — the AI agent added today's date below the tagline.
+    // Module 3 Lesson 2 — the AI agent added a button that shows or hides the date.
+    // Module 3 Lesson 3 — the AI agent added a static <ul> of three hallucinated
+    //   book titles in the HTML body above this script block.
+    // Module 3 Lesson 4 — two steers against that list: (a) replace the invented
+    //   titles with placeholder text, then (b) inline CSS for a wooden background.
+    //   The script body below is preserved verbatim from Lessons 1 + 2.
+    const dateEl = document.createElement('p');
+    dateEl.id = 'date';
+    dateEl.textContent = new Date().toLocaleDateString();
+    document.querySelector('p').after(dateEl);
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.id = 'toggle-date';
+    toggleBtn.textContent = 'Hide date';
+    toggleBtn.addEventListener('click', () => {
+      const hidden = dateEl.style.display === 'none';
+      dateEl.style.display = hidden ? '' : 'none';
+      toggleBtn.textContent = hidden ? 'Hide date' : 'Show date';
+    });
+    dateEl.after(toggleBtn);
+  </script>
+</body>
+</html>

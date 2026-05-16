@@ -80,6 +80,127 @@ Reserved for M4+:
 
 ---
 
+## Module 2 (M2)
+
+Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, browser-as-program, request, response, HTML, database, row, schema, foreign key, query, SQL, API, authentication, authorization, session, session token, cookie, localhost, deployment, CI/CD, git, GitHub-as-host, Vercel) is now Safe.
+
+### Safe (no callout needed)
+
+- All M0 Safe + all M0 Requires-callout + all M1 Safe + all M1 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use)
+
+New tool nouns introduced in M2 (in lesson order per D-20):
+
+- IDE
+- terminal (re-introduced as "the developer tool surface" — was M0 Requires-callout for "where commands run"; M2 promotes it to a named tool category)
+- runtime
+- Node (or Node.js — pick one canonical form per lesson; cite the install command from CD-12)
+- package manager
+- npm
+- package
+- dependency
+- git (as a TOOL, distinct from M1's "GitHub-as-host"; the noun was M1 Requires-callout; M2 L5 re-introduces it as a tool you USE, not just a site)
+- repository (as a git artifact, distinct from M0's casual "GitHub repo" mention)
+- commit
+- push
+- pull
+- branch
+- merge
+- Claude Code
+- Gemini CLI
+- slash command
+
+### Forbidden (deferred to a later module)
+
+Reserved for M3+:
+
+- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, `/compress`, `/stats`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination
+
+Reserved for M3.5+:
+
+- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary
+
+Reserved for M4+:
+
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+
+**M2 rewrite implications:** M2 introduces tools as nouns the learner now operates. The hands-on shape of each tool (key commands, install path) is shown via CHEATSHEET + VERSIONS.md; the lesson body uses the term with a D-04 callout on first use and then drops the callout. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — use the felt-problem framing locked in D-20.
+
+---
+
+## Module 3 (M3)
+
+Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
+
+### Safe (no callout needed)
+
+- All M0/M1/M2 Safe + all M2 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use)
+
+- prompt
+- context window
+- `/clear`
+- `/compact`
+- `/context`
+- `/cost`
+- `/compress` (Gemini CLI's equivalent of Claude Code's `/compact` — note the divergence; cf. RESEARCH.md State-of-the-Art table)
+- `/stats` (Gemini CLI)
+- agent loop
+- planning conversation
+- execution conversation
+- intent (as named loop step, distinct from the everyday noun "intent")
+- ask (as named loop step)
+- evaluate (as named loop step)
+- steer (as named loop step)
+- hallucination (AI-output sense)
+
+### Forbidden (deferred to a later module)
+
+Reserved for M3.5+:
+
+- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary
+
+Reserved for M4+:
+
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+
+**M3 rewrite implications:** M3 names the loop. Every lesson uses the loop-step nouns (intent / ask / evaluate / steer) freely AFTER the first-use callout in M3 L1. The slash commands appear in CHEATSHEET first; lessons re-introduce them with D-04 callouts only at first lesson-internal use. CRITICAL: do NOT introduce `/tokens` — that's the deprecated name. M3 L2 teaches the canonical commands `/context` (Claude Code, window usage) and `/cost` (Claude Code, spend), plus Gemini CLI's `/compress` and `/stats`. The same-PR migration of CHEATSHEET/BUDGET/GLOSSARY off `/tokens` ships in Plan 02-02 (Wave 1) before any M3 lesson is written.
+
+---
+
+## Module 3.5 (M3.5)
+
+Audience floor: M3 complete. Every M3 Requires-callout term is now Safe.
+
+### Safe (no callout needed)
+
+- All M0/M1/M2/M3 Safe + all M3 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use)
+
+- file tree
+- stack trace
+- error message anatomy (note: introduced as a phrase, not "stack trace" — D-33 floor: the lesson teaches finding the first line that mentions YOUR file, not line-by-line stack-trace parsing)
+- `'use client'`
+- server component
+- client component
+- hydration (introduced as a SYMPTOM term — "hydration error in plain English" — per D-33 floor; NOT as a technical explanation)
+- directive (React directive sense)
+- file panel
+- diff summary
+
+### Forbidden (deferred to a later module)
+
+Reserved for M4+:
+
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+
+**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. D-33 floor is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT extend `stack trace` into line-by-line parsing. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4).
+
+---
+
 ## Maintenance
 
 When a new lesson introduces a new technical noun:

@@ -1,6 +1,6 @@
 # BUDGET.md — Course costs, honestly
 
-**Last verified:** 2026-05-08
+**Last verified:** 2026-05-14
 **Freshness commitment:** This file is updated whenever a cost-affecting upstream changes. Check `WHAT-CHANGED.md` for the most recent revision date. If you spot stale numbers, file an issue tagged `freshness` (see `CONTRIBUTING.md`).
 
 ## Why this file exists
@@ -38,7 +38,7 @@ The course supports three named cost paths. All three reach the end of the threa
 
 **Course-completion projection (Path 2):** **$0**. The catch is rate limits and tier behavior — Google's free-tier mechanics shift, and a heavy day may hit the daily cap. Phase 2 of this course re-verifies the current daily/monthly caps before lessons are authored.
 
-**What "free" actually means here:** The free tier is genuinely free, but it shapes how you work. You learn `/clear`, `/compact`, `/tokens` (or the Gemini CLI equivalent) as **token discipline** habits, not optional polish. Cost-careful learners often *prefer* this path because it teaches the discipline by force.
+**What "free" actually means here:** The free tier is genuinely free, but it shapes how you work. You learn `/clear`, `/compact` (Claude Code) — `/clear`, `/compress`, `/stats` (Gemini CLI) as **token discipline** habits, not optional polish. Cost-careful learners often *prefer* this path because it teaches the discipline by force.
 
 **Trade-offs vs Claude Code Pro:**
 - **Plus:** Genuinely $0; no surprise bill possible.
@@ -59,7 +59,7 @@ The course supports three named cost paths. All three reach the end of the threa
 
 **Course-completion projection (Path 3):** **$30–$200 total** depending on token discipline. A carefully-managed learner using Sonnet, `/clear` between tasks, and short scoped prompts: **~$30–$60**. A learner who keeps the entire conversation context loaded and re-prompts repeatedly: **$200+** — and at the high end, **single prompts can eat 30–90% of a 5-hour budget** in a long debugging session. The course teaches the discipline that keeps this path cheap, but the discipline is real and deliberate.
 
-**What "token-careful" means:** You will use `/clear`, `/compact`, `/tokens`, `/drop` (Module 3 covers them in depth). You will default to Sonnet, not Opus. You will start fresh sessions when context gets stale rather than letting it grow. This path turns into Path 1 (~$60–$120 total) if the discipline slips.
+**What "token-careful" means:** You will use `/clear`, `/compact`, `/context`, `/cost` (Module 3 covers them in depth). You will default to Sonnet, not Opus. You will start fresh sessions when context gets stale rather than letting it grow. This path turns into Path 1 (~$60–$120 total) if the discipline slips.
 
 **Pick this path if:** You're cost-conscious **and** technically curious enough to manage tokens deliberately.
 
@@ -87,7 +87,7 @@ No AI tokens used. Module 1 is reading + diagramming exercises. Free for all thr
 
 ### Modules 2 / 3 / 3.5 (Toolchain & The Loop)
 
-*Per-path cost notes will be added by Phase 2 once Module 2/3/3.5 lessons are authored. The expected pattern: Modules 2 and 3 introduce the loop; token use is light and concentrated in Module 3 worked examples.*
+*Per-path cost notes will be added by Phase 2 once Module 2/3/3.5 lessons are authored. The expected pattern: Modules 2 and 3 introduce the loop; token use is light and concentrated in Module 3 worked examples. Phase 2 close (2026-05-14) replaced the legacy slash-command name in this file with `/context` (window usage, Claude Code) + `/cost` (spend, Claude Code); Gemini CLI's `/compress` + `/stats` are the corresponding moves on Path 2. See `WHAT-CHANGED.md` for the migration entry.*
 
 ### Module 4 (Thread project — design + build)
 

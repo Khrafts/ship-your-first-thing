@@ -1,0 +1,22 @@
+# thread-project-template/.claudeignore
+# NOTE: As of May 2026, Claude Code does NOT natively support .claudeignore.
+# This template is shipped for two reasons:
+#   1. Future-proofing: if/when Claude Code adds native support (issue #29455
+#      was closed as duplicate; the feature is actively requested), this file
+#      will be picked up.
+#   2. Documentation: it documents which paths a learner should NOT expose
+#      to Claude Code's context.
+# For HARD enforcement today, see .claude/settings.json `permissions.deny`.
+
+node_modules/
+.next/
+dist/
+build/
+coverage/
+.env
+.env.*
+*.pem
+*.key
+.DS_Store
+*.log
+.planning/

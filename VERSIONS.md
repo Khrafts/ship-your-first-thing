@@ -1,6 +1,6 @@
 # VERSIONS.md — Pinned tool versions
 
-**Last verified:** 2026-05-08
+**Last verified:** 2026-05-14
 **Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual).
 
 This is the single source of truth for every tool the course is verified against. When a tool releases a new version, the course is *not* automatically updated to it; the maintainer re-verifies the lesson flows against the new version, then updates this table and notes the change in `WHAT-CHANGED.md`.
@@ -10,8 +10,8 @@ This is the single source of truth for every tool the course is verified against
 | Tool | Pinned version | Purpose | Last verified |
 |---|---|---|---|
 | GitHub Codespaces (default image) | `mcr.microsoft.com/devcontainers/universal:2` | Quick-start environment | 2026-05-08 |
-| Node.js | 20.x LTS | Runtime for the thread project | 2026-05-08 |
-| npm | 10.x (bundled with Node 20) | Package manager | 2026-05-08 |
+| Node.js | 20.x LTS | Runtime for the thread project; M2 L3 (`03-runtime-node.md`) teaches `node --version` verification | 2026-05-14 |
+| npm | 10.x (bundled with Node 20) | Package manager; M2 L4 (`04-package-manager-npm.md`) teaches `npm install` / `npm run`; pnpm divergence noted in CHEATSHEET sidebar | 2026-05-14 |
 | git | 2.40+ | Version control | 2026-05-08 |
 | GitHub CLI (`gh`) | 2.50+ | Optional; convenient for Codespaces operations | 2026-05-08 |
 
@@ -19,8 +19,8 @@ This is the single source of truth for every tool the course is verified against
 
 | Tool | Pinned version | Path | Notes | Last verified |
 |---|---|---|---|---|
-| Claude Code | latest stable (auto-updates) | Path 1 / Path 3 | Treat keystrokes as ephemeral per the freshness model | 2026-05-08 |
-| Gemini CLI | latest stable (auto-updates) | Path 2 | Phase 2 re-verifies invocation patterns and `.geminiignore` (or current equivalent) before authoring lessons | 2026-05-08 |
+| Claude Code | latest stable (auto-updates) | Path 1 / Path 3 | Treat keystrokes as ephemeral per the freshness model; M3 dual-agent transcripts (`modules/03-the-loop/01..04`) captured against this version on the Last-verified date | 2026-05-14 |
+| Gemini CLI | latest stable (auto-updates) | Path 2 | M3 dual-agent transcripts captured against this version on the Last-verified date; ignore-file syntax = `.geminiignore` per D-38; install command `npm install -g @google/gemini-cli` requires Node 20+ | 2026-05-14 |
 
 ## Thread project stack (Phase 3 onward)
 

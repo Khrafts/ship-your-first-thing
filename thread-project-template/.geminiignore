@@ -1,0 +1,25 @@
+# thread-project-template/.geminiignore
+# Syntax: same as .gitignore. Gemini CLI respects .gitignore by default;
+# .geminiignore adds Gemini-specific exclusions on top.
+
+# Build artifacts and dependencies
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# Environment + secrets
+.env
+.env.*
+*.pem
+*.key
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Planning / internal docs the AI shouldn't muddle the context window with
+# (harmless if absent in this project)
+.planning/

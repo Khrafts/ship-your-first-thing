@@ -49,6 +49,11 @@ The script enforces (and exits non-zero on violation):
 - Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md` (case-insensitive)
 - Every relative path from a lesson to a repo-root cross-cutting doc (`GLOSSARY.md`, `BUDGET.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`, `CONTRIBUTING.md`, `WHAT-CHANGED.md`, `VERSIONS.md`, `LICENSING.md`, `README.md`, `SETUP.md`) resolves to a real file (the broken-relative-path check catches the bare-`GLOSSARY.md#anchor` 404 bug shape) — added in Plan 01-8
 - Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the M0/M1 prose has known gaps against the strict contract — those are surfaced as `WARN` lines and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. — added in Plan 01-8
+- Check #8 (m3-dual-agent) catches missing `Claude Code:` or `Gemini CLI:` labels in M3 lessons (per D-27) — added in Plan 02-02
+
+## Tooling / package manager
+
+Lessons + thread project use **npm**; the deferred course platform uses **pnpm**. Both are valid; pick npm in lesson code unless the deferred platform PR explicitly says otherwise.
 
 If the script reports violations, fix them before pushing. `WARN` lines do not fail the lint but flag content that the strict contract would reject; please fix new `WARN` lines you introduce.
 

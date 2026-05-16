@@ -19,6 +19,9 @@
 #      lessons; terms marked Requires-callout must appear inside a D-04 vocab-callout the first time they appear.
 #   7. Mermaid `<br>` / `<br/>` outside quoted node labels — GitHub's Mermaid renderer rejects HTML break tags in
 #      sequenceDiagram Notes, sequenceDiagram messages, and flowchart edge labels. Only `["..."]` node labels accept them.
+#   8. M3 dual-agent rendering — every Module 3 lesson (modules/03-the-loop/0[1-4]-*.md) MUST contain both
+#      `Claude Code:` and `Gemini CLI:` as standalone-line labels (D-27 enforceability). Skip cleanly when no
+#      matching files exist (Wave 0/1/2 runs).
 #
 # Note: `set -e` is intentionally omitted; grep returns 1 on no-match, which is our happy path.
 # Code review findings closed: WR-01..WR-05, IN-04 (see .planning/phases/01-foundation-front-door/01-REVIEW.md).
@@ -639,6 +642,56 @@ scan_mermaid_br() {
   done < <(printf '%s\n' "$files")
 }
 
+# M3 dual-agent rendering check.
+#
+# D-27 mandates every Module 3 lesson present BOTH agents in parallel — the lesson body
+# must contain `Claude Code:` and `Gemini CLI:` as standalone-line labels (the canonical
+# dual-agent rendering pattern D-25). Drifting to single-agent in any M3 lesson silently
+# teaches the opposite of the pedagogy ("the loop is durable across agents").
+#
+# Algorithm: glob modules/03-the-loop/0[1-4]-*.md (M3 lessons; excludes README.md and the
+# scratch/ subdirectory). For each match, grep -c '^Claude Code:$' AND '^Gemini CLI:$'
+# must each be >= 1. If either is 0, emit a VIOLATION. If the glob matches nothing
+# (Wave 3 hasn't run yet), return cleanly — this check doesn't block Wave 0/1/2 runs.
+#
+# In self-test mode, also scan scripts/voice-lint-fixtures/08-*.md so the fixture trips.
+scan_m3_dual_agent() {
+  local mode="$1"
+  echo "==> Scanning M3 lessons for dual-agent rendering (D-27)..."
+
+  local files=()
+  if [ "$mode" = "fixtures" ]; then
+    # Fixture mode: scan only the fixture(s).
+    local f
+    for f in scripts/voice-lint-fixtures/08-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  else
+    # Default mode: scan M3 lessons matching 0[1-4]-*.md (numbered 01..04 with a slug).
+    # README.md and other non-numbered files are excluded.
+    local f
+    for f in modules/03-the-loop/0[1-4]-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  fi
+
+  # Glob may produce no matches — return cleanly.
+  [ "${#files[@]}" -eq 0 ] && return
+
+  local file claude_count gemini_count
+  for file in "${files[@]}"; do
+    claude_count=$(grep -c '^Claude Code:$' -- "$file" 2>/dev/null || true)
+    gemini_count=$(grep -c '^Gemini CLI:$' -- "$file" 2>/dev/null || true)
+    # grep -c on no-match still prints 0; normalize empty just in case.
+    [ -z "$claude_count" ] && claude_count=0
+    [ -z "$gemini_count" ] && gemini_count=0
+    if [ "$claude_count" -eq 0 ] || [ "$gemini_count" -eq 0 ]; then
+      echo "VIOLATION (m3-dual-agent): $file is missing Claude Code: or Gemini CLI: standalone-line label (D-27); found Claude Code:=$claude_count, Gemini CLI:=$gemini_count"
+      VIOLATION_COUNT=$((VIOLATION_COUNT + 1))
+    fi
+  done
+}
+
 # ===== Self-test mode =====
 # Each fixture in scripts/voice-lint-fixtures/ MUST trip the check it's designed for.
 # We run each scan_* function with mode="fixtures" and capture the violation count delta;
@@ -712,6 +765,19 @@ run_self_test() {
     echo "  self-test OK: mermaid-br fixture tripped $((after - before)) violations"
   fi
 
+  # M3 dual-agent rendering (fixture 08) — expect at least 1 violation (fixture has only
+  # the Claude Code: label, missing Gemini CLI: — D-27 demands both).
+  before=$VIOLATION_COUNT
+  scan_m3_dual_agent fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$VIOLATION_COUNT
+  if [ "$((after - before))" -lt 1 ]; then
+    echo "SELFTEST FAIL: m3-dual-agent fixture (08) tripped only $((after - before)); expected >= 1"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: m3-dual-agent fixture tripped $((after - before)) violations"
+  fi
+
   if [ "$fail" -ne 0 ]; then
     echo "==> voice-lint.sh --self-test: FAIL"
     exit 1
@@ -732,6 +798,7 @@ scan_glossary_anchors default
 scan_broken_relative_paths default
 scan_jargon_density default
 scan_mermaid_br default
+scan_m3_dual_agent default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"
