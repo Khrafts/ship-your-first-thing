@@ -5,7 +5,8 @@ lesson_number: 02
 est_minutes: 35
 prereqs: ["01-reading-a-file-tree"]
 updated: "2026-05-14"
-deviations: []
+deviations:
+  - why-this-matters-extended
 ---
 
 # Spotting wrong-file edits

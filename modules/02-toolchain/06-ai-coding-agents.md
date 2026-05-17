@@ -5,7 +5,8 @@ lesson_number: 06
 est_minutes: 40
 prereqs: ["05-git-and-github"]
 updated: "2026-05-16"
-deviations: []
+deviations:
+  - why-this-matters-extended
 ---
 
 # AI coding agents

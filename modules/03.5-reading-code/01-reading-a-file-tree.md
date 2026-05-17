@@ -5,7 +5,8 @@ lesson_number: 01
 est_minutes: 35
 prereqs: ["04-steering-and-recovery"]
 updated: "2026-05-16"
-deviations: []
+deviations:
+  - why-this-matters-extended
 ---
 
 # Reading a file tree

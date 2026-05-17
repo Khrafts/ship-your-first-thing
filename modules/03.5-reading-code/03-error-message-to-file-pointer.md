@@ -5,7 +5,8 @@ lesson_number: 03
 est_minutes: 35
 prereqs: ["02-spotting-wrong-file-edits"]
 updated: "2026-05-16"
-deviations: []
+deviations:
+  - why-this-matters-extended
 ---
 
 # Error message to file pointer

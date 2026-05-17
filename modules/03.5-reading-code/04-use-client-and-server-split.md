@@ -5,7 +5,8 @@ lesson_number: 04
 est_minutes: 45
 prereqs: ["03-error-message-to-file-pointer"]
 updated: "2026-05-16"
-deviations: []
+deviations:
+  - why-this-matters-extended
 ---
 
 # 'use client' and the server/client split
