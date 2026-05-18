@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 01
 est_minutes: 30
 prereqs: ["04-how-it-goes-live"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,13 +16,15 @@ By the end of this lesson, you will be able to name two things your Codespace's 
 
 ## Why this matters
 
-In Module 0 you opened your Codespace and saw a code editor. You haven't given that editor a category name yet — and it deserves one, because the rest of Module 2 is a tour of tools that live inside it. The terminal, the runtime, the package manager, git, an AI coding agent — every one of them runs from this editor, alongside the files. Naming the category once is what lets the rest of Module 2 say "open the terminal" or "open a file in the IDE" without re-defining the surface each time.
+Picture a craftsperson stepping up to a workbench. The bench isn't itself a tool — it's the surface that holds every tool the craftsperson reaches for: hammer, saw, vise, lamp, measuring square — all sitting on one surface, ready. You've been working at a window like that since you opened your Codespace, but you haven't given the surface a category name yet, and without the name you can't cleanly point at "the tool on the bench." This lesson gives the surface its name, so the rest of the work you do can speak about the tools that sit on it.
 
 ## Core read
 
 You need somewhere to read and write code.
 
-When you opened your Codespace in Module 0, you saw a window split into three regions — a list of files on the left, a big editor area in the middle, and a panel along the bottom. That window is an editor. Specifically, it's an **IDE** (one-line definition: an editor that bundles a text editor, a file browser, a terminal, and language-aware tooling into one program, [→ GLOSSARY](../../GLOSSARY.md#ide)). The letters stand for **Integrated Development Environment**. The load-bearing word is "integrated" — every tool a developer reaches for sits inside one window.
+Picture the craftsperson's workbench again. The bench is the surface that holds every tool the craftsperson reaches for — hammer, saw, vise, lamp, measuring square — all on one surface at once. The craftsperson walks up, picks up whichever tool the current job needs, uses it, sets it back down. The editor in your Codespace is that bench: not a tool by itself, but the surface where every tool you will meet in this module sits, ready to pick up.
+
+When you opened your Codespace in Module 0, you saw a window split into three regions — a list of files on the left, a big editor area in the middle, and a panel along the bottom. That window is an editor. Specifically, it's an **IDE** (one-line definition: an editor that bundles a text editor, a file browser, a terminal, and language-aware tooling into one program, [→ GLOSSARY](../../GLOSSARY.md#ide)). The letters stand for **Integrated Development Environment**. The load-bearing word is "integrated" — every tool a developer reaches for sits on the bench at once, inside one window.
 
 A generic text editor — TextEdit on a Mac, Notepad on Windows — opens one document at a time and lets you type. That is the entire surface. An IDE is different in three concrete ways, and each one is something you can see in your Codespace right now.
 
@@ -36,11 +38,11 @@ Visual Studio Code, usually shortened to VS Code, is the IDE inside your Codespa
 
 Three concrete moves you can make in the IDE you already have:
 
-- **Open a file fast.** Press `Ctrl+P` on Windows or Linux, or `Cmd+P` on Mac. A small search bar appears at the top of the window. Type part of any filename. Press Enter. The file opens.
-- **Find every reference to a word.** Press `Ctrl+Shift+F` on Windows or Linux, or `Cmd+Shift+F` on Mac. A search panel appears down the left side. Type a word. Every file that contains that word shows up, with the surrounding lines visible. Click any match to jump to that file at that line.
-- **Open the panel along the bottom.** Press `` Ctrl+` `` (the backtick key — on most keyboards it shares a key with the tilde, to the left of the `1` key). The bottom panel opens. The next lesson covers what to type into it; for now, just notice it is there and that the same keyboard shortcut closes it again.
+- **Open a file fast.** Press `Ctrl+P` on Windows or Linux, or `Cmd+P` on Mac. A small search bar appears at the top of the window. Type part of any filename. Press Enter. The file opens. Think of this as the bench-pivot — you don't walk around looking for the file, you reach for the right spot on the bench and it's in your hand.
+- **Find every reference to a word.** Press `Ctrl+Shift+F` on Windows or Linux, or `Cmd+Shift+F` on Mac. A search panel appears down the left side. Type a word. Every file that contains that word shows up, with the surrounding lines visible. Click any match to jump to that file at that line. This is the bench reaching across itself: you find every joint that uses the same word, without walking around to each one separately.
+- **Open the panel along the bottom.** Press `` Ctrl+` `` (the backtick key — on most keyboards it shares a key with the tilde, to the left of the `1` key). The bottom panel opens. For now, just notice it is there, mounted to the bottom of the bench, and that the same keyboard shortcut closes it again.
 
-Every later lesson in Module 2 takes place inside this same window. The terminal, the runtime, the package manager, git, an AI coding agent — every one of them runs from the IDE. The IDE is the surface; the rest of Module 2 names the tools that live on it.
+The IDE is the surface; every other tool in this module is something that lives on the bench.
 
 One confusion is worth heading off. A few learners coming from non-coding backgrounds expect the IDE to be the thing that *runs* the app — to be where the page actually appears. It is not. The IDE is the window where you read and write code; the runtime (two lessons from now) is the program that runs the code; the browser is what shows the resulting page. The IDE hands the code to the runtime and shows you the result. That split is worth keeping clean from the start, because every later piece of debugging in the course depends on knowing which of the three is currently misbehaving.
 

@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 02
 est_minutes: 30
 prereqs: ["01-ide"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,11 +16,13 @@ By the end of this lesson, you will be able to use five basic terminal commands 
 
 ## Why this matters
 
-The terminal is where every later Module 2 lesson does its work. You've already seen the panel at the bottom of your Codespace — Module 0 toggled it open during the Codespaces walkthrough, and the previous lesson named it as one of the three things an IDE bundles into the same window. This lesson is where you stop just noticing the panel and start typing into it. Once five commands feel non-scary, the rest of the module's terminal-driven work is just five more of the same shape.
+Picture a rare-books reading room where you can't browse the shelves yourself: you write what you want on a paper slip, hand it through the window, and the librarian fetches exactly what's on the slip — no more, no less. Clicking buttons works fine when there's a button, but a lot of what you'll ask the computer to do this course has no button; the request shape is "write it on a slip and hand it through a window." This lesson teaches you to write five basic slips and read what the librarian brings back.
 
 ## Core read
 
 You need to make the computer DO things.
+
+The terminal works like the librarian's request slip. You can't reach behind the counter; you write what you want — one line at a time — and hand it through the window. The librarian (the computer) reads exactly what's written and acts on it. If your slip is unclear or misspelled, you get back nothing useful, and you write another slip. If it's clear, the librarian comes back to the window with the result.
 
 Until now you've been clicking — files in the file list on the left, links in the browser, buttons in the editor. Clicking is fine when there's a button for what you want. The terminal is for when there isn't. You type a command; the computer runs it; the result prints back; the prompt appears again, ready for the next command. That's the entire surface.
 
@@ -28,21 +30,21 @@ A **command** is a single word the terminal recognizes, optionally followed by *
 
 Here are the five commands worth knowing first. Each one is small, safe, and works the same way in your Codespace as it does on a Mac's Terminal app or any Linux machine. None of them change anything you can't undo.
 
-**`pwd` — print working directory.** When you open the terminal in a Codespace, you're already inside some folder — by default, the root of the repository you opened the Codespace on. `pwd` tells you which folder. The output is a path like `/workspaces/ship-your-first-thing`. Useful when you've been moving around with `cd` and lost track of where you are.
+**`pwd` — print working directory.** Slip in plain English: "tell me which shelf I'm standing at." When you open the terminal in a Codespace, you're already inside some folder — by default, the root of the repository you opened the Codespace on. `pwd` tells you which folder. The output is a path like `/workspaces/ship-your-first-thing`. Useful when you've been moving around with `cd` and lost track of where you are.
 
-**`ls` — list files.** Run `ls` and you'll see the files and folders in your current location. Folders usually appear in a different color from files, or are shown with a trailing `/`. You can also peek into a folder without entering it — `ls modules` lists what's inside `modules/` from wherever you are.
+**`ls` — list files.** Slip: "list everything on this shelf." Run `ls` and you'll see the files and folders in your current location. Folders usually appear in a different color from files, or are shown with a trailing `/`. You can also peek into a folder without entering it — `ls modules` reads as a slip that says "list everything on the modules shelf, but don't move me there."
 
-**`cd <directory>` — change directory.** `cd modules` moves you into the `modules/` folder. `cd ..` moves you one level up — the two dots mean "the folder that contains this one." `cd` with no argument returns you to your home directory. After every `cd`, running `pwd` confirms where you ended up.
+**`cd <directory>` — change directory.** Slip: "move me to the modules shelf." `cd modules` moves you into the `modules/` folder. `cd ..` moves you one level up — the two dots mean "back me up one shelf." `cd` with no argument returns you to your home directory. After every `cd`, running `pwd` confirms where you ended up.
 
 **`clear` — clear the screen.** After a few commands, the terminal panel fills up with old output. `clear` wipes the visible text. Your command history is still there — press the up arrow to scroll through what you've typed before. `clear` is cosmetic; it doesn't delete any files or affect anything outside the panel.
 
-**`mkdir <name>` — make a new directory.** `mkdir scratch` creates a new folder called `scratch` in whatever folder you're currently in. If a folder with that name already exists, `mkdir` errors out instead of overwriting — it's strictly for new folders.
+**`mkdir <name>` — make a new directory.** Slip: "make a new shelf, label it scratch." `mkdir scratch` creates a new folder called `scratch` in whatever folder you're currently in. If a folder with that name already exists, `mkdir` errors out instead of overwriting — it's strictly for new folders.
 
 Two things trip people up early. First: the terminal is **case-sensitive**. `ls Modules` is not the same as `ls modules`; in a Codespace the actual folder is lowercase, so the capitalized form returns an error. Second: spaces in arguments confuse the terminal unless you quote them. `cd My Folder` reads as "the `cd` command with the argument `My` and some extra noise called `Folder`." Quote it: `cd 'My Folder'`. We'll avoid spaces in folder names throughout this course, which sidesteps the problem.
 
 One reflex to build early: do not paste `rm -rf` from a blog post. That command removes files and directories recursively without asking and without a recycle bin. Learners sometimes paste it to "clean up" after a bad experiment; in a Codespace with uncommitted work, that's how you lose an afternoon. Safer cleanup tools exist (we'll meet `rmdir` in the exercise — it only removes empty folders, so it refuses to delete anything that still contains your work). The AI coding agents introduced in lesson six can also suggest cleanup steps, and the rule there is: read what they suggest, type it in yourself, do not auto-approve the destructive ones.
 
-Every later Module 2 lesson runs commands in this same panel. Lesson three has you check a tool's installed version. Lesson four has you install something. Lesson five has you check what files have changed and save a snapshot. Lesson six has you launch an AI coding agent from the same prompt. The pattern is always identical: a single word, optionally with arguments, followed by Enter, followed by output. You're already a long way to fluency just by knowing the rhythm.
+Every later Module 2 lesson runs commands in this same panel; you're already a long way to fluency just by knowing the rhythm of slip, answer, next slip.
 
 ## Exercise
 

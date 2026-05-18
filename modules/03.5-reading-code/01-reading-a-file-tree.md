@@ -4,8 +4,9 @@ module: "03.5-reading-code"
 lesson_number: 01
 est_minutes: 35
 prereqs: ["04-steering-and-recovery"]
-updated: "2026-05-14"
-deviations: []
+updated: "2026-05-16"
+deviations:
+  - why-this-matters-extended
 ---
 
 # Reading a file tree
@@ -16,13 +17,15 @@ By the end of this lesson, you will be able to open the file tree of a Next.js p
 
 ## Why this matters
 
-Module 3 taught you to recognize wrong output by looking at the page. Module 3.5 layers code-reading detection on top of that — but starting at the project's shape, not the code-line level. When an AI agent works on your project, it shows which files it changed. You do not need to read the changes line by line to spot "wait, that is the wrong folder." Reading the structure of a project is the first detection skill on the code side of the loop. It takes about thirty minutes to learn and saves hours of debugging in Phase 3.
+Picture walking into an unfamiliar office building. The lobby has a directory on the wall — "Reception: floor 1; Accounting: floor 2; Engineering: floor 3; Storage: basement." You haven't walked into any of those offices, but at a glance you can tell which floor you'd visit to fix an invoice. When an AI agent works on your project, it shows you which files it changed; without a sense of the SHAPE of the project, you're standing in the lobby of an unfamiliar building, with no way to tell whether the agent went to the right floor. This lesson teaches you to read the lobby directory — the file tree — in about thirty minutes, no walking-into-offices required.
 
 ## Core read
 
+Picture the lobby directory again. You haven't walked into any of the offices on those floors — you only read the signage. The signage gives you the building's SHAPE: what each floor is for, which floor you'd visit to fix what, and which floor is just storage. Code projects publish the same kind of lobby directory. It is called a file tree.
+
 A **file tree** (a one-line definition: the hierarchical structure of files and folders in a project, displayed as an indented list in your editor's left panel, [→ GLOSSARY](../../GLOSSARY.md#file-tree)) is the first thing you see when you open a project. At a glance, it tells you the project's shape — what kind of app it is, where the pages live, where the reusable pieces live, what is configuration and what is content. This lesson teaches reading the shape without going into the contents.
 
-The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a Next.js project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. That is the floor Module 3.5 holds throughout: pattern recognition first, deeper reading later (or never, for many of these patterns).
+The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a **Next.js** (a one-line definition: a popular framework for building web apps; bundles React, routing, and server-rendering into one tool; the framework Phase 3 uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)) project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. That is the floor Module 3.5 holds throughout: pattern recognition first, deeper reading later (or never, for many of these patterns).
 
 ### The Next.js shape, walked through against the sample-app
 
@@ -44,9 +47,9 @@ modules/03.5-reading-code/sample-app/
 
 Walk through each entry in plain prose.
 
-`app/` is the Next.js App Router folder. Pages live here; routing happens here. If a project has an `app/` folder, it is a Next.js app using the modern App Router shape (you will meet this shape again in Module 4 when you scaffold the thread project). Inside `app/`, the two files at the top — `layout.tsx` (a layout wrapper that sits around every page) and `page.tsx` (the home page) — are the minimum Next.js needs to render a site. Bigger projects have more pages inside `app/`, organized by URL path.
+`app/` is the Next.js **App Router** (a one-line definition: the newer routing system in Next.js, where files in the `app/` folder define URL routes; the older system used a `pages/` folder, [→ GLOSSARY](../../GLOSSARY.md#app-router)) folder. Pages live here; routing happens here. If a project has an `app/` folder, it is a Next.js app using the modern App Router shape (you will meet this shape again in Module 4 when you scaffold the thread project). Inside `app/`, the two files at the top — `layout.tsx` (a layout wrapper that sits around every page) and `page.tsx` (the home page) — are the minimum Next.js needs to render a site. Bigger projects have more pages inside `app/`, organized by URL path.
 
-`app/components/` is a convention. It is not a special Next.js folder; it is where developers PUT reusable UI pieces — buttons, headers, footers. Three files live here in this scaffold: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`. The names tell you what each one is (a button, a hero section, a footer). The `.tsx` extension says they are TypeScript files that include some HTML-like syntax. You do not have to know how `.tsx` differs from `.ts` to spot the shape — a file that ends in `.tsx` is "a UI piece written in TypeScript."
+`app/components/` is a convention. It is not a special Next.js folder; it is where developers PUT reusable UI pieces — buttons, headers, footers. Three files live here in this scaffold: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`. The names tell you what each one is (a button, a hero section, a footer). The `.tsx` extension says they are **TypeScript** (a one-line definition: a version of JavaScript with extra type information; TypeScript files end in `.ts` or `.tsx`, [→ GLOSSARY](../../GLOSSARY.md#typescript)) files that include some HTML-like syntax. You do not have to know how `.tsx` differs from `.ts` to spot the shape — a file that ends in `.tsx` is "a UI piece written in TypeScript."
 
 `package.json` is the dependency list from Module 2 Lesson 4. You read it. You do NOT run anything against this one — open `modules/03.5-reading-code/sample-app/README.md` and you will see the bold warning: "DO NOT run `npm install`." This scaffold is reference-only.
 
@@ -68,7 +71,7 @@ The same shape-reading skill catches other agent missteps. An agent that creates
 
 ### What you do NOT need to know yet
 
-You do not need to know how the App Router differs from the older `pages/` system. You do not need to know what JSX is (the HTML-like syntax inside `.tsx` files). You do not need to know what `tsconfig.json` actually controls. The detection skill is purely about shape — the tree LOOKS like a Next.js app; the tree has a smell; a new folder showed up that does not match the rest. The deeper "why" is optional Module 7 reading; the shape is the floor.
+You do not need to know how the App Router differs from the older `pages/` system. You do not need to know what **JSX** (a one-line definition: the HTML-like syntax inside React component files; lets you write `<Button />` directly in code, [→ GLOSSARY](../../GLOSSARY.md#jsx)) is. You do not need to know what `tsconfig.json` actually controls. The detection skill is purely about shape — the tree LOOKS like a Next.js app; the tree has a smell; a new folder showed up that does not match the rest. The deeper "why" is optional Module 7 reading; the shape is the floor.
 
 This is the design of Module 3.5 in one sentence: detection first, explanation never required. If you ever want to go deeper, the agent itself is one ask away from explaining any of these conventions. The floor is just being able to recognize that something is worth asking about.
 

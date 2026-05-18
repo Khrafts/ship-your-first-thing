@@ -119,11 +119,11 @@ Reserved for M3+:
 
 Reserved for M3.5+:
 
-- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary
+- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M2 rewrite implications:** M2 introduces tools as nouns the learner now operates. The hands-on shape of each tool (key commands, install path) is shown via CHEATSHEET + VERSIONS.md; the lesson body uses the term with a D-04 callout on first use and then drops the callout. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — use the felt-problem framing locked in D-20.
 
@@ -160,11 +160,11 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 
 Reserved for M3.5+:
 
-- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary
+- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M3 rewrite implications:** M3 names the loop. Every lesson uses the loop-step nouns (intent / ask / evaluate / steer) freely AFTER the first-use callout in M3 L1. The slash commands appear in CHEATSHEET first; lessons re-introduce them with D-04 callouts only at first lesson-internal use. CRITICAL: do NOT introduce `/tokens` — that's the deprecated name. M3 L2 teaches the canonical commands `/context` (Claude Code, window usage) and `/cost` (Claude Code, spend), plus Gemini CLI's `/compress` and `/stats`. The same-PR migration of CHEATSHEET/BUDGET/GLOSSARY off `/tokens` ships in Plan 02-02 (Wave 1) before any M3 lesson is written.
 
@@ -190,12 +190,18 @@ Audience floor: M3 complete. Every M3 Requires-callout term is now Safe.
 - directive (React directive sense)
 - file panel
 - diff summary
+- Next.js (framework name; introduced as "the framework Phase 3 uses" at first use in M3.5 L1; readers do not need to know Next.js internals to read the file-tree shape)
+- React (library name; introduced as "the JavaScript UI library Next.js is built on" at first use in M3.5 L3; readers do not need to know React internals to spot a stack-trace `react-dom` line as not-their-file)
+- TypeScript (language name; introduced at first use in M3.5 L1 alongside the `.tsx` extension; readers do not need to write TypeScript at the M3.5 floor)
+- JSX (syntax name; introduced at first use in M3.5 L1 as "the HTML-like syntax inside React component files"; readers do not need to write JSX at the M3.5 floor)
+- App Router (Next.js routing-system name; introduced at first use in M3.5 L1 as "the newer routing system in Next.js")
+- React Server Components (architectural-model name; introduced at the "what this lesson does NOT teach" floor in M3.5 L4 as the deeper Module 7 topic)
 
 ### Forbidden (deferred to a later module)
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. D-33 floor is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT extend `stack trace` into line-by-line parsing. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4).
 

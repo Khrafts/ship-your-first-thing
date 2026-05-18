@@ -30,6 +30,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 A long string that identifies your account when a program calls a paid (or rate-limited) service on your behalf. Treat it like a password: never paste it into chat, never commit it to a public repo. *Example: a Gemini API key starts with `AI...`; an Anthropic API key starts with `sk-ant-...`.*
 Used in: [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md).
 
+### app-router
+The newer routing system in Next.js, where files in the `app/` folder define URL routes. The older system used a `pages/` folder; both still work, but App Router is the modern default. *Example: `app/page.tsx` is the home page; `app/about/page.tsx` is the `/about` page.*
+Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+
 ### ask
 The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `modules/03-the-loop/scratch/index.html`."*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
@@ -194,6 +198,12 @@ Used in: [Module 2 — The IDE](./modules/02-toolchain/01-ide.md).
 The "intent" step of the agent loop — knowing what you are trying to build before you start asking. *Example: "I want today's date below the tagline" is intent; "make the page nicer" is not.*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
+## J
+
+### jsx
+The HTML-like syntax inside React component files. JSX lets you write `<Button />` directly in code; the React runtime turns it into the actual button element in the browser. Files containing JSX usually end in `.tsx` (TypeScript + JSX) or `.jsx` (plain JavaScript + JSX). *Example: `<h1>Hello</h1>` inside a `.tsx` file is JSX.*
+Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+
 ## L
 
 ### localhost
@@ -211,6 +221,10 @@ The act of combining the commits from one git branch into another. *Example: `gi
 Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
 
 ## N
+
+### next-js
+A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the thread project in Phase 3 uses. *Example: the read-only scaffold at `modules/03.5-reading-code/sample-app/` is a tiny Next.js project shown for reading practice.*
+Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
 
 ### node
 The standard runtime for JavaScript code outside the browser. *Example: `node --version` in a Codespace prints the installed Node version; this course pins Node 20.x LTS in `VERSIONS.md`.*
@@ -263,6 +277,14 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 ### rate-limit
 A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: the Gemini CLI free tier enforces daily caps on requests-per-minute and requests-per-day.*
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
+
+### react
+The JavaScript UI library Next.js is built on. React components are reusable pieces of UI (buttons, headers, sections) written as files. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app is a React component.*
+Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
+
+### react-server-components
+An architectural model in React for components that render entirely on the server before being sent to the browser; the default in Next.js App Router. The deeper "why" behind the server/client split that `'use client'` toggles; covered in depth in Module 7's where-to-go-next track. *Example: a `StaticHero.tsx` file with no `'use client'` directive is a React Server Component.*
+Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
 
 ### repository
 A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; you can clone the whole history to your computer with `git clone`.*
@@ -354,6 +376,11 @@ Used in: [Module 0 — Codespaces walkthrough](./modules/00-welcome/05-codespace
 
 ### token-discipline
 The set of habits that keep AI-coding sessions cheap on pay-per-token plans: clearing context between unrelated tasks, watching the running token count, summarizing long histories, and choosing the smaller model when the bigger one isn't needed. *Example: Module 3 teaches `/clear`, `/compact`, `/context` (window usage), and `/cost` (spend) on Claude Code, and `/clear`, `/compress`, `/stats` as the Gemini CLI equivalents.*
+Used in: [Module 3 — Planning vs execution](./modules/03-the-loop/02-planning-vs-execution.md).
+
+### typescript
+A version of JavaScript with extra type information. TypeScript files end in `.ts`; TypeScript files that include React JSX end in `.tsx`. A separate tool (the TypeScript compiler) checks the types before the runtime runs the code. *Example: every file inside Module 3.5's sample-app is a TypeScript file (`.tsx`).*
+Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
 
 ## U

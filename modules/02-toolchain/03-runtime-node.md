@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 03
 est_minutes: 35
 prereqs: ["02-terminal"]
-updated: "2026-05-14"
+updated: "2026-05-16"
 deviations: []
 ---
 
@@ -16,19 +16,19 @@ By the end of this lesson, you will be able to explain in your own words what a 
 
 ## Why this matters
 
-Module 1 named the shape of a software product — browser, server, database, deploy. Lessons 1 and 2 of Module 2 named the IDE (where you write code) and the terminal (where you type commands). But code is just text until something runs it. The runtime is the thing that runs it. Naming this category now means the next two lessons land cleanly: lesson four will be about getting code other people wrote so the runtime has something to run; lesson five will be about saving versions of the text the runtime will run.
+Picture a piece of sheet music on a stand — paper, dots, lines. Until a musician picks up an instrument and plays it, no sound exists in the room. Code is the same kind of thing: text in a file, inert until something reads it and DOES what it says. The category name for that something is a runtime, and this lesson teaches the one JavaScript uses by default: Node.
 
 ## Core read
 
 Your code is just text until something runs it.
 
+Picture the sheet music again. Paper, dots, lines. Quiet, until a musician picks up an instrument and plays what's written. Code is sheet music. The thing that reads it and produces action is the musician — and the category name for the musician is what this lesson is here to give you.
+
 If you open a markdown file in your IDE, you see text — paragraphs of words and punctuation. The browser shows it as a webpage because GitHub's renderer turns the markdown text into HTML; HTML, in turn, is text the browser knows how to display. JavaScript is the same: a file ending in `.js` is text. Until something reads that text and DOES what it says, the file is inert.
 
-The thing that reads code and does what it says is called a **runtime** (one-line definition: a program that reads source code and executes it, [→ GLOSSARY](../../GLOSSARY.md#runtime)). Every programming language has at least one. Python has the Python interpreter. Ruby has Ruby. JavaScript has several — but the most common, and the one this course uses, is **Node** (one-line definition: the standard runtime for JavaScript outside the browser, [→ GLOSSARY](../../GLOSSARY.md#node)).
+The thing that reads code and does what it says is called a **runtime** (one-line definition: a program that reads source code and executes it, [→ GLOSSARY](../../GLOSSARY.md#runtime)). The musician, in the analogy. Different compositions, different instruments: Python has its interpreter, Ruby has Ruby. JavaScript's most common musician — the one this course uses — is **Node** (one-line definition: the standard runtime for JavaScript outside the browser, [→ GLOSSARY](../../GLOSSARY.md#node)).
 
-JavaScript started life inside the browser. Browsers have a built-in JavaScript runtime — that is what makes the buttons on a webpage do things when you click them. Node took the same kind of runtime out of the browser and made it runnable from the terminal. When you write a `.js` file and tell Node to run it, Node reads the text and executes the instructions. No browser involved.
-
-Connect this back to Module 1's filing-cabinet picture. The server in that picture — the clerk that opens the cabinet and hands papers back — is, in real web apps, a JavaScript file. The runtime that runs that file is Node. So Node is what is actually running the "server" you will meet again in Module 4 when you build the thread project. The server is not magic; it is a JavaScript file (well, a TypeScript file in this course — the same shape with a little extra information) being executed by Node, hour after hour, answering requests.
+JavaScript runs in two places, which means it has two musicians who can play the same composition. JavaScript started life inside the browser. Browsers have a built-in JavaScript runtime — one musician, on staff inside the browser; that is what makes the buttons on a webpage do things when you click them. Node is a second musician — one who plays from outside the concert hall. Node took the same kind of runtime out of the browser and made it runnable from the terminal. When you write a `.js` file and tell Node to run it, Node reads the text and executes the instructions. No browser involved. Same notes, different player.
 
 Your Codespace has Node pre-installed. You can prove it by typing `node --version` in the terminal — Node prints the version it is running. This course pins Node 20.x LTS (see `VERSIONS.md` for the exact version verified at each course revision). "LTS" means "long-term support" — the steady version, not the bleeding edge. The lesson does not teach you how to install Node yourself, because in a Codespace you do not have to.
 
@@ -40,15 +40,13 @@ Two confusions are worth heading off here.
 
 **Second, Node is sometimes confused with the tool you will meet in the next lesson — the one that installs other people's code.** They are different things. Node runs code; the next-lesson tool installs other people's code so Node has something to run. They ship together (the install tool is bundled with Node), which is why beginners often see them as one thing. Lesson four pulls them apart and gives the install tool its own name.
 
-Now that you have a name for the category, the next three Module 2 lessons make sense. Lesson four gets you code other people wrote so Node has something to run. Lesson five tracks the text YOU write so you do not lose work. Lesson six introduces the AI coding agents that help you write text Node will eventually run.
-
 ## Exercise
 
 Open your Codespace's terminal — press `` Ctrl+` `` if the panel at the bottom isn't already visible. Plan ten to fifteen minutes.
 
 1. Type `node --version` and press Enter. Write down the version Node prints. It should start with `v20.` if your Codespace matches the pin in `VERSIONS.md`.
 2. Type `node` (nothing else — just the word `node` and Enter). The prompt changes from a `$` to a `>`. You are now inside Node's REPL — an interactive prompt where you can type JavaScript and see the result of each line immediately.
-3. At the `>` prompt, type `1 + 1` and press Enter. Note that Node prints `2`. You just asked Node to evaluate a tiny piece of JavaScript and it answered.
+3. At the `>` prompt, type `1 + 1` and press Enter. Note that Node prints `2`. You just hummed three notes at the musician, and the musician played them back: you handed Node a tiny piece of JavaScript and it answered.
 4. At the `>` prompt, type `Date()` (with the parentheses) and press Enter. Note that Node prints the current date and time. That is JavaScript's built-in way of asking the runtime "what time is it right now?", and the runtime answers.
 5. Type `.exit` (with the leading dot) and press Enter to leave the REPL. The prompt changes back to `$` — you are out of Node and back in the regular terminal.
 
