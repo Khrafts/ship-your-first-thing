@@ -23,7 +23,7 @@ Picture an art gallery. On one wall, framed pictures — painted once, framed on
 
 Picture the gallery wall once more. Framed pictures sit there, prepared once and never changing in front of you. The touchscreen kiosk is alive — it accepts taps, scrolls, runs commentary loops. You couldn't replace a frame with a touchscreen (you'd lose the static picture); you couldn't replace a touchscreen with a frame (you'd lose the interactivity). Both belong on the wall; both do different work. Next.js builds its pages on the same shape: every file is either a frame or a touchscreen. **You don't need to know WHY frames and touchscreens render differently to spot which is which** — that's the deeper Module 7 question.
 
-Next.js (the framework you will use in Phase 3) splits every file into one of two categories. A **server component** (a one-line definition: a Next.js file that renders on the server before sending HTML to the browser; the default in App Router, [→ GLOSSARY](../../GLOSSARY.md#server-component)) handles static content — text, layouts, anything without interactivity. That's the framed picture on the wall. A **client component** (a one-line definition: a Next.js file that runs in the browser and supports interactivity like state, click handlers, and forms, [→ GLOSSARY](../../GLOSSARY.md#client-component)) handles the parts of the page that respond to user input. That's the touchscreen. The two categories live in the same project but are rendered differently. The split matters because if you put interactivity inside a Server Component file — a touchscreen hung in a frame's slot — it silently does not work.
+**Next.js** (a one-line definition: a popular framework for building web apps; bundles React, routing, and server-rendering into one tool; the framework you will use in Phase 3, [→ GLOSSARY](../../GLOSSARY.md#next-js)) splits every file into one of two categories. A **server component** (a one-line definition: a Next.js file that renders on the server before sending HTML to the browser; the default in App Router, [→ GLOSSARY](../../GLOSSARY.md#server-component)) handles static content — text, layouts, anything without interactivity. That's the framed picture on the wall. A **client component** (a one-line definition: a Next.js file that runs in the browser and supports interactivity like state, click handlers, and forms, [→ GLOSSARY](../../GLOSSARY.md#client-component)) handles the parts of the page that respond to user input. That's the touchscreen. The two categories live in the same project but are rendered differently. The split matters because if you put interactivity inside a Server Component file — a touchscreen hung in a frame's slot — it silently does not work.
 
 ### How you mark a file as a Client Component
 
@@ -61,7 +61,7 @@ export default function StaticHero() {
 }
 ```
 
-Both files render parts of a webpage, but they sit in different categories. `InteractiveButton` uses `useState` (state that holds a counter) and an `onClick` handler (the button responds to clicks). Both pieces are interactivity, and both require the file to be a Client Component — hence `'use client'` on line 1. `StaticHero` has no state and no event handlers. It is pure JSX: a heading and a paragraph. Next.js renders it on the server and sends the resulting HTML to the browser. The first line of the file determines which category it falls into.
+Both files render parts of a webpage, but they sit in different categories. `InteractiveButton` uses `useState` (state that holds a counter) and an `onClick` handler (the button responds to clicks). Both pieces are interactivity, and both require the file to be a Client Component — hence `'use client'` on line 1. `StaticHero` has no state and no event handlers. It is pure **JSX** (a one-line definition: the HTML-like syntax inside React component files; lets you write `<Button />` directly in code, [→ GLOSSARY](../../GLOSSARY.md#jsx)): a heading and a paragraph. Next.js renders it on the server and sends the resulting HTML to the browser. The first line of the file determines which category it falls into.
 
 ### The symptom — what tells you a directive is missing
 
@@ -95,7 +95,7 @@ The agent does the work; you have just gotten it to the right diagnosis.
 
 ### What you do NOT do in this lesson
 
-You do not learn why React Server Components exist or what trade-offs they were designed to solve. You do not learn what "rendering on the server" actually does inside Next.js, or how the bundler decides which files become client bundles versus server bundles. You do not learn what hydration does step-by-step inside the browser. You do not learn the partner directive `'use server'` (which marks Server Actions). All of those are deeper skills — they belong to Module 7's where-to-go-next track. The thread project in Phases 3 and 4 does not require any of them. Spotting the symptom and writing the steer is enough.
+You do not learn why **React Server Components** (a one-line definition: an architectural model in React for components that render entirely on the server; the deeper "why" behind the server/client split that `'use client'` toggles; covered in depth in Module 7, [→ GLOSSARY](../../GLOSSARY.md#react-server-components)) exist or what trade-offs they were designed to solve. You do not learn what "rendering on the server" actually does inside Next.js, or how the bundler decides which files become client bundles versus server bundles. You do not learn what hydration does step-by-step inside the browser. You do not learn the partner directive `'use server'` (which marks Server Actions). All of those are deeper skills — they belong to Module 7's where-to-go-next track. The thread project in Phases 3 and 4 does not require any of them. Spotting the symptom and writing the steer is enough.
 
 ### What you just closed
 
@@ -106,7 +106,7 @@ This is the last M3.5 lesson and the last lesson of Phase 2. You now have four o
 3. Tracing an error message back to a file pointer (Lesson 3).
 4. Recognizing the `'use client'` symptom (this lesson).
 
-Phase 3 (Module 4) starts the thread project — a real Next.js plus Supabase plus Vercel build. You will use all four observational skills daily. Together with the M3 loop, the four skills are the recovery toolkit.
+Phase 3 (Module 4) starts the thread project — a real Next.js + Vercel build. You will use all four observational skills daily. Together with the M3 loop, the four skills are the recovery toolkit.
 
 ## Exercise
 
