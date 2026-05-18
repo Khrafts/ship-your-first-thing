@@ -13,7 +13,7 @@ deviations:
 
 ## Learning objective
 
-By the end of this lesson, you will be able to look at any error message and find the file path plus line number of YOUR project's file that the error points at, without reading the full stack trace.
+By the end of this lesson, you will be able to look at any error message and find the file path of YOUR project's file that the error points at — without reading the dense list of function calls below it. The agent reads the rest; you find the pointer.
 
 ## Why this matters
 
@@ -23,18 +23,11 @@ You hand a contractor a long, dense invoice — say a hospital bill or a tax for
 
 Picture the receipt again. The full invoice runs four pages; you don't have the vocabulary for most of it; you don't need to. Near the top, one line names exactly the page and line the question is about. You jump there. You read that one line. You make your call. Error messages publish the same kind of pointer every time, and the same jumping move is the whole skill.
 
-When code fails, you get an error message. A long one. Most of the lines are a **stack trace** (a one-line definition: a list of every function call leading to an error, top to bottom — the most recent call at the top, [→ GLOSSARY](../../GLOSSARY.md#stack-trace)). Most of those calls are inside libraries — **React** (a one-line definition: the JavaScript UI library Next.js is built on; React components are reusable pieces of UI written as files, [→ GLOSSARY](../../GLOSSARY.md#react)), **Next.js** (a one-line definition: a popular framework for building web apps; the framework Phase 3 uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)), the browser itself — that you did not write. The skill at this lesson's floor is NOT reading every line. It is finding the ONE LINE that points at YOUR file — the receipt's circled line.
+When code fails, you get back an error message — usually a long one. The agent reads the whole thing; decoding every part is the agent's job. Your job is finding the one line that names a file you wrote, so your next ask can name that file precisely.
 
-### The "first line that mentions YOUR file" rule
+### Finding the line that names YOUR file
 
-Errors have **error message anatomy** (a one-line definition: the structure of an error message — typically a description on top followed by a stack trace with file paths and line numbers, [→ GLOSSARY](../../GLOSSARY.md#error-message-anatomy)) that is mostly the same across runtimes and libraries. The pattern:
-
-1. **Top of the message:** the error description (for example, `TypeError: Cannot read properties of undefined`).
-2. **Stack trace, line by line:** each line mentions a function name plus a file path plus a line number.
-3. **Most lines are library code** — paths starting with `node_modules/` (or `react-dom`, `next`, similar). Skip these.
-4. **One or two lines mention YOUR files** — typically paths like `./app/...tsx` or `./app/components/...tsx`. THIS is the file pointer.
-
-You open the file at the line number, AND you paste the entire error message back to your agent as a steer. The agent does the actual fix; you just got it to the right file.
+Scan the error message top to bottom. Skip lines whose paths start with `node_modules/`, `react-dom`, or `next` — those are library code the agent already knows about. The first line whose path starts with `./app/` (or wherever your project's source files live) is the file pointer. Open that file in your editor, paste the FULL error message back to your agent, and name the file pointer in your ask. The agent does the actual diagnosis and the fix; you just got it to the right file.
 
 ### Three worked examples, against the sample-app
 
@@ -50,7 +43,7 @@ TypeError: Cannot read properties of undefined (reading 'name')
     ...
 ```
 
-The first line mentioning YOUR file is `./app/components/InteractiveButton.tsx:5:18`. The file pointer is `app/components/InteractiveButton.tsx`, line 5. Open that file, then paste the error back to your agent: "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx:5`. Please fix."
+The first line whose path starts with `./app/` names `InteractiveButton.tsx`. Open `app/components/InteractiveButton.tsx` and paste the full error back to your agent: "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix." The trailing numbers after the file path are coordinates the agent reads; you do not need to.
 
 **Error 2 (Module not found):**
 
@@ -59,7 +52,7 @@ Module not found: Can't resolve './components/StaticHeroo'
   ./app/page.tsx:1:1
 ```
 
-The file pointer is `app/page.tsx`, line 1. Note: the error usually tells you WHAT it cannot find (`StaticHeroo`). With both the file pointer (where the bad import is) and the error description, the steer is unambiguous: "You misspelled `StaticHero` as `StaticHeroo`. Please fix the import on line 1 of `app/page.tsx`."
+The file pointer is `app/page.tsx`. The error description even tells you WHAT it cannot find (`StaticHeroo`). With the file pointer and the full error pasted to your agent, the steer is unambiguous: "I see this error: [paste full error]. The file pointer is `app/page.tsx`. Please fix."
 
 **Error 3 (a longer one with a tricky word):**
 
@@ -70,7 +63,7 @@ Error: Hydration failed because the initial UI does not match what was rendered 
   ...
 ```
 
-The first line mentioning YOUR file is `./app/components/InteractiveButton.tsx:8`. The file pointer is that file, line 8. Do not worry about what "hydration" means — Lesson 4 (next) covers it. For now, just open the file at the pointer and paste the full error to your agent.
+The first line whose path starts with `./app/` names `InteractiveButton.tsx`. Open it, paste the full error to your agent: "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix." The word "hydration" in the description is one you will see again in the next lesson as a symptom — for now, your ask just names the file pointer and pastes the error.
 
 ### What about the description?
 
@@ -80,17 +73,13 @@ The error DESCRIPTION at the top of the message — `TypeError`, `Module not fou
 
 Two pitfalls worth recognizing — both are recognition patterns, not deep explanations.
 
-First: errors sometimes have MULTIPLE "YOUR file" lines. Example: a `Page` calls `InteractiveButton`, and both error. Take the TOPMOST one (the most-recent line in the stack trace). That is where the error originated.
+First: errors sometimes have MULTIPLE "YOUR file" lines. Example: a `Page` calls `InteractiveButton`, and both error. Take the TOPMOST one (the highest line in the message that names a file you wrote). That is the closest pointer to where the error originated.
 
 Second: errors sometimes mention paths that look like yours but are not. `./node_modules/your-library/` is library code, not your code, even though it has "your" in the path. Filter on `./app/` (or wherever your project's source root is).
 
-### What comes next
-
-Lesson 4 (the last M3.5 lesson) covers the `'use client'` directive — what to do when an interactive button (like `InteractiveButton.tsx`) silently does not respond, or when the "hydration failed" error appears. Together, Lessons 1 through 4 of M3.5 cover four floor-level code-reading skills: file tree, wrong-file edits, error pointers, and the `'use client'` recognition. From there, Phase 3 starts the thread project, where you will use all four daily.
-
 ### What you do NOT do in this lesson
 
-You do not read the stack trace line by line. You do not analyze what each function call did. You do not try to understand the error description from first principles. All of those are deeper skills — they belong to Module 7's "where to go next" track. The thread project in Phases 3 and 4 does not require them. Finding the file pointer and pasting the error back to the agent is the floor, and it is enough.
+You do not parse the dense list of function calls below the description. You do not analyze what each call did. You do not try to understand the error description from first principles. All of those are the agent's job — and the deeper "why" sits in Module 7's curiosity track. Finding the file pointer and pasting the error back to the agent is the floor, and it is enough.
 
 ## Exercise
 
@@ -126,11 +115,11 @@ Error: Hydration failed because the initial UI does not match what was rendered 
 
 **Answer key (do not peek before tracing):**
 
-- **Error A:** File pointer — `app/components/InteractiveButton.tsx`, line 5. Steer — "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx:5`. Please fix."
-- **Error B:** File pointer — `app/page.tsx`, line 1. Steer — "You misspelled the import on line 1 of `app/page.tsx` — `StaticHeroo` should be `StaticHero`. Please fix."
-- **Error C:** File pointer — `app/components/InteractiveButton.tsx`, line 8 (the topmost "YOUR file" line in the stack). Steer — "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx:8`. Please diagnose and fix."
+- **Error A:** File pointer — `app/components/InteractiveButton.tsx`. Steer — "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix."
+- **Error B:** File pointer — `app/page.tsx`. Steer — "I see this error: [paste full error]. The file pointer is `app/page.tsx`. Please fix."
+- **Error C:** File pointer — `app/components/InteractiveButton.tsx` (the topmost "YOUR file" line). Steer — "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix."
 
-If you traced all three correctly, the floor is there. If you missed one — especially Error C, where two of your own files appear in the stack — re-read the trace top to bottom and circle the FIRST line that starts with `./app/`. That is the file pointer.
+If you traced all three correctly, the floor is there. If you missed one — especially Error C, where two of your own files appear — re-read the message top to bottom and circle the FIRST line that starts with `./app/`. That is the file pointer.
 
 ## Checkpoint
 
@@ -143,7 +132,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 7** ("where to go next") will eventually cover reading the stack trace line by line — understanding what each function call did and where the bad state originated. For everything through Phase 5, the file-pointer floor is sufficient. Most errors are fixed by pasting them back to the agent with the pointer named; you rarely need to read the trace yourself.
+- **Module 7** ("where to go next") covers the deeper "why" behind error messages — what each part decodes to, what specific error types mean, where the bad state originated. None of it is required to direct the agent at the M3.5 floor; most errors are fixed by pasting them back to the agent with the pointer named.
 - **The agent itself** is one ask away from decoding any error description. If `TypeError` or `Hydration failed` is unfamiliar, paste the full error and ask "what does this error mean in plain English?" — the answer plus the file pointer is usually enough to steer the fix.
 
 ## Loop check
