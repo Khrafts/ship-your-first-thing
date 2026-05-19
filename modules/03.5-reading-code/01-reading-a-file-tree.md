@@ -59,7 +59,7 @@ Walk through each entry in plain prose.
 
 ### The one smell to recognize
 
-Here is one smell to recognize at a glance: **a Next.js project that has BOTH a `pages/` folder AND an `app/` folder at the top level.** Next.js has two routing systems — an older one (in a `pages/` folder) and a newer one (in an `app/` folder). Almost no real project intentionally uses both. If an AI agent has added a `pages/` folder to a project that already had `app/`, it has probably mixed up which routing system to use. The smell is just "both folders exist" — you do not need to know HOW they differ to spot that they should not both be there.
+Here is one smell to recognize at a glance: **a Next.js project that has BOTH a `pages/` folder AND an `app/` folder at the top level.** Almost no real project intentionally uses both. If an AI agent has added a `pages/` folder to a project that already had `app/`, it has probably picked the wrong place. The smell is just "both folders exist" — you do not need to know HOW they differ to spot that they should not both be there.
 
 That is the whole detection: open the tree, look at the top level, see whether `pages/` and `app/` are both present. If they are, name it in your next ask to the agent.
 
