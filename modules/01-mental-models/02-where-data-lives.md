@@ -38,7 +38,7 @@ The "piece of paper with the answer" is a **response** (one-line definition: a s
 
 Together, the question-and-answer pattern is **HTTP** (one-line definition: the protocol the web uses to send requests and responses, [→ GLOSSARY](../../GLOSSARY.md#http)).
 
-The way one program inside the office talks to another program — the receptionist talking to the clerk, or the clerk talking to a different clerk in another office — is also done by passing pieces of paper around. When two programs agree on what kinds of paper they'll accept and what they'll write back, that agreement is called an **API** (one-line definition: the contract between two programs about which questions can be asked and how the answers will look, [→ GLOSSARY](../../GLOSSARY.md#api)).
+The way one program inside the office talks to another program — the receptionist talking to the clerk, or the clerk talking to a different clerk in another office — is also done by passing pieces of paper around. When two programs agree on what kinds of paper they'll accept and what they'll write back, that agreement is called an **API** (one-line definition: an agreed-on list of paper-form templates two programs share, [→ GLOSSARY](../../GLOSSARY.md#api)).
 
 So the office has three layers:
 
@@ -75,7 +75,7 @@ flowchart TB
 
 </details>
 
-Notice the dotted line from `posts` back to `users`. That's a **foreign key** (one-line definition: a field in one row that points at the id of a row in another drawer, [→ GLOSSARY](../../GLOSSARY.md#foreign-key)). The `posts` drawer doesn't store the author's display name — it stores the author's `id`, and to find the display name, you walk over to the `users` drawer and look up the row with that id. This is what relational databases mean by "relational": rows in one drawer reference rows in another, and the database knows how to join them.
+Notice the dotted line from `posts` back to `users`. That's a **foreign key** (one-line definition: a field in one row that points at the id of a row in another drawer, [→ GLOSSARY](../../GLOSSARY.md#foreign-key)). The `posts` drawer doesn't store the author's display name — it stores the author's `id`. One drawer's cards remember other cards by their ID — that's all "foreign key" means.
 
 And here's the question-and-answer pattern up close, from your browser's perspective:
 
