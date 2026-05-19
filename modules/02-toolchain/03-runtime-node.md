@@ -32,7 +32,7 @@ JavaScript runs in two places, which means it has two musicians who can play the
 
 Your Codespace has Node pre-installed. You can prove it by typing `node --version` in the terminal — Node prints the version it is running. This course pins Node 20.x LTS (see `VERSIONS.md` for the exact version verified at each course revision). "LTS" means "long-term support" — the steady version, not the bleeding edge. The lesson does not teach you how to install Node yourself, because in a Codespace you do not have to.
 
-A brief word on the language. JavaScript has a sibling called **TypeScript** — same language, with types added to catch mistakes earlier. AI coding agents use those types as guardrails, which lowers the rate of bugs the agent introduces. This course uses TypeScript starting in Phase 3 when you build the thread project. Node runs JavaScript directly; TypeScript gets converted to JavaScript first by a separate tool (which is itself JavaScript run by Node — yes, it is turtles all the way down). For now, just hold the shape: **runtime runs code**, **Node is JavaScript's runtime**, **TypeScript is JavaScript with extra type information**.
+A brief word on the language. JavaScript has a sibling called **TypeScript**. In Phase 3, when you build the thread project, you'll see files ending in `.ts` and `.tsx` instead of `.js`. Those are TypeScript files — they carry extra labels the agent reads to work more carefully. You don't write the labels yourself; the agent handles that. The musician still reads the music; the music just has a few more annotations on it. For now, just hold the shape: **runtime runs code**, **Node is JavaScript's runtime**.
 
 Two confusions are worth heading off here.
 
