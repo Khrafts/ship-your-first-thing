@@ -104,7 +104,7 @@ Open the Live Preview tab. Click the button. The date should appear or disappear
 
 ### The context window — and four slash commands that manage it
 
-Every AI agent has a **context window** (a one-line definition: the amount of text the agent can see at once — your conversation history plus any file content it has loaded, [→ GLOSSARY](../../GLOSSARY.md#context-window)). The window is finite. As your session grows, older messages stay in scope until the window fills, at which point the agent forgets the middle. Long sessions on a single task become less coherent because the agent has effectively forgotten what it agreed to do an hour ago.
+Every AI agent has a finite amount of working memory — the headspace it can hold while you talk to it: your conversation history plus any file content it has loaded. Think of it as a notepad the agent writes everything down on, with a fixed number of pages. When the pages run out, older notes get torn out to make room for new ones. That working memory has a name: the **context window** (a one-line definition: the amount of text the agent can see at once — your conversation history plus any file content it has loaded, [→ GLOSSARY](../../GLOSSARY.md#context-window)). The window is finite. As your session grows, older messages stay in scope until the window fills, at which point the agent forgets the middle. Long sessions on a single task become less coherent because the agent has effectively forgotten what it agreed to do an hour ago.
 
 The cure is not "be patient." The cure is the four slash commands every agent ships with.
 
@@ -116,7 +116,7 @@ The **`/context`** command (a one-line definition: Claude Code's command to show
 
 The **`/cost`** command (a one-line definition: Claude Code's command to show running session spend in dollars, [→ GLOSSARY](../../GLOSSARY.md#slash-cost)) is most relevant to Path 3 (Anthropic API token-careful) learners. On Gemini CLI's free tier, there is no spend to show; `/stats` covers rate-limit usage instead.
 
-A historical note: you may see `/tokens` referenced in older notes or third-party blog posts. It is the deprecated name for what is now split into `/context` (window usage) and `/cost` (spend). The Plan 02-02 entry in `WHAT-CHANGED.md` documents the migration; the canonical commands in this course are `/context` and `/cost`. If your agent does not recognize `/tokens`, use `/context` instead.
+(If you see `/tokens` mentioned in older notes or third-party blog posts, that's the previous name for `/context`.)
 
 ### When to reach for each
 
