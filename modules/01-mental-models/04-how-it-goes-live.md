@@ -51,7 +51,7 @@ flowchart LR
 
 </details>
 
-The recipes get committed to **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and pushed to **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
+You save changes to **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and upload them to **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
 
 Then **Vercel** (one-line definition: a service that runs your code on the public internet, [→ GLOSSARY](../../GLOSSARY.md#vercel)) watches the recipe binder. When new recipes land, Vercel's prep cooks (build servers) read the new version, get the kitchen ready, and flip the sign on the door from "Closed" to "Open."
 
@@ -63,9 +63,9 @@ A few things confuse beginners here, and naming them now saves you debugging tim
 
 **Localhost is invisible to the internet.** When you run the app on your laptop, only your laptop can see that page. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
 
-**Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always a missing bit of configuration the build server doesn't have, a different set of installed tool versions, or a file that wasn't committed to git. Module 5 of this course covers the deploy-debugging mental model in depth; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
+**Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers the deploy-debugging mental model in depth; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
 
-**The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything you don't commit and push to GitHub may as well not exist when the build server starts cooking. This is why the developer habit "commit and push often" is so heavily emphasized in Module 2.
+**The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything you haven't saved to git and uploaded to GitHub may as well not exist when the build server starts cooking. Module 2 unpacks the daily rhythm of saving changes and keeping the recipe binder current.
 
 ## Exercise
 
