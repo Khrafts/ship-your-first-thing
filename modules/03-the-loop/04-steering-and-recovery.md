@@ -138,7 +138,7 @@ That is the canonical steer pattern at full size: name the over-shoot, restate i
 
 ### When steering fails — `/clear` and start over
 
-Sometimes steering is not working. The agent keeps over-engineering despite your scope constraint, or it is stuck in a loop where every steer makes the code WORSE. The right move is `/clear`. The conversation history wipes; the agent loses memory of the hole it dug; you start fresh with a sharper initial ask that bounds the scope from the start.
+Sometimes steering is not working. The agent keeps over-engineering despite your scope constraint, or it is stuck in a loop where every steer makes the code WORSE. The right move is `/clear`. The conversation history wipes; the agent loses memory of the hole it dug; you start fresh with a sharper initial ask that bounds the scope from the start. The agent had committed to a path — `/clear` wipes that commitment and starts fresh.
 
 `/clear` is not failure. It is hygiene. Think of it the way you think of restarting a meeting that has gone in circles — sometimes the fastest path forward is a fresh page. Lesson 2 introduced `/clear` as part of context-window discipline; this lesson uses the same command for the same reason. The token-and-cost angle from Lesson 2 (`/clear` resets the context so you stop paying for stale history) is the same angle here (`/clear` resets the context so you stop fighting stale assumptions).
 
@@ -150,7 +150,7 @@ That is a tighter ask than "make it look like a bookshelf," and it does the work
 
 ### Feeding errors back
 
-The second steer pattern is errors. When something throws an error — a red icon on the browser preview tab, a wall of red in the console panel, a yellow warning the agent's narration referenced — you do not need to read the details to fix it. Reading error messages back to a file pointer is Module 3.5 territory. The simplest steer is:
+The second steer pattern is errors. When something throws an error — a red icon on the browser preview tab, a wall of red in the console panel, a yellow warning the agent's narration referenced — you do not need to read the details to fix it. The console panel sits below the browser preview — open it and look for red text; that's the error message to paste into your next ask. Reading error messages back to a file pointer is Module 3.5 territory. The simplest steer is:
 
 > I see this error: [paste the visible error text]. What should I do?
 
