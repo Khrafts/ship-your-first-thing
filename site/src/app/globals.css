@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Monochrome design tokens. Hierarchy is carried by typography, spacing and
+   grey-scale value — never hue. Contrast pairs are WCAG AA+ on white:
+   ink 19.3:1, ink-secondary 7.1:1, ink-faint 4.8:1 (large/secondary only). */
+:root {
+  --paper: #ffffff;
+  --surface: #fafafa;
+  --surface-raised: #f4f4f5;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --ink: #09090b;
+  --ink-secondary: #52525b;
+  --ink-faint: #71717a;
+  --ink-disabled: #a1a1aa;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-disabled: var(--ink-disabled);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

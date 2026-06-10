@@ -1,0 +1,19 @@
+packages:
+  - "."
+
+# Supply-chain hardening (Phase 01.1 amendment 2026-05-12):
+# only the packages listed below may run postinstall build scripts —
+# script execution is the payload vector in registry-compromise campaigns.
+# The planned 7-day minimumReleaseAge gate is omitted: it is incompatible
+# with the freshly-released Next.js pins this scaffold uses. Compensating
+# controls: this allowlist + committed pnpm-lock.yaml reviewed in PRs.
+onlyBuiltDependencies:
+  - esbuild
+  - "@swc/core"
+  - sharp
+  - lightningcss
+  - unrs-resolver
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
