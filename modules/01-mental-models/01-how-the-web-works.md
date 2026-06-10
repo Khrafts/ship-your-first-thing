@@ -85,7 +85,7 @@ When you load a page and see "404," you're seeing the slip from the kitchen sayi
 
 What's actually on the dish? When you load `example.com`, the kitchen hands the waiter a slab of **HTML** (one-line definition: the markup language that describes the structure of a webpage, [→ GLOSSARY](../../GLOSSARY.md#html)).
 
-HTML is just text — a tree of elements like `<h1>`, `<p>`, `<img>`. Your browser reads the HTML and starts drawing the page. As it reads, it sees references to other resources — `<link rel="stylesheet" href="style.css">` says "I need this CSS file too." So the browser sends *another* request for `style.css`. And another for any images. And another for any JavaScript files. Loading one page often means a dozen round trips.
+HTML is just text — a list of named pieces that, taken together, describe the page. When the browser receives the HTML, the page usually points to other files it needs: the styling, the pictures, any JavaScript. The browser fetches each of those with a fresh trip to the kitchen — a separate side-dish ticket for the CSS, another for each image, another for the JavaScript. Loading one page often means a dozen round trips.
 
 ```mermaid
 sequenceDiagram
@@ -125,8 +125,6 @@ sequenceDiagram
 </details>
 
 A few things tend to confuse beginners and are worth noticing now.
-
-**The browser is the customer.** It is *yours*. Anything the browser knows, you know. The browser cannot keep secrets *from you*; if a website ships JavaScript to your browser, you can read that JavaScript. This is the foundation of "the browser is the public internet" — a phrase you'll see often in Module 4 when env vars enter the picture.
 
 **The server is not "the cloud."** It's a specific program running on a specific computer that some hosting company is renting to whoever paid for it. The phrase "in the cloud" mostly means "I'm renting the kitchen instead of owning it." Inside the wires, it's still a kitchen.
 

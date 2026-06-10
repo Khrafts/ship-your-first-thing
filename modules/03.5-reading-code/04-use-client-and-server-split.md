@@ -76,10 +76,10 @@ The second symptom is a "hydration" error in the browser console. **hydration** 
 
 Two-part rule, learnable in 30 seconds:
 
-1. **If the file uses `useState`, `useEffect`, `onClick`, `onChange`, `onSubmit`, or any other DOM event handler** — `'use client'` must be on line 1.
+1. **If the file contains an interactivity name** (e.g., `useState`, `onClick`, or anything that looks like a click / type / submit handler) — `'use client'` must be on line 1.
 2. **Otherwise** — leave the directive off; the file stays a Server Component.
 
-You do not have to know what every one of those names does. The pattern match is "do any of those names appear in the file? If yes, line 1 should say `'use client'`. If no, line 1 should be something else."
+You do not have to know what those names do. The pattern match is "does the file contain an interactivity name? If yes, line 1 should say `'use client'`. If no, line 1 should be something else."
 
 ### The steer when you spot the symptom
 
@@ -100,6 +100,8 @@ The deeper mechanics — why the split exists, what the bundler does, the partne
 ## Exercise
 
 Plan twenty to twenty-five minutes for this exercise. It uses your AI agent (Claude Code or Gemini CLI) as a tutor.
+
+> **Before you start:** if the agent's explanation includes terms like `reconciliation`, `virtual DOM`, or `render phases`, ask it to simplify — that's beyond M3.5's floor and you don't need to learn it here.
 
 1. **Open both files in your IDE.** `modules/03.5-reading-code/sample-app/app/components/InteractiveButton.tsx` and `modules/03.5-reading-code/sample-app/app/components/StaticHero.tsx`. Read both top to bottom. They are short.
 

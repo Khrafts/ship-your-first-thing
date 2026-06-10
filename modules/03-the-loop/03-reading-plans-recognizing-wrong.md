@@ -83,7 +83,7 @@ If your capture happened to surface a different pattern — say, the agent stopp
 
 ### Why agents hallucinate — briefly
 
-The deep "why" of hallucination — that AI agents predict plausible text rather than retrieve verified facts — is Module 7 / where-to-go-next material. For the loop, the WHY does not matter. The skill is RECOGNITION: when the agent invents specifics it could not possibly know, you have hit a hallucination. Name it; move to the steer step.
+The agent's strength is writing fluent sentences. Its weakness is that fluent sentences can contain invented details — when the agent has nothing concrete to reference (your specific code, your actual files, your real data), it reaches for plausible candidates and presents them as if specified.
 
 ### What this lesson does not teach
 

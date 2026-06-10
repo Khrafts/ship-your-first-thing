@@ -115,7 +115,7 @@ New tool nouns introduced in M2 (in lesson order per D-20):
 
 Reserved for M3+:
 
-- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, `/compress`, `/stats`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination
+- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, `/compress`, `/stats`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*
 
 Reserved for M3.5+:
 
@@ -126,6 +126,8 @@ Reserved for M4+:
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M2 rewrite implications:** M2 introduces tools as nouns the learner now operates. The hands-on shape of each tool (key commands, install path) is shown via CHEATSHEET + VERSIONS.md; the lesson body uses the term with a D-04 callout on first use and then drops the callout. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — use the felt-problem framing locked in D-20.
+
+**Anchor-lesson exception (`hallucination`).** `hallucination` is Forbidden as a concept term in M2 prose, with ONE exception: **M2 L6** (`06-ai-coding-agents.md`) is the Tenet 6 anchor lesson and introduces the term with a D-04 callout in the "notice the name" framing (forward-referencing the M3 L3 smell-test). Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L6 / M3 L3. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception.
 
 ---
 
@@ -214,7 +216,7 @@ Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learn
 2. **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is both floor and ceiling.
 3. **`do-not-introduce` terms remain in the contract but are not surfaced in M3.5 lesson bodies.** They exist for Module 7 and future modules. Treat them as reserved.
 
-**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. The Agent-Responsibility Boundary (CLAUDE.md hard rule 12; `docs/COURSE-AUTHORING.md` Part 4) is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level, and the surrounding prose cannot exceed the callout depth. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT use `stack trace` or `error message anatomy` in body prose. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4). `scripts/voice-lint.sh` check #9 emits WARN-level signals when M3.5 lessons drift into agent-territory framing.
+**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. The Agent-Responsibility Boundary (CLAUDE.md hard rule 12; `docs/COURSE-AUTHORING.md` Part 5) is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level, and the surrounding prose cannot exceed the callout depth. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT use `stack trace` or `error message anatomy` in body prose. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4). `scripts/voice-lint.sh` check #9 emits WARN-level signals when M3.5 lessons drift into agent-territory framing.
 
 ---
 
@@ -222,7 +224,7 @@ Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learn
 
 Audience floor: M3.5 complete. Every M3.5 Requires-callout term is now Safe.
 
-**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 5). The learner ships code via the agent — the agent authors, the learner observes + smells-tests + commits. Every term in the Requires-callout list below is introduced as a SYMPTOM the learner scans for in the agent's diff or in the running app, not as a CONCEPT to understand from first principles. The agent owns the mechanics; the learner owns the smell-test.
+**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors, the learner observes + smells-tests + commits. Every term in the Requires-callout list below is introduced as a SYMPTOM the learner scans for in the agent's diff or in the running app, not as a CONCEPT to understand from first principles. The agent owns the mechanics; the learner owns the smell-test.
 
 ### Safe (no callout needed)
 
@@ -302,7 +304,7 @@ Reserved for Module 7 / out of scope:
 - Edge runtime vs. Node runtime distinctions
 - Multi-region deployment
 
-**M5 SYMPTOM-only rule:** The three watch-it-fail walkthroughs (LESSON-13) name the failure mode + the smell-test + the recovery prompt. The walkthroughs do NOT teach RLS grammar, Postgres internals, or React reconciliation — they teach the OBSERVATION ("I saw X; I asked the agent Y; the agent shipped Z") + the RECOVERY pattern. See COURSE-AUTHORING.md Part 6 § Anchor lessons for which limit each walkthrough surfaces.
+**M5 SYMPTOM-only rule:** The three watch-it-fail walkthroughs (LESSON-13) name the failure mode + the smell-test + the recovery prompt. The walkthroughs do NOT teach RLS grammar, Postgres internals, or React reconciliation — they teach the OBSERVATION ("I saw X; I asked the agent Y; the agent shipped Z") + the RECOVERY pattern. See COURSE-AUTHORING.md Part 7 § Anchor lessons for which limit each walkthrough surfaces.
 
 ---
 
@@ -359,7 +361,7 @@ Module 7 is the only module where the **forbidden lists from prior modules** can
 
 ### M7 IS where deeper explanation lives
 
-The "What NOT to Teach" appendix (COURSE-AUTHORING.md Part 7) repeatedly says "escape to Module 7 only" for traps like RLS grammar, async/await semantics, hook internals, hydration mechanism, bundler internals. Module 7 IS that escape. But Module 7 lessons are POINTERS, not deep-dives — the canonical content lives in external docs the learner is now equipped to read.
+The "What NOT to Teach" appendix (COURSE-AUTHORING.md Part 8) repeatedly says "escape to Module 7 only" for traps like RLS grammar, async/await semantics, hook internals, hydration mechanism, bundler internals. Module 7 IS that escape. But Module 7 lessons are POINTERS, not deep-dives — the canonical content lives in external docs the learner is now equipped to read.
 
 ---
 

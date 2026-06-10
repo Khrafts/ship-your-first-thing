@@ -57,13 +57,13 @@ The file pointer is `app/page.tsx`. The error description even tells you WHAT it
 **Error 3 (a longer one with a tricky word):**
 
 ```
-Error: Hydration failed because the initial UI does not match what was rendered on the server.
+Error: Hydration failed.
   at InteractiveButton (./app/components/InteractiveButton.tsx:8)
   at Page (./app/page.tsx:5)
   ...
 ```
 
-The first line whose path starts with `./app/` names `InteractiveButton.tsx`. Open it, paste the full error to your agent: "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix." The word "hydration" in the description is one you will see again in the next lesson as a symptom — for now, your ask just names the file pointer and pastes the error.
+The first line whose path starts with `./app/` names `InteractiveButton.tsx`. Open it, paste the full error to your agent: "I see this error: [paste full error]. The file pointer is `app/components/InteractiveButton.tsx`. Please fix." The word "hydration" is one you will see again in the next lesson as a symptom — for now, your ask just names the file pointer and pastes the error.
 
 ### What about the description?
 
@@ -105,7 +105,7 @@ Module not found: Can't resolve './components/StaticHeroo'
 
 **Error C:**
 ```
-Error: Hydration failed because the initial UI does not match what was rendered on the server.
+Error: Hydration failed.
   at InteractiveButton (./app/components/InteractiveButton.tsx:8)
   at Page (./app/page.tsx:5)
   ...

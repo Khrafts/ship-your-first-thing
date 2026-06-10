@@ -116,6 +116,10 @@ Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.
 Domain Name System — the system that translates a human-readable URL into the IP address of the actual server. *Example: when you type `example.com`, DNS resolves it to `93.184.216.34` so the browser knows which server to ask.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
+### drift
+When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
+Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+
 ## E
 
 ### error-message-anatomy
@@ -297,6 +301,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 ### response
 A structured message replying to a request — like the receptionist's paper reply. *Example: a JSON array of posts is a response.*
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
+
+### risk-blindness
+When an AI agent suggests something dangerous — overwriting working code, dropping a database table, force-pushing to a branch, hardcoding a secret — with the same calm as fixing a typo. The agent has no sense of stakes; it weighs all changes by token-level fit, not by impact on your project. *Example: in Module 5's watch-it-fail walkthroughs, the agent proposes deleting a migration file to "clean up" — the operation reads as routine to it but is destructive to the project. The smell-test pattern is taught in those walkthroughs.*
+Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
 
 ### row
 A single record in a database table — like one index card in a filing-cabinet drawer.

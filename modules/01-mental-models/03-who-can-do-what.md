@@ -79,7 +79,7 @@ A few things confuse beginners here, and naming them now saves you debugging tim
 
 **Authentication doesn't replace authorization.** "I logged in" doesn't mean "I'm allowed to do this." Real apps check both, every time. The most common security bug in self-built apps is forgetting that authn ≠ authz — the app trusts that any signed-in user can do anything.
 
-**Sessions can be stolen.** If someone gets your hand stamp (your session cookie), they can walk back into the club as you. The mitigation is `httpOnly` and `Secure` flags on cookies, short session lifetimes, and re-authentication on sensitive operations. Phase 3 covers the practical defaults; for now, just know that "logged in" is a state that needs guarding, not a property that's automatic.
+**Sessions can be stolen.** If someone gets your hand stamp (your session cookie), they can walk back into the club as you. The safeguards are the same as a club's: the stamp is hard to forge, it changes often, and the door staff ask for ID again before they let anyone into the back rooms. Phase 3 covers the practical defaults; for now, just know that "logged in" is a state that needs guarding, not a property that's automatic.
 
 **The "VIP list" lives in the database.** When the door staff checks the list, they're really asking the filing cabinet from bundle 2. Permission rules in real apps are enforced both at the server (the clerk) and at the database (the cabinet itself, via per-row rules). Phase 4 builds that double-check explicitly.
 

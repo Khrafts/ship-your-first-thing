@@ -534,7 +534,7 @@ check_lesson_against_module_contract() {
   done <<< "$requires_terms"
 }
 
-# Run the jargon-density check across M0 and M1 lessons.
+# Run the jargon-density check across M0–M3.5 lessons (M4–M7 dirs join when those modules ship).
 # Args: $1 = mode ("default" | "fixtures")
 scan_jargon_density() {
   local mode="$1"
@@ -555,10 +555,11 @@ scan_jargon_density() {
     return
   fi
 
-  # Default mode: run against M0 and M1 lessons in WARN mode.
-  # The audience-vocabulary contract is strict; current M0/M1 prose has known gaps against it
-  # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0). Those gaps are triaged
-  # via the editorial backlog, not by hard-failing the lint. The check is still informative —
+  # Default mode: run against M0–M3.5 lessons in WARN mode.
+  # The audience-vocabulary contract is strict; current prose has known gaps against it
+  # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0, plus a larger backlog
+  # across M2/M3/M3.5 whose prose predates this check covering those modules). Those gaps are
+  # triaged via the editorial backlog, not by hard-failing the lint. The check is still informative —
   # it surfaces every gap as a WARN line so contributors can see what would be flagged once the
   # contract and prose converge. The fixture self-test exercises the strict (violation) path.
   local lesson
@@ -572,6 +573,24 @@ scan_jargon_density() {
     for lesson in modules/01-mental-models/*.md; do
       [ -f "$lesson" ] || continue
       check_lesson_against_module_contract "$lesson" "M1" "Module 1 (M1)" "warn"
+    done
+  fi
+  if [ -d modules/02-toolchain ]; then
+    for lesson in modules/02-toolchain/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M2" "Module 2 (M2)" "warn"
+    done
+  fi
+  if [ -d modules/03-the-loop ]; then
+    for lesson in modules/03-the-loop/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M3" "Module 3 (M3)" "warn"
+    done
+  fi
+  if [ -d modules/03.5-reading-code ]; then
+    for lesson in modules/03.5-reading-code/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M3.5" "Module 3.5 (M3.5)" "warn"
     done
   fi
 }

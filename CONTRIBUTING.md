@@ -48,8 +48,9 @@ The script enforces (and exits non-zero on violation):
 - No GitHub-specific admonitions like the bracketed-bang note syntax — Phase 1 D-18 (universal `> **Note:**` blockquotes only)
 - Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md` (case-insensitive)
 - Every relative path from a lesson to a repo-root cross-cutting doc (`GLOSSARY.md`, `BUDGET.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`, `CONTRIBUTING.md`, `WHAT-CHANGED.md`, `VERSIONS.md`, `LICENSING.md`, `README.md`, `SETUP.md`) resolves to a real file (the broken-relative-path check catches the bare-`GLOSSARY.md#anchor` 404 bug shape) — added in Plan 01-8
-- Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the M0/M1 prose has known gaps against the strict contract — those are surfaced as `WARN` lines and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. — added in Plan 01-8
+- Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the prose across M0–M3.5 has known gaps against the strict contract — those are surfaced as `WARN` lines (≈149 at last count) and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. The check scans **M0–M3.5**; M4–M7 are human-review until those modules exist. — added in Plan 01-8, extended to M2–M3.5 on 2026-06-08
 - Check #8 (m3-dual-agent) catches missing `Claude Code:` or `Gemini CLI:` labels in M3 lessons (per D-27) — added in Plan 02-02
+- Check #9 (m35-diagnostic-framing) flags M3.5 prose drifting into agent-owned mechanics — WARN-only, per CLAUDE.md hard rule 12
 
 ## Tooling / package manager
 

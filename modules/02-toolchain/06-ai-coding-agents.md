@@ -31,6 +31,18 @@ The category is one you have already met. Module 0's welcome lesson named **AI c
 
 You picked one of these agents back in Module 0's cost-path triage. You only need to install the one you picked. Module 3 will show both agents side by side for every step of the loop, but the loop you actually run is on YOUR chosen agent. The other agent's transcript is reference, not homework. The course is designed this way on purpose: the loop is durable; the keystrokes are not. If Anthropic changes Claude Code, or Google changes Gemini CLI, or a third agent appears next year, you will carry the loop forward and re-bind the keystrokes — not relearn the whole skill.
 
+### Three things agents get wrong
+
+Every new teammate has weak spots. With an AI coding agent, three patterns show up often enough that they have names — and naming them now, even briefly, means you will recognize the shape when it shows up later. The three you will see most: **hallucination** (the agent confidently writes something that doesn't exist, [→ GLOSSARY](../../GLOSSARY.md#hallucination)), **drift** (the agent loses the thread of what it agreed to do, [→ GLOSSARY](../../GLOSSARY.md#drift)), and **risk-blindness** (the agent suggests something dangerous with the same calm as fixing a typo, [→ GLOSSARY](../../GLOSSARY.md#risk-blindness)). You will not learn the smell-tests in this lesson — those land where they are useful, in Module 3 and Module 5. For now, just notice the names.
+
+> **Heads up — you'll meet this again.** **Hallucination** is when the teammate confidently writes a function name, file path, or library that doesn't exist. The smell-test for catching it lives in M3 L3; for now, just notice the name.
+
+> **Heads up — you'll meet this again.** **Drift** is when the teammate loses the thread mid-conversation. The smell-test lives in M3 L2; the recovery move is in M3 L4.
+
+> **Heads up — you'll meet this again.** **Risk-blindness** is when the teammate suggests something dangerous with the same calm as fixing a typo. M5's watch-it-fail walkthroughs put you in the driver's seat.
+
+These three are not the whole list of ways agents fail — they are the three that show up early enough, and often enough, to be worth a name on day one. Module 3 names a fourth (the context-window filling up) when it lands in the lesson where the smell-test fits.
+
 Before the install commands, a small honesty banner.
 
 > **Last verified:** 2026-05-14. These install commands worked on this date. Newer commands may exist; check `VERSIONS.md` for the most recent verified versions and `WHAT-CHANGED.md` for revisions.
