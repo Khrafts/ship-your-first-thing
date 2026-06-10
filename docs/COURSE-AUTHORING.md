@@ -306,7 +306,252 @@ Read every section against Q1–Q3 and the per-topic floor table. Quote each fai
 
 ---
 
-## Part 5 — The voice-lint contract
+## Part 5 — Execution-Floor Boundary (M4+ build phases)
+
+CLAUDE.md hard rule 13 translates the Agent-Responsibility Boundary from M3.5's **observation floor** to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
+
+### Why M3.5's boundary needed a translation
+
+M3.5's floor is OBSERVATION: the learner watches the agent edit code; the agent does the editing. M4+ is EXECUTION: the learner is now shipping the thread project. The agent still does the code-authoring, but the learner is in the driver's seat — naming what to build, sequencing the chunks, verifying that what just shipped matches what was asked for. The boundary translation is "what does it look like to drive without owning the engine?"
+
+### The boundary
+
+The **agent owns**: schema authoring, RLS policy syntax, async/await mechanics, hook internals (`useState`, `useEffect`, `useOptimistic`, etc.), Server-Action plumbing, type narrowing, dependency resolution, framework internals (Next.js routing rules, Supabase client lifecycle), build internals, deployment plumbing, error parsing.
+
+The **learner owns**:
+
+1. **Stating intent at the feature level.** Not "use `useOptimistic` with the right reducer signature" — but "the like count should update right away, then correct itself if the server returns an error."
+2. **Observing the running app matches intent.** Open the deployed app. Click around. Sign out. Sign in as a second user. Did the agent build what you asked for?
+3. **Applying the phase's smell-test inventory.** A named list of observable patterns ("look for this; if absent, ask the agent why") that the learner scans for in each chunk's diff or in the running app. The inventory is the bridge between M3.5's observation skill and M4+'s execution responsibility.
+4. **Committing each working chunk to git.** The atomic-commit discipline is the learner's safety net. Working state goes to git before the next chunk starts.
+5. **Knowing when to `/clear` and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, restart the conversation tighter.
+
+### The smell-test inventory
+
+A smell-test is an OBSERVATION the learner can perform without understanding the underlying mechanics. The pattern:
+
+```
+LOOK FOR: <observable pattern in the diff or in the running app>
+IF PRESENT: <what to do next>
+IF ABSENT: <what to ask the agent>
+```
+
+Example smell-tests for Phase 4 (the chunk that adds posts editing):
+
+- LOOK FOR: `WITH CHECK` after every `UPDATE` policy in the migration file.
+  IF PRESENT: continue. IF ABSENT: ask the agent "the `UPDATE` policy doesn't have `WITH CHECK` — what would prevent a user from rewriting `author_id` on their own post?"
+- LOOK FOR: On the deployed app, alice can edit her own post but the form does NOT appear on bob's post (signed in as alice).
+  IF PRESENT: continue. IF ABSENT: ask the agent "alice is seeing the edit form on bob's post — what's missing?"
+- LOOK FOR: When alice rewrites a post, the post stays attributed to alice (not silently re-attributed).
+  IF PRESENT: continue. IF ABSENT: this is the RLS-UPDATE-without-WITH-CHECK bug; see Phase 5 LESSON-13 walkthrough (a).
+
+The learner can perform every smell-test in the inventory without knowing RLS policy syntax, without parsing TypeScript, without understanding the Supabase client lifecycle. The smell-test is observation; the diagnosis is the agent's job.
+
+### Where the inventory lives
+
+The smell-test inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
+
+- A **per-chunk boundary table** naming agent-territory vs. learner-territory for each chunk's deliverable.
+- The **smell-test inventory** for the phase: named observable patterns with LOOK FOR / IF PRESENT / IF ABSENT.
+- The **Tenet 6 surfaces** for the phase: which lessons name which agent failure mode + where the corresponding smell-test lives.
+- The **vocab additions** for the phase: which terms ship as SYMPTOM-only, which are Forbidden-as-concept, what the audience-vocabulary contract gains.
+
+Without this CONTEXT, the build-phase planner inherits only the ROADMAP success criteria — which already contain jargon-shaped trigger language (`@supabase/ssr cookies() correctly awaited`, RLS `WITH CHECK`, `useOptimistic`). That's the original drift vector.
+
+### The three audit questions adapted for M4+
+
+Run these for every section of every M4+ lesson:
+
+1. **Q1-Exec — Does this section ask the learner to do something the agent will do better?** Examples that fail: "write a `UPDATE` policy with `WITH CHECK` matching this shape"; "configure your `cookies()` call to await before reading"; "destructure the `useOptimistic` return tuple." The fix: replace with the smell-test ("the agent will write this; look for X in the diff").
+2. **Q2-Exec — Does this section explain mechanics (framework internals, hook lifecycles, RLS grammar, async/await semantics, type narrowing) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Mechanics belong to the agent.
+3. **Q3-Exec — Is any term used as a concept (something to understand from first principles) when it should be used as a symptom (something to scan for)?** If yes, demote the framing — no "anatomy of an RLS policy," no "how `useOptimistic` works," no "the lifecycle of a Server Action."
+
+A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent does X; you observe Y; if Y is missing, ask the agent Z."
+
+### The smell-test catalog (build out per phase)
+
+Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md smell-test inventory. As phases land, the catalog below grows. Each entry names the lesson where the smell-test is taught + the phase where the learner first applies it.
+
+| Smell-test | First taught | First applied |
+|---|---|---|
+| Right-file edit (M3.5 L2 pattern) | M3.5 L2 | Phase 3 Chunk 1 onward |
+| First `./app/` line in error → paste to agent (M3.5 L3 pattern) | M3.5 L3 | Phase 3 Chunk 1 onward |
+| `'use client'` interactivity smell (M3.5 L4 pattern) | M3.5 L4 | Phase 3 Chunks 1–3 |
+| `WITH CHECK` after every `UPDATE` policy | Phase 4 CONTEXT | Phase 4 Chunk 4–7 + Phase 5 LESSON-13 walkthrough (a) |
+| Feed query includes `OR author_id = auth.uid()` | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
+| Migration drift smell (no `DROP TABLE` in the diff against shared state) | Phase 5 CONTEXT | Phase 5 LESSON-13 walkthrough (c) |
+| Logged-out visitor can read but not act | Phase 4 CONTEXT | Phase 4 + Phase 6 bug-reproduction |
+
+### Cross-references
+
+- CLAUDE.md hard rule 13 — the boundary itself
+- COURSE-AUTHORING.md Part 4 — the M3.5 observation floor this part extends
+- `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase smell-test inventory
+- M2 L5 + M3.5 L2 — gold-standard exemplars of the symptom-and-steer floor
+
+---
+
+## Part 6 — AI-Limitation Pedagogy
+
+CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the six core agent limitations and their per-limit smell-test patterns.
+
+### Why this matters (Tenet 6 anchor)
+
+A learner who cannot recognize when the agent is wrong cannot recover when the agent is wrong. The recovery skill is the course's differentiator. Recovery requires limits-and-smell-tests, not just limits. Naming hallucination without giving the learner the smell-test for it is like naming food poisoning without naming the taste of spoiled food.
+
+### The six limitations (course taxonomy)
+
+The course names six core agent failure modes. Each gets a per-module surface and a smell-test pattern.
+
+| # | Limitation | Plain definition | Module where smell-test first appears |
+|---|---|---|---|
+| 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L6 |
+| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (`/clear` as recovery) — first named M2 L6 |
+| 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized via the slash-command surface (`/context`, `/cost`, `/compact`) |
+| 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype + M2 L6 freshness framing |
+| 5 | **Confident-wrong** | The agent's tone and the agent's correctness are independent; fluent-sounding answers can be wrong; uncertainty is rarely surfaced unless the prompt explicitly asks for it | M3 L3 (the lesson IS about this) |
+| 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L6 first surfacing |
+
+### The smell-test pattern (per-limit)
+
+For each limit, the lesson where it's first taught provides:
+
+- **The limit named** (with a D-04 callout on first use, mapped to the audience-vocabulary contract).
+- **One concrete symptom example** the learner can recognize without prior coding knowledge. Not abstract; specific. Not "the agent might be wrong" — but "the agent recommended `bookcover.io` as a free book-cover API; you searched and there is no such service."
+- **The smell-test action**: what to do when you spot it. Usually: re-ask with the symptom named explicitly; or `/clear` and start over with a tighter prompt; or paste the verifying evidence back to the agent.
+
+### Anchor lessons (Tenet 6 surfaces)
+
+- **M2 L6 (`06-ai-coding-agents.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms; three forward-references to where the smell-tests are taught.
+- **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
+- **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via `/clear` hygiene).
+- **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
+
+### Forward-reference template (Hard Rule 14 compliance)
+
+When a lesson names a failure mode but the smell-test lives elsewhere, use this exact shape:
+
+```markdown
+> **Heads up — you'll meet this again.** {Failure mode in plain words}. The smell-test for catching it lives in {Module N Lesson NN slug}; for now, just notice the name.
+```
+
+This satisfies Hard Rule 14's forward-reference requirement. Vague "we'll cover this later" without naming WHERE does not satisfy the rule.
+
+### What NOT to do
+
+- Don't name hallucination in an M0 / M1 lesson. M2 L6 is the first surface.
+- Don't introduce a failure-mode term in a callout and then explain the underlying neural-network mechanics. The audience floor does not benefit from "attention head misalignment" or "next-token prediction without grounding."
+- Don't write "the agent might be wrong" without naming WHICH failure mode + the smell-test. Vague risk-naming inflates anxiety without arming the learner.
+- Don't conflate confident-wrong with hallucination. Confident-wrong is the *tone*; hallucination is the *content*. Both can occur independently.
+
+### Cross-references
+
+- CLAUDE.md hard rule 14 — the rule itself
+- `docs/audience-vocabulary.md` — M3 Requires-callout terms (hallucination, context window, etc.)
+- `docs/TENETS.md` § Tenet 6 — the underlying philosophy
+- M5 LESSON-13 (REQUIREMENTS.md) — the three watch-it-fail walkthroughs
+
+---
+
+## Part 7 — What NOT to Teach (the temptation appendix)
+
+Authors and AI agents both tend to over-explain. The audience-vocabulary contract is the *positive* surface (what IS safe at each module); this appendix is the *negative* surface (high-temptation traps where authors add depth the learner does not need). Each entry names a topic, the temptation, and the right move.
+
+Read this section before every lesson. Trap-spotting is faster than rewrite-after-the-fact.
+
+### The trap catalog
+
+#### Trap A — Explaining HTTP request/response anatomy
+
+**Temptation.** "An HTTP request has a method (GET, POST, PUT, DELETE), a path, headers, and a body. The server responds with a status code (200, 404, 500), headers, and an optional body."
+**Right move.** M1 names the restaurant analogy. The technical version goes in a `<details>` disclosure with a forward-reference to Module 3 hands-on. Body prose stays in the analogy.
+**Where to escape to.** Module 3 (single-user vertical slice) — when the learner is actually triggering requests via a deployed app, not learning HTTP from a textbook.
+
+#### Trap B — Teaching SQL JOIN mechanics or foreign-key constraints as concepts
+
+**Temptation.** "A foreign key creates a referential constraint that prevents inserting a row that references a non-existent parent row..."
+**Right move.** Filing-cabinet analogy: "cards in one drawer remember other cards by ID." That's the floor. The agent writes the schema; the learner observes that "alice's posts disappear when alice is deleted" works.
+**Where to escape to.** Don't. JOIN mechanics belong to the agent. M4+ teaches the *symptom* ("when I delete a user, do their posts disappear or break?") as a smell-test.
+
+#### Trap C — Explaining cookie flags (`httpOnly`, `Secure`, `SameSite`)
+
+**Temptation.** "Set `httpOnly: true` and `Secure: true` and `SameSite: 'Lax'` to mitigate XSS and CSRF..."
+**Right move.** M1 L3 uses plain language: "the stamp on your hand is hard to copy; the door staff changes the stamp pattern often; the door staff asks for ID again before letting you into the safe room." The agent handles flag configuration; the learner observes "I can stay signed in across browser refresh."
+**Where to escape to.** Module 7 only — and only as a "if you want to go deeper on auth, here's where to look" pointer.
+
+#### Trap D — Explaining async/await semantics
+
+**Temptation.** "Next.js 16 made `cookies()`, `headers()`, and `params` async because the rendering pipeline needs to defer their resolution until..."
+**Right move.** Async/await is a SYMPTOM in the agent's diff. The learner scans for `await cookies()` in the agent's code — if it's `cookies()` without the `await`, ask the agent why. Don't explain the rendering pipeline.
+**Where to escape to.** Don't. Async/await semantics belong to the agent. The phase's CONTEXT.md catalogs `await` as a symptom-only term.
+
+#### Trap E — Explaining RLS policy grammar
+
+**Temptation.** "An RLS policy has a `FOR` clause (SELECT / INSERT / UPDATE / DELETE), a `USING` predicate that filters reads, and a `WITH CHECK` predicate that filters writes..."
+**Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner runs the smell-test inventory ("look for `WITH CHECK` after every `UPDATE`; if missing, ask the agent why").
+**Where to escape to.** Module 7 — RLS deep-dive is the canonical Module 7 territory for learners who want to extend the thread project.
+
+#### Trap F — Explaining React hook internals (`useState`, `useEffect`, `useOptimistic`, etc.)
+
+**Temptation.** "`useOptimistic` returns a tuple of `[optimisticValue, addOptimistic]`. The reducer signature is `(currentState, optimisticValue) => newState`. Call `addOptimistic` inside a Server Action..."
+**Right move.** `useOptimistic` is a SYMPTOM in M3.5 L4 (interactivity marker). In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
+**Where to escape to.** Don't. Hook internals belong to the agent. The audience-vocabulary contract lists hooks as SYMPTOM-only across M3.5 and M4+.
+
+#### Trap G — Explaining stack-trace anatomy
+
+**Temptation.** "A stack trace lists call frames from the top (most recent) to the bottom (oldest). Each frame includes the function name, file path, line, and column. Read the trace bottom-up..."
+**Right move.** M3.5 L3 rule: "find the first line that names YOUR file (typically a path starting with `./app/`); paste the full error to the agent." The agent reads the trace; the learner gives it the pointer.
+**Where to escape to.** Don't. Stack traces are agent territory. The audience-vocabulary contract moved `stack trace` from M3.5 Requires-callout → Forbidden in May 2026.
+
+#### Trap H — Explaining the React hydration mechanism
+
+**Temptation.** "Hydration is the process React uses to attach event listeners to server-rendered HTML, matching the server-rendered tree to the client-rendered tree..."
+**Right move.** Hydration is a SYMPTOM (per M3.5 L4 SYMPTOM-only addendum): a message in the browser console meaning "the page disagreed with itself." The agent diagnoses; the learner pastes the error to the agent.
+**Where to escape to.** Module 7 only, for learners who want to extend.
+
+#### Trap I — Explaining bundle splitting / Server vs. Client component rendering execution
+
+**Temptation.** "The bundler decides which files become client bundles based on the `'use client'` directive. Server Components run only on the server; their output is serialized as RSC payload..."
+**Right move.** M3.5 L4 framed-picture-vs-touchscreen analogy. `'use client'` is a SYMPTOM label. The agent decides the split; the learner scans for the symptom (interactivity markers + missing directive → ask the agent).
+**Where to escape to.** Module 7 — React Server Components architecture is canonical Module 7 territory.
+
+#### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
+
+**Temptation.** "`^1.2.3` matches `>=1.2.3 <2.0.0`; `~1.2.3` matches `>=1.2.3 <1.3.0`..."
+**Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions; the learner runs `npm install` and observes the app works.
+**Where to escape to.** Module 7 — for learners who want to operate the build long-term.
+
+#### Trap K — Explaining what "build" actually does (bundler internals, tree-shaking, dead-code elimination)
+
+**Temptation.** "The bundler walks the import graph, applies tree-shaking to remove unreferenced exports..."
+**Right move.** "The build packages your code so the deployment server can run it." That's the floor. The agent owns build configuration; the learner observes "the build passed; the site updated."
+**Where to escape to.** Module 7 — bundler internals are canonical Module 7 territory.
+
+#### Trap L — Explaining git internals (objects, hashes, DAG, the staging area as a content-addressable store)
+
+**Temptation.** "Each commit is a snapshot identified by a SHA-1 hash; the parent commit pointer creates a directed acyclic graph..."
+**Right move.** M2 L5 (the gold standard) names the four daily commands and what they do at the felt level. No internals. Read M2 L5 before drafting any other lesson that mentions git.
+**Where to escape to.** Module 7 — git internals are canonical Module 7 territory for the small population of learners who want to operate the build deeply.
+
+### How to use this appendix
+
+When you draft a lesson and find yourself reaching for one of the topics above:
+
+1. **Stop.** Check this appendix.
+2. **If the lesson genuinely needs to introduce the term** — use the audience-vocabulary contract's classification (SYMPTOM-only, Requires-callout with depth limited to the callout, Forbidden).
+3. **If the lesson can defer the term entirely** — defer it. Silence is the right move. The lesson is the floor; later modules add depth.
+4. **If the lesson needs the term but you don't see it in the contract** — add it to the contract in the same PR. Don't sneak it in via prose.
+
+### Cross-references
+
+- `docs/audience-vocabulary.md` — the positive surface (what IS safe at each module)
+- COURSE-AUTHORING.md Part 4 — Q1–Q3 audit questions for M3.5
+- COURSE-AUTHORING.md Part 5 — Q1-Exec / Q2-Exec / Q3-Exec audit questions for M4+
+- `docs/TENETS.md` § Tenet 5 — the philosophical foundation
+
+---
+
+## Part 8 — The voice-lint contract
 
 `scripts/voice-lint.sh` is the programmatic gate. It has seven checks; understand each before writing or editing lessons.
 
@@ -356,7 +601,7 @@ Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier).
 
 ---
 
-## Part 6 — Authoring workflow checklist
+## Part 9 — Authoring workflow checklist
 
 Before opening a PR with a new or modified lesson:
 
@@ -376,7 +621,7 @@ Before opening a PR with a new or modified lesson:
 
 ---
 
-## Part 7 — Common authoring traps (and how to dodge them)
+## Part 10 — Common authoring traps (and how to dodge them)
 
 ### Trap: "I'll just use the technical word once"
 
@@ -416,7 +661,7 @@ The GLOSSARY anchor is the contract that ensures every term defined in a lesson 
 
 ---
 
-## Part 8 — When you're changing the contract itself
+## Part 11 — When you're changing the contract itself
 
 If you need to:
 - Add a new term to `docs/audience-vocabulary.md` → straightforward; just edit and commit.
@@ -429,7 +674,7 @@ Contract changes propagate. Always ask before changing locked decisions; always 
 
 ---
 
-## Part 9 — When you're an AI agent specifically
+## Part 12 — When you're an AI agent specifically
 
 A few things that catch agents more than humans:
 

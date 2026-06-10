@@ -218,6 +218,151 @@ Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learn
 
 ---
 
+## Module 4 (M4) — Thread project build phases (Single-User + Multi-User Social Graph)
+
+Audience floor: M3.5 complete. Every M3.5 Requires-callout term is now Safe.
+
+**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 5). The learner ships code via the agent — the agent authors, the learner observes + smells-tests + commits. Every term in the Requires-callout list below is introduced as a SYMPTOM the learner scans for in the agent's diff or in the running app, not as a CONCEPT to understand from first principles. The agent owns the mechanics; the learner owns the smell-test.
+
+### Safe (no callout needed)
+
+- All M0/M1/M2/M3/M3.5 Safe + all M3.5 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use; ALL SYMPTOM-only in M4)
+
+Build-phase nouns introduced as observable symptoms (not concepts):
+
+- **Supabase** — introduce as "the service that gives the thread project an account system, a database, and file storage in one." SYMPTOM-only: the learner sees Supabase in `package.json` and in the agent's diffs; doesn't learn Supabase internals.
+- **env var** / **environment variable** — introduce as "a value the deployed app reads at runtime that isn't checked into git (typically a secret)." SYMPTOM-only: the learner scans for missing env vars when the app fails on deploy.
+- **NEXT_PUBLIC** (env-var prefix) — SYMPTOM-only: "the prefix Next.js requires for env vars the BROWSER needs to see." The learner scans for `NEXT_PUBLIC_` on values used in client components; agent decides which env vars need the prefix.
+- **secret key** / **publishable key** — SYMPTOM-only: "Supabase ships two keys per project; one is safe in the browser, one isn't." The learner observes both in `.env.local`; the agent uses each correctly.
+- **magic link** — re-introduce as "the email-with-a-link sign-in flow you used in M0; this time you're building it." Already met in M0/M3.5; M4 surfaces it as a feature, not a concept.
+- **RLS** — SYMPTOM-only: "the database-level door staff." The learner does NOT learn the policy grammar; scans for the smell-test patterns in `.planning/phases/04-*/04-CONTEXT.md`.
+- **`WITH CHECK`** — SYMPTOM-only: "the part of an `UPDATE` RLS policy that prevents a user from rewriting `author_id`." The learner scans for it after every `UPDATE` policy in the migration; agent writes the policy.
+- **`USING`** — SYMPTOM-only: pairs with `WITH CHECK`; the learner scans for the pair on read+write policies.
+- **Server Action** — SYMPTOM-only: "the agent's pattern for code that runs on the server when the user clicks something." The learner observes Server Actions in the agent's diffs as `'use server'`-marked functions; doesn't learn the action lifecycle.
+- **`revalidatePath`** — SYMPTOM-only: "what the agent calls after a Server Action so the page refreshes." The learner scans for it after every server-state mutation; agent decides which path to revalidate.
+- **`useOptimistic`** — re-introduce from M3.5 as a SYMPTOM in M4: "the hook the agent uses to make the UI update before the server responds." The learner observes the optimistic-then-corrected behavior in the running app; doesn't learn the hook signature.
+
+Async/await as a SYMPTOM in agent diffs (introduce in the relevant chunk):
+
+- **`async` / `await`** — SYMPTOM-only: "labels the agent puts on code that waits for something (a database read, a cookie read, an API call)." The learner scans for `await` before every async call; if missing, ask the agent why.
+- **`cookies()` / `headers()` / `params`** — SYMPTOM-only: "Next.js 16 made these async. The learner scans for `await cookies()` (not bare `cookies()`) in the agent's diff."
+
+### Forbidden in M4 specifically (deferred to Module 7 or out of scope for V1)
+
+Reserved for Module 7's curiosity track:
+
+- React Server Components architecture (rendering execution model)
+- RLS policy grammar as a concept (`USING` predicates, write-vs-read split, role-based policies)
+- Hook lifecycle internals
+- Server Action lifecycle internals
+- Async/await semantics (event loop, microtasks, promise mechanics)
+- TypeScript type system as a concept (`type` vs `interface`, generics, narrowing)
+- Drizzle / Prisma / Kysely ORM internals (the thread project uses the Supabase JS client directly, not an ORM)
+- Migration framework internals (Supabase migrations as a workflow vs. concept)
+
+### M4 SYMPTOM-only introduction rule (per Hard Rule 13)
+
+Same shape as M3.5's SYMPTOM-only rule, applied to the build phase. Every M4 Requires-callout term is introduced as a SYMPTOM (something the learner sees in the agent's diff or in the running app), never as a CONCEPT (something the learner understands from first principles).
+
+1. **The D-04 callout defines the symptom**, not the mechanism. Wrong: `**WITH CHECK** (a one-line definition: the SQL clause that enforces row-level write constraints by re-running the policy expression against the proposed row...)`. Right: `**WITH CHECK** (a one-line definition: a SYMPTOM-only term naming the safety latch on an UPDATE policy — scan for it after every UPDATE in the agent's migration; if absent, ask why, [→ GLOSSARY](../../GLOSSARY.md#with-check))`.
+2. **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
+3. **The smell-test inventory is the bridge between symptom and recovery.** Each Requires-callout term in M4 maps to one or more smell-tests in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson teaches the symptom; the smell-test inventory teaches the action.
+
+**M4 rewrite implications:** No lessons exist in M4 yet (Phases 3 and 4 are unplanned). When Phase 3 / 4 plan-phase runs, this contract is what the planner uses to keep the build-phase lessons on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
+
+---
+
+## Module 5 (M5) — Operating the build
+
+Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still SYMPTOM-only in framing; the term being Safe means "no callout needed on subsequent use," not "the learner now understands the mechanics").
+
+### Safe (no callout needed)
+
+- All M0–M4 Safe + all M4 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use)
+
+- **smell-test** — the named pattern the learner scans for to catch the agent missing something; first introduced in M3.5 L2 as observation skill, M5 makes it a NAMED reusable skill.
+- **watch-it-fail walkthrough** — a curated scenario where the agent fails on a specific known-bad pattern and the learner recovers via a smell-test + steer.
+- **multi-account testing** — the ritual of signing in as multiple test users (alice, bob) to surface bugs single-user testing misses; first-class skill per LESSON-13.
+- **recovery prompt** — the prompt the learner writes after a smell-test trips, naming what they observed and what they want next.
+- **regression** — when a working feature breaks because of an unrelated change; M5 introduces this in the context of "the agent's fix broke X."
+- **deploy preview** — the Vercel-generated preview URL for an unmerged branch; M5 surfaces it as a smell-test surface (you can sanity-check before merge).
+- **env-var leak** — a SYMPTOM: when a secret value appears in the public bundle or in a logged error.
+
+### Forbidden in M5 specifically
+
+Reserved for Module 7 / out of scope:
+
+- CI/CD pipeline internals (Vercel handles it; the learner doesn't configure it from scratch)
+- Bundle analysis / size optimization
+- Performance profiling
+- Edge runtime vs. Node runtime distinctions
+- Multi-region deployment
+
+**M5 SYMPTOM-only rule:** The three watch-it-fail walkthroughs (LESSON-13) name the failure mode + the smell-test + the recovery prompt. The walkthroughs do NOT teach RLS grammar, Postgres internals, or React reconciliation — they teach the OBSERVATION ("I saw X; I asked the agent Y; the agent shipped Z") + the RECOVERY pattern. See COURSE-AUTHORING.md Part 6 § Anchor lessons for which limit each walkthrough surfaces.
+
+---
+
+## Module 6 (M6) — After it's live
+
+Audience floor: M5 complete.
+
+### Safe (no callout needed)
+
+- All M0–M5 Safe + all M5 Requires-callout.
+
+### Requires-callout (D-04 pattern on first use)
+
+- **bug report** — introduce as "someone tells you the deployed app does something wrong; you reproduce it, then write a planning conversation."
+- **reproduce** (in the bug-reproduction sense) — "open the deployed app, follow the steps, confirm you see the same wrong thing."
+- **additive feature** — "a new feature you add to a working app without breaking the working parts."
+- **prompt injection** — SYMPTOM-only: "a user supplies input designed to confuse the agent or the app." The learner does NOT learn attack vectors as a concept; the lesson teaches the SMELL-TEST ("feed the deployed app input that looks like a command — does the agent's code sanitize it before storing or echoing it?").
+
+### Forbidden in M6 specifically
+
+Reserved for Module 7:
+
+- Prompt-injection attack-vector taxonomy (instruction injection, indirect injection, jailbreaking)
+- Security hardening as a discipline (CSP, CSRF, XSS, secret rotation)
+- Performance debugging (profilers, flame graphs)
+- Test pyramid / test strategy
+- Linting beyond the project's existing voice-lint
+- Type-safety as a concept
+
+**M6 SYMPTOM-only rule:** Prompt-injection is the headline M6 limit-and-smell-test pair. The lesson teaches WHAT THE SYMPTOM LOOKS LIKE (input that contains instructions; input that contains code; input that contains markup) and WHAT THE SMELL-TEST IS ("feed it to the deployed app; observe whether the agent's code sanitizes it before storing"). The lesson does NOT teach attack-vector taxonomies, mitigation algorithms, or threat-modeling.
+
+---
+
+## Module 7 (M7) — Where to go from here
+
+Audience floor: M6 complete.
+
+### Safe (no callout needed)
+
+- Everything from M0–M6.
+
+### Module 7 is the escape valve
+
+Module 7 is the only module where the **forbidden lists from prior modules** can be revisited as "where to go next" pointers. Topics deferred from earlier modules surface here as curated curiosity tracks. The rule for M7 lessons:
+
+1. **Topics are POINTERS, not curriculum.** A Module 7 lesson on "going deeper on RLS" links to canonical docs + names what's there; it does NOT replicate a Module 4 RLS deep-dive.
+2. **Each pointer carries an "is this for you?" framing.** Module 7 names the LEARNER PROFILE that should follow each pointer (e.g., "if you want to operate the thread project long-term, this RLS reading is the next 30 minutes"; "if you're never going to touch RLS again, skip this").
+3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other agents (Cursor, Cline, Continue) is Module 7's job.
+
+### Requires-callout (D-04 pattern on first use)
+
+- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents (Cursor, Cline, Continue, etc.)."
+- **curated resources** — Module 7's external pointers; date-stamped per the freshness model.
+
+### M7 IS where deeper explanation lives
+
+The "What NOT to Teach" appendix (COURSE-AUTHORING.md Part 7) repeatedly says "escape to Module 7 only" for traps like RLS grammar, async/await semantics, hook internals, hydration mechanism, bundler internals. Module 7 IS that escape. But Module 7 lessons are POINTERS, not deep-dives — the canonical content lives in external docs the learner is now equipped to read.
+
+---
+
 ## Maintenance
 
 When a new lesson introduces a new technical noun:
