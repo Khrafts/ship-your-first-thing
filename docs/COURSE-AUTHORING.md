@@ -15,14 +15,14 @@ A learner arriving at Module 0:
 - Has used a computer (browser, email, files).
 - May have viewed a page on github.com but never edited one.
 - Has never written production code.
-- Has not heard the words `HTTP`, `DNS`, `schema`, `SQL`, `JWT`, `RLS`, `localhost`, `CI/CD`, `magic link`, `NEXT_PUBLIC`, or `RLS` in a technical sense — and is not expected to.
+- Has not heard technical terms like `HTTP`, `SQL`, `schema`, `database`, `deployment`, `localhost`, `RLS`, `hydration` in a technical sense — and is not expected to. (`docs/audience-vocabulary.md` holds the authoritative per-module term list; this line is illustrative, not the contract.)
 
 Every technical noun in lesson prose must pass one of three tests:
 1. **Safe at this module** per `docs/audience-vocabulary.md` → use freely.
-2. **Requires-callout at this module** → first use must carry a D-04 vocab callout: `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#anchor))`. Subsequent uses in the same lesson can drop the callout.
-3. **Forbidden at this module** → don't use it. Defer to the module that introduces it. If the concept is unavoidable, use an analogy or write `"you'll meet this in Module N"`.
+2. **Requires-callout at this module** → first use must carry a D-04 vocab callout: `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#anchor))`. Subsequent uses in the same lesson can drop the callout. **This callout is per-lesson:** every lesson that uses the term needs its own first-use callout — even if an earlier lesson in the same module already introduced it. `voice-lint.sh` check #6 scans one lesson at a time, so "Lesson 4 already called out `npm`" does not cover Lesson 7.
+3. **Forbidden at this module** → don't use it. Defer to the module that introduces it. If the concept is unavoidable, use an analogy or write `"you'll meet this in Module N"`. **Anchor-lesson exception:** a failure-mode term may be Forbidden in a module's tier yet introduced by that module's *designated anchor lesson* — with a callout, in the "notice the name" framing. Non-anchor lessons defer. See Part 7 (AI-Limitation Pedagogy) for the named principle and the worked `hallucination` case.
 
-The contract is **incremental** — a term that's Safe in M0 is also Safe in M1+. A term that's Requires-callout in M0 becomes Safe in M1+ (the learner already met it). Don't redefine terms that are already established.
+The contract is **incremental** — a term that's Safe in M0 is also Safe in M1+. A term that's Requires-callout in M0 becomes Safe in M1+ (the learner already met it); **graduation is across modules, not within one** — within the module where a term is Requires-callout, every lesson still calls it out on first use. Don't redefine terms already established in a *prior* module.
 
 ### Locked analogies (D-07)
 
@@ -146,7 +146,48 @@ If you skip or shorten an anatomy element, add it to the front-matter `deviation
 
 ---
 
-## Part 3 — Diagrams in M1+
+## Part 3 — Narrative coherence: the module spine
+
+Tenet 4 ("Coherent through-line", `docs/TENETS.md`) locks the goal: a module is not a pile of individually-correct lessons — it is one journey the learner can feel. Each lesson visibly grows from the last, and the module states its arc out loud. This part operationalizes it.
+
+Without a stated arc, coherence is left to chance: each lesson passes its own checks, the analogies happen to recur, and the learner re-orients from scratch at the top of every lesson. The spine makes the through-line explicit — for the learner (orientation) and for the author (a target to honor).
+
+### The module spine
+
+Every module README carries a `## What this module builds` section near the top:
+
+- **One promise sentence** — what the learner can newly *do* by the end of the module.
+- **A per-lesson arc** — one bullet per lesson: `after this lesson you can ___ → sets up the next by ___`. The capability is observable; the link names how this lesson's payoff makes the next one possible.
+- **The thread** — the recurring picture (a locked analogy) or the loop step the module carries from first lesson to last.
+
+The spine is descriptive of the lessons that exist, not aspirational. When a lesson changes what it delivers, its spine bullet changes with it. The spine is learner-facing — it doubles as the module's orientation.
+
+### The "sets up the next" rule (in each lesson)
+
+Coherence lives in two anatomy elements:
+
+- **"Why this matters" (LESSON-02)** may name the prior-lesson payoff this lesson builds on — the felt continuation of the journey. Keep it inside the felt-pain template: the prior payoff is part of the felt rhythm, never a syllabus recap ("in Lesson 3 we covered X").
+- **"What you just did" (LESSON-10)** names what this lesson sets up next.
+
+This is narrative SETUP and CLOSURE — distinct from the anxiety-management forward-references that Part 1's pruning rule (D-A9..A12) deletes. The test: a setup/closure sentence tells the learner where the journey goes ("you can now X; next you'll use X to Y"); an anxiety-management forward-ref tells the learner not to worry ("don't stress about Z, it's covered later"). Keep the first; cut the second.
+
+### The coherence review question
+
+When authoring or auditing a lesson, ask: **does this lesson honor its module's spine — build on the named prior payoff, and set up the next?** If the lesson's "Why this matters" could open any lesson in any order, the through-line is missing — reconnect it to the prior payoff. If "What you just did" closes this lesson but leaves the next one unmotivated, name what it sets up.
+
+### Enforcement
+
+GUIDANCE — human review against the module spine. There is no lint for narrative coherence (a grep cannot tell a felt continuation from a syllabus recap). The `## What this module builds` arc in the README is the artifact a reviewer — or a future cross-course coherence pass — checks each lesson against.
+
+### Cross-references
+
+- `docs/TENETS.md` § Tenet 4 — the underlying principle
+- Part 1 § Forward-ref pruning (D-A9..A12) — the setup-vs-anxiety distinction
+- Each module's `README.md` `## What this module builds` — the spine itself
+
+---
+
+## Part 4 — Diagrams in M1+
 
 This is where Phase 1's UAT walkthrough surfaced the most subtle pedagogy bugs. Read this section carefully before adding or editing a Mermaid block.
 
@@ -251,7 +292,7 @@ By Module 2 the learner has met the M3 vocabulary at least once (via the M1 peek
 
 ---
 
-## Part 4 — Agent-Responsibility Checkpoint (M3.5 floor)
+## Part 5 — Agent-Responsibility Checkpoint (M3.5 floor)
 
 CLAUDE.md hard rule 12 locks the Agent-Responsibility Boundary. This part operationalizes it for lesson authors. Read it before authoring or revising any M3.5 lesson — and treat it as a load-bearing audit gate for any later module that surfaces code, errors, or framework mechanics to the learner.
 
@@ -306,7 +347,7 @@ Read every section against Q1–Q3 and the per-topic floor table. Quote each fai
 
 ---
 
-## Part 5 — Execution-Floor Boundary (M4+ build phases)
+## Part 6 — Execution-Floor Boundary (M4+ build phases)
 
 CLAUDE.md hard rule 13 translates the Agent-Responsibility Boundary from M3.5's **observation floor** to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
 
@@ -385,13 +426,13 @@ Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md smell-test inventory. As phases l
 ### Cross-references
 
 - CLAUDE.md hard rule 13 — the boundary itself
-- COURSE-AUTHORING.md Part 4 — the M3.5 observation floor this part extends
+- COURSE-AUTHORING.md Part 5 — the M3.5 observation floor this part extends
 - `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase smell-test inventory
 - M2 L5 + M3.5 L2 — gold-standard exemplars of the symptom-and-steer floor
 
 ---
 
-## Part 6 — AI-Limitation Pedagogy
+## Part 7 — AI-Limitation Pedagogy
 
 CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the six core agent limitations and their per-limit smell-test patterns.
 
@@ -427,6 +468,18 @@ For each limit, the lesson where it's first taught provides:
 - **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via `/clear` hygiene).
 - **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
 
+### The anchor-lesson exception (Forbidden-tier terms)
+
+A failure-mode term can be **Forbidden in a module's vocabulary tier yet still belong in that module** — introduced exactly once, by the module's *designated anchor lesson*, in the "notice the name" framing. This resolves the apparent collision between Tenet 1 (assume nothing; defer jargon) and Tenet 6 (arm the learner against failure modes).
+
+The rule:
+
+- **The anchor lesson introduces the term** with a D-04 callout + GLOSSARY anchor + a Hard-Rule-14 forward-reference to where the smell-test lives. It does not explain the mechanism beyond the callout's depth.
+- **Every other lesson in that module defers** — names the failure mode in plain words and forward-references the anchor (or the smell-test lesson). Using the term as a bare concept outside the anchor is a check #6 WARN and breaks the deferral the tier is protecting.
+- **`docs/audience-vocabulary.md` records the exception** on the term itself (e.g., `hallucination` is Forbidden in M2 *except* its anchor lesson M2 L6).
+
+**Worked case — `hallucination`.** The M2 tier marks `hallucination` Forbidden. But this Part designates **M2 L6** as the Tenet 6 anchor, so M2 L6 introduces `hallucination` with a callout and a forward-ref to M3 L3. A *different* M2 lesson that needs to warn about invented package names must NOT write "hallucination" — it says "the agent sometimes invents commands or packages that don't exist" and forward-references M2 L6 / M3 L3.
+
 ### Forward-reference template (Hard Rule 14 compliance)
 
 When a lesson names a failure mode but the smell-test lives elsewhere, use this exact shape:
@@ -439,7 +492,7 @@ This satisfies Hard Rule 14's forward-reference requirement. Vague "we'll cover 
 
 ### What NOT to do
 
-- Don't name hallucination in an M0 / M1 lesson. M2 L6 is the first surface.
+- Don't name hallucination outside its anchor lesson. M0/M1 don't surface it at all; within M2, only the anchor lesson (M2 L6) introduces the term — see "The anchor-lesson exception" above. Other M2 lessons defer in plain words.
 - Don't introduce a failure-mode term in a callout and then explain the underlying neural-network mechanics. The audience floor does not benefit from "attention head misalignment" or "next-token prediction without grounding."
 - Don't write "the agent might be wrong" without naming WHICH failure mode + the smell-test. Vague risk-naming inflates anxiety without arming the learner.
 - Don't conflate confident-wrong with hallucination. Confident-wrong is the *tone*; hallucination is the *content*. Both can occur independently.
@@ -453,7 +506,7 @@ This satisfies Hard Rule 14's forward-reference requirement. Vague "we'll cover 
 
 ---
 
-## Part 7 — What NOT to Teach (the temptation appendix)
+## Part 8 — What NOT to Teach (the temptation appendix)
 
 Authors and AI agents both tend to over-explain. The audience-vocabulary contract is the *positive* surface (what IS safe at each module); this appendix is the *negative* surface (high-temptation traps where authors add depth the learner does not need). Each entry names a topic, the temptation, and the right move.
 
@@ -545,15 +598,15 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 ### Cross-references
 
 - `docs/audience-vocabulary.md` — the positive surface (what IS safe at each module)
-- COURSE-AUTHORING.md Part 4 — Q1–Q3 audit questions for M3.5
-- COURSE-AUTHORING.md Part 5 — Q1-Exec / Q2-Exec / Q3-Exec audit questions for M4+
+- COURSE-AUTHORING.md Part 5 — Q1–Q3 audit questions for M3.5
+- COURSE-AUTHORING.md Part 6 — Q1-Exec / Q2-Exec / Q3-Exec audit questions for M4+
 - `docs/TENETS.md` § Tenet 5 — the philosophical foundation
 
 ---
 
-## Part 8 — The voice-lint contract
+## Part 9 — The voice-lint contract
 
-`scripts/voice-lint.sh` is the programmatic gate. It has seven checks; understand each before writing or editing lessons.
+`scripts/voice-lint.sh` is the programmatic gate. It has nine checks; understand each before writing or editing lessons.
 
 | # | Check | What trips it | Fixture |
 |---|-------|---------------|---------|
@@ -564,6 +617,14 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 | 5 | Broken relative path | A link from `modules/**/*.md` to a root cross-cutting doc (GLOSSARY, BUDGET, …) whose relative path doesn't resolve | `05-broken-glossary-relative-path.md` |
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
+| 8 | M3 dual-agent rendering (D-27) | An M3 lesson (`modules/03-the-loop/0[1-4]-*.md`) missing a standalone `Claude Code:` or `Gemini CLI:` label line | `08-m3-dual-agent.md` |
+| 9 | M3.5 diagnostic-framing (hard rule 12) | M3.5 prose drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — **WARN-only** | `09-m35-diagnostic-framing.md` |
+
+### Which lessons check #6 scans (module scope)
+
+Check #6 runs in the default scan against **M0, M1, M2, M3, and M3.5** lesson directories, in WARN mode. (M4–M7 directories don't exist yet; they're added to the runner when those modules ship.) Earlier the check covered only M0/M1 — meaning the vocabulary contract was unenforced from M2 onward, and a bare Forbidden term or a missing callout in an M2+ lesson would pass the gate silently. That gap is closed for the modules that exist; the contract is now machine-surfaced (as WARN) wherever there are lessons to scan.
+
+**Honest scope of enforcement.** #6 is WARN-only everywhere — it *surfaces* contract gaps, it does not block on them. For M4–M7 (no lessons yet) the vocabulary contract is human-review-only until those modules exist and join the runner. Tenet 3 (analogies) and Tenet 4 (coherence) have no lint at all — they are GUIDANCE, enforced by review. Don't read "exit 0" as "contract satisfied" for anything #6 doesn't yet cover.
 
 ### How the jargon-density check actually scopes
 
@@ -591,9 +652,9 @@ Check #6 emits both:
 - **WARN** lines for callout-missing cases (a Requires-callout term used without a callout) and bare Forbidden cases — these document the editorial backlog but do NOT block the gate.
 - **VIOLATION** lines would block — currently no VIOLATIONS are emitted from #6 by default (the WARN-only behavior is documented in `01-8-SUMMARY.md` as a deliberate choice to ship the lint without retroactively blocking on every legacy phrasing).
 
-Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier).
+Checks #1–#5, #7, and #8 always emit VIOLATIONS (no WARN tier). Check #9 (M3.5 diagnostic-framing) is WARN-only, like #6.
 
-**Exit code 0 is the gate.** Default scan with ~50 WARNs still exits 0.
+**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; see WHAT-CHANGED.md for the current baseline count.
 
 ### Self-test mode
 
@@ -601,7 +662,7 @@ Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier).
 
 ---
 
-## Part 9 — Authoring workflow checklist
+## Part 10 — Authoring workflow checklist
 
 Before opening a PR with a new or modified lesson:
 
@@ -621,7 +682,7 @@ Before opening a PR with a new or modified lesson:
 
 ---
 
-## Part 10 — Common authoring traps (and how to dodge them)
+## Part 11 — Common authoring traps (and how to dodge them)
 
 ### Trap: "I'll just use the technical word once"
 
@@ -661,7 +722,7 @@ The GLOSSARY anchor is the contract that ensures every term defined in a lesson 
 
 ---
 
-## Part 11 — When you're changing the contract itself
+## Part 12 — When you're changing the contract itself
 
 If you need to:
 - Add a new term to `docs/audience-vocabulary.md` → straightforward; just edit and commit.
@@ -674,7 +735,7 @@ Contract changes propagate. Always ask before changing locked decisions; always 
 
 ---
 
-## Part 12 — When you're an AI agent specifically
+## Part 13 — When you're an AI agent specifically
 
 A few things that catch agents more than humans:
 

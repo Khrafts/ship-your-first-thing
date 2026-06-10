@@ -47,5 +47,6 @@ deviations: []
 
 - **D-03:** This is the M0 baseline. M0 lessons that follow this variant do NOT need to declare deviations.
 - **Optional sections:** Loop check and going-deeper are optional in M0. If you include either, follow the same patterns as `lesson-template.md`.
+- **Tenet 4 — narrative coherence:** Honor the M0 module spine (`modules/00-welcome/README.md` § What this module builds). "Why this matters" may build on the prior lesson's payoff; "What you just did" names what's next. See `docs/COURSE-AUTHORING.md` Part 3.
 - **Audience-aware vocabulary contract (M0 baseline):** Module 0 lessons rewrite against the M0 section of `docs/audience-vocabulary.md`. The M0 audience has not met HTTP, DNS, server, database, schema, SQL, deployment, or any auth term — those are Forbidden in M0. The terms M0 introduces (markdown, Codespace, repo, terminal, code editor, AI coding agent, API key, free tier, rate limit, token) require the D-04 callout on first use. `scripts/voice-lint.sh` (Plan 01-8) verifies the contract.
 - **D-18:** SSG-portability rules apply.

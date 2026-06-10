@@ -4,6 +4,19 @@ Module 3 names the durable AI-coding loop end-to-end: **intent → ask → evalu
 
 Loop checks across the four lessons name `intent`, `ask`, `evaluate`, `steer` — one per lesson, in order (per D-24).
 
+## What this module builds
+
+By the end of this module, you can run the durable AI-coding loop — intent → ask → evaluate → steer — on any agent: knowing what you want, asking for it well, judging whether the output matches, and course-correcting when it doesn't.
+
+Each lesson builds on the last:
+
+- **Lesson 1 — Introducing the loop:** name the four loop steps in order and run one complete iteration on the scratch starter → sets up Lesson 2 by leaving the `ask` step as the one to sharpen first.
+- **Lesson 2 — Planning vs execution:** tell a "plan it, don't build it yet" ask apart from a "now do it" ask, and use four slash commands to keep a session's working memory in check → sets up Lesson 3 by giving you a plan to compare the agent's actual output against.
+- **Lesson 3 — Reading plans, recognizing wrong:** run five observation patterns to spot wrong output — including a hallucinated answer — without reading the code → sets up Lesson 4 by leaving you holding a wrong result you now need to fix.
+- **Lesson 4 — Steering and recovery:** write a three-part steer that course-corrects the agent, catch it over-engineering an open-ended ask, and know when `/clear` and a fresh start beats another steer → sets up Module 3.5, where you add the code-reading floor on top of this observation-only loop.
+
+The thread that ties it together: Module 3 is about the durable loop — intent → ask → evaluate → steer. The keystrokes change as agents evolve; the four steps do not. Name them once, on two different agents, and the skill carries to whatever agent comes next.
+
 ## Lessons in this module
 
 1. [`01-introducing-the-loop.md`](./01-introducing-the-loop.md) — intent → ask → evaluate → steer end-to-end *(Plan 02-09)*
