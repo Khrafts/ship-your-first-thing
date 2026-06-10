@@ -25,7 +25,7 @@ Picture the lobby directory again. You haven't walked into any of the offices on
 
 A **file tree** (a one-line definition: the hierarchical structure of files and folders in a project, displayed as an indented list in your editor's left panel, [→ GLOSSARY](../../GLOSSARY.md#file-tree)) is the first thing you see when you open a project. At a glance, it tells you the project's shape — what kind of app it is, where the pages live, where the reusable pieces live, what is configuration and what is content. This lesson teaches reading the shape without going into the contents.
 
-The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a **Next.js** (a one-line definition: a popular framework for building web apps; bundles React, routing, and server-rendering into one tool; the framework Phase 3 uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)) project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. That is the floor Module 3.5 holds throughout: pattern recognition first, deeper reading later (or never, for many of these patterns).
+The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a **Next.js** (a one-line definition: a popular framework for building web apps; the framework Phase 3 uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)) project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. The agent owns the deeper reading; your floor is recognizing the shape.
 
 ### The Next.js shape, walked through against the sample-app
 
@@ -47,9 +47,9 @@ modules/03.5-reading-code/sample-app/
 
 Walk through each entry in plain prose.
 
-`app/` is the Next.js **App Router** (a one-line definition: the newer routing system in Next.js, where files in the `app/` folder define URL routes; the older system used a `pages/` folder, [→ GLOSSARY](../../GLOSSARY.md#app-router)) folder. Pages live here; routing happens here. If a project has an `app/` folder, it is a Next.js app using the modern App Router shape (you will meet this shape again in Module 4 when you scaffold the thread project). Inside `app/`, the two files at the top — `layout.tsx` (a layout wrapper that sits around every page) and `page.tsx` (the home page) — are the minimum Next.js needs to render a site. Bigger projects have more pages inside `app/`, organized by URL path.
+`app/` is the floor labeled "pages and screens." If a project has an `app/` folder, treat it as the directory entry "this is where the user-facing pages live." You do not need to know how pages get wired up — that is the agent's job. The two files at the top of `app/` are `layout.tsx` (the wrapper around every page) and `page.tsx` (the home screen). Bigger projects have more files inside `app/`; the floor for you is "this folder is where pages live, and a `page.tsx` here is the home screen."
 
-`app/components/` is a convention. It is not a special Next.js folder; it is where developers PUT reusable UI pieces — buttons, headers, footers. Three files live here in this scaffold: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`. The names tell you what each one is (a button, a hero section, a footer). The `.tsx` extension says they are **TypeScript** (a one-line definition: a version of JavaScript with extra type information; TypeScript files end in `.ts` or `.tsx`, [→ GLOSSARY](../../GLOSSARY.md#typescript)) files that include some HTML-like syntax. You do not have to know how `.tsx` differs from `.ts` to spot the shape — a file that ends in `.tsx` is "a UI piece written in TypeScript."
+`app/components/` is a convention folder for reusable pieces — buttons, headers, footers. Three files live here in this scaffold: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`. Read the names; the names tell you what each piece is (a button, a hero section, a footer). The `.tsx` extension marks a file as "a UI piece" — that is the whole detail the floor needs.
 
 `package.json` is the dependency list from Module 2 Lesson 4. You read it. You do NOT run anything against this one — open `modules/03.5-reading-code/sample-app/README.md` and you will see the bold warning: "DO NOT run `npm install`." This scaffold is reference-only.
 
@@ -65,15 +65,13 @@ That is the whole detection: open the tree, look at the top level, see whether `
 
 ### Why this skill is so powerful
 
-Imagine you ask an agent in Phase 3 to add a sign-in button. The agent says it is done. You look at the file tree — and you see the agent created `pages/signin.tsx` instead of `app/signin/page.tsx`. WITHOUT reading any code, you have already caught the wrong-routing-system mistake. The fix is a steer: "Use the App Router shape — files go inside `app/`, not `pages/`." Module 3.5 Lesson 2 unpacks this "wrong file" detection more broadly.
+Imagine you ask an agent to add a sign-in button. The agent says it is done. You look at the file tree — and you see the agent created `pages/signin.tsx` instead of `app/signin/page.tsx`. WITHOUT reading any code, you have already caught the wrong-routing-system mistake. The fix is a steer: "files for new pages go inside `app/`, not `pages/`." You did not have to know WHY the project uses one folder rather than the other — only that the rest of the tree uses `app/`, so a new file in `pages/` does not fit.
 
 The same shape-reading skill catches other agent missteps. An agent that creates a `src/` folder inside a project that uses `app/` at the root has duplicated the layout. An agent that drops a `db/migrations/` folder into a project with no database is pulling in scaffolding the project does not need. You will not always know what every folder is for — but you will start to notice when a NEW folder appears that does not fit the rest of the tree's shape.
 
 ### What you do NOT need to know yet
 
-You do not need to know how the App Router differs from the older `pages/` system. You do not need to know what **JSX** (a one-line definition: the HTML-like syntax inside React component files; lets you write `<Button />` directly in code, [→ GLOSSARY](../../GLOSSARY.md#jsx)) is. You do not need to know what `tsconfig.json` actually controls. The detection skill is purely about shape — the tree LOOKS like a Next.js app; the tree has a smell; a new folder showed up that does not match the rest. The deeper "why" is optional Module 7 reading; the shape is the floor.
-
-This is the design of Module 3.5 in one sentence: detection first, explanation never required. If you ever want to go deeper, the agent itself is one ask away from explaining any of these conventions. The floor is just being able to recognize that something is worth asking about.
+The detection skill is purely about shape — the tree LOOKS like a particular kind of app; the tree has a smell; a new folder showed up that does not match the rest. Anything deeper (what a particular extension controls, how a particular routing system works) is the agent's job to know; you ask, the agent answers, and you do not need to absorb the answer to keep going. The floor is just being able to recognize that something is worth asking about.
 
 ## Exercise
 
@@ -100,11 +98,11 @@ Plan twenty to twenty-five minutes for this exercise.
 
 **Answer key (do not peek before guessing):**
 
-1. `app/` — the Next.js App Router folder; pages and routing live here.
+1. `app/` — the "pages and screens" folder; user-facing pages live here.
 2. `app/layout.tsx` — the root layout wrapper that every page sits inside.
 3. `app/page.tsx` — the home page (URL `/`).
 4. `app/components/` — a convention folder for reusable UI pieces.
-5. `app/components/InteractiveButton.tsx` — a button component that responds to clicks (Lesson 4 unpacks why this one is treated differently from the others).
+5. `app/components/InteractiveButton.tsx` — a button piece that responds to clicks.
 6. `app/components/StaticHero.tsx` — a hero section with no interactivity.
 7. `app/components/Footer.tsx` — the footer (no interactivity).
 8. `package.json` — the dependency list (Module 2 Lesson 4 covered this; the sample-app's README repeats the "do NOT run `npm install`" warning).
@@ -124,7 +122,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 7** ("where to go next") will eventually cover the App Router vs `pages/` routing split in depth, plus other Next.js conventions (`app/api/` for backend routes, dynamic routes like `app/[id]/page.tsx`, route groups). For now, recognizing the shape is the floor; the deeper explanations are optional Phase 3+ material.
+- **Module 7** ("where to go next") covers the deeper "why" behind file-tree conventions — how routing systems work, what folder names like `app/` vs `pages/` mean for the framework, what `tsconfig.json` actually controls. None of it is required to direct the agent at the M3.5 floor.
 - **The agent itself** can explain any convention you spot. "What is `tsconfig.json` for?" produces a usable answer in one ask. Reading the tree builds the queue of questions you might want to ask later — it does not require you to answer them yourself.
 
 ## Loop check

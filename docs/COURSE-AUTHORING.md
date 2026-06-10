@@ -251,7 +251,62 @@ By Module 2 the learner has met the M3 vocabulary at least once (via the M1 peek
 
 ---
 
-## Part 4 — The voice-lint contract
+## Part 4 — Agent-Responsibility Checkpoint (M3.5 floor)
+
+CLAUDE.md hard rule 12 locks the Agent-Responsibility Boundary. This part operationalizes it for lesson authors. Read it before authoring or revising any M3.5 lesson — and treat it as a load-bearing audit gate for any later module that surfaces code, errors, or framework mechanics to the learner.
+
+### The boundary
+
+The AI agent owns: **reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals.** The learner owns: **stating intent, checking the agent edited the right file, recognizing wrongness, asking for help.** Every lesson section is one role or the other — never both. Mechanics the agent owns must not be taught at the audience floor.
+
+This is structurally parallel to D-07 (locked analogies) and D-A17 (analogy two-test gate). All three are non-negotiable rails the lesson author works inside.
+
+### The three audit questions
+
+Run these before shipping any M3.5 or M3.5-adjacent lesson. Walk through each major section (Why this matters, Core read, Exercise, Loop check, What you just did):
+
+1. **Q1 — Does this section ask the learner to do something the agent will do better and faster?** If yes, rewrite to "ask the agent, then read the result back to your intent." Examples that fail Q1: "read the stack trace line by line"; "parse the error type to figure out which library raised it"; "diff the file changes yourself."
+2. **Q2 — Does this section explain mechanics (framework rules, rendering execution, error-message anatomy) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Examples that fail Q2: "Next.js renders this on the server before sending HTML to the browser"; "the bundler decides which files become client bundles"; "here is the four-part anatomy of an error message."
+3. **Q3 — Is any term used as a concept to understand from first principles when it should be used as a symptom only?** If yes, demote the framing — no "anatomy of", no "how X works", no "to debug X." Examples that fail Q3: introducing `hydration` with a paragraph about React's state-synchronization process; introducing `'use client'` with an explanation of why the server/client split exists.
+
+If a section fails any of Q1–Q3, rewrite to the symptom-and-steer floor. The deeper "why" belongs in Module 7's curiosity track, not in M3.5's body.
+
+### M3.5 Observation-Only Floor — per-topic hard examples
+
+| Topic (lesson) | Learner floor (you teach this) | Above floor — agent owns (do NOT teach this) |
+|---|---|---|
+| File tree (L1) | Names what a folder is for at a glance; spots a `pages/` + `app/` co-existence smell; reads filenames to infer purpose | URL routing, the App Router model, `.ts` vs `.tsx` distinction, why Next.js has two routing systems, what `tsconfig.json` controls |
+| Wrong-file edits (L2) | Compares intent vs filename in the diff summary; spots when the agent touched the wrong file | Reads the diff line-by-line; spots missing imports or wrong indentation; explains what changed inside each file |
+| Error → file pointer (L3) | Finds the first line that names YOUR file (typically a path starting with `./app/`); opens that file; pastes the full error back to the agent | Reads the stack trace line-by-line; explains error types (`TypeError`, `ReferenceError`); parses `line:column` coordinates; diagnoses root causes |
+| `'use client'` and the split (L4) | Pattern-matches "interactive names (`useState`, `onClick`) appear → file needs `'use client'`"; reads "hydration" error in browser console as a symptom; pastes the file pointer + error to the agent | Explains React Server Components architecture; describes server-rendering execution model; explains the hydration mechanism; explains the bundler split or partner directives like `'use server'` |
+
+### Symptom-only term introduction
+
+When you must name a term to ground a steer, the term is a SYMPTOM, not a concept. Three rules:
+
+- **The D-04 callout defines the symptom, not the mechanism.** Wrong: `**hydration** (a one-line definition: the process React uses to attach event listeners to server-rendered HTML, ...)`. Right: `**hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, ...)`.
+- **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is the floor and the ceiling.
+- **`docs/audience-vocabulary.md` carries the symptom annotation.** Each M3.5 Requires-callout term has a one-line "SYMPTOM-only" tag plus, if applicable, a `do-not-introduce` flag. See the M3.5 SYMPTOM-only addendum.
+
+### When you're authoring a new lesson
+
+Apply Q1–Q3 to each section *as you write*, not just at the end. Symptom-and-steer is harder to retrofit than to draft. If your draft started teaching mechanics and the lesson now feels short without them, that is the floor working; do not refill with junior-dev material.
+
+### When you're auditing an existing lesson
+
+Read every section against Q1–Q3 and the per-topic floor table. Quote each failure with file:line. The fix is always one of: (a) cut the failing prose entirely and link to Module 7 if the curiosity track is the right home; (b) rewrite the prose as symptom + steer; (c) reframe the section as "the agent does X; you do Y." Never paper over a Q2 failure with a vocab callout — D-04 callouts permit the term, not the explanation depth.
+
+### Cross-references
+
+- CLAUDE.md hard rule 12 — the boundary itself
+- `.planning/PROJECT.md` Key Decisions — the locked decision row
+- `docs/audience-vocabulary.md` — M3.5 SYMPTOM-only addendum + per-term flags
+- `scripts/voice-lint.sh` check #9 — WARN-level diagnostic-framing detection
+- M3.5 L2 (`02-spotting-wrong-file-edits.md`) — the M3.5 gold-standard exemplar (Phase 02.2, parallel to M2 L5 in Phase 02.1)
+
+---
+
+## Part 5 — The voice-lint contract
 
 `scripts/voice-lint.sh` is the programmatic gate. It has seven checks; understand each before writing or editing lessons.
 
@@ -301,7 +356,7 @@ Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier).
 
 ---
 
-## Part 5 — Authoring workflow checklist
+## Part 6 — Authoring workflow checklist
 
 Before opening a PR with a new or modified lesson:
 
@@ -321,7 +376,7 @@ Before opening a PR with a new or modified lesson:
 
 ---
 
-## Part 6 — Common authoring traps (and how to dodge them)
+## Part 7 — Common authoring traps (and how to dodge them)
 
 ### Trap: "I'll just use the technical word once"
 
@@ -361,7 +416,7 @@ The GLOSSARY anchor is the contract that ensures every term defined in a lesson 
 
 ---
 
-## Part 7 — When you're changing the contract itself
+## Part 8 — When you're changing the contract itself
 
 If you need to:
 - Add a new term to `docs/audience-vocabulary.md` → straightforward; just edit and commit.
@@ -374,7 +429,7 @@ Contract changes propagate. Always ask before changing locked decisions; always 
 
 ---
 
-## Part 8 — When you're an AI agent specifically
+## Part 9 — When you're an AI agent specifically
 
 A few things that catch agents more than humans:
 

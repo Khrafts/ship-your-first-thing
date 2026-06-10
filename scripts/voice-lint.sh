@@ -89,6 +89,7 @@ ROOT_ARTIFACTS=(
 )
 
 VIOLATION_COUNT=0
+WARN_COUNT=0
 
 # Portable path-resolver: given a directory (relative or absolute) + a relative target,
 # returns the normalized repo-root-relative path. Handles ./, ../, and plain segments.
@@ -692,6 +693,145 @@ scan_m3_dual_agent() {
   done
 }
 
+# M3.5 diagnostic-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
+#
+# M3.5 Observation-Only Floor: the learner SPOTS symptoms and ASKS the agent. The agent
+# OWNS reading errors, parsing code, framework mechanics, and diagnosing root causes.
+# Lessons that drift into "here's how to debug X" / "here's the anatomy of an error
+# message" / "common mistakes include..." / "renders on the server" cross the boundary.
+#
+# This check emits WARN-only signals (does not increment VIOLATION_COUNT) — the gate
+# stays open; reviewers triage. WARNs do increment WARN_COUNT for the self-test.
+#
+# Scope: modules/03.5-reading-code/0[1-4]-*.md only. README and non-numbered files are
+# excluded. M0/M1/M2/M3 lessons are out of scope by design (steering and recovery in M3
+# IS the learner's job; Anatomy-of-a-steer-ask in M3 L4 is correct in context).
+#
+# Patterns (case-insensitive, applied to stripped lesson body — frontmatter, fenced code,
+# blockquote, inline code, link destinations, D-04 callout definitions are stripped first):
+#
+#   9a: bare "stack trace" — M3.5 Forbidden (moved 2026-05-18); agent's job to read it
+#   9b: "common mistakes" — implies the learner debugs
+#   9c: "to debug" — implies the learner debugs
+#   9d: "if you see ... (error|exception|crash)" — diagnostic-framing
+#   9e: "renders on the server" — rendering-execution-model framing
+#   9f: "anatomy of" — concept-as-decomposition framing
+#   9g: "four-part" or "four-step" — over-decomposition of agent territory
+#   9h: ":N:M" line:column coordinate teaching adjacent to "line" or "column"
+#   9i: "diagnose" used outside an agent-framing context
+#
+# Agent-framing carve-out: if the line contains "the agent" (case-insensitive), the
+# match is suppressed. The rewrites legitimately say "the agent reads the stack trace"
+# — that is the boundary statement, not a violation.
+scan_m35_diagnostic_framing() {
+  local mode="$1"
+  echo "==> Scanning M3.5 lessons for diagnostic-framing patterns (WARN-only, CLAUDE.md hard rule 12)..."
+
+  local files=()
+  if [ "$mode" = "fixtures" ]; then
+    local f
+    for f in scripts/voice-lint-fixtures/09-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  else
+    local f
+    for f in modules/03.5-reading-code/0[1-4]-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  fi
+
+  [ "${#files[@]}" -eq 0 ] && return
+
+  local file stripped lineno content lc
+  for file in "${files[@]}"; do
+    # Per-line strip preserving line numbers. Emits "lineno:content" pairs for each line
+    # that should be scanned. Frontmatter / fenced code / blockquote lines emit "lineno:"
+    # (empty content) so they are skipped during scanning but line numbering stays stable.
+    stripped=$(awk '
+      BEGIN { in_front = 0; in_fence = 0 }
+      {
+        if (NR == 1 && $0 == "---") { in_front = 1; print NR ":"; next }
+        if (in_front) {
+          if ($0 == "---") in_front = 0
+          print NR ":"
+          next
+        }
+        if ($0 ~ /^```/) { in_fence = !in_fence; print NR ":"; next }
+        if (in_fence) { print NR ":"; next }
+        if ($0 ~ /^> /) { print NR ":"; next }
+        work = $0
+        # Strip inline code spans
+        gsub(/`[^`]*`/, "", work)
+        # Strip D-04 callout definition clauses: **term** (...)
+        gsub(/\*\*[^*]+\*\* *\([^)]*\)/, "", work)
+        # Strip image markdown !alt(dest)
+        gsub(/!\[[^]]*\]\([^)]*\)/, "", work)
+        # Strip Markdown link destinations: keep [text], drop (dest)
+        gsub(/\]\([^)]*\)/, "]", work)
+        print NR ":" work
+      }
+    ' "$file")
+
+    while IFS=: read -r lineno content; do
+      [ -z "$lineno" ] && continue
+      [ -z "$content" ] && continue
+
+      # Agent-carve-out: skip if line names "the agent" (the framing the rewrites use).
+      if printf '%s' "$content" | grep -iqE 'the agent'; then
+        continue
+      fi
+
+      lc=$(printf '%s' "$content" | tr '[:upper:]' '[:lower:]')
+
+      # 9a: bare "stack trace"
+      if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])stack trace([^a-z0-9_]|$)'; then
+        echo "WARN (m35-diagnostic-framing 9a): $file:$lineno: bare 'stack trace' — M3.5 Forbidden under CLAUDE.md hard rule 12; rephrase or scope to agent-framing context"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9b: "common mistakes"
+      if printf '%s' "$lc" | grep -qE 'common mistakes'; then
+        echo "WARN (m35-diagnostic-framing 9b): $file:$lineno: 'common mistakes' framing — implies the learner debugs; mechanics belong to the agent"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9c: "to debug"
+      if printf '%s' "$lc" | grep -qE 'to debug'; then
+        echo "WARN (m35-diagnostic-framing 9c): $file:$lineno: 'to debug' framing — debugging is the agent's job at the M3.5 floor"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9d: "if you see ... (error|exception|crash)" within ~60 chars
+      if printf '%s' "$lc" | grep -qE 'if you see [^.]{0,60}(error|exception|crash)'; then
+        echo "WARN (m35-diagnostic-framing 9d): $file:$lineno: 'if you see X error/exception/crash' framing — diagnostic-teach posture; rewrite as symptom + ask-the-agent"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9e: "renders on the server"
+      if printf '%s' "$lc" | grep -qE 'renders on the server'; then
+        echo "WARN (m35-diagnostic-framing 9e): $file:$lineno: 'renders on the server' framing — rendering-execution-model is Module 7 territory, not M3.5"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9f: "anatomy of"
+      if printf '%s' "$lc" | grep -qE 'anatomy of'; then
+        echo "WARN (m35-diagnostic-framing 9f): $file:$lineno: 'anatomy of' framing — concept-as-decomposition implies learner parses; agent's job"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9g: "four-part" or "four-step"
+      if printf '%s' "$lc" | grep -qE 'four-part|four-step'; then
+        echo "WARN (m35-diagnostic-framing 9g): $file:$lineno: 'four-part/four-step' framing — over-decomposition of agent territory"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9h: ":N:M" coordinate adjacent to "line" or "column"
+      if printf '%s' "$lc" | grep -qE ':[0-9]+:[0-9]+' && printf '%s' "$lc" | grep -qE '(line|column)'; then
+        echo "WARN (m35-diagnostic-framing 9h): $file:$lineno: 'line:column' coordinate teaching — coordinates are the agent's reading; the learner names the file path, not the numbers"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      # 9i: "diagnose" (not preceded by "the agent" — already filtered by carve-out)
+      if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])diagnose([^a-z0-9_]|$)'; then
+        echo "WARN (m35-diagnostic-framing 9i): $file:$lineno: 'diagnose' framing — diagnosis is the agent's job at the M3.5 floor"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+    done <<< "$stripped"
+  done
+}
+
 # ===== Self-test mode =====
 # Each fixture in scripts/voice-lint-fixtures/ MUST trip the check it's designed for.
 # We run each scan_* function with mode="fixtures" and capture the violation count delta;
@@ -778,6 +918,18 @@ run_self_test() {
     echo "  self-test OK: m3-dual-agent fixture tripped $((after - before)) violations"
   fi
 
+  # M3.5 diagnostic-framing (fixture 09) — WARN-only check; assert >= 3 WARNs emitted.
+  before=$WARN_COUNT
+  scan_m35_diagnostic_framing fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$WARN_COUNT
+  if [ "$((after - before))" -lt 3 ]; then
+    echo "SELFTEST FAIL: m35-diagnostic-framing fixture (09) tripped only $((after - before)) WARN(s); expected >= 3"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: m35-diagnostic-framing fixture tripped $((after - before)) WARNs"
+  fi
+
   if [ "$fail" -ne 0 ]; then
     echo "==> voice-lint.sh --self-test: FAIL"
     exit 1
@@ -799,6 +951,7 @@ scan_broken_relative_paths default
 scan_jargon_density default
 scan_mermaid_br default
 scan_m3_dual_agent default
+scan_m35_diagnostic_framing default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"

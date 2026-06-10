@@ -17,17 +17,17 @@ By the end of this lesson, you will be able to look at a Next.js file and recogn
 
 ## Why this matters
 
-Picture an art gallery. On one wall, framed pictures — painted once, framed once, hung once; they sit there and they don't change while you're standing in front of them. Next to them, a touchscreen kiosk: visitors tap to scroll commentary, vote on their favorite, leave a note. Both belong; both do different jobs. In a Phase 3 project, a button that silently does not respond — or a "hydration failed" error in the browser console — is usually the same root cause: a file that needs to be a touchscreen is being hung in a frame's slot. This lesson teaches you to spot which files are frames, which are touchscreens, and the one-line label (`'use client'`) that moves a file from one to the other — a 30-second fix instead of an hour of confusion.
+Picture an art gallery. On one wall, framed pictures — painted once, framed once, hung once; they sit there and they don't change while you're standing in front of them. Next to them, a touchscreen kiosk: visitors tap to scroll commentary, vote on their favorite, leave a note. Both belong; both do different jobs. In a real project, a button that silently does not respond — or a "hydration failed" error in the browser console — is usually the same root cause: a file that needs to be a touchscreen is being hung in a frame's slot. This lesson teaches you to spot which files are frames, which are touchscreens, and the one-line label (`'use client'`) that moves a file from one to the other — a 30-second fix instead of an hour of confusion.
 
 ## Core read
 
-Picture the gallery wall once more. Framed pictures sit there, prepared once and never changing in front of you. The touchscreen kiosk is alive — it accepts taps, scrolls, runs commentary loops. You couldn't replace a frame with a touchscreen (you'd lose the static picture); you couldn't replace a touchscreen with a frame (you'd lose the interactivity). Both belong on the wall; both do different work. Next.js builds its pages on the same shape: every file is either a frame or a touchscreen. **You don't need to know WHY frames and touchscreens render differently to spot which is which** — that's the deeper Module 7 question.
+Picture the gallery wall once more. Framed pictures sit there, prepared once and unchanging. The touchscreen kiosk is alive — taps, scrolls, live commentary. Both belong on the wall; both do different work. In a project, every file is either a frame or a touchscreen. The skill is spotting which is which; the agent handles the rest.
 
-**Next.js** (a one-line definition: a popular framework for building web apps; bundles React, routing, and server-rendering into one tool; the framework you will use in Phase 3, [→ GLOSSARY](../../GLOSSARY.md#next-js)) splits every file into one of two categories. A **server component** (a one-line definition: a Next.js file that renders on the server before sending HTML to the browser; the default in App Router, [→ GLOSSARY](../../GLOSSARY.md#server-component)) handles static content — text, layouts, anything without interactivity. That's the framed picture on the wall. A **client component** (a one-line definition: a Next.js file that runs in the browser and supports interactivity like state, click handlers, and forms, [→ GLOSSARY](../../GLOSSARY.md#client-component)) handles the parts of the page that respond to user input. That's the touchscreen. The two categories live in the same project but are rendered differently. The split matters because if you put interactivity inside a Server Component file — a touchscreen hung in a frame's slot — it silently does not work.
+A **server component** (a one-line definition: the symptom-level name for a file in the "framed picture" category — static content, no interactivity, [→ GLOSSARY](../../GLOSSARY.md#server-component)) is the framed picture: text, layouts, anything that does not respond to clicks. A **client component** (a one-line definition: the symptom-level name for a file in the "touchscreen" category — interactivity, state, click handlers, [→ GLOSSARY](../../GLOSSARY.md#client-component)) is the touchscreen: it responds to user input. Both live in the same project. If a file with interactivity is left as a server component — a touchscreen hung in a frame's slot — the interactivity silently does not work.
 
 ### How you mark a file as a Client Component
 
-You tell Next.js which category a file is in via a one-line **directive** (a one-line definition: a special single line at the top of a file that changes how the file is treated by its framework, [→ GLOSSARY](../../GLOSSARY.md#directive)) on the very first line. The directive is **`'use client'`** (a one-line definition: a directive that flips a Next.js file from Server Component to Client Component; goes on line 1 of the file, above all imports, [→ GLOSSARY](../../GLOSSARY.md#use-client)). On the gallery wall, `'use client'` is the label that moves a file from "frame" to "touchscreen." One line. Single quotes (or double — both work; this course uses single per the Next.js docs). Nothing else. If a file needs to be a Client Component, it has `'use client'` on the first line; otherwise, the directive is absent and the file stays a Server Component.
+You tell the framework which category a file is in via a one-line **directive** (a one-line definition: a special single line at the top of a file that changes how the file is treated by its framework, [→ GLOSSARY](../../GLOSSARY.md#directive)) on the very first line. The directive is **`'use client'`** (a one-line definition: the label that marks a file as a touchscreen — a Client Component; goes on line 1 of the file, [→ GLOSSARY](../../GLOSSARY.md#use-client)). On the gallery wall, `'use client'` is the label that moves a file from "frame" to "touchscreen." One line. Single quotes (or double — both work; this course uses single). Nothing else. If a file needs to be a touchscreen, it has `'use client'` on the first line; otherwise, the directive is absent and the file stays a frame.
 
 ### Two real files, side by side
 
@@ -61,7 +61,7 @@ export default function StaticHero() {
 }
 ```
 
-Both files render parts of a webpage, but they sit in different categories. `InteractiveButton` uses `useState` (state that holds a counter) and an `onClick` handler (the button responds to clicks). Both pieces are interactivity, and both require the file to be a Client Component — hence `'use client'` on line 1. `StaticHero` has no state and no event handlers. It is pure **JSX** (a one-line definition: the HTML-like syntax inside React component files; lets you write `<Button />` directly in code, [→ GLOSSARY](../../GLOSSARY.md#jsx)): a heading and a paragraph. Next.js renders it on the server and sends the resulting HTML to the browser. The first line of the file determines which category it falls into.
+Both files render parts of a webpage, but they sit in different categories. `InteractiveButton` uses `useState` (a counter) and an `onClick` handler (responds to clicks). Both are interactivity, so this file is a touchscreen — `'use client'` on line 1. `StaticHero` has no state and no event handlers — just a heading and a paragraph. It stays a framed picture. The first line of the file decides which category it falls into.
 
 ### The symptom — what tells you a directive is missing
 
@@ -70,7 +70,7 @@ Here is how a missing `'use client'` shows up. If a file has an interactive elem
 1. **The element silently does not respond.** You click the button; nothing happens. No error message. The page looks fine.
 2. **A "hydration" error appears** in the browser console (or in a Next.js error overlay).
 
-The technical name for the failure in case 2 is **hydration** (a one-line definition: in this lesson's floor, the symptom term for "the server-rendered HTML and the client-rendered HTML do not agree" — most often caused by a file that needs `'use client'` missing the directive, [→ GLOSSARY](../../GLOSSARY.md#hydration)). On the gallery wall: this is a touchscreen hung in a frame's slot with no power running to it — it looks the part but does not respond to taps. The hydration error is the gallery's docent telling you a touchscreen-pretending-to-be-a-frame can't be seated correctly in either spot. The deeper "why hydration exists" explanation belongs in Module 7's where-to-go-next track. For M3.5's floor, hydration is just the second of two symptoms of the same bug.
+The second symptom is a "hydration" error in the browser console. **hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, [→ GLOSSARY](../../GLOSSARY.md#hydration)) is the term you will see in the error text. When you see a hydration error, treat it as a synonym for "this file needs `'use client'`." On the gallery wall: a touchscreen hung in a frame's slot with no power — looks the part but does not respond to taps. The agent owns the underlying mechanic; you own the pattern match.
 
 ### The 30-second detection rule
 
@@ -95,18 +95,7 @@ The agent does the work; you have just gotten it to the right diagnosis.
 
 ### What you do NOT do in this lesson
 
-You do not learn why **React Server Components** (a one-line definition: an architectural model in React for components that render entirely on the server; the deeper "why" behind the server/client split that `'use client'` toggles; covered in depth in Module 7, [→ GLOSSARY](../../GLOSSARY.md#react-server-components)) exist or what trade-offs they were designed to solve. You do not learn what "rendering on the server" actually does inside Next.js, or how the bundler decides which files become client bundles versus server bundles. You do not learn what hydration does step-by-step inside the browser. You do not learn the partner directive `'use server'` (which marks Server Actions). All of those are deeper skills — they belong to Module 7's where-to-go-next track. The thread project in Phases 3 and 4 does not require any of them. Spotting the symptom and writing the steer is enough.
-
-### What you just closed
-
-This is the last M3.5 lesson and the last lesson of Phase 2. You now have four observational skills:
-
-1. Reading a file tree at a glance (Lesson 1).
-2. Spotting wrong-file edits via the diff summary (Lesson 2).
-3. Tracing an error message back to a file pointer (Lesson 3).
-4. Recognizing the `'use client'` symptom (this lesson).
-
-Phase 3 (Module 4) starts the thread project — a real Next.js + Vercel build. You will use all four observational skills daily. Together with the M3 loop, the four skills are the recovery toolkit.
+The deeper mechanics — why the split exists, what the bundler does, the partner directive `'use server'`, how hydration works under the hood — are the agent's job and Module 7's curiosity track. The thread project does not require any of them. Spotting the symptom and writing the steer is the floor.
 
 ## Exercise
 
@@ -125,15 +114,15 @@ Plan twenty to twenty-five minutes for this exercise. It uses your AI agent (Cla
    - Anything that sounds wrong, confusing, or that goes deeper than "the file uses interactivity, so it needs the directive."
    - One sentence summarizing the agent's explanation in your own words.
 
-5. **Compare with the answer key below.** Note any meaningful difference between what the agent said and what the lesson says. If the agent added a first-principles React Server Components explanation, that is beyond M3.5's floor — not wrong, just deeper than this lesson needs.
+5. **Compare with the answer key below.** Note any meaningful difference between what the agent said and what the lesson says. If the agent added a first-principles framework-internals explanation, that is beyond M3.5's floor — not wrong, just deeper than this lesson needs.
 
 **Answer key — read AFTER you have done step 4:**
 
-`InteractiveButton.tsx` has `'use client'` on line 1 because it uses `useState` (state that holds a counter) and an `onClick` handler (the button responds to clicks). Both pieces of interactivity are client-only — they need to run in the browser. The `'use client'` directive tells Next.js: this file is a Client Component; ship its code to the browser.
+`InteractiveButton.tsx` has `'use client'` on line 1 because it uses `useState` (a counter) and an `onClick` handler (responds to clicks). Interactivity makes the file a touchscreen — `'use client'` is the label that puts it in the touchscreen category.
 
-`StaticHero.tsx` does not have `'use client'` because it has no state and no event handlers. It is pure JSX — a heading and a paragraph. Next.js renders it on the server before sending HTML to the browser; no browser-only code is involved. Leaving the directive off is the default; the file stays a Server Component.
+`StaticHero.tsx` does not have `'use client'` because it has no state and no event handlers — just a heading and a paragraph. With no interactivity, the file stays a framed picture (the default category). Leaving the directive off is correct.
 
-**Why this matters:** if you ever see an interactive button that silently does not respond OR a "hydration failed" error in the browser console, the most common cause is a Client Component file that is missing `'use client'` on line 1.
+**Why this matters:** if you ever see an interactive button that silently does not respond OR a "hydration failed" error in the browser console, the most common cause is a touchscreen file that is missing `'use client'` on line 1.
 
 ## Checkpoint
 
@@ -146,7 +135,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 7** ("where to go next") will eventually cover the architectural "why" of React Server Components, the partner directive `'use server'` (which marks Server Actions), and the bundler-level mechanics of how files become server bundles versus client bundles. For everything through Phase 5, the floor in this lesson plus the ask-the-agent skill is enough.
+- **Module 7** ("where to go next") covers the deeper "why" behind the server/client split — the architectural model, the partner directive `'use server'`, and the bundler mechanics that decide which files end up where. None of it is required to direct the agent at the M3.5 floor.
 - **The agent itself** is one ask away from any framework-specific question you have. The pattern you used in this lesson — open the relevant files, ask "explain in plain English, three sentences max", compare with what you expected — works for any new piece of vocabulary the thread project throws at you.
 
 ## Loop check
@@ -155,7 +144,7 @@ Optional, only if you are curious:
 
 ## What you just did
 
-You closed Module 3.5 and Phase 2. You learned the symptom of a missing `'use client'` directive, asked your agent to explain the difference between an interactive file and a static one against two real example files, compared the agent's answer to a known-good answer key, and saw what a non-coder-grade detection floor looks like for framework-specific patterns. Phase 3 (Module 4) starts the thread project, where you will use the M3 loop plus the M3.5 observational floor every day.
+You closed Module 3.5 and Phase 2. You learned the symptom of a missing `'use client'` directive (interactive element silently does not respond, OR a hydration error in the browser console), asked your agent to explain the difference between an interactive file and a static one against two real example files, and compared the agent's answer to a known-good answer key. Together with file-tree reading (L1), wrong-file detection (L2), and error-to-file-pointer tracing (L3), you now have the four M3.5 observational skills. Phase 3 starts the thread project, where you will use the M3 loop plus the M3.5 floor every day.
 
 ## Navigation
 

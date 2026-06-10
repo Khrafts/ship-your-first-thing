@@ -181,21 +181,19 @@ Audience floor: M3 complete. Every M3 Requires-callout term is now Safe.
 ### Requires-callout (D-04 pattern on first use)
 
 - file tree
-- stack trace
-- error message anatomy (note: introduced as a phrase, not "stack trace" — D-33 floor: the lesson teaches finding the first line that mentions YOUR file, not line-by-line stack-trace parsing)
-- `'use client'`
-- server component
-- client component
-- hydration (introduced as a SYMPTOM term — "hydration error in plain English" — per D-33 floor; NOT as a technical explanation)
-- directive (React directive sense)
+- `'use client'` (SYMPTOM-only: introduce as "the label you put at the top of a file to mark it as interactive"; never explain the rendering split from first principles)
+- server component (SYMPTOM-only: introduce as "the symptom-level name for a file in the 'framed picture' category — static, no interactivity"; never explain rendering execution)
+- client component (SYMPTOM-only: introduce as "the symptom-level name for a file in the 'touchscreen' category — interactivity, state, click handlers"; never explain rendering execution)
+- hydration (SYMPTOM-only: introduce as a message in the browser console meaning "the server-rendered HTML and the browser-rendered HTML do not agree" — usually a file that needs `'use client'` missing the directive; never explain the hydration process itself)
+- directive (React directive sense, in the `'use client'` context only)
 - file panel
 - diff summary
-- Next.js (framework name; introduced as "the framework Phase 3 uses" at first use in M3.5 L1; readers do not need to know Next.js internals to read the file-tree shape)
-- React (library name; introduced as "the JavaScript UI library Next.js is built on" at first use in M3.5 L3; readers do not need to know React internals to spot a stack-trace `react-dom` line as not-their-file)
-- TypeScript (language name; introduced at first use in M3.5 L1 alongside the `.tsx` extension; readers do not need to write TypeScript at the M3.5 floor)
-- JSX (syntax name; introduced at first use in M3.5 L1 as "the HTML-like syntax inside React component files"; readers do not need to write JSX at the M3.5 floor)
-- App Router (Next.js routing-system name; introduced at first use in M3.5 L1 as "the newer routing system in Next.js")
-- React Server Components (architectural-model name; introduced at the "what this lesson does NOT teach" floor in M3.5 L4 as the deeper Module 7 topic)
+- Next.js (framework name; introduce at first use in M3.5 L1 as "the framework Phase 3 uses"; readers do not need to know Next.js internals to read the file-tree shape)
+- React (library name; introduce only when an error message references `react-dom` and the learner needs a label for "library code"; readers do not need to know React internals at the M3.5 floor)
+- TypeScript (language name; do-not-introduce in current M3.5 lessons — the rewrites teach `.tsx` as "a UI piece" without naming the language as a learner concept)
+- JSX (syntax name; **do-not-introduce** in current M3.5 lessons — surfaces only in Going-deeper Module 7 pointers)
+- App Router (Next.js routing-system name; **do-not-introduce** in current M3.5 lessons — the floor is "this is where pages live," not "this is the App Router model")
+- React Server Components (architectural-model name; **do-not-introduce** in current M3.5 lessons — surfaces only in Going-deeper Module 7 pointers)
 
 ### Forbidden (deferred to a later module)
 
@@ -203,7 +201,20 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. D-33 floor is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT extend `stack trace` into line-by-line parsing. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4).
+**Forbidden in M3.5 specifically** (moved from Requires-callout 2026-05-18 under CLAUDE.md hard rule 12 / Agent-Responsibility Boundary):
+
+- stack trace — the term anchors line-by-line trace parsing, which is the agent's job. M3.5 L3 teaches "find the first line that names YOUR file" without naming the trace as a unit-of-skill. May reappear in Module 7 where deeper code-literacy is on the floor.
+- error message anatomy — the term encodes the four-part diagnostic frame the M3.5 L3 rewrite removed. The learner does not parse error structure; the agent does. May reappear in Module 7.
+
+### M3.5 SYMPTOM-only introduction rule (added 2026-05-18)
+
+Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learner sees or types as a label), never as a CONCEPT (something the learner understands from first principles). Three rules:
+
+1. **The D-04 callout itself defines the symptom, not the mechanism.** Wrong: `**hydration** (a one-line definition: the React process that attaches event listeners to server-rendered HTML, ...)`. Right: `**hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, ...)`.
+2. **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is both floor and ceiling.
+3. **`do-not-introduce` terms remain in the contract but are not surfaced in M3.5 lesson bodies.** They exist for Module 7 and future modules. Treat them as reserved.
+
+**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. The Agent-Responsibility Boundary (CLAUDE.md hard rule 12; `docs/COURSE-AUTHORING.md` Part 4) is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level, and the surrounding prose cannot exceed the callout depth. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT use `stack trace` or `error message anatomy` in body prose. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4). `scripts/voice-lint.sh` check #9 emits WARN-level signals when M3.5 lessons drift into agent-territory framing.
 
 ---
 

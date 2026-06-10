@@ -185,7 +185,7 @@ A three-digit number summarizing how an HTTP request went. *Example: `200 OK` me
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
 ### hydration
-In Module 3.5's floor, the symptom term for "the server-rendered HTML and the client-rendered HTML do not agree." Most often caused by a Client Component file missing `'use client'` on line 1. *Example: a "Hydration failed" error in the browser console is usually a missing `'use client'` directive.*
+SYMPTOM-only at the M3.5 floor: a message in the browser console meaning "the page does not agree." Treat as a synonym for "a touchscreen file (one with interactivity) is missing the `'use client'` label on line 1." The deeper mechanic — how the framework reconciles server-rendered and client-rendered output — is the agent's job and Module 7's curiosity track. *Example: a "Hydration failed" error in the browser console is usually a touchscreen file missing `'use client'`.*
 Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
 
 ## I

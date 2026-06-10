@@ -11,6 +11,35 @@ Each entry has the format:
 
 ---
 
+## 2026-05-18 — Phase 02.2 Wave 0: Agent-Responsibility Boundary lock
+
+**What changed:** Locked the Agent-Responsibility Boundary as a load-bearing decision across CLAUDE.md, `docs/COURSE-AUTHORING.md`, `docs/audience-vocabulary.md`, `lesson-template.md`, and `scripts/voice-lint.sh`. The boundary answers a question the course never made explicit before: **the AI agent owns** reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals. **The learner owns** stating intent, checking the agent edited the right file, recognizing wrongness, asking for help. Every lesson section is one role or the other — never both. The boundary is operationalized by three audit questions (Q1–Q3) lesson authors run before shipping any M3.5 or M3.5-adjacent lesson.
+
+**Why now:** Post-Phase-02.1 audit found three M3.5 lessons drifted from the locked D-33 observation-only floor into junior-dev territory: **L1** explains URL routing and the App Router model as foundational concepts; **L3** teaches stack-trace anatomy and `:line:column` parsing; **L4** teaches the server/client rendering execution model as a first principle. Root cause is structural: D-33 lived only in `02-CONTEXT.md` as guidance, not in CLAUDE.md hard rules; voice-lint enforces vocab callouts but not explanation depth; the audience-vocabulary contract classifies terms but does not constrain how deeply the lesson body explains them. Wave 0 closes the structural hole; Wave 1 rewrites L1/L3/L4 under the new contract.
+
+**Affected artifacts (Wave 0):**
+- `CLAUDE.md` — Hard Rule 12 (Agent-Responsibility Boundary).
+- `docs/COURSE-AUTHORING.md` — new Part 4 (Agent-Responsibility Checkpoint + M3.5 Observation-Only Floor table). Existing Parts 4–8 renumber to 5–9.
+- `docs/audience-vocabulary.md` — M3.5 SYMPTOM-only addendum + four classification moves: `stack trace` and `error message anatomy` move Requires-callout → Forbidden in M3.5; `'use client'`, `server component`, `client component`, `hydration` annotated SYMPTOM-only; `TypeScript`, `JSX`, `App Router`, `React Server Components` annotated `do-not-introduce` in current M3.5 lessons (reserved for Module 7).
+- `lesson-template.md` — Agent-Responsibility Checkpoint margin comment in Core read template + new Authors' notes bullet.
+- `.planning/PROJECT.md` — Key Decisions row (gitignored, persists locally for agents reading the file).
+- `.planning/ROADMAP.md` — Phase 02.2 widened: header renamed to "Agent-Responsibility Boundary lock + M3.5 contract enforcement", scope now includes Wave 0 contract lock + Wave 1 lesson rewrites + Wave 2 phase close. Original framework-name lint scope work (Hole 2) deferred to Wave 3.
+- `scripts/voice-lint.sh` — check #9 `scan_m35_diagnostic_framing` (WARN-only) + new `WARN_COUNT` global. Patterns 9a–9i catch diagnostic-framing drift in M3.5 body prose; agent-carve-out skips lines containing "the agent" (the rewrites legitimately say "the agent reads the stack trace"). Scope is `modules/03.5-reading-code/0[1-4]-*.md` only; M3 L4's "Anatomy of a steer ask" heading is out of scope by design.
+- `scripts/voice-lint-fixtures/09-m35-diagnostic-framing.md` (new fixture; trips ≥3 WARNs in self-test, currently 8).
+- `scripts/voice-lint-fixtures/README.md` — row 9.
+
+**M3.5 L2 promotion.** `modules/03.5-reading-code/02-spotting-wrong-file-edits.md` passes all three audit questions (Q1–Q3) without changes and is the M3.5 gold-standard exemplar going forward (parallel to M2 L5's role in Phase 02.1's D-A16). DO-NOT-TOUCH for the rest of Phase 02.2.
+
+**Current state of voice-lint.** `./scripts/voice-lint.sh` exits 0 (PASS). Check #9 emits 4 WARNs against M3.5 L3 (3× bare `stack trace`, 1× `diagnose`) — these will go to zero after the Wave 1 L3 rewrite. L1 and L4 emit no WARNs from check #9; their drift is concept-explanation depth rather than specific framing words, which the new Part 4 audit questions handle by hand. `./scripts/voice-lint.sh --self-test` exits 0 (all 9 fixtures trip their target checks).
+
+**What contributors should do:** Read CLAUDE.md hard rule 12 and `docs/COURSE-AUTHORING.md` Part 4 before authoring or revising any M3.5 lesson — and treat it as the audit gate for any later module that surfaces code, errors, or framework mechanics. When you see a check #9 WARN, decide between (a) rewrite the line as symptom + steer, (b) wrap the agent's job in agent-framing language ("the agent reads X"), or (c) cut the line entirely if it teaches mechanics the agent owns. Voice-lint WARNs do not block the gate; they document the editorial backlog.
+
+**What does NOT change:** The core audience-floor contract (never written production code, computer-comfortable, Module 7 for deeper knowledge). The lesson anatomy. The vocabulary callout pattern. The M3.5 sample-app scaffold. The locked analogies D-40..D-48 — all survive Wave 1 unchanged. M3.5 L2 (the new gold-standard exemplar). Any M0/M1/M2/M3 lesson prose.
+
+**Phase 02.2 Wave 1 close (appended 2026-05-18).** L1, L3, and L4 rewritten under the Agent-Responsibility Boundary. L1: cut App Router / URL-routing / TypeScript / JSX D-04 callouts; reframed Core read body around "this folder is where pages live" (office-directory analogy preserved). L3: cut stack-trace + error-message-anatomy D-04 callouts + four-part anatomy rule + `:line:column` parsing; reframed around "find the first line whose path starts with `./app/`, paste the full error to your agent" (receipt analogy preserved). L4: cut the WHY-the-split explanation + rendering-execution model + JSX callout + React Server Components callout; rewrote server-component / client-component / hydration D-04 callouts as SYMPTOM-only; collapsed "What you just closed" into What-you-just-did breadcrumb (framed-picture-vs-touchscreen analogy preserved). `GLOSSARY.md` `### hydration` entry rewritten to symptom-only definition. Voice-lint check #9 now emits zero WARNs against M3.5 (was 4 against L3 before the rewrite). The L1→L2→L3→L4 prev/next chain is unbroken; the four-analogy narrative arc (office directory → contractor → receipt → gallery) reads coherently. M3.5 L2 untouched.
+
+---
+
 ## 2026-05-14 — Phase 2 close (Modules 2, 3, 3.5 shipped)
 
 **What changed:** Phase 2 (Toolchain & The Loop) closed. Three modules shipped — Module 2 (6 lessons: IDE, terminal, runtime/Node, npm, git+GitHub, AI coding agents), Module 3 (4 lessons, dual-agent: Claude Code + Gemini CLI in parallel per D-27 / LESSON-14), and Module 3.5 (4 lessons, strictly observational floor per D-33). 14 new lessons total. The prev/next chain runs unbroken from `modules/01-mental-models/04-how-it-goes-live.md` through `modules/03.5-reading-code/04-use-client-and-server-split.md` and lands on the course README as the Phase 3 placeholder. `GLOSSARY.md` and `CHEATSHEET.md` grew in same-PR with each lesson per D-36. `docs/audience-vocabulary.md` gained M2/M3/M3.5 sections per D-37; voice-lint enforces the audience-vocabulary classification programmatically. `voice-lint --self-test` continues to exit 0 (all six fixture types still trip their target checks).
