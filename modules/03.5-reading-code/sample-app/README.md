@@ -25,4 +25,4 @@ Module 3.5 teaches the pattern-recognition floor for non-coders: reading a file 
 
 ## Freshness
 
-This scaffold is verified against Next.js 16.2.6 + React 19.2.6 as of 2026-05-14 (see `VERSIONS.md`). If `'use client'` semantics or App Router file conventions change, expect Module 3.5's lessons to be updated alongside this scaffold, with the change recorded in `WHAT-CHANGED.md`. The scaffold is regression-only: if a learner reads an outdated version, the floor (detection skill) still transfers.
+This scaffold is verified against Next.js 16.2.6 + React 19.2.6 as of 2026-05-14 (see [`VERSIONS.md`](../../../VERSIONS.md)). If `'use client'` semantics or App Router file conventions change, expect Module 3.5's lessons to be updated alongside this scaffold, with the change recorded in [`WHAT-CHANGED.md`](../../../WHAT-CHANGED.md). The scaffold is regression-only: if a learner reads an outdated version, the floor (detection skill) still transfers.

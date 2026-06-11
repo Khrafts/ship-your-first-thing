@@ -54,19 +54,19 @@ That's the whole tree. Five questions, three paths.
 
 - Account you'll need next lesson: **Anthropic** (for Claude Code) plus the universal accounts (GitHub, plus later in the course Vercel and Supabase).
 - Cost expectation: ~$60 over a 3-month focused completion; ~$120 over 6 months.
-- Read `BUDGET.md` § "Path 1: Claude Code Pro" for the table.
+- Read [`BUDGET.md`](../../BUDGET.md) § "Path 1: Claude Code Pro" for the table.
 
 ### If you picked Path 2: Gemini CLI free tier
 
 - Account you'll need next lesson: **Google** (for the Gemini API key) plus the universal accounts (GitHub, plus later Vercel and Supabase).
 - Cost expectation: **$0**.
-- Read `BUDGET.md` § "Path 2: Gemini CLI free tier" for the table.
+- Read [`BUDGET.md`](../../BUDGET.md) § "Path 2: Gemini CLI free tier" for the table.
 
 ### If you picked Path 3: Claude Code via Anthropic API (token-careful)
 
 - Account you'll need next lesson: **Anthropic** (for the API) plus the universal accounts (GitHub, plus later Vercel and Supabase).
 - Cost expectation: **$30–$200 total** depending on discipline.
-- Read `BUDGET.md` § "Path 3: Claude Code via Anthropic API — token-careful" for the table — and read it carefully. This path is cheap if you watch tokens and ruinous if you don't.
+- Read [`BUDGET.md`](../../BUDGET.md) § "Path 3: Claude Code via Anthropic API — token-careful" for the table — and read it carefully. This path is cheap if you watch tokens and ruinous if you don't.
 
 ### What if you change your mind later?
 
@@ -76,8 +76,8 @@ You can switch paths mid-course. The course's loop works on both Claude Code and
 
 1. Walk the four questions above out loud.
 2. Write your chosen path on a piece of paper or in a note where you'll see it tomorrow.
-3. Open `BUDGET.md` and read the row for your chosen path in detail — pay attention to the per-path course-completion projection in dollars.
-4. If your chosen path is Path 3, read the token-discipline subsection of `BUDGET.md` twice. The discipline is the path.
+3. Open [`BUDGET.md`](../../BUDGET.md) and read the row for your chosen path in detail — pay attention to the per-path course-completion projection in dollars.
+4. If your chosen path is Path 3, read the token-discipline subsection of [`BUDGET.md`](../../BUDGET.md) twice. The discipline is the path.
 
 ## Checkpoint
 

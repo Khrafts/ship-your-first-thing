@@ -20,7 +20,7 @@ Module 2 named the tools. This lesson names the moves. The loop is the durable s
 
 > **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
 
-> **Last captured:** 2026-05-14. If transcripts look different in your session, check `WHAT-CHANGED.md`.
+> **Last captured:** 2026-05-14. If transcripts look different in your session, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
@@ -141,7 +141,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 3 Lesson 2** covers the ask step in depth — specifically, the difference between planning conversations and execution conversations, and the slash commands you use to keep sessions efficient. `CHEATSHEET.md` already lists the slash commands this course teaches under `## AI prompts` and `## Token discipline`, if you want a preview.
+- **Module 3 Lesson 2** covers the ask step in depth — specifically, the difference between planning conversations and execution conversations, and the slash commands you use to keep sessions efficient. [`CHEATSHEET.md`](../../CHEATSHEET.md) already lists the slash commands this course teaches under `## AI prompts` and `## Token discipline`, if you want a preview.
 - **Anthropic's prompting guide** at `https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview` covers prompt-writing in general. Most of it is for API users building products with Claude; the parts about being specific apply to agent sessions too.
 - **Google's Gemini CLI README** at `https://github.com/google-gemini/gemini-cli` lists the CLI's first-use commands and configuration. Skim it; do not try to absorb the configuration details — Module 3 lands the ones you actually need.
 

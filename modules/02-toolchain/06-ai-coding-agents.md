@@ -45,7 +45,7 @@ These three are not the whole list of ways agents fail — they are the three th
 
 Before the install commands, a small honesty banner.
 
-> **Last verified:** 2026-05-14. These install commands worked on this date. Newer commands may exist; check `VERSIONS.md` for the most recent verified versions and `WHAT-CHANGED.md` for revisions.
+> **Last verified:** 2026-05-14. These install commands worked on this date. Newer commands may exist; check [`VERSIONS.md`](../../VERSIONS.md) for the most recent verified versions and [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) for revisions.
 
 The install commands depend on which agent you picked. **Run only the one for your path.**
 
@@ -69,7 +69,7 @@ npm install -g @google/gemini-cli
 
 After install, you run the agent the same way you ran `node` or `git` in earlier lessons — by typing its name in the terminal. Claude Code starts with `claude` (optionally followed by what you want it to do). Gemini CLI starts with `gemini`. Both open a conversational session inside your terminal. When you type `claude` or `gemini`, you're at the briefing window — the cursor is waiting for your first instruction. Module 3 walks the first session step by step. For now, the entry point is the realization that the agent is a CLI tool — same kind of program as `npm`, `node`, `git` — runnable from the same terminal you opened in Lesson 2.
 
-Inside the agent's session, you can type ordinary requests like "add today's date below the tagline" and the agent works on them. You can ALSO type **slash commands** (short keywords starting with `/` that control the session itself rather than asking the agent to do work, [→ GLOSSARY](../../GLOSSARY.md#slash-command)) — things for clearing the conversation, compressing the running history, or checking your spend. Even a teammate needs a "reset" button: the slash commands are how you tell the agent "forget what we just talked about" or "compress what we've said so far." `CHEATSHEET.md` already lists the ones this course teaches. Module 3 covers when to reach for each one; this lesson just names the category so the word "slash command" is not a surprise when it shows up.
+Inside the agent's session, you can type ordinary requests like "add today's date below the tagline" and the agent works on them. You can ALSO type **slash commands** (short keywords starting with `/` that control the session itself rather than asking the agent to do work, [→ GLOSSARY](../../GLOSSARY.md#slash-command)) — things for clearing the conversation, compressing the running history, or checking your spend. Even a teammate needs a "reset" button: the slash commands are how you tell the agent "forget what we just talked about" or "compress what we've said so far." [`CHEATSHEET.md`](../../CHEATSHEET.md) already lists the ones this course teaches. Module 3 covers when to reach for each one; this lesson just names the category so the word "slash command" is not a surprise when it shows up.
 
 AI agents need to READ your project files to be useful. Most of the time that is exactly what you want — they need to see `app/page.tsx` to edit it. Sometimes you do NOT want them to see something: a `.env` file with secret API keys, internal notes in a `.planning/` folder, the thousands of files inside `node_modules/` that confuse rather than help. That is what an ignore-file is for: a list of paths the agent should skip.
 
@@ -82,7 +82,7 @@ This course ships templates for this at the repository root in `thread-project-t
 
 Knowing these files exist now means Module 3's first session can assume the hygiene is in place when the thread project starts in Phase 3.
 
-A quick cost-path reminder so the install above made sense. Path 1 (Claude Code Pro, around $17 to $20 a month) and Path 3 (Anthropic API, pay-per-token) both use Claude Code as the install. Path 2 (Gemini CLI free) uses Gemini CLI. Whichever path you picked in Module 0, install ONLY that one. `BUDGET.md` has the full breakdown if you need a refresher.
+A quick cost-path reminder so the install above made sense. Path 1 (Claude Code Pro, around $17 to $20 a month) and Path 3 (Anthropic API, pay-per-token) both use Claude Code as the install. Path 2 (Gemini CLI free) uses Gemini CLI. Whichever path you picked in Module 0, install ONLY that one. [`BUDGET.md`](../../BUDGET.md) has the full breakdown if you need a refresher.
 
 ## Exercise
 

@@ -25,7 +25,7 @@ You'll create accounts in this order: GitHub first (everyone needs it), then you
 **Account 1: GitHub.**
 Everyone needs GitHub — this is where the course lives, where Codespaces runs, and where you'll push your work. Sign up at [github.com](https://github.com) with an email you'll keep using. Use a real-looking username; this is your public identity in OSS.
 
-If GitHub asks for email verification or phone verification and the message doesn't arrive: see `COMMON-ISSUES.md` § "GitHub asked me to verify my account and now I'm locked out." Don't create a second account while you wait for verification.
+If GitHub asks for email verification or phone verification and the message doesn't arrive: see [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) § "GitHub asked me to verify my account and now I'm locked out." Don't create a second account while you wait for verification.
 
 **Account 2: Your AI-agent account, based on the path you picked.**
 

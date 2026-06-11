@@ -88,7 +88,7 @@ You've got this if you can:
 Optional, only if you're curious:
 
 - **`package-lock.json`** is a sibling file you'll see in real projects (pnpm has the equivalent `pnpm-lock.yaml`). It records the EXACT version of every package — including the dependencies of dependencies — so that an `npm install` on someone else's machine produces the same result as on yours. You don't read it directly; npm writes and updates it for you. Knowing it exists is enough for now.
-- **CHEATSHEET sidebar — `## npm vs pnpm note`** at the bottom of `CHEATSHEET.md` lays out the one-line translation between npm and pnpm commands for the cases where you've used pnpm before or want to try it on a future project. The thread project you build in Phase 3 uses npm; the cheatsheet has you covered if you want to switch.
+- **CHEATSHEET sidebar — `## npm vs pnpm note`** at the bottom of [`CHEATSHEET.md`](../../CHEATSHEET.md) lays out the one-line translation between npm and pnpm commands for the cases where you've used pnpm before or want to try it on a future project. The thread project you build in Phase 3 uses npm; the cheatsheet has you covered if you want to switch.
 - **The npm registry website** (`https://www.npmjs.com/`) lets you search for a package by name and see who maintains it, how popular it is, and when it was last updated — useful when an AI coding agent suggests a package and you want to glance at it before installing.
 
 ## Loop check

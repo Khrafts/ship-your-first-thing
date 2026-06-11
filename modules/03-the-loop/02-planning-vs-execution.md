@@ -20,7 +20,7 @@ Lesson 1 walked one full pass through intent → ask → evaluate → steer. Thi
 
 > **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
 
-> **Last captured:** 2026-05-14. If transcripts look different in your session, check `WHAT-CHANGED.md`.
+> **Last captured:** 2026-05-14. If transcripts look different in your session, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
@@ -122,7 +122,7 @@ The **`/cost`** command (a one-line definition: Claude Code's command to show ru
 
 `/clear` between unrelated tasks. `/compact` (or `/compress`) when one task is dragging on and you want to keep the gist but free space. `/context` (or `/stats`) when you are curious how much room is left. `/cost` (on Claude Code) when you want to see spend so far.
 
-The `CHEATSHEET.md` has all six commands listed under `## AI prompts` and `## Token discipline` — that file is the keystroke reference; this lesson is the framing. Module 7 covers other commands worth knowing (`/init`, `/model`, `/memory`); for M3 and M4, the four-command kit carries every session.
+The [`CHEATSHEET.md`](../../CHEATSHEET.md) has all six commands listed under `## AI prompts` and `## Token discipline` — that file is the keystroke reference; this lesson is the framing. Module 7 covers other commands worth knowing (`/init`, `/model`, `/memory`); for M3 and M4, the four-command kit carries every session.
 
 Here is what `/context` looks like on Claude Code, and what `/stats` looks like on Gemini CLI, on the day this lesson was captured.
 

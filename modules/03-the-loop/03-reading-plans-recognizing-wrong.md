@@ -20,7 +20,7 @@ Lesson 2 sharpened how you ASK. This lesson sharpens how you EVALUATE — how to
 
 > **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
 
-> **Last captured:** 2026-05-14. If transcripts look different in your session, check `WHAT-CHANGED.md`.
+> **Last captured:** 2026-05-14. If transcripts look different in your session, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
