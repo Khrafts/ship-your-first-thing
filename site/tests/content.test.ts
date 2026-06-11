@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   getAllLessonRefs,
+  getDocHtml,
   getGlossaryHtml,
   getLesson,
   getModule,
   getModules,
-  getSetupHtml,
   rewriteUrl,
 } from "@/lib/content";
 
@@ -111,10 +111,25 @@ describe("getGlossaryHtml", () => {
   });
 });
 
-describe("getSetupHtml", () => {
-  it("renders and routes module links onto the site", async () => {
-    const html = await getSetupHtml();
-    expect(html).toContain('href="/modules/00-welcome"');
+describe("getDocHtml", () => {
+  it("renders setup and routes module links onto the site", async () => {
+    const doc = await getDocHtml("setup");
+    expect(doc).not.toBeNull();
+    expect(doc!.title).toBe("Setup");
+    expect(doc!.html).toContain('href="/modules/00-welcome"');
+  });
+
+  it("returns html plus the h1 title for budget", async () => {
+    const doc = await getDocHtml("budget");
+    expect(doc).not.toBeNull();
+    expect(doc!.title).toContain("BUDGET.md");
+    expect(doc!.html.length).toBeGreaterThan(0);
+    // The leading h1 is dropped — the page renders its own h1 chrome.
+    expect(doc!.html).not.toContain("<h1");
+  });
+
+  it("returns null for a slug outside the whitelist", async () => {
+    expect(await getDocHtml("nope")).toBeNull();
   });
 });
 
@@ -141,9 +156,24 @@ describe("rewriteUrl", () => {
     expect(rewriteUrl("../../SETUP.md", fromLesson)).toBe("/docs/setup");
   });
 
+  it("maps root docs onto /docs routes, preserving fragments", () => {
+    expect(rewriteUrl("../../BUDGET.md", "modules/00-welcome")).toBe(
+      "/docs/budget",
+    );
+    expect(rewriteUrl("../../BUDGET.md#path-1", "modules/00-welcome")).toBe(
+      "/docs/budget#path-1",
+    );
+    expect(rewriteUrl("../../CHEATSHEET.md", fromLesson)).toBe(
+      "/docs/cheatsheet",
+    );
+    expect(rewriteUrl("../../COMMON-ISSUES.md", fromLesson)).toBe(
+      "/docs/common-issues",
+    );
+  });
+
   it("falls back to GitHub for repo files the site does not render", () => {
-    expect(rewriteUrl("../../CHEATSHEET.md", fromLesson)).toMatch(
-      /^https:\/\/github\.com\/.+\/blob\/main\/CHEATSHEET\.md$/,
+    expect(rewriteUrl("../../lesson-template.md", fromLesson)).toMatch(
+      /^https:\/\/github\.com\/.+\/blob\/main\/lesson-template\.md$/,
     );
   });
 

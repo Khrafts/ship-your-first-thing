@@ -1,10 +1,15 @@
 import { expect, test } from "@playwright/test";
-import { signUp, uniqueEmail } from "./helpers";
+import {
+  COMPLETE_LABEL,
+  COMPLETED_PATTERN,
+  FIRST_LESSON_URL,
+  signUp,
+  uniqueEmail,
+} from "./helpers";
 
-const LESSON_URL = "/modules/01-mental-models/01-how-the-web-works";
-// Exact button labels from lesson-complete-button.tsx.
-const COMPLETE_LABEL = "Mark lesson complete";
-const COMPLETED_PATTERN = /mark as not done/;
+// The first lesson of the course — the only lesson a fresh, zero-progress
+// account has unlocked under the sequential model (src/lib/unlock.ts).
+const LESSON_URL = FIRST_LESSON_URL;
 // 23 published lessons across the 5 live modules.
 const TOTAL_LESSONS = 23;
 
@@ -26,7 +31,7 @@ test.describe("lesson progress", () => {
     const resume = page.getByRole("link", { name: /^(Start|Resume):/ });
     await expect(resume).toBeVisible();
 
-    // Complete the first mental-models lesson.
+    // Complete the first lesson of the course.
     await page.goto(LESSON_URL);
     await page
       .getByRole("button", { name: COMPLETE_LABEL, exact: true })
@@ -41,8 +46,8 @@ test.describe("lesson progress", () => {
       page.getByText(`1 / ${TOTAL_LESSONS} lessons`),
     ).toBeVisible();
     await expect(
-      page.locator('a[href="/modules/01-mental-models"]'),
-    ).toContainText("1/4");
+      page.locator('a[href="/modules/00-welcome"]'),
+    ).toContainText("1/5");
 
     // The resume card no longer points at the completed lesson.
     const resumeHref = await page

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toggleLessonComplete } from "@/lib/actions/progress";
 
@@ -10,6 +11,7 @@ export function LessonCompleteButton({
   lessonPath: string;
   initialCompleted: boolean;
 }) {
+  const router = useRouter();
   const [completed, setCompleted] = useState(initialCompleted);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -20,6 +22,9 @@ export function LessonCompleteButton({
       if (result.ok) {
         setCompleted(result.completed);
         setError(null);
+        // Re-render the server page so the prev/next nav reflects the new
+        // unlock state without a manual reload.
+        router.refresh();
       } else {
         setError("Couldn't save your progress. Try again.");
       }

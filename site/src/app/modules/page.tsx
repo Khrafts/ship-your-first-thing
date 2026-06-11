@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { getModules, UPCOMING_MODULES } from "@/lib/content";
 import { formatMinutes, moduleLabel } from "@/lib/format";
 import { getModuleProgressMap, type ProgressSummary } from "@/lib/progress";
+import { getUnlockState } from "@/lib/unlock";
 
 // Reads the session cookie for per-module progress — render per request.
 export const dynamic = "force-dynamic";
@@ -12,12 +13,33 @@ export const metadata: Metadata = {
   title: "Modules",
 };
 
+function LockIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-3.5 w-3.5 shrink-0"
+      aria-hidden="true"
+    >
+      <rect x="3" y="7" width="10" height="6.5" rx="1" />
+      <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
+    </svg>
+  );
+}
+
 export default async function ModulesPage() {
   const [modules, session] = await Promise.all([getModules(), auth()]);
-  const userId = session?.user?.id;
-  const progressMap: Map<string, ProgressSummary> | null = userId
-    ? await getModuleProgressMap(userId, modules)
-    : null;
+  const userId = session?.user?.id ?? null;
+  const [unlock, progressMap] = await Promise.all([
+    getUnlockState(userId),
+    userId
+      ? getModuleProgressMap(userId, modules)
+      : Promise.resolve<Map<string, ProgressSummary> | null>(null),
+  ]);
 
   return (
     <div className="px-6">
@@ -42,6 +64,38 @@ export default async function ModulesPage() {
         <ol className="mt-12 space-y-6">
           {modules.map((mod) => {
             const progress = progressMap?.get(mod.slug) ?? null;
+            const unlocked = unlock.unlockedModules.has(mod.slug);
+
+            if (!unlocked) {
+              return (
+                <li key={mod.slug}>
+                  <div
+                    aria-disabled="true"
+                    className="block rounded-lg border border-line p-6"
+                  >
+                    <div className="flex items-baseline justify-between gap-4">
+                      <p className="font-mono text-xs uppercase tracking-wider text-ink-faint">
+                        {moduleLabel(mod.number)}
+                      </p>
+                      <p className="font-mono text-xs text-ink-faint">
+                        {mod.lessonCount} lessons · {formatMinutes(mod.totalMinutes)}
+                      </p>
+                    </div>
+                    <h2 className="mt-2 font-serif text-2xl text-ink-secondary">
+                      {mod.shortTitle}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                      {mod.description}
+                    </p>
+                    <p className="mt-4 flex items-center gap-1.5 font-mono text-xs text-ink-faint">
+                      <LockIcon />
+                      locked — complete the previous module
+                    </p>
+                  </div>
+                </li>
+              );
+            }
+
             return (
               <li key={mod.slug}>
                 <Link

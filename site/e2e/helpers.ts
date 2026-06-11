@@ -1,4 +1,23 @@
-import type { Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
+
+/** First lesson of the course — the only lesson signed-out viewers can open. */
+export const FIRST_LESSON_URL = "/modules/00-welcome/01-welcome";
+
+/**
+ * Module 0's lessons in flat course order. Completing all five unlocks the
+ * first mental-models lesson under the sequential model (src/lib/unlock.ts).
+ */
+export const MODULE_ZERO_LESSONS = [
+  FIRST_LESSON_URL,
+  "/modules/00-welcome/02-hardware-check",
+  "/modules/00-welcome/03-cost-path-triage",
+  "/modules/00-welcome/04-account-creation",
+  "/modules/00-welcome/05-codespaces-walkthrough",
+] as const;
+
+// Exact button labels from lesson-complete-button.tsx.
+export const COMPLETE_LABEL = "Mark lesson complete";
+export const COMPLETED_PATTERN = /mark as not done/;
 
 let emailCounter = 0;
 
@@ -46,6 +65,31 @@ export async function signIn(
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await page.waitForURL("/dashboard");
+}
+
+/**
+ * Mark each lesson complete through the real UI button, in order, waiting
+ * for the completed state between steps. Requires a signed-in page whose
+ * progress has already unlocked the first path in the list.
+ */
+export async function completeLessons(
+  page: Page,
+  paths: readonly string[],
+): Promise<void> {
+  for (const url of paths) {
+    await page.goto(url);
+    await page
+      .getByRole("button", { name: COMPLETE_LABEL, exact: true })
+      .click();
+    await expect(
+      page.getByRole("button", { name: COMPLETED_PATTERN }),
+    ).toBeVisible();
+  }
+}
+
+/** Complete all five Module 0 lessons — unlocks 01-mental-models. */
+export async function completeModuleZero(page: Page): Promise<void> {
+  await completeLessons(page, MODULE_ZERO_LESSONS);
 }
 
 /**

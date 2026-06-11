@@ -45,6 +45,28 @@ const GITHUB_RAW_URL = GITHUB_REPO_URL.replace(
 
 const IMAGE_EXTENSION = /\.(?:png|jpe?g|gif|svg|webp)$/i;
 
+/** Root-level docs the site renders at /docs/<slug>: slug → repo-root
+ *  filename. GLOSSARY.md (/glossary) and README.md (/modules) have their own
+ *  routes and stay out of this table. */
+const DOC_FILES: Record<string, string> = {
+  setup: "SETUP.md",
+  budget: "BUDGET.md",
+  cheatsheet: "CHEATSHEET.md",
+  "common-issues": "COMMON-ISSUES.md",
+  "what-changed": "WHAT-CHANGED.md",
+  versions: "VERSIONS.md",
+  contributing: "CONTRIBUTING.md",
+  licensing: "LICENSING.md",
+};
+
+/** Slugs /docs/[slug] statically renders. */
+export const DOC_SLUGS = Object.keys(DOC_FILES);
+
+/** Inverse of DOC_FILES: resolved root filename → /docs slug. */
+const ROOT_DOC_ROUTES = new Map(
+  Object.entries(DOC_FILES).map(([slug, fileName]) => [fileName, slug]),
+);
+
 /**
  * Map a repo-relative markdown link (resolved against the source file's
  * directory) onto a site route. Anything the site doesn't render falls back
@@ -68,8 +90,9 @@ export function rewriteUrl(url: string, sourceDir: string): string {
   }
 
   if (resolved === "GLOSSARY.md") return `/glossary${hash}`;
-  if (resolved === "SETUP.md") return `/docs/setup${hash}`;
   if (resolved === "README.md") return `/modules${hash}`;
+  const docSlug = ROOT_DOC_ROUTES.get(resolved);
+  if (docSlug) return `/docs/${docSlug}${hash}`;
 
   const lessonMatch = resolved.match(/^modules\/([^/]+)\/([^/]+)\.md$/);
   if (lessonMatch) {
@@ -418,10 +441,23 @@ export function getGlossaryHtml(): Promise<string> {
   });
 }
 
-/** SETUP.md rendered to HTML for /docs/setup. */
-export function getSetupHtml(): Promise<string> {
-  return cachedHtml("SETUP.md", async () => {
-    const raw = await readFile(path.join(contentRoot(), "SETUP.md"), "utf8");
-    return renderMarkdown(raw, "");
-  });
+/**
+ * Root doc (SETUP.md, BUDGET.md, …) rendered to HTML for /docs/[slug]. The
+ * title comes from the doc's leading h1 — the render pipeline drops that h1
+ * from the body, so it has to be read off the raw markdown first. Returns
+ * null for slugs outside the DOC_FILES whitelist. The rendered HTML stays
+ * cached per file; the raw read for the title is cheap by comparison.
+ */
+export async function getDocHtml(
+  slug: string,
+): Promise<{ title: string; html: string } | null> {
+  const fileName = DOC_FILES[slug];
+  if (!fileName) {
+    return null;
+  }
+  const raw = await readFile(path.join(contentRoot(), fileName), "utf8");
+  const titleMatch = raw.match(/^#\s+(.+)$/m);
+  const title = titleMatch ? titleMatch[1].trim() : slug;
+  const html = await cachedHtml(fileName, () => renderMarkdown(raw, ""));
+  return { title, html };
 }

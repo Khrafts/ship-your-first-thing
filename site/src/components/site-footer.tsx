@@ -30,6 +30,30 @@ export function SiteFooter() {
           >
             Dashboard
           </Link>
+          <Link
+            href="/docs/setup"
+            className="inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+          >
+            Setup guide
+          </Link>
+          <Link
+            href="/docs/budget"
+            className="inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+          >
+            Budget
+          </Link>
+          <Link
+            href="/docs/cheatsheet"
+            className="inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+          >
+            Cheatsheet
+          </Link>
+          <Link
+            href="/docs/common-issues"
+            className="inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+          >
+            Common issues
+          </Link>
         </nav>
         <p>{FOOTER_STACK_DIVERGENCE}</p>
         <p>
