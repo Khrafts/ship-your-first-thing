@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq, gte, inArray } from "drizzle-orm";
 import { auth } from "@/auth";
 import { getDb, schema } from "@/db";
 import { signOutAction } from "@/lib/actions/auth";
 import { getModules } from "@/lib/content";
-import { formatDateUtc, moduleLabel } from "@/lib/format";
+import {
+  formatDateTimeUtc,
+  formatDateUtc,
+  formatMinutes,
+  moduleLabel,
+} from "@/lib/format";
 import {
   getModuleProgressMap,
   getOverallProgress,
@@ -37,6 +42,7 @@ export default async function DashboardPage() {
 
   const cohortRows = await db
     .select({
+      id: schema.cohorts.id,
       name: schema.cohorts.name,
       slug: schema.cohorts.slug,
       startsOn: schema.cohorts.startsOn,
@@ -45,6 +51,32 @@ export default async function DashboardPage() {
     .innerJoin(schema.cohorts, eq(schema.cohortMembers.cohortId, schema.cohorts.id))
     .where(eq(schema.cohortMembers.userId, userId))
     .orderBy(asc(schema.cohorts.startsOn));
+
+  // First upcoming live call per joined cohort.
+  const upcomingSessions = cohortRows.length
+    ? await db
+        .select()
+        .from(schema.cohortSessions)
+        .where(
+          and(
+            inArray(
+              schema.cohortSessions.cohortId,
+              cohortRows.map((cohort) => cohort.id),
+            ),
+            gte(schema.cohortSessions.scheduledAt, new Date()),
+          ),
+        )
+        .orderBy(asc(schema.cohortSessions.scheduledAt))
+    : [];
+  const nextSessionByCohort = new Map<
+    string,
+    (typeof upcomingSessions)[number]
+  >();
+  for (const s of upcomingSessions) {
+    if (!nextSessionByCohort.has(s.cohortId)) {
+      nextSessionByCohort.set(s.cohortId, s);
+    }
+  }
 
   const displayName = session.user.name ?? session.user.email ?? "there";
 
@@ -149,21 +181,46 @@ export default async function DashboardPage() {
             </p>
           ) : (
             <ul className="mt-4 divide-y divide-line rounded-lg border border-line">
-              {cohortRows.map((cohort) => (
-                <li key={cohort.slug}>
-                  <Link
-                    href="/cohorts"
-                    className="group flex items-baseline justify-between gap-4 px-5 py-4"
-                  >
-                    <span className="font-serif text-lg text-ink transition-colors duration-150 group-hover:text-ink-secondary">
-                      {cohort.name}
-                    </span>
-                    <span className="font-mono text-xs text-ink-faint">
-                      starts {formatDateUtc(cohort.startsOn)}
-                    </span>
-                  </Link>
-                </li>
-              ))}
+              {cohortRows.map((cohort) => {
+                const nextSession = nextSessionByCohort.get(cohort.id);
+                return (
+                  <li key={cohort.slug} className="px-5 py-4">
+                    <Link
+                      href="/cohorts"
+                      className="group flex items-baseline justify-between gap-4"
+                    >
+                      <span className="font-serif text-lg text-ink transition-colors duration-150 group-hover:text-ink-secondary">
+                        {cohort.name}
+                      </span>
+                      <span className="font-mono text-xs text-ink-faint">
+                        starts {formatDateUtc(cohort.startsOn)}
+                      </span>
+                    </Link>
+                    {nextSession ? (
+                      <p className="mt-2 font-sans text-sm text-ink-secondary">
+                        Next call: {nextSession.title} —{" "}
+                        {formatDateTimeUtc(nextSession.scheduledAt)} ·{" "}
+                        {formatMinutes(nextSession.durationMinutes)}
+                        {nextSession.callUrl ? (
+                          <>
+                            {" · "}
+                            <a
+                              href={nextSession.callUrl}
+                              className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+                            >
+                              join link
+                            </a>
+                          </>
+                        ) : null}
+                      </p>
+                    ) : (
+                      <p className="mt-2 font-sans text-sm text-ink-faint">
+                        No upcoming calls on the schedule.
+                      </p>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </section>

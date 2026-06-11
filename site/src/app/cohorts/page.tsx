@@ -124,11 +124,16 @@ export default async function CohortsPage() {
                       to join this cohort.
                     </p>
                   ) : isMember ? (
-                    <form action={leaveCohort.bind(null, cohort.slug)}>
-                      <button type="submit" className={BUTTON_SECONDARY}>
-                        Leave cohort
-                      </button>
-                    </form>
+                    <div className="flex flex-wrap items-center gap-4">
+                      <p className="font-sans text-sm font-medium text-ink">
+                        ✓ You&apos;re in this cohort.
+                      </p>
+                      <form action={leaveCohort.bind(null, cohort.slug)}>
+                        <button type="submit" className={BUTTON_SECONDARY}>
+                          Leave cohort
+                        </button>
+                      </form>
+                    </div>
                   ) : cohort.isOpen ? (
                     <form action={joinCohort.bind(null, cohort.slug)}>
                       <button type="submit" className={BUTTON_PRIMARY}>

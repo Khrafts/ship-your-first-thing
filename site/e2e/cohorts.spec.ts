@@ -38,21 +38,24 @@ test.describe("cohorts", () => {
       password: "cohort-pass-1",
     });
 
-    // Join. (Button copy is "Join cohort"; the member state is represented
-    // by the "Leave cohort" control — there is no confirmation sentence.)
+    // Join: membership is confirmed in text and by the "Leave cohort" control.
     await page.goto("/cohorts");
     await page.getByRole("button", { name: "Join cohort" }).click();
+    await expect(page.getByText("You're in this cohort.")).toBeVisible({
+      timeout: ACTION_TIMEOUT,
+    });
     await expect(
       page.getByRole("button", { name: "Leave cohort" }),
-    ).toBeVisible({ timeout: ACTION_TIMEOUT });
+    ).toBeVisible();
 
-    // Dashboard shows the cohort name and its start date.
+    // Dashboard shows the cohort name, start date, and next upcoming call.
     await page.goto("/dashboard");
     const cohortCard = page.locator('a[href="/cohorts"]', {
       hasText: "Cohort 1",
     });
     await expect(cohortCard).toBeVisible();
     await expect(cohortCard).toContainText(/starts/);
+    await expect(page.getByText(/Next call:/)).toBeVisible();
 
     // Leave reverts to the join state.
     await page.goto("/cohorts");

@@ -49,11 +49,12 @@ export async function signIn(
 }
 
 /**
- * End the session via the dashboard's sign-out control (the site header has
- * no auth state) and wait for the redirect back to the home page.
+ * End the session via the dashboard's sign-out control, scoped to main —
+ * the session-aware site header carries its own "Sign out" button — and
+ * wait for the redirect back to the home page.
  */
 export async function signOutFromDashboard(page: Page): Promise<void> {
   await page.goto("/dashboard");
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.locator("main").getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL("/");
 }

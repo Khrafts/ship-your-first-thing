@@ -12,10 +12,15 @@ test.describe("auth", () => {
     await signUp(page, { name: "Signup Person", email, password: PASSWORD });
 
     await expect(page).toHaveURL("/dashboard");
-    // The site header carries no auth state; the sign-out control lives on
-    // the dashboard page itself.
+    // Sign-out controls exist in both the dashboard body and the
+    // session-aware header.
     await expect(
-      page.getByRole("button", { name: AUTH_COPY.signOutButton }),
+      page.locator("main").getByRole("button", { name: AUTH_COPY.signOutButton }),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator("header")
+        .getByRole("button", { name: AUTH_COPY.signOutButton }),
     ).toBeVisible();
   });
 
@@ -23,11 +28,17 @@ test.describe("auth", () => {
     const email = uniqueEmail("auth-signout");
     await signUp(page, { name: "Signout Person", email, password: PASSWORD });
 
-    await page.getByRole("button", { name: AUTH_COPY.signOutButton }).click();
+    await page
+      .locator("main")
+      .getByRole("button", { name: AUTH_COPY.signOutButton })
+      .click();
     await page.waitForURL("/");
 
-    // Signed-out proof: the dashboard now redirects to the sign-in page
-    // (the header itself never reflects auth state).
+    // Signed-out proof: the header flips to a "Sign in" link and the
+    // dashboard redirects to the sign-in page.
+    await expect(
+      page.locator("header").getByRole("link", { name: "Sign in" }),
+    ).toBeVisible();
     await page.goto("/dashboard");
     await page.waitForURL(/\/signin/);
     await expect(
@@ -45,7 +56,7 @@ test.describe("auth", () => {
     await signIn(page, { email, password: PASSWORD });
     await expect(page).toHaveURL("/dashboard");
     await expect(
-      page.getByRole("button", { name: AUTH_COPY.signOutButton }),
+      page.locator("main").getByRole("button", { name: AUTH_COPY.signOutButton }),
     ).toBeVisible();
   });
 
