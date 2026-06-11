@@ -1,0 +1,8 @@
+.git
+.planning
+site/node_modules
+site/.next
+site/.data
+site/test-results
+site/playwright-report
+**/.DS_Store

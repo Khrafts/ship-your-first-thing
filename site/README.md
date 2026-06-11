@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ship Your First Thing — course platform
 
-## Getting Started
+The web platform for the course in this repository. It renders the same
+markdown that lives in `../modules/` (the canonical source — every lesson must
+keep working on github.com), and adds the things a flat repo can't: accounts,
+per-lesson progress, a learner dashboard, and cohort schedules.
 
-First, run the development server:
+Stack: Next.js (App Router) + Postgres + Drizzle + Auth.js — deliberately
+different from the Supabase stack the course itself teaches (see the footer
+on any page for why).
+
+## Run it locally
+
+Requires Node 22+ and pnpm 11 (`corepack enable`). No database server is
+needed: without a `DATABASE_URL` the app uses an embedded PGlite database
+under `.data/`.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd site
+pnpm install
+pnpm db:migrate   # create tables
+pnpm db:seed      # demo cohort + schedule
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm test       # vitest — content pipeline contract tests
+pnpm e2e:full   # production build + Playwright end-to-end suite
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The e2e suite builds the app, migrates and seeds a throwaway PGlite database,
+and walks sign-up, lesson rendering (including Mermaid inside collapsed
+`<details>`), progress tracking, and cohort join flows.
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+See `.env.example`. In production set `DATABASE_URL` (Postgres) and a real
+`AUTH_SECRET`; `AUTH_TRUST_HOST=true` is required behind a proxy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Railway)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The repo-root `railway.json` builds `site/Dockerfile` with the repo root as
+context so the course markdown ships inside the image. The container start
+command runs migrations, seeds an initial cohort if the database is empty,
+then starts the server on `$PORT`. Provision a Railway Postgres service and
+reference its `DATABASE_URL` in the app service variables.
 
-## Deploy on Vercel
+## Layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/lib/content/` — reads and renders the course markdown (frontmatter,
+  GFM, Mermaid fences kept for client-side rendering, `../../GLOSSARY.md#x`
+  links rewritten to `/glossary#x`)
+- `src/db/` — Drizzle schema and driver selection (Postgres or PGlite)
+- `src/lib/actions/` — server actions: auth, progress toggling, cohort join
+- `src/app/` — routes: home, `/modules/*`, `/glossary`, `/docs/*`,
+  `/dashboard`, `/cohorts`, `/signin`, `/signup`
+- `e2e/` — Playwright suite
