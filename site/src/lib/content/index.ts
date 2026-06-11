@@ -191,6 +191,34 @@ function dropNavigationSection(tree: HastRoot): void {
 }
 
 /**
+ * Remove the `## Lessons in this module` section from rendered module
+ * READMEs: the module page renders its own lock-aware lesson rows, and the
+ * README's list links straight to lessons regardless of unlock state. The
+ * section is mid-document, so removal stops at the next h2. No-op for
+ * documents without the heading.
+ */
+function dropLessonListSection(tree: HastRoot): void {
+  const start = tree.children.findIndex(
+    (node) =>
+      node.type === "element" &&
+      node.tagName === "h2" &&
+      node.properties?.id === "lessons-in-this-module",
+  );
+  if (start === -1) {
+    return;
+  }
+  let end = tree.children.length;
+  for (let i = start + 1; i < tree.children.length; i += 1) {
+    const node = tree.children[i];
+    if (node.type === "element" && node.tagName === "h2") {
+      end = i;
+      break;
+    }
+  }
+  tree.children.splice(start, end - start);
+}
+
+/**
  * Render course markdown to HTML. Mermaid fences stay as
  * `<pre><code class="language-mermaid">` so the client can hydrate them into
  * diagrams (and the source stays readable without JavaScript). Raw HTML
@@ -215,6 +243,7 @@ async function renderMarkdown(markdown: string, sourceDir: string): Promise<stri
     .use(() => (tree) => {
       dropLeadingH1(tree as unknown as HastRoot);
       dropNavigationSection(tree as unknown as HastRoot);
+      dropLessonListSection(tree as unknown as HastRoot);
     })
     .use(rehypeStringify)
     .process(markdown);

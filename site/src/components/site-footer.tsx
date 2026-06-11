@@ -57,7 +57,13 @@ export function SiteFooter() {
         </nav>
         <p>{FOOTER_STACK_DIVERGENCE}</p>
         <p>
-          {FOOTER_LICENSE} ·{" "}
+          <Link
+            href="/docs/licensing"
+            className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+          >
+            {FOOTER_LICENSE}
+          </Link>{" "}
+          ·{" "}
           <a href={GITHUB_REPO_URL} className="underline underline-offset-2">
             Source on GitHub
           </a>
