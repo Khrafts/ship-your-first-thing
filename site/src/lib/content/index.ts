@@ -113,6 +113,7 @@ interface HastNode {
   type: string;
   tagName?: string;
   value?: string;
+  properties?: { id?: string };
 }
 
 interface HastRoot {
@@ -145,6 +146,28 @@ function dropLeadingH1(tree: HastRoot): void {
 }
 
 /**
+ * Remove the trailing `## Navigation` section. Lessons and module READMEs
+ * carry prev/next links in the markdown so the course navigates on
+ * github.com, where there is no chrome; the site renders its own prev/next
+ * cards, so keeping the section would show navigation twice. The content
+ * contract fixes Navigation as the last section, so everything from the
+ * `<h2 id="navigation">` to the end of the document goes. Runs after
+ * rehype-slug (the id is how the section is found). No-op for documents
+ * without that heading (glossary, setup).
+ */
+function dropNavigationSection(tree: HastRoot): void {
+  const index = tree.children.findIndex(
+    (node) =>
+      node.type === "element" &&
+      node.tagName === "h2" &&
+      node.properties?.id === "navigation",
+  );
+  if (index !== -1) {
+    tree.children.splice(index);
+  }
+}
+
+/**
  * Render course markdown to HTML. Mermaid fences stay as
  * `<pre><code class="language-mermaid">` so the client can hydrate them into
  * diagrams (and the source stays readable without JavaScript). Raw HTML
@@ -168,6 +191,7 @@ async function renderMarkdown(markdown: string, sourceDir: string): Promise<stri
     .use(rehypeSlug)
     .use(() => (tree) => {
       dropLeadingH1(tree as unknown as HastRoot);
+      dropNavigationSection(tree as unknown as HastRoot);
     })
     .use(rehypeStringify)
     .process(markdown);

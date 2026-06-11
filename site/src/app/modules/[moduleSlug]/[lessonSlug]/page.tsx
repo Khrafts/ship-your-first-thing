@@ -65,26 +65,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           <LessonArticle html={lesson.html} />
         </div>
 
-        <div className="mt-14 border-t border-line pt-8">
-          {userId ? (
-            <LessonCompleteButton
-              lessonPath={lesson.path}
-              initialCompleted={completed}
-            />
-          ) : (
-            <p className="font-sans text-sm text-ink-secondary">
-              <Link
-                href="/signin"
-                className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
-              >
-                Sign in
-              </Link>{" "}
-              to track your progress through the course.
-            </p>
-          )}
-        </div>
-
-        <nav className="mt-10 flex flex-col gap-4 border-t border-line pt-8 font-sans text-sm sm:flex-row sm:justify-between">
+        <nav className="mt-14 flex flex-col gap-4 border-t border-line pt-8 font-sans text-sm sm:flex-row sm:justify-between">
           {lesson.prev ? (
             <Link
               href={`/modules/${lesson.prev.moduleSlug}/${lesson.prev.lessonSlug}`}
@@ -112,6 +93,25 @@ export default async function LessonPage({ params }: LessonPageProps) {
             <span />
           )}
         </nav>
+
+        <div className="mt-10 border-t border-line pt-8">
+          {userId ? (
+            <LessonCompleteButton
+              lessonPath={lesson.path}
+              initialCompleted={completed}
+            />
+          ) : (
+            <p className="font-sans text-sm text-ink-secondary">
+              <Link
+                href="/signin"
+                className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+              >
+                Sign in
+              </Link>{" "}
+              to track your progress through the course.
+            </p>
+          )}
+        </div>
       </article>
     </div>
   );
