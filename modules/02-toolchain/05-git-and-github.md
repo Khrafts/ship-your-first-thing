@@ -43,7 +43,7 @@ Three confusions trip beginners and naming them now saves you time. **First, `gi
 
 When things break, do not panic and do not reach for `git reset --hard`. The cheatsheet has `git reset --hard HEAD` listed because it exists, but it THROWS AWAY all uncommitted changes — only run it when you are sure you want to. The safer first move when stuck is to type `git status` and read the message. git is unusually good at explaining what state you are in and suggesting what to try next. Module 3 will teach how to ask an AI coding agent to help you out of a stuck state; for now, knowing that `git status` answers most "what just happened?" questions is enough.
 
-The full set of git commands you will use daily is in `CHEATSHEET.md` under `## Git basics` — go look at it now in another tab. There are only four entries; you will recognize all four by the end of the exercise.
+The full set of git commands you will use daily is in [`CHEATSHEET.md`](../../CHEATSHEET.md) under `## Git basics` — go look at it now in another tab. There are only four entries; you will recognize all four by the end of the exercise.
 
 ## Exercise
 

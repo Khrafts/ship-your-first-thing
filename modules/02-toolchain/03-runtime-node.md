@@ -30,7 +30,7 @@ The thing that reads code and does what it says is called a **runtime** (one-lin
 
 JavaScript runs in two places, which means it has two musicians who can play the same composition. JavaScript started life inside the browser. Browsers have a built-in JavaScript runtime — one musician, on staff inside the browser; that is what makes the buttons on a webpage do things when you click them. Node is a second musician — one who plays from outside the concert hall. Node took the same kind of runtime out of the browser and made it runnable from the terminal. When you write a `.js` file and tell Node to run it, Node reads the text and executes the instructions. No browser involved. Same notes, different player.
 
-Your Codespace has Node pre-installed. You can prove it by typing `node --version` in the terminal — Node prints the version it is running. This course pins Node 20.x LTS (see `VERSIONS.md` for the exact version verified at each course revision). "LTS" means "long-term support" — the steady version, not the bleeding edge. The lesson does not teach you how to install Node yourself, because in a Codespace you do not have to.
+Your Codespace has Node pre-installed. You can prove it by typing `node --version` in the terminal — Node prints the version it is running. This course pins Node 20.x LTS (see [`VERSIONS.md`](../../VERSIONS.md) for the exact version verified at each course revision). "LTS" means "long-term support" — the steady version, not the bleeding edge. The lesson does not teach you how to install Node yourself, because in a Codespace you do not have to.
 
 A brief word on the language. JavaScript has a sibling called **TypeScript**. In Phase 3, when you build the thread project, you'll see files ending in `.ts` and `.tsx` instead of `.js`. Those are TypeScript files — they carry extra labels the agent reads to work more carefully. You don't write the labels yourself; the agent handles that. The musician still reads the music; the music just has a few more annotations on it. For now, just hold the shape: **runtime runs code**, **Node is JavaScript's runtime**.
 
@@ -44,7 +44,7 @@ Two confusions are worth heading off here.
 
 Open your Codespace's terminal — press `` Ctrl+` `` if the panel at the bottom isn't already visible. Plan ten to fifteen minutes.
 
-1. Type `node --version` and press Enter. Write down the version Node prints. It should start with `v20.` if your Codespace matches the pin in `VERSIONS.md`.
+1. Type `node --version` and press Enter. Write down the version Node prints. It should start with `v20.` if your Codespace matches the pin in [`VERSIONS.md`](../../VERSIONS.md).
 2. Type `node` (nothing else — just the word `node` and Enter). The prompt changes from a `$` to a `>`. You are now inside Node's REPL — an interactive prompt where you can type JavaScript and see the result of each line immediately.
 3. At the `>` prompt, type `1 + 1` and press Enter. Note that Node prints `2`. You just hummed three notes at the musician, and the musician played them back: you handed Node a tiny piece of JavaScript and it answered.
 4. At the `>` prompt, type `Date()` (with the parentheses) and press Enter. Note that Node prints the current date and time. That is JavaScript's built-in way of asking the runtime "what time is it right now?", and the runtime answers.

@@ -29,7 +29,7 @@ What this gets you:
 
 - No local install for Module 0 or Module 1: those modules are written in plain text — specifically, **markdown** (a way of writing formatted documents using simple punctuation marks like `#` for headings and triple-backticks for code blocks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). Open the repo in your browser; you're done.
 - For Module 2 onward (toolchain, AI agents, the thread project), the Codespace already has the tools later modules will need pre-installed and configured.
-- A consistent environment. The course is verified against the specific Codespace setup listed in `VERSIONS.md`. If it works for one learner, it works for all.
+- A consistent environment. The course is verified against the specific Codespace setup listed in [`VERSIONS.md`](../../VERSIONS.md). If it works for one learner, it works for all.
 
 What it costs:
 
@@ -51,7 +51,7 @@ What it costs:
 - If you've never written production code: **Codespaces**. No exceptions.
 - If you've already got a working development setup and you read code well enough to debug environment issues: either is fine.
 
-If you pick Codespaces and later want to switch to local, you can — the course works the same way on both surfaces, and `SETUP.md` covers the switch. If you start on local and hit an environment issue you can't solve in 30 minutes, switch to Codespaces.
+If you pick Codespaces and later want to switch to local, you can — the course works the same way on both surfaces, and [`SETUP.md`](../../SETUP.md) covers the switch. If you start on local and hit an environment issue you can't solve in 30 minutes, switch to Codespaces.
 
 ## Exercise
 
@@ -69,7 +69,7 @@ You've got this if you can:
 
 - State your chosen path in one sentence.
 - Name the free-tier cap on Codespaces (120 core-hours, 60 clock-hours on a 2-core machine).
-- Find the local install appendix in `SETUP.md` without re-reading this lesson.
+- Find the local install appendix in [`SETUP.md`](../../SETUP.md) without re-reading this lesson.
 
 ## What you just did
 

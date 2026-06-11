@@ -55,15 +55,15 @@ If that's you: welcome.
 
 **What this course is honest about:**
 
-- AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When you see the date stamp on a lesson and it's a year old, check `WHAT-CHANGED.md` first; the keystrokes may have shifted, but the loop won't have.
+- AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When you see the date stamp on a lesson and it's a year old, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) first; the keystrokes may have shifted, but the loop won't have.
 - The free path is real and capped by rate limits. The paid path is predictable and costs ~$20/month. The "token-careful" path is cheap if you're careful and ruinous if you're not. Module 0 lesson 03 walks you through the triage.
-- You will get stuck. The course expects this. `COMMON-ISSUES.md` is where you go when reality drifts from a lesson.
+- You will get stuck. The course expects this. [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is where you go when reality drifts from a lesson.
 
 **How to read this course:**
 
 - Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. Skipping Module 1 (mental models) to get to "the building" is the most common way learners stall in Module 3.
 - Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
-- When you're stuck, check `COMMON-ISSUES.md`, then `WHAT-CHANGED.md`, then file an issue.
+- When you're stuck, check [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md), then [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), then file an issue.
 
 That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces the toolchain. Then we build.
 
@@ -71,16 +71,16 @@ That's the whole course in two paragraphs. Module 0 spends the next four lessons
 
 Spend 5 minutes on each of these:
 
-1. Open `BUDGET.md` and skim the three named cost paths. Don't pick yet — lesson 03 walks the triage. Just know they exist.
-2. Open `WHAT-CHANGED.md`. Read the V1 baseline entry. This file is your friend when reality drifts from a lesson.
+1. Open [`BUDGET.md`](../../BUDGET.md) and skim the three named cost paths. Don't pick yet — lesson 03 walks the triage. Just know they exist.
+2. Open [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Read the V1 baseline entry. This file is your friend when reality drifts from a lesson.
 3. Open `modules/01-mental-models/README.md`. Read the four bundle titles. This is what Module 1 covers, and it is the most-skipped module in courses like this. (Don't skip it.)
 
 ## Checkpoint
 
 You've got this if you can:
 
-- Name the three cost paths from `BUDGET.md` in one phrase each.
-- Say where you'd look first when something in a lesson doesn't match what you see (`WHAT-CHANGED.md`, then `COMMON-ISSUES.md`).
+- Name the three cost paths from [`BUDGET.md`](../../BUDGET.md) in one phrase each.
+- Say where you'd look first when something in a lesson doesn't match what you see ([`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), then [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md)).
 - Name the four Module 1 bundles without re-opening Module 1's README.
 
 ## What you just did

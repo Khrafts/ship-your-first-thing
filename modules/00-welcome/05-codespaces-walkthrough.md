@@ -53,7 +53,7 @@ Close the browser tab. The Codespace will auto-stop after 30 minutes idle. To de
 
 ### Things that confuse beginners on first run
 
-- **The URL you might expect from running a website on your laptop won't work directly from Codespaces.** When you run a website locally in Codespaces (you'll do this in Module 3), the Codespace forwards a port to a Codespaces-issued URL. The terminal will tell you the right URL — click it from the terminal. (`COMMON-ISSUES.md` covers this if you forget.)
+- **The URL you might expect from running a website on your laptop won't work directly from Codespaces.** When you run a website locally in Codespaces (you'll do this in Module 3), the Codespace forwards a port to a Codespaces-issued URL. The terminal will tell you the right URL — click it from the terminal. ([`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) covers this if you forget.)
 - **The Codespace may "feel slow" on first boot.** It's not your computer; it's the remote machine warming up. The first boot can take a couple of minutes. Subsequent boots are fast.
 - **Saving works as expected.** `Ctrl+S` (or `Cmd+S` on Mac) saves files inside the Codespace. Saved files survive auto-stop. Files survive Codespace deletion only if you've also saved them back to GitHub — that habit is taught in Module 2.
 
