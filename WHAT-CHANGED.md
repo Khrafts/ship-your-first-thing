@@ -11,6 +11,23 @@ Each entry has the format:
 
 ---
 
+## 2026-06-11 — Course platform built at site/ (LMS deferral lifted)
+
+**What changed:** The Platform Track deferred on 2026-05-14 was explicitly greenlit and built in one pass, with three decision changes from the preserved Phase 01.1 plans:
+
+- **The platform exists at `site/`** (Next.js App Router + Postgres + Drizzle + Auth.js, per the locked D-A1/A3/A8 stack) and renders the same markdown that lives in `modules/` — lessons remain canonical on github.com; the site is chrome (accounts, per-lesson progress keyed `(user_id, lesson_path)`, learner dashboard) around unmodified lesson files.
+- **Hosting target is Railway, not Vercel** (decision change). Repo-root `railway.json` + `site/Dockerfile` build with the repo root as context so the course markdown ships inside the image; migrations run at container boot, never during build.
+- **Cohorts are now in scope** (new requirement, was explicitly out of scope pre-deferral): a cohort moves through the course with one live call per module — weekly, longer for dense modules — while self-paced study stays a first-class path. Tables: `cohort`, `cohort_session`, `cohort_member`.
+- **Auth is email+password credentials** (decision change from Resend magic-link — no mail-provider key exists; the schema keeps the four Auth.js core tables so magic-link/OAuth can be added without migration).
+- Design: strict monochrome, Newsreader serif prose / Inter UI / JetBrains Mono code; the D-A15 stack-divergence footer string ships verbatim sitewide.
+- Verification: 18 content-contract unit tests (fractional `03.5` module ordering, glossary-anchor rewriting, mermaid passthrough) and a 21-spec Playwright suite that runs service-free against an embedded PGlite database, plus an adversarially-verified review pass (22 confirmed findings fixed or accepted).
+
+**Affected lessons / artifacts:** No lesson bodies changed. New: `site/` (platform code), `railway.json`, `.dockerignore`. The platform renders `GLOSSARY.md`, `SETUP.md`, and module READMEs at `/glossary`, `/docs/setup`, and `/modules/*`.
+
+**What learners should do:** Nothing yet — github.com remains the canonical course surface. When the site goes live, accounts add progress tracking and cohort schedules; the lessons are identical on both surfaces.
+
+---
+
 ## 2026-06-08 — Authoring-docs overhaul: tenet renumber + coherence tenet + enforcement honesty
 
 **What changed:** Overhauled the documents that govern course authoring, after a tenets review. Five shifts:
