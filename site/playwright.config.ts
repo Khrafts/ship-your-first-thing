@@ -3,8 +3,12 @@ import { defineConfig, devices } from "@playwright/test";
 // The e2e suite runs against a production build backed by an embedded PGlite
 // database (no DATABASE_URL), so it needs no external services. Run
 // `pnpm e2e:full` to build + test, or `pnpm e2e` after a manual build.
-// global-setup wipes the e2e database; the webServer command then migrates,
-// seeds, and starts the server sequentially (PGlite is single-process).
+//
+// Playwright starts the webServer plugin BEFORE globalSetup runs, so the
+// database reset (wipe + migrate + seed) lives in e2e/global-setup.ts and the
+// webServer command only starts the already-built server. That is safe
+// because the server opens its PGlite handle lazily, on the first request —
+// see e2e/global-setup.ts for the full ordering note.
 const PORT = 3100;
 
 export default defineConfig({
@@ -25,7 +29,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `pnpm db:migrate && pnpm db:seed && pnpm start -p ${PORT}`,
+    command: `pnpm start -p ${PORT}`,
     port: PORT,
     reuseExistingServer: false,
     timeout: 120_000,
