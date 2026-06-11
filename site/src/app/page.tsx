@@ -1,65 +1,156 @@
-import Image from "next/image";
+import Link from "next/link";
+import { getModules, UPCOMING_MODULES } from "@/lib/content";
+import { TAGLINE } from "@/lib/copy";
+import { formatMinutes, moduleLabel } from "@/lib/format";
 
-export default function Home() {
+export default async function Home() {
+  const modules = await getModules();
+  const totalMinutes = modules.reduce((sum, mod) => sum + mod.totalMinutes, 0);
+  const lessonCount = modules.reduce((sum, mod) => sum + mod.lessonCount, 0);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="px-6">
+      {/* Hero */}
+      <section className="mx-auto max-w-3xl pt-24 pb-20 sm:pt-32">
+        <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink sm:text-6xl">
+          Ship your first thing.
+        </h1>
+        <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-ink-secondary">
+          {TAGLINE}
+        </p>
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <Link
+            href="/modules"
+            className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+          >
+            Start the course →
+          </Link>
+          <Link
+            href="/signup"
+            className="inline-flex h-11 items-center rounded-md border border-line-strong px-5 font-sans text-sm font-medium text-ink transition-colors duration-150 hover:border-ink"
+          >
+            Create an account
+          </Link>
+        </div>
+        <p className="mt-6 font-mono text-xs text-ink-faint">
+          {modules.length} modules live · {lessonCount} lessons ·{" "}
+          {formatMinutes(totalMinutes)} of reading · free and open source
+        </p>
+      </section>
+
+      {/* How the course works */}
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-5xl py-16">
+          <h2 className="font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+            How the course works
+          </h2>
+          <div className="mt-8 grid gap-10 sm:grid-cols-3">
+            <div>
+              <p className="font-mono text-sm text-ink-faint">01</p>
+              <h3 className="mt-2 font-serif text-xl text-ink">
+                Build the mental models
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                Plain-language lessons on how the web, data, access, and
+                deployment fit together — no prior code required.
+              </p>
+            </div>
+            <div>
+              <p className="font-mono text-sm text-ink-faint">02</p>
+              <h3 className="mt-2 font-serif text-xl text-ink">
+                Work the loop with an AI agent
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                State your intent, read what the agent did, and steer. The
+                agent writes the code; you stay in charge of the outcome.
+              </p>
+            </div>
+            <div>
+              <p className="font-mono text-sm text-ink-faint">03</p>
+              <h3 className="mt-2 font-serif text-xl text-ink">
+                Recover when it goes wrong
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                AI tools fail in predictable ways. You learn to spot the
+                failure, name it, and get back on track.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Module list */}
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-5xl py-16">
+          <div className="flex items-baseline justify-between">
+            <h2 className="font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+              The curriculum
+            </h2>
+            <Link
+              href="/modules"
+              className="font-sans text-sm text-ink-secondary underline underline-offset-2 transition-colors duration-150 hover:text-ink"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              All modules →
+            </Link>
+          </div>
+          <ol className="mt-8 divide-y divide-line">
+            {modules.map((mod) => (
+              <li key={mod.slug}>
+                <Link
+                  href={`/modules/${mod.slug}`}
+                  className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
+                >
+                  <span className="w-28 shrink-0 font-mono text-sm text-ink-faint">
+                    {moduleLabel(mod.number)}
+                  </span>
+                  <span className="font-serif text-lg text-ink transition-colors duration-150 group-hover:text-ink-secondary">
+                    {mod.shortTitle}
+                  </span>
+                  <span className="font-mono text-xs text-ink-faint sm:ml-auto">
+                    {mod.lessonCount} lessons · {formatMinutes(mod.totalMinutes)}
+                  </span>
+                </Link>
+              </li>
+            ))}
+            {UPCOMING_MODULES.map((mod) => (
+              <li
+                key={mod.number}
+                className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
+              >
+                <span className="w-28 shrink-0 font-mono text-sm text-ink-disabled">
+                  {moduleLabel(mod.number)}
+                </span>
+                <span className="font-serif text-lg text-ink-disabled">
+                  {mod.shortTitle}
+                </span>
+                <span className="font-mono text-xs text-ink-disabled sm:ml-auto">
+                  coming later
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Cohorts */}
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-3xl py-16 pb-24">
+          <h2 className="font-serif text-2xl text-ink">
+            Self-paced, with company if you want it
+          </h2>
+          <p className="mt-4 leading-relaxed text-ink-secondary">
+            Every lesson works on its own schedule. Cohorts add one live call
+            per module for people who want to move through the course
+            together.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/cohorts"
+            className="mt-6 inline-flex h-11 items-center rounded-md border border-line-strong px-5 font-sans text-sm font-medium text-ink transition-colors duration-150 hover:border-ink"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            See upcoming cohorts
+          </Link>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
