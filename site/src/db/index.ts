@@ -30,7 +30,16 @@ async function createDb(): Promise<Db> {
 
 export function getDb(): Promise<Db> {
   if (!dbPromise) {
-    dbPromise = createDb();
+    const promise = createDb();
+    // A failed init must not be cached forever — clear the slot so the next
+    // request retries. The resolved-promise fast path stays: a successful
+    // promise is never evicted.
+    promise.catch(() => {
+      if (dbPromise === promise) {
+        dbPromise = null;
+      }
+    });
+    dbPromise = promise;
   }
   return dbPromise;
 }

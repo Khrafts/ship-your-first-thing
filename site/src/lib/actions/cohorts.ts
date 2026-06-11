@@ -6,17 +6,21 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { getDb, schema } from "@/db";
 
+export type CohortActionResult = { ok: true } | { ok: false; error: string };
+
 function revalidateCohortSurfaces(): void {
   revalidatePath("/cohorts");
   revalidatePath("/dashboard");
 }
 
 /**
- * Join an open cohort by slug. No-op when the cohort doesn't exist, is
- * closed, or the user is already a member (the composite primary key makes
- * the insert conflict-safe).
+ * Join an open cohort by slug. Returns an error when the cohort doesn't
+ * exist or has closed; joining when already a member succeeds (the composite
+ * primary key makes the insert conflict-safe).
  */
-export async function joinCohort(cohortSlug: string): Promise<void> {
+export async function joinCohort(
+  cohortSlug: string,
+): Promise<CohortActionResult> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -25,12 +29,12 @@ export async function joinCohort(cohortSlug: string): Promise<void> {
 
   const db = await getDb();
   const [cohort] = await db
-    .select({ id: schema.cohorts.id })
+    .select({ id: schema.cohorts.id, isOpen: schema.cohorts.isOpen })
     .from(schema.cohorts)
-    .where(and(eq(schema.cohorts.slug, cohortSlug), eq(schema.cohorts.isOpen, true)))
+    .where(eq(schema.cohorts.slug, cohortSlug))
     .limit(1);
-  if (!cohort) {
-    return;
+  if (!cohort || !cohort.isOpen) {
+    return { ok: false, error: "This cohort closed before you joined." };
   }
 
   await db
@@ -39,13 +43,16 @@ export async function joinCohort(cohortSlug: string): Promise<void> {
     .onConflictDoNothing();
 
   revalidateCohortSurfaces();
+  return { ok: true };
 }
 
 /**
  * Leave a cohort by slug. Deletes the membership row if one exists; leaving
  * works even after a cohort closes.
  */
-export async function leaveCohort(cohortSlug: string): Promise<void> {
+export async function leaveCohort(
+  cohortSlug: string,
+): Promise<CohortActionResult> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -59,7 +66,7 @@ export async function leaveCohort(cohortSlug: string): Promise<void> {
     .where(eq(schema.cohorts.slug, cohortSlug))
     .limit(1);
   if (!cohort) {
-    return;
+    return { ok: false, error: "Couldn't find that cohort. Reload the page and try again." };
   }
 
   await db
@@ -72,4 +79,5 @@ export async function leaveCohort(cohortSlug: string): Promise<void> {
     );
 
   revalidateCohortSurfaces();
+  return { ok: true };
 }

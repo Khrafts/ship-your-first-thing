@@ -93,10 +93,10 @@ export default async function ModulesPage() {
               key={mod.number}
               className="flex items-baseline gap-6 py-4"
             >
-              <span className="w-24 shrink-0 font-mono text-sm text-ink-disabled">
+              <span className="w-24 shrink-0 font-mono text-sm text-ink-faint">
                 {moduleLabel(mod.number)}
               </span>
-              <span className="font-serif text-lg text-ink-disabled">
+              <span className="font-serif text-lg text-ink-faint">
                 {mod.shortTitle}
               </span>
             </li>

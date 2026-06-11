@@ -90,7 +90,7 @@ export default async function DashboardPage() {
           <form action={signOutAction}>
             <button
               type="submit"
-              className="cursor-pointer font-sans text-sm text-ink-secondary underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+              className="-my-3 inline-flex min-h-11 cursor-pointer items-center font-sans text-sm text-ink-secondary underline underline-offset-2 transition-colors duration-150 hover:text-ink"
             >
               Sign out
             </button>

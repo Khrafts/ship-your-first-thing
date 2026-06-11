@@ -38,22 +38,22 @@ export function HeaderAuth() {
   }, [pathname]);
 
   if (state === "loading") {
-    return <span aria-hidden className="inline-block h-5 w-20" />;
+    return <span aria-hidden className="inline-block h-5 w-36" />;
   }
 
   if (state === "signed-in") {
     return (
-      <span className="flex items-center gap-4">
+      <span className="flex items-center gap-3 sm:gap-4">
         <Link
           href="/dashboard"
-          className="transition-colors duration-150 hover:text-ink"
+          className="inline-flex h-14 items-center transition-colors duration-150 hover:text-ink"
         >
           Dashboard
         </Link>
         <form action={signOutAction}>
           <button
             type="submit"
-            className="cursor-pointer transition-colors duration-150 hover:text-ink"
+            className="inline-flex h-14 cursor-pointer items-center whitespace-nowrap transition-colors duration-150 hover:text-ink"
           >
             Sign out
           </button>
@@ -65,7 +65,7 @@ export function HeaderAuth() {
   return (
     <Link
       href="/signin"
-      className="transition-colors duration-150 hover:text-ink"
+      className="inline-flex h-14 items-center whitespace-nowrap transition-colors duration-150 hover:text-ink"
     >
       Sign in
     </Link>

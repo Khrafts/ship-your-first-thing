@@ -44,15 +44,22 @@ export async function toggleLessonComplete(
     .limit(1);
 
   let completed: boolean;
-  if (existing.length > 0) {
-    await db.delete(schema.lessonProgress).where(rowKey);
-    completed = false;
-  } else {
-    await db
-      .insert(schema.lessonProgress)
-      .values({ userId, lessonPath })
-      .onConflictDoNothing();
-    completed = true;
+  try {
+    if (existing.length > 0) {
+      await db.delete(schema.lessonProgress).where(rowKey);
+      completed = false;
+    } else {
+      await db
+        .insert(schema.lessonProgress)
+        .values({ userId, lessonPath })
+        .onConflictDoNothing();
+      completed = true;
+    }
+  } catch {
+    // A JWT can outlive its user row (account deleted, database reseeded).
+    // The insert then hits the user_id foreign key — treat that as a dead
+    // session rather than letting the action throw.
+    return { ok: false as const, error: "unauthenticated" };
   }
 
   revalidatePath("/dashboard");

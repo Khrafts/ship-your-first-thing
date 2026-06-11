@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { asc, eq } from "drizzle-orm";
 import { auth } from "@/auth";
+import { CohortMembershipButton } from "@/components/cohort-membership-button";
 import { getDb, schema } from "@/db";
-import { joinCohort, leaveCohort } from "@/lib/actions/cohorts";
 import { formatDateTimeUtc, formatDateUtc, formatMinutes } from "@/lib/format";
 
 // Reads the database and the session cookie — render per request.
@@ -12,11 +12,6 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Cohorts",
 };
-
-const BUTTON_PRIMARY =
-  "inline-flex h-11 cursor-pointer items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary";
-const BUTTON_SECONDARY =
-  "inline-flex h-11 cursor-pointer items-center rounded-md border border-line-strong px-5 font-sans text-sm font-medium text-ink transition-colors duration-150 hover:border-ink";
 
 export default async function CohortsPage() {
   const [db, session] = await Promise.all([getDb(), auth()]);
@@ -90,9 +85,15 @@ export default async function CohortsPage() {
                   <table className="mt-6 w-full border-collapse font-sans text-sm">
                     <thead>
                       <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-ink-faint">
-                        <th className="py-2 pr-4 font-medium">Week</th>
-                        <th className="py-2 pr-4 font-medium">Call</th>
-                        <th className="py-2 font-medium">When</th>
+                        <th scope="col" className="py-2 pr-4 font-medium">
+                          Week
+                        </th>
+                        <th scope="col" className="py-2 pr-4 font-medium">
+                          Call
+                        </th>
+                        <th scope="col" className="py-2 font-medium">
+                          When
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -128,18 +129,16 @@ export default async function CohortsPage() {
                       <p className="font-sans text-sm font-medium text-ink">
                         ✓ You&apos;re in this cohort.
                       </p>
-                      <form action={leaveCohort.bind(null, cohort.slug)}>
-                        <button type="submit" className={BUTTON_SECONDARY}>
-                          Leave cohort
-                        </button>
-                      </form>
+                      <CohortMembershipButton
+                        cohortSlug={cohort.slug}
+                        action="leave"
+                      />
                     </div>
                   ) : cohort.isOpen ? (
-                    <form action={joinCohort.bind(null, cohort.slug)}>
-                      <button type="submit" className={BUTTON_PRIMARY}>
-                        Join cohort
-                      </button>
-                    </form>
+                    <CohortMembershipButton
+                      cohortSlug={cohort.slug}
+                      action="join"
+                    />
                   ) : (
                     <p className="font-sans text-sm text-ink-faint">
                       This cohort is closed to new members.

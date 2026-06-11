@@ -5,26 +5,29 @@ import { SITE_NAME } from "@/lib/copy";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="font-medium tracking-tight">
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+        <Link
+          href="/"
+          className="min-w-0 truncate text-sm font-medium tracking-tight sm:text-base"
+        >
           {SITE_NAME}
         </Link>
-        <nav className="flex items-center gap-4 font-sans text-sm text-ink-secondary">
+        <nav className="flex shrink-0 items-center gap-3 font-sans text-sm text-ink-secondary sm:gap-4">
           <Link
             href="/modules"
-            className="transition-colors duration-150 hover:text-ink"
+            className="inline-flex h-14 items-center transition-colors duration-150 hover:text-ink"
           >
             Modules
           </Link>
           <Link
             href="/cohorts"
-            className="transition-colors duration-150 hover:text-ink"
+            className="inline-flex h-14 items-center transition-colors duration-150 hover:text-ink"
           >
             Cohorts
           </Link>
           <Link
             href="/glossary"
-            className="hidden transition-colors duration-150 hover:text-ink sm:inline"
+            className="hidden h-14 items-center transition-colors duration-150 hover:text-ink sm:inline-flex"
           >
             Glossary
           </Link>

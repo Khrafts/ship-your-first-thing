@@ -42,7 +42,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         <nav className="font-sans text-sm text-ink-faint">
           <Link
             href="/modules"
-            className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+            className="-my-3 inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
           >
             ← All modules
           </Link>

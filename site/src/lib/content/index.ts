@@ -36,10 +36,20 @@ function contentRoot(): string {
 // Link rewriting
 // ---------------------------------------------------------------------------
 
+/** Raw-content host for the GitHub fallback. Blob URLs serve an HTML page,
+ *  so image targets must point at raw.githubusercontent.com instead. */
+const GITHUB_RAW_URL = GITHUB_REPO_URL.replace(
+  "https://github.com/",
+  "https://raw.githubusercontent.com/",
+);
+
+const IMAGE_EXTENSION = /\.(?:png|jpe?g|gif|svg|webp)$/i;
+
 /**
  * Map a repo-relative markdown link (resolved against the source file's
  * directory) onto a site route. Anything the site doesn't render falls back
- * to the GitHub blob URL so no internal course link 404s.
+ * to the GitHub blob URL (raw URL for images) so no internal course link
+ * 404s.
  */
 export function rewriteUrl(url: string, sourceDir: string): string {
   if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\/)/i.test(url)) {
@@ -73,6 +83,9 @@ export function rewriteUrl(url: string, sourceDir: string): string {
     return `/modules/${moduleMatch[1]}${hash}`;
   }
 
+  if (IMAGE_EXTENSION.test(resolved)) {
+    return `${GITHUB_RAW_URL}/main/${resolved}${hash}`;
+  }
   return `${GITHUB_REPO_URL}/blob/main/${resolved}${hash}`;
 }
 
@@ -93,12 +106,51 @@ function hasUrl(node: unknown): node is UrlNode {
 // Markdown rendering
 // ---------------------------------------------------------------------------
 
+// Minimal structural hast types — the `hast` type package is not directly
+// resolvable under the pnpm layout (it is a transitive dep of the rehype
+// packages), and these two shapes are all the h1-drop plugin needs.
+interface HastNode {
+  type: string;
+  tagName?: string;
+  value?: string;
+}
+
+interface HastRoot {
+  type: string;
+  children: HastNode[];
+}
+
+/**
+ * Remove the document-leading `<h1>` — pages render their own h1 chrome.
+ * Runs AFTER rehype-slug so the h1 still participates in heading-id dedup
+ * (GitHub suffixes a later identically-slugged heading with `-1`; stripping
+ * the h1 from the markdown beforehand made the site's ids diverge). Only a
+ * leading h1 is dropped — a `# ` line inside a code fence or a mid-document
+ * h1 stays put.
+ */
+function dropLeadingH1(tree: HastRoot): void {
+  for (let i = 0; i < tree.children.length; i += 1) {
+    const node = tree.children[i];
+    if (
+      node.type === "comment" ||
+      (node.type === "text" && (node.value ?? "").trim() === "")
+    ) {
+      continue; // whitespace / comments ahead of the first real block
+    }
+    if (node.type === "element" && node.tagName === "h1") {
+      tree.children.splice(i, 1);
+    }
+    return;
+  }
+}
+
 /**
  * Render course markdown to HTML. Mermaid fences stay as
  * `<pre><code class="language-mermaid">` so the client can hydrate them into
  * diagrams (and the source stays readable without JavaScript). Raw HTML
  * (`<details><summary>` disclosures) passes through; headings get slug ids so
- * glossary anchors like #browser resolve.
+ * glossary anchors like #browser resolve. The leading h1 is dropped post-slug
+ * (see dropLeadingH1) because pages render their own h1 chrome.
  */
 async function renderMarkdown(markdown: string, sourceDir: string): Promise<string> {
   const file = await unified()
@@ -114,14 +166,12 @@ async function renderMarkdown(markdown: string, sourceDir: string): Promise<stri
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
+    .use(() => (tree) => {
+      dropLeadingH1(tree as unknown as HastRoot);
+    })
     .use(rehypeStringify)
     .process(markdown);
   return String(file);
-}
-
-/** Drop the first `# ` heading line — pages render their own h1 chrome. */
-function stripLeadingH1(markdown: string): string {
-  return markdown.replace(/^#\s.*\r?\n/m, "");
 }
 
 // ---------------------------------------------------------------------------
@@ -229,16 +279,24 @@ async function loadModules(): Promise<ModuleInfo[]> {
   return modules;
 }
 
-// Promise-level caches: content is immutable for the life of the process
-// (the markdown ships with the deploy). Keyed caches keep lesson HTML from
-// being re-rendered on every request.
+// Promise-level caches: in production the content is immutable for the life
+// of the process (the markdown ships with the deploy), so keyed caches keep
+// lesson HTML from being re-rendered on every request. In development both
+// caches are bypassed so markdown edits show on reload. Rejected promises are
+// evicted so one transient fs error doesn't poison the route until restart.
 let modulesCache: Promise<ModuleInfo[]> | null = null;
 const htmlCache = new Map<string, Promise<string>>();
 
 function cachedHtml(key: string, render: () => Promise<string>): Promise<string> {
+  if (process.env.NODE_ENV === "development") {
+    return render();
+  }
   let cached = htmlCache.get(key);
   if (!cached) {
     cached = render();
+    cached.catch(() => {
+      htmlCache.delete(key);
+    });
     htmlCache.set(key, cached);
   }
   return cached;
@@ -250,10 +308,18 @@ function cachedHtml(key: string, render: () => Promise<string>): Promise<string>
 
 /** All content modules in course order (0, 1, 2, 3, 3.5, …). */
 export function getModules(): Promise<ModuleInfo[]> {
-  if (!modulesCache) {
-    modulesCache = loadModules();
+  if (process.env.NODE_ENV === "development") {
+    return loadModules();
   }
-  return modulesCache;
+  let cached = modulesCache;
+  if (!cached) {
+    cached = loadModules();
+    cached.catch(() => {
+      modulesCache = null;
+    });
+    modulesCache = cached;
+  }
+  return cached;
 }
 
 export async function getModule(slug: string): Promise<ModuleInfo | null> {
@@ -287,7 +353,7 @@ export async function getLesson(
   const parsed = parseFrontmatter(data, moduleSlug);
 
   const html = await cachedHtml(ref.path, () =>
-    renderMarkdown(stripLeadingH1(content), `modules/${moduleSlug}`),
+    renderMarkdown(content, `modules/${moduleSlug}`),
   );
 
   const meta: LessonMeta = {
@@ -316,7 +382,7 @@ export function getModuleReadmeHtml(slug: string): Promise<string> {
       path.join(contentRoot(), "modules", slug, "README.md"),
       "utf8",
     );
-    return renderMarkdown(stripLeadingH1(raw), `modules/${slug}`);
+    return renderMarkdown(raw, `modules/${slug}`);
   });
 }
 
@@ -324,7 +390,7 @@ export function getModuleReadmeHtml(slug: string): Promise<string> {
 export function getGlossaryHtml(): Promise<string> {
   return cachedHtml("GLOSSARY.md", async () => {
     const raw = await readFile(path.join(contentRoot(), "GLOSSARY.md"), "utf8");
-    return renderMarkdown(stripLeadingH1(raw), "");
+    return renderMarkdown(raw, "");
   });
 }
 
@@ -332,6 +398,6 @@ export function getGlossaryHtml(): Promise<string> {
 export function getSetupHtml(): Promise<string> {
   return cachedHtml("SETUP.md", async () => {
     const raw = await readFile(path.join(contentRoot(), "SETUP.md"), "utf8");
-    return renderMarkdown(stripLeadingH1(raw), "");
+    return renderMarkdown(raw, "");
   });
 }

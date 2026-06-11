@@ -68,6 +68,7 @@
   background: var(--surface-raised);
   border-radius: 4px;
   padding: 0.15em 0.4em;
+  overflow-wrap: break-word;
 }
 
 .prose pre {
@@ -119,6 +120,7 @@
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
+  overflow-x: auto;
 }
 
 .prose th,

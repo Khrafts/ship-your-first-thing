@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { LessonArticle } from "@/components/lesson-article";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
-import { getLesson } from "@/lib/content";
+import { getLesson, getModule } from "@/lib/content";
 import { formatDateUtc, formatMinutes } from "@/lib/format";
 import { getCompletedLessonPaths } from "@/lib/progress";
 
@@ -30,7 +30,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const session = await auth();
+  const [session, mod] = await Promise.all([
+    auth(),
+    getModule(lesson.moduleSlug),
+  ]);
   const userId = session?.user?.id;
   const completed = userId
     ? (await getCompletedLessonPaths(userId)).has(lesson.path)
@@ -42,9 +45,9 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <nav className="font-sans text-sm text-ink-faint">
           <Link
             href={`/modules/${lesson.moduleSlug}`}
-            className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+            className="-my-3 inline-flex min-h-11 items-center underline underline-offset-2 transition-colors duration-150 hover:text-ink"
           >
-            ← {lesson.moduleSlug}
+            ← {mod?.shortTitle ?? lesson.moduleSlug}
           </Link>
         </nav>
 

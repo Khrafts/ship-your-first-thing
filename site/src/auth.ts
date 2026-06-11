@@ -16,13 +16,22 @@ declare module "next-auth" {
   }
 }
 
+// The JWT secret is the whole trust boundary for stateless sessions. In
+// production there is deliberately NO fallback: when AUTH_SECRET is missing,
+// the secret stays undefined and Auth.js throws MissingSecret instead of
+// signing forgeable sessions with a known string. The dev fallback keeps
+// local flows working (the e2e suite sets AUTH_SECRET explicitly anyway).
+const secret =
+  process.env.AUTH_SECRET ??
+  (process.env.NODE_ENV === "production"
+    ? undefined
+    : "dev-insecure-secret-local-only");
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   pages: { signIn: "/signin" },
   trustHost: true,
-  secret:
-    process.env.AUTH_SECRET ??
-    "dev-insecure-secret-set-AUTH_SECRET-in-production",
+  secret,
   providers: [
     Credentials({
       credentials: {

@@ -32,6 +32,9 @@ export async function signUpAction(
   }
 
   const db = await getDb();
+  // Fast path: skip the bcrypt work when the email is already taken. The
+  // insert below is still the authoritative check — two concurrent signups
+  // can both pass this read.
   const existing = await db.query.users.findFirst({
     where: eq(schema.users.email, email),
   });
@@ -40,7 +43,14 @@ export async function signUpAction(
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
-  await db.insert(schema.users).values({ name, email, passwordHash });
+  const inserted = await db
+    .insert(schema.users)
+    .values({ name, email, passwordHash })
+    .onConflictDoNothing({ target: schema.users.email })
+    .returning({ id: schema.users.id });
+  if (inserted.length === 0) {
+    return { error: AUTH_COPY.emailTaken };
+  }
 
   try {
     await signIn("credentials", { email, password, redirectTo: "/dashboard" });

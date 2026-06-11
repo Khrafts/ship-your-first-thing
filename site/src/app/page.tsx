@@ -117,13 +117,13 @@ export default async function Home() {
                 key={mod.number}
                 className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
               >
-                <span className="w-28 shrink-0 font-mono text-sm text-ink-disabled">
+                <span className="w-28 shrink-0 font-mono text-sm text-ink-faint">
                   {moduleLabel(mod.number)}
                 </span>
-                <span className="font-serif text-lg text-ink-disabled">
+                <span className="font-serif text-lg text-ink-faint">
                   {mod.shortTitle}
                 </span>
-                <span className="font-mono text-xs text-ink-disabled sm:ml-auto">
+                <span className="font-mono text-xs text-ink-faint sm:ml-auto">
                   coming later
                 </span>
               </li>
