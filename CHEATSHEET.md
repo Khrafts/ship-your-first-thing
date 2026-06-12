@@ -4,6 +4,8 @@
 
 **Structure:** Four sections. Each entry is a tight one-liner with a one-line "why" comment.
 
+**Freshness:** If a command here doesn't work in your session, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — command names change over time, and the log records each change.
+
 **How to contribute:** See `CONTRIBUTING.md`. When you author a lesson that introduces a re-usable command or prompt, add it here in the same PR. Keep entries terse — this is a reference, not a tutorial.
 
 ---
