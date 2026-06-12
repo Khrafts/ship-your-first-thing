@@ -40,7 +40,7 @@ Audience floor: someone who has used a computer (browser, files, email) but has 
 
 ## Before you commit
 
-Run `./scripts/voice-lint.sh`. Exit code 0 is required. A backlog of `WARN (jargon-density …)` lines is expected and does not block the gate — they mark where prose hasn't yet converged on the strict vocab contract (check #6 now surfaces M0–M3.5, so the backlog is larger than the old M0/M1-only ~50; see `WHAT-CHANGED.md` for the current count). **Violations** (lines starting `VIOLATION (...)`) do block. Don't read exit 0 as "vocab contract satisfied" — #6 is WARN-only, and M4+ is human-review until those modules exist.
+Run `./scripts/voice-lint.sh`. Exit code 0 is required. A backlog of `WARN (jargon-density …)` lines is expected and does not block the gate — they mark where prose hasn't yet converged on the strict vocab contract (check #6 now surfaces M0–M3.5, so the backlog is larger than the old M0/M1-only ~50; see `WHAT-CHANGED.md` for the current count). **Violations** (lines starting `VIOLATION (...)`) do block. Check #10 (whatchanged-entry-shape) blocks non-conforming `WHAT-CHANGED.md` entries — the thin-entry contract lives in `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry. Don't read exit 0 as "vocab contract satisfied" — #6 is WARN-only, and M4+ is human-review until those modules exist.
 
 Run `./scripts/voice-lint.sh --self-test` if you modified `scripts/voice-lint.sh` itself or any file under `scripts/voice-lint-fixtures/`. Exit code 0 means every fixture trips its target check.
 
@@ -74,7 +74,7 @@ Never reference AI assistants in commits, PR bodies, or branch names. No `Co-Aut
 
 - **`docs/COURSE-AUTHORING.md`** — the full authoring playbook with worked examples.
 - **`CONTRIBUTING.md`** — contributor-facing version (smaller scope, human-friendly).
-- **`WHAT-CHANGED.md`** — reverse-chronological log of decisions that shifted between revisions.
+- **`WHAT-CHANGED.md`** — learner-facing freshness log: thin dated entries (**Change:** / **If you're affected:** / **Details:**); contributor detail lives in the linked PRs, not in the file. Entry contract in `CONTRIBUTING.md`, enforced by voice-lint check #10.
 - **`scripts/voice-lint.sh`** — the source of truth for what's enforced programmatically.
 - **`scripts/voice-lint-fixtures/`** — synthetic content that intentionally trips each check; useful when figuring out what a check actually catches.
 

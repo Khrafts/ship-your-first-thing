@@ -1,17 +1,61 @@
 # WHAT-CHANGED.md — Freshness log
 
-Reverse-chronological log of what shifted between course revisions. The first place to check when reality drifts from a lesson.
+The first place to check when reality drifts from a lesson. Your lesson's `> **Last captured:**` or
+`> **Last verified:**` date tells you WHEN the page was last true. [`VERSIONS.md`](./VERSIONS.md) tells
+you WHICH tool versions it was true against. This file tells you WHAT has shifted since — newest first.
+Find the entries dated after your lesson's date and read those.
 
-Each entry has the format:
+Each entry is a dated heading plus three labeled lines:
 
-> ## YYYY-MM-DD — {one-line summary}
-> **What changed:** ...
-> **Affected lessons / artifacts:** ...
-> **What learners should do:** ...
+> ## YYYY-MM-DD — plain-words summary
+> **Change:** what shifted, in one or two sentences.
+> **If you're affected:** the one thing to do — or "No learner action — internal change."
+> **Details:** links to the pull request and the doc that owns the substance.
+
+Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry) — voice-lint check #10 enforces them.
+
+## Fast answers
+
+The quickest routes from "my screen doesn't match the lesson" to an answer:
+
+| What you're seeing | What happened | Where to look |
+|---|---|---|
+| A slash command from the course doesn't exist in your session | Claude Code replaced /tokens with /context (window usage) and /cost (spend); Gemini CLI uses /stats and /compress | [`CHEATSHEET.md`](./CHEATSHEET.md) |
+| Your agent's replies look different from a lesson's transcripts | Captured transcripts age; the loop the lesson teaches still works | The lesson's "Last captured" date, then the entries below dated after it |
+| An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
+| An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
+
+## 2026-06-12 — Freshness log restructured: shorter entries, history kept below
+
+**Change:** Entries are now a few lines each, written for course learners. Everything older is preserved word-for-word under "Earlier entries," each behind a one-line summary you can click to expand.
+**If you're affected:** Nothing changes about how you use this file — find the entries dated after your lesson's date.
+**Details:** Entry rules live in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry).
+
+<!-- voice-lint check #10 boundary: entries below this line predate the 2026-06-12 entry contract and are preserved verbatim. New entries go ABOVE this line. -->
+
+## Earlier entries (before 2026-06-12)
+
+Everything below is preserved word-for-word from before the format change. These entries were written for course maintainers as much as for learners, so they are heavier reading — each sits behind a one-line plain-words summary you can click to expand, and the table below is the short version of all of them. One exception stays fully expanded: the 2026-06-08 entry, because it carries the renumbering map that decodes the entries written before it.
+
+| Date | What shifted | If you're affected |
+|---|---|---|
+| 2026-06-11 | The course got a website; lesson text unchanged | Nothing — github.com stays the canonical course |
+| 2026-06-08 | Author-facing writing docs reorganized; carries the numbering map for older entries | Nothing |
+| 2026-05-19 | Twelve lessons re-worded for clarity; meaning unchanged | Nothing |
+| 2026-05-18 | Writing standards for course authors locked (two entries) | Nothing |
+| 2026-05-14 | Modules 2, 3, and 3.5 shipped; versions pinned in VERSIONS.md | Compare your session against each lesson's "Last captured" date |
+| 2026-05-14 | Module 3 lessons 1–4 shipped with real agent transcripts (four entries) | Your agent's output will differ in the details; that is expected |
+| 2026-05-14 | Claude Code's /tokens became /context + /cost; Gemini CLI uses /stats + /compress | Use the new names; CHEATSHEET.md and BUDGET.md already do |
+| 2026-05-10 | Module 0 and 1 re-worded; Module 1 gained a fourth lesson (going live) | If you finished the three-lesson Module 1, read the new lesson 4 |
+| 2026-05-08 | First full release: Module 0, Module 1, reference docs | Nothing |
+| 2026-05-08 | V1 baseline — kept in full at the bottom of this file | Read it once (the welcome lesson asks you to) |
 
 ---
 
 ## 2026-06-11 — Course platform built at site/ (LMS deferral lifted)
+
+<details>
+<summary>The course got a website (the code lives in site/ in this repo); the lessons themselves did not change, and github.com stays the canonical way to read them.</summary>
 
 **What changed:** The Platform Track deferred on 2026-05-14 was explicitly greenlit and built in one pass, with three decision changes from the preserved Phase 01.1 plans:
 
@@ -25,6 +69,8 @@ Each entry has the format:
 **Affected lessons / artifacts:** No lesson bodies changed. New: `site/` (platform code), `railway.json`, `.dockerignore`. The platform renders `GLOSSARY.md`, `SETUP.md`, and module READMEs at `/glossary`, `/docs/setup`, and `/modules/*`.
 
 **What learners should do:** Nothing yet — github.com remains the canonical course surface. When the site goes live, accounts add progress tracking and cohort schedules; the lessons are identical on both surfaces.
+
+</details>
 
 ---
 
@@ -45,6 +91,9 @@ Each entry has the format:
 ---
 
 ## 2026-05-19 — Phase 02.4 close: 12 lessons polished under Six-Tenets contract
+
+<details>
+<summary>Twelve already-published lessons were re-worded for clarity; their meaning, order, and analogies did not change.</summary>
 
 **What changed:** Brought 12 shipped lessons (M1 L1–L4, M2 L3, M2 L6, M3 L1–L4, M3.5 L1/L3/L4) into compliance with the Six Tenets framework that Phase 02.3 locked. Largest single edits: M2 L6 gained a new `### Three things agents get wrong` Core-read sub-section anchoring Tenet 6 (hallucination / drift / risk-blindness with three Hard Rule 14 forward-refs pointing at M3 L3 / M3 L2 + L4 / M5 LESSON-13); M3 L3 un-punted the hallucination mechanism (replaced the Module-7 forward-reference paragraph with the D-59 verbatim 3-sentence non-technical mechanism explanation). M1 L1–L4 shed pre-Hard-Rule-12 jargon drift (HTML/JSX tag syntax in body prose, foreign-key lookup mechanics, `httpOnly`/`Secure` cookie flags, three-bullet deployment-failure config-fluency). M2 L3 reframed TypeScript as SYMPTOM-only (`.ts` files; agent reads labels; learner doesn't write labels) — the CONCEPT framing ("guardrails," "turtles all the way down") is gone. M3 L1 / L2 / L4 received small steering-skill + working-memory-first reorder + context-commitment / console-pointer polishes. M3.5 L1 / L3 / L4 received final-seam tightening on top of Phase 02.2's rewrites — "two routing systems" concept-explanation cut from L1; "Hydration failed because…" mechanism-leak trimmed to "Hydration failed." in L3 Error 3 + Error C; L4 detection-rule list reframed as "interactivity name" matching + pre-exercise guard naming `reconciliation` / `virtual DOM` / `render phases` as agent over-explanation flags. GLOSSARY gained `### drift` and `### risk-blindness` anchors (D-36 same-PR convention with M2 L6's polish); `### hallucination` was already in place from Phase 2 close.
 
@@ -74,9 +123,14 @@ Each entry has the format:
 
 **What does NOT change:** `modules/02-toolchain/05-git-and-github.md` (M2 L5) and `modules/03.5-reading-code/02-spotting-wrong-file-edits.md` (M3.5 L2) remain DO-NOT-TOUCH gold-standard exemplars per D-66. The lesson anatomy (`lesson-template.md` nine-element shape). The voice-lint script (no new check this phase; check #10 for Hard Rule 14 enforcement is deferred to optional Phase 02.5 if WARN-level enforcement becomes useful). All Module 0 lessons. M2 L1 / L2 / L4 lessons. The framework files Phase 02.3 locked (TENETS.md, CLAUDE.md hard rules, COURSE-AUTHORING.md Parts 5/6/7, audience-vocabulary M4–M7) — Phase 02.4 ships against the contract, not the contract itself.
 
+</details>
+
 ---
 
 ## 2026-05-18 — Six Tenets canonicalized: TENETS.md + Hard Rules 13 + 14 + COURSE-AUTHORING Parts 5/6/7
+
+<details>
+<summary>The writing standards course authors follow were collected into one rulebook; no lesson text changed.</summary>
 
 **What changed:** The course's soul — six tenets the project has stated philosophically since the start — is now captured in a single canonical artifact (`docs/TENETS.md`) plus enforcement in CLAUDE.md hard rules 13 (Execution-Responsibility Boundary for M4+ build phases) and 14 (AI-Limitation Pedagogy — never name an agent failure mode without arming the learner with a smell-test). `docs/COURSE-AUTHORING.md` gains three new parts: Part 5 (Execution-Floor Boundary), Part 6 (AI-Limitation Pedagogy with the six-limitation taxonomy), Part 7 (What NOT to Teach appendix with 12 high-temptation traps). Existing Parts 5–9 renumber to 8–12. `docs/audience-vocabulary.md` extends through Modules 4, 5, 6, 7 — the M4 SYMPTOM-only term list pre-classifies the heavy build-phase nouns (`WITH CHECK`, `useOptimistic`, `revalidatePath`, `Server Action`, async `cookies()` / `headers()` / `params`, RLS, Supabase) so the build-phase planner inherits the right framing. `lesson-template.md` gains Execution-Floor + AI-Limitation Pedagogy margin comments and two new Authors' notes bullets.
 
@@ -105,9 +159,14 @@ Each entry has the format:
 
 **What contributors should do:** Read `docs/TENETS.md` FIRST when authoring or revising any lesson. The six tenets are the soul; everything else (CLAUDE.md hard rules, COURSE-AUTHORING parts, audience-vocabulary contract, voice-lint checks) serves them. When authoring an M4+ build-phase lesson: confirm `.planning/phases/NN-NAME/NN-CONTEXT.md` is locked with the smell-test inventory BEFORE writing. When naming an agent failure mode (hallucination, drift, context-window overflow, training cutoff, confident-wrong, risk-blindness, prompt-injection): give the learner a concrete smell-test in the same lesson OR a Hard Rule 14 forward-reference (`> **Heads up — you'll meet this again.** ... The smell-test for catching it lives in {Module N Lesson NN slug}; for now, just notice the name.`). Vague "we'll cover this later" doesn't satisfy Hard Rule 14. When unsure whether to teach a mechanic: check the "What NOT to Teach" appendix in COURSE-AUTHORING.md Part 7 — twelve high-temptation traps catalogued upfront, each with the right move + where to escape to.
 
+</details>
+
 ---
 
 ## 2026-05-18 — Phase 02.2 Wave 0: Agent-Responsibility Boundary lock
+
+<details>
+<summary>A writing rule for authors was locked: lessons teach you to spot symptoms and ask your agent — the agent owns the mechanics. Three Module 3.5 lessons were rewritten under it.</summary>
 
 **What changed:** Locked the Agent-Responsibility Boundary as a load-bearing decision across CLAUDE.md, `docs/COURSE-AUTHORING.md`, `docs/audience-vocabulary.md`, `lesson-template.md`, and `scripts/voice-lint.sh`. The boundary answers a question the course never made explicit before: **the AI agent owns** reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals. **The learner owns** stating intent, checking the agent edited the right file, recognizing wrongness, asking for help. Every lesson section is one role or the other — never both. The boundary is operationalized by three audit questions (Q1–Q3) lesson authors run before shipping any M3.5 or M3.5-adjacent lesson.
 
@@ -134,9 +193,14 @@ Each entry has the format:
 
 **Phase 02.2 Wave 1 close (appended 2026-05-18).** L1, L3, and L4 rewritten under the Agent-Responsibility Boundary. L1: cut App Router / URL-routing / TypeScript / JSX D-04 callouts; reframed Core read body around "this folder is where pages live" (office-directory analogy preserved). L3: cut stack-trace + error-message-anatomy D-04 callouts + four-part anatomy rule + `:line:column` parsing; reframed around "find the first line whose path starts with `./app/`, paste the full error to your agent" (receipt analogy preserved). L4: cut the WHY-the-split explanation + rendering-execution model + JSX callout + React Server Components callout; rewrote server-component / client-component / hydration D-04 callouts as SYMPTOM-only; collapsed "What you just closed" into What-you-just-did breadcrumb (framed-picture-vs-touchscreen analogy preserved). `GLOSSARY.md` `### hydration` entry rewritten to symptom-only definition. Voice-lint check #9 now emits zero WARNs against M3.5 (was 4 against L3 before the rewrite). The L1→L2→L3→L4 prev/next chain is unbroken; the four-analogy narrative arc (office directory → contractor → receipt → gallery) reads coherently. M3.5 L2 untouched.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 close (Modules 2, 3, 3.5 shipped)
+
+<details>
+<summary>Modules 2, 3, and 3.5 shipped — 14 new lessons; the tool versions they were verified against are pinned in VERSIONS.md.</summary>
 
 **What changed:** Phase 2 (Toolchain & The Loop) closed. Three modules shipped — Module 2 (6 lessons: IDE, terminal, runtime/Node, npm, git+GitHub, AI coding agents), Module 3 (4 lessons, dual-agent: Claude Code + Gemini CLI in parallel per D-27 / LESSON-14), and Module 3.5 (4 lessons, strictly observational floor per D-33). 14 new lessons total. The prev/next chain runs unbroken from `modules/01-mental-models/04-how-it-goes-live.md` through `modules/03.5-reading-code/04-use-client-and-server-split.md` and lands on the course README as the Phase 3 placeholder. `GLOSSARY.md` and `CHEATSHEET.md` grew in same-PR with each lesson per D-36. `docs/audience-vocabulary.md` gained M2/M3/M3.5 sections per D-37; voice-lint enforces the audience-vocabulary classification programmatically. `voice-lint --self-test` continues to exit 0 (all six fixture types still trip their target checks).
 
@@ -162,9 +226,14 @@ Each entry has the format:
 
 **What contributors should do:** Run `./scripts/voice-lint.sh` from a clean checkout — it should exit 0 across the full Phase 2 surface (0 violations; jargon-density WARNs are the documented editorial backlog from Phase 1 and are non-blocking). Run `./scripts/voice-lint.sh --self-test` if you modify the lint script — all 6 fixture types must trip their target checks. If you add a new technical noun to any M2/M3/M3.5 lesson, classify it in `docs/audience-vocabulary.md` AND add a `### anchor` to `GLOSSARY.md` in the same PR. If you author a re-usable command or AI prompt, add it to `CHEATSHEET.md` in the same PR. The M3 transcripts are real captures (D-28) — re-captures replace placeholders verbatim, bump `updated:` + `Last captured:` dates, and add a WHAT-CHANGED entry.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 Wave 3 M3 L4 transcripts captured + Module 3 module-close
+
+<details>
+<summary>Module 3 lesson 4 (steering and recovery) shipped, with real agent transcripts captured on 2026-05-14. Your agent will behave differently in the details; that is expected.</summary>
 
 **What changed:** Module 3 Lesson 4 (`modules/03-the-loop/04-steering-and-recovery.md`) shipped, with paired Claude Code + Gemini CLI captures from 2026-05-14 (D-28). The lesson teaches the STEER step of the agent loop: three-part steer asks (what was wrong / what you want / any constraint), recognizing over-engineering on open-ended asks, scope-steering back to a tight constraint, feeding errors back as the simplest steer, and `/clear` as hygiene (not failure) when steering stalls. The worked example walks three steers against the post-L3 scratch state: (a) replace the hallucinated book titles with placeholder text, (b) the deliberately open-ended "make the list look like a real bookshelf" ask that produces over-engineering from both agents, (c) the scope-steer back to inline-CSS-only. New GLOSSARY anchor: `over-engineering`. The scratch/index.html starter is progressed to its final M3 state — placeholder-text `<ul>` wrapped in inline CSS (wooden background, line spacing, no frameworks). Module 3 ends here; the lesson includes the D-31 finale note ("you can delete the scratch directory now — your real project starts in Module 4"). Module 3.5 (Wave 4) is next.
 
@@ -174,9 +243,14 @@ Each entry has the format:
 
 **What contributors should do:** The transcripts are real captures, not idealized (D-28). If a re-capture is needed (e.g., Claude Code 2.x or Gemini CLI's output shape changes), open a PR that re-runs L4's three capture phases (Phase A steer-the-hallucination, Phase B open-ended-then-over-engineering, Phase C scope-steer-back) against `modules/03-the-loop/scratch/index.html` in its post-L3 state, replaces the lesson's six transcript placeholders + three divergence annotations with the new verbatim captures, bumps the `updated:` and `Last captured:` dates, and adds a new WHAT-CHANGED entry. The lesson is engineered around real over-engineering — do NOT clean it up; the over-shoot IS the pedagogy that the scope-steer recovers from.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 Wave 3 M3 L3 transcripts captured
+
+<details>
+<summary>Module 3 lesson 3 (recognizing wrong output) shipped, with real agent transcripts captured on 2026-05-14 — including the agent inventing book titles, kept on purpose as the lesson example.</summary>
 
 **What changed:** Module 3 Lesson 3 (`modules/03-the-loop/03-reading-plans-recognizing-wrong.md`) shipped, with paired Claude Code + Gemini CLI captures from 2026-05-14 (D-28). The lesson teaches the EVALUATE step of the agent loop using observation-based detection (D-30) — five patterns: visual divergence, output divergence, plan-vs-actual divergence, narration divergence, error messages. The worked example is the deliberately under-specified ask "Add a list of 3 favorite books below the button," engineered to produce hallucinations from both agents. The lesson SHIPS the hallucinated book titles verbatim — recognizing the hallucination is the point; M3 L4 walks through the steer that replaces them with placeholder text. New GLOSSARY anchor: `hallucination`. The scratch/index.html starter is progressed to include the hallucinated list (D-31 L3 progression).
 
@@ -186,9 +260,14 @@ Each entry has the format:
 
 **What contributors should do:** The transcripts are real captures, not idealized (D-28). If a re-capture is needed (e.g., Claude Code 2.x or Gemini CLI's output shape changes), open a PR that re-runs the L3 ask against `modules/03-the-loop/scratch/index.html` in its post-L2 state, replaces the lesson's transcript placeholders with the new verbatim captures, bumps the `updated:` and `Last captured:` dates, and adds a new WHAT-CHANGED entry. The lesson is engineered around real hallucinations — do NOT clean them up; the L3 hallucination IS the pedagogy.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 Wave 3 M3 L2 transcripts captured
+
+<details>
+<summary>Module 3 lesson 2 (planning vs. execution) shipped, with real agent transcripts captured on 2026-05-14, teaching the current slash-command names.</summary>
 
 **What changed:** Module 3 Lesson 2 (`modules/03-the-loop/02-planning-vs-execution.md`) shipped, with paired Claude Code + Gemini CLI captures from 2026-05-14 (D-28). The lesson teaches planning vs execution conversations and introduces the six core slash commands (`/clear`, `/compact`, `/context`, `/cost` for Claude Code; `/clear`, `/compress`, `/stats` for Gemini CLI). The scratch/index.html starter is progressed to include a show/hide button below the date (D-31 L2 progression).
 
@@ -198,9 +277,14 @@ Each entry has the format:
 
 **What contributors should do:** The transcripts are real captures, not idealized (D-28). If a re-capture is needed (e.g., Claude Code 2.x ships a different `/context` output shape, or Gemini CLI renames `/stats`), open a PR that re-runs L2's three capture phases (planning conversation, execution conversation, slash-command outputs) against `modules/03-the-loop/scratch/index.html` in its post-L1 state, replaces the six fenced blocks, bumps the `updated:` and `Last captured:` dates, and adds a new WHAT-CHANGED entry.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 Wave 3 M3 L1 transcripts captured
+
+<details>
+<summary>Module 3 lesson 1 (the agent loop) shipped, with real agent transcripts captured on 2026-05-14. If your session looks different, the loop still works — the keystrokes may have shifted.</summary>
 
 **What changed:** Module 3 Lesson 1 (`modules/03-the-loop/01-introducing-the-loop.md`) shipped, with paired Claude Code + Gemini CLI transcripts captured against `modules/03-the-loop/scratch/index.html` on 2026-05-14 (D-28). The scratch file's `<script>` body was updated from the empty starter to the actual code one of the agents produced during capture (per D-28 — real, not idealized).
 
@@ -210,9 +294,14 @@ Each entry has the format:
 
 **What contributors should do:** The transcripts are real captures, not idealized. If a re-capture is needed (e.g., Claude Code 2.x ships and the response shape changes, or Gemini CLI updates its CLI UI), open a PR that re-runs the L1 capture session against `modules/03-the-loop/scratch/index.html`, replaces the fenced blocks with the new transcripts, bumps the `updated:` date AND `Last captured:` date in the lesson, and adds a new WHAT-CHANGED entry.
 
+</details>
+
 ---
 
 ## 2026-05-14 — Phase 2 Wave 1 scaffolding + slash-command migration
+
+<details>
+<summary>Claude Code replaced /tokens with /context (window usage) and /cost (spend); Gemini CLI uses /stats and /compress. The cheatsheet and budget pages use the new names.</summary>
 
 **What changed:** Phase 2 Wave 1 ships three coordinated cross-cutting updates ahead of Module 2/3/3.5 lesson authoring.
 
@@ -228,9 +317,14 @@ Each entry has the format:
 
 **What contributors should do:** Run `./scripts/voice-lint.sh --self-test` after pulling — fixture 08 must trip check #8. If you write a Module 3 lesson, both `Claude Code:` and `Gemini CLI:` MUST appear as standalone-line labels (D-27); the lint enforces it.
 
+</details>
+
 ---
 
 ## 2026-05-10 — Phase 1 gap closure (M0/M1 audience pass, M1 bundle 3 split, voice-lint upgrade)
+
+<details>
+<summary>Module 0 and Module 1 lessons were re-worded for the course audience, and Module 1 grew a fourth lesson (how a project goes live).</summary>
 
 **What changed:** After the 01-HUMAN-UAT.md walkthrough surfaced three editorial gaps in the original Phase 1 close, plans 01-6 / 01-7 / 01-8 shipped to close them.
 
@@ -248,9 +342,14 @@ Each entry has the format:
 
 **What contributors should do:** `scripts/voice-lint.sh --self-test` is now part of the lint surface — run it from a clean checkout if you modify the lint. The default `scripts/voice-lint.sh` still passes (0 violations) but emits ~50 `WARN (jargon-density …)` lines covering the audience-vocabulary editorial backlog. The WARNs are not blocking; they document remaining tightening opportunities the editorial team will close incrementally. If you author a new lesson, classify every new technical noun in `docs/audience-vocabulary.md` AND add a `GLOSSARY.md#anchor` entry in the same PR.
 
+</details>
+
 ---
 
 ## 2026-05-08 — Phase 1 close
+
+<details>
+<summary>The course first full release: Module 0, Module 1, and the reference docs (setup, glossary, cheatsheet, budget, and this file).</summary>
 
 **What changed:** Phase 1 (Foundation & Front Door) closed. Module 0 (5 lessons) and Module 1 (3 bundles) ship with the locked nine-element lesson anatomy and M0-variant baseline. All eight cross-cutting artifacts (README, SETUP, GLOSSARY, CHEATSHEET, COMMON-ISSUES, BUDGET, CONTRIBUTING, WHAT-CHANGED, plus standalone VERSIONS) shipped at Phase-1 depth. Editorial pass via `scripts/voice-lint.sh` returned clean on first run (zero violations across the full Phase 1 surface). Phase 1 success criteria #1–#5 satisfied.
 
@@ -263,6 +362,8 @@ Each entry has the format:
 **What learners should do:** No action. Phase 2 (Toolchain & The Loop) is the next phase to land; until then, Module 0 and Module 1 are the available content.
 
 **What contributors should do:** Run `./scripts/voice-lint.sh` before opening a PR that touches course markdown. The lint step is documented in `CONTRIBUTING.md` as part of this same plan.
+
+</details>
 
 ---
 
