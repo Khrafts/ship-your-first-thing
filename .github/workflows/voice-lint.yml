@@ -1,0 +1,20 @@
+name: voice-lint
+
+# The voice lint is the course's editorial gate (see CONTRIBUTING.md). It only
+# ran on contributors' machines before this workflow existed — drive-by PRs from
+# the GitHub web editor never executed it, so the gate was aspirational for the
+# audience most likely to add WHAT-CHANGED.md entries. This makes it binding.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  voice-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run voice lint
+        run: ./scripts/voice-lint.sh
+      - name: Run lint self-test
+        run: ./scripts/voice-lint.sh --self-test
