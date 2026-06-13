@@ -880,7 +880,14 @@ scan_m35_diagnostic_framing() {
 #     contract, so its absence is a violation.
 #
 # Entries below the boundary predate the contract and are preserved verbatim
-# (append-only history is a locked decision) — they are exempt.
+# (append-only history is a locked decision) — they are exempt. A corollary
+# limitation: an entry mistakenly placed BELOW the boundary escapes the caps
+# entirely. CONTRIBUTING.md and the boundary comment both instruct authors to
+# insert above the boundary; this check does not police placement (heuristics
+# for "a new entry landed in the history region" risk false positives on the
+# real history). The size caps count BYTES, not characters — a summary heavy in
+# multi-byte punctuation (em dash, curly quotes) has slightly less headroom than
+# the nominal 72/300; the messages say "bytes" so the cap is honest.
 #
 # What this check CANNOT do: judge whether entry prose actually sits at the
 # course's audience floor. Vocabulary above the codename level stays PR-review
@@ -932,7 +939,7 @@ scan_whatchanged_entry_shape() {
         if ($0 ~ /^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /) {
           summary = $0
           sub(/^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /, "", summary)
-          if (length(summary) > 72) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry summary is %d characters (max 72)\n", file, NR, length(summary)
+          if (length(summary) > 72) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry summary is %d bytes (max 72)\n", file, NR, length(summary)
           entry_line = NR; in_entry = 1
         } else {
           printf "VIOLATION (whatchanged-entry-shape): %s:%d: live-region heading must be dated (## YYYY-MM-DD — summary): %s\n", file, NR, $0
@@ -940,7 +947,7 @@ scan_whatchanged_entry_shape() {
         next
       }
       {
-        if (length($0) > 300) printf "VIOLATION (whatchanged-entry-shape): %s:%d: line is %d characters (max 300) — wrap the source line; markdown joins adjacent lines into one paragraph\n", file, NR, length($0)
+        if (length($0) > 300) printf "VIOLATION (whatchanged-entry-shape): %s:%d: line is %d bytes (max 300) — wrap the source line; markdown joins adjacent lines into one paragraph\n", file, NR, length($0)
         if (in_entry && $0 !~ /^[[:space:]]*$/ && $0 !~ /^---+$/) {
           body_lines++
           if ($0 ~ /\*\*Change:\*\*/) has_change = 1
@@ -960,7 +967,7 @@ scan_whatchanged_entry_shape() {
     for pat in \
       '(^|[^A-Za-z0-9_-])D-A?[0-9]+' \
       '(^|[^A-Za-z0-9_-])CD-[0-9]+' \
-      'SC ?#[0-9]+' \
+      '(^|[^A-Za-z])SC ?#[0-9]+' \
       '(^|[^A-Za-z0-9_-])Plan [0-9]+(-[0-9]+)?' \
       '(^|[^A-Za-z0-9_-])Wave [0-9]+' \
       '(^|[^A-Za-z0-9_-])Phase [0-9]+(\.[0-9]+)?' \

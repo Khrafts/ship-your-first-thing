@@ -35,7 +35,7 @@ This is the single source of truth for every tool the course is verified against
 
 ## Course platform stack (`site/`)
 
-The deployed course site at `https://shipyourfirstthing.com` lives in `site/` and is not part of any lesson flow — these rows are for orientation only. Auth is email+password credentials (not magic-link email); the deploy target is Railway. See `WHAT-CHANGED.md` (2026-06-11 entry) for the decision summary.
+The course site lives in `site/` (built; deploys to Railway, where it will serve at `https://shipyourfirstthing.com`) and is not part of any lesson flow — these rows are for orientation only. Auth is email+password credentials (not magic-link email). See `WHAT-CHANGED.md` (2026-06-11 entry) for the decision summary.
 
 | Tool | Pinned version | Notes | Last verified |
 |---|---|---|---|

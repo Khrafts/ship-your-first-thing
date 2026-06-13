@@ -1,16 +1,17 @@
 # WHAT-CHANGED.md — Freshness log
 
 The first place to check when reality drifts from a lesson. Your lesson's `> **Last captured:**` or
-`> **Last verified:**` date tells you WHEN the page was last true. [`VERSIONS.md`](./VERSIONS.md) tells
-you WHICH tool versions it was true against. This file tells you WHAT has shifted since — newest first.
-Find the entries dated after your lesson's date and read those.
+`> **Last verified:**` banner — or, when it has neither, the `updated:` date at the top of the lesson —
+tells you WHEN the page was last true. [`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was
+true against. This file tells you WHAT has shifted since — newest first. Find the entries dated after your
+lesson's date and read those.
 
 Each entry is a dated heading plus three labeled lines:
 
 > ## YYYY-MM-DD — plain-words summary
 > **Change:** what shifted, in one or two sentences.
 > **If you're affected:** the one thing to do — or "No learner action — internal change."
-> **Details:** links to the pull request and the doc that owns the substance.
+> **Details:** links to where the change landed and the doc that owns the detail.
 
 Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry) — voice-lint check #10 enforces them.
 
@@ -35,13 +36,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 
 ## Earlier entries (before 2026-06-12)
 
-Everything below is preserved word-for-word from before the format change. These entries were written for course maintainers as much as for learners, so they are heavier reading — each sits behind a one-line plain-words summary you can click to expand, and the table below is the short version of all of them. One exception stays fully expanded: the 2026-06-08 entry, because it carries the renumbering map that decodes the entries written before it.
+The dated entries below are preserved word-for-word from before the format change — only this index table and the one-line summaries on each entry are new (added 2026-06-12 to make the old entries scannable). These entries were written for course maintainers as much as for learners, so they are heavier reading; click any summary to expand the original. Two entries stay fully expanded: the 2026-06-08 entry, because it carries the renumbering map that decodes the entries written before it, and the 2026-05-08 V1 baseline at the very bottom, which the welcome lesson asks you to read.
 
 | Date | What shifted | If you're affected |
 |---|---|---|
 | 2026-06-11 | The course got a website; lesson text unchanged | Nothing — github.com stays the canonical course |
 | 2026-06-08 | Author-facing writing docs reorganized; carries the numbering map for older entries | Nothing |
-| 2026-05-19 | Twelve lessons re-worded for clarity; meaning unchanged | Nothing |
+| 2026-05-19 | Thirteen lessons tightened; the Module 2 AI-agents lesson gained a section on what agents get wrong | If you read Module 2 lesson 6 before this date, skim its new "Three things agents get wrong" section |
 | 2026-05-18 | Writing standards for course authors locked (two entries) | Nothing |
 | 2026-05-14 | Modules 2, 3, and 3.5 shipped; versions pinned in VERSIONS.md | Compare your session against each lesson's "Last captured" date |
 | 2026-05-14 | Module 3 lessons 1–4 shipped with real agent transcripts (four entries) | Your agent's output will differ in the details; that is expected |
@@ -93,7 +94,7 @@ Everything below is preserved word-for-word from before the format change. These
 ## 2026-05-19 — Phase 02.4 close: 12 lessons polished under Six-Tenets contract
 
 <details>
-<summary>Twelve already-published lessons were re-worded for clarity; their meaning, order, and analogies did not change.</summary>
+<summary>Thirteen already-published lessons were tightened; their order and analogies did not change, and the Module 2 AI-agents lesson gained a short section on what agents get wrong.</summary>
 
 **What changed:** Brought 12 shipped lessons (M1 L1–L4, M2 L3, M2 L6, M3 L1–L4, M3.5 L1/L3/L4) into compliance with the Six Tenets framework that Phase 02.3 locked. Largest single edits: M2 L6 gained a new `### Three things agents get wrong` Core-read sub-section anchoring Tenet 6 (hallucination / drift / risk-blindness with three Hard Rule 14 forward-refs pointing at M3 L3 / M3 L2 + L4 / M5 LESSON-13); M3 L3 un-punted the hallucination mechanism (replaced the Module-7 forward-reference paragraph with the D-59 verbatim 3-sentence non-technical mechanism explanation). M1 L1–L4 shed pre-Hard-Rule-12 jargon drift (HTML/JSX tag syntax in body prose, foreign-key lookup mechanics, `httpOnly`/`Secure` cookie flags, three-bullet deployment-failure config-fluency). M2 L3 reframed TypeScript as SYMPTOM-only (`.ts` files; agent reads labels; learner doesn't write labels) — the CONCEPT framing ("guardrails," "turtles all the way down") is gone. M3 L1 / L2 / L4 received small steering-skill + working-memory-first reorder + context-commitment / console-pointer polishes. M3.5 L1 / L3 / L4 received final-seam tightening on top of Phase 02.2's rewrites — "two routing systems" concept-explanation cut from L1; "Hydration failed because…" mechanism-leak trimmed to "Hydration failed." in L3 Error 3 + Error C; L4 detection-rule list reframed as "interactivity name" matching + pre-exercise guard naming `reconciliation` / `virtual DOM` / `render phases` as agent over-explanation flags. GLOSSARY gained `### drift` and `### risk-blindness` anchors (D-36 same-PR convention with M2 L6's polish); `### hallucination` was already in place from Phase 2 close.
 
@@ -349,7 +350,7 @@ Everything below is preserved word-for-word from before the format change. These
 ## 2026-05-08 — Phase 1 close
 
 <details>
-<summary>The course first full release: Module 0, Module 1, and the reference docs (setup, glossary, cheatsheet, budget, and this file).</summary>
+<summary>The course's first full release: Module 0, Module 1, and the reference docs (setup, glossary, cheatsheet, budget, and this file).</summary>
 
 **What changed:** Phase 1 (Foundation & Front Door) closed. Module 0 (5 lessons) and Module 1 (3 bundles) ship with the locked nine-element lesson anatomy and M0-variant baseline. All eight cross-cutting artifacts (README, SETUP, GLOSSARY, CHEATSHEET, COMMON-ISSUES, BUDGET, CONTRIBUTING, WHAT-CHANGED, plus standalone VERSIONS) shipped at Phase-1 depth. Editorial pass via `scripts/voice-lint.sh` returned clean on first run (zero violations across the full Phase 1 surface). Phase 1 success criteria #1–#5 satisfied.
 

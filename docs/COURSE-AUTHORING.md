@@ -619,7 +619,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
 | 8 | M3 dual-agent rendering (D-27) | An M3 lesson (`modules/03-the-loop/0[1-4]-*.md`) missing a standalone `Claude Code:` or `Gemini CLI:` label line | `08-m3-dual-agent.md` |
 | 9 | M3.5 diagnostic-framing (hard rule 12) | M3.5 prose drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — **WARN-only** | `09-m35-diagnostic-framing.md` |
-| 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 chars of summary, over 300 chars on one line, or leaking internal codenames (`D-xx`, `Plan n-n`, `Wave n`, `Phase n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
+| 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 bytes of summary, over 300 bytes on one line, or leaking internal codenames (`D-xx`, `CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, `SC #n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
 
 ### Which lessons check #6 scans (module scope)
 
@@ -655,7 +655,7 @@ Check #6 emits both:
 
 Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (M3.5 diagnostic-framing) is WARN-only, like #6.
 
-**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; see WHAT-CHANGED.md for the current baseline count.
+**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 
 ### Self-test mode
 

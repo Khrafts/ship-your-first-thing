@@ -9,6 +9,13 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: voice-lint-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   voice-lint:
     runs-on: ubuntu-latest

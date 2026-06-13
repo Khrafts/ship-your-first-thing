@@ -4,7 +4,7 @@ An open-source, self-paced course that teaches non-technical people to ship a re
 
 ## What this is
 
-This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content also renders at https://shipyourfirstthing.com on a Next.js platform (in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules. The lessons are identical on both surfaces, and this repository stays canonical — on day one of working through the course you only need this repository and a browser.
+This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content is also wrapped by a Next.js platform (built, in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces, and this repository stays canonical — on day one of working through the course you only need this repository and a browser.
 
 The course is designed to be picked up cold. A learner who has never written production code should be able to clone or open this repo, follow `SETUP.md`, and work through the modules in order without needing a workshop, a video, or a person to answer questions live. The "and recover when the AI gets it wrong" part is the differentiator: the modules teach the durable AI-coding loop alongside the toolchain, so by the end you can both ship a thing and get unstuck when the model produces something broken.
 

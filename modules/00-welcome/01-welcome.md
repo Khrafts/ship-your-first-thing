@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 01
 est_minutes: 15
 prereqs: []
-updated: "2026-05-09"
+updated: "2026-06-13"
 deviations: []
 ---
 
@@ -27,7 +27,7 @@ This course is **Ship Your First Thing**. It's an open-source, self-paced course
 There are two surfaces:
 
 1. The **course material** — the words you're reading right now, written in **markdown** (a way of writing formatted documents using simple punctuation marks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). This is the canonical source. It lives in a public **GitHub** (a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) repository so anyone can fork it, contribute to it, or read it offline.
-2. The **course platform** — a web app at [shipyourfirstthing.com](https://shipyourfirstthing.com) that renders the same lessons with personalized features (sign-in, progress tracking, comments, bookmarks, completion certificate). The platform is built in a separate phase of this project; for now, focus on the course material.
+2. The **course platform** — a web app that renders the same lessons with personalized features (sign-in, per-lesson progress tracking, cohort schedules). It is built and lives alongside the course material in this repository; once it goes live it will serve at [shipyourfirstthing.com](https://shipyourfirstthing.com). For now, focus on the course material — both surfaces show identical lessons.
 
 **Who this course is for:**
 
