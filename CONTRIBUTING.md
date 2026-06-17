@@ -46,6 +46,8 @@ Review-enforced (not lint-checked, but expected):
 - Start the summary with `Internal:` when the entry has no learner-visible effect, so learners can skip it from the heading alone.
 - Entries below the boundary comment are historical and preserved verbatim — never edit them. The lint only scans the live region above the boundary, so an entry placed below it escapes the caps entirely; always insert above the boundary.
 
+**Forgot one?** When you open a PR that changes learner-facing content (a lesson, `VERSIONS.md`, or a capture) without adding an entry, the `whatchanged-reminder` check posts a note and a ready-to-fill stub in the PR's summary. It is advisory — it never blocks the PR, and it is the complement to check #10: #10 validates an entry you *wrote*, the reminder catches one you *forgot*. If your change genuinely needs no entry, dismiss it by adding the `no-changelog` label or putting `[skip changelog]` in the PR description.
+
 ### Re-running a Module 3 transcript capture
 
 This is the canonical re-capture protocol (the historical per-lesson copies live inside the collapsed `WHAT-CHANGED.md` entries). When Claude Code or Gemini CLI changes its output shape, open a PR that:

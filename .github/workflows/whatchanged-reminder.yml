@@ -1,0 +1,36 @@
+name: whatchanged-reminder
+
+# Advisory nudge — NEVER a gate. When a PR changes learner-facing content (a
+# lesson, VERSIONS.md, or a capture) but adds no WHAT-CHANGED.md entry, this posts
+# a warning annotation plus a ready-to-fill stub in the job summary. The hard gate
+# on entry *shape* is voice-lint check #10; this catches the orthogonal case of a
+# *missing* entry. PR-only: a direct push to main has no entry-vs-base diff to
+# compute. Re-runs on label changes so toggling `no-changelog` clears the nudge.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: whatchanged-reminder-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so the base..HEAD diff resolves
+      - name: Check for a WHAT-CHANGED entry
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          # Pre-computed as a boolean in the expression layer so the untrusted PR
+          # body never reaches the shell (interpolating it into `run:` would be an
+          # injection vector). Opt out with the `no-changelog` label or
+          # `[skip changelog]` in the PR description.
+          OPT_OUT: ${{ contains(github.event.pull_request.labels.*.name, 'no-changelog') || contains(github.event.pull_request.body, '[skip changelog]') }}
+        run: ./scripts/whatchanged-reminder.sh
