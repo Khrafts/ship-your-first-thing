@@ -13,14 +13,17 @@ export function SiteHeader() {
         >
           {/* Full brand lockup (icon + wordmark). The site is light-only, so the
               light variant always sits correctly on the paper header. alt gives
-              the link its accessible name. */}
+              the link its accessible name. Scaled down below `sm` so the two-line
+              lockup never crowds the nav on phones; `sizes` lets next/image serve
+              a small variant on mobile instead of the full-width asset. */}
           <Image
             src="/brand/lockup-light.png"
             alt={SITE_NAME}
             width={1028}
             height={424}
             priority
-            className="h-12 w-auto"
+            sizes="(max-width: 639px) 100px, 140px"
+            className="h-10 w-auto sm:h-14"
           />
         </Link>
         <nav className="flex shrink-0 items-center gap-3 font-sans text-sm text-ink-secondary sm:gap-4">
