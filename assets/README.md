@@ -31,5 +31,9 @@ filename. The derived copies live where the framework expects them:
 | `favicon-16/32/48.png` | `site/src/app/favicon.ico` (packed) | Legacy / `/favicon.ico` |
 | `apple-touch-icon-180.png` | `site/src/app/apple-icon.png` | iOS home screen |
 | `icon-192/512/maskable.png` | `site/public/` + `site/src/app/manifest.ts` | PWA / install |
+| `lockup-light.png` | `site/public/brand/` → `site/src/components/site-header.tsx` | Site navbar |
 | `lockup-light.png`, `lockup-dark.png` | `README.md` banner (`<picture>`) | github.com |
-| `mark.svg` (geometry) | `site/src/components/site-header.tsx` | Site header |
+
+`mark.svg`, `mark-filled.svg`, `mark-256.png`, and `mark-filled-256.png` are
+icon-only marks kept in the kit for future use (social avatars, favicons,
+compact placements); none are wired into the site today.
