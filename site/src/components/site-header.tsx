@@ -2,14 +2,15 @@ import Link from "next/link";
 import { HeaderAuth } from "@/components/header-auth";
 import { SITE_NAME } from "@/lib/copy";
 
-/** Decorative brand mark (mark.svg geometry). Strokes inherit the link's text
- *  color via currentColor so it stays legible in any theme; aria-hidden keeps
- *  the link's accessible name as the wordmark alone. */
+/** Brand mark (mark.svg geometry), used on its own as the home link. Strokes
+ *  inherit the link's text color via currentColor so it stays legible in any
+ *  theme; aria-hidden keeps it decorative — the link itself carries the
+ *  accessible name via aria-label. */
 function BrandMark() {
   return (
     <svg
       viewBox="0 0 256 256"
-      className="h-5 w-5 shrink-0"
+      className="h-7 w-7 shrink-0"
       fill="none"
       stroke="currentColor"
       aria-hidden="true"
@@ -29,10 +30,10 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="flex min-w-0 items-center gap-2 text-sm font-medium tracking-tight sm:text-base"
+          aria-label={SITE_NAME}
+          className="flex items-center rounded-sm transition-opacity duration-150 hover:opacity-70"
         >
           <BrandMark />
-          <span className="truncate">{SITE_NAME}</span>
         </Link>
         <nav className="flex shrink-0 items-center gap-3 font-sans text-sm text-ink-secondary sm:gap-4">
           <Link
