@@ -5,67 +5,137 @@
 // so the diagram source stays readable without JavaScript; on the client we
 // swap each fence for the rendered SVG. A fence that fails to parse stays as
 // readable source instead of breaking the page.
+//
+// Mermaid bakes colours into the generated SVG, so unlike the rest of the site
+// it can't follow the CSS-variable theme flip — it must be re-rendered when the
+// theme changes. We therefore stash each diagram's source on its figure
+// (data-mermaid-src) and re-render from it whenever the resolved theme changes.
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "@/components/theme-provider";
+import type { ResolvedTheme } from "@/lib/theme";
 
 type MermaidApi = typeof import("mermaid").default;
 
-let mermaidPromise: Promise<MermaidApi> | null = null;
+// Monochrome palettes matching the design tokens (app/globals.css). Light is
+// the original neutral palette; dark mirrors the `.dark` token values.
+const LIGHT_VARS = {
+  primaryColor: "#f4f4f5",
+  primaryTextColor: "#09090b",
+  primaryBorderColor: "#d4d4d8",
+  secondaryColor: "#fafafa",
+  tertiaryColor: "#ffffff",
+  lineColor: "#52525b",
+  textColor: "#09090b",
+  noteBkgColor: "#fafafa",
+  noteBorderColor: "#d4d4d8",
+  noteTextColor: "#09090b",
+  actorBkg: "#f4f4f5",
+  actorBorder: "#d4d4d8",
+  actorTextColor: "#09090b",
+  signalColor: "#52525b",
+  signalTextColor: "#09090b",
+  labelBoxBkgColor: "#fafafa",
+  labelBoxBorderColor: "#d4d4d8",
+  edgeLabelBackground: "#ffffff",
+  clusterBkg: "#fafafa",
+  clusterBorder: "#e4e4e7",
+} as const;
 
-function loadMermaid(): Promise<MermaidApi> {
-  if (!mermaidPromise) {
-    mermaidPromise = import("mermaid").then((mod) => {
-      const mermaid = mod.default;
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: "neutral",
-        fontFamily:
-          'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-        themeVariables: {
-          // Monochrome palette matching the site tokens.
-          primaryColor: "#f4f4f5",
-          primaryTextColor: "#09090b",
-          primaryBorderColor: "#d4d4d8",
-          secondaryColor: "#fafafa",
-          tertiaryColor: "#ffffff",
-          lineColor: "#52525b",
-          textColor: "#09090b",
-          noteBkgColor: "#fafafa",
-          noteBorderColor: "#d4d4d8",
-          noteTextColor: "#09090b",
-          actorBkg: "#f4f4f5",
-          actorBorder: "#d4d4d8",
-          actorTextColor: "#09090b",
-          signalColor: "#52525b",
-          signalTextColor: "#09090b",
-          labelBoxBkgColor: "#fafafa",
-          labelBoxBorderColor: "#d4d4d8",
-          edgeLabelBackground: "#ffffff",
-          clusterBkg: "#fafafa",
-          clusterBorder: "#e4e4e7",
-        },
-      });
-      return mermaid;
-    });
+const DARK_VARS = {
+  primaryColor: "#27272a",
+  primaryTextColor: "#fafafa",
+  primaryBorderColor: "#3f3f46",
+  secondaryColor: "#18181b",
+  tertiaryColor: "#09090b",
+  lineColor: "#a1a1aa",
+  textColor: "#fafafa",
+  noteBkgColor: "#18181b",
+  noteBorderColor: "#3f3f46",
+  noteTextColor: "#fafafa",
+  actorBkg: "#27272a",
+  actorBorder: "#3f3f46",
+  actorTextColor: "#fafafa",
+  signalColor: "#a1a1aa",
+  signalTextColor: "#fafafa",
+  labelBoxBkgColor: "#18181b",
+  labelBoxBorderColor: "#3f3f46",
+  edgeLabelBackground: "#09090b",
+  clusterBkg: "#18181b",
+  clusterBorder: "#27272a",
+} as const;
+
+// Mermaid's module and global config are a single shared singleton. That is
+// safe because LessonArticle is rendered once per page; the config is mutated
+// per render batch to swap the palette. If a second instance ever mounts on one
+// surface, a theme flip mid-render could let a suspended loop finish with the
+// other instance's palette — revisit the singleton then.
+let mermaidModule: Promise<MermaidApi> | null = null;
+
+// Import once, but (re)initialize on every call so the active theme's palette
+// takes effect before a render batch.
+function loadMermaid(theme: ResolvedTheme): Promise<MermaidApi> {
+  if (!mermaidModule) {
+    mermaidModule = import("mermaid").then((mod) => mod.default);
   }
-  return mermaidPromise;
+  return mermaidModule.then((mermaid) => {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: theme === "dark" ? "dark" : "neutral",
+      fontFamily: "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
+      themeVariables: theme === "dark" ? DARK_VARS : LIGHT_VARS,
+      // Without this, a parse failure draws an error diagram into a temp <div>
+      // that mermaid leaves orphaned on document.body when it then re-throws —
+      // a leak that compounds across theme flips. With it, render simply throws
+      // (no orphan) and our catch keeps the readable source/diagram fallback.
+      suppressErrorRendering: true,
+    });
+    return mermaid;
+  });
 }
 
 let renderSequence = 0;
 
 export function LessonArticle({ html }: { html: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const blocks = Array.from(
-      container.querySelectorAll<HTMLElement>("pre > code.language-mermaid"),
-    );
-    if (blocks.length === 0) return;
 
     let cancelled = false;
-    void loadMermaid().then(async (mermaid) => {
+    void loadMermaid(resolvedTheme).then(async (mermaid) => {
+      // 1. Re-render diagrams already on the page for the current theme.
+      const figures = Array.from(
+        container.querySelectorAll<HTMLElement>(
+          ".mermaid-figure[data-mermaid-src]",
+        ),
+      );
+      for (const figure of figures) {
+        if (cancelled) return; // theme/lesson changed — abort the whole batch
+        if (!figure.isConnected) continue; // this one detached — skip, not abort
+        const source = figure.dataset.mermaidSrc ?? "";
+        try {
+          renderSequence += 1;
+          const { svg } = await mermaid.render(
+            `lesson-mermaid-${renderSequence}`,
+            source,
+          );
+          if (cancelled) return;
+          if (!figure.isConnected) continue;
+          figure.innerHTML = svg;
+        } catch {
+          // Keep the previously rendered diagram rather than blanking it.
+        }
+      }
+
+      // 2. Enhance any not-yet-rendered fences. On success replace the source
+      // <pre> with a figure (stashing the source for future re-renders); on
+      // failure leave the <pre> in place so it reads as text.
+      const blocks = Array.from(
+        container.querySelectorAll<HTMLElement>("pre > code.language-mermaid"),
+      );
       for (const code of blocks) {
         if (cancelled) return;
         const pre = code.parentElement;
@@ -77,9 +147,11 @@ export function LessonArticle({ html }: { html: string }) {
             `lesson-mermaid-${renderSequence}`,
             source,
           );
-          if (cancelled || !pre.isConnected) return;
+          if (cancelled) return;
+          if (!pre.isConnected) continue;
           const figure = document.createElement("div");
           figure.className = "mermaid-figure";
+          figure.dataset.mermaidSrc = source;
           figure.innerHTML = svg;
           pre.replaceWith(figure);
         } catch {
@@ -87,10 +159,11 @@ export function LessonArticle({ html }: { html: string }) {
         }
       }
     });
+
     return () => {
       cancelled = true;
     };
-  }, [html]);
+  }, [html, resolvedTheme]);
 
   return (
     <div
