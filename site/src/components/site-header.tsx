@@ -20,7 +20,7 @@ export function SiteHeader() {
             width={1028}
             height={424}
             priority
-            className="h-10 w-auto"
+            className="h-12 w-auto"
           />
         </Link>
         <nav className="flex shrink-0 items-center gap-3 font-sans text-sm text-ink-secondary sm:gap-4">
