@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/lockup-dark.png">
+    <img src="assets/lockup-light.png" alt="Ship Your First Thing" width="440">
+  </picture>
+</p>
+
 # Ship Your First Thing
 
 An open-source, self-paced course that teaches non-technical people to ship a real, deployed product using AI coding tools — and recover when the AI gets it wrong.
