@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeaderAuth } from "@/components/header-auth";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { SITE_NAME } from "@/lib/copy";
 
 export function SiteHeader() {
@@ -11,11 +12,14 @@ export function SiteHeader() {
           href="/"
           className="flex items-center rounded-sm transition-opacity duration-150 hover:opacity-70"
         >
-          {/* Full brand lockup (icon + wordmark). The site is light-only, so the
-              light variant always sits correctly on the paper header. alt gives
-              the link its accessible name. Scaled down below `sm` so the two-line
-              lockup never crowds the nav on phones; `sizes` lets next/image serve
-              a small variant on mobile instead of the full-width asset. */}
+          {/* Full brand lockup (icon + wordmark). The asset is the monochrome
+              (dark-ink) lockup, which sits correctly on the light paper header.
+              In dark mode the header background flips, so `dark:invert` turns
+              the same monochrome artwork light — no separate dark asset needed.
+              alt gives the link its accessible name. Scaled down below `sm` so
+              the two-line lockup never crowds the nav on phones; `sizes` lets
+              next/image serve a small variant on mobile instead of the full
+              asset. */}
           <Image
             src="/brand/lockup-light.png"
             alt={SITE_NAME}
@@ -23,7 +27,7 @@ export function SiteHeader() {
             height={424}
             priority
             sizes="(max-width: 639px) 100px, 140px"
-            className="h-10 w-auto sm:h-14"
+            className="h-10 w-auto sm:h-14 dark:invert"
           />
         </Link>
         <nav className="flex shrink-0 items-center gap-3 font-sans text-sm text-ink-secondary sm:gap-4">
@@ -46,6 +50,7 @@ export function SiteHeader() {
             Glossary
           </Link>
           <HeaderAuth />
+          <ThemeToggle />
         </nav>
       </div>
     </header>

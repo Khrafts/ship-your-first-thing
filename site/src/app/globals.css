@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+/* Class-based dark mode. The pre-paint script in app/layout.tsx adds `.dark`
+   to <html> before first render; this variant lets components opt specific
+   utilities into that state (e.g. `dark:invert` on the monochrome logo).
+   Most of the UI needs no `dark:` utilities at all — it inherits the theme
+   purely through the token overrides below. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Monochrome design tokens. Hierarchy is carried by typography, spacing and
    grey-scale value — never hue. Contrast pairs are WCAG AA+ on white:
-   ink 19.3:1, ink-secondary 7.1:1, ink-faint 4.8:1 (large/secondary only). */
+   ink 19.3:1, ink-secondary 7.7:1, ink-faint 4.8:1 (large/secondary only) —
+   verified in tests/theme-contrast.test.ts. `color-scheme` keeps native
+   controls (scrollbars, form widgets) in step and is owned here (the single
+   source of truth): JS only toggles the `.dark` class. */
 :root {
   --paper: #ffffff;
   --surface: #fafafa;
@@ -13,6 +23,26 @@
   --ink-secondary: #52525b;
   --ink-faint: #71717a;
   --ink-disabled: #a1a1aa;
+  color-scheme: light;
+}
+
+/* Dark theme: the same nine tokens, re-pointed. Because every component reads
+   these variables (no component hardcodes a colour), redefining them here flips
+   the whole site. Values are tonal greys, not a pure inversion, and are
+   contrast-verified against the page background in tests/theme-contrast.test.ts
+   (ink ~19:1, ink-secondary ~7.8:1, ink-faint ~5.9:1). Surfaces get *lighter*
+   as they rise, mirroring how light-mode surfaces get darker as they rise. */
+.dark {
+  --paper: #09090b;
+  --surface: #18181b;
+  --surface-raised: #27272a;
+  --line: #27272a;
+  --line-strong: #3f3f46;
+  --ink: #fafafa;
+  --ink-secondary: #a1a1aa;
+  --ink-faint: #8b8b93;
+  --ink-disabled: #52525b;
+  color-scheme: dark;
 }
 
 @theme inline {
