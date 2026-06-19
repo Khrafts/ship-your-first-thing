@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 // Each test gets an isolated browser context (fresh localStorage), so a choice
-// saved in one test never leaks into another. The toggle's accessible name
-// always starts with "Theme:", which is how we locate it.
-const TOGGLE_NAME = /^Theme:/;
+// saved in one test never leaks into another. The toggle's accessible name is
+// "Switch to dark theme" / "Switch to light theme", which is how we locate it.
+const TOGGLE_NAME = /^Switch to (dark|light) theme$/;
 
 test.describe("dark mode", () => {
   test("a fresh visit follows the OS preference (system default)", async ({
@@ -18,21 +18,31 @@ test.describe("dark mode", () => {
     await expect(page.locator("html")).not.toHaveClass(/dark/);
   });
 
-  test("the toggle cycles system → light → dark and applies the class", async ({
-    page,
-  }) => {
+  test("one click flips light → dark, the next flips back", async ({ page }) => {
     await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
     const html = page.locator("html");
     const button = page.getByRole("button", { name: TOGGLE_NAME });
 
-    await expect(html).not.toHaveClass(/dark/); // system → light (OS is light)
-    await button.click(); // → light
-    await expect(html).not.toHaveClass(/dark/);
-    await button.click(); // → dark
+    await expect(html).not.toHaveClass(/dark/); // first visit, OS light → light
+    await button.click(); // one click → dark
     await expect(html).toHaveClass(/dark/);
-    await button.click(); // → system (OS is light)
+    await button.click(); // one click → back to light
     await expect(html).not.toHaveClass(/dark/);
+  });
+
+  test("from a dark OS, a single click goes straight to light", async ({
+    page,
+  }) => {
+    // The bug this guards: with a 3-way cycle and a dark OS, the first click
+    // landed on "system" (still dark) instead of light. A binary toggle must
+    // reach light in exactly one click.
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/");
+    const html = page.locator("html");
+    await expect(html).toHaveClass(/dark/); // system default → dark via OS
+    await page.getByRole("button", { name: TOGGLE_NAME }).click();
+    await expect(html).not.toHaveClass(/dark/); // one click → light
   });
 
   test("the choice persists across a reload with no flash on first paint", async ({
@@ -41,8 +51,7 @@ test.describe("dark mode", () => {
     await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
     const button = page.getByRole("button", { name: TOGGLE_NAME });
-    await button.click(); // light
-    await button.click(); // dark
+    await button.click(); // light → dark
     await expect(page.locator("html")).toHaveClass(/dark/);
 
     // After reload the class must already be present (the pre-paint script set
@@ -63,8 +72,7 @@ test.describe("dark mode", () => {
     );
     expect(lightBg).toBe("rgb(255, 255, 255)"); // --paper light
 
-    await button.click(); // light
-    await button.click(); // dark
+    await button.click(); // light → dark
     const darkBg = await page.evaluate(
       () => getComputedStyle(document.body).backgroundColor,
     );

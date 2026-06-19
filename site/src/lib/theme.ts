@@ -15,9 +15,6 @@ export type ResolvedTheme = "light" | "dark";
 /** localStorage key holding the user's chosen mode. */
 export const THEME_STORAGE_KEY = "syft-theme";
 
-/** Cycle order used by nextTheme (module-private; callers use nextTheme). */
-const THEME_CYCLE: readonly Theme[] = ["system", "light", "dark"];
-
 export function isTheme(value: unknown): value is Theme {
   return value === "light" || value === "dark" || value === "system";
 }
@@ -29,12 +26,6 @@ export function resolveTheme(
 ): ResolvedTheme {
   if (theme === "system") return systemPrefersDark ? "dark" : "light";
   return theme;
-}
-
-/** The next mode when the toggle is activated: system → light → dark → system. */
-export function nextTheme(theme: Theme): Theme {
-  const index = THEME_CYCLE.indexOf(theme);
-  return THEME_CYCLE[(index + 1) % THEME_CYCLE.length];
 }
 
 /**

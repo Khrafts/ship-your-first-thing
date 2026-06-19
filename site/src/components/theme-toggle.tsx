@@ -1,49 +1,43 @@
 "use client";
 
-// Header control that cycles the theme: system → light → dark → system. A
-// single compact button keeps the editorial header uncluttered; the icon shows
-// the *current* mode and the aria-label announces both the current mode and
-// what activating will do, so it stays usable for keyboard and screen-reader
-// users (the icon alone never carries the meaning).
+// Header control that flips between light and dark in a single click.
+//
+// Deliberately binary — no "system" stop in the control. A 3-way cycle made the
+// common "I'm in dark, give me light" action take two clicks and surfaced a
+// confusing intermediate state (on a dark-OS machine the "system" step looks
+// identical to dark, so the click appears to do nothing). First-visit default
+// still follows the OS: the provider starts in "system" and tracks the OS until
+// this toggle pins an explicit light/dark choice.
+//
+// The icon shows the destination: a moon in light mode ("switch to dark"), a
+// sun in dark mode ("switch to light"), matching the aria-label so the icon and
+// the announced action always agree.
 
 import { useTheme } from "@/components/theme-provider";
-import { nextTheme, type Theme } from "@/lib/theme";
-
-const LABEL: Record<Theme, string> = {
-  system: "system",
-  light: "light",
-  dark: "dark",
-};
-
-const ICON: Record<Theme, React.ReactNode> = {
-  system: <MonitorIcon />,
-  light: <SunIcon />,
-  dark: <MoonIcon />,
-};
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const upcoming = nextTheme(theme);
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const target = isDark ? "light" : "dark";
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setTheme(upcoming)}
-        // The "Theme:" prefix is the locator e2e/theme.spec.ts uses to find this
-        // control — reword it deliberately, not by accident.
-        aria-label={`Theme: ${LABEL[theme]}. Switch to ${LABEL[upcoming]}.`}
-        title={`Theme: ${LABEL[theme]} (switch to ${LABEL[upcoming]})`}
+        onClick={() => setTheme(target)}
+        // e2e/theme.spec.ts locates this control by its "Switch to … theme"
+        // label — reword deliberately, not by accident.
+        aria-label={`Switch to ${target} theme`}
+        title={`Switch to ${target} theme`}
         className="inline-flex h-14 w-11 cursor-pointer items-center justify-center rounded-sm transition-colors duration-150 hover:text-ink"
       >
-        {ICON[theme]}
+        {isDark ? <SunIcon /> : <MoonIcon />}
       </button>
       {/* Polite confirmation for screen readers: whether a focused button
           re-announces its own changed accessible name on activation is
-          inconsistent across SR/browser pairs, so we announce the new mode
-          explicitly. */}
+          inconsistent across SR/browser pairs, so we announce the new mode. */}
       <span aria-live="polite" className="sr-only">
-        {`Theme: ${LABEL[theme]}`}
+        {isDark ? "Dark theme" : "Light theme"}
       </span>
     </>
   );
@@ -75,15 +69,6 @@ function MoonIcon() {
   return (
     <svg {...iconProps}>
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-    </svg>
-  );
-}
-
-function MonitorIcon() {
-  return (
-    <svg {...iconProps}>
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <path d="M8 21h8M12 17v4" />
     </svg>
   );
 }

@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
   isTheme,
-  nextTheme,
   resolveTheme,
   THEME_STORAGE_KEY,
   themeInitScript,
@@ -16,14 +15,6 @@ describe("resolveTheme", () => {
   it("defers to the OS preference when the choice is 'system'", () => {
     expect(resolveTheme("system", true)).toBe("dark");
     expect(resolveTheme("system", false)).toBe("light");
-  });
-});
-
-describe("nextTheme", () => {
-  it("cycles system → light → dark → system", () => {
-    expect(nextTheme("system")).toBe("light");
-    expect(nextTheme("light")).toBe("dark");
-    expect(nextTheme("dark")).toBe("system");
   });
 });
 
