@@ -33,9 +33,17 @@ This is the single source of truth for every tool the course is verified against
 | Vercel CLI | latest stable | Deploy target | 2026-05-08 |
 | `zod` | ^3.x | Form validation for thread project | 2026-05-08 |
 
-## Course platform stack (Phase 01.1 onward — separate phase)
+## Course platform stack (`site/`)
 
-This row is for orientation only. Phase 01.1 owns the deployed course site at `https://shipyourfirstthing.com`. The pinned versions for the course-platform stack — Next.js + Postgres + Drizzle + Auth.js + Resend — will be added by Phase 01.1's plans.
+The course site lives in `site/` (built; deploys to Railway, where it will serve at `https://shipyourfirstthing.com`) and is not part of any lesson flow — these rows are for orientation only. Auth is email+password credentials (not magic-link email). See `WHAT-CHANGED.md` (2026-06-11 entry) for the decision summary.
+
+| Tool | Pinned version | Notes | Last verified |
+|---|---|---|---|
+| Next.js (site) | 16.2.9 (App Router) | Renders the course markdown; lessons stay canonical on github.com | 2026-06-11 |
+| Drizzle ORM | ^0.45 | Postgres schema + migrations (run at container boot, never during build) | 2026-06-11 |
+| Auth.js (`next-auth`) | 5.0.0-beta | Credentials provider; four core tables kept so OAuth/magic-link can be added without migration | 2026-06-11 |
+| `pg` | ^8.21 | Postgres driver | 2026-06-11 |
+| Railway | n/a (managed) | Deploy target — repo-root `railway.json` + `site/Dockerfile` | 2026-06-11 |
 
 ## How to update this table
 

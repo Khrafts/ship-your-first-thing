@@ -119,4 +119,4 @@ The lesson author cannot ship synthetic transcripts as if they were real (D-28).
 - Screenshot conventions: `screenshots/README.md`
 - D-25 / D-27 / D-28 rationale: `.planning/phases/02-toolchain-the-loop/02-CONTEXT.md`
 - D-24 loop-step assignments (L2 names `ask`): same file
-- The slash command set + the `/tokens` migration: `WHAT-CHANGED.md` Plan 02-02 entry; `CHEATSHEET.md` `## AI prompts` + `## Token discipline` sections
+- The slash command set + the `/tokens` migration: `WHAT-CHANGED.md` 2026-05-14 slash-command migration entry; `CHEATSHEET.md` `## AI prompts` + `## Token discipline` sections

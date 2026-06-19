@@ -128,6 +128,16 @@ describe("getDocHtml", () => {
     expect(doc!.html).not.toContain("<h1");
   });
 
+  it("renders the freshness log with its collapsed history intact", async () => {
+    const doc = await getDocHtml("what-changed");
+    expect(doc).not.toBeNull();
+    expect(doc!.title).toBe("WHAT-CHANGED.md — Freshness log");
+    // The live region and the collapsed historical entries both survive the pipeline.
+    expect(doc!.html).toContain("Fast answers");
+    expect(doc!.html).toContain("<details>");
+    expect(doc!.html).toContain("V1 baseline");
+  });
+
   it("returns null for a slug outside the whitelist", async () => {
     expect(await getDocHtml("nope")).toBeNull();
   });
@@ -168,6 +178,10 @@ describe("rewriteUrl", () => {
     );
     expect(rewriteUrl("../../COMMON-ISSUES.md", fromLesson)).toBe(
       "/docs/common-issues",
+    );
+    // The "Last captured" freshness banners in every M3 lesson link here.
+    expect(rewriteUrl("../../WHAT-CHANGED.md", fromLesson)).toBe(
+      "/docs/what-changed",
     );
   });
 

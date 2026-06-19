@@ -22,6 +22,14 @@
 #   8. M3 dual-agent rendering — every Module 3 lesson (modules/03-the-loop/0[1-4]-*.md) MUST contain both
 #      `Claude Code:` and `Gemini CLI:` as standalone-line labels (D-27 enforceability). Skip cleanly when no
 #      matching files exist (Wave 0/1/2 runs).
+#   9. M3.5 diagnostic-framing — WARN-only signals when M3.5 prose drifts into agent-owned mechanics
+#      (CLAUDE.md hard rule 12). See the scan_m35_diagnostic_framing comment for the pattern list.
+#  10. WHAT-CHANGED.md thin-entry contract — entries in the live region (above the check #10 boundary
+#      comment) must be dated `## YYYY-MM-DD — summary` headings (summary <= 72 chars) with the three
+#      labels **Change:** / **If you're affected:** / **Details:**, at most 6 non-blank body lines, no
+#      line over 300 chars, and no internal codenames (D-xx / CD-xx / SC #n / Plan n-n / Wave n /
+#      Phase n[.n] / .planning/ paths). Historical entries below the boundary are preserved verbatim
+#      and exempt. A missing boundary comment is itself a violation.
 #
 # Note: `set -e` is intentionally omitted; grep returns 1 on no-match, which is our happy path.
 # Code review findings closed: WR-01..WR-05, IN-04 (see .planning/phases/01-foundation-front-door/01-REVIEW.md).
@@ -851,6 +859,130 @@ scan_m35_diagnostic_framing() {
   done
 }
 
+# WHAT-CHANGED.md thin-entry contract (check #10).
+#
+# WHAT-CHANGED.md is a learner-facing freshness log, not a contributor changelog —
+# PR bodies and commit messages are the contributor changelog of record. Entries
+# above the boundary comment (the "live region") follow the thin-entry contract
+# documented in CONTRIBUTING.md § Adding a WHAT-CHANGED entry:
+#
+#   - every `## ` heading is either the literal `## Fast answers` (the symptom
+#     table) or dated `## YYYY-MM-DD — summary` with the summary at most 72 chars;
+#   - every dated entry carries the three labels **Change:** /
+#     **If you're affected:** / **Details:** and has at most 6 non-blank body
+#     lines (`---` separators excluded);
+#   - no internal codenames (D-xx / CD-xx / SC #n / Plan n-n / Wave n /
+#     Phase n[.n]) and no `.planning/` paths — they mean nothing to learners and
+#     `.planning/` 404s for every public reader;
+#   - no line longer than 300 characters — a line-count cap alone is gameable by
+#     writing one giant paragraph-line, which is exactly how past entries grew;
+#   - the boundary comment must exist: deleting it would silently unscope the
+#     contract, so its absence is a violation.
+#
+# Entries below the boundary predate the contract and are preserved verbatim
+# (append-only history is a locked decision) — they are exempt. A corollary
+# limitation: an entry mistakenly placed BELOW the boundary escapes the caps
+# entirely. CONTRIBUTING.md and the boundary comment both instruct authors to
+# insert above the boundary; this check does not police placement (heuristics
+# for "a new entry landed in the history region" risk false positives on the
+# real history). The size caps count BYTES, not characters — a summary heavy in
+# multi-byte punctuation (em dash, curly quotes) has slightly less headroom than
+# the nominal 72/300; the messages say "bytes" so the cap is honest.
+#
+# What this check CANNOT do: judge whether entry prose actually sits at the
+# course's audience floor. Vocabulary above the codename level stays PR-review
+# judgment, same as every other root doc (check #6's vocab tiers scan modules/
+# lessons only).
+scan_whatchanged_entry_shape() {
+  local mode="$1"
+  echo "==> Scanning WHAT-CHANGED.md live region for the thin-entry contract (check #10)..."
+
+  local files=()
+  local f
+  if [ "$mode" = "fixtures" ]; then
+    for f in scripts/voice-lint-fixtures/10-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  else
+    [ -f WHAT-CHANGED.md ] && files+=(WHAT-CHANGED.md)
+  fi
+
+  [ "${#files[@]}" -eq 0 ] && return
+
+  local file sentinel_line region hits n pat
+  for file in "${files[@]}"; do
+    sentinel_line=$(grep -n -m1 -F 'voice-lint check #10 boundary' -- "$file" | cut -d: -f1)
+    if [ -z "$sentinel_line" ]; then
+      echo "VIOLATION (whatchanged-entry-shape): $file:1: missing the check #10 boundary comment — restore the '<!-- voice-lint check #10 boundary ... -->' line; without it the entry contract cannot be scoped"
+      VIOLATION_COUNT=$((VIOLATION_COUNT + 1))
+      continue
+    fi
+
+    region=$(head -n "$((sentinel_line - 1))" -- "$file")
+
+    # Heading shape, mandatory labels, entry size, line length — one awk pass.
+    # The affected-label regex uses `.` for the apostrophe to stay quoting-safe.
+    hits=$(printf '%s\n' "$region" | awk -v file="$file" \
+      -v lbl_change="**Change:**" -v lbl_affected="**If you're affected:**" -v lbl_details="**Details:**" '
+      function flush_entry() {
+        if (entry_line == 0) return
+        if (!has_change)   printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_change
+        if (!has_affected) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_affected
+        if (!has_details)  printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_details
+        if (body_lines > 6) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry has %d non-blank body lines (max 6) — depth belongs in the PR body, linked from the Details line\n", file, entry_line, body_lines
+      }
+      /^## / {
+        flush_entry()
+        entry_line = 0; in_entry = 0
+        has_change = 0; has_affected = 0; has_details = 0; body_lines = 0
+        if ($0 == "## Fast answers") next
+        if ($0 ~ /^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /) {
+          summary = $0
+          sub(/^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /, "", summary)
+          if (length(summary) > 72) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry summary is %d bytes (max 72)\n", file, NR, length(summary)
+          entry_line = NR; in_entry = 1
+        } else {
+          printf "VIOLATION (whatchanged-entry-shape): %s:%d: live-region heading must be dated (## YYYY-MM-DD — summary): %s\n", file, NR, $0
+        }
+        next
+      }
+      {
+        if (length($0) > 300) printf "VIOLATION (whatchanged-entry-shape): %s:%d: line is %d bytes (max 300) — wrap the source line; markdown joins adjacent lines into one paragraph\n", file, NR, length($0)
+        if (in_entry && $0 !~ /^[[:space:]]*$/ && $0 !~ /^---+$/) {
+          body_lines++
+          if ($0 ~ /\*\*Change:\*\*/) has_change = 1
+          if ($0 ~ /\*\*If you.re affected:\*\*/) has_affected = 1
+          if ($0 ~ /\*\*Details:\*\*/) has_details = 1
+        }
+      }
+      END { flush_entry() }
+    ')
+    if [ -n "$hits" ]; then
+      echo "$hits"
+      n=$(count_lines "$hits")
+      VIOLATION_COUNT=$((VIOLATION_COUNT + n))
+    fi
+
+    # Forbidden internal codenames and paths in the live region.
+    for pat in \
+      '(^|[^A-Za-z0-9_-])D-A?[0-9]+' \
+      '(^|[^A-Za-z0-9_-])CD-[0-9]+' \
+      '(^|[^A-Za-z])SC ?#[0-9]+' \
+      '(^|[^A-Za-z0-9_-])Plan [0-9]+(-[0-9]+)?' \
+      '(^|[^A-Za-z0-9_-])Wave [0-9]+' \
+      '(^|[^A-Za-z0-9_-])Phase [0-9]+(\.[0-9]+)?' \
+      '\.planning/'; do
+      hits=$(printf '%s\n' "$region" | grep -nE -e "$pat" 2>/dev/null || true)
+      if [ -n "$hits" ]; then
+        echo "VIOLATION (whatchanged-entry-shape): $file live region contains an internal codename or path (pattern \"$pat\") — learners cannot decode these; put them in the PR body:"
+        printf '%s\n' "$hits" | sed "s|^|  $file:|"
+        n=$(count_lines "$hits")
+        VIOLATION_COUNT=$((VIOLATION_COUNT + n))
+      fi
+    done
+  done
+}
+
 # ===== Self-test mode =====
 # Each fixture in scripts/voice-lint-fixtures/ MUST trip the check it's designed for.
 # We run each scan_* function with mode="fixtures" and capture the violation count delta;
@@ -949,6 +1081,21 @@ run_self_test() {
     echo "  self-test OK: m35-diagnostic-framing fixture tripped $((after - before)) WARNs"
   fi
 
+  # WHAT-CHANGED thin-entry contract (fixture 10) — expect at least 6 violations
+  # (undated heading + missing affected-label + oversize entry + oversize summary +
+  # over-300-char line + at least one forbidden-codename line; content below the
+  # fixture's boundary comment must NOT trip, proving the region bound).
+  before=$VIOLATION_COUNT
+  scan_whatchanged_entry_shape fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$VIOLATION_COUNT
+  if [ "$((after - before))" -lt 6 ]; then
+    echo "SELFTEST FAIL: whatchanged-entry-shape fixture (10) tripped only $((after - before)); expected >= 6"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: whatchanged-entry-shape fixture tripped $((after - before)) violations"
+  fi
+
   if [ "$fail" -ne 0 ]; then
     echo "==> voice-lint.sh --self-test: FAIL"
     exit 1
@@ -971,6 +1118,7 @@ scan_jargon_density default
 scan_mermaid_br default
 scan_m3_dual_agent default
 scan_m35_diagnostic_framing default
+scan_whatchanged_entry_shape default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"

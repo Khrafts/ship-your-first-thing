@@ -2,13 +2,13 @@
 
 ## Pinned versions
 
-This course is verified against the tool versions in [`VERSIONS.md`](./VERSIONS.md). `VERSIONS.md` is the source of truth and is updated on revision day. (`VERSIONS.md` is created in Plan 01-2 within this phase; treat as "lands shortly" until then.)
+This course is verified against the tool versions in [`VERSIONS.md`](./VERSIONS.md). `VERSIONS.md` is the source of truth and is updated on revision day. If a step on this page doesn't match what you see (button names, click paths, free-tier numbers), check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — the page may have shifted since the verification date in `VERSIONS.md`.
 
 ## Required accounts
 
 - **GitHub** — needed to host the repo, run Codespaces, and (later) deploy.
 
-Your cost-path triage in Module 0 will tell you which AI-coding agent account to create — Anthropic for Claude Code Pro or the API, Google for Gemini CLI. See [`BUDGET.md`](./BUDGET.md) (lands in Plan 01-2 within this phase) for the path comparison; do not create AI accounts until you've finished the cost-path lesson.
+Your cost-path triage in Module 0 will tell you which AI-coding agent account to create — Anthropic for Claude Code Pro or the API, Google for Gemini CLI. See [`BUDGET.md`](./BUDGET.md) for the path comparison; do not create AI accounts until you've finished the cost-path lesson.
 
 ## Codespaces flow
 
@@ -35,4 +35,4 @@ GitHub Free includes 120 core-hours per month on a 2-core machine — that's 60 
 
 ## What's next
 
-Open [`modules/00-welcome/README.md`](./modules/00-welcome/README.md) to begin Module 0. (M0 lesson files arrive in Plan 01-3 within this phase; the index file is here now.)
+Open [`modules/00-welcome/README.md`](./modules/00-welcome/README.md) to begin Module 0.

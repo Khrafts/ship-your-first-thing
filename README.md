@@ -4,7 +4,7 @@ An open-source, self-paced course that teaches non-technical people to ship a re
 
 ## What this is
 
-This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content also renders at https://shipyourfirstthing.com on a Next.js platform that adds login, progress tracking, comments, bookmarks, and a completion certificate. The platform lands in a separate phase — on day one of working through the course you only need this repository and a browser.
+This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content is also wrapped by a Next.js platform (built, in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces, and this repository stays canonical — on day one of working through the course you only need this repository and a browser.
 
 The course is designed to be picked up cold. A learner who has never written production code should be able to clone or open this repo, follow `SETUP.md`, and work through the modules in order without needing a workshop, a video, or a person to answer questions live. The "and recover when the AI gets it wrong" part is the differentiator: the modules teach the durable AI-coding loop alongside the toolchain, so by the end you can both ship a thing and get unstuck when the model produces something broken.
 
@@ -19,22 +19,20 @@ The course is designed to be picked up cold. A learner who has never written pro
 
 ## How to use this course
 
-1. Read `SETUP.md` and choose your cost path from `BUDGET.md` (link will resolve once Plan 01-2 ships `BUDGET.md`; include the link anyway).
+1. Read `SETUP.md` and choose your cost path from `BUDGET.md`.
 2. Open this repo in GitHub Codespaces (instructions in `SETUP.md`).
 3. Work through Module 0, then Module 1, then Module 2 onward — in order.
-4. When something breaks, check `COMMON-ISSUES.md` (link will resolve once Plan 01-2 ships it).
+4. When something breaks, check `COMMON-ISSUES.md`. When a page doesn't match what you see, check `WHAT-CHANGED.md`.
 
 ## Table of contents
-
-Some artifacts arrive in later plans within Phase 1 — broken links until that plan lands.
 
 **Modules**
 
 - [Module 0 — Welcome](./modules/00-welcome/README.md)
 - [Module 1 — Mental models](./modules/01-mental-models/README.md)
-- Module 2 — The developer toolchain *Coming in later phases*
-- Module 3 — Working with an AI coding agent *Coming in later phases*
-- Module 3.5 — Reading code, just enough *Coming in later phases*
+- [Module 2 — The developer toolchain](./modules/02-toolchain/README.md)
+- [Module 3 — Working with an AI coding agent](./modules/03-the-loop/README.md)
+- [Module 3.5 — Reading code, just enough](./modules/03.5-reading-code/README.md)
 - Module 4 — Designing & building the thread project *Coming in later phases*
 - Module 5 — Operating the build *Coming in later phases*
 - Module 6 — After it's live *Coming in later phases*
@@ -43,13 +41,13 @@ Some artifacts arrive in later plans within Phase 1 — broken links until that 
 **Cross-cutting docs**
 
 - [SETUP.md](./SETUP.md)
-- [GLOSSARY.md](./GLOSSARY.md) *(lands in Plan 01-2)*
-- [CHEATSHEET.md](./CHEATSHEET.md) *(lands in Plan 01-2)*
-- [COMMON-ISSUES.md](./COMMON-ISSUES.md) *(lands in Plan 01-2)*
-- [BUDGET.md](./BUDGET.md) *(lands in Plan 01-2)*
-- [CONTRIBUTING.md](./CONTRIBUTING.md) *(lands in Plan 01-2)*
-- [WHAT-CHANGED.md](./WHAT-CHANGED.md) *(lands in Plan 01-2)*
-- [VERSIONS.md](./VERSIONS.md) *(lands in Plan 01-2)*
+- [GLOSSARY.md](./GLOSSARY.md)
+- [CHEATSHEET.md](./CHEATSHEET.md)
+- [COMMON-ISSUES.md](./COMMON-ISSUES.md)
+- [BUDGET.md](./BUDGET.md)
+- [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [WHAT-CHANGED.md](./WHAT-CHANGED.md)
+- [VERSIONS.md](./VERSIONS.md)
 
 **Templates**
 
@@ -68,7 +66,7 @@ This repository ships under a dual-license model: code under MIT (`LICENSE`) and
 
 ## Contributing
 
-See `CONTRIBUTING.md` (lands in Plan 01-2).
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## A note on freshness
 

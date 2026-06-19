@@ -4,6 +4,8 @@
 
 **Structure:** Four sections. Each entry is a tight one-liner with a one-line "why" comment.
 
+**Freshness:** If a command here doesn't work in your session, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — command names change over time, and the log records each change.
+
 **How to contribute:** See `CONTRIBUTING.md`. When you author a lesson that introduces a re-usable command or prompt, add it here in the same PR. Keep entries terse — this is a reference, not a tutorial.
 
 ---
@@ -205,4 +207,4 @@ git reset --hard HEAD
 
 ## npm vs pnpm note (D-21)
 
-Lessons in this course teach **npm** (the default package manager for `create-next-app`; what Claude Code and Gemini CLI reach for by default). The deferred course platform (Phase 01.1, see ROADMAP) uses **pnpm** for security-cooling reasons. Both work. If you prefer pnpm for the thread project: `pnpm install` ↔ `npm install`; `pnpm add <pkg>` ↔ `npm install <pkg>`; `pnpm run dev` ↔ `npm run dev`. Lessons in M2/M3/M3.5 + the Phase 3 thread project use npm commands verbatim.
+Lessons in this course teach **npm** (the default package manager for `create-next-app`; what Claude Code and Gemini CLI reach for by default). The course platform at `site/` uses **pnpm** for security-cooling reasons. Both work. If you prefer pnpm for the thread project: `pnpm install` ↔ `npm install`; `pnpm add <pkg>` ↔ `npm install <pkg>`; `pnpm run dev` ↔ `npm run dev`. Lessons in M2/M3/M3.5 + the Phase 3 thread project use npm commands verbatim.

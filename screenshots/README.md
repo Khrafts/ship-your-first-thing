@@ -7,7 +7,7 @@ Shared image assets for course lessons that need a visual moment prose plus fenc
 - **Path shape:** `screenshots/m3/<lesson-slug>/<descriptive-name>.png` where `<lesson-slug>` matches the lesson filename without `.md` (e.g., `01-introducing-the-loop`) and `<descriptive-name>` is a short kebab-case description of what the screenshot shows (e.g., `claude-code-first-plan`, `gemini-cli-edit-applied`, `browser-blank-after-third-ask`).
 - **Format:** PNG. Lossless. Resize to a reasonable display width (typically 1200–1600 px wide) before commit.
 - **Alt text is mandatory.** Every `![...](...)` reference in a lesson MUST include descriptive alt text — both for accessibility AND because alt text is the LESSON-08 staleness mitigation if the screenshot itself rots faster than the surrounding prose.
-- **Front-matter `updated:` ties the screenshot to a date.** A screenshot's freshness is governed by its lesson's `updated:` field. When you recapture a screenshot, bump the lesson's `updated:` date AND add an entry to `WHAT-CHANGED.md` per D-39.
+- **Front-matter `updated:` ties the screenshot to a date.** A screenshot's freshness is governed by its lesson's `updated:` field. When you recapture a screenshot, bump the lesson's `updated:` date AND add a thin entry to `WHAT-CHANGED.md` (one batched entry per PR — see `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry).
 
 ## Why a separate directory
 
