@@ -451,6 +451,30 @@ export async function getLesson(
   };
 }
 
+/** Hard cap on lesson text sent to the chat model (keeps the prompt bounded). */
+export const LESSON_CONTEXT_CAP = 12_000;
+
+/**
+ * Lesson title + raw markdown body for the chat tutor's context. Validates the
+ * path against the lesson allowlist (so the chat can never read arbitrary
+ * files), strips frontmatter, and caps the body length. Returns null for
+ * unknown paths.
+ */
+export async function getLessonContext(
+  lessonPath: string,
+): Promise<{ title: string; body: string } | null> {
+  const refs = await getAllLessonRefs();
+  const ref = refs.find((r) => r.path === lessonPath);
+  if (!ref) {
+    return null;
+  }
+  const raw = await readFile(path.join(contentRoot(), ref.path), "utf8");
+  const { data, content } = matter(raw);
+  const title = String(data.title ?? ref.title ?? "").trim();
+  const body = content.trim().slice(0, LESSON_CONTEXT_CAP);
+  return { title, body };
+}
+
 /** Module README body (h1 stripped) rendered to HTML. */
 export function getModuleReadmeHtml(slug: string): Promise<string> {
   return cachedHtml(`modules/${slug}/README.md`, async () => {
