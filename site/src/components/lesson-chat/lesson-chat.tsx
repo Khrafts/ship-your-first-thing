@@ -82,8 +82,11 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
     };
   }, [open, loaded, lessonPath]);
 
-  // Persisted expand preference.
+  // Persisted expand preference. Read after mount (not via a lazy initializer)
+  // so the server-rendered default and the first client render agree — the
+  // stored value is reconciled once, avoiding a hydration mismatch.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration-safe read of a client-only store
     setExpanded(localStorage.getItem("lesson-chat-expanded") === "1");
   }, []);
 

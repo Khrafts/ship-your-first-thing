@@ -75,6 +75,22 @@ the request `Host` header, which is forgeable (verification-link poisoning →
 account takeover). The app fails closed in production if neither is set; local
 dev falls back to the request host.
 
+### Lesson chat
+
+Every unlocked lesson shows an "Ask about this lesson" pill (signed-in users
+only) that opens a chat drawer. Answers are grounded in that lesson's own
+markdown and streamed from a free OpenRouter model; transcripts persist per
+user + lesson, so reopening a lesson continues the conversation.
+
+Set `OPENROUTER_API_KEY` to enable the live model (free tier ~50 requests/day
+on one key; a one-time $10 credit purchase raises it to ~1000/day). With no key
+the chat uses a deterministic mock, so local dev and the test suite need no key
+and spend no tokens. Other config: `OPENROUTER_MODEL` (default
+`deepseek/deepseek-chat-v3-0324:free`), `CHAT_BACKEND` (`openrouter` | `mock`),
+and per-user `CHAT_RATE_PER_MIN` / `CHAT_RATE_PER_DAY` — see `.env.example`.
+Because the free tier is small and shared across one key, the route rate-limits
+per user and degrades gracefully when the daily cap is hit.
+
 ## Deploy (Railway)
 
 The repo-root `railway.json` builds `site/Dockerfile` with the repo root as

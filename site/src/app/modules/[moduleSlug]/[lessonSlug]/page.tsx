@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { LessonArticle } from "@/components/lesson-article";
+import { LessonChat } from "@/components/lesson-chat/lesson-chat";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
 import { LessonLocked, LockIcon } from "@/components/lesson-locked";
 import { getAllLessonRefs, getLesson, getModule } from "@/lib/content";
@@ -162,6 +163,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
           )}
         </nav>
       </article>
+
+      {userId && (
+        <LessonChat lessonPath={lesson.path} lessonTitle={lesson.title} />
+      )}
     </div>
   );
 }

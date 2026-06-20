@@ -3,7 +3,7 @@ import { createRateLimiter } from "@/lib/chat/rate-limit";
 
 describe("rate limiter", () => {
   it("allows up to perMin requests then blocks within the minute", () => {
-    let t = 1_000_000;
+    const t = 1_000_000;
     const rl = createRateLimiter({ perMin: 2, perDay: 100, now: () => t });
     expect(rl.check("u").ok).toBe(true);
     expect(rl.check("u").ok).toBe(true);
@@ -32,7 +32,7 @@ describe("rate limiter", () => {
   });
 
   it("tracks users independently", () => {
-    let t = 0;
+    const t = 0;
     const rl = createRateLimiter({ perMin: 1, perDay: 10, now: () => t });
     expect(rl.check("a").ok).toBe(true);
     expect(rl.check("b").ok).toBe(true);
