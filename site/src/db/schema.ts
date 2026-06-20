@@ -1,4 +1,5 @@
 import {
+  bigserial,
   boolean,
   date,
   index,
@@ -145,12 +146,17 @@ export const lessonChatMessage = pgTable(
     role: text("role").notNull(), // 'user' | 'assistant'
     content: text("content").notNull(),
     createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+    // Monotonic insertion order — the deterministic sort key. created_at alone
+    // ties when a user turn and its reply land in the same millisecond (the
+    // mock backend streams synchronously), and a tie leaves SQL free to return
+    // heap order. seq guarantees user-before-assistant regardless.
+    seq: bigserial("seq", { mode: "number" }).notNull(),
   },
   (table) => [
     index("lesson_chat_user_lesson_idx").on(
       table.userId,
       table.lessonPath,
-      table.createdAt,
+      table.seq,
     ),
   ],
 );

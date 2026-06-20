@@ -40,4 +40,15 @@ describe("chat message persistence", () => {
     expect(await loadConversation("u1", LESSON)).toEqual([]);
     expect(await loadConversation("u2", LESSON)).toHaveLength(1);
   });
+
+  it("preserves insertion order for a rapid burst (seq tiebreaker)", async () => {
+    // A tight loop makes created_at collide; order must still hold via seq.
+    const lesson = "modules/00-welcome/03-cost-path-triage.md";
+    const expected = ["m0", "m1", "m2", "m3", "m4", "m5"];
+    for (let i = 0; i < expected.length; i += 1) {
+      await appendMessage("u1", lesson, i % 2 === 0 ? "user" : "assistant", expected[i]);
+    }
+    const convo = await loadConversation("u1", lesson);
+    expect(convo.map((m) => m.content)).toEqual(expected);
+  });
 });

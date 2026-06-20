@@ -27,7 +27,7 @@ export async function loadConversation(
     })
     .from(schema.lessonChatMessage)
     .where(rowKey(userId, lessonPath))
-    .orderBy(asc(schema.lessonChatMessage.createdAt));
+    .orderBy(asc(schema.lessonChatMessage.seq));
 }
 
 export async function appendMessage(
