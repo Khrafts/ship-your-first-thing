@@ -110,9 +110,14 @@
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.action:hover {
+.action:hover:not(:disabled) {
   background: var(--ink);
   color: var(--paper);
+}
+.action:disabled {
+  color: var(--ink-disabled);
+  border-color: var(--line);
+  cursor: default;
 }
 
 .messages {

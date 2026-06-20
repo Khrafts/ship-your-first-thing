@@ -47,6 +47,10 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fabRef = useRef<HTMLButtonElement>(null);
   const openedRef = useRef(false);
+  // True once the user has sent a message; gates the mount-restore overwrite so
+  // a fast send (before the restore GET resolves) is never clobbered by a stale
+  // pre-send snapshot.
+  const startedRef = useRef(false);
 
   // Focus management: focus the input when the drawer opens, and send focus
   // back to the launch pill when it closes (keyboard users would otherwise be
@@ -68,7 +72,9 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
     (async () => {
       try {
         const res = await fetch(`/api/lesson-chat?lesson=${encodeURIComponent(lessonPath)}`);
-        if (!cancelled && res.ok) {
+        // Don't overwrite messages the user has already started sending: a slow
+        // restore could otherwise clobber a just-sent turn with a stale snapshot.
+        if (!cancelled && !startedRef.current && res.ok) {
           const data = (await res.json()) as { messages: Msg[] };
           setMessages(data.messages ?? []);
         }
@@ -116,6 +122,7 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const send = useCallback(async () => {
     const text = input.trim();
     if (!text || streaming) return;
+    startedRef.current = true;
     setError(null);
     setInput("");
     setMessages((m) => [...m, { role: "user", content: text }]);
@@ -224,7 +231,13 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
             <span className={styles.title}>{lessonTitle}</span>
           </div>
           <div className={styles.actions}>
-            <button type="button" onClick={newChat} className={styles.action} title="New chat">
+            <button
+              type="button"
+              onClick={newChat}
+              className={styles.action}
+              title="New chat"
+              disabled={streaming}
+            >
               New chat
             </button>
             <button

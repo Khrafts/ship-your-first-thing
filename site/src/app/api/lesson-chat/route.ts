@@ -102,15 +102,27 @@ export async function POST(req: Request): Promise<Response> {
       const frame = (event: string, data: unknown) =>
         controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
       let acc = "";
+      let persisted = false;
       try {
         for await (const delta of provider.stream(messages)) {
           acc += delta;
           frame("delta", { text: delta });
         }
-        if (acc) await appendMessage(userId, lesson, "assistant", acc);
+        if (acc) {
+          await appendMessage(userId, lesson, "assistant", acc);
+          persisted = true;
+        }
         frame("done", {});
       } catch (err) {
-        if (acc) await appendMessage(userId, lesson, "assistant", acc);
+        // Persist the partial reply once. Guarded so a success on the happy
+        // path is never re-inserted, and a failure here can't escape start().
+        if (acc && !persisted) {
+          try {
+            await appendMessage(userId, lesson, "assistant", acc);
+          } catch {
+            /* best-effort: the user turn is saved, so a retry re-asks cleanly */
+          }
+        }
         frame("error", { message: friendlyError(err) });
       } finally {
         controller.close();

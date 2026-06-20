@@ -471,7 +471,15 @@ export async function getLessonContext(
   const raw = await readFile(path.join(contentRoot(), ref.path), "utf8");
   const { data, content } = matter(raw);
   const title = String(data.title ?? ref.title ?? "").trim();
-  const body = content.trim().slice(0, LESSON_CONTEXT_CAP);
+  let body = content.trim().slice(0, LESSON_CONTEXT_CAP);
+  // Drop a trailing lone high surrogate left by slicing through an astral
+  // character (e.g. an emoji) so the prompt JSON stays valid UTF-8.
+  if (body.length > 0) {
+    const last = body.charCodeAt(body.length - 1);
+    if (last >= 0xd800 && last <= 0xdbff) {
+      body = body.slice(0, -1);
+    }
+  }
   return { title, body };
 }
 
