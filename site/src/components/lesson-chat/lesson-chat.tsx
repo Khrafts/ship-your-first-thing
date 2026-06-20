@@ -37,7 +37,6 @@ function parseFrame(raw: string): Frame | null {
 
 export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
@@ -49,19 +48,22 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const fabRef = useRef<HTMLButtonElement>(null);
   const openedRef = useRef(false);
 
-  // Focus management: send focus back to the launch pill when the drawer closes
-  // (keyboard users would otherwise be dropped onto <body>).
+  // Focus management: focus the input when the drawer opens, and send focus
+  // back to the launch pill when it closes (keyboard users would otherwise be
+  // dropped onto <body>).
   useEffect(() => {
     if (open) {
       openedRef.current = true;
+      inputRef.current?.focus();
     } else if (openedRef.current) {
       fabRef.current?.focus();
     }
   }, [open]);
 
-  // Restore the transcript the first time the drawer opens.
+  // Restore the saved transcript on mount so the launch pill can read
+  // "Continue the chat" before the drawer is ever opened (matches the
+  // reference). One lightweight GET per signed-in lesson view.
   useEffect(() => {
-    if (!open || loaded) return;
     let cancelled = false;
     (async () => {
       try {
@@ -70,17 +72,14 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
           const data = (await res.json()) as { messages: Msg[] };
           setMessages(data.messages ?? []);
         }
-      } finally {
-        if (!cancelled) {
-          setLoaded(true);
-          inputRef.current?.focus();
-        }
+      } catch {
+        /* leave the transcript empty if the restore request fails */
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [open, loaded, lessonPath]);
+  }, [lessonPath]);
 
   // Persisted expand preference. Read after mount (not via a lazy initializer)
   // so the server-rendered default and the first client render agree — the
