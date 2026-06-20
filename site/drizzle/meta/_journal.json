@@ -15,6 +15,13 @@
       "when": 1781895318561,
       "tag": "0001_backfill_email_verified",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781970316805,
+      "tag": "0002_curly_silvermane",
+      "breakpoints": true
     }
   ]
 }

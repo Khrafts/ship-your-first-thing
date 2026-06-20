@@ -1,6 +1,7 @@
 import {
   boolean,
   date,
+  index,
   integer,
   pgTable,
   primaryKey,
@@ -126,4 +127,30 @@ export const cohortMembers = pgTable(
     joinedAt: timestamp("joined_at", { mode: "date" }).notNull().defaultNow(),
   },
   (table) => [primaryKey({ columns: [table.cohortId, table.userId] })],
+);
+
+// Per-lesson AI chat transcript, one implicit conversation per (user, lesson).
+// lessonPath is the canonical repo-relative markdown path (same key as
+// lessonProgress). "New chat" deletes this user's rows for the lesson.
+export const lessonChatMessage = pgTable(
+  "lesson_chat_message",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    lessonPath: text("lesson_path").notNull(),
+    role: text("role").notNull(), // 'user' | 'assistant'
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("lesson_chat_user_lesson_idx").on(
+      table.userId,
+      table.lessonPath,
+      table.createdAt,
+    ),
+  ],
 );
