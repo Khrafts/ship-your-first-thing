@@ -8,6 +8,13 @@
       "when": 1781135432780,
       "tag": "0000_unknown_echo",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781895318561,
+      "tag": "0001_backfill_email_verified",
+      "breakpoints": true
     }
   ]
 }

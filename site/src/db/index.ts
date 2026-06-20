@@ -10,7 +10,20 @@ import * as schema from "./schema";
 
 export type Db = ReturnType<typeof drizzleNodePg<typeof schema>>;
 
-let dbPromise: Promise<Db> | null = null;
+// The handle is cached on globalThis, not a module-level variable, on purpose.
+// A Next.js production build instantiates this module separately in the
+// server-action/RSC graph and in the route-handler graph, so a module-level
+// promise would create TWO database handles per process. For Postgres that
+// just wastes a connection pool; for the embedded PGlite driver it's a
+// correctness bug — two instances on the same data dir don't share in-memory
+// writes, so e.g. a token written by a server action is invisible to the
+// /verify-email route handler. A Symbol.for-keyed slot on globalThis is one
+// handle shared across every server bundle in the process.
+const DB_KEY = Symbol.for("ship-your-first-thing.db.promise");
+
+type GlobalWithDb = typeof globalThis & {
+  [DB_KEY]?: Promise<Db> | null;
+};
 
 async function createDb(): Promise<Db> {
   const url = process.env.DATABASE_URL;
@@ -29,19 +42,20 @@ async function createDb(): Promise<Db> {
 }
 
 export function getDb(): Promise<Db> {
-  if (!dbPromise) {
+  const g = globalThis as GlobalWithDb;
+  if (!g[DB_KEY]) {
     const promise = createDb();
     // A failed init must not be cached forever — clear the slot so the next
     // request retries. The resolved-promise fast path stays: a successful
     // promise is never evicted.
     promise.catch(() => {
-      if (dbPromise === promise) {
-        dbPromise = null;
+      if (g[DB_KEY] === promise) {
+        g[DB_KEY] = null;
       }
     });
-    dbPromise = promise;
+    g[DB_KEY] = promise;
   }
-  return dbPromise;
+  return g[DB_KEY];
 }
 
 export { schema };
