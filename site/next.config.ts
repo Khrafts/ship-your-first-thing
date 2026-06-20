@@ -19,7 +19,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   // Native/wasm packages the bundler must leave to Node's resolver.
-  serverExternalPackages: ["@electric-sql/pglite", "pg", "bcryptjs"],
+  serverExternalPackages: ["@electric-sql/pglite", "pg", "bcryptjs", "nodemailer"],
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

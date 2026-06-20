@@ -30,4 +30,22 @@ export const AUTH_COPY = {
   invalidCredentials: "That email and password combination doesn't match.",
   emailTaken: "An account with that email already exists.",
   weakPassword: "Password needs at least 8 characters.",
+
+  // Google OAuth
+  continueWithGoogle: "Continue with Google",
+  orDivider: "or",
+
+  // Email confirmation flow
+  checkEmailTitle: "Check your email",
+  checkEmailLead: "We sent a confirmation link to",
+  checkEmailBody:
+    "Click the link to activate your account. It expires in 24 hours.",
+  needsVerification:
+    "Confirm your email before signing in — check your inbox for the link.",
+  resendButton: "Resend confirmation email",
+  resendingButton: "Sending…",
+  resent: "Sent. Check your inbox for a new confirmation link.",
+  verifiedBanner: "Your email is confirmed. Sign in to continue.",
+  verificationError:
+    "That confirmation link is invalid or has expired. Sign in to get a new one.",
 } as const;
