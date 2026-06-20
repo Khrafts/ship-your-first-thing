@@ -38,6 +38,10 @@ export default defineConfig({
       PGLITE_DATA_DIR: ".data/e2e",
       AUTH_SECRET: "e2e-test-secret-not-for-production",
       AUTH_TRUST_HOST: "true",
+      // `next start` runs in production mode, where confirmation-email links
+      // require an explicit trusted origin (base-url.ts fails closed rather
+      // than trust the Host header). Pin it to the test server's origin.
+      APP_URL: `http://localhost:${PORT}`,
       // No SMTP_HOST → mail is captured to the in-memory outbox; this flag
       // exposes /api/test/outbox so the suite can read the verification link.
       EMAIL_TEST_OUTBOX: "1",

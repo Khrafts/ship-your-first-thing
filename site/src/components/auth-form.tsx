@@ -59,7 +59,11 @@ function ResendControl({ email }: { email: string }) {
   );
 
   if (state?.status === "resent") {
-    return <p className="text-sm text-ink-secondary">{AUTH_COPY.resent}</p>;
+    return (
+      <p role="status" className="text-sm text-ink-secondary">
+        {AUTH_COPY.resent}
+      </p>
+    );
   }
 
   return (
@@ -112,7 +116,7 @@ export function AuthForm({ mode }: { mode: "signin" | "signup" }) {
   // email" panel — there's nothing more to type here.
   if (state?.status === "checkEmail") {
     return (
-      <div className="space-y-4">
+      <div role="status" className="space-y-4">
         <h2 className="font-serif text-xl text-ink">
           {AUTH_COPY.checkEmailTitle}
         </h2>

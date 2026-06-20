@@ -66,8 +66,11 @@ PurelyMail sends for). When `SMTP_HOST` is unset (local dev, e2e), mail is
 captured to an in-memory outbox and the link is logged to the console instead
 of being delivered — no mail service required to develop the flow.
 
-`APP_URL` optionally pins the origin used to build the link; otherwise it is
-derived from the request's forwarded host.
+`APP_URL` (or `AUTH_URL`) pins the origin used to build the confirmation link
+and is **required in production**: links must use a trusted origin rather than
+the request `Host` header, which is forgeable (verification-link poisoning →
+account takeover). The app fails closed in production if neither is set; local
+dev falls back to the request host.
 
 ## Deploy (Railway)
 

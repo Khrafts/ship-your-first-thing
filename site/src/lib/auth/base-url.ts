@@ -14,6 +14,17 @@ export function baseUrlFrom(
   if (override) {
     return override.replace(/\/+$/, "");
   }
+  // No trusted origin configured. This value is used to build the confirmation
+  // link mailed to a user, so deriving it from the request Host header is a
+  // verification-link-poisoning vector (a forged Host → the victim's email
+  // points at an attacker domain → token theft → account takeover). Fail
+  // closed in production: demand an explicit, operator-set origin. The header
+  // fallback is for local dev / e2e only, where no real mail is sent.
+  if (env.NODE_ENV === "production") {
+    throw new Error(
+      "APP_URL (or AUTH_URL) must be set in production so confirmation-email links use a trusted origin, not the request Host header.",
+    );
+  }
   const proto = headersList.get("x-forwarded-proto") ?? "http";
   const host = headersList.get("host") ?? "localhost:3000";
   return `${proto}://${host}`;

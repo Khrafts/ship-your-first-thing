@@ -32,8 +32,24 @@ describe("baseUrlFrom", () => {
     expect(url).toBe("https://shipyourfirstthing.com");
   });
 
-  it("defaults to http and localhost when nothing is present", () => {
+  it("defaults to http and localhost when nothing is present (dev)", () => {
     const url = baseUrlFrom(headers({}), {});
     expect(url).toBe("http://localhost:3000");
+  });
+
+  it("refuses to trust the request Host in production (poisoning guard)", () => {
+    expect(() =>
+      baseUrlFrom(headers({ host: "attacker.example" }), {
+        NODE_ENV: "production",
+      }),
+    ).toThrow(/APP_URL/);
+  });
+
+  it("in production, uses the explicit override and ignores the Host", () => {
+    const url = baseUrlFrom(headers({ host: "attacker.example" }), {
+      NODE_ENV: "production",
+      APP_URL: "https://shipyourfirstthing.com",
+    });
+    expect(url).toBe("https://shipyourfirstthing.com");
   });
 });
