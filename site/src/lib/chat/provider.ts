@@ -2,7 +2,10 @@ import { createMockProvider } from "./mock";
 import { createOpenRouterProvider } from "./openrouter";
 import { type ChatBackend, type ChatProvider, ChatProviderError, DEFAULT_MODEL } from "./types";
 
-export function resolveBackend(env: NodeJS.ProcessEnv): ChatBackend {
+/** Just the env keys we read — `process.env` and test stubs both satisfy it. */
+type EnvLike = Record<string, string | undefined>;
+
+export function resolveBackend(env: EnvLike): ChatBackend {
   const explicit = env.CHAT_BACKEND?.trim().toLowerCase();
   if (explicit === "mock" || explicit === "openrouter") {
     return explicit;
@@ -10,7 +13,7 @@ export function resolveBackend(env: NodeJS.ProcessEnv): ChatBackend {
   return env.OPENROUTER_API_KEY ? "openrouter" : "mock";
 }
 
-export function getChatProvider(env: NodeJS.ProcessEnv = process.env): ChatProvider {
+export function getChatProvider(env: EnvLike = process.env): ChatProvider {
   if (resolveBackend(env) === "mock") {
     return createMockProvider();
   }
