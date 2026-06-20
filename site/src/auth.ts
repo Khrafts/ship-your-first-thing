@@ -5,6 +5,10 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { verifyCredentials } from "@/lib/auth/credentials";
+import {
+  isAllowedProviderSignIn,
+  shouldClearPlantedPassword,
+} from "@/lib/auth/oauth-link";
 
 // Two ways in: Google OAuth and email/password credentials. Sessions are
 // stateless JWTs (required by the credentials provider), but the Drizzle
@@ -46,10 +50,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth(async () => {
     secret,
     providers: [
       Google({
-        // Safe here ONLY because Google sets email_verified: an existing
-        // password account is reconciled with its Google sign-in by matching
-        // the verified email. Never enable this for a provider that doesn't
-        // verify email ownership.
+        // Auto-link an existing account to its Google sign-in by matching email.
+        // Auth.js links on email match alone, so the "only safe because the
+        // email is verified" guarantee is ENFORCED by the signIn callback below
+        // (rejects Google unless email_verified === true), not assumed here.
+        // Never enable this for a provider that doesn't verify email ownership.
         allowDangerousEmailAccountLinking: true,
         profile(profile) {
           return {
@@ -90,6 +95,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth(async () => {
       }),
     ],
     callbacks: {
+      // The auto-linking safety argument REQUIRES the provider to have verified
+      // the email — Auth.js links by email match alone and never checks this,
+      // so gate it here. Without this, a Google identity asserting an
+      // unverified victim email would link to (take over) the victim's account.
+      signIn({ account, profile }) {
+        return isAllowedProviderSignIn(account?.provider, profile);
+      },
       session({ session, token }) {
         if (token.sub) {
           session.user.id = token.sub;
@@ -98,16 +110,29 @@ export const { handlers, auth, signIn, signOut } = NextAuth(async () => {
       },
     },
     events: {
-      // Linking an OAuth account proves the user controls that verified email,
-      // so confirm a previously-pending account at the moment of linking.
+      // Linking a (verified) OAuth account proves the user controls that email,
+      // so confirm the account at link time. But a password sitting on a
+      // not-yet-verified row is untrusted — it may have been planted by someone
+      // who never proved ownership (pre-registration hijack: plant a password,
+      // wait for the real owner to sign in with Google, then log in with the
+      // planted password). Drop that unproven password when activating.
       async linkAccount({ user }) {
-        if (user.id) {
-          const linkDb = await getDb();
-          await linkDb
-            .update(schema.users)
-            .set({ emailVerified: new Date() })
-            .where(eq(schema.users.id, user.id));
+        if (!user.id) {
+          return;
         }
+        const linkDb = await getDb();
+        const existing = await linkDb.query.users.findFirst({
+          where: eq(schema.users.id, user.id),
+        });
+        await linkDb
+          .update(schema.users)
+          .set({
+            emailVerified: new Date(),
+            ...(shouldClearPlantedPassword(existing)
+              ? { passwordHash: null }
+              : {}),
+          })
+          .where(eq(schema.users.id, user.id));
       },
     },
   };

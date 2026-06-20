@@ -48,4 +48,11 @@ export const AUTH_COPY = {
   verifiedBanner: "Your email is confirmed. Sign in to continue.",
   verificationError:
     "That confirmation link is invalid or has expired. Sign in to get a new one.",
+
+  // Confirmation landing page (a button-press activates, so email link
+  // scanners that only fetch the page can't burn the single-use token).
+  confirmEmailTitle: "Confirm your email",
+  confirmEmailBody:
+    "Click the button below to activate your account and finish signing up.",
+  confirmEmailButton: "Confirm my email",
 } as const;

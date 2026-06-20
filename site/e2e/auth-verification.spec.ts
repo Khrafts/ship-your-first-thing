@@ -75,8 +75,32 @@ test.describe("email confirmation", () => {
     page,
   }) => {
     await page.goto("/verify-email?token=not-a-real-token");
+    await page
+      .getByRole("button", { name: AUTH_COPY.confirmEmailButton })
+      .click();
     await page.waitForURL(/\/signin\?error=verification/);
     await expect(page.getByText(AUTH_COPY.verificationError)).toBeVisible();
+  });
+
+  test("visiting the link without confirming does not consume the token", async ({
+    page,
+  }) => {
+    // Simulates an email-gateway link scanner fetching the page (GET) before
+    // the human clicks: the single-use token must survive until the POST.
+    const email = uniqueEmail("verify-prefetch");
+    await signUpUnverified(page, {
+      name: "Prefetch Person",
+      email,
+      password: PASSWORD,
+    });
+
+    const link = await verificationLinkFor(page, email);
+    await page.goto(link); // first GET — must NOT activate or burn the token
+    await page.goto(link); // a second GET still shows the confirm page
+    await page
+      .getByRole("button", { name: AUTH_COPY.confirmEmailButton })
+      .click();
+    await page.waitForURL(/\/signin\?verified=1/);
   });
 
   test("resend issues another working link", async ({ page }) => {
@@ -95,9 +119,9 @@ test.describe("email confirmation", () => {
     await page.getByRole("button", { name: AUTH_COPY.resendButton }).click();
     await expect(page.getByText(AUTH_COPY.resent)).toBeVisible();
 
-    // The freshly resent link activates the account.
-    const link = await verificationLinkFor(page, email);
-    await page.goto(link);
-    await page.waitForURL(/\/signin\?verified=1/);
+    // The freshly resent link activates the account (confirmEmail follows the
+    // latest captured link and presses the confirm button).
+    await confirmEmail(page, email);
+    await expect(page).toHaveURL(/\/signin\?verified=1/);
   });
 });

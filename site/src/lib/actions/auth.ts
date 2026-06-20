@@ -3,12 +3,16 @@
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 import { signIn, signOut } from "@/auth";
 import { getDb, schema } from "@/db";
 import { AUTH_COPY } from "@/lib/copy";
 import { getBaseUrl } from "@/lib/auth/base-url";
 import { verifyCredentials } from "@/lib/auth/credentials";
-import { issueVerificationToken } from "@/lib/auth/verification-token";
+import {
+  consumeVerificationToken,
+  issueVerificationToken,
+} from "@/lib/auth/verification-token";
 import { sendVerificationEmail } from "@/lib/email/send";
 
 // Form-action results. `undefined` is the idle/just-redirected state. The
@@ -127,6 +131,24 @@ export async function resendVerificationAction(
   // Always the same result — never reveal whether the email exists or its
   // verification state (account-enumeration defense).
   return { status: "resent" };
+}
+
+export async function confirmEmailAction(formData: FormData): Promise<void> {
+  // Invoked by the POST on the /verify-email confirmation page. Doing the
+  // state change on POST (not the GET) keeps passive email-link scanners from
+  // consuming the single-use token before the user clicks.
+  const token = String(formData.get("token") ?? "");
+  const email = await consumeVerificationToken(token);
+  if (!email) {
+    redirect("/signin?error=verification");
+  }
+
+  const db = await getDb();
+  await db
+    .update(schema.users)
+    .set({ emailVerified: new Date() })
+    .where(eq(schema.users.email, email));
+  redirect("/signin?verified=1");
 }
 
 export async function signInWithGoogleAction(): Promise<void> {

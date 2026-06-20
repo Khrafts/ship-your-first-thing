@@ -86,10 +86,16 @@ export async function verificationLinkFor(
   return match[0];
 }
 
-/** Click the confirmation link and land on the sign-in success banner. */
+/**
+ * Follow the confirmation link and press the confirm button (activation is a
+ * POST, not a one-click GET), landing on the sign-in success banner.
+ */
 export async function confirmEmail(page: Page, email: string): Promise<void> {
   const link = await verificationLinkFor(page, email);
   await page.goto(link);
+  await page
+    .getByRole("button", { name: AUTH_COPY.confirmEmailButton })
+    .click();
   await page.waitForURL(/\/signin\?verified=1/);
 }
 
