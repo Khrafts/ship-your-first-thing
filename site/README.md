@@ -59,12 +59,15 @@ Google" lands on the same account rather than a duplicate.
 ### Email confirmation
 
 New email/password signups are inactive until the learner clicks the
-confirmation link sent to their inbox. Outgoing mail uses **PurelyMail** over
-SMTP: set `SMTP_HOST=smtp.purelymail.com`, `SMTP_PORT` (587 STARTTLS / 465
-TLS), `SMTP_USER`, `SMTP_PASSWORD`, and `EMAIL_FROM` (an address on a domain
-PurelyMail sends for). When `SMTP_HOST` is unset (local dev, e2e), mail is
-captured to an in-memory outbox and the link is logged to the console instead
-of being delivered — no mail service required to develop the flow.
+confirmation link sent to their inbox. Outgoing mail goes over SMTP — any
+provider works. The defaults target **Brevo**'s free relay: set
+`SMTP_HOST=smtp-relay.brevo.com`, `SMTP_PORT=587`, `SMTP_USER` (your Brevo
+account email), `SMTP_PASSWORD` (an SMTP key from Brevo → SMTP & API → SMTP,
+not your account password), and `EMAIL_FROM` (a verified sender or
+authenticated domain — set up SPF/DKIM in the provider or mail lands in spam).
+When `SMTP_HOST` is unset (local dev, e2e), mail is captured to an in-memory
+outbox and the link is logged to the console instead of being delivered — no
+mail service required to develop the flow.
 
 `APP_URL` (or `AUTH_URL`) pins the origin used to build the confirmation link
 and is **required in production**: links must use a trusted origin rather than
