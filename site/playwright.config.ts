@@ -45,6 +45,8 @@ export default defineConfig({
       // No SMTP_HOST → mail is captured to the in-memory outbox; this flag
       // exposes /api/test/outbox so the suite can read the verification link.
       EMAIL_TEST_OUTBOX: "1",
+      // Lesson chat runs against the deterministic mock in e2e — no key, no tokens.
+      CHAT_BACKEND: "mock",
     },
   },
 });

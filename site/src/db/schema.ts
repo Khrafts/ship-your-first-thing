@@ -1,6 +1,8 @@
 import {
+  bigserial,
   boolean,
   date,
+  index,
   integer,
   pgTable,
   primaryKey,
@@ -126,4 +128,35 @@ export const cohortMembers = pgTable(
     joinedAt: timestamp("joined_at", { mode: "date" }).notNull().defaultNow(),
   },
   (table) => [primaryKey({ columns: [table.cohortId, table.userId] })],
+);
+
+// Per-lesson AI chat transcript, one implicit conversation per (user, lesson).
+// lessonPath is the canonical repo-relative markdown path (same key as
+// lessonProgress). "New chat" deletes this user's rows for the lesson.
+export const lessonChatMessage = pgTable(
+  "lesson_chat_message",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    lessonPath: text("lesson_path").notNull(),
+    role: text("role").notNull(), // 'user' | 'assistant'
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+    // Monotonic insertion order — the deterministic sort key. created_at alone
+    // ties when a user turn and its reply land in the same millisecond (the
+    // mock backend streams synchronously), and a tie leaves SQL free to return
+    // heap order. seq guarantees user-before-assistant regardless.
+    seq: bigserial("seq", { mode: "number" }).notNull(),
+  },
+  (table) => [
+    index("lesson_chat_user_lesson_idx").on(
+      table.userId,
+      table.lessonPath,
+      table.seq,
+    ),
+  ],
 );
