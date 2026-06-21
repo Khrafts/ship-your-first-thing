@@ -8,6 +8,7 @@ describe("captured email transport", () => {
   beforeEach(() => {
     clearOutbox();
     delete process.env.SMTP_HOST;
+    delete process.env.BREVO_API_KEY;
   });
 
   it("records a sent message to the outbox", async () => {
