@@ -1,6 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { getChatProvider, resolveBackend } from "@/lib/chat/provider";
-import { ChatProviderError } from "@/lib/chat/types";
+import { ChatProviderError, DEFAULT_MODEL } from "@/lib/chat/types";
+
+describe("DEFAULT_MODEL", () => {
+  // Regression guard: the free model the chat defaults to must be one OpenRouter
+  // actually still serves. `deepseek/deepseek-chat-v3-0324:free` was retired and
+  // every request 404'd, surfacing as the generic "chat ran into a problem".
+  it("is a free model and not the retired deepseek id", () => {
+    expect(DEFAULT_MODEL).toMatch(/:free$/);
+    expect(DEFAULT_MODEL).not.toBe("deepseek/deepseek-chat-v3-0324:free");
+  });
+});
 
 describe("resolveBackend", () => {
   it("honours an explicit CHAT_BACKEND", () => {
