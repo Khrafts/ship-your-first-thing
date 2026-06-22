@@ -53,9 +53,13 @@
   .panel[data-expanded="true"] {
     width: 100vw;
   }
+  .msgUser {
+    max-width: 88%;
+  }
   /* Comfortable touch targets on the full-width mobile drawer. */
   .action,
-  .send {
+  .send,
+  .chip {
     min-height: 2.75rem;
   }
 }
@@ -125,40 +129,114 @@
   overflow-y: auto;
   padding: 1rem 1.1rem;
 }
+/* Composed empty state: a serif invitation + a mono sub-line + suggested-question
+   chips in the tutor (left) lane. A chip fills the composer without auto-sending,
+   so the learner stays in control of when a question is asked. */
 .empty {
-  color: var(--ink-faint);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  display: block;
 }
+.emptyLead {
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+.emptySub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+  margin: 0 0 0.85rem;
+}
+.chips {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink-secondary);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* Marginalia conversation — an interview typeset in a journal. The tutor speaks
+   as flush-left serif under a single pull-quote rule; you ask from the right
+   margin in a quiet mono slip. Asymmetry by alignment + treatment, not bubbles. */
 .msgUser,
 .msgAssistant {
-  padding: 0.9rem 0;
-  border-top: 1px solid var(--line);
+  display: block;
+  padding: 0;
+  border: 0;
 }
-.msgUser:first-child,
-.msgAssistant:first-child {
-  border-top: none;
+.messages > * + * {
+  margin-top: 1.5rem;
+}
+.msgAssistant {
+  max-width: min(46ch, 92%);
+  margin-right: auto;
+  border-left: 1.5px solid var(--line-strong);
+  padding-left: 0.9rem;
+}
+.msgUser {
+  max-width: min(34ch, 82%);
+  margin-left: auto;
+  background: var(--surface);
+  border-radius: 3px 3px 3px 10px;
+  padding: 0.55rem 0.7rem;
 }
 .who {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   color: var(--ink-faint);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+}
+.msgUser .who {
+  justify-content: flex-end;
+  width: 100%;
+}
+/* A 6px printer's tick beside each speaker mark — a typographic flourish, not an avatar. */
+.msgAssistant .who::before,
+.msgUser .who::after {
+  content: "";
+  width: 6px;
+  height: 1.5px;
+  background: var(--ink-faint);
 }
 .msgUser .body {
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--ink-secondary);
+  text-align: left;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
 }
 .msgAssistant .body {
   font-family: var(--font-serif);
   font-size: 0.96rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink);
 }
 .body :global(pre) {
@@ -313,9 +391,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  /* Bottom inset clears the iOS home indicator on the full-width mobile drawer. */
-  padding: 0.85rem 1.1rem max(0.95rem, env(safe-area-inset-bottom));
-  border-top: 1.5px solid var(--ink);
+  /* No hard rule above the composer — the bordered composer field is its own
+     boundary, in keeping with Marginalia's "asymmetry by subtraction" ethos.
+     Bottom inset clears the iOS home indicator on the full-width mobile drawer. */
+  padding: 0.65rem 1.1rem max(0.95rem, env(safe-area-inset-bottom));
 }
 /* The composer: a single bordered field that holds the textarea and Send button,
    so the input reads as a finished, substantial surface rather than a bare line.

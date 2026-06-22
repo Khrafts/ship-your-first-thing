@@ -35,6 +35,15 @@ function parseFrame(raw: string): Frame | null {
   }
 }
 
+// Starter questions shown in the empty state. Clicking one fills the composer
+// (it does not send) so the learner decides when to ask — matching the course's
+// learner-agency tenet.
+const CHAT_SUGGESTIONS = [
+  "What does this term mean?",
+  "Why does this step matter?",
+  "What should I try next?",
+];
+
 export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -203,6 +212,11 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
     el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
   };
 
+  const fillFromSuggestion = useCallback((q: string) => {
+    setInput(q);
+    inputRef.current?.focus();
+  }, []);
+
   const hasChat = messages.length > 0;
 
   return (
@@ -263,10 +277,24 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
 
         <div className={styles.messages} ref={scrollRef} role="log" aria-live="polite">
           {!hasChat && !streaming && (
-            <p className={styles.empty}>
-              Ask anything about this lesson — what a term means, why a step
-              matters, or what to try next.
-            </p>
+            <div className={styles.empty}>
+              <p className={styles.emptyLead}>Ask anything about this lesson.</p>
+              <p className={styles.emptySub}>
+                what a term means · why a step matters · what to try next
+              </p>
+              <div className={styles.chips}>
+                {CHAT_SUGGESTIONS.map((q) => (
+                  <button
+                    key={q}
+                    type="button"
+                    className={styles.chip}
+                    onClick={() => fillFromSuggestion(q)}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
           {messages.map((m, idx) => (
             // Assistant HTML is safe: renderAssistantMarkdown is escape-first —
