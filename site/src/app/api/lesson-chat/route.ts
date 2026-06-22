@@ -114,6 +114,10 @@ export async function POST(req: Request): Promise<Response> {
         }
         frame("done", {});
       } catch (err) {
+        // Surface the real cause server-side: the client only ever sees the
+        // friendly message, so without this an upstream failure (e.g. a retired
+        // model id returning 404) is invisible in the deploy logs.
+        console.error("[lesson-chat] stream failed:", err);
         // Persist the partial reply once. Guarded so a success on the happy
         // path is never re-inserted, and a failure here can't escape start().
         if (acc && !persisted) {
