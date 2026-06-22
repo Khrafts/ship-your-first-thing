@@ -73,7 +73,7 @@ describe("openrouter provider", () => {
     const fetchImpl = vi.fn().mockResolvedValue(sseResponse(["data: [DONE]\n\n"]));
     const provider = createOpenRouterProvider({
       apiKey: "secret",
-      model: "meta-llama/llama-3.3-70b-instruct:free",
+      model: "qwen/qwen3-next-80b-a3b-instruct:free",
       fetchImpl: fetchImpl as unknown as typeof fetch,
     });
     await collect(provider.stream([{ role: "user", content: "hi" }]));
@@ -81,7 +81,7 @@ describe("openrouter provider", () => {
     expect(String(url)).toContain("/chat/completions");
     expect((init.headers as Record<string, string>).Authorization).toBe("Bearer secret");
     const body = JSON.parse(init.body as string);
-    expect(body.model).toBe("meta-llama/llama-3.3-70b-instruct:free");
+    expect(body.model).toBe("qwen/qwen3-next-80b-a3b-instruct:free");
     expect(body.stream).toBe(true);
     expect(body.messages).toEqual([{ role: "user", content: "hi" }]);
   });

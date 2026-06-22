@@ -25,4 +25,4 @@ export interface ChatProvider {
 
 export type ChatBackend = "openrouter" | "mock";
 
-export const DEFAULT_MODEL = "meta-llama/llama-3.3-70b-instruct:free";
+export const DEFAULT_MODEL = "qwen/qwen3-next-80b-a3b-instruct:free";
