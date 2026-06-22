@@ -33,4 +33,53 @@ describe("renderAssistantMarkdown", () => {
     expect(html).toContain("<li>one</li>");
     expect(html).toContain("<li>two</li>");
   });
+
+  it("renders headings at their level (the reported ### bug)", () => {
+    const html = renderAssistantMarkdown("# Title\n## Section\n### Detail");
+    expect(html).toContain("<h1>Title</h1>");
+    expect(html).toContain("<h2>Section</h2>");
+    expect(html).toContain("<h3>Detail</h3>");
+    expect(html).not.toContain("###");
+  });
+
+  it("does not treat bare or spaceless hashes as headings", () => {
+    const html = renderAssistantMarkdown("#nospace and C# code");
+    expect(html).not.toContain("<h1>");
+    expect(html).toContain("#nospace and C# code");
+  });
+
+  it("renders ordered lists", () => {
+    const html = renderAssistantMarkdown("1. first\n2. second");
+    expect(html).toContain("<ol>");
+    expect(html).toContain("<li>first</li>");
+    expect(html).toContain("<li>second</li>");
+  });
+
+  it("renders blockquotes", () => {
+    const html = renderAssistantMarkdown("> a quoted note");
+    expect(html).toContain("<blockquote>");
+    expect(html).toContain("a quoted note");
+  });
+
+  it("renders a horizontal rule and not a list item", () => {
+    const html = renderAssistantMarkdown("above\n\n---\n\nbelow");
+    expect(html).toContain("<hr>");
+    expect(html).not.toContain("<li>");
+  });
+
+  it("renders safe links and rejects unsafe protocols", () => {
+    const safe = renderAssistantMarkdown("see [the docs](https://example.com/x)");
+    expect(safe).toContain('href="https://example.com/x"');
+    expect(safe).toContain('rel="noopener noreferrer nofollow"');
+    expect(safe).toContain(">the docs</a>");
+
+    const unsafe = renderAssistantMarkdown("[tap me](javascript:alert(1))");
+    expect(unsafe).not.toContain("<a");
+    expect(unsafe).not.toContain("javascript:alert(1)</a>");
+  });
+
+  it("groups soft-wrapped lines into one paragraph with <br>", () => {
+    const html = renderAssistantMarkdown("line one\nline two\n\nnew para");
+    expect(html).toBe("<p>line one<br>line two</p><p>new para</p>");
+  });
 });
