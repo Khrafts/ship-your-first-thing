@@ -266,8 +266,10 @@
 .body :global(blockquote:first-child) {
   margin-top: 0;
 }
-/* The last block never adds trailing space inside the bubble. */
-.body :global(> *:last-child) {
+/* The last block never adds trailing space inside the bubble. The child
+   combinator stays outside :global() — Turbopack rejects a :global() argument
+   that begins with a combinator ("Invalid empty selector"). */
+.body > :global(*:last-child) {
   margin-bottom: 0;
 }
 
