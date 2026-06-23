@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShipGameHero from "@/components/ship-game/ShipGameHero";
 import { getModules, UPCOMING_MODULES } from "@/lib/content";
 import { TAGLINE } from "@/lib/copy";
 import { formatMinutes, moduleLabel } from "@/lib/format";
@@ -10,8 +11,11 @@ export default async function Home() {
 
   return (
     <div className="px-6">
+      {/* Mini arcade — sits above the hero copy, never replacing it */}
+      <ShipGameHero />
+
       {/* Hero */}
-      <section className="mx-auto max-w-3xl pt-24 pb-20 sm:pt-32">
+      <section className="mx-auto max-w-3xl pt-10 pb-20 sm:pt-12">
         <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink sm:text-6xl">
           Ship your first thing.
         </h1>
