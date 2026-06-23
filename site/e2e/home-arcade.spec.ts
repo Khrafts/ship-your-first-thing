@@ -3,13 +3,14 @@ import { TAGLINE } from "../src/lib/copy";
 
 // Smoke coverage for the home-page pixel arcade (the <ShipGameHero /> client
 // island that sits above the hero copy). It must render a playable canvas and
-// let a visitor cycle all three games — WITHOUT disturbing the existing hero
+// let a visitor cycle all four games — WITHOUT disturbing the existing hero
 // (title, tagline, the single "Start the course →" link, curriculum).
 //
-// The three games, in switcher order (registry: rocket → boat → builder):
+// The four games, in switcher order (registry: breaker → sorter → shooter → builder):
 const GAMES = [
-  { name: "Ship it", tagline: "Taxi the launchpad. Hop the bugs. Ship the rocket." },
-  { name: "Set sail", tagline: "Catch the swell. Clear the rocks." },
+  { name: "Chip the wall", tagline: "Slide the paddle. Clear the wall, brick by brick." },
+  { name: "Ship the good", tagline: "Catch the good edits. Let the bugs drop." },
+  { name: "Keep it live", tagline: "Slide and fire. Knock down what comes at your app." },
   { name: "Build it", tagline: "Ship a layer at a time. Finish the crate." },
 ] as const;
 
@@ -24,15 +25,15 @@ test.describe("home arcade", () => {
     const canvas = page.locator("canvas");
     await expect(canvas).toHaveCount(1);
     await expect(canvas).toBeVisible();
-    await expect(canvas).toHaveAttribute("aria-label", /one-button pixel/i);
+    await expect(canvas).toHaveAttribute("aria-label", /pixel/i);
     await expect(canvas).toHaveAttribute("tabindex", "0");
   });
 
-  test("the switcher cycles through all three games", async ({ page }) => {
+  test("the switcher cycles through all four games", async ({ page }) => {
     await page.goto("/");
 
-    // The default game (rocket → "Ship it") is selected on first load; its
-    // tagline shows beneath the canvas.
+    // The default game (breaker → "Chip the wall") is selected on first load;
+    // its tagline shows beneath the canvas.
     const first = page.getByRole("button", { name: GAMES[0].name });
     await expect(first).toHaveAttribute("aria-pressed", "true");
     await expect(page.getByText(GAMES[0].tagline, { exact: true })).toBeVisible();
