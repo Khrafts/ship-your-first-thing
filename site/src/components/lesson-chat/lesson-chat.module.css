@@ -173,8 +173,8 @@
 }
 
 /* Marginalia conversation — an interview typeset in a journal. The tutor speaks
-   as flush-left serif under a single pull-quote rule; you ask from the right
-   margin in a quiet mono slip. Asymmetry by alignment + treatment, not bubbles. */
+   as flush-left serif; you ask from the right margin in a quiet mono slip.
+   Asymmetry by alignment + treatment, not bubbles. */
 .msgUser,
 .msgAssistant {
   display: block;
@@ -191,8 +191,6 @@
   width: fit-content;
   max-width: 100%;
   margin-right: auto;
-  border-left: 1.5px solid var(--line-strong);
-  padding-left: 0.9rem;
 }
 .msgUser {
   width: fit-content;
