@@ -1,4 +1,6 @@
-// The renderer. Draws a GameState to a 2D context in strict monochrome.
+// The runner renderer. Draws a runner GameState to a 2D context in strict
+// monochrome. (The new games — breaker / sorter / shooter — bring their own
+// render(); this file is the endless-runner's, used via runner-module.ts.)
 //
 // Colors are READ from the canvas element's computed style (--ink / --paper /
 // --ink-faint), so the game flips with the site's light/dark theme toggle with
@@ -6,14 +8,20 @@
 // the canvas's backing store to logicalSize × scale and draw filled rects at
 // integer scale, then CSS `image-rendering: pixelated` keeps the pixels crisp.
 
-import { blit, spriteHeight, spriteWidth } from "./sprites";
-import type { Bitmap, GameDef, GameState } from "./types";
+import { drawScore, drawFlash, drawIdlePrompt, drawOverPlate } from "./hud";
+import { blit, spriteHeight } from "./sprites";
+import { FONT, GLYPH_H, textWidth } from "./text";
+import type {
+  Bitmap,
+  GameDef,
+  GameState,
+  RenderOptions,
+  ThemeColors,
+} from "./types";
 
-export interface ThemeColors {
-  ink: string;
-  paper: string;
-  faint: string;
-}
+// Re-export the shared types so existing importers (use-ship-game.ts) are
+// unaffected by their move into types.ts.
+export type { RenderOptions, ThemeColors };
 
 const FALLBACK: ThemeColors = {
   ink: "#09090b",
@@ -39,101 +47,10 @@ export function readThemeColors(el: HTMLElement): ThemeColors {
   };
 }
 
-// 5×7 pixel font for scores / prompts. Lowercase reuses uppercase glyphs; the
-// few punctuation marks we need are included. Unknown chars render as a blank.
-const FONT: Record<string, Bitmap> = {
-  "0": ["###", "# #", "# #", "# #", "###"],
-  "1": [" # ", "## ", " # ", " # ", "###"],
-  "2": ["###", "  #", "###", "#  ", "###"],
-  "3": ["###", "  #", "###", "  #", "###"],
-  "4": ["# #", "# #", "###", "  #", "  #"],
-  "5": ["###", "#  ", "###", "  #", "###"],
-  "6": ["###", "#  ", "###", "# #", "###"],
-  "7": ["###", "  #", "  #", " # ", " # "],
-  "8": ["###", "# #", "###", "# #", "###"],
-  "9": ["###", "# #", "###", "  #", "###"],
-  A: ["###", "# #", "###", "# #", "# #"],
-  B: ["## ", "# #", "## ", "# #", "## "],
-  C: ["###", "#  ", "#  ", "#  ", "###"],
-  D: ["## ", "# #", "# #", "# #", "## "],
-  E: ["###", "#  ", "## ", "#  ", "###"],
-  F: ["###", "#  ", "## ", "#  ", "#  "],
-  G: ["###", "#  ", "# #", "# #", "###"],
-  H: ["# #", "# #", "###", "# #", "# #"],
-  I: ["###", " # ", " # ", " # ", "###"],
-  J: ["###", "  #", "  #", "# #", "###"],
-  K: ["# #", "# #", "## ", "# #", "# #"],
-  L: ["#  ", "#  ", "#  ", "#  ", "###"],
-  M: ["# #", "###", "###", "# #", "# #"],
-  N: ["# #", "###", "###", "###", "# #"],
-  O: ["###", "# #", "# #", "# #", "###"],
-  P: ["###", "# #", "###", "#  ", "#  "],
-  Q: ["###", "# #", "# #", "###", "  #"],
-  R: ["## ", "# #", "## ", "# #", "# #"],
-  S: ["###", "#  ", "###", "  #", "###"],
-  T: ["###", " # ", " # ", " # ", " # "],
-  U: ["# #", "# #", "# #", "# #", "###"],
-  V: ["# #", "# #", "# #", "# #", " # "],
-  W: ["# #", "# #", "###", "###", "# #"],
-  X: ["# #", "# #", " # ", "# #", "# #"],
-  Y: ["# #", "# #", " # ", " # ", " # "],
-  Z: ["###", "  #", " # ", "#  ", "###"],
-  " ": ["   ", "   ", "   ", "   ", "   "],
-  ".": ["  ", "  ", "  ", "  ", " #"],
-  "/": ["  #", "  #", " # ", "#  ", "#  "],
-  ":": [" ", "#", " ", "#", " "],
-  "!": ["#", "#", "#", " ", "#"],
-  "+": ["   ", " # ", "###", " # ", "   "],
-  "→": ["    ", "  # ", "####", "  # ", "    "],
-  "✦": ["  #  ", "# # #", " ### ", "# # #", "  #  "],
-};
-
-const GLYPH_H = 5;
-const GLYPH_GAP = 1;
-
-/** Total pixel width of a string in the 5×7 font at scale 1. */
-function textWidth(text: string): number {
-  let w = 0;
-  for (const ch of text.toUpperCase()) {
-    const g = FONT[ch] ?? FONT[" "];
-    w += spriteWidth(g) + GLYPH_GAP;
-  }
-  return Math.max(0, w - GLYPH_GAP);
-}
-
-/** Draw a string in the pixel font at logical (x, y), top-left, given pixelScale. */
-function drawText(
-  ctx: CanvasRenderingContext2D,
-  text: string,
-  x: number,
-  y: number,
-  s: number,
-): void {
-  let cx = x;
-  for (const ch of text.toUpperCase()) {
-    const g = FONT[ch] ?? FONT[" "];
-    blit(ctx, g, cx, y, s);
-    cx += (spriteWidth(g) + GLYPH_GAP) * s;
-  }
-}
-
 /** Baseline y for the wave variant at a given column + time. */
 function waveOffset(col: number, elapsedMs: number): number {
   const phase = elapsedMs / 360;
   return Math.round(Math.sin(col / 14 + phase) * 2);
-}
-
-export interface RenderOptions {
-  /** Integer pixels-per-logical-pixel. */
-  readonly scale: number;
-  /** Theme colors (read once per frame by the hook and passed in). */
-  readonly colors: ThemeColors;
-  /**
-   * When reduced-motion is active and the round is idle, draw a static prompt
-   * frame. The hook passes this so the renderer never has to know about media
-   * queries.
-   */
-  readonly reducedMotion?: boolean;
 }
 
 /**
@@ -189,61 +106,24 @@ export function render(
   // change), never rebuild it here — this is the per-frame hot path.
   const avatar: Bitmap = state.avatarBitmap;
   ctx.fillStyle = colors.ink;
-  blit(
-    ctx,
-    avatar,
-    state.avatarX * s,
-    Math.round(state.avatarY) * s,
-    s,
-  );
+  blit(ctx, avatar, state.avatarX * s, Math.round(state.avatarY) * s, s);
 
   // --- Score (top-right, mono pixel font) ---
-  const scoreStr = `${state.score}${def.scoreUnit}`.toUpperCase();
-  ctx.fillStyle = colors.ink;
-  const scoreW = textWidth(scoreStr) * s;
-  drawText(ctx, scoreStr, W - scoreW - 4 * s, 4 * s, s);
+  drawScore(ctx, `${state.score}${def.scoreUnit}`, state.width, s, colors);
 
   // --- Flash text (milestone celebration), centered ---
   if (state.flash) {
-    const fade = state.flash.ms < 250 ? colors.faint : colors.ink;
-    ctx.fillStyle = fade;
-    const t = state.flash.text;
-    const tw = textWidth(t) * s;
-    drawText(ctx, t, (W - tw) / 2, Math.round(state.height * 0.32) * s, s);
+    drawFlash(ctx, state.flash.text, state.flash.ms, state.width, state.height, s, colors);
   }
 
-  // --- Idle / reduced-motion prompt ---
+  // --- Idle prompt ---
   if (state.phase === "idle") {
-    ctx.fillStyle = colors.ink;
-    const prompt = "PRESS SPACE";
-    const pw = textWidth(prompt) * s;
-    drawText(
-      ctx,
-      prompt,
-      (W - pw) / 2,
-      Math.round(state.height * 0.42) * s,
-      s,
-    );
-    const sub = "TO PLAY";
-    const sw = textWidth(sub) * s;
-    ctx.fillStyle = colors.faint;
-    drawText(ctx, sub, (W - sw) / 2, Math.round(state.height * 0.42 + 8) * s, s);
+    drawIdlePrompt(ctx, "PRESS SPACE", "TO PLAY", state.width, state.height, s, colors);
   }
 
-  // --- Over: dim the field and stamp the avatar — the card carries the copy ---
+  // --- Over: stamp the field — the card carries the copy ---
   if (state.phase === "over") {
-    ctx.fillStyle = colors.ink;
-    const over = "CRASHED";
-    const ow = textWidth(over) * s;
-    // A small inverted plate so the word reads on the busy field.
-    const plateW = ow + 8 * s;
-    const plateH = (GLYPH_H + 6) * s;
-    const px = (W - plateW) / 2;
-    const py = Math.round(state.height * 0.36) * s;
-    ctx.fillStyle = colors.ink;
-    ctx.fillRect(px, py, plateW, plateH);
-    ctx.fillStyle = colors.paper;
-    drawText(ctx, over, px + 4 * s, py + 3 * s, s);
+    drawOverPlate(ctx, "CRASHED", state.width, state.height, s, colors);
   }
 }
 

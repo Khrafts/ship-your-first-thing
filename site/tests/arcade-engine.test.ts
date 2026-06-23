@@ -7,7 +7,16 @@ import {
   step,
 } from "@/components/ship-game/engine";
 import { spriteHeight, spriteWidth } from "@/components/ship-game/sprites";
-import type { GameDef, GameState } from "@/components/ship-game/types";
+import type { GameDef, GameInput, GameState } from "@/components/ship-game/types";
+
+// The runner only reads `primary`; this builds a full GameInput so the tests
+// don't repeat the left/right/pointerX boilerplate the harness fills each tick.
+const press = (primary: boolean): GameInput => ({
+  primary,
+  left: false,
+  right: false,
+  pointerX: null,
+});
 
 // A minimal, fully-controlled GameDef so tests don't depend on the real games'
 // content. One grounded obstacle, no milestones.
@@ -51,7 +60,7 @@ function run(
   dt = 1000 / 120,
 ): GameState {
   for (let i = 0; i < steps; i++) {
-    step(state, dt, { jump: jumpOn(i) }, def);
+    step(state, dt, press(jumpOn(i)), def);
   }
   return state;
 }
@@ -94,7 +103,7 @@ describe("state machine: idle → running → over", () => {
 
   it("a jump in idle transitions to running", () => {
     const s = createInitialState(TEST_DEF, { seed: 12345 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     expect(s.phase).toBe("running");
     expect(s.onGround).toBe(false); // the starting jump also hops
   });
@@ -117,7 +126,7 @@ describe("state machine: idle → running → over", () => {
         h: s.avatarH,
       },
     ];
-    step(s, 1000 / 120, { jump: false }, TEST_DEF);
+    step(s, 1000 / 120, press(false), TEST_DEF);
     expect(s.phase).toBe("over");
   });
 
@@ -136,7 +145,7 @@ describe("state machine: idle → running → over", () => {
         h: s.avatarH,
       },
     ];
-    step(s, 1000 / 120, { jump: false }, TEST_DEF);
+    step(s, 1000 / 120, press(false), TEST_DEF);
     expect(s.phase).toBe("running");
   });
 
@@ -144,7 +153,7 @@ describe("state machine: idle → running → over", () => {
     const s = createInitialState(TEST_DEF, { seed: 7 });
     s.phase = "over";
     s.score = 99;
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     expect(s.phase).toBe("running");
     expect(s.score).toBe(0);
   });
@@ -153,7 +162,7 @@ describe("state machine: idle → running → over", () => {
 describe("scoring increases with time and speed", () => {
   it("score grows monotonically while running", () => {
     const s = createInitialState(TEST_DEF, { seed: 999 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     const early = (() => {
       run(s, TEST_DEF, 60);
       return s.score;
@@ -166,11 +175,11 @@ describe("scoring increases with time and speed", () => {
 
   it("more elapsed time yields a higher score (same seed)", () => {
     const short = createInitialState(TEST_DEF, { seed: 42 });
-    step(short, 1000 / 120, { jump: true }, TEST_DEF);
+    step(short, 1000 / 120, press(true), TEST_DEF);
     run(short, TEST_DEF, 50);
 
     const long = createInitialState(TEST_DEF, { seed: 42 });
-    step(long, 1000 / 120, { jump: true }, TEST_DEF);
+    step(long, 1000 / 120, press(true), TEST_DEF);
     run(long, TEST_DEF, 300);
 
     expect(long.score).toBeGreaterThan(short.score);
@@ -180,11 +189,11 @@ describe("scoring increases with time and speed", () => {
 describe("difficulty ramp: speed grows with score", () => {
   it("speed increases as the score rises", () => {
     const s = createInitialState(TEST_DEF, { seed: 3 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     const startSpeed = s.speed;
     // Avoid collisions by clearing obstacles each step (we only test ramp here).
     for (let i = 0; i < 1200; i++) {
-      step(s, 1000 / 120, { jump: false }, TEST_DEF);
+      step(s, 1000 / 120, press(false), TEST_DEF);
       s.obstacles = [];
       if (s.phase === "over") s.phase = "running";
     }
@@ -197,7 +206,7 @@ describe("difficulty ramp: speed grows with score", () => {
     s.phase = "running";
     s.score = 100000;
     s.distance = 100000 / 0.08;
-    step(s, 1000 / 120, { jump: false }, TEST_DEF);
+    step(s, 1000 / 120, press(false), TEST_DEF);
     s.obstacles = [];
     expect(s.speed).toBeLessThanOrEqual(320);
   });
@@ -206,14 +215,14 @@ describe("difficulty ramp: speed grows with score", () => {
 describe("physics: jump + gravity + ground clamp", () => {
   it("a jump leaves the ground then returns to it", () => {
     const s = createInitialState(TEST_DEF, { seed: 1 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF); // start + hop
+    step(s, 1000 / 120, press(true), TEST_DEF); // start + hop
     const groundY = s.baselineY - s.avatarH;
     // Mid-air shortly after launch.
     run(s, TEST_DEF, 8, () => false, 1000 / 120);
     expect(s.avatarY).toBeLessThan(groundY);
     // Clear obstacles so we don't game-over mid-flight; let gravity land it.
     for (let i = 0; i < 120; i++) {
-      step(s, 1000 / 120, { jump: false }, TEST_DEF);
+      step(s, 1000 / 120, press(false), TEST_DEF);
       s.obstacles = [];
       if (s.phase === "over") s.phase = "running";
     }
@@ -223,11 +232,11 @@ describe("physics: jump + gravity + ground clamp", () => {
 
   it("a jump only fires from the ground (no double-jump)", () => {
     const s = createInitialState(TEST_DEF, { seed: 1 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF); // start + hop
+    step(s, 1000 / 120, press(true), TEST_DEF); // start + hop
     run(s, TEST_DEF, 4);
     const vyMidAir = s.vy;
     // A second jump while airborne must not re-impulse upward.
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     s.obstacles = [];
     expect(s.vy).toBeGreaterThan(vyMidAir - 1); // not a fresh -430 impulse
   });
@@ -237,11 +246,11 @@ describe("obstacle spawning is deterministic for a seed", () => {
   it("two runs with the same seed produce identical obstacle timelines", () => {
     const a = createInitialState(TEST_DEF, { seed: 555 });
     const b = createInitialState(TEST_DEF, { seed: 555 });
-    step(a, 1000 / 120, { jump: true }, TEST_DEF);
-    step(b, 1000 / 120, { jump: true }, TEST_DEF);
+    step(a, 1000 / 120, press(true), TEST_DEF);
+    step(b, 1000 / 120, press(true), TEST_DEF);
     for (let i = 0; i < 400; i++) {
-      step(a, 1000 / 120, { jump: false }, TEST_DEF);
-      step(b, 1000 / 120, { jump: false }, TEST_DEF);
+      step(a, 1000 / 120, press(false), TEST_DEF);
+      step(b, 1000 / 120, press(false), TEST_DEF);
       // Don't let collisions stop one but not the other.
       a.obstacles.forEach((o) => (o.y = -100));
       b.obstacles.forEach((o) => (o.y = -100));
@@ -254,10 +263,10 @@ describe("obstacle spawning is deterministic for a seed", () => {
 
   it("spawns at least one obstacle within a few seconds", () => {
     const s = createInitialState(TEST_DEF, { seed: 8 });
-    step(s, 1000 / 120, { jump: true }, TEST_DEF);
+    step(s, 1000 / 120, press(true), TEST_DEF);
     let sawObstacle = false;
     for (let i = 0; i < 600; i++) {
-      step(s, 1000 / 120, { jump: false }, TEST_DEF);
+      step(s, 1000 / 120, press(false), TEST_DEF);
       s.obstacles.forEach((o) => (o.y = -100)); // dodge so the round survives
       if (s.obstacles.length > 0) sawObstacle = true;
     }
@@ -271,7 +280,7 @@ describe("milestones: stage, flash, avatar growth", () => {
     s.phase = "running";
     // Force the score across the first milestone (5).
     s.distance = 6 / 0.08;
-    step(s, 1000 / 120, { jump: false }, MILESTONE_DEF);
+    step(s, 1000 / 120, press(false), MILESTONE_DEF);
     s.obstacles = [];
     expect(s.score).toBeGreaterThanOrEqual(5);
     expect(s.stage).toBe(1);
@@ -283,7 +292,7 @@ describe("milestones: stage, flash, avatar growth", () => {
     s.phase = "running";
     const groundBottom = s.avatarY + s.avatarH;
     s.distance = 6 / 0.08;
-    step(s, 1000 / 120, { jump: false }, MILESTONE_DEF);
+    step(s, 1000 / 120, press(false), MILESTONE_DEF);
     s.obstacles = [];
     // Stage-1 avatar is one row taller; the bottom must be unchanged.
     expect(s.avatarH).toBe(spriteHeight(resolveAvatar(MILESTONE_DEF, {

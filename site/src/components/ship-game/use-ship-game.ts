@@ -1,15 +1,16 @@
 "use client";
 
-// The React hook that drives one game on a canvas.
+// The React harness that drives one GameModule on a canvas.
 //
 // Responsibilities:
 //   - own a <canvas> ref and keep its backing store sized to logical × scale,
 //     with `image-rendering: pixelated` so the low-res field stays crisp.
 //   - run a fixed-timestep requestAnimationFrame loop with an accumulator, so
 //     physics are framerate-independent and deterministic.
-//   - wire input: Space / ArrowUp / click / touch → jump; Enter / click on a
-//     finished round → restart. Space is preventDefault'd ONLY when the canvas
-//     is focused or hovered AND a round is active — otherwise Space scrolls.
+//   - collect the shared GameInput each tick: a primary press (Space / ArrowUp /
+//     click / tap / Enter-restart), held left/right (Arrow keys / A,D), and a
+//     pointerX for drag-to-move (paddle / tray / ship). Each module reads only
+//     what it needs.
 //   - respect prefers-reduced-motion: never auto-run; show a static idle frame
 //     and only start animating after explicit user input.
 //   - read/write a per-game localStorage high score, guarded for private mode.
@@ -22,9 +23,8 @@
 // memoization intact.
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createInitialState, step } from "./engine";
-import { readThemeColors, render, type ThemeColors } from "./renderer";
-import type { GameDef, GameState, Phase } from "./types";
+import { readThemeColors, type ThemeColors } from "./renderer";
+import type { AnyGameModule, GameInput, Phase } from "./types";
 
 const LOGICAL_W = 240;
 const LOGICAL_H = 80;
@@ -73,6 +73,13 @@ function pickScale(cssWidth: number): number {
   return Math.max(2, Math.min(6, raw));
 }
 
+/** Phase derived from a module's idle/over predicates. */
+function phaseOf(mod: AnyGameModule, state: unknown): Phase {
+  if (mod.isOver(state)) return "over";
+  if (mod.isIdle(state)) return "idle";
+  return "running";
+}
+
 export interface UseShipGameResult {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -80,6 +87,10 @@ export interface UseShipGameResult {
   score: number;
   stage: number;
   highScore: number;
+  /** Whether to show the "stage x/5" scoreboard slot for this game. */
+  hasMilestones: boolean;
+  /** The game-over line for the current module + finished state (empty unless over). */
+  overLine: string;
   /** True if reduced-motion is active (UI can show a static hint). */
   reducedMotion: boolean;
   /** Imperative controls for chrome buttons. */
@@ -87,13 +98,13 @@ export interface UseShipGameResult {
   restart: () => void;
 }
 
-export function useShipGame(def: GameDef): UseShipGameResult {
+export function useShipGame(mod: AnyGameModule): UseShipGameResult {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Live mutable state for the loop; React state mirrors only what the UI shows.
-  const stateRef = useRef<GameState>(createInitialState(def));
-  const defRef = useRef<GameDef>(def);
+  const stateRef = useRef<unknown>(mod.createState({}));
+  const modRef = useRef<AnyGameModule>(mod);
   const colorsRef = useRef<ThemeColors>(FALLBACK_COLORS);
   const scaleRef = useRef<number>(2);
   // False until the backing store has been sized at least once. Lets resize()
@@ -103,9 +114,14 @@ export function useShipGame(def: GameDef): UseShipGameResult {
   const rafRef = useRef<number | null>(null);
   const lastTsRef = useRef<number>(0);
   const accumRef = useRef<number>(0);
-  // Edge-triggered jump request: set by input handlers, consumed by the loop.
-  const jumpQueuedRef = useRef<boolean>(false);
-  // Hover/focus gate for the no-scroll-trap Space capture.
+  // Edge-triggered primary request: set by input handlers, consumed by the loop.
+  const primaryQueuedRef = useRef<boolean>(false);
+  // Held movement; set on keydown, cleared on keyup.
+  const leftRef = useRef<boolean>(false);
+  const rightRef = useRef<boolean>(false);
+  // Logical-x of an active pointer/touch (drag-to-move), or null.
+  const pointerXRef = useRef<number | null>(null);
+  // Hover/focus gate for the no-scroll-trap key capture.
   const interactiveRef = useRef<boolean>(false);
   // The high-score-to-display, kept in a ref so the loop can update it without
   // reading React state, and mirrored into state on change.
@@ -122,13 +138,12 @@ export function useShipGame(def: GameDef): UseShipGameResult {
 
   // Adjust state during render when the chosen game changes (React's documented
   // pattern for deriving state from a changed prop — cheaper and cascade-free
-  // versus resetting inside an effect). `prevGameId` is React state (state, not
-  // a ref, is what may be read/written during render). The imperative canvas /
-  // loop reset still happens in an effect below; this only resets the mirrored
-  // React values the chrome renders.
-  const [prevGameId, setPrevGameId] = useState<GameDef["id"]>(def.id);
-  if (prevGameId !== def.id) {
-    setPrevGameId(def.id);
+  // versus resetting inside an effect). `prevGameId` is React state. The
+  // imperative canvas / loop reset still happens in an effect below; this only
+  // resets the mirrored React values the chrome renders.
+  const [prevGameId, setPrevGameId] = useState<string>(mod.id);
+  if (prevGameId !== mod.id) {
+    setPrevGameId(mod.id);
     setPhase("idle");
     setScore(0);
     setStage(0);
@@ -136,6 +151,13 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     // on game change) — not read here, to avoid a localStorage read during
     // render and so a returning player's best shows on the very first paint.
   }
+
+  // hasMilestones is module-constant (its implementations ignore state), so it
+  // is safe to derive during render. overLine is only meaningful when over, and
+  // is guarded by `phase` so we never call gameOverLine on a mismatched state
+  // mid game-switch (phase resets to idle on switch, so the over card is hidden).
+  const hasMilestones = mod.hasMilestones(stateRef.current);
+  const overLine = phase === "over" ? mod.gameOverLine(stateRef.current) : "";
 
   // --- Sizing + theme color read (no React state; pure ref/DOM work) -----
   const resize = useCallback(() => {
@@ -167,7 +189,7 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     colorsRef.current = readThemeColors(canvas);
-    render(ctx, stateRef.current, defRef.current, {
+    modRef.current.render(ctx, stateRef.current, {
       scale: scaleRef.current,
       colors: colorsRef.current,
       reducedMotion: prefersReducedMotion(),
@@ -183,65 +205,68 @@ export function useShipGame(def: GameDef): UseShipGameResult {
 
   // The fixed-timestep loop. Declared before startLoop (which references it) and
   // before any effect, so the compiler sees a clean forward-free graph.
-  const tick = useCallback(
-    (ts: number) => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+  const tick = useCallback((ts: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-      if (lastTsRef.current === 0) lastTsRef.current = ts;
-      let frameMs = ts - lastTsRef.current;
-      lastTsRef.current = ts;
-      if (frameMs > MAX_FRAME_MS) frameMs = MAX_FRAME_MS;
-      accumRef.current += frameMs;
+    if (lastTsRef.current === 0) lastTsRef.current = ts;
+    let frameMs = ts - lastTsRef.current;
+    lastTsRef.current = ts;
+    if (frameMs > MAX_FRAME_MS) frameMs = MAX_FRAME_MS;
+    accumRef.current += frameMs;
 
-      const d = defRef.current;
-      while (accumRef.current >= FIXED_DT) {
-        const jumpNow = jumpQueuedRef.current;
-        jumpQueuedRef.current = false;
-        step(stateRef.current, FIXED_DT, { jump: jumpNow }, d);
-        accumRef.current -= FIXED_DT;
+    const m = modRef.current;
+    while (accumRef.current >= FIXED_DT) {
+      const input: GameInput = {
+        primary: primaryQueuedRef.current,
+        left: leftRef.current,
+        right: rightRef.current,
+        pointerX: pointerXRef.current,
+      };
+      primaryQueuedRef.current = false; // edge-triggered: consume the press.
+      stateRef.current = m.step(stateRef.current, FIXED_DT, input);
+      accumRef.current -= FIXED_DT;
+    }
+
+    // colorsRef is kept current by the theme-change observer (and by
+    // resize/drawOnce), so we do NOT call getComputedStyle here — reading it
+    // every frame forces a style recalc and is the canonical per-frame
+    // getComputedStyle anti-pattern. A mid-game theme flip is picked up by the
+    // MutationObserver below, which updates colorsRef before the next frame.
+    m.render(ctx, stateRef.current, {
+      scale: scaleRef.current,
+      colors: colorsRef.current,
+    });
+
+    const st = stateRef.current;
+    const ph = phaseOf(m, st);
+    setPhase(ph);
+    setScore(m.getScore(st));
+    setStage(m.getStage(st));
+
+    if (ph === "over") {
+      const prev = readHighScore(m.highScoreId);
+      const sc = m.getScore(st);
+      const best = sc > prev ? sc : prev;
+      if (sc > prev) writeHighScore(m.highScoreId, sc);
+      if (best !== highScoreRef.current) {
+        highScoreRef.current = best;
+        setHighScore(best);
       }
-
-      // colorsRef is kept current by the theme-change observer (and by
-      // resize/drawOnce), so we do NOT call getComputedStyle here — reading it
-      // every frame forces a style recalc and is the canonical per-frame
-      // getComputedStyle anti-pattern. A mid-game theme flip is picked up by the
-      // MutationObserver below, which updates colorsRef before the next frame.
-      render(ctx, stateRef.current, d, {
-        scale: scaleRef.current,
-        colors: colorsRef.current,
-      });
-
-      const st = stateRef.current;
-      setPhase(st.phase);
-      setScore(st.score);
-      setStage(st.stage);
-
-      if (st.phase === "over") {
-        const prev = readHighScore(d.id);
-        const best = st.score > prev ? st.score : prev;
-        if (st.score > prev) writeHighScore(d.id, st.score);
-        if (best !== highScoreRef.current) {
-          highScoreRef.current = best;
-          setHighScore(best);
-        }
-        // Stop and stamp the final frame.
-        if (rafRef.current !== null) {
-          cancelAnimationFrame(rafRef.current);
-          rafRef.current = null;
-        }
-        return;
+      // Stop and stamp the final frame.
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
       }
+      return;
+    }
 
-      rafRef.current = requestAnimationFrame((next) => tickRef.current(next));
-    },
-    [],
-  );
+    rafRef.current = requestAnimationFrame((next) => tickRef.current(next));
+  }, []);
 
   // Keep the ref pointing at the latest tick so the loop reschedules through it.
-  // Done in an effect (not during render) per the refs-in-render rule.
   useEffect(() => {
     tickRef.current = tick;
   }, [tick]);
@@ -259,42 +284,46 @@ export function useShipGame(def: GameDef): UseShipGameResult {
 
   // --- Public controls -----
   const jump = useCallback(() => {
-    jumpQueuedRef.current = true;
-    const ph = stateRef.current.phase;
+    primaryQueuedRef.current = true;
+    const m = modRef.current;
+    const ph = phaseOf(m, stateRef.current);
     // Starting / restarting a round needs the loop running. Reduced-motion is
     // respected because we only ever start on explicit input (this call).
     if (ph === "idle" || ph === "over") startLoop();
   }, [startLoop]);
 
   const restart = useCallback(() => {
-    stateRef.current = createInitialState(defRef.current);
-    stateRef.current.phase = "idle";
+    const m = modRef.current;
+    stateRef.current = m.createState({});
     setPhase("idle");
     setScore(0);
     setStage(0);
-    jumpQueuedRef.current = true; // immediately start a fresh round.
+    primaryQueuedRef.current = true; // immediately start a fresh round.
     startLoop();
   }, [startLoop]);
 
   // --- Imperative reset when the chosen game changes -----
   // The mirrored React state was already reset during render (above); here we
-  // only touch external systems: the engine state, the loop, and the canvas.
+  // only touch external systems: the module state, the loop, and the canvas.
   useEffect(() => {
-    defRef.current = def;
-    stateRef.current = createInitialState(def);
+    modRef.current = mod;
+    stateRef.current = mod.createState({});
     accumRef.current = 0;
-    jumpQueuedRef.current = false;
+    primaryQueuedRef.current = false;
+    leftRef.current = false;
+    rightRef.current = false;
+    pointerXRef.current = null;
     // Load this game's stored best on mount and on game change, so a returning
-    // player sees their real "best" on the first paint (the render branch above
-    // no longer touches storage). readHighScore is SSR-safe and storage-guarded.
-    const best = readHighScore(def.id);
+    // player sees their real "best" on the first paint. readHighScore is
+    // SSR-safe and storage-guarded.
+    const best = readHighScore(mod.highScoreId);
     highScoreRef.current = best;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration-safe read of a client-only store
     setHighScore(best);
     stopLoop();
     resize();
     drawOnce();
-  }, [def, resize, drawOnce, stopLoop]);
+  }, [mod, resize, drawOnce, stopLoop]);
 
   // --- Track reduced-motion (live) -----
   useEffect(() => {
@@ -332,42 +361,52 @@ export function useShipGame(def: GameDef): UseShipGameResult {
   }, [resize, drawOnce]);
 
   // --- Theme change: repaint paused frames; refresh colors for the loop -----
-  // The site toggle flips light/dark by adding/removing `.dark` on <html> (see
-  // theme-toggle.tsx) — it does NOT track prefers-color-scheme once pinned, so a
-  // matchMedia listener would miss it. Watch the class attribute instead. This
-  // keeps colorsRef current WITHOUT reading getComputedStyle every frame, and
-  // repaints the idle / reduced-motion / over frames (where no loop is running)
-  // so they flip with the toggle instead of freezing on stale colors.
+  // The site toggle flips light/dark by adding/removing `.dark` on <html> — it
+  // does NOT track prefers-color-scheme once pinned, so a matchMedia listener
+  // would miss it. Watch the class attribute instead. This keeps colorsRef
+  // current WITHOUT reading getComputedStyle every frame, and repaints the idle
+  // / reduced-motion / over frames (where no loop is running) so they flip with
+  // the toggle instead of freezing on stale colors.
   useEffect(() => {
     if (typeof window === "undefined" || !("MutationObserver" in window)) return;
     const html = document.documentElement;
     const obs = new MutationObserver(() => {
       const canvas = canvasRef.current;
       if (canvas) colorsRef.current = readThemeColors(canvas);
-      // A running loop already paints each frame with the refreshed colorsRef;
-      // only redraw here when the loop is paused (idle / reduced-motion / over).
       if (rafRef.current === null) drawOnce();
     });
     obs.observe(html, { attributes: true, attributeFilter: ["class"] });
     return () => obs.disconnect();
   }, [drawOnce]);
 
-  // --- Global keydown (no scroll trap) -----
+  // --- Global keydown / keyup (no scroll trap) -----
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      const st = stateRef.current;
-      const isJumpKey = e.code === "Space" || e.code === "ArrowUp";
+      const m = modRef.current;
+      const ph = phaseOf(m, stateRef.current);
+      const isPrimaryKey = e.code === "Space" || e.code === "ArrowUp";
       const isRestartKey = e.code === "Enter";
-      if (!isJumpKey && !isRestartKey) return;
-      // Not focused/hovered → let the key pass (Space scrolls the page).
+      const isLeftKey = e.code === "ArrowLeft" || e.code === "KeyA";
+      const isRightKey = e.code === "ArrowRight" || e.code === "KeyD";
+
+      // Not focused/hovered → let keys pass (Space scrolls, arrows do whatever).
       if (!interactiveRef.current) return;
 
-      if (isJumpKey) {
-        if (st.phase === "running") {
-          // An active round always captures Space (hover OR focus) so the jump
+      if (isLeftKey || isRightKey) {
+        if (isLeftKey) leftRef.current = true;
+        if (isRightKey) rightRef.current = true;
+        // Only swallow the arrow (and keep the page from scrolling) during an
+        // active round; otherwise let it behave normally.
+        if (ph === "running") e.preventDefault();
+        return;
+      }
+
+      if (isPrimaryKey) {
+        if (ph === "running") {
+          // An active round always captures Space (hover OR focus) so the press
           // doesn't also scroll the page.
           if (e.code === "Space") e.preventDefault();
-          jumpQueuedRef.current = true;
+          primaryQueuedRef.current = true;
         } else if (document.activeElement === canvasRef.current) {
           // Idle / over: only a *focused* canvas starts a round on Space. Mere
           // hover must let Space fall through and scroll the page (no scroll
@@ -376,13 +415,21 @@ export function useShipGame(def: GameDef): UseShipGameResult {
           jump(); // start / restart
         }
         // else: hovered (not focused) while idle/over → let Space scroll.
-      } else if (isRestartKey && st.phase === "over") {
+      } else if (isRestartKey && ph === "over") {
         e.preventDefault();
         restart();
       }
     };
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.code === "ArrowLeft" || e.code === "KeyA") leftRef.current = false;
+      if (e.code === "ArrowRight" || e.code === "KeyD") rightRef.current = false;
+    };
     window.addEventListener("keydown", onKeyDown, { passive: false });
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+    };
   }, [jump, restart]);
 
   // --- Canvas pointer / focus listeners + initial sizing -----
@@ -393,11 +440,17 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     resize();
     drawOnce();
 
+    const setPointerX = (e: PointerEvent) => {
+      const w = canvas.clientWidth || LOGICAL_W;
+      pointerXRef.current = (e.offsetX / w) * LOGICAL_W;
+    };
+
     const onEnter = () => {
       interactiveRef.current = true;
     };
     const onLeave = () => {
       if (document.activeElement !== canvas) interactiveRef.current = false;
+      pointerXRef.current = null; // stop following once the cursor leaves.
     };
     const onFocus = () => {
       interactiveRef.current = true;
@@ -407,8 +460,16 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     };
     const onPointerDown = (e: PointerEvent) => {
       e.preventDefault();
-      jump();
+      setPointerX(e);
+      jump(); // primary: start / launch / fire / restart
       canvas.focus();
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      setPointerX(e);
+    };
+    const onPointerUp = () => {
+      // Release: hand control back to the keyboard (touch end / click release).
+      pointerXRef.current = null;
     };
 
     canvas.addEventListener("mouseenter", onEnter);
@@ -416,6 +477,8 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     canvas.addEventListener("focus", onFocus);
     canvas.addEventListener("blur", onBlur);
     canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
+    canvas.addEventListener("pointerup", onPointerUp);
 
     return () => {
       canvas.removeEventListener("mouseenter", onEnter);
@@ -423,6 +486,8 @@ export function useShipGame(def: GameDef): UseShipGameResult {
       canvas.removeEventListener("focus", onFocus);
       canvas.removeEventListener("blur", onBlur);
       canvas.removeEventListener("pointerdown", onPointerDown);
+      canvas.removeEventListener("pointermove", onPointerMove);
+      canvas.removeEventListener("pointerup", onPointerUp);
     };
   }, [jump, resize, drawOnce]);
 
@@ -436,6 +501,8 @@ export function useShipGame(def: GameDef): UseShipGameResult {
     score,
     stage,
     highScore,
+    hasMilestones,
+    overLine,
     reducedMotion,
     jump,
     restart,

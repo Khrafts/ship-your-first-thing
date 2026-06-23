@@ -167,7 +167,7 @@ describe("builder milestones drive stage through the engine", () => {
 
     // Push the score just past the first milestone and step once.
     s.distance = (MILESTONE_EVERY + 1) / 0.08;
-    step(s, 1000 / 120, { jump: false }, builder);
+    step(s, 1000 / 120, { primary: false, left: false, right: false, pointerX: null }, builder);
     s.obstacles = []; // never let a hazard end the run during this assertion
     expect(s.score).toBeGreaterThanOrEqual(MILESTONE_EVERY);
     expect(s.stage).toBe(1);
@@ -175,7 +175,7 @@ describe("builder milestones drive stage through the engine", () => {
 
     // Cross the second milestone.
     s.distance = (2 * MILESTONE_EVERY + 1) / 0.08;
-    step(s, 1000 / 120, { jump: false }, builder);
+    step(s, 1000 / 120, { primary: false, left: false, right: false, pointerX: null }, builder);
     s.obstacles = [];
     expect(s.stage).toBe(2);
     expect(s.flash?.text).toBe("SHIPPED ✦");
@@ -187,7 +187,7 @@ describe("builder milestones drive stage through the engine", () => {
     const groundBottom = s.avatarY + s.avatarH;
 
     s.distance = (MILESTONE_EVERY + 1) / 0.08;
-    step(s, 1000 / 120, { jump: false }, builder);
+    step(s, 1000 / 120, { primary: false, left: false, right: false, pointerX: null }, builder);
     s.obstacles = [];
 
     // The cached dims match the freshly-grown sprite ...
@@ -202,7 +202,7 @@ describe("builder milestones drive stage through the engine", () => {
     const s = createInitialState(builder, { seed: 99 });
     s.phase = "running";
     s.distance = (MILESTONE_EVERY - 5) / 0.08; // just short of the milestone
-    step(s, 1000 / 120, { jump: false }, builder);
+    step(s, 1000 / 120, { primary: false, left: false, right: false, pointerX: null }, builder);
     s.obstacles = [];
     expect(s.score).toBeLessThan(MILESTONE_EVERY);
     expect(s.stage).toBe(0);

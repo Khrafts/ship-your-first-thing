@@ -16,7 +16,7 @@ import { useShipGame } from "./use-ship-game";
 
 export default function ShipGameHero() {
   const [gameIndex, setGameIndex] = useState(0);
-  const def = GAMES[gameIndex];
+  const mod = GAMES[gameIndex];
   const {
     canvasRef,
     containerRef,
@@ -24,10 +24,12 @@ export default function ShipGameHero() {
     score,
     stage,
     highScore,
+    hasMilestones,
+    overLine,
     reducedMotion,
     jump,
     restart,
-  } = useShipGame(def);
+  } = useShipGame(mod);
 
   const selectGame = useCallback((index: number) => {
     setGameIndex(((index % GAMES.length) + GAMES.length) % GAMES.length);
@@ -92,7 +94,7 @@ export default function ShipGameHero() {
           ref={canvasRef}
           tabIndex={0}
           role="img"
-          aria-label={`${def.name}: a one-button pixel jumping game. Press space or arrow up to ${def.scoreVerb === "sailed" ? "hop the boat" : "jump"}. The course links are below.`}
+          aria-label={mod.ariaLabel}
           className="block w-full cursor-pointer select-none outline-none focus-visible:ring-2 focus-visible:ring-ink"
           // touch-action: none suppresses double-tap-zoom and tap-scroll on
           // touch devices (preventDefault on pointerdown alone does NOT — touch
@@ -109,10 +111,10 @@ export default function ShipGameHero() {
             users mid-round. The final score is announced once on game-over. */}
         <span aria-live="polite" className="sr-only">
           {phase === "running"
-            ? "Round in progress. Press space or arrow up to jump."
+            ? "Round in progress."
             : phase === "over"
-              ? `Game over. ${score} ${def.scoreUnit}.`
-              : "Press space to play."}
+              ? `Game over. ${score} ${mod.scoreUnit}.`
+              : "Press a key or tap to play."}
         </span>
 
         {/* Game-over card — mounted ONLY when state === "over". */}
@@ -123,7 +125,7 @@ export default function ShipGameHero() {
                 round over
               </p>
               <p className="mt-2 font-serif text-base leading-snug text-ink">
-                {def.gameOverLine(score, stage)}
+                {overLine}
               </p>
               <div className="mt-4 flex flex-col items-center gap-2">
                 <Link
@@ -147,15 +149,15 @@ export default function ShipGameHero() {
 
       {/* Tagline + scoreboard row. */}
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2">
-        <p className="font-mono text-xs text-ink-secondary">{def.tagline}</p>
+        <p className="font-mono text-xs text-ink-secondary">{mod.tagline}</p>
         <p className="font-mono text-xs text-ink-faint">
           <span className="text-ink">
             {score}
-            {def.scoreUnit}
+            {mod.scoreUnit}
           </span>{" "}
           · best {highScore}
-          {def.scoreUnit}
-          {def.milestoneEvery ? ` · stage ${Math.min(stage, 5)}/5` : ""}
+          {mod.scoreUnit}
+          {hasMilestones ? ` · stage ${Math.min(stage, 5)}/5` : ""}
         </p>
       </div>
 

@@ -274,7 +274,7 @@ function clamp01(n: number): number {
  * Advance the simulation by `dtMs` milliseconds. Pure: returns the same mutated
  * object (callers may treat it as in-place; React callers replace the ref).
  *
- * `input.jump` is edge-triggered by the caller — true only on the frame the
+ * `input.primary` is edge-triggered by the caller — true only on the frame the
  * jump was requested.
  */
 export function step(
@@ -289,7 +289,7 @@ export function step(
 
   // ----- idle: a jump starts the round -----
   if (state.phase === "idle") {
-    if (input.jump) {
+    if (input.primary) {
       const started = startRound(state, def);
       // Mutate `state` to match `started` is awkward; instead the engine
       // returns `started` and the caller adopts it. We do an in-place adoption
@@ -305,7 +305,7 @@ export function step(
 
   // ----- over: a jump restarts -----
   if (state.phase === "over") {
-    if (input.jump) {
+    if (input.primary) {
       const started = startRound(state, def);
       Object.assign(state, started);
       state.vy = JUMP_VELOCITY;
@@ -318,7 +318,7 @@ export function step(
   state.elapsedMs += dtMs;
 
   // Jump (only from the ground).
-  if (input.jump && state.onGround) {
+  if (input.primary && state.onGround) {
     state.vy = JUMP_VELOCITY;
     state.onGround = false;
   }
