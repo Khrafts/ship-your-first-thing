@@ -35,6 +35,15 @@ function parseFrame(raw: string): Frame | null {
   }
 }
 
+// Starter questions shown in the empty state. Clicking one fills the composer
+// (it does not send) so the learner decides when to ask — matching the course's
+// learner-agency tenet.
+const CHAT_SUGGESTIONS = [
+  "What does this term mean?",
+  "Why does this step matter?",
+  "What should I try next?",
+];
+
 export function LessonChat({ lessonPath, lessonTitle }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -203,6 +212,11 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
     el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
   };
 
+  const fillFromSuggestion = useCallback((q: string) => {
+    setInput(q);
+    inputRef.current?.focus();
+  }, []);
+
   const hasChat = messages.length > 0;
 
   return (
@@ -263,16 +277,33 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
 
         <div className={styles.messages} ref={scrollRef} role="log" aria-live="polite">
           {!hasChat && !streaming && (
-            <p className={styles.empty}>
-              Ask anything about this lesson — what a term means, why a step
-              matters, or what to try next.
-            </p>
+            <div className={styles.empty}>
+              <p className={styles.emptyLead}>Ask anything about this lesson.</p>
+              <p className={styles.emptySub}>
+                what a term means · why a step matters · what to try next
+              </p>
+              <div className={styles.chips}>
+                {CHAT_SUGGESTIONS.map((q) => (
+                  <button
+                    key={q}
+                    type="button"
+                    className={styles.chip}
+                    onClick={() => fillFromSuggestion(q)}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
           {messages.map((m, idx) => (
             // Assistant HTML is safe: renderAssistantMarkdown is escape-first —
             // every character is HTML-escaped before any markdown transform, so
             // model output can only ever become a fixed allow-list of inert tags
-            // (<p> <strong> <em> <code> <pre> <ul> <li>). See markdown.ts +
+            // (<p> <br> <h1>–<h6> <strong> <em> <code> <pre> <ul> <ol> <li>
+            // <blockquote> <hr> <a>). Links are the only tag carrying a URL, and
+            // its protocol is allow-list checked (http/https/mailto/relative) —
+            // unsafe schemes fall back to inert text. See markdown.ts +
             // tests/chat-markdown.test.ts. User text is rendered as plain text.
             <div key={idx} className={m.role === "user" ? styles.msgUser : styles.msgAssistant}>
               <span className={styles.who}>{m.role === "user" ? "You" : "Tutor"}</span>
@@ -307,24 +338,30 @@ export function LessonChat({ lessonPath, lessonTitle }: Props) {
         </div>
 
         <div className={styles.inputRow}>
-          <textarea
-            ref={inputRef}
-            className={styles.input}
-            value={input}
-            onChange={onInputChange}
-            onKeyDown={onInputKey}
-            placeholder="Ask about this lesson…"
-            rows={1}
-            disabled={streaming}
-          />
-          <button
-            type="button"
-            className={styles.send}
-            onClick={send}
-            disabled={!input.trim() || streaming}
-          >
-            Send
-          </button>
+          <div className={styles.composer}>
+            <textarea
+              ref={inputRef}
+              className={styles.input}
+              value={input}
+              onChange={onInputChange}
+              onKeyDown={onInputKey}
+              placeholder="Ask about this lesson…"
+              rows={1}
+              disabled={streaming}
+              aria-label="Message"
+            />
+            <button
+              type="button"
+              className={styles.send}
+              onClick={send}
+              disabled={!input.trim() || streaming}
+            >
+              Send
+            </button>
+          </div>
+          <p className={styles.hint}>
+            <kbd>Enter</kbd> to send · <kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line
+          </p>
         </div>
       </aside>
     </>
