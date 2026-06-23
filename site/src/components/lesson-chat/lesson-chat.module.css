@@ -53,9 +53,6 @@
   .panel[data-expanded="true"] {
     width: 100vw;
   }
-  .msgUser {
-    max-width: 88%;
-  }
   /* Comfortable touch targets on the full-width mobile drawer. */
   .action,
   .send,
@@ -187,14 +184,19 @@
 .messages > * + * {
   margin-top: 1.5rem;
 }
+/* fit-content + max-width:100% lets a long answer/question use the full box
+   width (most visible when the panel is expanded) while a short message still
+   shrinks and hugs its edge via margin-auto — keeping the left/right asymmetry. */
 .msgAssistant {
-  max-width: min(46ch, 92%);
+  width: fit-content;
+  max-width: 100%;
   margin-right: auto;
   border-left: 1.5px solid var(--line-strong);
   padding-left: 0.9rem;
 }
 .msgUser {
-  max-width: min(34ch, 82%);
+  width: fit-content;
+  max-width: 100%;
   margin-left: auto;
   background: var(--surface);
   border-radius: 3px 3px 3px 10px;
