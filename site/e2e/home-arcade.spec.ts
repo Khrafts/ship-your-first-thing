@@ -3,15 +3,14 @@ import { TAGLINE } from "../src/lib/copy";
 
 // Smoke coverage for the home-page pixel arcade (the <ShipGameHero /> client
 // island that sits above the hero copy). It must render a playable canvas and
-// let a visitor cycle all four games — WITHOUT disturbing the existing hero
+// let a visitor cycle all three games — WITHOUT disturbing the existing hero
 // (title, tagline, the single "Start the course →" link, curriculum).
 //
-// The four games, in switcher order (registry: breaker → sorter → shooter → builder):
+// The three games, in switcher order (registry: builder → breaker → shooter):
 const GAMES = [
-  { name: "Chip the wall", tagline: "Slide the paddle. Clear the wall, brick by brick." },
-  { name: "Ship the good", tagline: "Catch the good edits. Let the bugs drop." },
-  { name: "Keep it live", tagline: "Slide and fire. Knock down what comes at your app." },
   { name: "Build it", tagline: "Ship a layer at a time. Finish the crate." },
+  { name: "Chip the wall", tagline: "Slide the paddle. Clear the wall, brick by brick." },
+  { name: "Keep it live", tagline: "Slide and fire. Knock down what comes at your app." },
 ] as const;
 
 test.describe("home arcade", () => {
@@ -29,10 +28,10 @@ test.describe("home arcade", () => {
     await expect(canvas).toHaveAttribute("tabindex", "0");
   });
 
-  test("the switcher cycles through all four games", async ({ page }) => {
+  test("the switcher cycles through all three games", async ({ page }) => {
     await page.goto("/");
 
-    // The default game (breaker → "Chip the wall") is selected on first load;
+    // The default game (builder → "Build it") is selected on first load;
     // its tagline shows beneath the canvas.
     const first = page.getByRole("button", { name: GAMES[0].name });
     await expect(first).toHaveAttribute("aria-pressed", "true");
@@ -126,5 +125,14 @@ test.describe("home arcade", () => {
     // The curriculum sections below are unchanged.
     await expect(page.getByText("coming later", { exact: true })).toHaveCount(4);
     await expect(page.getByText("The curriculum", { exact: true })).toBeVisible();
+  });
+
+  test("the 'Take the course' destination redirects signed-out visitors to signup", async ({
+    page,
+  }) => {
+    // The game-over CTA points at /continue — a per-request redirect: signed-out
+    // visitors land on /signup (signed-in visitors resume their current lesson).
+    await page.goto("/continue");
+    await expect(page).toHaveURL(/\/signup\b/);
   });
 });
