@@ -35,7 +35,7 @@ The newer routing system in Next.js, where files in the `app/` folder define URL
 Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
 
 ### ask
-The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `modules/03-the-loop/scratch/index.html`."*
+The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `index.html`."*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
 ### authentication
@@ -75,7 +75,7 @@ A program that lets you read and edit source files with niceties like syntax hig
 Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md).
 
 ### codespace
-A development environment GitHub runs for you on a remote machine; you reach it from your browser, but the files and commands live on a computer GitHub manages. *Example: opening this course's repo and clicking `Create codespace on main` boots a Codespace with the editor and terminal ready.*
+A development environment GitHub runs for you on a remote machine; you reach it from your browser, but the files and commands live on a computer GitHub manages. *Example: making your own copy of the starter workspace and clicking `Create codespace on main` boots a Codespace with the editor and terminal ready.*
 Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md).
 
 ### commit
@@ -227,7 +227,7 @@ Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.
 ## N
 
 ### next-js
-A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the thread project in Phase 3 uses. *Example: the read-only scaffold at `modules/03.5-reading-code/sample-app/` is a tiny Next.js project shown for reading practice.*
+A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the thread project in Phase 3 uses. *Example: the read-only scaffold at `sample-app/` in your workspace is a tiny Next.js project shown for reading practice.*
 Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
 
 ### node

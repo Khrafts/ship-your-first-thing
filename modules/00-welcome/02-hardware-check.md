@@ -27,7 +27,7 @@ A **Codespace** (a development environment GitHub runs for you on a remote machi
 
 What this gets you:
 
-- No local install for Module 0 or Module 1: those modules are written in plain text — specifically, **markdown** (a way of writing formatted documents using simple punctuation marks like `#` for headings and triple-backticks for code blocks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). Open the repo in your browser; you're done.
+- No local install for Module 0 or Module 1: those modules are written in plain text — specifically, **markdown** (a way of writing formatted documents using simple punctuation marks like `#` for headings and triple-backticks for code blocks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). Open the course in your browser; you're done.
 - For Module 2 onward (toolchain, AI agents, the thread project), the Codespace already has the tools later modules will need pre-installed and configured.
 - A consistent environment. The course is verified against the specific Codespace setup listed in [`VERSIONS.md`](../../VERSIONS.md). If it works for one learner, it works for all.
 

@@ -56,7 +56,7 @@ Three npm commands you'll meet as you read project setup docs. You don't need to
 - `npm install <package-name>` — adds a new package to `dependencies` AND downloads it. Example shape: `npm install date-fns`. The library shows up in `node_modules/` AND a new row appears in `package.json`.
 - `npm uninstall <package-name>` — removes the package's row from `dependencies` AND deletes it from `node_modules/`.
 
-> **Note:** Do not run `npm install` against this course's `modules/03.5-reading-code/sample-app/` directory. The scaffold is read-only — Module 3.5's lessons ask you to OPEN and READ the files in there, not run them. If you accidentally run `npm install` there, no harm comes to your work, but the directory will fill with a fresh `node_modules/` and you'll need to delete that folder by hand to get back to a clean state. The first real `npm install` you'll run in this course is when you build the thread project, against a brand-new project you scaffold from scratch.
+> **Note:** Do not run `npm install` against the `sample-app/` directory in your workspace. The scaffold is read-only — Module 3.5's lessons ask you to OPEN and READ the files in there, not run them. If you accidentally run `npm install` there, no harm comes to your work, but the directory will fill with a fresh `node_modules/` and you'll need to delete that folder by hand to get back to a clean state. The first real `npm install` you'll run in this course is when you build the thread project, against a brand-new project you scaffold from scratch.
 
 Where does `npm install date-fns` actually GET `date-fns` from? A central server called the npm registry, run at `registry.npmjs.org`. Anyone can publish a package to the registry; anyone can install one. The registry is also the source the AI coding agents you'll meet in the next two Module 2 lessons reach for when they suggest "I'll add the X package." You don't need to publish anything today — this course never asks you to publish to the registry — but knowing the registry exists explains where the downloads come from.
 
@@ -66,7 +66,7 @@ Two common confusions worth heading off. **First, npm and Node ship together but
 
 ## Exercise
 
-Open `modules/03.5-reading-code/sample-app/package.json` in your code editor. (You can find it in the file panel on the left: expand `modules`, then `03.5-reading-code`, then `sample-app`, then click `package.json`.) Plan ten to fifteen minutes. **Don't run any commands.** This is a reading exercise — just open the file and look.
+Open `sample-app/package.json` in your code editor. (You can find it in the file panel on the left: expand `sample-app`, then click `package.json`.) Plan ten to fifteen minutes. **Don't run any commands.** This is a reading exercise — just open the file and look.
 
 1. What's the project's `name` and its own `version`?
 2. What's the `description` field warning you?

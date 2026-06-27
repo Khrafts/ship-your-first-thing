@@ -29,10 +29,10 @@ The point of the skill is detection, not explanation. You do NOT need to underst
 
 ### The Next.js shape, walked through against the sample-app
 
-Open `modules/03.5-reading-code/sample-app/` in your editor's file tree. (Right-click the folder, or click the chevron next to it to expand it.) Here is the layout you will see:
+Open `sample-app/` in your editor's file tree. (Right-click the folder, or click the chevron next to it to expand it.) Here is the layout you will see:
 
 ```
-modules/03.5-reading-code/sample-app/
+sample-app/
 ├── app/
 │   ├── layout.tsx
 │   ├── page.tsx
@@ -53,7 +53,7 @@ Walk through each entry in plain prose.
 
 `app/components/` is a convention folder for reusable pieces — buttons, headers, footers. Three files live here in this scaffold: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`. Read the names; the names tell you what each piece is (a button, a hero section, a footer). The `.tsx` extension marks a file as "a UI piece" — that is the whole detail the floor needs.
 
-`package.json` is the dependency list from Module 2 Lesson 4. You read it. You do NOT run anything against this one — open `modules/03.5-reading-code/sample-app/README.md` and you will see the bold warning: "DO NOT run `npm install`." This scaffold is reference-only.
+`package.json` is the dependency list from Module 2 Lesson 4. You read it. You do NOT run anything against this one — open `sample-app/README.md` and you will see the bold warning: "DO NOT run `npm install`." This scaffold is reference-only.
 
 `tsconfig.json` is the TypeScript configuration. You will see it in every TypeScript project. You do not edit it; tooling (the TypeScript compiler) reads it. For a non-coder, the right relationship to `tsconfig.json` is: notice it exists, do not worry about it, leave it alone.
 
@@ -79,7 +79,7 @@ The detection skill is purely about shape — the tree LOOKS like a particular k
 
 Plan twenty to twenty-five minutes for this exercise.
 
-1. **Open the sample-app tree.** In your editor's file panel, navigate to `modules/03.5-reading-code/sample-app/` and expand the folder. Expand `app/` and `app/components/` so every file is visible.
+1. **Open the sample-app tree.** In your editor's file panel, navigate to `sample-app/` and expand the folder. Expand `app/` and `app/components/` so every file is visible.
 
 2. **Create a scratch file.** Right-click in the file panel, choose `New File`, and name it `m3.5-l1-scratch.txt` somewhere outside the sample-app (the repo root or a personal scratch folder is fine — you do not want to modify the sample-app).
 

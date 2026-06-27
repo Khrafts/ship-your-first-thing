@@ -26,6 +26,14 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-06-27 — You now build in your own copy of a small workspace, not the course repo
+
+**Change:** Setup changed. Instead of opening a Codespace on the course repository, you make your own copy of a small starter workspace ([`Khrafts/syft-starter`](https://github.com/Khrafts/syft-starter)) with `Use this template`, and open the Codespace on your copy.
+The worked-example files you build on now sit at the top of that workspace — `index.html` (Module 3) and `sample-app/` (Module 3.5) — instead of deep inside a `modules/` folder.
+**If you're affected:** If you set up before this date by opening a Codespace on the course repo, switch to your own copy: at `github.com/Khrafts/syft-starter`, click `Use this template` → `Create a new repository`, then open a Codespace on it.
+When a lesson names `index.html` or `sample-app/`, those are now at the root of your workspace.
+**Details:** Module 0 Lesson 5 was rewritten around the copy-and-launch flow; launch and path references were updated across `SETUP.md`, `README.md`, and Modules 0, 2, 3, and 3.5.
+
 ## 2026-06-27 — Lessons point you to the lesson chat when a page doesn't match
 
 **Change:** When a step, transcript, or number on a page doesn't match what you see, lessons now ask you to open the lesson chat (on the course site) and describe the difference, instead of sending you here first. This file stays the full record.

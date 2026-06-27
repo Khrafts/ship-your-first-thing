@@ -1,6 +1,6 @@
 # Module 3 — The loop in depth
 
-Module 3 names the durable AI-coding loop end-to-end: **intent → ask → evaluate → steer**. Four lessons unpack the loop, one per step. Every M3 lesson runs the same worked example on a single self-contained `scratch/index.html`, shown in parallel on both Claude Code AND Gemini CLI so the loop is taught as durable across agents. You run only the agent you picked in Module 0; the other agent's transcript is shown as reference.
+Module 3 names the durable AI-coding loop end-to-end: **intent → ask → evaluate → steer**. Four lessons unpack the loop, one per step. Every M3 lesson runs the same worked example on a single self-contained `index.html`, shown in parallel on both Claude Code AND Gemini CLI so the loop is taught as durable across agents. You run only the agent you picked in Module 0; the other agent's transcript is shown as reference.
 
 Loop checks across the four lessons name `intent`, `ask`, `evaluate`, `steer` — one per lesson, in order.
 
@@ -26,7 +26,7 @@ The thread that ties it together: Module 3 is about the durable loop — intent 
 
 ## Worked example
 
-All four M3 lessons progress a single self-contained `scratch/index.html` across iterations. The starter ships with the course; M3 L4 ends with: "you can delete the scratch directory now — your real project starts in Module 4."
+All four M3 lessons progress a single self-contained `index.html` across iterations. The starter ships in your workspace; M3 L4 ends with: "you can delete `index.html` now — your real project starts in Module 4."
 
 ## Navigation
 

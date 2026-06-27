@@ -57,7 +57,7 @@ The filename tells you WHERE. The numbers tell you HOW MUCH. A `+2 -0` change is
 
 ### Three worked examples, against the sample-app
 
-Open `modules/03.5-reading-code/sample-app/` in your editor's file tree to refresh your memory from Lesson 1. The home page is `app/page.tsx`. The components are in `app/components/`. Three component files live there: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`.
+Open `sample-app/` in your editor's file tree to refresh your memory from Lesson 1. The home page is `app/page.tsx`. The components are in `app/components/`. Three component files live there: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`.
 
 With that shape in mind, here are three (intent, diff-summary) pairs:
 

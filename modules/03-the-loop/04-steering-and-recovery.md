@@ -166,13 +166,13 @@ The cost of starting fresh is one or two minutes; the cost of fighting through a
 
 Module 3 ends here. You have run all four loop steps on the same scratch starter: intent → ask → evaluate → steer. You have watched two agents shape the same task differently. You have named the moves you can re-bind to any agent that comes next.
 
-> **Note:** You can delete the `modules/03-the-loop/scratch/` directory now — your real project starts in Module 4. The scratch starter was always throwaway by design. The loop you learned in Module 3 carries forward; the file you ran it on does not.
+> **Note:** You can delete `index.html` now if you want a clean slate — your real project starts in Module 4. That starter was always throwaway by design. The loop you learned in Module 3 carries forward; the file you ran it on does not.
 
 ## Exercise
 
 Run the Lesson 4 sequence on your chosen agent. Plan twenty to twenty-five minutes.
 
-1. **Steer #1 — fix the hallucination.** From the post-Lesson-3 state of `modules/03-the-loop/scratch/index.html` (today's date + toggle button + hallucinated book list), type: `These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."`
+1. **Steer #1 — fix the hallucination.** From the post-Lesson-3 state of `index.html` (today's date + toggle button + hallucinated book list), type: `These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."`
 2. **Steer #2 — open-ended.** Type: `Make the list look like a real bookshelf.` Watch what your agent suggests. Is it over-engineering? Note the shape — framework suggestion, image lookup, multi-file refactor.
 3. **Steer back to scope.** Type: `Too much. I just want simple inline CSS to give the list a wooden background and some line spacing. No frameworks.` Watch the agent scale back.
 4. **`/clear` practice.** Type `/clear` to wipe the session. Open a new session with a tighter initial ask: `I have an HTML file with a <ul> of placeholder text. Add inline CSS — no frameworks, no images — to give the <ul> a wooden background color and ~1.5em line height. Nothing else.` Notice how the tighter initial ask removes the over-engineering temptation.
@@ -182,7 +182,7 @@ Run the Lesson 4 sequence on your chosen agent. Plan twenty to twenty-five minut
    - What the tighter post-`/clear` ask produced.
    - Which approach (steer or restart) felt cleaner on this task.
 
-You can commit the final state of `modules/03-the-loop/scratch/index.html` if you want a record of where Module 3 ended — or you can delete the scratch directory entirely. Module 4 starts a fresh project.
+You can commit the final state of `index.html` if you want a record of where Module 3 ended — or you can delete it entirely. Module 4 starts a fresh project.
 
 ## Checkpoint
 

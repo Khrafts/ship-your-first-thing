@@ -19,7 +19,7 @@ The thread that ties it together: Module 3.5 is the OBSERVATION floor. In every 
 
 ## Reference scaffold
 
-All four M3.5 lessons read from a tiny pre-baked Next.js sample-app at `sample-app/`. The scaffold is REFERENCE ONLY — you do not run it, install it, or modify it. The scaffold ships with the course.
+All four M3.5 lessons read from a tiny pre-baked Next.js sample-app at `sample-app/`. The scaffold is REFERENCE ONLY — you do not run it, install it, or modify it. The scaffold ships in your workspace.
 
 ## Lessons in this module
 

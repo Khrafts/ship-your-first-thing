@@ -73,14 +73,14 @@ Inside the agent's session, you can type ordinary requests like "add today's dat
 
 AI agents need to READ your project files to be useful. Most of the time that is exactly what you want — they need to see `app/page.tsx` to edit it. Sometimes you do NOT want them to see something: a `.env` file with secret API keys, internal notes in a `.planning/` folder, the thousands of files inside `node_modules/` that confuse rather than help. That is what an ignore-file is for: a list of paths the agent should skip.
 
-This course ships templates for this at the repository root in `thread-project-template/`. You will not copy them into a real project until you build the thread project — when you scaffold it. Open the directory now in your IDE to see what is there:
+Your workspace already ships with this hygiene in place, at its root. Open these four files in your IDE to see what is there:
 
 - `.gitignore` — paths git ignores (`node_modules/`, `.env*`, build folders).
-- `.claudeignore` — a community-pattern file for Claude Code. Heads up: as of May 2026, Claude Code does NOT natively respect this file yet; the comment header inside the file explains why we ship one anyway (it future-proofs against the day Claude Code adds native support, and it documents the convention).
-- `.claude/settings.json` — the file Claude Code DOES respect today. It uses `permissions.deny` rules to hard-block reads of `.env`, `.planning/`, and other sensitive paths.
+- `.claudeignore` — a community-pattern file for Claude Code. Heads up: as of May 2026, Claude Code does NOT natively respect this file yet; the comment header inside the file explains why it ships anyway (it future-proofs against the day Claude Code adds native support, and it documents the convention).
+- `.claude/settings.json` — the file Claude Code DOES respect today. It uses `permissions.deny` rules to hard-block reads of `.env`, secret keys, and other sensitive paths.
 - `.geminiignore` — Gemini CLI's officially-supported ignore-file, written in the same shape as `.gitignore`.
 
-Knowing these files exist now means Module 3's first session can assume the hygiene is in place when the thread project starts.
+Because these already ship in your workspace, Module 3's first session can assume the hygiene is in place from the start.
 
 A quick cost-path reminder so the install above made sense. Path 1 (Claude Code Pro, around $17 to $20 a month) and Path 3 (Anthropic API, pay-per-token) both use Claude Code as the install. Path 2 (Gemini CLI free) uses Gemini CLI. Whichever path you picked in Module 0, install ONLY that one. [`BUDGET.md`](../../BUDGET.md) has the full breakdown if you need a refresher.
 
@@ -91,8 +91,8 @@ In your Codespace's terminal, install the agent you picked in Module 0 and read 
 1. **Open the terminal.** Press `` Ctrl+` `` if the panel at the bottom is not already visible.
 2. **Install the agent you picked in Module 0.** Run the command above that matches your path. If you picked Path 1 or Path 3, run the Claude Code install. If you picked Path 2, run the Gemini CLI install. Do not install both — only the one you will actually use.
 3. **Confirm the install.** Run `claude --version` (Path 1 or Path 3) or `gemini --version` (Path 2). Each agent prints its version on a single line. If the command is "not found," scroll up in the install output for a message about needing to reload the terminal or update your `PATH`; close the terminal panel and reopen it, then try again.
-4. **Open `thread-project-template/` in your IDE.** Click the folder in the file list on the left. Open the `README.md` and read it. Then open `.claudeignore`, `.geminiignore`, and `.claude/settings.json` side by side.
-5. **Write one sentence per file** in a scratch note (any plain-text file or a sticky note): what does this file exclude, and why is it that way? You should be able to do this from the comments at the top of each file plus the `README.md`.
+4. **Open the ignore files in your IDE.** They sit at the root of your workspace. Open `.gitignore`, `.claudeignore`, `.geminiignore`, and `.claude/settings.json` side by side and read the comment headers at the top of each.
+5. **Write one sentence per file** in a scratch note (any plain-text file or a sticky note): what does this file exclude, and why is it that way? You should be able to do this from the comment headers in each file plus your workspace `README.md`, which describes them.
 6. **Do NOT run the agent yet.** Module 3 Lesson 1 walks you through your first session deliberately. The goal of this lesson is install plus understanding the hygiene model — that is enough for one sitting.
 
 ## Checkpoint
@@ -116,7 +116,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You named the two AI coding agents this course supports. You installed the one you picked in Module 0. You read the four files of hygiene at `thread-project-template/` that will keep secrets out of the agent's reach when you scaffold the thread project. Module 3 (next module) teaches you what to actually DO with the agent — the loop, in depth, on both agents in parallel.
+You named the two AI coding agents this course supports. You installed the one you picked in Module 0. You read the four files of hygiene already in your workspace that keep secrets out of the agent's reach. Module 3 (next module) teaches you what to actually DO with the agent — the loop, in depth, on both agents in parallel.
 
 ## Navigation
 

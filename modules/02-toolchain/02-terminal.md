@@ -26,21 +26,21 @@ The terminal works like the librarian's request slip. You can't reach behind the
 
 Until now you've been clicking — files in the file list on the left, links in the browser, buttons in the editor. Clicking is fine when there's a button for what you want. The terminal is for when there isn't. You type a command; the computer runs it; the result prints back; the prompt appears again, ready for the next command. That's the entire surface.
 
-A **command** is a single word the terminal recognizes, optionally followed by **arguments** — extra inputs that tell the command what to operate on. `cd modules` is the command `cd` with the argument `modules`. The terminal reads the line you typed, runs the command, prints any output, and shows the prompt again. The rhythm is always the same.
+A **command** is a single word the terminal recognizes, optionally followed by **arguments** — extra inputs that tell the command what to operate on. `cd sample-app` is the command `cd` with the argument `sample-app`. The terminal reads the line you typed, runs the command, prints any output, and shows the prompt again. The rhythm is always the same.
 
 Here are the five commands worth knowing first. Each one is small, safe, and works the same way in your Codespace as it does on a Mac's Terminal app or any Linux machine. None of them change anything you can't undo.
 
-**`pwd` — print working directory.** Slip in plain English: "tell me which shelf I'm standing at." When you open the terminal in a Codespace, you're already inside some folder — by default, the root of the repository you opened the Codespace on. `pwd` tells you which folder. The output is a path like `/workspaces/ship-your-first-thing`. Useful when you've been moving around with `cd` and lost track of where you are.
+**`pwd` — print working directory.** Slip in plain English: "tell me which shelf I'm standing at." When you open the terminal in a Codespace, you're already inside some folder — by default, the root of the repository you opened the Codespace on. `pwd` tells you which folder. The output is a path like `/workspaces/` followed by your repository's name. Useful when you've been moving around with `cd` and lost track of where you are.
 
-**`ls` — list files.** Slip: "list everything on this shelf." Run `ls` and you'll see the files and folders in your current location. Folders usually appear in a different color from files, or are shown with a trailing `/`. You can also peek into a folder without entering it — `ls modules` reads as a slip that says "list everything on the modules shelf, but don't move me there."
+**`ls` — list files.** Slip: "list everything on this shelf." Run `ls` and you'll see the files and folders in your current location. Folders usually appear in a different color from files, or are shown with a trailing `/`. You can also peek into a folder without entering it — `ls sample-app` reads as a slip that says "list everything on the sample-app shelf, but don't move me there."
 
-**`cd <directory>` — change directory.** Slip: "move me to the modules shelf." `cd modules` moves you into the `modules/` folder. `cd ..` moves you one level up — the two dots mean "back me up one shelf." `cd` with no argument returns you to your home directory. After every `cd`, running `pwd` confirms where you ended up.
+**`cd <directory>` — change directory.** Slip: "move me to the sample-app shelf." `cd sample-app` moves you into the `sample-app/` folder. `cd ..` moves you one level up — the two dots mean "back me up one shelf." `cd` with no argument returns you to your home directory. After every `cd`, running `pwd` confirms where you ended up.
 
 **`clear` — clear the screen.** After a few commands, the terminal panel fills up with old output. `clear` wipes the visible text. Your command history is still there — press the up arrow to scroll through what you've typed before. `clear` is cosmetic; it doesn't delete any files or affect anything outside the panel.
 
 **`mkdir <name>` — make a new directory.** Slip: "make a new shelf, label it scratch." `mkdir scratch` creates a new folder called `scratch` in whatever folder you're currently in. If a folder with that name already exists, `mkdir` errors out instead of overwriting — it's strictly for new folders.
 
-Two things trip people up early. First: the terminal is **case-sensitive**. `ls Modules` is not the same as `ls modules`; in a Codespace the actual folder is lowercase, so the capitalized form returns an error. Second: spaces in arguments confuse the terminal unless you quote them. `cd My Folder` reads as "the `cd` command with the argument `My` and some extra noise called `Folder`." Quote it: `cd 'My Folder'`. We'll avoid spaces in folder names throughout this course, which sidesteps the problem.
+Two things trip people up early. First: the terminal is **case-sensitive**. `ls Sample-app` is not the same as `ls sample-app`; in a Codespace the actual folder is lowercase, so the capitalized form returns an error. Second: spaces in arguments confuse the terminal unless you quote them. `cd My Folder` reads as "the `cd` command with the argument `My` and some extra noise called `Folder`." Quote it: `cd 'My Folder'`. We'll avoid spaces in folder names throughout this course, which sidesteps the problem.
 
 One reflex to build early: do not paste `rm -rf` from a blog post. That command removes files and directories recursively without asking and without a recycle bin. Learners sometimes paste it to "clean up" after a bad experiment; in a Codespace with uncommitted work, that's how you lose an afternoon. Safer cleanup tools exist (we'll meet `rmdir` in the exercise — it only removes empty folders, so it refuses to delete anything that still contains your work). The AI coding agents introduced in lesson six can also suggest cleanup steps, and the rule there is: read what they suggest, type it in yourself, do not auto-approve the destructive ones.
 
@@ -52,8 +52,8 @@ Open your Codespace's terminal — press `` Ctrl+` `` if the panel at the bottom
 
 1. `pwd` — write down the path it printed.
 2. `ls` — write down two folder names you can see.
-3. `cd modules` — move into the `modules/` folder. Then run `pwd` again to confirm you're inside it.
-4. `ls` — now you're inside `modules/`; note one of the lesson-folder names you see.
+3. `cd sample-app` — move into the `sample-app/` folder. Then run `pwd` again to confirm you're inside it.
+4. `ls` — now you're inside `sample-app/`; note one of the file or folder names you see (such as `app` or `package.json`).
 5. `cd ..` — back up one level. Run `pwd` again; you should be back at the repository root.
 6. `clear` — notice the screen wipes. Your command history is still in the up-arrow stack.
 7. `mkdir scratch-test` — creates a new empty folder. Then `ls` to confirm it appears. Then `cd scratch-test`; then `pwd` to confirm you moved into it.
@@ -68,7 +68,7 @@ Budget fifteen to twenty minutes.
 You've got this if you can:
 
 1. Type `pwd` and explain what its output means in one sentence.
-2. Move into the `modules/01-mental-models/` folder with one `cd` command and confirm you're there with `pwd`.
+2. Move into the `sample-app/app/` folder with one `cd` command and confirm you're there with `pwd`.
 
 ## Going deeper
 
