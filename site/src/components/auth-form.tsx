@@ -16,7 +16,7 @@ const INPUT_CLASSES =
 const LABEL_CLASSES = "block font-sans text-sm font-medium text-ink";
 
 const PRIMARY_BUTTON_CLASSES =
-  "h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary disabled:cursor-default disabled:bg-ink-disabled";
+  "h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90 disabled:cursor-default disabled:bg-ink-disabled";
 
 const SECONDARY_BUTTON_CLASSES =
   "inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2.5 rounded-md border border-line-strong bg-paper px-5 font-sans text-sm font-medium text-ink transition-colors duration-150 hover:border-ink disabled:cursor-default disabled:opacity-60";

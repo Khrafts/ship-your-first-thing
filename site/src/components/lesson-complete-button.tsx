@@ -40,7 +40,7 @@ export function LessonCompleteButton({
         className={
           completed
             ? "h-11 cursor-pointer rounded-md border border-line-strong px-5 font-sans text-sm font-medium text-ink transition-colors duration-150 hover:border-ink disabled:cursor-default disabled:text-ink-disabled"
-            : "h-11 cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary disabled:cursor-default disabled:bg-ink-disabled"
+            : "h-11 cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90 disabled:cursor-default disabled:bg-ink-disabled"
         }
       >
         {pending

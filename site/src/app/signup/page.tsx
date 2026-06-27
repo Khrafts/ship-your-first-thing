@@ -24,7 +24,7 @@ export default async function SignUpPage() {
         <div className="mt-6">
           <AuthForm mode="signup" />
         </div>
-        <p className="mt-6 text-sm text-ink-secondary">
+        <p className="mt-8 border-t border-line pt-6 text-sm text-ink-secondary">
           <Link
             href="/signin"
             className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"

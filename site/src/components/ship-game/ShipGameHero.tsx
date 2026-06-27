@@ -130,7 +130,7 @@ export default function ShipGameHero() {
               <div className="mt-4 flex flex-col items-center gap-2">
                 <Link
                   href="/continue"
-                  className="inline-flex h-9 items-center rounded-md bg-ink px-4 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+                  className="inline-flex h-9 items-center rounded-md bg-ink px-4 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
                 >
                   Take the course →
                 </Link>

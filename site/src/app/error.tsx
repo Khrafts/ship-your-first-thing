@@ -24,7 +24,7 @@ export default function ErrorBoundary({
         <button
           type="button"
           onClick={() => reset()}
-          className="mt-6 h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+          className="mt-6 h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
         >
           Try again
         </button>
