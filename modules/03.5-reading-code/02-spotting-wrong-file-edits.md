@@ -77,7 +77,7 @@ Wrong-file detection is the first filter. Pass it, and you move on to the second
 
 ### What you do NOT do in this lesson
 
-You do not read the diff line by line. You do not analyze whether the +2 lines are correct code. You do not compare the diff against the file's existing structure to spot whether the agent broke something. All of those are deeper code-reading skills — Module 7 ("where to go next") points at them; the thread project in Phases 3 and 4 does not require them.
+You do not read the diff line by line. You do not analyze whether the +2 lines are correct code. You do not compare the diff against the file's existing structure to spot whether the agent broke something. All of those are deeper code-reading skills — Module 7 ("where to go next") points at them; the thread project does not require them.
 
 Wrong-file detection is purely "this filename does not match the intent." That is the floor Module 3.5 holds throughout. If the floor seems narrow, that is by design — the floor catches a large class of failures with one observation. Going deeper is optional, not required.
 
@@ -125,7 +125,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 7** ("where to go next") will eventually cover reading the diff lines themselves — recognizing common AI failure shapes (incomplete edits, accidentally-deleted code, imports that were not updated). The wrong-file detection skill at this lesson's floor is enough for everything through Phase 5.
+- **Module 7** ("where to go next") will eventually cover reading the diff lines themselves — recognizing common AI failure shapes (incomplete edits, accidentally-deleted code, imports that were not updated). The wrong-file detection skill at this lesson's floor is enough for everything through the deploy work later in the course.
 - **The agent itself** is one ask away from explaining any file in the sample-app. If a filename in a diff summary is unfamiliar, you can paste the filename back to the agent and ask "what does this file do?" — the answer plus the intent comparison is usually enough to judge fit.
 
 ## Loop check

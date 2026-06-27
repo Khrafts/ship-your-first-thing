@@ -134,7 +134,7 @@ You'll meet the term **DNS** (one-line definition: the system that translates a 
 
 When you type `example.com`, your browser doesn't know which computer to ask. DNS is the phone book it consults: "who is example.com? Tell me their IP address." Then it sends the request to that address. For everyday purposes, DNS is invisible; for "this domain isn't loading," DNS is one of the first places to look.
 
-> **Note:** None of this lesson teaches you how to *build* a server or a webpage. Module 1 is about the shape of what the web is. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time you'll deploy your own page is Phase 3, Chunk 0 — "Hello-World deploy."
+> **Note:** None of this lesson teaches you how to *build* a server or a webpage. Module 1 is about the shape of what the web is. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time you'll deploy your own page is your first deploy — a Hello-World page.
 
 ## Exercise
 

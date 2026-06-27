@@ -50,7 +50,7 @@ Claude Code:
 conversation. Show the agent's plan output — the list of steps it proposes for
 adding the toggle button, BEFORE it touches the file. Keep it short: the smallest
 excerpt that lets the divergence annotation below land. The standalone "Claude Code:"
-line above is required by voice-lint check #8 (D-27 dual-agent rendering) — do not
+line above is required by voice-lint check #8 — do not
 remove it.]
 ```
 

@@ -67,7 +67,7 @@ Show the agent's planning surface — what it proposes BEFORE editing — plus e
 diff/file-panel output OR its narration of the edit, depending on which is more
 instructive. Keep it short: the smallest excerpt that lets the divergence annotation
 below land. The standalone "Claude Code:" line above is required by voice-lint
-check #8 (D-27 dual-agent rendering) — do not remove it.]
+check #8 — do not remove it.]
 ```
 
 > **Capture slot — Gemini CLI first response.** Replace the bracketed lines below with the verbatim transcript from your Gemini CLI session.

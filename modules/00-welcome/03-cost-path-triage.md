@@ -44,7 +44,7 @@ The triage is short. Walk through the questions in order. Stop at the first path
 
 ### Question 4: Are you OK with rate limits more than with a small bill?
 
-> If **yes** (rate limits are fine) → **Path 2: Gemini CLI free tier**. $0. Tied to Google's free-tier behavior. Phase 2 of this course re-verifies the current daily/monthly caps before lessons are authored.
+> If **yes** (rate limits are fine) → **Path 2: Gemini CLI free tier**. $0. Tied to Google's free-tier behavior. When you set up your toolchain, the course re-verifies the current daily/monthly caps before lessons are authored.
 >
 > If **no** (you'd rather pay a little to avoid rate limits) → **Path 3: Claude Code via Anthropic API (token-careful)**. $30–$200 total over the course depending on discipline. You will use Claude Sonnet (not Opus) by default; you will reset the conversation between unrelated tasks; you will watch the running token count like a hawk. Module 3 covers the discipline in depth.
 

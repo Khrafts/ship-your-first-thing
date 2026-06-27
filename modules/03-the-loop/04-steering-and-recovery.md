@@ -34,28 +34,28 @@ Start by steering the L3 hallucination. The agent invented three books; you want
 
 Here is what each agent produced on the day this lesson was captured.
 
-> **Capture slot — Claude Code Phase A steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your Phase A steer session (see `screenshots/m3/04-steering-and-recovery/CAPTURE.md`).
+> **Capture slot — Claude Code hallucination-steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your hallucination-steer session (see `screenshots/m3/04-steering-and-recovery/CAPTURE.md`).
 
 ```text
 Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the Phase A steer
+[Replace this block with the verbatim Claude Code transcript from the hallucination-steer
 session. Show the agent's response to the steer ask — typically a short
 acknowledgement followed by the edit replacing the three invented titles with the
 placeholder text. Keep the standalone "Claude Code:" line above; voice-lint check #8
 requires it.]
 ```
 
-> **Capture slot — Gemini CLI Phase A steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your Phase A steer session.
+> **Capture slot — Gemini CLI hallucination-steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your hallucination-steer session.
 
 ```text
 Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the Phase A steer
+[Replace this block with the verbatim Gemini CLI transcript from the hallucination-steer
 session. Show the same kind of moment captured above for Claude Code — the steer
 acknowledgement plus the placeholder-text edit. Keep the standalone "Gemini CLI:"
 line above; voice-lint check #8 requires it.]
 ```
 
-> **Annotation slot — Phase A divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two responses. Examples (pick the one that matches your captures, or write your own): "Both agents accepted the steer cleanly and replaced the list with placeholder text in a single edit. One-shot steers like this are the norm — the steer just names the gap and the agent fills it." OR "Claude Code rewrote the entire `<ul>` block with an `<em>` wrapper around the placeholder; Gemini CLI kept the list shape and replaced only the `<li>` contents. Both honored the ask; the shape of the edit differed." Your transcript will look like the one for your chosen agent.
+> **Annotation slot — hallucination-steer divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two responses. Examples (pick the one that matches your captures, or write your own): "Both agents accepted the steer cleanly and replaced the list with placeholder text in a single edit. One-shot steers like this are the norm — the steer just names the gap and the agent fills it." OR "Claude Code rewrote the entire `<ul>` block with an `<em>` wrapper around the placeholder; Gemini CLI kept the list shape and replaced only the `<li>` contents. Both honored the ask; the shape of the edit differed." Your transcript will look like the one for your chosen agent.
 
 That is the canonical steer pattern: name what was wrong (the agent invented data), state what you wanted instead (placeholder text), and let the agent run the edit. One-shot steers are the most common steer in any session.
 
@@ -77,11 +77,11 @@ Now ask the most open-ended ask you can. The Module 3 Lesson 4 worked-example as
 
 Open-ended asks are a magnet for **over-engineering** (a one-line definition: when an AI agent does MORE than asked — adding frameworks, libraries, image lookups, fancy effects — because the ask did not bound the scope, [→ GLOSSARY](../../GLOSSARY.md#over-engineering)). Agents tend to read "look like a real bookshelf" as "rebuild this with a UI framework." Watch what each agent did with that ask.
 
-> **Capture slot — Claude Code Phase B over-engineering response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your Phase B session.
+> **Capture slot — Claude Code open-ended-ask over-engineering response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your open-ended-ask session.
 
 ```text
 Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the Phase B
+[Replace this block with the verbatim Claude Code transcript from the
 open-ended ask. Show the full over-engineering response — typical shapes include
 suggesting a CSS framework like Tailwind, suggesting image lookups for book covers,
 suggesting fancy 3D shelf effects, or proposing a multi-file refactor. The whole
@@ -89,17 +89,17 @@ response is the teaching surface; keep enough of it to show the over-shoot. Keep
 the standalone "Claude Code:" line above; voice-lint check #8 requires it.]
 ```
 
-> **Capture slot — Gemini CLI Phase B over-engineering response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your Phase B session.
+> **Capture slot — Gemini CLI open-ended-ask over-engineering response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your open-ended-ask session.
 
 ```text
 Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the Phase B
+[Replace this block with the verbatim Gemini CLI transcript from the
 open-ended ask. Show the same kind of moment captured above for Claude Code — the
 over-engineering response in full enough detail to make the over-shoot visible.
 Keep the standalone "Gemini CLI:" line above; voice-lint check #8 requires it.]
 ```
 
-> **Annotation slot — Phase B divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two over-engineering responses. Examples (pick the one that matches your captures, or write your own): "Claude Code suggested installing Tailwind CSS and looking up book-cover images from an external service; Gemini CLI suggested CSS Grid with custom wooden-background images. Both interpreted 'real bookshelf' as a redesign rather than light styling. That is the recognize-wrong moment for over-engineering." OR "Both agents proposed multi-file changes — a `styles.css` file, a `bookshelf.css` file, a `book-cover.js` lookup — for a one-line styling ask. The convergence is the lesson: open-ended asks invite over-shoot regardless of which agent runs them." Your transcript will look like the one for your chosen agent.
+> **Annotation slot — open-ended-ask divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two over-engineering responses. Examples (pick the one that matches your captures, or write your own): "Claude Code suggested installing Tailwind CSS and looking up book-cover images from an external service; Gemini CLI suggested CSS Grid with custom wooden-background images. Both interpreted 'real bookshelf' as a redesign rather than light styling. That is the recognize-wrong moment for over-engineering." OR "Both agents proposed multi-file changes — a `styles.css` file, a `bookshelf.css` file, a `book-cover.js` lookup — for a one-line styling ask. The convergence is the lesson: open-ended asks invite over-shoot regardless of which agent runs them." Your transcript will look like the one for your chosen agent.
 
 The point is not that the agent was being unhelpful — it was being TOO helpful, in the direction you did not want. Recognizing over-engineering is its own observation skill. The shape: the agent's response is bigger than the task, the agent's plan has more steps than the task needs, and the keywords are framework / library / install / refactor when none of those was asked for.
 
@@ -111,28 +111,28 @@ Steer back to scope. The follow-up ask:
 
 Three sentences. Names the over-shoot, restates the intent with tighter scope, and rules out the framework path. Watch how the agents scale back.
 
-> **Capture slot — Claude Code Phase C scope-steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your Phase C session.
+> **Capture slot — Claude Code scope-steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your scope-steer session.
 
 ```text
 Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the Phase C
+[Replace this block with the verbatim Claude Code transcript from the
 scope-steer session. Show the agent's scaled-back response — typically a short
 inline-CSS edit on the `<ul>` element with a wooden background color and some
 line spacing. Keep the standalone "Claude Code:" line above; voice-lint check #8
 requires it.]
 ```
 
-> **Capture slot — Gemini CLI Phase C scope-steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your Phase C session.
+> **Capture slot — Gemini CLI scope-steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your scope-steer session.
 
 ```text
 Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the Phase C
+[Replace this block with the verbatim Gemini CLI transcript from the
 scope-steer session. Show the same kind of moment captured above for Claude Code —
 the scaled-back inline-CSS edit. Keep the standalone "Gemini CLI:" line above;
 voice-lint check #8 requires it.]
 ```
 
-> **Annotation slot — Phase C divergence.** Replace this blockquote with one or two sentences naming what each agent scaled back to. Examples: "Claude Code dropped the framework suggestion and applied an inline `style` attribute on the `<ul>` with a brown background and 1.5em line height. Gemini CLI did the same but used a `<style>` block in the `<head>` instead of inline attributes. Both honored 'no frameworks'; the shape of the styling differed slightly." OR "Both agents converged on a `style` attribute with a wooden-brown background color and adjusted line spacing. The convergence is the lesson: tight scope language ('inline CSS', 'no frameworks') produces tight edits." Your transcript will look like the one for your chosen agent.
+> **Annotation slot — scope-steer divergence.** Replace this blockquote with one or two sentences naming what each agent scaled back to. Examples: "Claude Code dropped the framework suggestion and applied an inline `style` attribute on the `<ul>` with a brown background and 1.5em line height. Gemini CLI did the same but used a `<style>` block in the `<head>` instead of inline attributes. Both honored 'no frameworks'; the shape of the styling differed slightly." OR "Both agents converged on a `style` attribute with a wooden-brown background color and adjusted line spacing. The convergence is the lesson: tight scope language ('inline CSS', 'no frameworks') produces tight edits." Your transcript will look like the one for your chosen agent.
 
 That is the canonical steer pattern at full size: name the over-shoot, restate intent with tighter scope, rule out the path you did not want. The result usually lands in one iteration.
 
@@ -166,7 +166,7 @@ The cost of starting fresh is one or two minutes; the cost of fighting through a
 
 Module 3 ends here. You have run all four loop steps on the same scratch starter: intent → ask → evaluate → steer. You have watched two agents shape the same task differently. You have named the moves you can re-bind to any agent that comes next.
 
-> **Note:** You can delete the `modules/03-the-loop/scratch/` directory now — your real project starts in Module 4. The scratch starter was always throwaway by design (D-31). The loop you learned in Module 3 carries forward; the file you ran it on does not.
+> **Note:** You can delete the `modules/03-the-loop/scratch/` directory now — your real project starts in Module 4. The scratch starter was always throwaway by design. The loop you learned in Module 3 carries forward; the file you ran it on does not.
 
 ## Exercise
 
@@ -206,7 +206,7 @@ Optional, only if you are curious:
 
 ## What you just did
 
-You closed the loop. You steered an agent away from a hallucination, recognized over-engineering on an open-ended ask, steered back to scope, and practiced the `/clear`-and-restart move. You have now run the full intent → ask → evaluate → steer cycle end-to-end on two agents (or one, if you are on a single path) and seen each step in depth. Module 3.5 (next) teaches the code-reading floor — pattern recognition for non-coders. Then Phase 3 starts the thread project.
+You closed the loop. You steered an agent away from a hallucination, recognized over-engineering on an open-ended ask, steered back to scope, and practiced the `/clear`-and-restart move. You have now run the full intent → ask → evaluate → steer cycle end-to-end on two agents (or one, if you are on a single path) and seen each step in depth. Module 3.5 (next) teaches the code-reading floor — pattern recognition for non-coders. Then Module 4 onward starts the thread project.
 
 ## Navigation
 

@@ -148,9 +148,9 @@ Optional, only if you are curious:
 
 ## What you just did
 
-You closed Module 3.5 and Phase 2. You learned the symptom of a missing `'use client'` directive (interactive element silently does not respond, OR a hydration error in the browser console), asked your agent to explain the difference between an interactive file and a static one against two real example files, and compared the agent's answer to a known-good answer key. Together with file-tree reading (L1), wrong-file detection (L2), and error-to-file-pointer tracing (L3), you now have the four M3.5 observational skills. Phase 3 starts the thread project, where you will use the M3 loop plus the M3.5 floor every day.
+You closed Module 3.5. You learned the symptom of a missing `'use client'` directive (interactive element silently does not respond, OR a hydration error in the browser console), asked your agent to explain the difference between an interactive file and a static one against two real example files, and compared the agent's answer to a known-good answer key. Together with file-tree reading (L1), wrong-file detection (L2), and error-to-file-pointer tracing (L3), you now have the four M3.5 observational skills. The thread project starts next, where you will use the M3 loop plus the M3.5 floor every day.
 
 ## Navigation
 
 [← Previous: Error message to file pointer](./03-error-message-to-file-pointer.md)
-[Next: Course README — Module 4 lands in Phase 3 →](../../README.md)
+[Next: Course README — Module 4 begins the thread project →](../../README.md)
