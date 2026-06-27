@@ -20,7 +20,7 @@ Lessons 1, 2, and 3 named the loop and sharpened ask + evaluate. This last Modul
 
 > **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
 
-> **Last captured:** 2026-05-14. If transcripts look different in your session, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last captured:** 2026-05-14. Seeing transcripts that look different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 

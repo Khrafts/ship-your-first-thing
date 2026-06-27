@@ -45,6 +45,8 @@ modules/03.5-reading-code/sample-app/
 └── README.md
 ```
 
+> **Note:** Seeing a different set of files when you expand `sample-app/` than the tree shown here? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what this lesson shows — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 Walk through each entry in plain prose.
 
 `app/` is the floor labeled "pages and screens." If a project has an `app/` folder, treat it as the directory entry "this is where the user-facing pages live." You do not need to know how pages get wired up — that is the agent's job. The two files at the top of `app/` are `layout.tsx` (the wrapper around every page) and `page.tsx` (the home screen). Bigger projects have more files inside `app/`; the floor for you is "this folder is where pages live, and a `page.tsx` here is the home screen."

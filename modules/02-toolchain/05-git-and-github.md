@@ -43,6 +43,8 @@ Three confusions trip beginners and naming them now saves you time. **First, `gi
 
 When things break, do not panic and do not reach for `git reset --hard`. The cheatsheet has `git reset --hard HEAD` listed because it exists, but it THROWS AWAY all uncommitted changes — only run it when you are sure you want to. The safer first move when stuck is to type `git status` and read the message. git is unusually good at explaining what state you are in and suggesting what to try next. Module 3 will teach how to ask an AI coding agent to help you out of a stuck state; for now, knowing that `git status` answers most "what just happened?" questions is enough.
 
+> **Note:** If the `git status` output on your screen doesn't look like what this lesson describes, on the course site open the lesson chat ("Ask about this lesson") and paste in what you see — it can help you read it against this exact lesson before you try anything riskier.
+
 The full set of git commands you will use daily is in [`CHEATSHEET.md`](../../CHEATSHEET.md) under `## Git basics` — go look at it now in another tab. There are only four entries; you will recognize all four by the end of the exercise.
 
 ## Exercise
@@ -55,7 +57,7 @@ In your Codespace, save a quick scratch file and walk it through the daily rhyth
 4. Back in the terminal, run `git status` again. Note that the new file now appears under "Untracked files." That label means git knows the file exists but is not yet tracking it.
 5. Run `git add m2-l5-scratch.txt` (note the specific filename — not `git add .`). Run `git status` again. Note that the file has moved from "Untracked files" to "Changes to be committed." That is what staging does.
 6. Run `git commit -m "Add m2-l5 scratch file"`. Read git's response — it confirms the commit by hash, by message, and by a one-line summary of what changed.
-7. Run `git push`. If this is the first push from this Codespace, GitHub may ask you to authenticate via a one-click flow in the browser — follow the prompt. Once the push finishes, your commit is on GitHub.
+7. Run `git push`. If this is the first push from this Codespace, GitHub may ask you to authenticate through a sign-in flow in the browser — follow the prompt. Once the push finishes, your commit is on GitHub.
 8. Open your repository on github.com in another browser tab. Refresh the page. Your new file is there. Click it; the content matches what you typed in your Codespace.
 
 Bonus (optional): back in the terminal, run `git log --oneline`. You will see a short list of recent commits, with yours at the top and the message you typed alongside.

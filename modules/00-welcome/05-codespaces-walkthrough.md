@@ -27,6 +27,8 @@ The walkthrough below assumes you picked Codespaces in lesson 02. If you picked 
 **Step 1 — Open the repo on GitHub.**
 Go to this course's GitHub URL (you have it from the README). Click the green `Code` button. Click the `Codespaces` tab. Click `Create codespace on main`.
 
+> **Note:** If the buttons or tabs you see on GitHub don't match these labels, open the lesson chat ("Ask about this lesson") on the course site and describe what you do see — it can help you map your screen to this step against this exact lesson.
+
 **Step 2 — Wait ~60–90 seconds.**
 The Codespace boots. You'll see a progress indicator. The first boot is slowest; subsequent reopens are fast.
 
@@ -53,7 +55,7 @@ Close the browser tab. The Codespace will auto-stop after 30 minutes idle. To de
 
 ### Things that confuse beginners on first run
 
-- **The URL you might expect from running a website on your laptop won't work directly from Codespaces.** When you run a website locally in Codespaces (you'll do this in Module 3), the Codespace forwards a port to a Codespaces-issued URL. The terminal will tell you the right URL — click it from the terminal. ([`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) covers this if you forget.)
+- **The URL you might expect from running a website on your laptop won't work directly from Codespaces.** When you run a website locally in Codespaces (you'll do this in Module 3), the Codespace forwards a port to a Codespaces-issued URL. The terminal will tell you the right URL — click it from the terminal. (Seeing a URL that doesn't behave the way this step describes? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what this lesson says — it can help you reconcile the difference against this exact lesson. [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is the full record if you're reading on GitHub.)
 - **The Codespace may "feel slow" on first boot.** It's not your computer; it's the remote machine warming up. The first boot can take a couple of minutes. Subsequent boots are fast.
 - **Saving works as expected.** `Ctrl+S` (or `Cmd+S` on Mac) saves files inside the Codespace. Saved files survive auto-stop. Files survive Codespace deletion only if you've also saved them back to GitHub — that habit is taught in Module 2.
 
@@ -75,7 +77,7 @@ You've got this if you can:
 
 ## What you just did
 
-You took your environment from "an idea that exists in a browser tab" to "a place you've actually been." The first time you do this is the highest-friction it'll ever be. Every subsequent time is just clicking a tab and waiting 10 seconds. From here, Module 1 is pure reading and diagramming. No more setup until Module 2.
+You took your environment from "an idea that exists in a browser tab" to "a place you've actually been." The first time you do this is the highest-friction it'll ever be. Every subsequent time is clicking a tab and waiting about 10 seconds. From here, Module 1 is pure reading and diagramming. No more setup until Module 2.
 
 ## Navigation
 

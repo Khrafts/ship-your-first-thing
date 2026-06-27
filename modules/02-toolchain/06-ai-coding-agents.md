@@ -45,7 +45,7 @@ These three are not the whole list of ways agents fail — they are the three th
 
 Before the install commands, a small honesty banner.
 
-> **Last verified:** 2026-05-14. These install commands worked on this date. Newer commands may exist; check [`VERSIONS.md`](../../VERSIONS.md) for the most recent verified versions and [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) for revisions.
+> **Last verified:** 2026-05-14. These install commands worked on this date. Seeing different install output, or a command that doesn't match what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you ran versus what the lesson shows — it can help you reconcile the difference against this exact lesson. For the most recent verified install commands see [`VERSIONS.md`](../../VERSIONS.md), and for the full record of changes see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 The install commands depend on which agent you picked. **Run only the one for your path.**
 

@@ -38,6 +38,8 @@ What it costs:
 - Storage cap is **15 GB**. Delete unused Codespaces to free space.
 - If you blow past 120 core-hours, GitHub bills $0.18 per core-hour. Most learners don't hit this.
 
+> **Note:** GitHub's free-tier numbers (core-hours, idle auto-stop, storage, overage price) can change over time. Seeing different figures on GitHub than this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 **Path B: Local install (appendix path).**
 If you already have a code editor you prefer (and you're comfortable troubleshooting your own environment), see the local install appendix in [`SETUP.md`](../../SETUP.md). That appendix names the tools Module 2+ teaches you to install — those tools come pre-installed in Codespaces but require manual setup if you go this route. Use this path if your free Codespace hours run out, or if you really prefer your own editor.
 

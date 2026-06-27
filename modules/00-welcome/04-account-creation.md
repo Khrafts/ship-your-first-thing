@@ -25,7 +25,9 @@ You'll create accounts in this order: GitHub first (everyone needs it), then you
 **Account 1: GitHub.**
 Everyone needs GitHub — this is where the course lives, where Codespaces runs, and where you'll push your work. Sign up at [github.com](https://github.com) with an email you'll keep using. Use a real-looking username; this is your public identity in OSS.
 
-If GitHub asks for email verification or phone verification and the message doesn't arrive: see [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) § "GitHub asked me to verify my account and now I'm locked out." Don't create a second account while you wait for verification.
+If GitHub asks for email verification or phone verification and the message doesn't arrive, don't create a second account while you wait for verification.
+
+> **Note:** Seeing a verification screen that looks different from what this lesson describes? On the course site, open the lesson chat ("Ask about this lesson") and tell it what GitHub is showing you versus what this lesson says — it can help you reconcile the difference against this exact lesson. For the full write-up of this specific lockout, see [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) § "GitHub asked me to verify my account and now I'm locked out."
 
 **Account 2: Your AI-agent account, based on the path you picked.**
 
@@ -36,6 +38,8 @@ If GitHub asks for email verification or phone verification and the message does
 
 > If you picked **Path 2 (Gemini CLI free tier)**:
 > Create or sign into a Google account. Then visit [ai.google.dev](https://ai.google.dev) (the Google AI Studio surface) and generate a Gemini **API key** (a long string that identifies your account when a program calls a paid or rate-limited service on your behalf — treat it like a password, [→ GLOSSARY](../../GLOSSARY.md#api-key)). Save the key in a place you'll remember; you'll plug it into Gemini CLI in Phase 2.
+>
+> **Note:** If the Google AI Studio screen doesn't match what this lesson describes, open the lesson chat ("Ask about this lesson") on the course site and tell it what you see versus what the lesson says — it can help you find the key-generation step against this exact lesson.
 
 **Accounts you do NOT need yet:**
 

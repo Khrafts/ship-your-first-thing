@@ -52,6 +52,8 @@ Open your Codespace's terminal — press `` Ctrl+` `` if the panel at the bottom
 
 Save your notes in a scratch text file — right-click the file list on the left, choose `New File`, and name it `m2-l3-scratch.txt`. Two sentences are enough. The point is what you just saw: Node executed three small pieces of JavaScript text and printed the result. That is what a runtime does.
 
+> **Note:** Seeing a version that does not start with `v20.`? On the course site, open the lesson chat ("Ask about this lesson") and tell it the version Node printed versus what this lesson expects — it can help you reconcile the difference against this exact lesson. For the version pinned at each course revision, see [`VERSIONS.md`](../../VERSIONS.md).
+
 ## Checkpoint
 
 You've got this if you can:

@@ -76,6 +76,8 @@ Open `modules/03.5-reading-code/sample-app/package.json` in your code editor. (Y
 
 Save your answers to a scratch text file — right-click the file panel on the left, choose `New File`, and name it `m2-l4-scratch.txt`. Five short answers is enough. Confirm each answer by re-reading the `package.json` — every answer is a line you can point at in the file.
 
+> **Note:** If the version numbers you see in the file don't match the example earlier in this lesson (the package may have been bumped since this lesson was written), that's expected — your job is to read what's actually in the file, not match the example. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson shows; it can help you reconcile the difference against this exact lesson. The full record of content changes lives in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 ## Checkpoint
 
 You've got this if you can:

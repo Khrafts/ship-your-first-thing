@@ -53,6 +53,8 @@ Modified: app/components/StaticHero.tsx (+1 line, -1 line)
 
 The filename tells you WHERE. The numbers tell you HOW MUCH. A `+2 -0` change is a small add. A `+1 -1` change is a one-line replacement. A `+200 -50` change for what should have been a one-word text edit is a separate kind of smell (the agent did too much) — but for spotting wrong-file edits, the filename alone catches most cases. The line counts are a secondary check.
 
+> **Note:** Your agent may print its edit summary in a different shape than the examples above — different wording, a +/- diff view, or different line counts. That is expected; the skill is the same either way: find the filename it claims to have edited and ask whether that filename fits your intent. On the course site, open the lesson chat ("Ask about this lesson") and tell it what your agent's summary actually looks like versus what this lesson shows — it can help you map your agent's format onto this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 ### Three worked examples, against the sample-app
 
 Open `modules/03.5-reading-code/sample-app/` in your editor's file tree to refresh your memory from Lesson 1. The home page is `app/page.tsx`. The components are in `app/components/`. Three component files live there: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`.

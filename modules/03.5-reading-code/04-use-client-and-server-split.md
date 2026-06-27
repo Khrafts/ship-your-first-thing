@@ -97,6 +97,8 @@ The agent does the work; you have just gotten it to the right diagnosis.
 
 The deeper mechanics — why the split exists, what the bundler does, the partner directive `'use server'`, how hydration works under the hood — are the agent's job and Module 7's curiosity track. The thread project does not require any of them. Spotting the symptom and writing the steer is the floor.
 
+> **Note:** If a sample-app file you open does not match the code printed above (an extra line, a different name, no `'use client'` where the lesson shows one), on the course site open the lesson chat ("Ask about this lesson") and tell it exactly what you see versus what this lesson shows — it can reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 ## Exercise
 
 Plan twenty to twenty-five minutes for this exercise. It uses your AI agent (Claude Code or Gemini CLI) as a tutor.
