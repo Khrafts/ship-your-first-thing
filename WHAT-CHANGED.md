@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-06-27 — Lessons point you to the lesson chat when a page doesn't match
+
+**Change:** When a step, transcript, or number on a page doesn't match what you see, lessons now ask you to open the lesson chat (on the course site) and describe the difference, instead of sending you here first. This file stays the full record.
+**If you're affected:** Nothing to do — on the course site, the lesson chat is your faster first move; reading on GitHub, keep using this file.
+**Details:** Drift notes reworded across Modules 0, 2, 3, and 3.5; the in-lesson tutor reads the lesson you're on and reconciles the difference against it.
+
 ## 2026-06-12 — Freshness log restructured: shorter entries, history kept below
 
 **Change:** Entries are now a few lines each, written for course learners. Everything older is preserved word-for-word under "Earlier entries," each behind a one-line summary you can click to expand.
