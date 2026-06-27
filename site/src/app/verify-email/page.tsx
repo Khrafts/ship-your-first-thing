@@ -29,7 +29,7 @@ export default async function VerifyEmailPage({
           <input type="hidden" name="token" value={token ?? ""} />
           <button
             type="submit"
-            className="h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+            className="h-11 w-full cursor-pointer rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
           >
             {AUTH_COPY.confirmEmailButton}
           </button>

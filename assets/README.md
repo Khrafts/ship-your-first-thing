@@ -31,9 +31,12 @@ filename. The derived copies live where the framework expects them:
 | `favicon-16/32/48.png` | `site/src/app/favicon.ico` (packed) | Legacy / `/favicon.ico` |
 | `apple-touch-icon-180.png` | `site/src/app/apple-icon.png` | iOS home screen |
 | `icon-192/512/maskable.png` | `site/public/` + `site/src/app/manifest.ts` | PWA / install |
-| `lockup-light.png` | `site/public/brand/` → `site/src/components/site-header.tsx` | Site navbar |
+| `lockup-light.png` | `site/public/brand/` → `site/src/components/site-header.tsx` | Site navbar (sm and up) |
+| `mark.svg` (artwork) | `site/src/components/brand-mark.tsx` | Compact mark: navbar on phones, footer brand block |
 | `lockup-light.png`, `lockup-dark.png` | `README.md` banner (`<picture>`) | github.com |
 
-`mark.svg`, `mark-filled.svg`, `mark-256.png`, and `mark-filled-256.png` are
-icon-only marks kept in the kit for future use (social avatars, favicons,
-compact placements); none are wired into the site today.
+The compact mark is reproduced as inline SVG in `brand-mark.tsx` (rather than
+referenced as a file) so its strokes use `currentColor` and theme for free in
+dark mode. `mark-filled.svg`, `mark-256.png`, and `mark-filled-256.png` remain
+icon-only marks kept in the kit for future use (social avatars, favicons, other
+compact placements); they are not wired into the site today.

@@ -25,7 +25,7 @@ export default async function Home() {
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <Link
             href="/modules"
-            className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+            className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
           >
             Start the course →
           </Link>

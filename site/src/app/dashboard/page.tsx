@@ -117,7 +117,7 @@ export default async function DashboardPage() {
             {resume ? (
               <Link
                 href={`/modules/${resume.moduleSlug}/${resume.lessonSlug}`}
-                className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:bg-ink-secondary"
+                className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
               >
                 {overall.completed === 0 ? "Start" : "Resume"}: {resume.title} →
               </Link>
