@@ -73,17 +73,17 @@ sequenceDiagram
 
 </details>
 
-In this course, the thread project (Phase 3) uses a sign-in flow that emails you a clickable link — no passwords. The mechanism is named and built in Phase 3; for now, just know that "sign-in" can mean "prove you can read mail at this address." From the analogy: instead of an ID card, the door staff has access to your mailbox; if you can prove you can read mail at `alice@example.com`, you're Alice. It's not perfect (mailbox compromise = identity compromise) but it's simple and learnable.
+In this course, the thread project uses a sign-in flow that emails you a clickable link — no passwords. The mechanism is named and built when you build the thread project; for now, just know that "sign-in" can mean "prove you can read mail at this address." From the analogy: instead of an ID card, the door staff has access to your mailbox; if you can prove you can read mail at `alice@example.com`, you're Alice. It's not perfect (mailbox compromise = identity compromise) but it's simple and learnable.
 
 A few things confuse beginners here, and naming them now saves you debugging time later.
 
 **Authentication doesn't replace authorization.** "I logged in" doesn't mean "I'm allowed to do this." Real apps check both, every time. The most common security bug in self-built apps is forgetting that authn ≠ authz — the app trusts that any signed-in user can do anything.
 
-**Sessions can be stolen.** If someone gets your hand stamp (your session cookie), they can walk back into the club as you. The safeguards are the same as a club's: the stamp is hard to forge, it changes often, and the door staff ask for ID again before they let anyone into the back rooms. Phase 3 covers the practical defaults; for now, just know that "logged in" is a state that needs guarding, not a property that's automatic.
+**Sessions can be stolen.** If someone gets your hand stamp (your session cookie), they can walk back into the club as you. The safeguards are the same as a club's: the stamp is hard to forge, it changes often, and the door staff ask for ID again before they let anyone into the back rooms. The thread project covers the practical defaults; for now, just know that "logged in" is a state that needs guarding, not a property that's automatic.
 
-**The "VIP list" lives in the database.** When the door staff checks the list, they're really asking the filing cabinet from bundle 2. Permission rules in real apps are enforced both at the server (the clerk) and at the database (the cabinet itself, via per-row rules). Phase 4 builds that double-check explicitly.
+**The "VIP list" lives in the database.** When the door staff checks the list, they're really asking the filing cabinet from bundle 2. Permission rules in real apps are enforced both at the server (the clerk) and at the database (the cabinet itself, via per-row rules). Later in the course you build that double-check explicitly.
 
-> **Note:** Module 1 keeps auth at the mental-model layer. The actual code — the sign-in mechanism, the per-request permission checks, the database policies that enforce who-owns-what — lands in Phase 3 Chunk 1 (Auth) and Phase 4. Per Phase 1 D-08, this lesson explicitly does **not** teach you how to write auth code.
+> **Note:** Module 1 keeps auth at the mental-model layer. The actual code — the sign-in mechanism, the per-request permission checks, the database policies that enforce who-owns-what — lands when you add sign-in to the thread project and later in the course. This lesson explicitly does **not** teach you how to write auth code.
 
 ## Exercise
 

@@ -1,6 +1,6 @@
 # Module 0 — Welcome
 
-Module 0 prepares your environment so the rest of the course flows: welcome, hardware check, cost-path triage (BEFORE account creation per Phase 1 D-16), account creation, and a first-run walkthrough of GitHub Codespaces.
+Module 0 prepares your environment so the rest of the course flows: welcome, hardware check, cost-path triage (before you create any accounts), account creation, and a first-run walkthrough of GitHub Codespaces.
 
 ## What this module builds
 

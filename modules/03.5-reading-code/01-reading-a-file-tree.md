@@ -25,7 +25,7 @@ Picture the lobby directory again. You haven't walked into any of the offices on
 
 A **file tree** (a one-line definition: the hierarchical structure of files and folders in a project, displayed as an indented list in your editor's left panel, [→ GLOSSARY](../../GLOSSARY.md#file-tree)) is the first thing you see when you open a project. At a glance, it tells you the project's shape — what kind of app it is, where the pages live, where the reusable pieces live, what is configuration and what is content. This lesson teaches reading the shape without going into the contents.
 
-The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a **Next.js** (a one-line definition: a popular framework for building web apps; the framework Phase 3 uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)) project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. The agent owns the deeper reading; your floor is recognizing the shape.
+The point of the skill is detection, not explanation. You do NOT need to understand the syntax inside any file to spot that a **Next.js** (a one-line definition: a popular framework for building web apps; the framework the thread project uses, [→ GLOSSARY](../../GLOSSARY.md#next-js)) project is laid out the way a Next.js project should be laid out — and you do not need to understand the syntax to spot that something looks off. The agent owns the deeper reading; your floor is recognizing the shape.
 
 ### The Next.js shape, walked through against the sample-app
 
@@ -45,6 +45,8 @@ modules/03.5-reading-code/sample-app/
 └── README.md
 ```
 
+> **Note:** Seeing a different set of files when you expand `sample-app/` than the tree shown here? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what this lesson shows — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 Walk through each entry in plain prose.
 
 `app/` is the floor labeled "pages and screens." If a project has an `app/` folder, treat it as the directory entry "this is where the user-facing pages live." You do not need to know how pages get wired up — that is the agent's job. The two files at the top of `app/` are `layout.tsx` (the wrapper around every page) and `page.tsx` (the home screen). Bigger projects have more files inside `app/`; the floor for you is "this folder is where pages live, and a `page.tsx` here is the home screen."
@@ -55,7 +57,7 @@ Walk through each entry in plain prose.
 
 `tsconfig.json` is the TypeScript configuration. You will see it in every TypeScript project. You do not edit it; tooling (the TypeScript compiler) reads it. For a non-coder, the right relationship to `tsconfig.json` is: notice it exists, do not worry about it, leave it alone.
 
-`README.md` is the project's own explainer. In this scaffold, it warns "DO NOT run `npm install`"; in your thread project (Phase 3), the README will describe how to run the project. Always open the README first when you encounter a new repo.
+`README.md` is the project's own explainer. In this scaffold, it warns "DO NOT run `npm install`"; in your thread project, the README will describe how to run the project. Always open the README first when you encounter a new repo.
 
 ### The one smell to recognize
 

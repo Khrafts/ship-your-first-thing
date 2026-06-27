@@ -45,7 +45,7 @@ These three are not the whole list of ways agents fail — they are the three th
 
 Before the install commands, a small honesty banner.
 
-> **Last verified:** 2026-05-14. These install commands worked on this date. Newer commands may exist; check [`VERSIONS.md`](../../VERSIONS.md) for the most recent verified versions and [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) for revisions.
+> **Last verified:** 2026-05-14. These install commands worked on this date. Seeing different install output, or a command that doesn't match what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you ran versus what the lesson shows — it can help you reconcile the difference against this exact lesson. For the most recent verified install commands see [`VERSIONS.md`](../../VERSIONS.md), and for the full record of changes see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 The install commands depend on which agent you picked. **Run only the one for your path.**
 
@@ -73,14 +73,14 @@ Inside the agent's session, you can type ordinary requests like "add today's dat
 
 AI agents need to READ your project files to be useful. Most of the time that is exactly what you want — they need to see `app/page.tsx` to edit it. Sometimes you do NOT want them to see something: a `.env` file with secret API keys, internal notes in a `.planning/` folder, the thousands of files inside `node_modules/` that confuse rather than help. That is what an ignore-file is for: a list of paths the agent should skip.
 
-This course ships templates for this at the repository root in `thread-project-template/`. You will not copy them into a real project until Phase 3 — when you scaffold the thread project. Open the directory now in your IDE to see what is there:
+This course ships templates for this at the repository root in `thread-project-template/`. You will not copy them into a real project until you build the thread project — when you scaffold it. Open the directory now in your IDE to see what is there:
 
 - `.gitignore` — paths git ignores (`node_modules/`, `.env*`, build folders).
 - `.claudeignore` — a community-pattern file for Claude Code. Heads up: as of May 2026, Claude Code does NOT natively respect this file yet; the comment header inside the file explains why we ship one anyway (it future-proofs against the day Claude Code adds native support, and it documents the convention).
 - `.claude/settings.json` — the file Claude Code DOES respect today. It uses `permissions.deny` rules to hard-block reads of `.env`, `.planning/`, and other sensitive paths.
 - `.geminiignore` — Gemini CLI's officially-supported ignore-file, written in the same shape as `.gitignore`.
 
-Knowing these files exist now means Module 3's first session can assume the hygiene is in place when the thread project starts in Phase 3.
+Knowing these files exist now means Module 3's first session can assume the hygiene is in place when the thread project starts.
 
 A quick cost-path reminder so the install above made sense. Path 1 (Claude Code Pro, around $17 to $20 a month) and Path 3 (Anthropic API, pay-per-token) both use Claude Code as the install. Path 2 (Gemini CLI free) uses Gemini CLI. Whichever path you picked in Module 0, install ONLY that one. [`BUDGET.md`](../../BUDGET.md) has the full breakdown if you need a refresher.
 
@@ -116,7 +116,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You named the two AI coding agents this course supports. You installed the one you picked in Module 0. You read the four files of hygiene at `thread-project-template/` that will keep secrets out of the agent's reach when you scaffold the thread project in Phase 3. Module 3 (next module) teaches you what to actually DO with the agent — the loop, in depth, on both agents in parallel.
+You named the two AI coding agents this course supports. You installed the one you picked in Module 0. You read the four files of hygiene at `thread-project-template/` that will keep secrets out of the agent's reach when you scaffold the thread project. Module 3 (next module) teaches you what to actually DO with the agent — the loop, in depth, on both agents in parallel.
 
 ## Navigation
 

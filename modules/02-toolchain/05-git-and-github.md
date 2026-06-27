@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to run the four-command daily rhythm
 
 ## Why this matters
 
-Module 1's deployment lesson named GitHub as the recipe binder — the place where the recipes (your code) live so Vercel can pick them up and turn them into a live site. That lesson named git briefly: the recipes get committed to git and pushed to GitHub. This lesson is where you actually do it. Every later module — the thread project in Phase 3, the deploy work in Phase 5, the bug-fixing work in Phase 6 — assumes you can save your work as a snapshot and send that snapshot to GitHub. Five minutes here saves you hours later.
+Module 1's deployment lesson named GitHub as the recipe binder — the place where the recipes (your code) live so Vercel can pick them up and turn them into a live site. That lesson named git briefly: the recipes get committed to git and pushed to GitHub. This lesson is where you actually do it. Every later module — the thread project, the deploy work later in the course, the bug-fixing work later in the course — assumes you can save your work as a snapshot and send that snapshot to GitHub. Five minutes here saves you hours later.
 
 ## Core read
 
@@ -37,11 +37,13 @@ The daily rhythm has four commands. Run them in this order, every time.
 
 The four-step rhythm runs in the opposite direction too. When someone else has pushed commits you do not have yet — or when you have made commits on one machine and you are working on another — you need to pull their work down to your machine. **`git pull`** (one-line definition: fetch commits from a remote host and merge them into your local copy, [→ GLOSSARY](../../GLOSSARY.md#pull)) does that. The Codespace usually runs `git pull` automatically when you open it; outside Codespaces, you would run it at the start of each session.
 
-Two more terms you will meet later, named briefly here so they are not surprising the first time they show up. A **branch** (one-line definition: an independent line of commits, used to try something without affecting the main history, [→ GLOSSARY](../../GLOSSARY.md#branch)) lets you experiment in isolation: you make some commits on a branch, decide they are good, and bring them back into the main line. The bringing-back step is **merge** (one-line definition: combine the commits from one branch into another, [→ GLOSSARY](../../GLOSSARY.md#merge)). This course's main line is called `main` (older projects sometimes call it `master`). For Module 2 and Module 3, you will work directly on `main` and not branch. Phase 3 may introduce branches if the planning conversation suggests they help.
+Two more terms you will meet later, named briefly here so they are not surprising the first time they show up. A **branch** (one-line definition: an independent line of commits, used to try something without affecting the main history, [→ GLOSSARY](../../GLOSSARY.md#branch)) lets you experiment in isolation: you make some commits on a branch, decide they are good, and bring them back into the main line. The bringing-back step is **merge** (one-line definition: combine the commits from one branch into another, [→ GLOSSARY](../../GLOSSARY.md#merge)). This course's main line is called `main` (older projects sometimes call it `master`). For Module 2 and Module 3, you will work directly on `main` and not branch. The thread project may introduce branches if they help.
 
 Three confusions trip beginners and naming them now saves you time. **First, `git status` is the safest command in git.** It only shows information; it changes nothing. Run it constantly — before staging, after staging, after committing, after pushing. The output is short and surprisingly readable; if something looks wrong, git's response usually tells you what to do next. **Second, commit messages matter more than you think.** Future-you (or the AI coding agents you will meet in Module 3, which read git history) needs to know what each commit did. "update" is a useless message; "add login button to home page" is useful. Treat the one-line message as a note to your future self. **Third, `git push` after every commit is fine, but not required.** You can make five commits locally, then push once. The push is the "share" step; the commits are already saved locally after the commit step.
 
 When things break, do not panic and do not reach for `git reset --hard`. The cheatsheet has `git reset --hard HEAD` listed because it exists, but it THROWS AWAY all uncommitted changes — only run it when you are sure you want to. The safer first move when stuck is to type `git status` and read the message. git is unusually good at explaining what state you are in and suggesting what to try next. Module 3 will teach how to ask an AI coding agent to help you out of a stuck state; for now, knowing that `git status` answers most "what just happened?" questions is enough.
+
+> **Note:** If the `git status` output on your screen doesn't look like what this lesson describes, on the course site open the lesson chat ("Ask about this lesson") and paste in what you see — it can help you read it against this exact lesson before you try anything riskier.
 
 The full set of git commands you will use daily is in [`CHEATSHEET.md`](../../CHEATSHEET.md) under `## Git basics` — go look at it now in another tab. There are only four entries; you will recognize all four by the end of the exercise.
 
@@ -55,7 +57,7 @@ In your Codespace, save a quick scratch file and walk it through the daily rhyth
 4. Back in the terminal, run `git status` again. Note that the new file now appears under "Untracked files." That label means git knows the file exists but is not yet tracking it.
 5. Run `git add m2-l5-scratch.txt` (note the specific filename — not `git add .`). Run `git status` again. Note that the file has moved from "Untracked files" to "Changes to be committed." That is what staging does.
 6. Run `git commit -m "Add m2-l5 scratch file"`. Read git's response — it confirms the commit by hash, by message, and by a one-line summary of what changed.
-7. Run `git push`. If this is the first push from this Codespace, GitHub may ask you to authenticate via a one-click flow in the browser — follow the prompt. Once the push finishes, your commit is on GitHub.
+7. Run `git push`. If this is the first push from this Codespace, GitHub may ask you to authenticate through a sign-in flow in the browser — follow the prompt. Once the push finishes, your commit is on GitHub.
 8. Open your repository on github.com in another browser tab. Refresh the page. Your new file is there. Click it; the content matches what you typed in your Codespace.
 
 Bonus (optional): back in the terminal, run `git log --oneline`. You will see a short list of recent commits, with yours at the top and the message you typed alongside.
@@ -73,7 +75,7 @@ Optional, only if you're curious:
 
 - **The [Pro Git book](https://git-scm.com/book/en/v2), chapters 1 and 2.** Free online. The canonical short introduction; the rest of the book is reference material you do not need for this course.
 - **[learngitbranching.js.org](https://learngitbranching.js.org/).** An interactive sandbox for feeling branches and merges without breaking a real repository. Skip until you actually need branches; for Module 2 and Module 3, the four-command rhythm is enough.
-- **GitHub's own docs on the [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) flow.** Pull requests are how teams review each other's changes; you will not need them for the thread project (Phase 3 is a solo build) but you will see them once you start contributing to other people's repositories.
+- **GitHub's own docs on the [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) flow.** Pull requests are how teams review each other's changes; you will not need them for the thread project (it is a solo build) but you will see them once you start contributing to other people's repositories.
 
 ## Loop check
 

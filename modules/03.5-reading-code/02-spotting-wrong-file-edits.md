@@ -53,6 +53,8 @@ Modified: app/components/StaticHero.tsx (+1 line, -1 line)
 
 The filename tells you WHERE. The numbers tell you HOW MUCH. A `+2 -0` change is a small add. A `+1 -1` change is a one-line replacement. A `+200 -50` change for what should have been a one-word text edit is a separate kind of smell (the agent did too much) — but for spotting wrong-file edits, the filename alone catches most cases. The line counts are a secondary check.
 
+> **Note:** Your agent may print its edit summary in a different shape than the examples above — different wording, a +/- diff view, or different line counts. That is expected; the skill is the same either way: find the filename it claims to have edited and ask whether that filename fits your intent. On the course site, open the lesson chat ("Ask about this lesson") and tell it what your agent's summary actually looks like versus what this lesson shows — it can help you map your agent's format onto this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 ### Three worked examples, against the sample-app
 
 Open `modules/03.5-reading-code/sample-app/` in your editor's file tree to refresh your memory from Lesson 1. The home page is `app/page.tsx`. The components are in `app/components/`. Three component files live there: `InteractiveButton.tsx`, `StaticHero.tsx`, `Footer.tsx`.
@@ -75,7 +77,7 @@ Wrong-file detection is the first filter. Pass it, and you move on to the second
 
 ### What you do NOT do in this lesson
 
-You do not read the diff line by line. You do not analyze whether the +2 lines are correct code. You do not compare the diff against the file's existing structure to spot whether the agent broke something. All of those are deeper code-reading skills — Module 7 ("where to go next") points at them; the thread project in Phases 3 and 4 does not require them.
+You do not read the diff line by line. You do not analyze whether the +2 lines are correct code. You do not compare the diff against the file's existing structure to spot whether the agent broke something. All of those are deeper code-reading skills — Module 7 ("where to go next") points at them; the thread project does not require them.
 
 Wrong-file detection is purely "this filename does not match the intent." That is the floor Module 3.5 holds throughout. If the floor seems narrow, that is by design — the floor catches a large class of failures with one observation. Going deeper is optional, not required.
 
@@ -123,7 +125,7 @@ You've got this if you can:
 
 Optional, only if you are curious:
 
-- **Module 7** ("where to go next") will eventually cover reading the diff lines themselves — recognizing common AI failure shapes (incomplete edits, accidentally-deleted code, imports that were not updated). The wrong-file detection skill at this lesson's floor is enough for everything through Phase 5.
+- **Module 7** ("where to go next") will eventually cover reading the diff lines themselves — recognizing common AI failure shapes (incomplete edits, accidentally-deleted code, imports that were not updated). The wrong-file detection skill at this lesson's floor is enough for everything through the deploy work later in the course.
 - **The agent itself** is one ask away from explaining any file in the sample-app. If a filename in a diff summary is unfamiliar, you can paste the filename back to the agent and ask "what does this file do?" — the answer plus the intent comparison is usually enough to judge fit.
 
 ## Loop check

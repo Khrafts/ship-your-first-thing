@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to describe — in plain language an
 
 ## Why this matters
 
-Until now, every Module 1 mental model has lived inside a single private machine: a browser talking to a server (bundle 1), a server reading from a database (bundle 2), a sign-in flow gating access (bundle 3). This fourth lesson covers the question every real product has to answer last: how does this stop being a private thing on someone's laptop and become a public thing on the internet? The opening-night analogy makes it click. Phase 3 Chunk 0 is the first time you'll run this pipeline yourself — but bringing the right mental model to that exercise saves you days of "why doesn't my deploy work?" debugging.
+Until now, every Module 1 mental model has lived inside a single private machine: a browser talking to a server (bundle 1), a server reading from a database (bundle 2), a sign-in flow gating access (bundle 3). This fourth lesson covers the question every real product has to answer last: how does this stop being a private thing on someone's laptop and become a public thing on the internet? The opening-night analogy makes it click. Your first deploy — a Hello-World page — is the first time you'll run this pipeline yourself — but bringing the right mental model to that exercise saves you days of "why doesn't my deploy work?" debugging.
 
 ## Core read
 
@@ -57,7 +57,7 @@ Then **Vercel** (one-line definition: a service that runs your code on the publi
 
 That whole pipeline is **CI/CD** (one-line definition: continuous integration / continuous deployment — the automated path from "I committed code" to "it's live on the internet," [→ GLOSSARY](../../GLOSSARY.md#ci-cd)).
 
-For your thread project in Phase 3, every push to the main branch will go through this pipeline automatically.
+For your thread project, every push to the main branch will go through this pipeline automatically.
 
 A few things confuse beginners here, and naming them now saves you debugging time later.
 

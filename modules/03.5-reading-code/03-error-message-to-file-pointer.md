@@ -33,6 +33,8 @@ Scan the error message top to bottom. Skip lines whose paths start with `node_mo
 
 Here are three error messages you might see while debugging the sample-app (or any Next.js project). For each, find the first line that mentions one of YOUR files.
 
+> **Note:** Seeing an error in your own session that does not look like any of the three examples below (a different description, a path that starts with something other than `./app/`, or more than one of your files listed)? On the course site, open the lesson chat ("Ask about this lesson") and tell it what your error shows versus what this lesson shows — it can help you reconcile the difference against this exact lesson and confirm which line is your file pointer. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+
 **Error 1 (runtime error):**
 
 ```

@@ -20,7 +20,7 @@ Module 2 named the tools. This lesson names the moves. The loop is the durable s
 
 > **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
 
-> **Last captured:** 2026-05-14. If transcripts look different in your session, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last captured:** 2026-05-14. Seeing transcripts that look different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
@@ -67,7 +67,7 @@ Show the agent's planning surface — what it proposes BEFORE editing — plus e
 diff/file-panel output OR its narration of the edit, depending on which is more
 instructive. Keep it short: the smallest excerpt that lets the divergence annotation
 below land. The standalone "Claude Code:" line above is required by voice-lint
-check #8 (D-27 dual-agent rendering) — do not remove it.]
+check #8 — do not remove it.]
 ```
 
 > **Capture slot — Gemini CLI first response.** Replace the bracketed lines below with the verbatim transcript from your Gemini CLI session.
@@ -93,7 +93,7 @@ Now you look at what the agent produced. Two questions, in order:
 
 > **Capture slot — evaluate moment.** Replace the next sentence with what you actually observed during the capture session. Example: "In both sessions, the agent produced a small JavaScript snippet that inserts today's date after the tagline; the browser preview shows today's date below the tagline as expected." If a screenshot of the browser preview is in `screenshots/m3/01-introducing-the-loop/`, embed it here with descriptive alt text.
 
-Evaluate is the cheapest place to catch wrong output. The agent is going to be confidently wrong sometimes — that is unavoidable. The skill is noticing it before you commit, deploy, or build on top of it. Module 3 Lesson 3 teaches the evaluate step in depth; for now, the discipline is simply: stop, look, decide.
+Evaluate is the cheapest place to catch wrong output. The agent is going to be confidently wrong sometimes — that is unavoidable. The skill is noticing it before you commit, deploy, or build on top of it. Module 3 Lesson 3 teaches the evaluate step in depth; for now, the discipline is: stop, look, decide.
 
 ### 4. steer
 

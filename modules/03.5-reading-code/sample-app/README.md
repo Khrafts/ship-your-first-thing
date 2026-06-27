@@ -19,9 +19,9 @@ Module 3.5 teaches the pattern-recognition floor for non-coders: reading a file 
 ## Module 3.5 lesson map
 
 - L1 (reading a file tree) → `app/` directory + `app/components/` subdirectory + everything in `app/`.
-- L2 (spotting wrong-file edits) → uses every file as a candidate target for the three (intent, diff-summary) pairs (D-35 L2 judgment exercise).
-- L3 (error → file pointer) → uses every file as a candidate target for the three error messages traced back to files (D-35 L3 tracing exercise).
-- L4 (`'use client'`) → reads `app/components/InteractiveButton.tsx` and `app/components/StaticHero.tsx`; asks the agent to explain why one has the directive and the other doesn't (D-35 L4 ask-the-agent exercise).
+- L2 (spotting wrong-file edits) → uses every file as a candidate target for the three (intent, diff-summary) pairs.
+- L3 (error → file pointer) → uses every file as a candidate target for the three error messages traced back to files.
+- L4 (`'use client'`) → reads `app/components/InteractiveButton.tsx` and `app/components/StaticHero.tsx`; asks the agent to explain why one has the directive and the other doesn't.
 
 ## Freshness
 

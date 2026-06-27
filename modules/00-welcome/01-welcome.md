@@ -55,7 +55,7 @@ If that's you: welcome.
 
 **What this course is honest about:**
 
-- AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When you see the date stamp on a lesson and it's a year old, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) first; the keystrokes may have shifted, but the loop won't have.
+- AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When a lesson's date stamp is old and the steps no longer match what's on your screen, that's drift — the keystrokes shifted, but the loop won't have. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says; it can help you reconcile the difference against this exact lesson. The full record of changes lives in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 - The free path is real and capped by rate limits. The paid path is predictable and costs ~$20/month. The "token-careful" path is cheap if you're careful and ruinous if you're not. Module 0 lesson 03 walks you through the triage.
 - You will get stuck. The course expects this. [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is where you go when something breaks and you need the fix.
 
@@ -63,7 +63,7 @@ If that's you: welcome.
 
 - Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. Skipping Module 1 (mental models) to get to "the building" is the most common way learners stall in Module 3.
 - Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
-- When a lesson doesn't match what you see, check [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md) first — something probably shifted. When something breaks, check [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md). Still stuck after both? File an issue.
+- When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). When something breaks, check [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md). Still stuck after both? File an issue.
 
 That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces the toolchain. Then we build.
 
@@ -72,7 +72,7 @@ That's the whole course in two paragraphs. Module 0 spends the next four lessons
 Spend 5 minutes on each of these:
 
 1. Open [`BUDGET.md`](../../BUDGET.md) and skim the three named cost paths. Don't pick yet — lesson 03 walks the triage. Just know they exist.
-2. Open [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Read the V1 baseline entry (the last one, at the very bottom). This file is your friend when reality drifts from a lesson.
+2. Open [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Read the V1 baseline entry (the last one, at the very bottom) so you know this full-record file exists. When reality drifts from a lesson on the course site, your faster first move is the lesson chat ("Ask about this lesson") — tell it what you see versus what the lesson says, and it reconciles the difference against that exact lesson.
 3. Open `modules/01-mental-models/README.md`. Read the four bundle titles. This is what Module 1 covers, and it is the most-skipped module in courses like this. (Don't skip it.)
 
 ## Checkpoint
@@ -80,7 +80,7 @@ Spend 5 minutes on each of these:
 You've got this if you can:
 
 - Name the three cost paths from [`BUDGET.md`](../../BUDGET.md) in one phrase each.
-- Say where you'd look first when something in a lesson doesn't match what you see ([`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), then [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md)).
+- Say where you'd look first when something in a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson"; the full change record is [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), and [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is for things that break).
 - Name the four Module 1 bundles without re-opening Module 1's README.
 
 ## What you just did

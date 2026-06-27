@@ -16,7 +16,7 @@ By the end of this lesson, you will have created exactly the accounts your chose
 
 ## Why this matters
 
-You did the triage in the last lesson. This lesson is the payoff: create three to four accounts, no more. Most courses ask you to set up six accounts before you've earned the cognitive credit to know what they're for. This one creates accounts only as you need them; the AI-agent account matches the path you picked; the rest of the build accounts (Vercel, Supabase) wait until Phase 3 when the thread project actually starts.
+You did the triage in the last lesson. This lesson is the payoff: create three to four accounts, no more. Most courses ask you to set up six accounts before you've earned the cognitive credit to know what they're for. This one creates accounts only as you need them; the AI-agent account matches the path you picked; the rest of the build accounts (Vercel, Supabase) wait until you build the thread project.
 
 ## Core read
 
@@ -25,7 +25,9 @@ You'll create accounts in this order: GitHub first (everyone needs it), then you
 **Account 1: GitHub.**
 Everyone needs GitHub — this is where the course lives, where Codespaces runs, and where you'll push your work. Sign up at [github.com](https://github.com) with an email you'll keep using. Use a real-looking username; this is your public identity in OSS.
 
-If GitHub asks for email verification or phone verification and the message doesn't arrive: see [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) § "GitHub asked me to verify my account and now I'm locked out." Don't create a second account while you wait for verification.
+If GitHub asks for email verification or phone verification and the message doesn't arrive, don't create a second account while you wait for verification.
+
+> **Note:** Seeing a verification screen that looks different from what this lesson describes? On the course site, open the lesson chat ("Ask about this lesson") and tell it what GitHub is showing you versus what this lesson says — it can help you reconcile the difference against this exact lesson. For the full write-up of this specific lockout, see [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) § "GitHub asked me to verify my account and now I'm locked out."
 
 **Account 2: Your AI-agent account, based on the path you picked.**
 
@@ -35,11 +37,13 @@ If GitHub asks for email verification or phone verification and the message does
 > - Path 3 learners: do **not** subscribe to Pro. Add a small amount of API credit (start with $10–$20) and bookmark the usage dashboard. You'll need it.
 
 > If you picked **Path 2 (Gemini CLI free tier)**:
-> Create or sign into a Google account. Then visit [ai.google.dev](https://ai.google.dev) (the Google AI Studio surface) and generate a Gemini **API key** (a long string that identifies your account when a program calls a paid or rate-limited service on your behalf — treat it like a password, [→ GLOSSARY](../../GLOSSARY.md#api-key)). Save the key in a place you'll remember; you'll plug it into Gemini CLI in Phase 2.
+> Create or sign into a Google account. Then visit [ai.google.dev](https://ai.google.dev) (the Google AI Studio surface) and generate a Gemini **API key** (a long string that identifies your account when a program calls a paid or rate-limited service on your behalf — treat it like a password, [→ GLOSSARY](../../GLOSSARY.md#api-key)). Save the key in a place you'll remember; you'll plug it into Gemini CLI when you set up your toolchain in Module 2.
+>
+> **Note:** If the Google AI Studio screen doesn't match what this lesson describes, open the lesson chat ("Ask about this lesson") on the course site and tell it what you see versus what the lesson says — it can help you find the key-generation step against this exact lesson.
 
 **Accounts you do NOT need yet:**
 
-- **Vercel** and **Supabase** are not needed until Phase 3 (the thread project). Create them when you start Phase 3, not now. If you create them now, the trial timers start counting against you.
+- **Vercel** and **Supabase** are not needed until you build the thread project. Create them when you start the thread project, not now. If you create them now, the trial timers start counting against you.
 - **OpenAI / OpenRouter / etc.** — none of the three paths require these.
 
 That's it. One or two accounts, depending on path.
@@ -52,7 +56,7 @@ For the Anthropic API path: same care applies. The key looks like `sk-ant-...`.
 
 ### Why we don't make you create Supabase / Vercel yet
 
-Supabase and Vercel free tiers are real and generous, but they have inactivity timers. Creating them at the start of Module 0 means by the time you reach Phase 3, the timer may have already started counting and your free Supabase project may be paused. Better to create them in Phase 3 when you'll use them within hours.
+Supabase and Vercel free tiers are real and generous, but they have inactivity timers. Creating them at the start of Module 0 means by the time you build the thread project, the timer may have already started counting and your free Supabase project may be paused. Better to create them when you build the thread project, when you'll use them within hours.
 
 ## Exercise
 
@@ -68,7 +72,7 @@ You've got this if you can:
 
 - Sign into your GitHub account.
 - Sign into your AI-agent account (Anthropic or Google).
-- Tell a friend exactly which accounts you skipped and why ("I'm not creating Vercel/Supabase yet because Phase 3 is when the timers matter").
+- Tell a friend exactly which accounts you skipped and why ("I'm not creating Vercel/Supabase yet because the thread project is when the timers matter").
 
 ## What you just did
 
