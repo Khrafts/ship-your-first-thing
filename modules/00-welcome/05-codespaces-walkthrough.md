@@ -51,8 +51,8 @@ You'll see a VS Code interface with your workspace's files in the left sidebar: 
 **Step 6 — Open the README.**
 In the file explorer, click `README.md`. The file opens. It explains what each file in your workspace is for. You can right-click the tab and choose "Open Preview" to see the rendered version.
 
-**Step 7 — Confirm the terminal works.**
-Press `` Ctrl+` `` (backtick) or open the Terminal menu → `New Terminal`. The **terminal** (the text panel inside a code editor where you type commands and the computer types replies, [→ GLOSSARY](../../GLOSSARY.md#terminal)) opens at the bottom. Type:
+**Step 7 — Find the terminal (it's usually already open).**
+When the Codespace finishes loading, the **terminal** (the text panel inside a code editor where you type commands and the computer types replies, [→ GLOSSARY](../../GLOSSARY.md#terminal)) is usually already open in a panel across the bottom of the editor — a dark strip with a blinking cursor. If you see it, you're set. If you don't, open one: press `` Ctrl+` `` (the backtick key, usually at the top-left of your keyboard), or use the top menu — `Terminal` → `New Terminal`. Then type:
 
 ```bash
 ls
