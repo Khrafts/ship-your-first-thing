@@ -28,7 +28,7 @@ AI agents are confident. They will write code that "works" (in the sense of runn
 
 The most common failure shape has a name. A **hallucination** (a one-line definition: when an AI agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing, [→ GLOSSARY](../../GLOSSARY.md#hallucination)) is the failure that fools beginners most often. The output looks plausible because the agent is fluent at producing plausible-looking text; the catch is that plausibility does not mean accuracy.
 
-This lesson walks one deliberately under-specified ask and watches both agents hallucinate together. The worked example continues on `modules/03-the-loop/scratch/index.html`: the file already shows today's date and a button that hides or shows it (Lessons 1 and 2). The new ask is short and under-specified:
+This lesson walks one deliberately under-specified ask and watches both agents hallucinate together. The worked example continues on `index.html`: the file already shows today's date and a button that hides or shows it (Lessons 1 and 2). The new ask is short and under-specified:
 
 > Add a list of 3 favorite books below the button.
 
@@ -99,7 +99,7 @@ Five patterns. Visual / output / plan-vs-actual / narration / error message. Mod
 
 Run the L3 ask on your chosen agent. Plan twenty to twenty-five minutes.
 
-1. **Confirm** that `modules/03-the-loop/scratch/index.html` shows today's date below the tagline AND a button that hides or shows it (the Lesson 2 state). If it does not, run Lesson 2's exercise first.
+1. **Confirm** that `index.html` shows today's date below the tagline AND a button that hides or shows it (the Lesson 2 state). If it does not, run Lesson 2's exercise first.
 2. **Open your agent.** Type `claude` (Path 1 or Path 3) or `gemini` (Path 2) in the terminal. Open the scratch file in VS Code's Live Preview (right-click → Show Preview).
 3. **Type the L3 ask, verbatim:** `Add a list of 3 favorite books below the button.`
 4. **Watch the agent edit.** Wait for it to finish. Switch to the Live Preview tab.
@@ -117,7 +117,7 @@ Run the L3 ask on your chosen agent. Plan twenty to twenty-five minutes.
    - What the agent invented (the three specific titles).
    - What your next ask — the STEER step, next lesson — would be.
 
-Do not commit `scratch/index.html` yet. Lesson 4 progresses the same file further.
+Do not commit `index.html` yet. Lesson 4 progresses the same file further.
 
 ## Checkpoint
 

@@ -11,9 +11,9 @@ An open-source, self-paced course that teaches non-technical people to ship a re
 
 ## What this is
 
-This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content is also wrapped by a Next.js platform (built, in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces, and this repository stays canonical — on day one of working through the course you only need this repository and a browser.
+This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons that follow a single, locked anatomy. The same content is also wrapped by a Next.js platform (built, in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces, and this repository stays canonical — on day one you only need a browser to read it. The hands-on modules use a separate, tiny starter workspace you copy for yourself ([`Khrafts/syft-starter`](https://github.com/Khrafts/syft-starter)); `SETUP.md` walks you through it.
 
-The course is designed to be picked up cold. A learner who has never written production code should be able to clone or open this repo, follow `SETUP.md`, and work through the modules in order without needing a workshop, a video, or a person to answer questions live. The "and recover when the AI gets it wrong" part is the differentiator: the modules teach the durable AI-coding loop alongside the toolchain, so by the end you can both ship a thing and get unstuck when the model produces something broken.
+The course is designed to be picked up cold. A learner who has never written production code should be able to open this course in a browser, follow `SETUP.md` to set up their own workspace, and work through the modules in order without needing a workshop, a video, or a person to answer questions live. The "and recover when the AI gets it wrong" part is the differentiator: the modules teach the durable AI-coding loop alongside the toolchain, so by the end you can both ship a thing and get unstuck when the model produces something broken.
 
 ## Who this is for
 
@@ -27,7 +27,7 @@ The course is designed to be picked up cold. A learner who has never written pro
 ## How to use this course
 
 1. Read `SETUP.md` and choose your cost path from `BUDGET.md`.
-2. Open this repo in GitHub Codespaces (instructions in `SETUP.md`).
+2. Make your own copy of the starter workspace ([github.com/Khrafts/syft-starter](https://github.com/Khrafts/syft-starter)) and open a Codespace on it — full instructions in `SETUP.md`. You read the course here; you build in your own copy.
 3. Work through Module 0, then Module 1, then Module 2 onward — in order.
 4. When something breaks, check `COMMON-ISSUES.md`. When a page doesn't match what you see, check `WHAT-CHANGED.md`.
 

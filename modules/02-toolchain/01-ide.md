@@ -61,7 +61,7 @@ After each step, write one sentence describing what you saw. Save those three se
 You've got this if you can:
 
 1. Name two things your Codespace's IDE does that TextEdit or Notepad does not.
-2. Open any file in this repo in under five seconds using `Ctrl+P` or `Cmd+P`.
+2. Open any file in your workspace in under five seconds using `Ctrl+P` or `Cmd+P`.
 
 ## Going deeper
 

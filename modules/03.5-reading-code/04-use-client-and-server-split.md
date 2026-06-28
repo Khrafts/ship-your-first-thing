@@ -31,7 +31,7 @@ You tell the framework which category a file is in via a one-line **directive** 
 
 ### Two real files, side by side
 
-Open `modules/03.5-reading-code/sample-app/app/components/InteractiveButton.tsx`. The first line is `'use client'`:
+Open `sample-app/app/components/InteractiveButton.tsx`. The first line is `'use client'`:
 
 ```tsx
 'use client'
@@ -48,7 +48,7 @@ export default function InteractiveButton() {
 }
 ```
 
-Now open `modules/03.5-reading-code/sample-app/app/components/StaticHero.tsx`. The first line is NOT `'use client'`:
+Now open `sample-app/app/components/StaticHero.tsx`. The first line is NOT `'use client'`:
 
 ```tsx
 export default function StaticHero() {
@@ -105,13 +105,13 @@ Plan twenty to twenty-five minutes for this exercise. It uses your AI agent (Cla
 
 > **Before you start:** if the agent's explanation includes terms like `reconciliation`, `virtual DOM`, or `render phases`, ask it to simplify — that's beyond M3.5's floor and you don't need to learn it here.
 
-1. **Open both files in your IDE.** `modules/03.5-reading-code/sample-app/app/components/InteractiveButton.tsx` and `modules/03.5-reading-code/sample-app/app/components/StaticHero.tsx`. Read both top to bottom. They are short.
+1. **Open both files in your IDE.** `sample-app/app/components/InteractiveButton.tsx` and `sample-app/app/components/StaticHero.tsx`. Read both top to bottom. They are short.
 
 2. **Open your agent in a fresh session.** Use `/clear` if you were in the middle of something else.
 
 3. **Ask the agent the exact question:**
 
-   > "Open `modules/03.5-reading-code/sample-app/app/components/InteractiveButton.tsx` and `modules/03.5-reading-code/sample-app/app/components/StaticHero.tsx`. Explain in plain English why one has `'use client'` at the top and the other does not. Keep it short — three sentences."
+   > "Open `sample-app/app/components/InteractiveButton.tsx` and `sample-app/app/components/StaticHero.tsx`. Explain in plain English why one has `'use client'` at the top and the other does not. Keep it short — three sentences."
 
 4. **Read the agent's answer.** In a scratch file (`m3.5-l4-scratch.txt` at the repo root or a personal scratch folder — do not modify the sample-app), write down:
    - Anything in the agent's answer that sounds right to you.

@@ -30,13 +30,13 @@ A **planning conversation** (a one-line definition: a session where you ask the 
 
 The discipline is to plan first, then execute. Even for a small task. Naming the plan explicitly — out loud, as a prompt — improves the execution every time, because the agent's plan is the cheapest place to catch a misunderstanding.
 
-The rest of this lesson walks one planning conversation, one execution conversation, and the four slash commands you use to keep both kinds of session efficient. The worked example continues on `modules/03-the-loop/scratch/index.html`: the file already shows today's date (Lesson 1's loop iteration). This lesson adds a button below the date that shows or hides it when clicked.
+The rest of this lesson walks one planning conversation, one execution conversation, and the four slash commands you use to keep both kinds of session efficient. The worked example continues on `index.html`: the file already shows today's date (Lesson 1's loop iteration). This lesson adds a button below the date that shows or hides it when clicked.
 
 ### Planning: ask for a plan, not a change
 
 A planning ask names the outcome you want AND tells the agent NOT to edit yet. The sentence "don't write code yet" is the load-bearing one — without it, most modern agents will jump straight to the file.
 
-> Plan: I want to add a button below the date that shows or hides the date when clicked. Don't write code yet — describe what you would change in `modules/03-the-loop/scratch/index.html` and the steps you would take.
+> Plan: I want to add a button below the date that shows or hides the date when clicked. Don't write code yet — describe what you would change in `index.html` and the steps you would take.
 
 That sentence has three parts. First, the word "Plan:" at the start — a literal signal to the agent. Second, the concrete outcome (a button below the date that toggles visibility). Third, the closing constraint ("don't write code yet — describe..."). The agent will respond with a plan, not a diff.
 
@@ -153,9 +153,9 @@ Planning + execution split + four slash commands = the ASK step's full kit. The 
 
 Run a planning conversation, then an execution conversation, then practice three slash commands. Plan twenty to thirty minutes.
 
-1. **Confirm** that `modules/03-the-loop/scratch/index.html` shows today's date below the tagline (the Lesson 1 state). If it does not, run Lesson 1's exercise first.
+1. **Confirm** that `index.html` shows today's date below the tagline (the Lesson 1 state). If it does not, run Lesson 1's exercise first.
 2. **Open your agent** in your Codespace terminal. Open the scratch file in VS Code's Live Preview (right-click → Show Preview).
-3. **Planning ask:** Type — verbatim — `Plan: I want to add a button below the date that shows or hides the date when clicked. Don't write code yet — describe what you would change in modules/03-the-loop/scratch/index.html and the steps you would take.` Read the plan the agent gives you. If anything is unclear, ask one follow-up question.
+3. **Planning ask:** Type — verbatim — `Plan: I want to add a button below the date that shows or hides the date when clicked. Don't write code yet — describe what you would change in index.html and the steps you would take.` Read the plan the agent gives you. If anything is unclear, ask one follow-up question.
 4. **Execution ask:** Type `OK, please proceed with the plan.` Watch the edit happen. Open the Live Preview tab; click the button. The date should toggle.
 5. **`/clear`** — type it. The conversation history wipes. Then type `/context` (or `/stats` on Gemini CLI) and confirm the usage dropped close to zero.
 6. **Write three sentences** in a scratch file (any plain-text note):
@@ -164,7 +164,7 @@ Run a planning conversation, then an execution conversation, then practice three
    - One thing your agent's execution did that you did not expect.
    - What `/context` (or `/stats`) showed before and after `/clear`.
 
-Do not commit the `scratch/index.html` change yet. Lessons 3 and 4 progress the same file further.
+Do not commit the `index.html` change yet. Lessons 3 and 4 progress the same file further.
 
 ## Checkpoint
 

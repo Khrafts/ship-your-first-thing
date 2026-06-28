@@ -4,7 +4,7 @@ Module 0 prepares your environment so the rest of the course flows: welcome, har
 
 ## What this module builds
 
-By the end of this module, you can open a working development environment in your browser, signed in with exactly the accounts your chosen cost path needs, and reach Module 1 ready to learn.
+By the end of this module, you can open a working development environment of your own in the browser, signed in with exactly the accounts your chosen cost path needs, and reach Module 1 ready to learn.
 
 Each lesson builds on the last:
 
@@ -12,7 +12,7 @@ Each lesson builds on the last:
 - **Lesson 2 — Hardware check:** you've picked Codespaces or a local install based on a short triage, not by installing things and finding the cost later → sets up Lesson 3 by running the same triage on the thing that actually costs money: your AI tool.
 - **Lesson 3 — Cost-path triage:** you've picked one of the three honest cost paths and know which AI-agent account it needs → sets up Lesson 4 by telling you exactly which accounts to create and which to skip.
 - **Lesson 4 — Account creation:** you've created only the accounts your path requires (GitHub plus one AI-agent account) → sets up Lesson 5 by giving you the GitHub sign-in that opens your environment.
-- **Lesson 5 — Codespaces walkthrough:** you've opened your environment, run a command in it, and reached Module 1's index → sets up Module 1, where you build the mental models the rest of the course rests on.
+- **Lesson 5 — Codespaces walkthrough:** you've made your own copy of the starter workspace, opened a Codespace on it, and run a command inside it → sets up Module 1, where you build the mental models the rest of the course rests on.
 
 The thread that ties it together: ask "what does this cost me?" before "how do I install it?" — the same triage habit you'll carry into every AI prompt in Module 3.
 

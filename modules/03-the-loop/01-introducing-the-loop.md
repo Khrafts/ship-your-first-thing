@@ -32,13 +32,13 @@ Here is what a steer sounds like in practice — if the date appeared above the 
 
 The text you type to the agent at each ask is called a **prompt** (a one-line definition: the specific text you send to an AI agent describing what you want, [→ GLOSSARY](../../GLOSSARY.md#prompt)). A specific prompt produces specific output; a vague prompt produces vague output. The loop is the discipline of getting from vague to specific without rewriting from scratch every time.
 
-The rest of this lesson walks one complete iteration on `modules/03-the-loop/scratch/index.html` — the starter file that ships with this course. You will see one full pass through the four steps with both agents shown side by side, then run it yourself on the one you picked.
+The rest of this lesson walks one complete iteration on `index.html` — the starter file in your workspace. You will see one full pass through the four steps with both agents shown side by side, then run it yourself on the one you picked.
 
 ### 1. intent
 
 Before you type anything: what do you actually want?
 
-Open `modules/03-the-loop/scratch/index.html` in your IDE. It is a small page with two placeholders — a name and a tagline — and an empty `<script>` block. The page renders almost nothing if you open the preview right now; that is on purpose, because every Module 3 lesson is one iteration of the loop adding one visible piece.
+Open `index.html` in your IDE. It is a small page with two placeholders — a name and a tagline — and an empty `<script>` block. The page renders almost nothing if you open the preview right now; that is on purpose, because every Module 3 lesson is one iteration of the loop adding one visible piece.
 
 Your intent for this lesson: **add today's date below the tagline.**
 
@@ -52,7 +52,7 @@ Now you type.
 
 Open a terminal panel in your Codespace (`` Ctrl+` `` if it is not already visible). Start your agent — `claude` if you picked Path 1 or Path 3 in Module 0, `gemini` if you picked Path 2. The smallest ask:
 
-> Add today's date below the tagline in `modules/03-the-loop/scratch/index.html`.
+> Add today's date below the tagline in `index.html`.
 
 That is your prompt. Notice it does not say "use JavaScript." It does not say "use `toLocaleDateString`." It does not say "put it in a `<p>` tag." The ask names the OUTCOME you want; the HOW is the agent's job.
 
@@ -88,7 +88,7 @@ Both agents will produce something specific. Neither is wrong. The divergence is
 
 Now you look at what the agent produced. Two questions, in order:
 
-1. **Did the file actually change?** Open `modules/03-the-loop/scratch/index.html`. Look at the `<script>` block. Is there real JavaScript there now, or did the agent only describe what it would do without doing it? Most modern agents will make the edit; some will pause for confirmation first. Either is fine — what matters is that you READ what changed.
+1. **Did the file actually change?** Open `index.html`. Look at the `<script>` block. Is there real JavaScript there now, or did the agent only describe what it would do without doing it? Most modern agents will make the edit; some will pause for confirmation first. Either is fine — what matters is that you READ what changed.
 2. **Does the page show what you wanted?** Open the file in VS Code's Live Preview (right-click → Show Preview). Today's date should appear below the tagline. If it does, the loop closed in one iteration. If it does not, you steer.
 
 > **Capture slot — evaluate moment.** Replace the next sentence with what you actually observed during the capture session. Example: "In both sessions, the agent produced a small JavaScript snippet that inserts today's date after the tagline; the browser preview shows today's date below the tagline as expected." If a screenshot of the browser preview is in `screenshots/m3/01-introducing-the-loop/`, embed it here with descriptive alt text.
@@ -114,10 +114,10 @@ The course teaches the loop on two agents because the LOOP is durable; the keyst
 
 Run this exact loop on YOUR chosen agent. Plan twenty to twenty-five minutes.
 
-1. **Reset** your `modules/03-the-loop/scratch/index.html` if you have already edited it. In VS Code's source-control panel, right-click the file → Discard changes; or from the terminal, run `git checkout modules/03-the-loop/scratch/index.html`. You want to start from the empty-`<script>` state.
+1. **Reset** your `index.html` if you have already edited it. In VS Code's source-control panel, right-click the file → Discard changes; or from the terminal, run `git checkout index.html`. You want to start from the empty-`<script>` state.
 2. **Open the file** in your IDE. Open Live Preview on it (right-click → Show Preview). You should see a blank-ish page with the name and tagline placeholders.
 3. **Open your agent.** Type `claude` (Path 1 or Path 3) or `gemini` (Path 2) in the terminal.
-4. **Ask the smallest ask:** "Add today's date below the tagline in `modules/03-the-loop/scratch/index.html`." Type that sentence; nothing else.
+4. **Ask the smallest ask:** "Add today's date below the tagline in `index.html`." Type that sentence; nothing else.
 5. **Evaluate.** Switch to the Live Preview tab. Does the page now show today's date below the tagline? If yes, the loop closed in one iteration.
 6. **(If no) Steer.** One follow-up ask describing what went wrong. Keep it short. Watch the agent's second response. Re-evaluate.
 7. **Stop.** When the date renders correctly, the iteration is done.
@@ -128,7 +128,7 @@ When you finish, write three sentences in a scratch file (any plain-text note wi
 - Did you need to steer? If so, what was the follow-up ask?
 - What is one thing you noticed about your agent's behavior that surprised you?
 
-Do not commit the `scratch/index.html` change yet. The file evolves across all four M3 lessons; we will commit at module close.
+Do not commit the `index.html` change yet. The file evolves across all four M3 lessons; we will commit at module close.
 
 ## Checkpoint
 

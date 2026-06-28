@@ -23,7 +23,7 @@ You did the triage in the last lesson. This lesson is the payoff: create three t
 You'll create accounts in this order: GitHub first (everyone needs it), then your chosen AI-agent account.
 
 **Account 1: GitHub.**
-Everyone needs GitHub — this is where the course lives, where Codespaces runs, and where you'll push your work. Sign up at [github.com](https://github.com) with an email you'll keep using. Use a real-looking username; this is your public identity in OSS.
+Everyone needs GitHub — this is where the course lives, where Codespaces runs, and where you'll save your work. Sign up at [github.com](https://github.com) with an email you'll keep using. Use a real-looking username; this is your public identity in OSS.
 
 If GitHub asks for email verification or phone verification and the message doesn't arrive, don't create a second account while you wait for verification.
 
