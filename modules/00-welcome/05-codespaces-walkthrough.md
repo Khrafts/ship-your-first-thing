@@ -30,21 +30,23 @@ For Module 0 and Module 1 you don't strictly need the workspace — those module
 The walkthrough below assumes you picked Codespaces in lesson 02. If you picked the local install path instead, follow [`SETUP.md` § "Local install"](../../SETUP.md) instead and skip the rest of this core read.
 
 **Step 1 — Open the workspace starter.**
-Go to **github.com/Khrafts/syft-starter** (the link is in the course README). This is the starter workspace the course provides. You won't work in it directly — you'll make your own copy in the next step.
+Go to **[github.com/Khrafts/syft-starter](https://github.com/Khrafts/syft-starter)**. This is the starter workspace the course provides. You won't work in it directly — you'll make your own copy in the next step. (On the course site, that link opens in a new tab, so this lesson stays put behind it.)
 
-![The syft-starter repository page on GitHub. The green "Use this template" button is at the top right — that's what you'll click in the next step.](../../screenshots/m0/05-codespaces-walkthrough/use-this-template.png)
+![The syft-starter repository page on GitHub. A numbered marker ① and an arrow point to the green "Use this template" button at the top right — that's the button you click in the next step.](../../screenshots/m0/05-codespaces-walkthrough/use-this-template.png)
 
 **Step 2 — Make your own copy.**
 Click the green `Use this template` button, then `Create a new repository`. Give it any name you like — `my-first-thing` is a fine choice. Leave the other options as they are and create it. GitHub makes a copy of the starter under your own account.
 
-![GitHub's "Create a new repository" form, pre-filled with the syft-starter template. You give your copy a name, then create it.](../../screenshots/m0/05-codespaces-walkthrough/create-from-template.png)
+![GitHub's "Create a new repository" form, started from the Khrafts/syft-starter template. A numbered marker ① and an arrow point to the "Repository name" field, filled in with the example name my-first-thing.](../../screenshots/m0/05-codespaces-walkthrough/create-from-template.png)
 
 > **Note:** If the buttons or labels you see on GitHub don't match these exactly, open the lesson chat ("Ask about this lesson") on the course site and describe what you do see — it can help you map your screen to this step against this exact lesson.
 
 > **Why your own copy?** The work you do in this course saves to a repository, and you can only save into a repository you own — so the copy has to be yours. Working in one you didn't own would mean you couldn't save what you make. Your copy is yours alone: nothing you do in it touches anyone else's work.
 
 **Step 3 — Open a Codespace on your copy.**
-You're now looking at your own repository (the web address shows your account name, not `Khrafts`). Click the green `Code` button. Click the `Codespaces` tab. Click `Create codespace on main`.
+You're now looking at your own repository (the web address shows your account name, not `Khrafts`). Click the green `Code` button. In the panel that opens, click the `Codespaces` tab, then click `Create codespace on main`.
+
+![Your own repository page. A numbered marker ① and an arrow point to the green "Code" button. Click it to open the panel that holds the "Codespaces" tab.](../../screenshots/m0/05-codespaces-walkthrough/open-codespace.png)
 
 **Step 4 — Wait ~60–90 seconds.**
 The Codespace boots. You'll see a progress indicator. The first boot is slowest; subsequent reopens are fast.
@@ -52,7 +54,7 @@ The Codespace boots. You'll see a progress indicator. The first boot is slowest;
 **Step 5 — The editor opens.**
 You'll see a VS Code interface with your workspace's files in the left sidebar: a `README.md`, an `index.html`, a `sample-app` folder, and a few files whose names start with a dot. The editor area in the middle is empty until you open a file.
 
-![A freshly opened Codespace: the workspace files in the left sidebar, the README open in the middle, and a terminal panel already open along the bottom showing a command prompt.](../../screenshots/m0/05-codespaces-walkthrough/codespace-terminal-open.png)
+![A freshly opened Codespace. A numbered marker ① points to your workspace files in the left sidebar; marker ② points to the terminal panel along the bottom — usually already open — showing a command prompt.](../../screenshots/m0/05-codespaces-walkthrough/codespace-terminal-open.png)
 
 **Step 6 — Open the README.**
 In the file explorer, click `README.md`. The file opens. It explains what each file in your workspace is for. You can right-click the tab and choose "Open Preview" to see the rendered version.

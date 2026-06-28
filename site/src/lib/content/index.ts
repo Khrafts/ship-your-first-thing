@@ -125,6 +125,38 @@ function hasUrl(node: unknown): node is UrlNode {
   );
 }
 
+// A hast element with a mutable property bag — enough for the post-render
+// `<a>`/`<img>` tweaks below. (The `hast` type package isn't directly
+// resolvable under the pnpm layout; see the HastNode note further down.)
+interface HastElementNode {
+  type: string;
+  tagName?: string;
+  properties?: Record<string, unknown>;
+}
+
+function isElement(node: unknown): node is HastElementNode {
+  return (
+    typeof node === "object" &&
+    node !== null &&
+    (node as { type?: unknown }).type === "element"
+  );
+}
+
+/** Append a class to a hast element's property bag, preserving any existing
+ *  classes (which rehype stores as a string or an array). */
+function addClass(props: Record<string, unknown>, className: string): void {
+  const existing = props.className;
+  const classes = Array.isArray(existing)
+    ? existing.map(String)
+    : typeof existing === "string"
+      ? existing.split(/\s+/).filter(Boolean)
+      : [];
+  if (!classes.includes(className)) {
+    classes.push(className);
+  }
+  props.className = classes;
+}
+
 // ---------------------------------------------------------------------------
 // Markdown rendering
 // ---------------------------------------------------------------------------
@@ -244,6 +276,45 @@ async function renderMarkdown(markdown: string, sourceDir: string): Promise<stri
       dropLeadingH1(tree as unknown as HastRoot);
       dropNavigationSection(tree as unknown as HastRoot);
       dropLessonListSection(tree as unknown as HastRoot);
+    })
+    .use(() => (tree) => {
+      // Open links that leave the site in a new tab. Only absolute http(s)
+      // targets qualify; site-relative routes (/…), same-page anchors (#…),
+      // and other schemes (mailto:, etc.) are left to navigate in place.
+      visit(tree, "element", (rawNode) => {
+        // The hast element type isn't registered with unist-util-visit here, so
+        // the "element" test narrows the callback arg to `never`; launder it
+        // back through `unknown` and re-narrow with the runtime guard.
+        const node: unknown = rawNode;
+        if (!isElement(node) || node.tagName !== "a") return;
+        const href = node.properties?.href;
+        if (typeof href === "string" && /^https?:\/\//i.test(href)) {
+          const props = node.properties ?? {};
+          node.properties = props;
+          props.target = "_blank";
+          props.rel = "noopener noreferrer";
+        }
+      });
+    })
+    .use(() => (tree) => {
+      // Mark content images as click-to-expand. lesson-article.tsx wires the
+      // `zoomable` class to a <dialog> lightbox on the client; the role,
+      // tabindex and aria-label make the trigger keyboard- and screen-reader-
+      // reachable. github.com ignores the extra class and renders the image
+      // as usual, so the static course is unaffected.
+      visit(tree, "element", (rawNode) => {
+        const node: unknown = rawNode; // see the link visitor above re: `never`
+        if (!isElement(node) || node.tagName !== "img") return;
+        const props = node.properties ?? {};
+        node.properties = props;
+        addClass(props, "zoomable");
+        props.role = "button";
+        props.tabIndex = 0;
+        if (props["aria-label"] === undefined && props.ariaLabel === undefined) {
+          const alt = typeof props.alt === "string" ? props.alt.trim() : "";
+          props["aria-label"] = alt.length > 0 ? `Expand image: ${alt}` : "Expand image";
+        }
+      });
     })
     .use(rehypeStringify)
     .process(markdown);

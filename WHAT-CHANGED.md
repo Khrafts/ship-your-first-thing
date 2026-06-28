@@ -26,11 +26,11 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
-## 2026-06-28 — The Codespaces walkthrough now has screenshots
+## 2026-06-28 — The Codespaces walkthrough has labeled, zoomable screenshots
 
-**Change:** Module 0 Lesson 5 (the Codespaces walkthrough) now shows screenshots of the key steps — the "Use this template" button, the new-repository form, and a booted Codespace with the terminal already open at the bottom.
-It also notes that the terminal is usually open by default after a Codespace boots, with how to open one if it isn't.
-**If you're affected:** Nothing to do — the steps are unchanged; the pictures just make them easier to follow.
+**Change:** Module 0 Lesson 5 (the Codespaces walkthrough) now shows labeled screenshots of the key steps — the "Use this template" button, the new-repository form, the Code → Codespaces panel, and a booted Codespace with its terminal open — each marked with arrows and step numbers.
+On the course site you can click any screenshot to enlarge it, and the link to the starter workspace opens directly in a new tab.
+**If you're affected:** Nothing to do — the steps are unchanged; the clearer pictures just make them easier to follow.
 **Details:** Screenshots are in `screenshots/m0/05-codespaces-walkthrough/`; the lesson is `modules/00-welcome/05-codespaces-walkthrough.md`.
 
 ## 2026-06-27 — You now build in your own copy of a small workspace, not the course repo
