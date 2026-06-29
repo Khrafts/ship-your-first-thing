@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 05
 est_minutes: 15
 prereqs: ["04-account-creation"]
-updated: "2026-06-28"
+updated: "2026-06-29"
 deviations: []
 ---
 
@@ -35,7 +35,9 @@ Go to **[github.com/Khrafts/syft-starter](https://github.com/Khrafts/syft-starte
 ![The syft-starter repository page on GitHub. A numbered marker ① and an arrow point to the green "Use this template" button at the top right — that's the button you click in the next step.](../../screenshots/m0/05-codespaces-walkthrough/use-this-template.png)
 
 **Step 2 — Make your own copy.**
-Click the green `Use this template` button, then `Create a new repository`. Give it any name you like — `my-first-thing` is a fine choice. Leave the other options as they are and create it. GitHub makes a copy of the starter under your own account.
+Click the green `Use this template` button. A short menu opens — click `Create a new repository`. On the form that follows, give your copy any name you like — `my-first-thing` is a fine choice — leave the other options as they are, and create it. GitHub makes a copy of the starter under your own account.
+
+![The syft-starter page with the "Use this template" menu open. A numbered marker ① and an arrow point to the "Create a new repository" option — the choice to click right after "Use this template".](../../screenshots/m0/05-codespaces-walkthrough/create-new-repository.png)
 
 ![GitHub's "Create a new repository" form, started from the Khrafts/syft-starter template. A numbered marker ① and an arrow point to the "Repository name" field, filled in with the example name my-first-thing.](../../screenshots/m0/05-codespaces-walkthrough/create-from-template.png)
 
