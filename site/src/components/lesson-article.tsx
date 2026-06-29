@@ -165,6 +165,100 @@ export function LessonArticle({ html }: { html: string }) {
     };
   }, [html, resolvedTheme]);
 
+  // Image lightbox. Activating a `zoomable` image (click, or Enter/Space when
+  // focused) opens it full-size in a native <dialog>. showModal() gives the
+  // dim backdrop, Esc-to-close, and focus trapping for free; we add a caption,
+  // a close button, and backdrop-click-to-dismiss, and restore focus to the
+  // triggering image on close. Listeners are delegated on the container so the
+  // effect never needs to rebind per image, and it stays independent of the
+  // Mermaid effect above (different concern, its own dialog).
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Build the dialog once and reuse it for every image on the page.
+    const dialog = document.createElement("dialog");
+    dialog.className = "lightbox";
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "lightbox-close";
+    closeButton.setAttribute("aria-label", "Close image");
+    closeButton.textContent = "×"; // ×
+    const figure = document.createElement("figure");
+    figure.className = "lightbox-figure";
+    const fullImage = document.createElement("img");
+    fullImage.className = "lightbox-image";
+    const caption = document.createElement("figcaption");
+    caption.className = "lightbox-caption";
+    figure.append(fullImage, caption);
+    dialog.append(closeButton, figure);
+    document.body.append(dialog);
+
+    // The image that opened the lightbox, so focus can return to it on close.
+    let trigger: HTMLElement | null = null;
+
+    const open = (source: HTMLImageElement) => {
+      trigger = source;
+      fullImage.src = source.currentSrc || source.src;
+      const alt = source.getAttribute("alt") ?? "";
+      fullImage.alt = alt;
+      caption.textContent = alt;
+      caption.hidden = alt.length === 0;
+      dialog.showModal();
+    };
+
+    const close = () => {
+      if (dialog.open) dialog.close();
+    };
+
+    const zoomableFrom = (event: Event): HTMLImageElement | null => {
+      const target = event.target as HTMLElement | null;
+      const image = target?.closest("img.zoomable");
+      return image instanceof HTMLImageElement ? image : null;
+    };
+
+    const onClick = (event: MouseEvent) => {
+      const image = zoomableFrom(event);
+      if (image) open(image);
+    };
+
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      const image = zoomableFrom(event);
+      if (image) {
+        event.preventDefault(); // Space would otherwise scroll the page
+        open(image);
+      }
+    };
+
+    // A modal <dialog> fills the viewport as a centring layer; a click that
+    // lands on the dialog itself (the dim area around the figure) dismisses.
+    const onDialogClick = (event: MouseEvent) => {
+      if (event.target === dialog) close();
+    };
+
+    const onDialogClose = () => {
+      trigger?.focus();
+      trigger = null;
+    };
+
+    container.addEventListener("click", onClick);
+    container.addEventListener("keydown", onKeydown);
+    closeButton.addEventListener("click", close);
+    dialog.addEventListener("click", onDialogClick);
+    dialog.addEventListener("close", onDialogClose);
+
+    return () => {
+      container.removeEventListener("click", onClick);
+      container.removeEventListener("keydown", onKeydown);
+      closeButton.removeEventListener("click", close);
+      dialog.removeEventListener("click", onDialogClick);
+      dialog.removeEventListener("close", onDialogClose);
+      close();
+      dialog.remove();
+    };
+  }, [html]);
+
   return (
     <div
       ref={containerRef}
