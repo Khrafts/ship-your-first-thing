@@ -31,4 +31,4 @@ All four M3.5 lessons read from a tiny pre-baked Next.js sample-app at `sample-a
 ## Navigation
 
 [← Module 3 — The loop in depth](../03-the-loop/README.md)
-[Next: Module 4 — Designing & building the thread project →](../../README.md)
+[Next: Module 4 — Designing & building the thread project →](../04-thread-project/README.md)

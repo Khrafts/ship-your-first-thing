@@ -38,6 +38,10 @@ Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-rea
 The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `index.html`."*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
+### async-cookies
+A SYMPTOM-only label: the `await` your agent puts in front of `cookies()`. You scan the agent's changes for `await cookies()` rather than a bare `cookies()`, and ask the agent when the `await` is missing — you do not learn what it is waiting for. *Example: seeing `const store = cookies()` with no `await` and asking the agent why.*
+Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
+
 ### authentication
 Confirming you are who you claim to be. Sometimes shortened to "authn." *Example: a password check, or clicking a magic link sent to your email.*
 Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do-what.md).
@@ -364,6 +368,10 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 The `/stats` slash command (Gemini CLI) — Gemini CLI's equivalent of Claude Code's `/context`. Shows conversation statistics including token usage. *Example: Path 2 learners use this whenever Claude Code learners would use `/context`.*
 Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
 
+### smell-test
+One thing to look for and one question to ask when it is not there — a check you run on the agent's work, either in what it changed or in the running app, without understanding the code underneath. *Example: looking for `WITH CHECK` next to every rule that lets someone edit something, and asking the agent about it when it is missing.*
+Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
+
 ### sql
 Structured Query Language — the standard way to ask a relational database for rows. *Example: `SELECT * FROM posts ORDER BY created_at DESC`.*
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
@@ -406,3 +414,11 @@ Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.
 ### vercel
 A service that runs your code on the public internet. Watches a GitHub repository, builds the code on every push, and serves it at a public URL. *Example: the course platform deploys to Vercel at `https://shipyourfirstthing.com`.*
 Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
+
+---
+
+## W
+
+### with-check
+A SYMPTOM-only label: the safety latch you scan for next to every rule that lets someone edit something. You check whether the words are there and ask the agent when they are not — you do not learn how the rule is written or what it does. *Example: scanning a set of database rules for `WITH CHECK` and asking "what stops a person from editing a post to look like somebody else wrote it?" when it is absent.*
+Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
