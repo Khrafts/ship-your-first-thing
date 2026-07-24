@@ -324,7 +324,7 @@ Audience floor: M5 complete.
 - **bug report** — introduce as "someone tells you the deployed app does something wrong; you reproduce it, then write a planning conversation."
 - **reproduce** (in the bug-reproduction sense) — "open the deployed app, follow the steps, confirm you see the same wrong thing."
 - **additive feature** — "a new feature you add to a working app without breaking the working parts."
-- **prompt injection** — SYMPTOM-only: "a user supplies input designed to confuse the agent or the app." The learner does NOT learn attack vectors as a concept; the lesson teaches the SMELL-TEST ("feed the deployed app input that looks like a command — does the agent's code sanitize it before storing or echoing it?").
+- **prompt injection** — SYMPTOM-only: "a user supplies input designed to confuse the agent or the app." The learner does NOT learn attack vectors as a concept; the lesson teaches the SMELL-TEST as an AGENT-BEHAVIOR observation ("paste untrusted content from the live app — a user's comment or bio, a bug report someone sent — into the coding agent; watch whether the agent does only what you asked or starts acting on instructions hidden in the pasted text"). The recovery is learner-side: `/clear`, restate intent in your own words, and describe the content instead of pasting it verbatim. This is NOT an app-output-escaping check — a non-coder cannot audit sanitization, and the framework escapes stored user text by default, so that direction cannot fail on the shipped stack. *(Amended 2026-07-24 from the earlier "does the agent's code sanitize it before storing" phrasing, under the Phase 6 CONTEXT gate + CLAUDE.md HR 14; the "agent or the app" definition is unchanged.)*
 
 ### Forbidden in M6 specifically
 
@@ -337,7 +337,7 @@ Reserved for Module 7:
 - Linting beyond the project's existing voice-lint
 - Type-safety as a concept
 
-**M6 SYMPTOM-only rule:** Prompt-injection is the headline M6 limit-and-smell-test pair. The lesson teaches WHAT THE SYMPTOM LOOKS LIKE (input that contains instructions; input that contains code; input that contains markup) and WHAT THE SMELL-TEST IS ("feed it to the deployed app; observe whether the agent's code sanitizes it before storing"). The lesson does NOT teach attack-vector taxonomies, mitigation algorithms, or threat-modeling.
+**M6 SYMPTOM-only rule:** Prompt-injection is the headline M6 limit-and-smell-test pair. The lesson teaches WHAT THE SYMPTOM LOOKS LIKE (the coding agent starts doing something you never asked about right after you pasted content from outside) and WHAT THE SMELL-TEST IS ("paste the gate-supplied content sample into the agent; observe whether it stays on the task you asked for"). The recovery is learner-side (`/clear`; restate intent; describe don't paste). To guarantee the failure is observable, the lesson ships a fixed, gate-supplied content sample the learner copies and pastes — the learner never authors the payload. The lesson does NOT teach attack-vector taxonomies, mitigation algorithms, or threat-modeling, and it is NOT an app-output-escaping check (the framework handles output-escaping by default).
 
 ---
 
