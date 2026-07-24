@@ -246,6 +246,10 @@ Build-phase nouns introduced as observable symptoms (not concepts):
 - **`revalidatePath`** — SYMPTOM-only: "what the agent calls after a Server Action so the page refreshes." The learner scans for it after every server-state mutation; agent decides which path to revalidate.
 - **`useOptimistic`** — re-introduce from M3.5 as a SYMPTOM in M4: "the hook the agent uses to make the UI update before the server responds." The learner observes the optimistic-then-corrected behavior in the running app; doesn't learn the hook signature.
 
+The named skill the learner runs on every chunk:
+
+- **smell-test** — one thing to look for and one question to ask when it is not there. First met as an unnamed observation skill in M3.5 L2; **M4 is where it is named and first called out**, because CLAUDE.md hard rule 13 lists "applying the phase's smell-test inventory" as learner-territory for every build chunk. Safe from M5 onward.
+
 Async/await as a SYMPTOM in agent diffs (introduce in the relevant chunk):
 
 - **`async` / `await`** — SYMPTOM-only: "labels the agent puts on code that waits for something (a database read, a cookie read, an API call)." The learner scans for `await` before every async call; if missing, ask the agent why.
@@ -286,7 +290,6 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still S
 
 ### Requires-callout (D-04 pattern on first use)
 
-- **smell-test** — the named pattern the learner scans for to catch the agent missing something; first introduced in M3.5 L2 as observation skill, M5 makes it a NAMED reusable skill.
 - **watch-it-fail walkthrough** — a curated scenario where the agent fails on a specific known-bad pattern and the learner recovers via a smell-test + steer.
 - **multi-account testing** — the ritual of signing in as multiple test users (alice, bob) to surface bugs single-user testing misses; first-class skill per LESSON-13.
 - **recovery prompt** — the prompt the learner writes after a smell-test trips, naming what they observed and what they want next.
