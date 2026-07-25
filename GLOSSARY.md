@@ -328,6 +328,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 A program that runs continuously, waiting for requests, and sends back responses.
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md), [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
+### server-action
+A SYMPTOM-only name for the agent's pattern for code that runs on the server when someone clicks something. You scan for it in the agent's changes; you do not learn how it works. *Example: a sign-in button press that fails with "Invalid Server Actions request." — you report the words on the screen and the agent finds the cause.*
+Used in: [Module 4 — Sign in with an email and a password](./modules/04-thread-project/01-sign-in.md).
+
 ### server-component
 A Next.js file that renders on the server before sending HTML to the browser; the default in App Router. No `'use client'` directive needed. *Example: `app/components/StaticHero.tsx` in Module 3.5's sample-app is pure JSX with no interactivity, so it stays a Server Component.*
 Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).

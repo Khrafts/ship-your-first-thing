@@ -5,8 +5,7 @@ lesson_number: 00
 est_minutes: 55
 prereqs: ["03.5-reading-code (all four lessons)"]
 updated: "2026-07-25"
-deviations:
-  - next-links-to-module-readme
+deviations: []
 ---
 
 # Hello-world deploy: an empty app, truly online
@@ -130,11 +129,9 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You shipped an empty app to a real public web address, connected to your database, and proved it works from a phone before building anything on top of it. You did not write the code — you said what you wanted, checked the two things that had to be true, opened the live link yourself, and saved the version that worked. That saved, live, empty app is the ground the next chunk stands on: in Lesson 1 you put a front door on it, so people can sign in with a link sent to their email.
+You shipped an empty app to a real public web address, connected to your database, and proved it works from a phone before building anything on top of it. You did not write the code — you said what you wanted, checked the two things that had to be true, opened the live link yourself, and saved the version that worked. That saved, live, empty app is the ground the next chunk stands on: in Lesson 1 you put a front door on it, so people can sign in with an email address and a password.
 
 ## Navigation
 
-> **Deviation note:** Lesson 1 (`01-sign-in.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 1 once that lesson ships.
-
 [← Previous: 'use client' and the server/client split](../03.5-reading-code/04-use-client-and-server-split.md)
-[Next: Module 4 overview — Lesson 1 (Sign in) is next →](./README.md)
+[Next: Sign in with an email and a password →](./01-sign-in.md)

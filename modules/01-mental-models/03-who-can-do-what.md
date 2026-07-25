@@ -73,7 +73,7 @@ sequenceDiagram
 
 </details>
 
-In this course, the thread project uses a sign-in flow that emails you a clickable link — no passwords. The mechanism is named and built when you build the thread project; for now, just know that "sign-in" can mean "prove you can read mail at this address." From the analogy: instead of an ID card, the door staff has access to your mailbox; if you can prove you can read mail at `alice@example.com`, you're Alice. It's not perfect (mailbox compromise = identity compromise) but it's simple and learnable.
+In this course, the thread project signs people in with an email address and a password. The mechanism is named and built when you build the thread project; for now, just know that "sign-in" usually means "show something only you should have." From the analogy: the ID the door staff asks for is an address plus a password chosen by whoever signed up at that address. It's not perfect (a password someone else guesses = identity compromise) but it's simple and learnable.
 
 A few things confuse beginners here, and naming them now saves you debugging time later.
 
