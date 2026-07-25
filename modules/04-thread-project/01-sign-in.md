@@ -5,8 +5,7 @@ lesson_number: 01
 est_minutes: 50
 prereqs: ["00-hello-world-deploy"]
 updated: "2026-07-25"
-deviations:
-  - next-links-to-module-readme
+deviations: []
 ---
 
 # Sign in with an email and a password
@@ -159,7 +158,5 @@ You put a front door on the app you shipped in the last chunk: people create an 
 
 ## Navigation
 
-> **Deviation note:** Lesson 2 (`02-profile.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 2 once that lesson ships.
-
 [← Previous: Hello-world deploy: an empty app, truly online](./00-hello-world-deploy.md)
-[Next: Module 4 overview — Lesson 2 (Profile) is next →](./README.md)
+[Next: The profile page: name, bio, and photo →](./02-profile.md)
