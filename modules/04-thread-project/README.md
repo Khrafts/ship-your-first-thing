@@ -48,9 +48,9 @@ You are not reading any of this for meaning, and no lesson explains it. You chec
 
 ## Lessons in this module
 
-None of these lessons are published yet — this page is here so you can see where the module goes. Check back, or keep going with what you have. The filenames and their order are fixed, so this is the sequence you will work through:
+Lesson 0 is published — the link below is live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
 
-0. `00-hello-world-deploy.md` — an empty app at a public address before any feature exists
+0. [`00-hello-world-deploy.md`](./00-hello-world-deploy.md) — an empty app at a public address before any feature exists
 1. `01-sign-in.md` — sign in by email link, and stay signed in across a reload
 2. `02-profile.md` — name, bio, photo: anyone looks, only the owner changes
 3. `03-posts.md` — write, edit, delete your own posts; signed-out visitors can read them
