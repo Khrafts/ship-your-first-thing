@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-07-25 — Thread project sign-in is an email and a password
+
+**Change:** Module 4 Lesson 1 is published, and it builds sign-in with an email address and a password — not the emailed sign-in link earlier pages described. Module 1 Lesson 3 and the Module 4 overview now say the same thing.
+**If you're affected:** Nothing to do before Lesson 1. If you already read that the thread project would email you a link to sign in, that is the part that changed.
+**Details:** The lesson is `modules/04-thread-project/01-sign-in.md`.
+
 ## 2026-06-28 — The Codespaces walkthrough has labeled, zoomable screenshots
 
 **Change:** Module 0 Lesson 5 (the Codespaces walkthrough) now shows labeled screenshots of the key steps — the "Use this template" button, the new-repository form, the Code → Codespaces panel, and a booted Codespace with its terminal open — each marked with arrows and step numbers.

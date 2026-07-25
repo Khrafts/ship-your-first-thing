@@ -6,14 +6,14 @@ Every lesson runs the full loop you named in Module 3 — intent → ask → eva
 
 ## What this module builds
 
-By the end of this module you have a live social app at a public address that other people can open. Someone signs in with a link sent to their email, sets a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post and comments on it, and likes it.
+By the end of this module you have a live social app at a public address that other people can open. Someone signs in with an email address and a password, sets a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post and comments on it, and likes it.
 
 Done looks like this: you open the live link in two different browsers, sign in as two different people, and watch the two accounts behave correctly toward each other — one follows the other and shows up in the right list, each feed carries the right posts, each person can edit only their own words, and a signed-out visitor can read the public parts without being able to change anything.
 
 Each lesson builds on the last:
 
 - **Lesson 0 — Hello-world deploy:** get an empty app onto a public address — your first **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) — before a single feature exists, so every later chunk ships onto something already known to work → sets up Lesson 1 with a live app nobody can sign in to yet.
-- **Lesson 1 — Sign in by email:** people sign up and sign in through a link sent to their email, and stay signed in when the page reloads → sets up Lesson 2 with a signed-in person who has nothing to their name yet.
+- **Lesson 1 — Sign in with an email and a password:** people sign up and sign in with an email address and a password, stay signed in when the page reloads, and can sign out → sets up Lesson 2 with a signed-in person who has nothing to their name yet.
 - **Lesson 2 — The profile page:** a name, a bio, and a photo — anyone can look at a profile, only its owner can change it → sets up Lesson 3 by leaving an empty space on the profile where posts will go.
 - **Lesson 3 — Writing posts:** write, edit, and delete your own posts, with an optional image, and let signed-out visitors read them → sets up Lesson 4 with every profile still an island, because nobody can follow anybody.
 - **Lesson 4 — Follow and followers:** follow another person, unfollow them, and see both lists on a profile — following someone does not make them follow you back → sets up Lesson 5 with a set of people whose posts now need somewhere to land.
@@ -48,10 +48,10 @@ You are not reading any of this for meaning, and no lesson explains it. You chec
 
 ## Lessons in this module
 
-Lesson 0 is published — the link below is live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
+Lessons 0 and 1 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
 
 0. [`00-hello-world-deploy.md`](./00-hello-world-deploy.md) — an empty app at a public address before any feature exists
-1. `01-sign-in.md` — sign in by email link, and stay signed in across a reload
+1. [`01-sign-in.md`](./01-sign-in.md) — sign in with an email and a password, and stay signed in across a reload
 2. `02-profile.md` — name, bio, photo: anyone looks, only the owner changes
 3. `03-posts.md` — write, edit, delete your own posts; signed-out visitors can read them
 4. `04-follow.md` — follow, unfollow, and two lists that stay one-directional
