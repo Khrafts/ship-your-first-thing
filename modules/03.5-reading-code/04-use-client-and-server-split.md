@@ -153,4 +153,4 @@ You closed Module 3.5. You learned the symptom of a missing `'use client'` direc
 ## Navigation
 
 [← Previous: Error message to file pointer](./03-error-message-to-file-pointer.md)
-[Next: Course README — Module 4 begins the thread project →](../../README.md)
+[Next: Module 4 — Hello-world deploy →](../04-thread-project/00-hello-world-deploy.md)

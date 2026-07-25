@@ -384,6 +384,10 @@ Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-c
 The "steer" step of the agent loop — course-correcting when the agent's output does not match your intent. *Example: "The date appeared above the tagline; please put it below" is a steer.*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
+### supabase
+A SYMPTOM-only name for the service that gives the thread project an account system, a database, and file storage in one. You see it in the agent's changes and in `package.json`; you do not learn its internals. *Example: the Chunk 0 deploy connects the empty app to a Supabase database before any feature exists.*
+Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/00-hello-world-deploy.md).
+
 ## T
 
 ### terminal
