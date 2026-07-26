@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-07-25 — Module 4 Lesson 2 is published: the profile page
+
+**Change:** Module 4 Lesson 2 builds a profile — a display name, a short bio, and a photo people upload — that anyone can read and only its owner can change. It includes the one step you run yourself in the Supabase dashboard, with screenshots.
+**If you're affected:** Nothing to do. If you have finished Lesson 1, Lesson 2 is the next chunk.
+**Details:** The lesson is `modules/04-thread-project/02-profile.md`.
+
 ## 2026-07-25 — Thread project sign-in is an email and a password
 
 **Change:** Module 4 Lesson 1 is published, and it builds sign-in with an email address and a password — not the emailed sign-in link earlier pages described. Module 1 Lesson 3 and the Module 4 overview now say the same thing.
