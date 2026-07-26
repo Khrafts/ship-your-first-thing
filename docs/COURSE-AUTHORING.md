@@ -179,6 +179,26 @@ When authoring or auditing a lesson, ask: **does this lesson honor its module's 
 
 GUIDANCE — human review against the module spine. There is no lint for narrative coherence (a grep cannot tell a felt continuation from a syllabus recap). The `## What this module builds` arc in the README is the artifact a reviewer — or a future cross-course coherence pass — checks each lesson against.
 
+### The dashboard-paste convention
+
+When a build chunk has the learner run the agent's database file themselves (Supabase
+dashboard → SQL Editor → New query → paste the whole file → Run), the lesson ships three
+things, always:
+
+1. **The annotated screenshot** of the exact clicks — amber numbered markers, alt text
+   naming every marker, and the "your own dashboard may not look identical" line.
+2. **The cargo line** at the first appearance of pasted code: the file is full of code and
+   none of it is for the learner to read — their job is to move it whole, not to
+   understand it. The first such lesson in a module says this in full; later lessons may
+   compress it to one line ("the code in the box is cargo, not reading material").
+3. **The confirm-dialog recovery branch**: read the file's opening note first; if the note
+   does not account for the dialog's warning, do not press Run query — ask the agent what
+   in the file is destructive, and wait for an answer you are happy with.
+
+The paste-and-run step itself is a locked decision (2026-07-26): on the free tier it is
+the least-mechanics path that exists without handing the agent database credentials, and
+the lesson owns that friction rather than hiding it.
+
 ### Cross-references
 
 - `docs/TENETS.md` § Tenet 4 — the underlying principle

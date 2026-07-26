@@ -59,6 +59,8 @@ Same as last chunk: the agent writes a file of instructions for your database �
 
 Two differences from last time. This file opens with a note saying to run the profile file first if you have not, because the posts it creates point at accounts that need to already exist — so run these in the order the lessons give you. And in the SQL Editor you are opening a *new* query alongside the one still sitting there from last chunk, not typing over it.
 
+As before, the code in the box is cargo, not reading material — move it whole, press Run, and leave the reading to the agent.
+
 ![The Supabase dashboard, on the SQL Editor page. A numbered marker ① points to the small "+" button at the top of the editor, beside the tab of the query left over from the last chunk — pressing it opens a new, empty query alongside the old one. Marker ② points to the large query area in the middle, holding the whole file the agent wrote, scrolled to its last lines — the rule about deleting your own post pictures is the part visible. Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/03-posts/run-posts-migration.png)
 
 Pressing Run raises the same "Potential issue detected" dialog you met in the last chunk, for the same reason. Read the file's opening note first. If the note does not account for the warning, do not press Run query yet: ask the agent what in this file is destructive, and wait for an answer you are happy with. When it does, press Run query. The Results pane comes back with "Success. No rows returned" — nothing came back because nothing was asked for; things were made.

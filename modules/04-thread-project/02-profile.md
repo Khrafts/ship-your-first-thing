@@ -56,6 +56,8 @@ The agent will write a file of instructions for your database — the profile it
 
 So: open your Supabase dashboard, find the SQL Editor in the strip of icons down the left edge, start a new query, paste in the whole file the agent tells you to open, and press Run.
 
+That file is full of code, and none of it is for you to read. Treat it like cargo: your job is to move it whole from the agent's file into that box, not to understand it. Nothing in this course will ever ask you to read what is inside.
+
 ![The Supabase dashboard, on the SQL Editor page, with a new query open and the agent's file pasted into it. A numbered marker ① points to the SQL Editor icon in the narrow strip of icons down the left edge — the page you open. Marker ② points to the large area in the middle where the whole file goes, shown here holding the last lines of it. Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/02-profile/run-migration.png)
 
 Pressing Run raises a dialog first.
