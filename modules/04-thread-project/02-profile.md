@@ -7,7 +7,6 @@ prereqs: ["01-sign-in"]
 updated: "2026-07-25"
 deviations:
   - long-core-read
-  - next-links-to-module-readme
 ---
 
 # The profile page: name, bio, and photo
@@ -187,7 +186,5 @@ You gave everyone who signs in a profile: a name, a bio, and a photo they upload
 
 ## Navigation
 
-> **Deviation note:** Lesson 3 (`03-posts.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 3 once that lesson ships.
-
 [← Previous: Sign in with an email and a password](./01-sign-in.md)
-[Next: Module 4 overview — Lesson 3 (Posts) is next →](./README.md)
+[Next: Posts: write, edit, and delete your own →](./03-posts.md)
