@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-07-27 — Module 4 Lesson 5 is published: the feed
+
+**Change:** Module 4 Lesson 5 builds the home feed — the newest posts from the people you follow, mixed with your own, newest first. It is also the lesson where a check comes back empty for a good reason, and walks through what to ask and which test settles it.
+**If you're affected:** Nothing to do. If you have finished Lesson 4, Lesson 5 is the next chunk. You still need a second signed-in account in another browser to finish its checks.
+**Details:** The lesson is `modules/04-thread-project/05-feed.md`.
+
 ## 2026-07-26 — Module 4 Lesson 4 is published: follow and followers
 
 **Change:** Module 4 Lesson 4 builds following — a button that flips between Follow and Unfollow, and two lists on a profile that only run one way. It is the first lesson where a check you run on the agent's changes comes back empty, so it walks through what to say next.

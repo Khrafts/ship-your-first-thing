@@ -48,14 +48,14 @@ You are not reading any of this for meaning, and no lesson explains it. You chec
 
 ## Lessons in this module
 
-Lessons 0 through 4 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
+Lessons 0 through 5 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
 
 0. [`00-hello-world-deploy.md`](./00-hello-world-deploy.md) — an empty app at a public address before any feature exists
 1. [`01-sign-in.md`](./01-sign-in.md) — sign in with an email and a password, and stay signed in across a reload
 2. [`02-profile.md`](./02-profile.md) — name, bio, photo: anyone looks, only the owner changes
 3. [`03-posts.md`](./03-posts.md) — write, edit, delete your own posts; signed-out visitors can read them
 4. [`04-follow.md`](./04-follow.md) — follow, unfollow, and two lists that stay one-directional
-5. `05-feed.md` — the people you follow, plus you, newest first
+5. [`05-feed.md`](./05-feed.md) — the people you follow, plus you, newest first
 6. `06-comments.md` — a page per post; signed-in people reply, authors edit their own
 7. `07-likes-and-go-live.md` — a count that moves on click, then the whole app re-checked live
 

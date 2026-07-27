@@ -7,7 +7,6 @@ prereqs: ["03-posts"]
 updated: "2026-07-26"
 deviations:
   - long-core-read
-  - next-links-to-module-readme
 ---
 
 # Follow and followers: two lists that only go one way
@@ -219,7 +218,5 @@ You connected the accounts in your app: a button that flips between Follow and U
 
 ## Navigation
 
-> **Deviation note:** Lesson 5 (`05-feed.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 5 once that lesson ships.
-
 [← Previous: Posts: write, edit, and delete your own](./03-posts.md)
-[Next: Module 4 overview — Lesson 5 (The feed) is next →](./README.md)
+[Next: The feed: the people you follow, plus you →](./05-feed.md)
