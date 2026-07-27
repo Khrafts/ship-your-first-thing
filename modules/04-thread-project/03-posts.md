@@ -7,7 +7,6 @@ prereqs: ["02-profile"]
 updated: "2026-07-26"
 deviations:
   - long-core-read
-  - next-links-to-module-readme
 ---
 
 # Posts: write, edit, and delete your own
@@ -202,7 +201,5 @@ You gave people something to say: posts they write, edit, and delete on their ow
 
 ## Navigation
 
-> **Deviation note:** Lesson 4 (`04-follow.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 4 once that lesson ships.
-
 [← Previous: The profile page: name, bio, and photo](./02-profile.md)
-[Next: Module 4 overview — Lesson 4 (Follow and followers) is next →](./README.md)
+[Next: Follow and followers: two lists that only go one way →](./04-follow.md)

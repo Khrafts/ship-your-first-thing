@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-07-26 — Module 4 Lesson 4 is published: follow and followers
+
+**Change:** Module 4 Lesson 4 builds following — a button that flips between Follow and Unfollow, and two lists on a profile that only run one way. It is the first lesson where a check you run on the agent's changes comes back empty, so it walks through what to say next.
+**If you're affected:** Nothing to do. If you have finished Lesson 3, Lesson 4 is the next chunk. You need a second signed-in account in another browser to finish its checks.
+**Details:** The lesson is `modules/04-thread-project/04-follow.md`.
+
 ## 2026-07-26 — Module 4 Lesson 3 is published: writing posts
 
 **Change:** Module 4 Lesson 3 builds posts — write a short post with an optional picture, edit it, delete it, and let anyone read it without signing in. It includes the check that stops a post being edited into somebody else's name, and a second run of the database step you do yourself.
