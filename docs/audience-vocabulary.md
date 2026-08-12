@@ -224,36 +224,27 @@ Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learn
 
 Audience floor: M3.5 complete. Every M3.5 Requires-callout term is now Safe.
 
-**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors, the learner observes + smells-tests + commits. Every term in the Requires-callout list below is introduced as a SYMPTOM the learner scans for in the agent's diff or in the running app, not as a CONCEPT to understand from first principles. The agent owns the mechanics; the learner owns the smell-test.
+**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors; the learner states intent, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and commits. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
 
 ### Safe (no callout needed)
 
 - All M0/M1/M2/M3/M3.5 Safe + all M3.5 Requires-callout.
 
-### Requires-callout (D-04 pattern on first use; ALL SYMPTOM-only in M4)
+### Requires-callout (D-04 pattern on first use; every entry passes say-it-or-see-it)
 
-Build-phase nouns introduced as observable symptoms (not concepts):
+Build-phase nouns the learner says to the agent or sees on a screen they operate:
 
-- **Supabase** — introduce as "the service that gives the thread project an account system, a database, and file storage in one." SYMPTOM-only: the learner sees Supabase in `package.json` and in the agent's diffs; doesn't learn Supabase internals.
-- **env var** / **environment variable** — introduce as "a value the deployed app reads at runtime that isn't checked into git (typically a secret)." SYMPTOM-only: the learner scans for missing env vars when the app fails on deploy.
-- **NEXT_PUBLIC** (env-var prefix) — SYMPTOM-only: "the prefix Next.js requires for env vars the BROWSER needs to see." The learner scans for `NEXT_PUBLIC_` on values used in client components; agent decides which env vars need the prefix.
-- **secret key** / **publishable key** — SYMPTOM-only: "Supabase ships two keys per project; one is safe in the browser, one isn't." The learner observes both in `.env.local`; the agent uses each correctly.
+- **Supabase** — introduce as "the service that gives the thread project an account system, a database, and file storage in one." The learner says it in prompts and operates its dashboard (SQL Editor, key-copy screens); doesn't learn Supabase internals.
+- **env var** / **environment variable** — introduce as "a named setting the deployed app reads at runtime that isn't checked into git (typically a secret)." The learner sees env vars listed on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is "is a setting missing on the live site?"
+- **`NEXT_PUBLIC_SUPABASE_URL`** — the one env-var name the learner really reads and compares themselves, on the Vercel settings screen, when checking that the live site points at the same Supabase project as their machine. The learner never learns the `NEXT_PUBLIC_` build rule; the agent decides which values need which prefix.
+- **secret key** / **publishable key** — "Supabase's settings screen shows two keys; one is safe to be seen, one must never be." The learner copies the publishable one off the dashboard when the agent asks for it, and never pastes the secret one anywhere public; the agent uses each correctly in config.
 - **magic link** — re-introduce as "the email-with-a-link sign-in flow you used in M0; this time you're building it." Already met in M0/M3.5; M4 surfaces it as a feature, not a concept.
-- **RLS** — SYMPTOM-only: "the database-level door staff." The learner does NOT learn the policy grammar; scans for the smell-test patterns in `.planning/phases/04-*/04-CONTEXT.md`.
-- **`WITH CHECK`** — SYMPTOM-only: "the part of an `UPDATE` RLS policy that prevents a user from rewriting `author_id`." The learner scans for it after every `UPDATE` policy in the migration; agent writes the policy.
-- **`USING`** — SYMPTOM-only: pairs with `WITH CHECK`; the learner scans for the pair on read+write policies.
-- **Server Action** — SYMPTOM-only: "the agent's pattern for code that runs on the server when the user clicks something." The learner observes Server Actions in the agent's diffs as `'use server'`-marked functions; doesn't learn the action lifecycle.
-- **`revalidatePath`** — SYMPTOM-only: "what the agent calls after a Server Action so the page refreshes." The learner scans for it after every server-state mutation; agent decides which path to revalidate.
-- **`useOptimistic`** — re-introduce from M3.5 as a SYMPTOM in M4: "the hook the agent uses to make the UI update before the server responds." The learner observes the optimistic-then-corrected behavior in the running app; doesn't learn the hook signature.
 
-The named skill the learner runs on every chunk:
+The named skills the learner runs on every chunk:
 
-- **smell-test** — one thing to look for and one question to ask when it is not there. First met as an unnamed observation skill in M3.5 L2; **M4 is where it is named and first called out**, because CLAUDE.md hard rule 13 lists "applying the phase's smell-test inventory" as learner-territory for every build chunk. Safe from M5 onward.
-
-Async/await as a SYMPTOM in agent diffs (introduce in the relevant chunk):
-
-- **`async` / `await`** — SYMPTOM-only: "labels the agent puts on code that waits for something (a database read, a cookie read, an API call)." The learner scans for `await` before every async call; if missing, ask the agent why.
-- **`cookies()` / `headers()` / `params`** — SYMPTOM-only: "Next.js 16 made these async. The learner scans for `await cookies()` (not bare `cookies()`) in the agent's diff."
+- **smell-test** — the behavioural nose the learner develops for "something is off." First met as an unnamed observation skill in M3.5 L2; **M4 is where it is named and first called out**. In M4+ a smell-test is always one of two moves (CLAUDE.md hard rule 13): a **refusal check** or a **pre-flight question**. It is never "read what the agent wrote." Safe from M5 onward.
+- **refusal check** — in the running app, try the thing that should NOT be allowed and confirm it is refused; if it goes through, tell the agent what you did and what should have stopped it.
+- **pre-flight question** — before an irreversible step (a dashboard paste, anything run against data that already exists), ask the agent a named question about consequences and wait for the answer.
 
 ### Forbidden in M4 specifically (deferred to Module 7 or out of scope for V1)
 
@@ -268,15 +259,17 @@ Reserved for Module 7's curiosity track:
 - Drizzle / Prisma / Kysely ORM internals (the thread project uses the Supabase JS client directly, not an ORM)
 - Migration framework internals (Supabase migrations as a workflow vs. concept)
 
-### M4 SYMPTOM-only introduction rule (per Hard Rule 13)
+**Cut by the 2026-07-27 re-cut (fail say-it-or-see-it; may not appear in an M4 lesson body at all — not as a concept, not as a scan-target):** `RLS`, `WITH CHECK`, `USING`, `auth.uid()`, `OR author_id = auth.uid()`, `check (follower_id <> following_id)`, `follows_follower_idx` / `follows_following_idx`, `Server Action`, `revalidatePath`, `useOptimistic`, `async` / `await`, `cookies()` / `headers()` / `params`, `DROP TABLE`, the `NEXT_PUBLIC_` prefix as a standalone topic. These lived only inside code the agent wrote; each one's risk now surfaces as a refusal check or a pre-flight question instead (see the phase CONTEXT gates). Pasted dashboard code may *contain* such strings — that is cargo, not vocabulary; the lesson never asks the learner to read it.
 
-Same shape as M3.5's SYMPTOM-only rule, applied to the build phase. Every M4 Requires-callout term is introduced as a SYMPTOM (something the learner sees in the agent's diff or in the running app), never as a CONCEPT (something the learner understands from first principles).
+### M4 say-it-or-see-it introduction rule (per Hard Rule 13; replaced the SYMPTOM-only rule 2026-07-27)
 
-1. **The D-04 callout defines the symptom**, not the mechanism. Wrong: `**WITH CHECK** (a one-line definition: the SQL clause that enforces row-level write constraints by re-running the policy expression against the proposed row...)`. Right: `**WITH CHECK** (a one-line definition: a SYMPTOM-only term naming the safety latch on an UPDATE policy — scan for it after every UPDATE in the agent's migration; if absent, ask why, [→ GLOSSARY](../../GLOSSARY.md#with-check))`.
-2. **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
-3. **The smell-test inventory is the bridge between symptom and recovery.** Each Requires-callout term in M4 maps to one or more smell-tests in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson teaches the symptom; the smell-test inventory teaches the action.
+Every M4 Requires-callout term must name something the learner *says* to the agent or *sees* on a screen they operate — never something to find in the agent's code, and never a CONCEPT to understand from first principles.
 
-**M4 rewrite implications:** No lessons exist in M4 yet (Phases 3 and 4 are unplanned). When Phase 3 / 4 plan-phase runs, this contract is what the planner uses to keep the build-phase lessons on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
+1. **The D-04 callout defines what the learner does with the term**, not the mechanism. Wrong: `**publishable key** (a one-line definition: the JWT-shaped anon-role credential embedded in the client bundle...)`. Right: `**publishable key** (a one-line definition: the one of Supabase's two keys that is safe to be seen — you copy it off the dashboard when the agent asks; the other key never leaves the dashboard, [→ GLOSSARY](../../GLOSSARY.md#publishable-key))`.
+2. **Surrounding prose does not exceed the callout's depth.** If the callout is operational, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
+3. **The check inventory is the bridge between intent and recovery.** Each chunk maps to refusal checks and pre-flight questions in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson states the intent; the check inventory tests the fence; the agent owns everything in between.
+
+**M4 rewrite implications:** M4 lessons exist (chunks 0 onward) and were re-cut to this contract on 2026-07-27 — any earlier copy of a lesson that tells the learner to look for a term in the agent's changes predates the re-cut and does not set precedent. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
 
 ---
 

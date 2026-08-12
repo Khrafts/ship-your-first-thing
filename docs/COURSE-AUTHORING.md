@@ -363,71 +363,81 @@ The **learner owns**:
 
 1. **Stating intent at the feature level.** Not "use `useOptimistic` with the right reducer signature" — but "the like count should update right away, then correct itself if the server returns an error."
 2. **Observing the running app matches intent.** Open the deployed app. Click around. Sign out. Sign in as a second user. Did the agent build what you asked for?
-3. **Applying the phase's smell-test inventory.** A named list of observable patterns ("look for this; if absent, ask the agent why") that the learner scans for in each chunk's diff or in the running app. The inventory is the bridge between M3.5's observation skill and M4+'s execution responsibility.
+3. **Running the phase's check inventory.** A named list of behavioural checks in exactly two admissible forms (next section). Every check is performed in the running app or spoken to the agent — never against code, a diff, or a migration. The inventory is the bridge between M3.5's observation skill and M4+'s execution responsibility.
 4. **Committing each working chunk to git.** The atomic-commit discipline is the learner's safety net. Working state goes to git before the next chunk starts.
 5. **Knowing when to `/clear` and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, restart the conversation tighter.
 
-### The smell-test inventory
+### The check inventory — two admissible forms
 
-A smell-test is an OBSERVATION the learner can perform without understanding the underlying mechanics. The pattern:
+A check the learner runs must be something a non-coder can actually perform. There are exactly two admissible forms. **Anything that requires reading, scanning, or judging the agent's output — code, a diff, a migration, any file the agent wrote — is banned from learner-territory.**
+
+**Form 1 — the refusal check (the workhorse).** In the running app, attempt the thing that should *not* be allowed, and confirm it is refused. Happy-path observation confirms the feature works; the refusal check is its inversion, and it is the half that actually tests the fences.
 
 ```
-LOOK FOR: <observable pattern in the diff or in the running app>
-IF PRESENT: <what to do next>
-IF ABSENT: <what to ask the agent>
+TRY THIS:      sign in as your second account, open a comment you did not write,
+               and try to change it
+EXPECT:        there is no way to, or it refuses
+IF IT WORKS:   "I could edit a comment I didn't write. Only its author should be
+               able to. Fix that."
 ```
 
-Example smell-tests for Phase 4 (the chunk that adds posts editing):
+**Form 2 — the pre-flight question.** Before an irreversible step (anything pasted into a dashboard, anything run against data that already exists), the learner asks the agent a named question about consequences and waits for the answer. This is driving, not reading.
 
-- LOOK FOR: `WITH CHECK` after every `UPDATE` policy in the migration file.
-  IF PRESENT: continue. IF ABSENT: ask the agent "the `UPDATE` policy doesn't have `WITH CHECK` — what would prevent a user from rewriting `author_id` on their own post?"
-- LOOK FOR: On the deployed app, alice can edit her own post but the form does NOT appear on bob's post (signed in as alice).
-  IF PRESENT: continue. IF ABSENT: ask the agent "alice is seeing the edit form on bob's post — what's missing?"
-- LOOK FOR: When alice rewrites a post, the post stays attributed to alice (not silently re-attributed).
-  IF PRESENT: continue. IF ABSENT: this is the RLS-UPDATE-without-WITH-CHECK bug; see Phase 5 LESSON-13 walkthrough (a).
+```
+BEFORE YOU PASTE:  "Does this remove or overwrite anything that is already in my
+                    database? List exactly what changes for data that exists today."
+```
 
-The learner can perform every smell-test in the inventory without knowing RLS policy syntax, without parsing TypeScript, without understanding the Supabase client lifecycle. The smell-test is observation; the diagnosis is the agent's job.
+Example checks for Phase 4 (the chunk that adds posts editing):
+
+- TRY THIS: signed in as your second account, open a post the first account wrote and try to change it. EXPECT: no edit control appears, or the save refuses. IF IT WORKS: "I could edit a post I didn't write — only its author should be able to. Fix that."
+- TRY THIS: edit one of your own posts and save. EXPECT: the edit lands and the post still shows you as its author. IF ANYTHING ELSE HAPPENS: "my post stopped being attributed to me after an edit — that must never happen. Fix it."
+- BEFORE YOU PASTE any database change into the dashboard: "Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."
+
+The learner can perform every check in the inventory without knowing RLS policy syntax, without parsing TypeScript, without opening a single file the agent wrote. The check is behaviour; the diagnosis is the agent's job.
+
+**Why the scan form is banned (locked 2026-07-27).** This part originally allowed a third form: scan the agent's diff or migration for a literal string (`LOOK FOR: WITH CHECK …`). It was retired on live evidence. Across three consecutive build chunks the same scan produced three different outcomes — string present; string legitimately absent (the risk lived in a different layer); string present but reordered and wrapped so the learner could not match it — and in the third case the escalation path ("ask the agent about the missing string") returned a confident, well-structured, reason-giving answer that was factually inverted. A learner scanning for a string cannot adjudicate semantics the course's own authors got wrong. The scan form's real failure mode is **false confidence**, which is worse than not looking. Where a retired scan pointed at a real risk, the *observation* it pointed at survives in behavioural form — the author-rewrite scan became the refusal check quoted above.
 
 ### Where the inventory lives
 
-The smell-test inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
+The check inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
 
 - A **per-chunk boundary table** naming agent-territory vs. learner-territory for each chunk's deliverable.
-- The **smell-test inventory** for the phase: named observable patterns with LOOK FOR / IF PRESENT / IF ABSENT.
-- The **Tenet 6 surfaces** for the phase: which lessons name which agent failure mode + where the corresponding smell-test lives.
-- The **vocab additions** for the phase: which terms ship as SYMPTOM-only, which are Forbidden-as-concept, what the audience-vocabulary contract gains.
+- The **check inventory** for the phase: refusal checks (TRY THIS / EXPECT / IF IT WORKS) and pre-flight questions (BEFORE YOU …), one entry per named risk.
+- The **Tenet 6 surfaces** for the phase: which lessons name which agent failure mode + where the corresponding check lives.
+- The **vocab additions** for the phase: which terms pass the say-it-or-see-it rule (the learner must say the term to the agent, or see it in the running app or on a dashboard screen they operate themselves), and which may not appear at all.
 
-Without this CONTEXT, the build-phase planner inherits only the ROADMAP success criteria — which already contain jargon-shaped trigger language (`@supabase/ssr cookies() correctly awaited`, RLS `WITH CHECK`, `useOptimistic`). That's the original drift vector.
+Without this CONTEXT, the build-phase planner inherits only the ROADMAP success criteria — which contain jargon-shaped trigger language (`@supabase/ssr cookies() correctly awaited`, RLS `WITH CHECK`, `useOptimistic`). That's the original drift vector: success-criterion phrasing turns into learner-facing scan instructions unless this file re-expresses each one as a refusal check or a pre-flight question.
 
 ### The three audit questions adapted for M4+
 
 Run these for every section of every M4+ lesson:
 
-1. **Q1-Exec — Does this section ask the learner to do something the agent will do better?** Examples that fail: "write a `UPDATE` policy with `WITH CHECK` matching this shape"; "configure your `cookies()` call to await before reading"; "destructure the `useOptimistic` return tuple." The fix: replace with the smell-test ("the agent will write this; look for X in the diff").
-2. **Q2-Exec — Does this section explain mechanics (framework internals, hook lifecycles, RLS grammar, async/await semantics, type narrowing) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Mechanics belong to the agent.
-3. **Q3-Exec — Is any term used as a concept (something to understand from first principles) when it should be used as a symptom (something to scan for)?** If yes, demote the framing — no "anatomy of an RLS policy," no "how `useOptimistic` works," no "the lifecycle of a Server Action."
+1. **Q1-Exec — Does this section ask the learner to do something the agent will do better?** Examples that fail: "write a `UPDATE` policy with `WITH CHECK` matching this shape"; "configure your `cookies()` call to await before reading"; "destructure the `useOptimistic` return tuple" — and equally "open the migration and check it contains X." The fix: replace with the boundary statement plus the behavioural check ("the agent writes this; here is the forbidden thing to try in the running app, and what to say if it goes through").
+2. **Q2-Exec — Does this section explain mechanics (framework internals, hook lifecycles, RLS grammar, async/await semantics, type narrowing) the learner does not need to direct the agent?** If yes, cut to the intent + the check. Mechanics belong to the agent.
+3. **Q3-Exec — Does any term fail the say-it-or-see-it rule?** A term may appear only if the learner must say it to the agent or see it in the running app or on a dashboard screen they operate themselves. A term that exists only inside code or files the agent wrote gets cut — the behaviour it pointed at survives as a refusal check. No "anatomy of an RLS policy," no "how `useOptimistic` works," no "scan the diff for `WITH CHECK`."
 
-A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent does X; you observe Y; if Y is missing, ask the agent Z."
+A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent does X; you try the forbidden thing Y in the running app; if it goes through, tell the agent Z."
 
-### The smell-test catalog (build out per phase)
+### The check catalog (build out per phase)
 
-Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md smell-test inventory. As phases land, the catalog below grows. Each entry names the lesson where the smell-test is taught + the phase where the learner first applies it.
+Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, the catalog below grows. Each entry names the form (the two inventory forms, plus the two ambient learner skills: intent observation and error hand-off), where the check is first taught, and where the learner first applies it. Errors are a special case: an error message is shown TO the learner by the tool, not written BY the agent, so pasting it back is always in-bounds. The M3.5 diff-facing patterns (right-file edit, `'use client'` presence) stay inside M3.5's observation exercises; they are not carried into M4+ lessons, where reading the agent's output is banned.
 
-| Smell-test | First taught | First applied |
-|---|---|---|
-| Right-file edit (M3.5 L2 pattern) | M3.5 L2 | Phase 3 Chunk 1 onward |
-| First `./app/` line in error → paste to agent (M3.5 L3 pattern) | M3.5 L3 | Phase 3 Chunk 1 onward |
-| `'use client'` interactivity smell (M3.5 L4 pattern) | M3.5 L4 | Phase 3 Chunks 1–3 |
-| `WITH CHECK` after every `UPDATE` policy | Phase 4 CONTEXT | Phase 4 Chunk 4–7 + Phase 5 LESSON-13 walkthrough (a) |
-| Feed query includes `OR author_id = auth.uid()` | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
-| Migration drift smell (no `DROP TABLE` in the diff against shared state) | Phase 5 CONTEXT | Phase 5 LESSON-13 walkthrough (c) |
-| Logged-out visitor can read but not act | Phase 4 CONTEXT | Phase 4 + Phase 6 bug-reproduction |
+| Check | Form | First taught | First applied |
+|---|---|---|---|
+| First `./app/` line in an error → paste it to the agent (M3.5 L3 pattern) | error hand-off | M3.5 L3 | Phase 3 Chunk 0 onward |
+| Signed-out visitor can read but not act | refusal check | Phase 3 CONTEXT | every chunk with public content + Phase 6 bug-reproduction |
+| Second account cannot edit or delete content it did not write | refusal check | Phase 3 CONTEXT (posts) | Phase 4 (comments) + Phase 5 LESSON-13 walkthrough (a) |
+| Your own edit never changes who a thing belongs to | refusal check | Phase 3 CONTEXT (posts) | Phase 5 LESSON-13 walkthrough (a) |
+| Own post appears in the running feed (never silently missing) | intent observation | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
+| Dashboard-paste pre-flight ("does this remove or overwrite anything that already exists?") | pre-flight question | Phase 3 CONTEXT (first paste) | every dashboard paste + Phase 5 LESSON-13 walkthrough (c) |
+| Like count moves the instant you click, snaps back if the save fails | intent observation | Phase 4 CONTEXT | Phase 4 Chunk 7 |
 
 ### Cross-references
 
 - CLAUDE.md hard rule 13 — the boundary itself
 - COURSE-AUTHORING.md Part 5 — the M3.5 observation floor this part extends
-- `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase smell-test inventory
+- `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase check inventory
 - M2 L5 + M3.5 L2 — gold-standard exemplars of the symptom-and-steer floor
 
 ---
@@ -524,7 +534,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 
 **Temptation.** "A foreign key creates a referential constraint that prevents inserting a row that references a non-existent parent row..."
 **Right move.** Filing-cabinet analogy: "cards in one drawer remember other cards by ID." That's the floor. The agent writes the schema; the learner observes that "alice's posts disappear when alice is deleted" works.
-**Where to escape to.** Don't. JOIN mechanics belong to the agent. M4+ teaches the *symptom* ("when I delete a user, do their posts disappear or break?") as a smell-test.
+**Where to escape to.** Don't. JOIN mechanics belong to the agent. M4+ names the *behaviour* ("when I delete a user, do their posts disappear or break?") as a check performed in the running app.
 
 #### Trap C — Explaining cookie flags (`httpOnly`, `Secure`, `SameSite`)
 
@@ -535,20 +545,20 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap D — Explaining async/await semantics
 
 **Temptation.** "Next.js 16 made `cookies()`, `headers()`, and `params` async because the rendering pipeline needs to defer their resolution until..."
-**Right move.** Async/await is a SYMPTOM in the agent's diff. The learner scans for `await cookies()` in the agent's code — if it's `cookies()` without the `await`, ask the agent why. Don't explain the rendering pipeline.
-**Where to escape to.** Don't. Async/await semantics belong to the agent. The phase's CONTEXT.md catalogs `await` as a symptom-only term.
+**Right move.** Async/await belongs to the agent entirely — the learner never opens the code. What the learner owns is the behaviour: sign in, refresh the page, still signed in. If a page loses the session or an error appears, paste the error to the agent. Don't explain the rendering pipeline.
+**Where to escape to.** Don't. Async/await semantics belong to the agent, and per the say-it-or-see-it rule the words never appear in an M4+ lesson.
 
 #### Trap E — Explaining RLS policy grammar
 
 **Temptation.** "An RLS policy has a `FOR` clause (SELECT / INSERT / UPDATE / DELETE), a `USING` predicate that filters reads, and a `WITH CHECK` predicate that filters writes..."
-**Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner runs the smell-test inventory ("look for `WITH CHECK` after every `UPDATE`; if missing, ask the agent why").
+**Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner tests the fence in the running app with a refusal check — sign in as the second account, try to change something the first account wrote, expect refusal; if it goes through, tell the agent exactly what you did. No policy text ever reaches the learner's eyes.
 **Where to escape to.** Module 7 — RLS deep-dive is the canonical Module 7 territory for learners who want to extend the thread project.
 
 #### Trap F — Explaining React hook internals (`useState`, `useEffect`, `useOptimistic`, etc.)
 
 **Temptation.** "`useOptimistic` returns a tuple of `[optimisticValue, addOptimistic]`. The reducer signature is `(currentState, optimisticValue) => newState`. Call `addOptimistic` inside a Server Action..."
 **Right move.** `useOptimistic` is a SYMPTOM in M3.5 L4 (interactivity marker). In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
-**Where to escape to.** Don't. Hook internals belong to the agent. The audience-vocabulary contract lists hooks as SYMPTOM-only across M3.5 and M4+.
+**Where to escape to.** Don't. Hook internals belong to the agent. In M4+ hook names do not appear in lesson prose at all (say-it-or-see-it rule); the observable behaviour is what the lesson names.
 
 #### Trap G — Explaining stack-trace anatomy
 
@@ -565,7 +575,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap I — Explaining bundle splitting / Server vs. Client component rendering execution
 
 **Temptation.** "The bundler decides which files become client bundles based on the `'use client'` directive. Server Components run only on the server; their output is serialized as RSC payload..."
-**Right move.** M3.5 L4 framed-picture-vs-touchscreen analogy. `'use client'` is a SYMPTOM label. The agent decides the split; the learner scans for the symptom (interactivity markers + missing directive → ask the agent).
+**Right move.** M3.5 L4 framed-picture-vs-touchscreen analogy. `'use client'` stays an M3.5 observation exercise. In M4+ the learner watches the running page instead: a button that does nothing when clicked is the tell — say what you clicked and what didn't happen, and let the agent find the cause.
 **Where to escape to.** Module 7 — React Server Components architecture is canonical Module 7 territory.
 
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
