@@ -52,6 +52,7 @@ SCOPE_GLOBS=(
   --include=*.md
   --exclude-dir=.planning
   --exclude-dir=.claude
+  --exclude-dir=.superpowers
   --exclude-dir=node_modules
   --exclude-dir=voice-lint-fixtures
   --exclude=CLAUDE.md
@@ -638,6 +639,7 @@ scan_mermaid_br() {
   files=$(find "${roots[@]}" -type f -name '*.md' \
             -not -path '*/.planning/*' \
             -not -path '*/.claude/*' \
+            -not -path '*/.superpowers/*' \
             -not -path '*/node_modules/*' \
             $([ "$mode" != "fixtures" ] && printf -- '-not -path */voice-lint-fixtures/*') \
             "${find_exempt_args[@]}" \
