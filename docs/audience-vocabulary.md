@@ -126,7 +126,7 @@ Reserved for M3+:
 
 - prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*
 
-Reserved for M3.5+:
+Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 2 re-homing them alongside the M4 reshoot)*:
 
 - file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
 
@@ -171,7 +171,7 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 
 - terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost
 
-Reserved for M3.5+:
+Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 2 re-homing them alongside the M4 reshoot)*:
 
 - file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
 
