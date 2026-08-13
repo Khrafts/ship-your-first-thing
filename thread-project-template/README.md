@@ -12,4 +12,4 @@ This directory is the canonical source of the agent-contract templates that ship
 
 Changes made in this directory must be synchronized to the `syft-starter` repo (the learner's launch template).
 
-These files are authored for agents and are exempt from the audience-vocabulary tiers documented in `COURSE-AUTHORING.md` Part 14.
+These files are authored for agents and are exempt from the audience-vocabulary tiers, per `docs/COURSE-AUTHORING.md` Part 14.

@@ -126,7 +126,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 - `docs/audience-vocabulary.md` — per-module termlist contract (the authoritative term list).
 - `.planning/PROJECT.md` Key Decisions — the historical decision log.
 - `scripts/voice-lint.sh` — programmatic enforcement (where it exists).
-- `lesson-template.md` — the nine-element lesson anatomy + the Q1–Q3 + Execution-Floor authors' notes.
+- `lesson-template.md` — the nine-element lesson anatomy (plus the optional Definition-of-done element in build-phase lessons) + the Q1–Q3 + Execution-Floor authors' notes.
 
 ---
 

@@ -20,7 +20,7 @@ The learner's environment is a desktop agent app — never a terminal, never a s
 6. **`.planning/STATE.md`** — current position (which phase, which plans complete).
 7. **`docs/COURSE-AUTHORING.md`** — the deep authoring knowledge base. Read it before writing or editing any lesson.
 8. **`docs/audience-vocabulary.md`** — the per-module Safe / Requires-callout / Forbidden / SYMPTOM-only termlist contract. Update it when you introduce a new technical noun in any lesson.
-9. **`lesson-template.md`** and **`lesson-template-m0.md`** — the nine-element lesson anatomy contract. Use the M0 variant for Module 0 lessons.
+9. **`lesson-template.md`** and **`lesson-template-m0.md`** — the nine-element lesson anatomy contract, plus the optional Definition-of-done element in build-phase lessons. Use the M0 variant for Module 0 lessons.
 10. **`GLOSSARY.md`** — single source of truth for vocab anchors. Every `[→ GLOSSARY](../../GLOSSARY.md#anchor)` callout target lives here.
 
 ## Hard rules (do not violate without explicit user permission)

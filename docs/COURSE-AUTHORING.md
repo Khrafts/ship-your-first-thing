@@ -128,7 +128,7 @@ If you catch yourself writing one of these, rewrite. `scripts/voice-lint.sh` wil
 
 ## Part 2 — The nine-element lesson anatomy
 
-Every lesson uses `lesson-template.md` (or `lesson-template-m0.md` for Module 0). The nine elements, in order:
+Every lesson uses `lesson-template.md` (or `lesson-template-m0.md` for Module 0). The nine elements, in order, plus the optional Definition-of-done element in build-phase lessons (M4+, inserted after Exercise):
 
 1. **Objective** (LESSON-01) — one sentence: "By the end of this lesson, you'll be able to ___." Concrete and observable, not aspirational.
 2. **Why this matters** (LESSON-02) — 2-4 sentences linking the lesson to the learner's actual goal (shipping a deployed app).
@@ -278,7 +278,7 @@ When the technical Mermaid introduces M3+ vocabulary, the disclosure summary lin
 | 1 (how-the-web-works) | HTTP, request, response, server, browser-as-program, HTML, GET/POST/PUT/DELETE, status codes | Module 3 (single-user vertical slice) |
 | 2 (where-data-lives) | table, row, foreign key, schema, API, HTTP request, SQL, database | Module 3 |
 | 3 (who-can-do-what) | authentication, authorization, session token, cookie, sign-in | Module 4 (multi-user social graph) |
-| 4 (how-it-goes-live) | localhost, build server, public URL, CI/CD, git push | Module 5 (operating the build) |
+| 4 (how-it-goes-live) | build server, public URL, deployment, CI/CD | Module 5 (operating the build) |
 
 Map terms to the module where the learner **does** them hands-on, not the phase where they're first mentioned in passing.
 
@@ -535,7 +535,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
 
 **Temptation.** "`^1.2.3` matches `>=1.2.3 <2.0.0`; `~1.2.3` matches `>=1.2.3 <1.3.0`..."
-**Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions; the learner runs `npm install` and observes the app works.
+**Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions and installation; the learner observes the app works.
 **Where to escape to.** Module 7 — for learners who want to operate the build long-term.
 
 #### Trap K — Explaining what "build" actually does (bundler internals, tree-shaking, dead-code elimination)

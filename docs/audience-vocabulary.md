@@ -44,7 +44,7 @@ Reserved for M2+:
 
 Reserved for M3+: prompt, context window, `/clear`, `/compact`, `/tokens`
 
-**M0 rewrite implications:** The user-flagged exemplar `02-hardware-check.md` drops "pure markdown", "Codespace", "Node", "git", "Codespace image" — every one of those is in the M0 Requires-callout or Forbidden list. The rewrite (Plan 01-6 Task 2) replaces "pure markdown" with a callout for **markdown**, defers "Node" and "git" entirely (the prose can say "the Codespace already has the tools Module 2+ will need pre-installed" without naming them), defines **Codespace** the first time it appears via callout, and replaces "Codespace image" with prose that doesn't introduce a new noun.
+**M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace, Node, or git — Codespace is retired course surface under Hard Rule 15, not a deferred noun to define later. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a D-04 callout on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
 
 ---
 
@@ -104,7 +104,7 @@ New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced R
 - **ChatGPT** — the desktop app that hosts Codex.
 - **Codex** — the coding agent inside the ChatGPT desktop app; the course's other taught track, alongside Claude Code desktop.
 - **OpenCode desktop** — named once as a third alternative agent app; not taught in this course.
-- git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M1 Requires-callout for "GitHub-as-host"; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
+- git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M1 Requires-callout in its own right, as a tool distinct from GitHub the site; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
 - GitHub (re-introduced as the account the agent saves work TO, distinct from M1's "GitHub-as-host" site definition)
 - repository (as a git artifact — a saved project's home on GitHub; the learner sees its name and URL, never operates git on it directly)
 - commit (a saved checkpoint of working code; the agent creates one when it says "save this as a working version")
@@ -193,7 +193,7 @@ Reserved for M4+:
 
 Audience floor: M3 complete. (Module 3.5 is retired 2026-08-12 — see its tombstoned section above; M4 now inherits directly from M3 rather than M3.5.)
 
-**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors; the learner states intent, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and commits. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
+**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors; the learner states intent, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and tells the agent to save each working chunk. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
 
 ### Safe (no callout needed)
 
@@ -248,7 +248,7 @@ Every M4 Requires-callout term must name something the learner *says* to the age
 
 ## Module 5 (M5) — Operating the build
 
-Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still SYMPTOM-only in framing; the term being Safe means "no callout needed on subsequent use," not "the learner now understands the mechanics").
+Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still say-it-or-see-it in framing; the term being Safe means "no callout needed on subsequent use," not "the learner now understands the mechanics").
 
 ### Safe (no callout needed)
 
@@ -326,6 +326,8 @@ Audience floor: M6 complete.
 ### Module 7 is the escape valve
 
 Module 7 is the only module where the **forbidden lists from prior modules** can be revisited as "where to go next" pointers. Topics deferred from earlier modules surface here as curated curiosity tracks. The rule for M7 lessons:
+
+**No "Retired course surface" Forbidden bucket here, and that omission is deliberate.** Every other module's Forbidden section restates the Hard-Rule-15 bucket (terminal, CLI, Codespace, npm, etc.); M7 doesn't, because M7 is the module where exactly those deferred topics are allowed to resurface as pointers under the rules below — restating them as Forbidden would contradict the module's own purpose.
 
 1. **Topics are POINTERS, not curriculum.** A Module 7 lesson on "going deeper on RLS" links to canonical docs + names what's there; it does NOT replicate a Module 4 RLS deep-dive.
 2. **Each pointer carries an "is this for you?" framing.** Module 7 names the LEARNER PROFILE that should follow each pointer (e.g., "if you want to operate the thread project long-term, this RLS reading is the next 30 minutes"; "if you're never going to touch RLS again, skip this").
