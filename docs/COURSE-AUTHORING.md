@@ -284,7 +284,7 @@ Map terms to the module where the learner **does** them hands-on, not the phase 
 
 ### M0 stays diagram-light
 
-Module 0 lessons (welcome, hardware check, cost-path triage, account creation, Codespaces walkthrough) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
+Module 0 lessons (welcome, hardware check, cost-path triage, account creation, and the environment-setup lesson) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
 
 ### M2+ uses the disclosure pattern selectively
 
@@ -294,66 +294,17 @@ By Module 2 the learner has met the M3 vocabulary at least once (via the M1 peek
 
 ## Part 5 — Agent-Responsibility Checkpoint (M3.5 floor)
 
-CLAUDE.md hard rule 12 locks the Agent-Responsibility Boundary. This part operationalizes it for lesson authors. Read it before authoring or revising any M3.5 lesson — and treat it as a load-bearing audit gate for any later module that surfaces code, errors, or framework mechanics to the learner.
-
-### The boundary
-
-The AI agent owns: **reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals.** The learner owns: **stating intent, checking the agent edited the right file, recognizing wrongness, asking for help.** Every lesson section is one role or the other — never both. Mechanics the agent owns must not be taught at the audience floor.
-
-This is structurally parallel to D-07 (locked analogies) and D-A17 (analogy two-test gate). All three are non-negotiable rails the lesson author works inside.
-
-### The three audit questions
-
-Run these before shipping any M3.5 or M3.5-adjacent lesson. Walk through each major section (Why this matters, Core read, Exercise, Loop check, What you just did):
-
-1. **Q1 — Does this section ask the learner to do something the agent will do better and faster?** If yes, rewrite to "ask the agent, then read the result back to your intent." Examples that fail Q1: "read the stack trace line by line"; "parse the error type to figure out which library raised it"; "diff the file changes yourself."
-2. **Q2 — Does this section explain mechanics (framework rules, rendering execution, error-message anatomy) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Examples that fail Q2: "Next.js renders this on the server before sending HTML to the browser"; "the bundler decides which files become client bundles"; "here is the four-part anatomy of an error message."
-3. **Q3 — Is any term used as a concept to understand from first principles when it should be used as a symptom only?** If yes, demote the framing — no "anatomy of", no "how X works", no "to debug X." Examples that fail Q3: introducing `hydration` with a paragraph about React's state-synchronization process; introducing `'use client'` with an explanation of why the server/client split exists.
-
-If a section fails any of Q1–Q3, rewrite to the symptom-and-steer floor. The deeper "why" belongs in Module 7's curiosity track, not in M3.5's body.
-
-### M3.5 Observation-Only Floor — per-topic hard examples
-
-| Topic (lesson) | Learner floor (you teach this) | Above floor — agent owns (do NOT teach this) |
-|---|---|---|
-| File tree (L1) | Names what a folder is for at a glance; spots a `pages/` + `app/` co-existence smell; reads filenames to infer purpose | URL routing, the App Router model, `.ts` vs `.tsx` distinction, why Next.js has two routing systems, what `tsconfig.json` controls |
-| Wrong-file edits (L2) | Compares intent vs filename in the diff summary; spots when the agent touched the wrong file | Reads the diff line-by-line; spots missing imports or wrong indentation; explains what changed inside each file |
-| Error → file pointer (L3) | Finds the first line that names YOUR file (typically a path starting with `./app/`); opens that file; pastes the full error back to the agent | Reads the stack trace line-by-line; explains error types (`TypeError`, `ReferenceError`); parses `line:column` coordinates; diagnoses root causes |
-| `'use client'` and the split (L4) | Pattern-matches "interactive names (`useState`, `onClick`) appear → file needs `'use client'`"; reads "hydration" error in browser console as a symptom; pastes the file pointer + error to the agent | Explains React Server Components architecture; describes server-rendering execution model; explains the hydration mechanism; explains the bundler split or partner directives like `'use server'` |
-
-### Symptom-only term introduction
-
-When you must name a term to ground a steer, the term is a SYMPTOM, not a concept. Three rules:
-
-- **The D-04 callout defines the symptom, not the mechanism.** Wrong: `**hydration** (a one-line definition: the process React uses to attach event listeners to server-rendered HTML, ...)`. Right: `**hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, ...)`.
-- **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is the floor and the ceiling.
-- **`docs/audience-vocabulary.md` carries the symptom annotation.** Each M3.5 Requires-callout term has a one-line "SYMPTOM-only" tag plus, if applicable, a `do-not-introduce` flag. See the M3.5 SYMPTOM-only addendum.
-
-### When you're authoring a new lesson
-
-Apply Q1–Q3 to each section *as you write*, not just at the end. Symptom-and-steer is harder to retrofit than to draft. If your draft started teaching mechanics and the lesson now feels short without them, that is the floor working; do not refill with junior-dev material.
-
-### When you're auditing an existing lesson
-
-Read every section against Q1–Q3 and the per-topic floor table. Quote each failure with file:line. The fix is always one of: (a) cut the failing prose entirely and link to Module 7 if the curiosity track is the right home; (b) rewrite the prose as symptom + steer; (c) reframe the section as "the agent does X; you do Y." Never paper over a Q2 failure with a vocab callout — D-04 callouts permit the term, not the explanation depth.
-
-### Cross-references
-
-- CLAUDE.md hard rule 12 — the boundary itself
-- `.planning/PROJECT.md` Key Decisions — the locked decision row
-- `docs/audience-vocabulary.md` — M3.5 SYMPTOM-only addendum + per-term flags
-- `scripts/voice-lint.sh` check #9 — WARN-level diagnostic-framing detection
-- M3.5 L2 (`02-spotting-wrong-file-edits.md`) — the M3.5 gold-standard exemplar (Phase 02.2, parallel to M2 L5 in Phase 02.1)
+**Retired 2026-08-12.** Module 3.5 is removed from the course: the accessibility remake ended reading-floor pedagogy (reading file trees, diff summaries, error text). The one durable skill — noticing that the running app doesn't match what you asked for — lives in Module 3's evaluate step. The old Part 5 text survives in git history and the pre-remake archive. Do not author against this part; the boundary now lives in CLAUDE.md Hard Rule 12 and Part 6 below. Part numbering is preserved to keep cross-references stable.
 
 ---
 
 ## Part 6 — Execution-Floor Boundary (M4+ build phases)
 
-CLAUDE.md hard rule 13 translates the Agent-Responsibility Boundary from M3.5's **observation floor** to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
+CLAUDE.md hard rule 13 extends the generalized Agent-Responsibility Boundary (hard rule 12) to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
 
-### Why M3.5's boundary needed a translation
+### Why the execution floor needs its own rules
 
-M3.5's floor is OBSERVATION: the learner watches the agent edit code; the agent does the editing. M4+ is EXECUTION: the learner is now shipping the thread project. The agent still does the code-authoring, but the learner is in the driver's seat — naming what to build, sequencing the chunks, verifying that what just shipped matches what was asked for. The boundary translation is "what does it look like to drive without owning the engine?"
+Hard rule 12's floor is OBSERVATION: the learner watches the agent work; the agent does the reading, editing, and diagnosing. M4+ is EXECUTION: the learner is now shipping the thread project. The agent still does the code-authoring, but the learner is in the driver's seat — naming what to build, sequencing the chunks, verifying that what just shipped matches what was asked for. The translation is "what does it look like to drive without owning the engine?"
 
 ### The boundary
 
@@ -363,9 +314,9 @@ The **learner owns**:
 
 1. **Stating intent at the feature level.** Not "use `useOptimistic` with the right reducer signature" — but "the like count should update right away, then correct itself if the server returns an error."
 2. **Observing the running app matches intent.** Open the deployed app. Click around. Sign out. Sign in as a second user. Did the agent build what you asked for?
-3. **Running the phase's check inventory.** A named list of behavioural checks in exactly two admissible forms (next section). Every check is performed in the running app or spoken to the agent — never against code, a diff, or a migration. The inventory is the bridge between M3.5's observation skill and M4+'s execution responsibility.
-4. **Committing each working chunk to git.** The atomic-commit discipline is the learner's safety net. Working state goes to git before the next chunk starts.
-5. **Knowing when to `/clear` and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, restart the conversation tighter.
+3. **Running the phase's check inventory.** A named list of behavioural checks in exactly two admissible forms (next section). Every check is performed in the running app or spoken to the agent — never against code, a diff, or a migration. The inventory is the bridge between the general Agent-Responsibility Boundary (hard rule 12) and M4+'s execution responsibility.
+4. **Telling the agent to save each working chunk.** "Save this as a working version" is the learner's verb — the agent performs all git and GitHub operations. Working state gets saved before the next chunk starts.
+5. **Knowing when to start a fresh conversation in the app and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, start over with a tighter prompt.
 
 ### The check inventory — two admissible forms
 
@@ -398,6 +349,10 @@ The learner can perform every check in the inventory without knowing RLS policy 
 
 **Why the scan form is banned (locked 2026-07-27).** This part originally allowed a third form: scan the agent's diff or migration for a literal string (`LOOK FOR: WITH CHECK …`). It was retired on live evidence. Across three consecutive build chunks the same scan produced three different outcomes — string present; string legitimately absent (the risk lived in a different layer); string present but reordered and wrapped so the learner could not match it — and in the third case the escalation path ("ask the agent about the missing string") returned a confident, well-structured, reason-giving answer that was factually inverted. A learner scanning for a string cannot adjudicate semantics the course's own authors got wrong. The scan form's real failure mode is **false confidence**, which is worse than not looking. Where a retired scan pointed at a real risk, the *observation* it pointed at survives in behavioural form — the author-rewrite scan became the refusal check quoted above.
 
+### Test gates (the agent-run layer)
+
+Every build chunk's prompt ends with a **test gate**: a short, plain-language definition of done. Three authoring rules. (1) The gate's checks are run by the **agent**, never the learner — automated checks where they exist, the agent clicking through its own preview where they don't — and the agent must show the results in plain words before it may say "done". (2) The lesson teaches the ritual on the learner's side: do not accept "done" without the gate report; if the report is missing, the steer is "run the checks we agreed on and show me the results first." (3) The gate never smuggles mechanics into the learner's mouth: its checks are phrased as outcomes ("a signed-out visitor who opens a post page can read it but sees no comment box"), not as tests, assertions, or tools. The learner's own refusal checks and pre-flight questions stay exactly as specified above; the gate is a third layer, owned by the agent.
+
 ### Where the inventory lives
 
 The check inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
@@ -421,11 +376,10 @@ A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent d
 
 ### The check catalog (build out per phase)
 
-Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, the catalog below grows. Each entry names the form (the two inventory forms, plus the two ambient learner skills: intent observation and error hand-off), where the check is first taught, and where the learner first applies it. Errors are a special case: an error message is shown TO the learner by the tool, not written BY the agent, so pasting it back is always in-bounds. The M3.5 diff-facing patterns (right-file edit, `'use client'` presence) stay inside M3.5's observation exercises; they are not carried into M4+ lessons, where reading the agent's output is banned.
+Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, the catalog below grows. Each entry names the form (the two inventory forms, plus the ambient learner skill of intent observation), where the check is first taught, and where the learner first applies it. Errors are agent territory end to end under CLAUDE.md hard rule 12: the agent reads them, diagnoses them, and reports the outcome in plain words — the learner never reads error text, even text the tool displayed. The reading-floor patterns formerly taught in Module 3.5 (right-file edit inspection, presence-checking for a code directive) are retired along with that module; they are not carried into M4+ lessons, where reading the agent's output stays banned.
 
 | Check | Form | First taught | First applied |
 |---|---|---|---|
-| First `./app/` line in an error → paste it to the agent (M3.5 L3 pattern) | error hand-off | M3.5 L3 | Phase 3 Chunk 0 onward |
 | Signed-out visitor can read but not act | refusal check | Phase 3 CONTEXT | every chunk with public content + Phase 6 bug-reproduction |
 | Second account cannot edit or delete content it did not write | refusal check | Phase 3 CONTEXT (posts) | Phase 4 (comments) + Phase 5 LESSON-13 walkthrough (a) |
 | Your own edit never changes who a thing belongs to | refusal check | Phase 3 CONTEXT (posts) | Phase 5 LESSON-13 walkthrough (a) |
@@ -435,10 +389,10 @@ Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, 
 
 ### Cross-references
 
+- CLAUDE.md hard rule 12 — the generalized Agent-Responsibility Boundary this part extends to the execution floor
 - CLAUDE.md hard rule 13 — the boundary itself
-- COURSE-AUTHORING.md Part 5 — the M3.5 observation floor this part extends
 - `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase check inventory
-- M2 L5 + M3.5 L2 — gold-standard exemplars of the symptom-and-steer floor
+- M2 L5 — gold-standard exemplar of the symptom-and-steer floor
 
 ---
 
@@ -469,7 +423,7 @@ For each limit, the lesson where it's first taught provides:
 
 - **The limit named** (with a D-04 callout on first use, mapped to the audience-vocabulary contract).
 - **One concrete symptom example** the learner can recognize without prior coding knowledge. Not abstract; specific. Not "the agent might be wrong" — but "the agent recommended `bookcover.io` as a free book-cover API; you searched and there is no such service."
-- **The smell-test action**: what to do when you spot it. Usually: re-ask with the symptom named explicitly; or `/clear` and start over with a tighter prompt; or paste the verifying evidence back to the agent.
+- **The smell-test action**: what to do when you spot it. Usually: re-ask with the symptom named explicitly; or start a fresh conversation in the app and try again with a tighter prompt; or paste the verifying evidence back to the agent.
 
 ### Anchor lessons (Tenet 6 surfaces)
 
@@ -557,25 +511,25 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap F — Explaining React hook internals (`useState`, `useEffect`, `useOptimistic`, etc.)
 
 **Temptation.** "`useOptimistic` returns a tuple of `[optimisticValue, addOptimistic]`. The reducer signature is `(currentState, optimisticValue) => newState`. Call `addOptimistic` inside a Server Action..."
-**Right move.** `useOptimistic` is a SYMPTOM in M3.5 L4 (interactivity marker). In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
+**Right move.** `useOptimistic` never reaches the learner at all — under CLAUDE.md hard rule 12 the learner never reads code, a file, or a diff, so there's no hook name to spot in the first place. In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
 **Where to escape to.** Don't. Hook internals belong to the agent. In M4+ hook names do not appear in lesson prose at all (say-it-or-see-it rule); the observable behaviour is what the lesson names.
 
 #### Trap G — Explaining stack-trace anatomy
 
 **Temptation.** "A stack trace lists call frames from the top (most recent) to the bottom (oldest). Each frame includes the function name, file path, line, and column. Read the trace bottom-up..."
-**Right move.** M3.5 L3 rule: "find the first line that names YOUR file (typically a path starting with `./app/`); paste the full error to the agent." The agent reads the trace; the learner gives it the pointer.
-**Where to escape to.** Don't. Stack traces are agent territory. The audience-vocabulary contract moved `stack trace` from M3.5 Requires-callout → Forbidden in May 2026.
+**Right move.** Stack traces are agent territory end to end under CLAUDE.md hard rule 12: the agent reads the trace, finds the file, and fixes it, then reports back in plain words. The learner never sees the trace at all.
+**Where to escape to.** Don't. Stack traces are agent territory.
 
 #### Trap H — Explaining the React hydration mechanism
 
 **Temptation.** "Hydration is the process React uses to attach event listeners to server-rendered HTML, matching the server-rendered tree to the client-rendered tree..."
-**Right move.** Hydration is a SYMPTOM (per M3.5 L4 SYMPTOM-only addendum): a message in the browser console meaning "the page disagreed with itself." The agent diagnoses; the learner pastes the error to the agent.
+**Right move.** Hydration is agent territory end to end under CLAUDE.md hard rule 12: a message in the browser console meaning "the page disagreed with itself," which the agent reads and diagnoses. The learner never sees the console message — they only see the running page not matching what they asked for, and say so.
 **Where to escape to.** Module 7 only, for learners who want to extend.
 
 #### Trap I — Explaining bundle splitting / Server vs. Client component rendering execution
 
 **Temptation.** "The bundler decides which files become client bundles based on the `'use client'` directive. Server Components run only on the server; their output is serialized as RSC payload..."
-**Right move.** M3.5 L4 framed-picture-vs-touchscreen analogy. `'use client'` stays an M3.5 observation exercise. In M4+ the learner watches the running page instead: a button that does nothing when clicked is the tell — say what you clicked and what didn't happen, and let the agent find the cause.
+**Right move.** `'use client'` never reaches the learner's eyes — under CLAUDE.md hard rule 12 the learner never reads a file the agent wrote. The learner watches the running page instead: a button that does nothing when clicked is the tell — say what you clicked and what didn't happen, and let the agent find the cause.
 **Where to escape to.** Module 7 — React Server Components architecture is canonical Module 7 territory.
 
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
@@ -608,7 +562,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 ### Cross-references
 
 - `docs/audience-vocabulary.md` — the positive surface (what IS safe at each module)
-- COURSE-AUTHORING.md Part 5 — Q1–Q3 audit questions for M3.5
+- CLAUDE.md hard rule 12 — the generalized Agent-Responsibility Boundary (Part 5 is retired; see its tombstone)
 - COURSE-AUTHORING.md Part 6 — Q1-Exec / Q2-Exec / Q3-Exec audit questions for M4+
 - `docs/TENETS.md` § Tenet 5 — the philosophical foundation
 
@@ -617,6 +571,8 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 ## Part 9 — The voice-lint contract
 
 `scripts/voice-lint.sh` is the programmatic gate. It has ten checks; understand each before writing or editing lessons.
+
+Phase 2 reshoots Module 3 for the desktop-app tracks named in CLAUDE.md; until then, check #8 below and the `/clear`-in-M3-lesson references elsewhere in this file describe the currently published dual-agent (Claude Code + Gemini CLI) lessons.
 
 | # | Check | What trips it | Fixture |
 |---|-------|---------------|---------|
@@ -628,7 +584,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
 | 8 | M3 dual-agent rendering (D-27) | An M3 lesson (`modules/03-the-loop/0[1-4]-*.md`) missing a standalone `Claude Code:` or `Gemini CLI:` label line | `08-m3-dual-agent.md` |
-| 9 | M3.5 diagnostic-framing (hard rule 12) | M3.5 prose drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — **WARN-only** | `09-m35-diagnostic-framing.md` |
+| 9 | Debugging-framing (hard rule 12) | Prose anywhere in `modules/` drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
 | 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 bytes of summary, over 300 bytes on one line, or leaking internal codenames (`D-xx`, `CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, `SC #n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
 
 ### Which lessons check #6 scans (module scope)
@@ -663,7 +619,7 @@ Check #6 emits both:
 - **WARN** lines for callout-missing cases (a Requires-callout term used without a callout) and bare Forbidden cases — these document the editorial backlog but do NOT block the gate.
 - **VIOLATION** lines would block — currently no VIOLATIONS are emitted from #6 by default (the WARN-only behavior is documented in `01-8-SUMMARY.md` as a deliberate choice to ship the lint without retroactively blocking on every legacy phrasing).
 
-Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (M3.5 diagnostic-framing) is WARN-only, like #6.
+Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) is WARN-only, like #6.
 
 **Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 
@@ -757,3 +713,9 @@ A few things that catch agents more than humans:
 5. **Read this file fully** before writing your first lesson. The patterns are subtle and the wrong solutions are easy to invent (the side-by-side render that didn't work; the `<br/>` → `<br>` retry that didn't fix it; the lint that almost over-blocked on `Anthropic API`).
 
 If you change a load-bearing rule, update this file too. Future agents inherit only what's written down.
+
+---
+
+## Part 14 — The learner-project agent contract
+
+Every learner project carries base files that configure the agent before the first prompt: `CLAUDE.md` (read by Claude Code) and `AGENTS.md` (read by Codex and most other agents) — identical twins maintained in `thread-project-template/` and shipped to the learner via the starter kit. They enforce, from inside the agent: plain everyday language unless the learner asks for detail; a pre-flight ask before anything irreversible; the test-gate ritual before any "done"; saving a version after every working chunk; and the agent owning all git/GitHub operations. When a lesson changes what the agent is expected to do, check whether the contract files must change too — they are doctrine, not documentation. Authoring rule: the contract files are written TO the agent ABOUT the learner, so they may use technical vocabulary freely; they are the one place the course's vocabulary tiers do not apply.
