@@ -19,7 +19,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 **Why this exists.** A learner with the right mental model can reason about almost any product; a learner buried in jargon stalls at the first unfamiliar word. Every "you already know X" assumption silently excludes the audience the course exists for — if a learner can't follow because of an undefined term, the course failed at line 1 of that lesson. Mechanics belong to the agent; frameworks belong to the learner.
 
 **Operationalized:** `COURSE-AUTHORING.md` Part 1 (audience floor + three-tier vocab contract). `docs/audience-vocabulary.md` is the authoritative per-module term list.
-**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M3.5; human review for M4+*.
+**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M3; human review for M4+*.
 
 ---
 
@@ -40,7 +40,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 **Why this exists.** Decorative analogies ("kind of like X") are filler that exhaust attention without return. Load-bearing analogies do the inverse — they replace pages of prose with a felt picture, and they predict the failure modes the learner needs to spot when steering an agent. The locked pictures (restaurant, filing cabinet, door staff, recipe binder, and the M2/M3.5 set) each survived the gate.
 
-**Operationalized:** `COURSE-AUTHORING.md` Part 2 (locked analogies D-07 + the two-test gate D-A17). New analogies are proposed in the phase's CONTEXT.md with an explicit two-test verdict before the lesson body is drafted; M2 L5 and M3.5 L2 are the gold-standard exemplars.
+**Operationalized:** `COURSE-AUTHORING.md` Part 2 (locked analogies D-07 + the two-test gate D-A17). New analogies are proposed in the phase's CONTEXT.md with an explicit two-test verdict before the lesson body is drafted; M2 L5 is the gold-standard exemplar.
 **Enforced:** hard rules 9 + 11 · GUIDANCE (review at the CONTEXT.md gate; no lint).
 
 ---
@@ -62,8 +62,8 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 **Why this exists.** The agent is faster, better, and more current at parsing code, reading errors, designing schemas, applying framework patterns, and chasing types. The learner is better at knowing what they want, recognizing when the agent missed the point, applying a smell-test, and asking for help. Teaching the learner to do the agent's job wastes their most precious resource — attention — at the exact moment the loop most needs it.
 
-**Operationalized:** `COURSE-AUTHORING.md` Part 5 (M3.5 observation floor + the Q1–Q3 audit questions) and Part 6 (M4+ execution floor + per-phase smell-test inventories). Run Q1–Q3 against each section *as you write it*.
-**Enforced:** hard rules 12 + 13 · voice-lint check #9 (M3.5 diagnostic-framing, WARN-only) — mostly GUIDANCE (review).
+**Operationalized:** `COURSE-AUTHORING.md` Part 6 (M4+ execution floor + test gates). Run the check inventory and test gate against each M4+ section *as you write it*.
+**Enforced:** hard rules 12 + 13 · voice-lint check #9 (debugging-framing, WARN-only) — mostly GUIDANCE (review).
 
 ---
 
@@ -92,12 +92,12 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 
 1. **Read this file before reading anything else.** TENETS.md is the first read for every authoring task.
 2. **Read `docs/COURSE-AUTHORING.md` for the operational playbook.** The tenets state WHAT; COURSE-AUTHORING explains HOW.
-3. **Read CLAUDE.md for the hard rules.** Fourteen hard rules. Don't violate without explicit user permission.
-4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M3.5.
+3. **Read CLAUDE.md for the hard rules.** Fifteen hard rules. Don't violate without explicit user permission.
+4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M3.
 5. **Check the audience-vocabulary contract for the target module before writing.** Forbidden / Requires-callout / Safe / SYMPTOM-only.
-6. **Apply the three audit questions (Q1–Q3) section-by-section as you write** (COURSE-AUTHORING Part 5). Symptom-and-steer is harder to retrofit than to draft.
+6. **For M4+ sections, apply the check inventory and test gate section-by-section as you write** (COURSE-AUTHORING Part 6). Symptom-and-steer is harder to retrofit than to draft.
 7. **Honor the module spine** (COURSE-AUTHORING Part 3): build on the named prior payoff, set up the next.
-8. **For build-phase lessons (M4+), confirm the phase has a CONTEXT.md with the smell-test inventory.** No execution-floor lesson ships without the inventory being locked.
+8. **For build-phase lessons (M4+), confirm the phase has a CONTEXT.md with the check inventory.** No execution-floor lesson ships without the inventory being locked.
 9. **For any lesson that names an agent failure mode, confirm the smell-test is either in the same lesson or explicitly forward-referenced.** Hard Rule 14 is non-negotiable.
 
 ---
@@ -121,8 +121,8 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 
 ## Cross-references
 
-- `CLAUDE.md` — hard rules 1–14 (enforcement layer).
-- `docs/COURSE-AUTHORING.md` — the authoring playbook (operational layer). Part 1 vocab · Part 3 coherence · Part 5 M3.5 floor · Part 6 M4+ floor · Part 7 AI-limitation.
+- `CLAUDE.md` — hard rules 1–15 (enforcement layer).
+- `docs/COURSE-AUTHORING.md` — the authoring playbook (operational layer). Part 1 vocab · Part 3 coherence · Part 6 M4+ execution floor + test gates · Part 7 AI-limitation.
 - `docs/audience-vocabulary.md` — per-module termlist contract (the authoritative term list).
 - `.planning/PROJECT.md` Key Decisions — the historical decision log.
 - `scripts/voice-lint.sh` — programmatic enforcement (where it exists).
