@@ -1,11 +1,11 @@
 ---
 fixture: true
-trips: m35-diagnostic-framing
+trips: debugging-framing
 ---
 
-# Fixture for check #9 (m35-diagnostic-framing)
+# Fixture for check #9 (debugging-framing; historically named m35-diagnostic-framing — filename kept to avoid renumber churn)
 
-This fixture intentionally violates CLAUDE.md hard rule 12 (Agent-Responsibility Boundary) by teaching diagnostic framing at the M3.5 audience floor. Check #9 must emit at least 3 WARN lines against this file.
+This fixture intentionally violates CLAUDE.md hard rule 12 (Agent-Responsibility Boundary) by teaching diagnostic framing at the M3.5 audience floor. Check #9 now scans all of `modules/`, not just M3.5, but this fixture's content is unchanged. Check #9 must emit at least 3 WARN lines against this file.
 
 ## Section that fails Q1 / Q2 / Q3
 

@@ -22,8 +22,8 @@
 #   8. M3 dual-agent rendering — every Module 3 lesson (modules/03-the-loop/0[1-4]-*.md) MUST contain both
 #      `Claude Code:` and `Gemini CLI:` as standalone-line labels (D-27 enforceability). Skip cleanly when no
 #      matching files exist (Wave 0/1/2 runs).
-#   9. M3.5 diagnostic-framing — WARN-only signals when M3.5 prose drifts into agent-owned mechanics
-#      (CLAUDE.md hard rule 12). See the scan_m35_diagnostic_framing comment for the pattern list.
+#   9. Debugging-framing — WARN-only signals when any lesson drifts into learner-debugs posture
+#      (CLAUDE.md hard rule 12). See the scan_debugging_framing comment for the pattern list.
 #  10. WHAT-CHANGED.md thin-entry contract — entries in the live region (above the check #10 boundary
 #      comment) must be dated `## YYYY-MM-DD — summary` headings (summary <= 72 chars) with the three
 #      labels **Change:** / **If you're affected:** / **Details:**, at most 6 non-blank body lines, no
@@ -722,9 +722,11 @@ scan_m3_dual_agent() {
   done
 }
 
-# M3.5 diagnostic-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
+# Debugging-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
+# (Historical name: M3.5 diagnostic-framing — widened course-wide in the accessibility
+# remake, Phase 0 Task 7; the M3.5-only scope and check name predate that widening.)
 #
-# M3.5 Observation-Only Floor: the learner SPOTS symptoms and ASKS the agent. The agent
+# Agent-Responsibility Boundary: the learner SPOTS symptoms and ASKS the agent. The agent
 # OWNS reading errors, parsing code, framework mechanics, and diagnosing root causes.
 # Lessons that drift into "here's how to debug X" / "here's the anatomy of an error
 # message" / "common mistakes include..." / "renders on the server" cross the boundary.
@@ -732,14 +734,14 @@ scan_m3_dual_agent() {
 # This check emits WARN-only signals (does not increment VIOLATION_COUNT) — the gate
 # stays open; reviewers triage. WARNs do increment WARN_COUNT for the self-test.
 #
-# Scope: modules/03.5-reading-code/0[1-4]-*.md only. README and non-numbered files are
-# excluded. M0/M1/M2/M3 lessons are out of scope by design (steering and recovery in M3
-# IS the learner's job; Anatomy-of-a-steer-ask in M3 L4 is correct in context).
+# Scope: every lesson file under modules/ (README.md and non-lesson files are excluded).
+# The check applies uniformly across all modules — the Agent-Responsibility Boundary
+# (CLAUDE.md hard rule 12) is a course-wide invariant, not an M3.5-only one.
 #
 # Patterns (case-insensitive, applied to stripped lesson body — frontmatter, fenced code,
 # blockquote, inline code, link destinations, D-04 callout definitions are stripped first):
 #
-#   9a: bare "stack trace" — M3.5 Forbidden (moved 2026-05-18); agent's job to read it
+#   9a: bare "stack trace" — Forbidden; agent's job to read it
 #   9b: "common mistakes" — implies the learner debugs
 #   9c: "to debug" — implies the learner debugs
 #   9d: "if you see ... (error|exception|crash)" — diagnostic-framing
@@ -752,9 +754,9 @@ scan_m3_dual_agent() {
 # Agent-framing carve-out: if the line contains "the agent" (case-insensitive), the
 # match is suppressed. The rewrites legitimately say "the agent reads the stack trace"
 # — that is the boundary statement, not a violation.
-scan_m35_diagnostic_framing() {
+scan_debugging_framing() {
   local mode="$1"
-  echo "==> Scanning M3.5 lessons for diagnostic-framing patterns (WARN-only, CLAUDE.md hard rule 12)..."
+  echo "==> Scanning lessons for debugging-framing patterns (WARN-only, CLAUDE.md hard rule 12)..."
 
   local files=()
   if [ "$mode" = "fixtures" ]; then
@@ -763,10 +765,11 @@ scan_m35_diagnostic_framing() {
       [ -f "$f" ] && files+=("$f")
     done
   else
-    local f
-    for f in modules/03.5-reading-code/0[1-4]-*.md; do
-      [ -f "$f" ] && files+=("$f")
-    done
+    local lessons_list
+    lessons_list=$(find modules -type f -name '*.md' -not -name 'README.md' 2>/dev/null || true)
+    while IFS= read -r f; do
+      [ -n "$f" ] && [ -f "$f" ] && files+=("$f")
+    done <<< "$lessons_list"
   fi
 
   [ "${#files[@]}" -eq 0 ] && return
@@ -814,47 +817,47 @@ scan_m35_diagnostic_framing() {
 
       # 9a: bare "stack trace"
       if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])stack trace([^a-z0-9_]|$)'; then
-        echo "WARN (m35-diagnostic-framing 9a): $file:$lineno: bare 'stack trace' — M3.5 Forbidden under CLAUDE.md hard rule 12; rephrase or scope to agent-framing context"
+        echo "WARN (debugging-framing 9a): $file:$lineno: bare 'stack trace' — learner-debugs posture — Hard Rule 12; rephrase or scope to agent-framing context"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9b: "common mistakes"
       if printf '%s' "$lc" | grep -qE 'common mistakes'; then
-        echo "WARN (m35-diagnostic-framing 9b): $file:$lineno: 'common mistakes' framing — implies the learner debugs; mechanics belong to the agent"
+        echo "WARN (debugging-framing 9b): $file:$lineno: 'common mistakes' framing — implies the learner debugs; mechanics belong to the agent"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9c: "to debug"
       if printf '%s' "$lc" | grep -qE 'to debug'; then
-        echo "WARN (m35-diagnostic-framing 9c): $file:$lineno: 'to debug' framing — debugging is the agent's job at the M3.5 floor"
+        echo "WARN (debugging-framing 9c): $file:$lineno: 'to debug' framing — debugging is the agent's job"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9d: "if you see ... (error|exception|crash)" within ~60 chars
       if printf '%s' "$lc" | grep -qE 'if you see [^.]{0,60}(error|exception|crash)'; then
-        echo "WARN (m35-diagnostic-framing 9d): $file:$lineno: 'if you see X error/exception/crash' framing — diagnostic-teach posture; rewrite as symptom + ask-the-agent"
+        echo "WARN (debugging-framing 9d): $file:$lineno: 'if you see X error/exception/crash' framing — diagnostic-teach posture; rewrite as symptom + ask-the-agent"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9e: "renders on the server"
       if printf '%s' "$lc" | grep -qE 'renders on the server'; then
-        echo "WARN (m35-diagnostic-framing 9e): $file:$lineno: 'renders on the server' framing — rendering-execution-model is Module 7 territory, not M3.5"
+        echo "WARN (debugging-framing 9e): $file:$lineno: 'renders on the server' framing — rendering-execution-model is Module 7 territory"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9f: "anatomy of"
       if printf '%s' "$lc" | grep -qE 'anatomy of'; then
-        echo "WARN (m35-diagnostic-framing 9f): $file:$lineno: 'anatomy of' framing — concept-as-decomposition implies learner parses; agent's job"
+        echo "WARN (debugging-framing 9f): $file:$lineno: 'anatomy of' framing — concept-as-decomposition implies learner parses; agent's job"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9g: "four-part" or "four-step"
       if printf '%s' "$lc" | grep -qE 'four-part|four-step'; then
-        echo "WARN (m35-diagnostic-framing 9g): $file:$lineno: 'four-part/four-step' framing — over-decomposition of agent territory"
+        echo "WARN (debugging-framing 9g): $file:$lineno: 'four-part/four-step' framing — over-decomposition of agent territory"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9h: ":N:M" coordinate adjacent to "line" or "column"
       if printf '%s' "$lc" | grep -qE ':[0-9]+:[0-9]+' && printf '%s' "$lc" | grep -qE '(line|column)'; then
-        echo "WARN (m35-diagnostic-framing 9h): $file:$lineno: 'line:column' coordinate teaching — coordinates are the agent's reading; the learner names the file path, not the numbers"
+        echo "WARN (debugging-framing 9h): $file:$lineno: 'line:column' coordinate teaching — coordinates are the agent's reading; the learner names the file path, not the numbers"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9i: "diagnose" (not preceded by "the agent" — already filtered by carve-out)
       if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])diagnose([^a-z0-9_]|$)'; then
-        echo "WARN (m35-diagnostic-framing 9i): $file:$lineno: 'diagnose' framing — diagnosis is the agent's job at the M3.5 floor"
+        echo "WARN (debugging-framing 9i): $file:$lineno: 'diagnose' framing — diagnosis is the agent's job — learner-debugs posture — Hard Rule 12"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
     done <<< "$stripped"
@@ -1071,16 +1074,17 @@ run_self_test() {
     echo "  self-test OK: m3-dual-agent fixture tripped $((after - before)) violations"
   fi
 
-  # M3.5 diagnostic-framing (fixture 09) — WARN-only check; assert >= 3 WARNs emitted.
+  # Debugging-framing (fixture 09, historically m35-diagnostic-framing) — WARN-only check;
+  # assert >= 3 WARNs emitted.
   before=$WARN_COUNT
-  scan_m35_diagnostic_framing fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  scan_debugging_framing fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
   after=$WARN_COUNT
   if [ "$((after - before))" -lt 3 ]; then
-    echo "SELFTEST FAIL: m35-diagnostic-framing fixture (09) tripped only $((after - before)) WARN(s); expected >= 3"
+    echo "SELFTEST FAIL: debugging-framing fixture (09) tripped only $((after - before)) WARN(s); expected >= 3"
     cat /tmp/voice-lint-selftest.out
     fail=1
   else
-    echo "  self-test OK: m35-diagnostic-framing fixture tripped $((after - before)) WARNs"
+    echo "  self-test OK: debugging-framing fixture tripped $((after - before)) WARNs"
   fi
 
   # WHAT-CHANGED thin-entry contract (fixture 10) — expect at least 6 violations
@@ -1119,7 +1123,7 @@ scan_broken_relative_paths default
 scan_jargon_density default
 scan_mermaid_br default
 scan_m3_dual_agent default
-scan_m35_diagnostic_framing default
+scan_debugging_framing default
 scan_whatchanged_entry_shape default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
