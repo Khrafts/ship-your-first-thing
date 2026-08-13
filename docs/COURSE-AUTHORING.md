@@ -47,7 +47,7 @@ Phase 02.1 extended the locked-analogy convention to nine Module 2 and Module 3.
 
 Sustained-with-callbacks is the depth that makes an analogy land. One passing simile in the opener does not. The pattern is one to two paragraphs of an everyday scene, plus one to three callbacks distributed across the 600-1500 word Core read so the picture stays alive as new mechanics get named. M1 bundle 1 (restaurant) and M2 L5 (recipe-binder) are the depth references; read either before drafting a new analogy.
 
-Every Module 2, Module 3, and Module 3.5 lesson that names a tool or skill category gets a new analogy. No structural exemptions, including lessons whose subject matter could be argued to already contain its own picture. The audience reads each lesson without remembering yesterday's lesson; the felt picture has to be there to be reasoned against.
+Through Phase 02.1, every Module 2, Module 3, and Module 3.5 lesson that named a tool or skill category got a new analogy, with no structural exemptions — including lessons whose subject matter could be argued to already contain its own picture. Module 3.5 is retired (see Part 5's tombstone); this policy now applies to Module 2 and Module 3. The audience reads each lesson without remembering yesterday's lesson; the felt picture has to be there to be reasoned against.
 
 Two-touch placement: the analogy opens "Why this matters" as the felt rhythm, then re-anchors at the top of the Core read at the moment the lesson formally names the tool. The first touch sets the picture before any naming happens; the second touch makes the naming feel like the picture rather than a definition. A third touch in "What you just did" is optional, not required.
 
