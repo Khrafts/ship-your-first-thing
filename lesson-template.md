@@ -29,12 +29,14 @@ deviations: []                        # per D-02: list any anatomy elements the 
      lesson is at a different depth.
      Redefine after long gaps. -->
 
-<!-- LESSON-04 cross-ref — Agent-Responsibility Checkpoint: see CLAUDE.md hard rule 12 and
-     docs/COURSE-AUTHORING.md Part 5. For M3.5 (and any later lesson surfacing code, errors,
-     or framework mechanics), every D-04 callout introduces the term as a SYMPTOM, not as a
-     concept to understand from first principles. The surrounding prose cannot exceed the
-     callout's explanation depth. Mechanics the agent owns — reading errors, parsing code,
-     framework internals — must not be taught at the audience floor. -->
+<!-- LESSON-04 cross-ref — Agent-Responsibility Checkpoint: see CLAUDE.md hard rule 12.
+     The agent owns reading errors, parsing code, diagnosing causes, framework mechanics,
+     choosing which file to edit, build internals, and every command that runs on a
+     machine. The learner owns stating intent, observing the running app, recognizing
+     wrongness, asking for help. No lesson may ask the learner to read code, a diff, a
+     file tree, or error text. Every D-04 callout for a term the agent owns introduces it
+     as a SYMPTOM to notice, never a concept to understand from first principles — the
+     surrounding prose cannot exceed the callout's explanation depth. -->
 
 <!-- LESSON-04 cross-ref (M4+ build phases) — Execution-Floor Checkpoint: see CLAUDE.md hard
      rule 13 and docs/COURSE-AUTHORING.md Part 6. When the learner ships code via the agent
@@ -42,10 +44,13 @@ deviations: []                        # per D-02: list any anatomy elements the 
      syntax + async/await mechanics + hook internals + Server-Action plumbing + type narrowing
      + dependency resolution + framework internals + deployment plumbing. Learner owns
      stating intent at the feature level + observing the running app matches intent + running
-     the phase's SMELL-TEST INVENTORY + committing each working chunk + knowing when to /clear.
-     Every M4+ Requires-callout term is a SYMPTOM (a label you scan for in the agent's diff),
-     not a concept. The smell-test inventory for the phase lives in
-     .planning/phases/NN-name/NN-CONTEXT.md and is locked BEFORE plan-phase runs. -->
+     the phase's CHECK INVENTORY (refusal checks + pre-flight questions) + telling the agent
+     to save each working chunk ("save this as a working version") + knowing when to start a
+     fresh conversation in the app and start over. Every M4+ term must pass the say-it-or-see-it
+     rule: the learner says it to the agent, or sees it in the running app or on a dashboard
+     screen they operate themselves — never a label to scan for in the agent's diff. The check
+     inventory for the phase lives in .planning/phases/NN-name/NN-CONTEXT.md and is locked
+     BEFORE the planner runs. -->
 
 <!-- LESSON-04 cross-ref (AI-Limitation Pedagogy) — see CLAUDE.md hard rule 14 and
      docs/COURSE-AUTHORING.md Part 7. Whenever a lesson names an agent failure mode
@@ -96,6 +101,18 @@ deviations: []                        # per D-02: list any anatomy elements the 
 
 <!-- LESSON-05 — 10–25 minutes. Be concrete. State the deliverable. State whether pencil + paper, excalidraw.com, code, or other is acceptable. -->
 
+## Definition of done <!-- build-phase lessons only: the agent's test gate -->
+
+Before you accept "done", the agent shows you the results of these checks, in plain words:
+
+1. [outcome-phrased check — e.g., "a signed-out visitor who opens a post page can read it but sees no comment box"]
+2. [outcome-phrased check]
+
+If the agent says "done" without showing these, say: "Run the checks we agreed on and show me the results first."
+
+<!-- Optional element, build-phase lessons only (M4+) — omit this section entirely outside Modules 4-6.
+     Wording sourced from docs/COURSE-AUTHORING.md Part 6 "Test gates (the agent-run layer)". -->
+
 ## Checkpoint
 
 <!-- LESSON-06 — "You've got this if you can ___" — one or two short, testable claims. -->
@@ -126,10 +143,11 @@ deviations: []                        # per D-02: list any anatomy elements the 
 ## Authors' notes (delete in shipped lessons)
 
 - **D-01:** This template is the skeleton; the exemplar is `modules/01-mental-models/02-where-data-lives.md`. Refer to it for tone and depth.
-- **D-02 deviations rule:** If you skip or shorten any anatomy element, add it to the front-matter `deviations: []` array AND drop a `> **Deviation note:**` blockquote near the affected section explaining why.
+- **Anatomy element count:** The core lesson anatomy is nine elements (Learning objective, Why this matters, Core read, Exercise, Checkpoint, Going deeper, Loop check, What you just did, Navigation), plus the optional Definition-of-done element in build-phase lessons (M4+) — see `## Definition of done` above, inserted after Exercise.
+- **D-02 deviations rule:** If you skip or shorten any anatomy element, add it to the front-matter `deviations: []` array AND drop a `> **Deviation note:**` blockquote near the affected section explaining why. The Definition-of-done element is exempt from this rule outside build-phase lessons — it is optional by default, not a deviation, everywhere before M4.
 - **D-04 vocab callout pattern:** `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#term))` — auditable by grep. The `../../` prefix assumes the lesson lives at `modules/NN-slug/lesson.md` (two directories deep from repo root); adjust the relative path if your lesson is at a different depth. The GLOSSARY anchor is the contract that ensures GLOSSARY.md mirrors lesson vocabulary.
-- **Agent-Responsibility Checkpoint (CLAUDE.md hard rule 12; `docs/COURSE-AUTHORING.md` Part 5):** Before shipping any M3.5 or M3.5-adjacent lesson, walk every major section through three audit questions: (1) does this section ask the learner to do something the agent does better and faster? (2) does this section explain mechanics — framework rules, rendering execution, error-message anatomy — the learner does not need to direct the agent? (3) is any term used as a concept to understand from first principles when it should be used as a symptom only? If any answer is yes, rewrite to symptom-and-steer or defer to Module 7. The per-topic floor table lives in COURSE-AUTHORING.md Part 5. `scripts/voice-lint.sh` check #9 emits WARN-level signals when M3.5 lessons drift into agent-territory framing — review WARNs but they do not block the gate.
-- **Execution-Floor Checkpoint (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6):** Before shipping any M4+ build-phase lesson, confirm the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) is locked with (a) per-chunk boundary table naming agent-territory vs. learner-territory, (b) smell-test inventory with LOOK FOR / IF PRESENT / IF ABSENT, (c) Tenet 6 surfaces (which lesson teaches which limit + smell-test), (d) vocab additions for the phase. Run Q1-Exec / Q2-Exec / Q3-Exec (Part 6) against every section: does the section ask the learner to do something the agent will do better? does it explain framework mechanics the learner does not need? is any term a concept when it should be a symptom? If yes — rewrite as "the agent does X; you observe Y; if Y is missing, ask the agent Z." Mechanics the agent owns (schema authoring, RLS grammar, async/await semantics, hook internals, Server-Action plumbing, type narrowing, deployment plumbing) are not taught at the audience floor.
+- **Agent-Responsibility Checkpoint (CLAUDE.md hard rule 12):** Before shipping any lesson that surfaces code, errors, or framework mechanics, walk every major section through three audit questions: (1) does this section ask the learner to do something the agent does better and faster? (2) does this section explain mechanics — framework rules, rendering execution, error-message anatomy — the learner does not need to direct the agent? (3) is any term used as a concept to understand from first principles when it should be used as a symptom only? If any answer is yes, rewrite to symptom-and-steer, or defer to a later module. No lesson may ask the learner to read code, a diff, a file tree, or error text — the agent owns reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals, and every command that runs on a machine; the learner owns stating intent, observing the running app, recognizing wrongness, asking for help. `scripts/voice-lint.sh` check #9 (debugging-framing, WARN-only) flags drift into learner-debugs posture anywhere in `modules/` — review WARNs but they do not block the gate.
+- **Execution-Floor Checkpoint (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6):** Before shipping any M4+ build-phase lesson, confirm the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) is locked with (a) per-chunk boundary table naming agent-territory vs. learner-territory, (b) the check inventory — refusal checks (`TRY THIS` / `EXPECT` / `IF IT WORKS`) and pre-flight questions (`BEFORE YOU PASTE` …), one entry per named risk, (c) Tenet 6 surfaces (which lesson teaches which limit + smell-test), (d) vocab additions for the phase. Run Q1-Exec / Q2-Exec / Q3-Exec (Part 6) against every section: does the section ask the learner to do something the agent will do better? does it explain framework mechanics the learner does not need? does any term fail the say-it-or-see-it rule? If yes — rewrite as "the agent does X; you try the forbidden thing Y in the running app; if it goes through, tell the agent Z." Mechanics the agent owns (schema authoring, RLS grammar, async/await semantics, hook internals, Server-Action plumbing, type narrowing, deployment plumbing) are not taught at the audience floor. Anything that requires the learner to read, scan, or judge the agent's output — code, a diff, a migration, any file the agent wrote — is banned from learner-territory; the Definition-of-done element carries the agent-run counterpart of this same check inventory.
 - **AI-Limitation Pedagogy (CLAUDE.md hard rule 14; `docs/COURSE-AUTHORING.md` Part 7):** Whenever a lesson names an agent failure mode (hallucination, drift, context-window overflow, training cutoff, confident-wrong, risk-blindness, prompt-injection), the same lesson EITHER teaches the smell-test for it OR carries an explicit forward-reference to the lesson where the smell-test lives. Forward-reference shape: `> **Heads up — you'll meet this again.** {Failure mode in plain words}. The smell-test for catching it lives in {Module N Lesson NN slug}; for now, just notice the name.` Vague "we'll cover this later" without naming WHERE does not satisfy Hard Rule 14. The six-limitation taxonomy + per-limit smell-test patterns + anchor lessons are catalogued in COURSE-AUTHORING.md Part 7.
 - **Audience-aware vocabulary contract:** Every technical noun in lesson prose must be classified per `docs/audience-vocabulary.md`: Safe (use freely), Requires-callout (apply the D-04 pattern on first use), or Forbidden (do not use; defer to a later module). The contract is incremental — every term that becomes safe in module N is safe in modules N+1 and onward. If you introduce a new technical noun, update `docs/audience-vocabulary.md` AND `GLOSSARY.md` in the same PR. `scripts/voice-lint.sh` (Plan 01-8) verifies first-use of Requires-callout terms and absence of Forbidden terms.
 - **Diagram convention (M1+, Plan 01-7, post-UAT tightening):** Simple-first / bridge-collapsed. Every technical Mermaid is preceded by a simple-form sibling using only analogy nouns AND wrapped in a `<details><summary>...</summary> ... </details>` disclosure so the technical diagram is collapsed by default. The summary names which later module covers those technical terms hands-on. Inside the disclosure: a `> *Peek ahead — skim, don't memorize:*` callout with the analogy→real-term mapping, then the Mermaid block. Blank lines required around the fenced code block inside the disclosure or GFM will not render the Mermaid. This collapse-by-default treatment is load-bearing — a learner who sees both diagrams side-by-side feels obligated to absorb the technical labels and reintroduces the very jargon M1 is designed to defer. M0 stays diagram-light. M2+ uses the disclosure pattern only when introducing new technical vocabulary. The corresponding `diagrams/*.md` standalone source files use plain H3 section headers and stay open (their audience is contributors, not learners).
