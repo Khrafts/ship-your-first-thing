@@ -6,6 +6,7 @@ This directory is the canonical source of the agent-contract templates that ship
 
 - `CLAUDE.md` and `AGENTS.md` — identical twins, read by different AI agents (Claude Code, Codex, etc.) before the first prompt. These files configure how agents should work with the learner on the project.
 - In a later phase: `PLAN.md` template — a starter structure for the learner's project plan.
+- Support dotfiles — `.gitignore`, `.claudeignore`, and `.claude/settings.json` — configuration that ships with the kit to help agents work well in the learner's environment.
 
 ## Important
 
