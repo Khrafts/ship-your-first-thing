@@ -20,23 +20,27 @@ Audience floor: comfortable using a computer; has used GitHub at most to view a 
 
 Everyday computing nouns the audience already uses:
 
-- file, folder, browser, tab, window, menu, button, link, click, type, search, save, copy, paste, password, account, sign in, sign out, email, phone, message, internet, URL (as a "web address" — the structural details land in M1)
+- file, folder, browser, tab, window, menu, button, link, click, type, search, save, copy, paste, password, account, sign in, sign out, email, phone, message, internet, app, conversation, new chat, approve/reject (the buttons), download, install, dashboard, URL (as a "web address" — the structural details land in M1)
 
 ### Requires-callout (D-04 pattern on first use)
 
 Tool nouns introduced in M0 that the audience hasn't met:
 
-- markdown, GitHub (as a *site*, distinct from "git"), Codespace, repository (or repo), terminal, code editor, AI coding agent, API key, free tier, rate limit, token (as in AI-tool token, distinct from auth token in M1)
+- markdown, GitHub (as a *site*, distinct from "git"), repository (or repo), code editor, AI coding agent, API key, free tier, rate limit, token (as in AI-tool token, distinct from auth token in M1)
 
 ### Forbidden (deferred to a later module)
 
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
 Reserved for M1+:
 
-- HTTP, DNS, request, response, server, client, browser-as-program (M1 elevates the everyday "browser" noun to a technical role), database, schema, SQL, query, row, table, foreign key, API (as a *contract* — M1 bundle 2), authentication, authorization, session, cookie, deployment, localhost, CI/CD, build server, JWT, RLS, magic link
+- HTTP, DNS, request, response, server, client, browser-as-program (M1 elevates the everyday "browser" noun to a technical role), database, schema, SQL, query, row, table, foreign key, API (as a *contract* — M1 bundle 2), authentication, authorization, session, cookie, deployment, CI/CD, build server, JWT, RLS, magic link
 
 Reserved for M2+:
 
-- IDE, runtime, package manager, Node, npm, git (as a tool, distinct from "GitHub" the site), commit, push, pull, branch, merge
+- git (as a tool, distinct from "GitHub" the site), commit, push, pull, branch, merge
 
 Reserved for M3+: prompt, context window, `/clear`, `/compact`, `/tokens`
 
@@ -60,13 +64,17 @@ All M0 Safe + all M0 Requires-callout. Plus terms M1's analogies introduce as Sa
 
 Technical nouns M1 intentionally defines:
 
-- HTTP, HTTP method, HTTP status code, URL (as a structural noun — was Safe in M0 as "web address"; in M1 we re-define structurally), DNS, server, browser (re-defined as a program, not a tab), request, response, HTML, database, row, schema, foreign key, query, SQL, API, authentication (authn), authorization (authz), session, session token, cookie, localhost, deployment, CI/CD, git, GitHub (as the host of git repos), Vercel
+- HTTP, HTTP method, HTTP status code, URL (as a structural noun — was Safe in M0 as "web address"; in M1 we re-define structurally), DNS, server, browser (re-defined as a program, not a tab), request, response, HTML, database, row, schema, foreign key, query, SQL, API, authentication (authn), authorization (authz), session, session token, cookie, deployment, CI/CD, git, GitHub (as the host of git repos), Vercel
 
 ### Forbidden (deferred to a later module)
 
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
 Reserved for M2+:
 
-- IDE, terminal-as-developer-tool, package manager, npm, runtime, commit, push, pull, branch, merge (terminal appears as "where commands run" in M0 Codespaces lesson via callout; M1 doesn't name it again)
+- commit, push, pull, branch, merge (terminal, IDE, package manager, npm, and runtime moved out of this bucket — they no longer become legal at M2; see the retired-course-surface bucket above)
 
 Reserved for M3+:
 
@@ -80,9 +88,9 @@ Reserved for M4+:
 
 ---
 
-## Module 2 (M2)
+## Module 2 (M2) — Meet your agent, and the machinery it drives for you
 
-Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, browser-as-program, request, response, HTML, database, row, schema, foreign key, query, SQL, API, authentication, authorization, session, session token, cookie, localhost, deployment, CI/CD, git, GitHub-as-host, Vercel) is now Safe.
+Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, browser-as-program, request, response, HTML, database, row, schema, foreign key, query, SQL, API, authentication, authorization, session, session token, cookie, deployment, CI/CD, git, GitHub-as-host, Vercel) is now Safe. M2 is the collapsed module: the learner meets their agent — Claude Code desktop, or Codex in the ChatGPT desktop app — and learns that the machinery a project used to require by hand (installing tools, managing packages, running git commands) is now the agent's job, not theirs.
 
 ### Safe (no callout needed)
 
@@ -90,32 +98,33 @@ Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, 
 
 ### Requires-callout (D-04 pattern on first use)
 
-New tool nouns introduced in M2 (in lesson order per D-20):
+New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced Requires-callout on first use and is Safe after:
 
-- IDE
-- terminal (re-introduced as "the developer tool surface" — was M0 Requires-callout for "where commands run"; M2 promotes it to a named tool category)
-- runtime
-- Node (or Node.js — pick one canonical form per lesson; cite the install command from CD-12)
-- package manager
-- npm
-- package
-- dependency
-- git (as a TOOL, distinct from M1's "GitHub-as-host"; the noun was M1 Requires-callout; M2 L5 re-introduces it as a tool you USE, not just a site)
-- repository (as a git artifact, distinct from M0's casual "GitHub repo" mention)
-- commit
-- push
-- pull
-- branch
-- merge
-- Claude Code
-- Gemini CLI
-- slash command
+- **Claude Code desktop** — one of the course's two taught agent apps.
+- **ChatGPT** — the desktop app that hosts Codex.
+- **Codex** — the coding agent inside the ChatGPT desktop app; the course's other taught track, alongside Claude Code desktop.
+- **OpenCode desktop** — named once as a third alternative agent app; not taught in this course.
+- git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M1 Requires-callout for "GitHub-as-host"; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
+- GitHub (re-introduced as the account the agent saves work TO, distinct from M1's "GitHub-as-host" site definition)
+- repository (as a git artifact — a saved project's home on GitHub; the learner sees its name and URL, never operates git on it directly)
+- commit (a saved checkpoint of working code; the agent creates one when it says "save this as a working version")
+- push (sending saved commits to GitHub; agent-performed)
+- pull (bringing GitHub's saved state back down; agent-performed)
+- branch (a separate line of work the agent can create to try something without touching the working version)
+- merge (folding a branch's changes back into the working version; agent-performed)
+- package (a piece of code someone else wrote that the app uses; the agent adds and manages these)
+- dependency (a package the app needs to run; the agent manages the list)
+- slash command (a typed instruction starting with `/` inside the agent app, distinct from an ordinary request in plain language)
 
 ### Forbidden (deferred to a later module)
 
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
 Reserved for M3+:
 
-- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, `/compress`, `/stats`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*
+- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*
 
 Reserved for M3.5+:
 
@@ -125,7 +134,7 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M2 rewrite implications:** M2 introduces tools as nouns the learner now operates. The hands-on shape of each tool (key commands, install path) is shown via CHEATSHEET + VERSIONS.md; the lesson body uses the term with a D-04 callout on first use and then drops the callout. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — use the felt-problem framing locked in D-20.
+**M2 rewrite implications:** M2 no longer teaches tools as things the learner installs and runs by hand — that hands-on, terminal-and-package-manager shape is retired under Hard Rule 15. Instead M2 introduces the agent (Claude Code desktop, or Codex in the ChatGPT desktop app) and names the machinery the agent drives on the learner's behalf: git, GitHub, commits, packages, dependencies. The lesson body uses each term with a D-04 callout on first use and then drops the callout, but the callout defines what the learner SEES or SAYS (the agent reports "saved to GitHub"; the learner asks for a feature) — never a mechanism the learner performs themselves. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — that framing described a retired hands-on step; describe what the agent does and what the learner observes instead.
 
 **Anchor-lesson exception (`hallucination`).** `hallucination` is Forbidden as a concept term in M2 prose, with ONE exception: **M2 L6** (`06-ai-coding-agents.md`) is the Tenet 6 anchor lesson and introduces the term with a D-04 callout in the "notice the name" framing (forward-referencing the M3 L3 smell-test). Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L6 / M3 L3. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception.
 
@@ -147,8 +156,6 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 - `/compact`
 - `/context`
 - `/cost`
-- `/compress` (Gemini CLI's equivalent of Claude Code's `/compact` — note the divergence; cf. RESEARCH.md State-of-the-Art table)
-- `/stats` (Gemini CLI)
 - agent loop
 - planning conversation
 - execution conversation
@@ -160,6 +167,10 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 
 ### Forbidden (deferred to a later module)
 
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake). `/clear`/`/compact`/`/context` are excluded from this bucket — they remain Requires-callout above, kept functional for the still-published M3 dual-agent lessons pending the Phase 2 reshoot:
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost
+
 Reserved for M3.5+:
 
 - file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
@@ -168,67 +179,25 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M3 rewrite implications:** M3 names the loop. Every lesson uses the loop-step nouns (intent / ask / evaluate / steer) freely AFTER the first-use callout in M3 L1. The slash commands appear in CHEATSHEET first; lessons re-introduce them with D-04 callouts only at first lesson-internal use. CRITICAL: do NOT introduce `/tokens` — that's the deprecated name. M3 L2 teaches the canonical commands `/context` (Claude Code, window usage) and `/cost` (Claude Code, spend), plus Gemini CLI's `/compress` and `/stats`. The same-PR migration of CHEATSHEET/BUDGET/GLOSSARY off `/tokens` ships in Plan 02-02 (Wave 1) before any M3 lesson is written.
+**M3 rewrite implications:** M3 names the loop. Every lesson uses the loop-step nouns (intent / ask / evaluate / steer) freely AFTER the first-use callout in M3 L1. The slash commands appear in CHEATSHEET first; lessons re-introduce them with D-04 callouts only at first lesson-internal use. CRITICAL: do NOT introduce `/tokens` — that's the deprecated name. M3 L2 teaches the canonical commands `/context` (Claude Code, window usage) and `/cost` (Claude Code, spend). *(Transitional note, 2026-08-12: the still-published M3 L2 lesson also currently teaches Gemini CLI's `/compress` and `/stats`; those two commands are removed from this section's Requires-callout tier under the Gemini CLI retirement — see Maintenance — and no longer count as go-forward vocabulary. The lesson itself is unedited pending the Phase 2 reshoot of Module 3 for the desktop-app tracks.)* The same-PR migration of CHEATSHEET/BUDGET/GLOSSARY off `/tokens` ships in Plan 02-02 (Wave 1) before any M3 lesson is written.
 
 ---
 
 ## Module 3.5 (M3.5)
 
-Audience floor: M3 complete. Every M3 Requires-callout term is now Safe.
-
-### Safe (no callout needed)
-
-- All M0/M1/M2/M3 Safe + all M3 Requires-callout.
-
-### Requires-callout (D-04 pattern on first use)
-
-- file tree
-- `'use client'` (SYMPTOM-only: introduce as "the label you put at the top of a file to mark it as interactive"; never explain the rendering split from first principles)
-- server component (SYMPTOM-only: introduce as "the symptom-level name for a file in the 'framed picture' category — static, no interactivity"; never explain rendering execution)
-- client component (SYMPTOM-only: introduce as "the symptom-level name for a file in the 'touchscreen' category — interactivity, state, click handlers"; never explain rendering execution)
-- hydration (SYMPTOM-only: introduce as a message in the browser console meaning "the server-rendered HTML and the browser-rendered HTML do not agree" — usually a file that needs `'use client'` missing the directive; never explain the hydration process itself)
-- directive (React directive sense, in the `'use client'` context only)
-- file panel
-- diff summary
-- Next.js (framework name; introduce at first use in M3.5 L1 as "the framework Phase 3 uses"; readers do not need to know Next.js internals to read the file-tree shape)
-- React (library name; introduce only when an error message references `react-dom` and the learner needs a label for "library code"; readers do not need to know React internals at the M3.5 floor)
-- TypeScript (language name; do-not-introduce in current M3.5 lessons — the rewrites teach `.tsx` as "a UI piece" without naming the language as a learner concept)
-- JSX (syntax name; **do-not-introduce** in current M3.5 lessons — surfaces only in Going-deeper Module 7 pointers)
-- App Router (Next.js routing-system name; **do-not-introduce** in current M3.5 lessons — the floor is "this is where pages live," not "this is the App Router model")
-- React Server Components (architectural-model name; **do-not-introduce** in current M3.5 lessons — surfaces only in Going-deeper Module 7 pointers)
-
-### Forbidden (deferred to a later module)
-
-Reserved for M4+:
-
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
-
-**Forbidden in M3.5 specifically** (moved from Requires-callout 2026-05-18 under CLAUDE.md hard rule 12 / Agent-Responsibility Boundary):
-
-- stack trace — the term anchors line-by-line trace parsing, which is the agent's job. M3.5 L3 teaches "find the first line that names YOUR file" without naming the trace as a unit-of-skill. May reappear in Module 7 where deeper code-literacy is on the floor.
-- error message anatomy — the term encodes the four-part diagnostic frame the M3.5 L3 rewrite removed. The learner does not parse error structure; the agent does. May reappear in Module 7.
-
-### M3.5 SYMPTOM-only introduction rule (added 2026-05-18)
-
-Every M3.5 Requires-callout term is introduced as a SYMPTOM (something the learner sees or types as a label), never as a CONCEPT (something the learner understands from first principles). Three rules:
-
-1. **The D-04 callout itself defines the symptom, not the mechanism.** Wrong: `**hydration** (a one-line definition: the React process that attaches event listeners to server-rendered HTML, ...)`. Right: `**hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, ...)`.
-2. **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is both floor and ceiling.
-3. **`do-not-introduce` terms remain in the contract but are not surfaced in M3.5 lesson bodies.** They exist for Module 7 and future modules. Treat them as reserved.
-
-**M3.5 rewrite implications:** M3.5 is the FIRST module where code surface is visible. The Agent-Responsibility Boundary (CLAUDE.md hard rule 12; `docs/COURSE-AUTHORING.md` Part 5) is the load-bearing pedagogical constraint: every term above is introduced ONLY at the "you can detect this symptom" level, and the surrounding prose cannot exceed the callout depth. Do NOT extend `'use client'` into a first-principles RSC explanation. Do NOT use `stack trace` or `error message anatomy` in body prose. If a lesson author wants to go deeper, the deeper explanation belongs in Module 7's "where to go next" track — not in M3.5. The four exercises must match the four D-35 shapes: annotation (L1) / judgment (L2) / tracing (L3) / ask-the-agent (L4). `scripts/voice-lint.sh` check #9 emits WARN-level signals when M3.5 lessons drift into agent-territory framing.
+**Retired 2026-08-12.** Module 3.5 is removed by the accessibility remake; see git history for the old tiers.
 
 ---
 
 ## Module 4 (M4) — Thread project build phases (Single-User + Multi-User Social Graph)
 
-Audience floor: M3.5 complete. Every M3.5 Requires-callout term is now Safe.
+Audience floor: M3 complete. (Module 3.5 is retired 2026-08-12 — see its tombstoned section above; M4 now inherits directly from M3 rather than M3.5.)
 
 **Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors; the learner states intent, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and commits. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
 
 ### Safe (no callout needed)
 
-- All M0/M1/M2/M3/M3.5 Safe + all M3.5 Requires-callout.
+- All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The still-published M4 chunks were written when M3.5 existed and may assume some of its terms, e.g. Next.js, React, `'use client'`, hydration, file tree — those terms currently have no active tier anywhere in this contract; flagged as a gap for the Phase 2 M4 reshoot.)
 
 ### Requires-callout (D-04 pattern on first use; every entry passes say-it-or-see-it)
 
@@ -238,15 +207,19 @@ Build-phase nouns the learner says to the agent or sees on a screen they operate
 - **env var** / **environment variable** — introduce as "a named setting the deployed app reads at runtime that isn't checked into git (typically a secret)." The learner sees env vars listed on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is "is a setting missing on the live site?"
 - **`NEXT_PUBLIC_SUPABASE_URL`** — the one env-var name the learner really reads and compares themselves, on the Vercel settings screen, when checking that the live site points at the same Supabase project as their machine. The learner never learns the `NEXT_PUBLIC_` build rule; the agent decides which values need which prefix.
 - **secret key** / **publishable key** — "Supabase's settings screen shows two keys; one is safe to be seen, one must never be." The learner copies the publishable one off the dashboard when the agent asks for it, and never pastes the secret one anywhere public; the agent uses each correctly in config.
-- **magic link** — re-introduce as "the email-with-a-link sign-in flow you used in M0; this time you're building it." Already met in M0/M3.5; M4 surfaces it as a feature, not a concept.
+- **magic link** — re-introduce as "the email-with-a-link sign-in flow you used in M0; this time you're building it." Already met in M0; M4 surfaces it as a feature, not a concept.
 
 The named skills the learner runs on every chunk:
 
-- **smell-test** — the behavioural nose the learner develops for "something is off." First met as an unnamed observation skill in M3.5 L2; **M4 is where it is named and first called out**. In M4+ a smell-test is always one of two moves (CLAUDE.md hard rule 13): a **refusal check** or a **pre-flight question**. It is never "read what the agent wrote." Safe from M5 onward.
+- **smell-test** — the behavioural nose the learner develops for "something is off." First met as an unnamed observation skill in Module 3's evaluate step (M3.5's reading-floor lessons used to house a more advanced version of this skill; that module is retired — see its tombstoned section above); **M4 is where it is named and first called out**. In M4+ a smell-test is always one of two moves (CLAUDE.md hard rule 13): a **refusal check** or a **pre-flight question**. It is never "read what the agent wrote." Safe from M5 onward.
 - **refusal check** — in the running app, try the thing that should NOT be allowed and confirm it is refused; if it goes through, tell the agent what you did and what should have stopped it.
 - **pre-flight question** — before an irreversible step (a dashboard paste, anything run against data that already exists), ask the agent a named question about consequences and wait for the answer.
 
 ### Forbidden in M4 specifically (deferred to Module 7 or out of scope for V1)
+
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
 
 Reserved for Module 7's curiosity track:
 
@@ -292,6 +265,10 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still S
 
 ### Forbidden in M5 specifically
 
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
 Reserved for Module 7 / out of scope:
 
 - CI/CD pipeline internals (Vercel handles it; the learner doesn't configure it from scratch)
@@ -317,9 +294,13 @@ Audience floor: M5 complete.
 - **bug report** — introduce as "someone tells you the deployed app does something wrong; you reproduce it, then write a planning conversation."
 - **reproduce** (in the bug-reproduction sense) — "open the deployed app, follow the steps, confirm you see the same wrong thing."
 - **additive feature** — "a new feature you add to a working app without breaking the working parts."
-- **prompt injection** — SYMPTOM-only: "a user supplies input designed to confuse the agent or the app." The learner does NOT learn attack vectors as a concept; the lesson teaches the SMELL-TEST as an AGENT-BEHAVIOR observation ("paste untrusted content from the live app — a user's comment or bio, a bug report someone sent — into the coding agent; watch whether the agent does only what you asked or starts acting on instructions hidden in the pasted text"). The recovery is learner-side: `/clear`, restate intent in your own words, and describe the content instead of pasting it verbatim. This is NOT an app-output-escaping check — a non-coder cannot audit sanitization, and the framework escapes stored user text by default, so that direction cannot fail on the shipped stack. *(Amended 2026-07-24 from the earlier "does the agent's code sanitize it before storing" phrasing, under the Phase 6 CONTEXT gate + CLAUDE.md HR 14; the "agent or the app" definition is unchanged.)*
+- **prompt injection** — SYMPTOM-only: "a user supplies input designed to confuse the agent or the app." The learner does NOT learn attack vectors as a concept; the lesson teaches the SMELL-TEST as an AGENT-BEHAVIOR observation ("paste untrusted content from the live app — a user's comment or bio, a bug report someone sent — into the coding agent; watch whether the agent does only what you asked or starts acting on instructions hidden in the pasted text"). The recovery is learner-side: start a fresh conversation in the app, restate intent in your own words, and describe the content instead of pasting it verbatim. This is NOT an app-output-escaping check — a non-coder cannot audit sanitization, and the framework escapes stored user text by default, so that direction cannot fail on the shipped stack. *(Amended 2026-07-24 from the earlier "does the agent's code sanitize it before storing" phrasing, under the Phase 6 CONTEXT gate + CLAUDE.md HR 14; the "agent or the app" definition is unchanged. Amended again 2026-08-12: `/clear` replaced with "start a fresh conversation in the app" per CLAUDE.md hard rule 13's desktop-app phrasing.)*
 
 ### Forbidden in M6 specifically
+
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake):
+
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
 
 Reserved for Module 7:
 
@@ -330,7 +311,7 @@ Reserved for Module 7:
 - Linting beyond the project's existing voice-lint
 - Type-safety as a concept
 
-**M6 SYMPTOM-only rule:** Prompt-injection is the headline M6 limit-and-smell-test pair. The lesson teaches WHAT THE SYMPTOM LOOKS LIKE (the coding agent starts doing something you never asked about right after you pasted content from outside) and WHAT THE SMELL-TEST IS ("paste the gate-supplied content sample into the agent; observe whether it stays on the task you asked for"). The recovery is learner-side (`/clear`; restate intent; describe don't paste). To guarantee the failure is observable, the lesson ships a fixed, gate-supplied content sample the learner copies and pastes — the learner never authors the payload. The lesson does NOT teach attack-vector taxonomies, mitigation algorithms, or threat-modeling, and it is NOT an app-output-escaping check (the framework handles output-escaping by default).
+**M6 SYMPTOM-only rule:** Prompt-injection is the headline M6 limit-and-smell-test pair. The lesson teaches WHAT THE SYMPTOM LOOKS LIKE (the coding agent starts doing something you never asked about right after you pasted content from outside) and WHAT THE SMELL-TEST IS ("paste the gate-supplied content sample into the agent; observe whether it stays on the task you asked for"). The recovery is learner-side (start a fresh conversation in the app; restate intent; describe don't paste). To guarantee the failure is observable, the lesson ships a fixed, gate-supplied content sample the learner copies and pastes — the learner never authors the payload. The lesson does NOT teach attack-vector taxonomies, mitigation algorithms, or threat-modeling, and it is NOT an app-output-escaping check (the framework handles output-escaping by default).
 
 ---
 
@@ -376,3 +357,5 @@ When a term that was Forbidden becomes legal in a later module:
 2. From the next module onward, the term joins Safe.
 
 This file is authoritative. If a lint flags a violation that the lesson author believes is correct, update the contract first, then the lesson — never silently bypass.
+
+**Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are now Claude Code desktop and Codex in the ChatGPT desktop app, with OpenCode desktop named once as a third alternative (CLAUDE.md hard rule 15). The M3 section is the one exception: its still-published dual-agent lessons (Claude Code + Gemini CLI) remain live pending the Phase 2 reshoot of Module 3, so `/clear`/`/compact`/`/context` stay Requires-callout there — but Gemini-CLI-specific slash commands (`/compress`, `/stats`) are removed from the tier list regardless, per the transitional note in the Module 3 section.
