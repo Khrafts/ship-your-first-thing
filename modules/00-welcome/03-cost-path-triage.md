@@ -75,7 +75,7 @@ You've got this if you can:
 
 - Name your chosen path in one phrase.
 - Say what it costs you per month, in dollars.
-- Say which account Lesson 4 has you create next: an Anthropic account for Path 1, or a ChatGPT account for Path 2.
+- Say which account Lesson 4 has you create next: a Claude account for Path 1, or a ChatGPT account for Path 2.
 
 ## What you just did
 

@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 01
 est_minutes: 15
 prereqs: []
-updated: "2026-06-13"
+updated: "2026-08-15"
 deviations: []
 ---
 
@@ -36,7 +36,7 @@ There are two surfaces:
 - You may have seen GitHub before, but only as a viewer.
 - You're curious about building real software.
 - You're a little intimidated by code.
-- You may or may not have budget for paid AI coding tools — this course handles all three honest cost paths.
+- You may or may not have budget for a paid AI coding tool — this course handles both honest cost paths.
 
 If that's you: welcome.
 
@@ -56,14 +56,14 @@ If that's you: welcome.
 **What this course is honest about:**
 
 - AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When a lesson's date stamp is old and the steps no longer match what's on your screen, that's drift — the keystrokes shifted, but the loop won't have. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says; it can help you reconcile the difference against this exact lesson. The full record of changes lives in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
-- The free path is real and capped by rate limits. The paid path is predictable and costs ~$20/month. The "token-careful" path is cheap if you're careful and ruinous if you're not. Module 0 lesson 03 walks you through the triage.
-- You will get stuck. The course expects this. [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is where you go when something breaks and you need the fix.
+- The free path is real, but its free allowance can run out on a busy day. The paid path is predictable and costs about $20/month. Module 0 lesson 03 walks you through the triage.
+- You will get stuck. The course expects this. On the course site, the lesson chat ("Ask about this lesson") is where you go when something breaks — tell it what you're seeing and it helps you reconcile against that exact lesson.
 
 **How to read this course:**
 
 - Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. Skipping Module 1 (mental models) to get to "the building" is the most common way learners stall in Module 3.
 - Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
-- When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). When something breaks, check [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md). Still stuck after both? File an issue.
+- When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Still stuck after that? File an issue.
 
 That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces the toolchain. Then we build.
 
@@ -71,7 +71,7 @@ That's the whole course in two paragraphs. Module 0 spends the next four lessons
 
 Spend 5 minutes on each of these:
 
-1. Open [`BUDGET.md`](../../BUDGET.md) and skim the three named cost paths. Don't pick yet — lesson 03 walks the triage. Just know they exist.
+1. Know that this course has two cost paths ahead of you — one costs about $20/month, one is free to start. Don't pick yet — lesson 03 walks the full triage.
 2. Open [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Read the V1 baseline entry (the last one, at the very bottom) so you know this full-record file exists. When reality drifts from a lesson on the course site, your faster first move is the lesson chat ("Ask about this lesson") — tell it what you see versus what the lesson says, and it reconciles the difference against that exact lesson.
 3. Open `modules/01-mental-models/README.md`. Read the four bundle titles. This is what Module 1 covers, and it is the most-skipped module in courses like this. (Don't skip it.)
 
@@ -79,8 +79,8 @@ Spend 5 minutes on each of these:
 
 You've got this if you can:
 
-- Name the three cost paths from [`BUDGET.md`](../../BUDGET.md) in one phrase each.
-- Say where you'd look first when something in a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson"; the full change record is [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), and [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is for things that break).
+- Name this course's two cost paths in one phrase each (lesson 03 has the full triage).
+- Say where you'd look first when something in a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson"; the full change record is [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md)).
 - Name the four Module 1 bundles without re-opening Module 1's README.
 
 ## What you just did
