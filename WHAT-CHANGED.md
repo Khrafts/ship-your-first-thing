@@ -43,7 +43,7 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 **Change:** Module 0 Lesson 5 (the Codespaces walkthrough) now shows labeled screenshots of the key steps — the "Use this template" button, the new-repository form, the Code → Codespaces panel, and a booted Codespace with its terminal open — each marked with arrows and step numbers.
 On the course site you can click any screenshot to enlarge it, and the link to the starter workspace opens directly in a new tab.
 **If you're affected:** Nothing to do — the steps are unchanged; the clearer pictures just make them easier to follow.
-**Details:** Screenshots are in `screenshots/m0/05-codespaces-walkthrough/`; the lesson is `modules/00-welcome/05-codespaces-walkthrough.md`.
+**Details:** Screenshots were in `screenshots/m0/05-codespaces-walkthrough/`; the lesson was `modules/00-welcome/05-codespaces-walkthrough.md` (retired 2026-08-15 — replaced by `modules/00-welcome/05-install-your-agent-app.md`).
 
 ## 2026-06-27 — You now build in your own copy of a small workspace, not the course repo
 

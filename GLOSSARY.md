@@ -67,8 +67,8 @@ Continuous integration / continuous deployment. The automated path from "I commi
 Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
 
 ### claude-code
-Anthropic's command-line AI coding agent; this course's recommended primary agent. *Example: install on macOS or Linux with `curl -fsSL https://claude.ai/install.sh | bash`; on Windows in PowerShell with `irm https://claude.ai/install.ps1 | iex`.*
-Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+Anthropic's AI coding agent, run from its own desktop app window; this course's paid track. *Example: after downloading and signing in with a Claude account, clicking the app's Code tab and choosing a project folder lets you start asking it to make changes to your files.*
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
 
 ### client-component
 A Next.js file that runs in the browser and supports interactivity — `useState`, `onClick`, forms, anything that responds to user input. Marked by `'use client'` on the first line. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app uses `useState` and an `onClick` handler, so it's a Client Component.*
@@ -81,6 +81,10 @@ Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md
 ### codespace
 A development environment GitHub runs for you on a remote machine; you reach it from your browser, but the files and commands live on a computer GitHub manages. *Example: making your own copy of the starter workspace and clicking `Create codespace on main` boots a Codespace with the editor and terminal ready.*
 Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md).
+
+### codex
+The AI coding agent that lives inside the ChatGPT desktop app — the free-track counterpart to Claude Code desktop. *Example: after signing in with a ChatGPT account, a switch next to the message box moves you from ordinary chat into Codex.*
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
 
 ### commit
 A saved snapshot of changes in a git repository, with a one-line description. *Example: `git commit -m "add login button"` creates a commit containing every file you previously staged with `git add`.*
@@ -244,6 +248,10 @@ Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-pack
 
 ## O
 
+### opencode-desktop
+A third AI-coding-agent desktop app, free and capable but the least beginner-friendly of the three — its free models are limited-time trial models that may learn from what you submit, and this course hasn't verified how it saves your work. *Example: this course names it once, as an option, and does not walk you through it.*
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
+
 ### over-engineering
 When an AI agent does MORE than asked — suggesting frameworks, libraries, image lookups, or fancy designs for a small request. The fix is a scope-tightening steer that names the limit ("no frameworks", "inline CSS only", "nothing else"). *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" prompted both agents to suggest CSS frameworks and image lookups — over-engineering compared to the simple inline-CSS solution the learner wanted.*
 Used in: [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
@@ -395,8 +403,8 @@ Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/00-hello-
 ## T
 
 ### terminal
-The text panel inside a code editor (or as a standalone app) where you type commands and the computer types replies. *Example: in a Codespace, the terminal is the panel at the bottom; pressing `` Ctrl+` `` toggles it.*
-Used in: [Module 0 — Codespaces walkthrough](./modules/00-welcome/05-codespaces-walkthrough.md).
+The text panel inside a code editor (or as a standalone app) where you type commands and the computer types replies. *Example: pressing `` Ctrl+` `` toggles the terminal panel in a code editor.*
+Not used in any current lesson — the desktop-app remake retired this course's terminal-facing walkthrough. This entry retires fully in Phase 4.
 
 ### token-discipline
 The set of habits that keep AI-coding sessions cheap on pay-per-token plans: clearing context between unrelated tasks, watching the running token count, summarizing long histories, and choosing the smaller model when the bigger one isn't needed. *Example: Module 3 teaches `/clear`, `/compact`, `/context` (window usage), and `/cost` (spend) on Claude Code, and `/clear`, `/compress`, `/stats` as the Gemini CLI equivalents.*

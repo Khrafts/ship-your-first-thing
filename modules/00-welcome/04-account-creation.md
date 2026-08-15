@@ -81,4 +81,4 @@ You created exactly the accounts you need, no more. The pattern — create-as-yo
 ## Navigation
 
 [← Previous: Cost-path triage](./03-cost-path-triage.md)
-[Next: Codespaces walkthrough →](./05-codespaces-walkthrough.md)
+[Next: Install your agent app →](./05-install-your-agent-app.md)
