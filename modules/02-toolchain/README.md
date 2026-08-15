@@ -1,32 +1,26 @@
-# Module 2 — The developer toolchain
+# Module 2 — Your agent and the machinery it drives
 
-Module 2 introduces the six tools you will use to write and ship software, one per lesson. Each tool is introduced as the answer to a problem you have just started to feel — not as a feature tour. The order is felt-problem order: IDE, terminal, runtime, package manager, git plus GitHub-as-tool, then AI coding agents. Each lesson is short to medium and pairs a concept with a hands-on exercise in your Codespace.
+Module 2 introduces the agent that does your project's writing, and the machinery it operates on your behalf so you never have to open it yourself — git, GitHub, and the moment your work gets saved for good. Three lessons, one thread: the same app window you opened in Module 0, going one layer deeper every time.
 
 This module is pre-loop — like Module 1, every Loop check names `intent`. The loop itself lands in Module 3.
 
 ## What this module builds
 
-By the end of this module, you can name and operate the six tools every later module assumes you already know — editor, terminal, runtime, package manager, version control, and the AI coding agent itself.
+By the end of this module, you can name your agent, name the app it lives in, catch its three most common failure modes, and say what happens to your work every time your agent saves it.
 
 Each lesson builds on the last:
 
-- **Lesson 1 — The IDE:** you can name the editor category and find your way around its three regions (files, editor, bottom panel) → sets up Lesson 2 by pointing at the bottom panel as where commands go.
-- **Lesson 2 — The terminal:** you can run five basic commands (`pwd`, `ls`, `cd`, `clear`, `mkdir`) and read what comes back → sets up Lesson 3 by making "type a tool's name to run it" a move you already trust.
-- **Lesson 3 — The runtime (Node):** you can say what a runtime is, name Node as JavaScript's, and confirm yours works with one command → sets up Lesson 4 by noting Node needs code to run, and its install partner is next.
-- **Lesson 4 — The package manager (npm):** you can read a `package.json`, explain each dependency, and know `npm install` fills `node_modules/` → sets up Lesson 5 by flagging that the shopping list gets tracked in version control and the downloaded code does not.
-- **Lesson 5 — git and GitHub:** you can run the daily rhythm (`git status` → `git add` → `git commit` → `git push`) and say what each step does → sets up Lesson 6 by making that save-and-share rhythm the one your AI teammate works alongside.
-- **Lesson 6 — AI coding agents:** you can name the two agents this course supports, install the one you picked in Module 0, and say why an agent needs an ignore-file → sets up Module 3, where you learn what to actually do with the agent: the loop, in depth.
+- **Lesson 1 — Your AI coding agent:** you can name your agent, name its app, and state the smell-test for each of its three most common failure modes → sets up Lesson 2 by opening the same approval prompt back up and going deeper on what it's actually protecting.
+- **Lesson 2 — The engine room:** you can say what git and GitHub actually do for your project, and that your agent operates both without you ever touching either directly → sets up Lesson 3 by naming the moment your agent decides your work is worth keeping.
+- **Lesson 3 — The save system:** you can tell your agent to save a working version, in your own words, and say what happens to it next → sets up Module 3, where you learn to work with your agent all the way through a real change.
 
-The thread that ties it together: each tool is the answer to a problem you have just started to feel, and every one of them runs from the same window — so by Lesson 6 you are operating a full bench, ready to brief a teammate who works on that same surface.
+The thread that ties it together: this whole module is the same app window, looked at three times, each time one layer deeper — first who's in the window with you, then what it's quietly running for you, then what "saved" actually means when it says so.
 
 ## Lessons in this module
 
-1. [`01-ide.md`](./01-ide.md) — "you need somewhere to read + write code" (IDE)
-2. [`02-terminal.md`](./02-terminal.md) — "you need to make the computer DO things" (terminal)
-3. [`03-runtime-node.md`](./03-runtime-node.md) — "your code is just text until something runs it" (Node runtime)
-4. [`04-package-manager-npm.md`](./04-package-manager-npm.md) — "you don't want to rewrite what others have written" (npm)
-5. [`05-git-and-github.md`](./05-git-and-github.md) — "you need to save versions and share them" (git + GitHub)
-6. [`06-ai-coding-agents.md`](./06-ai-coding-agents.md) — "you want to delegate the writing" (Claude Code + Gemini CLI)
+1. [`01-your-ai-coding-agent.md`](./01-your-ai-coding-agent.md) — "you want to delegate the writing" (your AI coding agent)
+2. `02-the-engine-room.md` — "you want to know what your agent is actually running for you" (the engine room)
+3. `03-the-save-system.md` — "you want to know what 'saved' means when your agent says it" (the save system)
 
 ## Navigation
 

@@ -19,8 +19,8 @@ The iterative cycle of intent → ask → evaluate → steer, repeated until the
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
 ### ai-coding-agent
-A program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you. *Example: Claude Code and Gemini CLI are the two AI coding agents this course uses.*
-Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md).
+A program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you, from inside its own app window. *Example: Claude Code desktop and Codex (inside the ChatGPT desktop app) are the two AI coding agents this course teaches.*
+Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### api
 The contract between two programs about which questions can be asked and how the answers will look. *Example: "the Twitter API supports `GET /2/tweets/:id`."*
@@ -68,7 +68,7 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### claude-code
 Anthropic's AI coding agent, run from its own desktop app window; this course's paid track. *Example: after downloading and signing in with a Claude account, clicking the app's Code tab and choosing a project folder lets you start asking it to make changes to your files.*
-Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### client-component
 A Next.js file that runs in the browser and supports interactivity — `useState`, `onClick`, forms, anything that responds to user input. Marked by `'use client'` on the first line. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app uses `useState` and an `onClick` handler, so it's a Client Component.*
@@ -84,7 +84,7 @@ Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md
 
 ### codex
 The AI coding agent that lives inside the ChatGPT desktop app — the free-track counterpart to Claude Code desktop. *Example: after signing in with a ChatGPT account, a switch next to the message box moves you from ordinary chat into Codex.*
-Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### commit
 A saved snapshot of changes in a git repository, with a one-line description. *Example: `git commit -m "add login button"` creates a commit containing every file you previously staged with `git add`.*
@@ -125,8 +125,8 @@ Domain Name System — the system that translates a human-readable URL into the 
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
 ### drift
-When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
-Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate the ask. Deeper smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ## E
 
@@ -177,8 +177,8 @@ Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 �
 ## H
 
 ### hallucination
-When an AI agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing. *Example: in Module 3 Lesson 3, both agents invented "favorite books" for a list, even though neither agent has any way of knowing the learner's actual favorites.*
-Used in: [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
+When an AI agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing. *Example: in Module 3 Lesson 3, both agents invented "favorite books" for a list, even though neither agent has any way of knowing the learner's actual favorites. Smell-test: it names something you never made or mentioned — ask "where did that come from?"*
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
 
 ### html
 The markup language that describes the structure of a webpage — a tree of elements like headings, paragraphs, links, and images. *Example: `<h1>Hello</h1>` is an HTML element.*
@@ -250,7 +250,7 @@ Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-pack
 
 ### opencode-desktop
 A third AI-coding-agent desktop app, free and capable but the least user-friendly of the three — its free models are limited-time trial models that may learn from what you submit, this course hasn't verified how it saves your work, and it's the least polished of the three (still in beta). *Example: this course names it once, as an option, and does not walk you through it.*
-Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### over-engineering
 When an AI agent does MORE than asked — suggesting frameworks, libraries, image lookups, or fancy designs for a small request. The fix is a scope-tightening steer that names the limit ("no frameworks", "inline CSS only", "nothing else"). *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" prompted both agents to suggest CSS frameworks and image lookups — over-engineering compared to the simple inline-CSS solution the learner wanted.*
@@ -315,8 +315,8 @@ A structured message replying to a request — like the receptionist's paper rep
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
 ### risk-blindness
-When an AI agent suggests something dangerous — overwriting working code, dropping a database table, force-pushing to a branch, hardcoding a secret — with the same calm as fixing a typo. The agent has no sense of stakes; it weighs all changes by token-level fit, not by impact on your project. *Example: in Module 5's watch-it-fail walkthroughs, the agent proposes deleting a migration file to "clean up" — the operation reads as routine to it but is destructive to the project. The smell-test pattern is taught in those walkthroughs.*
-Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+When an AI agent suggests something dangerous — overwriting working code, dropping a database table, force-pushing to a branch, hardcoding a secret — with the same calm as fixing a typo. The agent has no sense of stakes; it weighs all changes by token-level fit, not by impact on your project. *Example: in Module 5's watch-it-fail walkthroughs, the agent proposes deleting a migration file to "clean up" — the operation reads as routine to it but is destructive to the project. Smell-test: any proposal that deletes, sends, or spends gets one question first — "what could go wrong if we do this?" — before you approve. Module 5's walkthroughs put you in the driver's seat for a real one.*
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### row
 A single record in a database table — like one index card in a filing-cabinet drawer.

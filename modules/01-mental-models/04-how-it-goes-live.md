@@ -97,4 +97,4 @@ You sketched the deploy pipeline — the path every real product takes from a pr
 ## Navigation
 
 [← Previous: Who can do what](./03-who-can-do-what.md)
-[Next: The IDE →](../02-toolchain/01-ide.md)
+[Next: Your AI coding agent →](../02-toolchain/01-your-ai-coding-agent.md)
