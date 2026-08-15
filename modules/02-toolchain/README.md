@@ -6,7 +6,7 @@ This module is pre-loop — like Module 1, every Loop check names `intent`. The 
 
 ## What this module builds
 
-By the end of this module, you can name your agent, name the app it lives in, catch its three most common failure modes, and say what happens to your work every time your agent saves it.
+By the end of this module, you can name your agent, name the app it lives in, catch its three most common failure modes, say what machinery your agent runs for you and decide what to do with an approval prompt, and say what happens to your work every time your agent saves it.
 
 Each lesson builds on the last:
 
@@ -20,7 +20,7 @@ The thread that ties it together: this whole module is the same app window, look
 
 1. [`01-your-ai-coding-agent.md`](./01-your-ai-coding-agent.md) — "you want to delegate the writing" (your AI coding agent)
 2. [`02-the-engine-room.md`](./02-the-engine-room.md) — "you want to know what your agent is actually running for you" (the engine room)
-3. `03-the-save-system.md` — "you want to know what 'saved' means when your agent says it" (the save system)
+3. [`03-the-save-system.md`](./03-the-save-system.md) — "you want to know what 'saved' means when your agent says it" (the save system)
 
 ## Navigation
 

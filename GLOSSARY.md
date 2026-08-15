@@ -87,8 +87,8 @@ The AI coding agent that lives inside the ChatGPT desktop app — the free-track
 Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### commit
-A saved snapshot of changes in a git repository, with a one-line description. *Example: `git commit -m "add login button"` creates a commit containing every file you previously staged with `git add`.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+One saved working version of a project, carrying a one-line note about what changed. Your agent creates one when you tell it to save a working version. *Example: after a feature works, you say "save this as a working version, with a one-line note about what changed" — the agent makes the commit and confirms in plain words.*
+Used in: [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### context-window
 The amount of text an AI agent can see at once — your conversation history plus any file content it has loaded. Finite; as the conversation grows, older parts scroll out. *Example: Claude Code shows current usage via `/context`; Gemini CLI shows it via `/stats`.*
@@ -167,12 +167,12 @@ Google's open-source command-line AI coding agent; this course's genuinely-free 
 Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
 
 ### git
-A tool that tracks every version of every file in a project. Used to commit changes locally and push them to GitHub. *Example: `git commit -m "add login button"`.*
-Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
+The save system underneath a project: machinery that records a complete working version every time the project is saved, so any earlier version can be returned to. Your AI coding agent operates it on your behalf; you never open it yourself. *Example: you tell your agent "save this as a working version" and git is what records it.*
+Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### github
 A website that hosts code repositories and runs developer tools (like Codespaces) on top of them; Vercel and other deploy services watch GitHub for new code. *Example: this course lives in a GitHub repository at github.com.*
-Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
+Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ## H
 
@@ -279,8 +279,8 @@ Fetch commits from a remote git host (like GitHub) and merge them into your loca
 Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
 
 ### push
-Send commits from your computer to a remote git host. *Example: `git push` after a commit makes the snapshot visible on GitHub to anyone with access to the repository.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+Sending saved versions up from your computer to the project's home page on GitHub, so a copy survives even if your machine doesn't. Agent-performed — it's part of what "saved" means when your agent says it. *Example: after saving a working version, your agent sends it up, and that version appears on the project's home page on GitHub.*
+Used in: [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ## Q
 
@@ -304,7 +304,7 @@ Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.
 
 ### repository
 A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; you can clone the whole history to your computer with `git clone`.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+Used in: [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### request
 A structured message asking a server for something — like a paper form handed to a receptionist. *Example: `GET /api/posts` is a request.*
