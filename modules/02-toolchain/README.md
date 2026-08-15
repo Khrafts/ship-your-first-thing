@@ -11,7 +11,7 @@ By the end of this module, you can name your agent, name the app it lives in, ca
 Each lesson builds on the last:
 
 - **Lesson 1 — Your AI coding agent:** you can name your agent, name its app, and state the smell-test for each of its three most common failure modes → sets up Lesson 2 by opening the same approval prompt back up and going deeper on what it's actually protecting.
-- **Lesson 2 — The engine room:** you can say what git and GitHub actually do for your project, and that your agent operates both without you ever touching either directly → sets up Lesson 3 by naming the moment your agent decides your work is worth keeping.
+- **Lesson 2 — The engine room:** you can say what kinds of machinery your agent runs for you below deck, and decide what to do with an approval prompt — approve it, ask for it in everyday words first, or refuse it and steer → sets up Lesson 3 by naming the moment your agent decides your work is worth keeping.
 - **Lesson 3 — The save system:** you can tell your agent to save a working version, in your own words, and say what happens to it next → sets up Module 3, where you learn to work with your agent all the way through a real change.
 
 The thread that ties it together: this whole module is the same app window, looked at three times, each time one layer deeper — first who's in the window with you, then what it's quietly running for you, then what "saved" actually means when it says so.
@@ -19,7 +19,7 @@ The thread that ties it together: this whole module is the same app window, look
 ## Lessons in this module
 
 1. [`01-your-ai-coding-agent.md`](./01-your-ai-coding-agent.md) — "you want to delegate the writing" (your AI coding agent)
-2. `02-the-engine-room.md` — "you want to know what your agent is actually running for you" (the engine room)
+2. [`02-the-engine-room.md`](./02-the-engine-room.md) — "you want to know what your agent is actually running for you" (the engine room)
 3. `03-the-save-system.md` — "you want to know what 'saved' means when your agent says it" (the save system)
 
 ## Navigation
