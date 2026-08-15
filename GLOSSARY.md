@@ -249,7 +249,7 @@ Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-pack
 ## O
 
 ### opencode-desktop
-A third AI-coding-agent desktop app, free and capable but the least beginner-friendly of the three — its free models are limited-time trial models that may learn from what you submit, and this course hasn't verified how it saves your work. *Example: this course names it once, as an option, and does not walk you through it.*
+A third AI-coding-agent desktop app, free and capable but the least user-friendly of the three — its free models are limited-time trial models that may learn from what you submit, this course hasn't verified how it saves your work, and it's the least polished of the three (still in beta). *Example: this course names it once, as an option, and does not walk you through it.*
 Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md).
 
 ### over-engineering

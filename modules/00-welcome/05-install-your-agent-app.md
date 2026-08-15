@@ -42,9 +42,9 @@ If you picked the paid path, you're installing **Claude Code desktop** (an AI co
 
 <!-- SCREENSHOT SLOT: the Claude desktop app with the Code tab selected, showing the empty first-run state — captured in the user-assisted evidence pass -->
 
-<!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart, fetched 2026-08-15 (download platforms, sign-in flow, tab layout, Windows caveat, Manual-mode approval behavior); cross-checked against .planning/research/2026-08-12-desktop-agent-apps.md. -->
+<!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart, fetched 2026-08-15 (Windows requires installing `git` separately for local sessions; most Macs already have it); download page `git-scm.com/downloads/win`, per .planning/research/2026-08-12-desktop-agent-apps.md:43. -->
 
-> **Note:** On Windows, the Code tab may ask to install one extra program the first time you point it at a real project, then ask you to restart the app. Approve both — it's a one-time step, and the app walks you through it. Macs usually don't need this extra step.
+> **Note:** On Windows, one extra step comes first: download and install **git** (part of the save system your agent operates for you later in this course — you install it once now and never open it yourself, [→ GLOSSARY](../../GLOSSARY.md#git)) from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — the same download-and-run-the-installer step you just did for Claude Code desktop — then restart Claude Code desktop. Most Macs already have it, so this step is Windows-only.
 
 ### Codex, inside the ChatGPT desktop app
 
@@ -80,7 +80,7 @@ Not in this lesson, not anywhere later in this course: open a terminal, type a c
 
 ### The third option: OpenCode desktop
 
-There's a third agent app worth knowing exists: **OpenCode desktop** (a third AI-coding-agent app, free and capable, but the least beginner-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable — but it's built for people comfortable finding their own way, not for a first-ever install. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. This course doesn't walk you through it.
+There's a third agent app worth knowing exists: **OpenCode desktop** (a third AI-coding-agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable — but it's built for people comfortable finding their own way, not for a first-ever install. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. And it's the least polished of the three — still in beta. This course doesn't walk you through it.
 
 ## Exercise
 
