@@ -211,4 +211,4 @@ You closed the loop. You steered an agent away from a hallucination, recognized 
 ## Navigation
 
 [← Previous: Reading plans + recognizing wrong output](./03-reading-plans-recognizing-wrong.md)
-[Next: Module 3.5 — Reading code, just enough →](../03.5-reading-code/README.md)
+[Next: Module 4 — Designing & building the thread project →](../04-thread-project/README.md)

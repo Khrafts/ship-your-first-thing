@@ -34,7 +34,7 @@ You are not writing this code. Your agent is. The split is the same in every les
 1. **Stating intent at the feature level.** "Signed-out visitors should be able to read the posts on my profile but not write one." What, not how. Every lesson starts here.
 2. **Observing the running app.** Open it. Click things. Sign out and look again. Sign in as a second person in a second browser and watch how the two accounts see each other. Most of what goes wrong in this module is visible without reading a line of code.
 3. **Running the smell-test.** A **smell-test** (a one-line definition: one thing to look for and one question to ask when it is not there, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) is a check you can run without understanding the code underneath. Each lesson hands you a short list of them — things to look for in what the agent changed, or in the app in front of you. You are looking, not decoding.
-4. **Saving each working chunk.** The moment a feature works, you save it into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version — a **commit** (a one-line definition: one saved snapshot of the project, with a one-line note about what changed, [→ GLOSSARY](../../GLOSSARY.md#commit)) — is your way back when the next chunk goes sideways. And when the agent has been heading the wrong way for several turns, `/clear` and restart the chunk from that commit — the same recovery move you learned in Module 3.
+4. **Saving each working chunk.** The moment a feature works, you tell the agent to save it into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version — a **commit** (a one-line definition: one saved snapshot of the project, with a one-line note about what changed, [→ GLOSSARY](../../GLOSSARY.md#commit)) — is your way back when the next chunk goes sideways. And when the agent has been heading the wrong way for several turns, start a fresh conversation and restart the chunk from that commit — the same recovery move you learned in Module 3.
 
 ### What a smell-test looks like
 
@@ -61,9 +61,9 @@ Lessons 0, 1, and 2 are published — the links below are live. The rest are on 
 
 ## Before you start
 
-You need Modules 0 through 3.5 finished, all of them. Module 0 got your workspace and your agent running; Module 1 gave you the shape of a web product; Module 2 gave you the tools; Module 3 gave you the loop; Module 3.5 gave you the observation floor — reading a file tree, spotting a wrong-file edit, following an error message back to one of your files, and recognizing a missing `'use client'`. This module uses all five, every chunk.
+You need Modules 0 through 3 finished, all of them. Module 0 got your workspace and your agent running; Module 1 gave you the shape of a web product; Module 2 gave you the tools; Module 3 gave you the loop. This module uses all four, every chunk.
 
 ## Navigation
 
-[← Module 3.5 — Reading code, just enough](../03.5-reading-code/README.md)
+[← Module 3 — The loop](../03-the-loop/README.md)
 [Next: Module 5 — Operating the build →](../../README.md)

@@ -3,7 +3,7 @@ title: "Hello-world deploy: an empty app, truly online"
 module: "04-thread-project"
 lesson_number: 00
 est_minutes: 55
-prereqs: ["03.5-reading-code (all four lessons)"]
+prereqs: ["03-the-loop (all four lessons)"]
 updated: "2026-07-25"
 deviations: []
 ---
@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to direct your agent to put an empty
 
 ## Why this matters
 
-Module 3.5 taught you to look at code the agent wrote and notice when something is off. This is the first chunk where the agent writes code you keep and ship. Before you build anything anyone can use, you prove one thing: that an app can go from your machine to a public web address, connected to your database, and load for a stranger. Get that pipe working while it is empty and every later chunk — sign-in, profiles, posts — lands on ground you already know is solid. This module leans hardest on the **evaluate** step of the loop, and this lesson is where evaluate starts: you open the running thing and check it against what you asked for.
+Module 3 taught you to notice when what the agent produced does not match what you asked for. This is the first chunk where the agent writes code you keep and ship. Before you build anything anyone can use, you prove one thing: that an app can go from your machine to a public web address, connected to your database, and load for a stranger. Get that pipe working while it is empty and every later chunk — sign-in, profiles, posts — lands on ground you already know is solid. This module leans hardest on the **evaluate** step of the loop, and this lesson is where evaluate starts: you open the running thing and check it against what you asked for.
 
 ## Core read
 
@@ -133,5 +133,5 @@ You shipped an empty app to a real public web address, connected to your databas
 
 ## Navigation
 
-[← Previous: 'use client' and the server/client split](../03.5-reading-code/04-use-client-and-server-split.md)
+[← Previous: Steering and recovery](../03-the-loop/04-steering-and-recovery.md)
 [Next: Sign in with an email and a password →](./01-sign-in.md)

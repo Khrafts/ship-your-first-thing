@@ -101,7 +101,7 @@ Then it volunteered something nobody had asked about. The size cap on a photo, a
 
 That is the shape of what these two checks exist to catch. **risk-blindness** (a one-line definition: the agent proposing something with real consequences in the same calm tone it uses for fixing a typo, [→ GLOSSARY](../../GLOSSARY.md#risk-blindness)) is the failure mode Module 2 named. Here it did not bite — the agent raised the gap itself and said what it had traded away. It will not always. When it does not, the thing standing between an open door and a shipped app is you asking who is allowed to do what, and holding the answer against what you asked for.
 
-One more, carried over from Module 3.5. The edit form is something you type into and press a button on, which makes it the kind of file that carries a label saying so.
+One more. The edit form is something you type into and press a button on, which makes it the kind of file that carries a label saying so.
 
 **The interactive file.**
 

@@ -32,7 +32,7 @@ Used in: [Module 0 — Account creation](./modules/00-welcome/04-account-creatio
 
 ### app-router
 The newer routing system in Next.js, where files in the `app/` folder define URL routes. The older system used a `pages/` folder; both still work, but App Router is the modern default. *Example: `app/page.tsx` is the home page; `app/about/page.tsx` is the `/about` page.*
-Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### ask
 The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `index.html`."*
@@ -54,7 +54,7 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 
 ### branch
 An independent line of commits in a git repository, used to try a change without affecting the main history. *Example: `git checkout -b add-login` creates and switches to a new branch named `add-login`; commits on that branch do not show up on `main` until you merge.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### browser
 A program on your computer that knows how to ask servers for webpages and render them. *Example: Chrome, Firefox, Safari.*
@@ -72,7 +72,7 @@ Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-y
 
 ### client-component
 A Next.js file that runs in the browser and supports interactivity — `useState`, `onClick`, forms, anything that responds to user input. Marked by `'use client'` on the first line. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app uses `useState` and an `onClick` handler, so it's a Client Component.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### code-editor
 A program that lets you read and edit source files with niceties like syntax highlighting, search across files, and integrated tools. *Example: Visual Studio Code (VS Code) is the editor a Codespace presents in your browser.*
@@ -106,7 +106,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### dependency
 A package your project NEEDS to run, listed under `dependencies` in `package.json`. *Example: the Module 3.5 sample-app's `package.json` lists `next`, `react`, and `react-dom` as dependencies.*
-Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-package-manager-npm.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### deployment
 The act of moving an app from a developer's laptop (localhost) to a public server so anyone on the internet can reach it. *Example: pushing to GitHub and letting Vercel build and host the result.*
@@ -114,25 +114,25 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### diff-summary
 A one-line per-file report from an AI coding agent showing the filename and the number of lines added or removed. *Example: `Modified: app/components/Footer.tsx (+1 line, -1 line)` — the filename plus the counts; you do not have to open the file to spot a wrong-file edit.*
-Used in: [Module 3.5 — Spotting wrong-file edits](./modules/03.5-reading-code/02-spotting-wrong-file-edits.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### directive
 A special single line at the top of a file that changes how the file is treated by its framework. *Example: `'use client'` is a directive that tells Next.js a file is a Client Component.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### dns
 Domain Name System — the system that translates a human-readable URL into the IP address of the actual server. *Example: when you type `example.com`, DNS resolves it to `93.184.216.34` so the browser knows which server to ask.*
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
 ### drift
-When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate the ask. Deeper smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
+When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate what you want. Deeper smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
 Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ## E
 
 ### error-message-anatomy
 The structure of a typical error message: a description on top followed by a stack trace listing file paths and line numbers. *Example: a `TypeError: Cannot read properties of undefined` with stack frames pointing at `app/components/InteractiveButton.tsx:5:18`.*
-Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### evaluate
 The "evaluate" step of the agent loop — reading the agent's output and deciding if it matches your intent. *Example: the agent says it added today's date; you check the page and confirm the date is there.*
@@ -146,11 +146,11 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 
 ### file-panel
 The editor's source-control or file-tree panel showing which files have just changed, often with an `M` marker or color highlight. *Example: when an AI coding agent edits `app/components/Footer.tsx` inside a Codespace, VS Code's source-control panel shows that file with an `M` marker so you can spot the change at a glance.*
-Used in: [Module 3.5 — Spotting wrong-file edits](./modules/03.5-reading-code/02-spotting-wrong-file-edits.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### file-tree
 The hierarchical structure of files and folders in a project, displayed as an indented list in an editor's left panel. *Example: a Next.js project's file tree shows `app/`, `app/components/`, `package.json`, and `tsconfig.json` at a glance.*
-Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### foreign-key
 A field in one row that points at the id of a row in another table. *Example: a `posts` row's `author_id` points at a row in the `users` table.*
@@ -164,14 +164,14 @@ Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triag
 
 ### gemini-cli
 Google's open-source command-line AI coding agent; this course's genuinely-free path (Path 2 in `BUDGET.md`). *Example: install via `npm install -g @google/gemini-cli` on any platform with Node 20 or newer.*
-Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### git
 The save system underneath a project: machinery that records a complete working version every time the project is saved, so any earlier version can be returned to. Your AI coding agent operates it on your behalf; you never open it yourself. *Example: you tell your agent "save this as a working version" and git is what records it.*
 Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### github
-A website that hosts code repositories and runs developer tools (like Codespaces) on top of them; Vercel and other deploy services watch GitHub for new code. *Example: this course lives in a GitHub repository at github.com.*
+A website that hosts code repositories — where a project's saved versions live, on a page of its own on the internet; Vercel and other deploy services watch GitHub for new code. *Example: this course lives in a GitHub repository at github.com.*
 Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ## H
@@ -198,13 +198,13 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ### hydration
 SYMPTOM-only at the M3.5 floor: a message in the browser console meaning "the page does not agree." Treat as a synonym for "a touchscreen file (one with interactivity) is missing the `'use client'` label on line 1." The deeper mechanic — how the framework reconciles server-rendered and client-rendered output — is the agent's job and Module 7's curiosity track. *Example: a "Hydration failed" error in the browser console is usually a touchscreen file missing `'use client'`.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ## I
 
 ### ide
 An editor that bundles a text editor, a file browser, a terminal, and language-aware tooling into one program. The "I" is for "integrated." *Example: Visual Studio Code (VS Code), the editor inside your Codespace, is the IDE this course uses.*
-Used in: [Module 2 — The IDE](./modules/02-toolchain/01-ide.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### intent
 The "intent" step of the agent loop — knowing what you are trying to build before you start asking. *Example: "I want today's date below the tagline" is intent; "make the page nicer" is not.*
@@ -214,7 +214,7 @@ Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducin
 
 ### jsx
 The HTML-like syntax inside React component files. JSX lets you write `<Button />` directly in code; the React runtime turns it into the actual button element in the browser. Files containing JSX usually end in `.tsx` (TypeScript + JSX) or `.jsx` (plain JavaScript + JSX). *Example: `<h1>Hello</h1>` inside a `.tsx` file is JSX.*
-Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ## L
 
@@ -230,21 +230,21 @@ Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md
 
 ### merge
 The act of combining the commits from one git branch into another. *Example: `git merge add-login` brings the commits from the `add-login` branch into whichever branch you are currently on.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ## N
 
 ### next-js
 A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the thread project in Phase 3 uses. *Example: the read-only scaffold at `sample-app/` in your workspace is a tiny Next.js project shown for reading practice.*
-Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### node
 The standard runtime for JavaScript code outside the browser. *Example: `node --version` in a Codespace prints the installed Node version; this course pins Node 20.x LTS in `VERSIONS.md`.*
-Used in: [Module 2 — The runtime (Node)](./modules/02-toolchain/03-runtime-node.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### npm
 The standard package manager for JavaScript code; bundled with Node. *Example: `npm install` downloads everything listed in `package.json` into a `node_modules/` folder.*
-Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-package-manager-npm.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ## O
 
@@ -260,11 +260,11 @@ Used in: [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-
 
 ### package
 A bundled bit of reusable code, published to a registry so any project can pull it in. *Example: `date-fns` is a package that handles date formatting; `next` is a package that provides the Next.js framework.*
-Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-package-manager-npm.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### package-manager
 A tool that downloads and tracks the code your project depends on. *Example: npm is the package manager this course uses; pnpm is an alternative the deferred course platform uses.*
-Used in: [Module 2 — The package manager (npm)](./modules/02-toolchain/04-package-manager-npm.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### planning-conversation
 An AI-agent session where you ask the agent to describe what it WOULD do without writing code yet. *Example: a prompt starting with "Plan:" and ending with "don't write code yet" opens a planning conversation.*
@@ -276,7 +276,7 @@ Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducin
 
 ### pull
 Fetch commits from a remote git host (like GitHub) and merge them into your local copy. *Example: `git pull` at the start of a coding session brings down any commits you (or someone else) pushed from another machine.*
-Used in: [Module 2 — git and GitHub](./modules/02-toolchain/05-git-and-github.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### push
 Sending saved versions up from your computer to the project's home page on GitHub, so a copy survives even if your machine doesn't. Agent-performed — it's part of what "saved" means when your agent says it. *Example: after saving a working version, your agent sends it up, and that version appears on the project's home page on GitHub.*
@@ -296,14 +296,14 @@ Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triag
 
 ### react
 The JavaScript UI library Next.js is built on. React components are reusable pieces of UI (buttons, headers, sections) written as files. *Example: `app/components/InteractiveButton.tsx` in Module 3.5's sample-app is a React component.*
-Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### react-server-components
 An architectural model in React for components that render entirely on the server before being sent to the browser; the default in Next.js App Router. The deeper "why" behind the server/client split that `'use client'` toggles; covered in depth in Module 7's where-to-go-next track. *Example: a `StaticHero.tsx` file with no `'use client'` directive is a React Server Component.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### repository
-A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; you can clone the whole history to your computer with `git clone`.*
+A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; when you ask your agent to put a copy on your computer, the whole history comes with it.*
 Used in: [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### request
@@ -324,7 +324,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### runtime
 A program that reads source code and executes it. Every language has at least one. *Example: Node is the runtime for JavaScript outside the browser; the browser itself has its own JavaScript runtime built in.*
-Used in: [Module 2 — The runtime (Node)](./modules/02-toolchain/03-runtime-node.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ## S
 
@@ -342,7 +342,7 @@ Used in: [Module 4 — Sign in with an email and a password](./modules/04-thread
 
 ### server-component
 A Next.js file that renders on the server before sending HTML to the browser; the default in App Router. No `'use client'` directive needed. *Example: `app/components/StaticHero.tsx` in Module 3.5's sample-app is pure JSX with no interactivity, so it stays a Server Component.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### session
 A remembered "yes, you're you" so an app doesn't re-check identity on every request. Lives between authentication and the next sign-out. *Example: after you log in, the app remembers you for the next 24 hours.*
@@ -354,7 +354,7 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 
 ### slash-command
 A short keyword starting with `/` typed inside an AI agent's session to control the session itself rather than asking the agent to do work. *Example: `/clear` resets conversation history; `/context` shows context-window usage on Claude Code; `/stats` is Gemini CLI's equivalent.*
-Used in: [Module 2 — AI coding agents](./modules/02-toolchain/06-ai-coding-agents.md).
+Used in: Module 2 (lesson retired 2026-08-12).
 
 ### slash-clear
 The `/clear` slash command — reset the conversation history; start a fresh session inside the same agent invocation. Same keystroke on Claude Code AND Gemini CLI. *Example: type `/clear` between unrelated tasks.*
@@ -390,7 +390,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### stack-trace
 A list of every function call leading to an error, top to bottom — the most recent call at the top. Most lines mention library code; one or two lines mention YOUR files. *Example: Module 3.5 Lesson 3 teaches finding the first line that mentions a file from your project as the file pointer.*
-Used in: [Module 3.5 — Error message to file pointer](./modules/03.5-reading-code/03-error-message-to-file-pointer.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ### steer
 The "steer" step of the agent loop — course-correcting when the agent's output does not match your intent. *Example: "The date appeared above the tagline; please put it below" is a steer.*
@@ -412,7 +412,7 @@ Used in: [Module 3 — Planning vs execution](./modules/03-the-loop/02-planning-
 
 ### typescript
 A version of JavaScript with extra type information. TypeScript files end in `.ts`; TypeScript files that include React JSX end in `.tsx`. A separate tool (the TypeScript compiler) checks the types before the runtime runs the code. *Example: every file inside Module 3.5's sample-app is a TypeScript file (`.tsx`).*
-Used in: [Module 3.5 — Reading a file tree](./modules/03.5-reading-code/01-reading-a-file-tree.md).
+Used in: Module 3.5 (retired 2026-08-12).
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
 
 ## U
@@ -423,7 +423,7 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ### use-client
 A Next.js directive — `'use client'` on the first line of a file — that flips the file from Server Component to Client Component. *Example: a file using `useState`, `onClick`, or any other React hook or DOM event handler needs `'use client'` on line 1.*
-Used in: [Module 3.5 — 'use client' and the server/client split](./modules/03.5-reading-code/04-use-client-and-server-split.md).
+Used in: Module 3.5 (retired 2026-08-12).
 
 ## V
 

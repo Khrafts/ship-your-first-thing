@@ -104,7 +104,7 @@ That second one is not hypothetical. When this chunk was really built, the first
 
 One detail from that repair is worth keeping. After the agent changed a setting file, the same error kept appearing — and the fix was fine; the app had not picked it up. The agent said that file "is read once at startup and is not hot-reloaded." So when a fix looks like it did not work, stopping the app and starting it again is worth one try before you report the same thing a second time.
 
-A different kind of sideways: the agent keeps circling, reworking the same thing, losing track of what you asked. Do not keep arguing with it. Type `/clear` to reset the conversation and start this chunk again from your last saved version — the same recovery you learned in Module 3.
+A different kind of sideways: the agent keeps circling, reworking the same thing, losing track of what you asked. Do not keep arguing with it. Start a fresh conversation with your agent and pick this chunk up again from your last saved version — the same recovery you learned in Module 3.
 
 ### Saving it
 

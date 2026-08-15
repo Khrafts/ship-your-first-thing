@@ -39,7 +39,6 @@ The course is designed to be picked up cold. A learner who has never written pro
 - [Module 1 — Mental models](./modules/01-mental-models/README.md)
 - [Module 2 — The developer toolchain](./modules/02-toolchain/README.md)
 - [Module 3 — Working with an AI coding agent](./modules/03-the-loop/README.md)
-- [Module 3.5 — Reading code, just enough](./modules/03.5-reading-code/README.md)
 - [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md) *Index only — lessons in progress*
 - Module 5 — Operating the build *Coming in later phases*
 - Module 6 — After it's live *Coming in later phases*
