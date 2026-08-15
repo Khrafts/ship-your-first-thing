@@ -34,7 +34,7 @@ Your project works exactly this way. One difference: the save points aren't auto
 
 Two names sit underneath the picture, and you'll hear both of them from your agent.
 
-The save system itself is **git** (the machinery that records a complete working version of your project each time your agent saves one, so any of them can be returned to later, [→ GLOSSARY](../../GLOSSARY.md#git)). It's the fourth kind of machinery from the engine room — running below deck, operated entirely by your agent. If you're on Windows you installed it back in Module 0 and haven't opened it since. You never will.
+The save system itself is **git** (the machinery that records a complete working version of your project each time your agent saves one, so any of them can be returned to later, [→ GLOSSARY](../../GLOSSARY.md#git)). It's the fourth kind of machinery from the engine room — running below deck, operated entirely by your agent. If you're on Windows and picked Claude Code desktop, you installed it back in Module 0 and haven't opened it since. You never will.
 
 The cloud save is **GitHub** (the site where your project gets its own home page on the internet, holding a copy of every version your agent saves, [→ GLOSSARY](../../GLOSSARY.md#github)) — the account you created in Module 0. Once your project exists, it gets a home page there, at a normal web address you can open in your browser like any other page. That page is where your project lives. If your laptop stopped working tonight, the project would still be there tomorrow, and so would every version of it your agent had saved.
 

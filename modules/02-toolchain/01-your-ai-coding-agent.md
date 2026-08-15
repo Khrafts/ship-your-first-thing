@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to name your AI coding agent, name t
 
 ## Why this matters
 
-Module 1 finished with the whole shape of a deployed app in your head — code, database, who can do what, how it goes live. Module 0 put an agent app on your screen and showed you the one control that guards everything it does: the approval prompt. This lesson is where those two threads meet — the program you're about to hand this work to, and the three most common ways it can go wrong on you, named now so you recognize the shape the moment one shows up.
+You're about to hand the writing of a real app to a program you've barely met. You already know what a deployed app is made of — code, database, who can do what, how it goes live — and you've seen the one control that guards everything this program does: the approval prompt. What you don't have yet is a read on the program itself — the three most common ways it can go wrong on you, named now so you recognize the shape the moment one shows up.
 
 ## Core read
 

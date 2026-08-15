@@ -52,7 +52,7 @@ Same two facts, side by side:
 
 ### The third option: OpenCode desktop
 
-There's a third agent app worth knowing exists: **OpenCode desktop** (a third agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. And it's the least polished of the three — still in beta. This course names it once, here, and doesn't walk you through it.
+There's a third agent app worth knowing exists: **OpenCode desktop** (a third agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. And it's the least polished of the three — still in beta. This course names it so you know what it is, and doesn't walk you through it.
 
 ### Switching is cheap
 

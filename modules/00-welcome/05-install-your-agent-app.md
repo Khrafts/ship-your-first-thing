@@ -99,7 +99,7 @@ You've got this if you can:
 
 ## What you just did
 
-You went from a picked path and a fresh account to an open, signed-in app window — the same window every remaining lesson in this course happens inside. Module 1 is reading and diagramming next: no more installing. When Module 2 picks the toolchain back up, it's this same app you'll be looking at, going one layer deeper on what the approval prompt is actually protecting.
+You went from a picked path and a fresh account to an open, signed-in app window — the same window every remaining lesson in this course happens inside. Module 1 is reading and diagramming next: no more installing. When Module 2 comes back to your agent and the machinery it drives for you, it's this same app you'll be looking at, going one layer deeper on what the approval prompt is actually protecting.
 
 ## Navigation
 

@@ -26,7 +26,7 @@ This course is **Ship Your First Thing**. It's an open-source, self-paced course
 
 There are two surfaces:
 
-1. The **course material** — the words you're reading right now, written in **markdown** (a way of writing formatted documents using simple punctuation marks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). This is the canonical source. It lives in a public **GitHub** (a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) repository so anyone can fork it, contribute to it, or read it offline.
+1. The **course material** — the words you're reading right now, written in **markdown** (a way of writing formatted documents using simple punctuation marks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). This is the canonical source. It lives in a public **GitHub** (a website that hosts code repositories — where a project's saved versions live, on a page of its own on the internet, [→ GLOSSARY](../../GLOSSARY.md#github)) repository so anyone can fork it, contribute to it, or read it offline.
 2. The **course platform** — a web app that renders the same lessons with personalized features (sign-in, per-lesson progress tracking, cohort schedules). It is built and lives alongside the course material in this repository; once it goes live it will serve at [shipyourfirstthing.com](https://shipyourfirstthing.com). For now, focus on the course material — both surfaces show identical lessons.
 
 **Who this course is for:**
@@ -51,7 +51,7 @@ If that's you: welcome.
 - A working social-platform thread project running at a public URL anyone on the internet can visit.
 - A working mental model of how software is built — you'll meet the technical names for these pieces in Module 1.
 - Real fluency in working with an **AI coding agent** (a program that reads your project files and writes code on your behalf based on a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)): planning, executing, recognizing wrong output, recovering.
-- A short shelf of habits — saving your work often, testing with multiple sign-ins, watching what your AI tool charges per session — that are durable across whichever AI tool you use next.
+- A short shelf of habits — saving your work often, testing with multiple sign-ins, knowing what your path costs each month and what runs out first — that are durable across whichever AI tool you use next.
 
 **What this course is honest about:**
 
@@ -65,7 +65,7 @@ If that's you: welcome.
 - Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
 - When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Still stuck after that? File an issue.
 
-That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces the toolchain. Then we build.
+That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces your agent and the machinery it drives for you. Then we build.
 
 ## Exercise
 

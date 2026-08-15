@@ -24,7 +24,7 @@ You'll create accounts in this order: GitHub first, since both tracks need it, t
 
 ### Account 1: GitHub
 
-Every learner creates a **GitHub** (a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) account, no matter which track you picked. Sign up at [github.com](https://github.com) in your browser, with an email you'll keep using. Pick a real-looking username — this is your public identity on GitHub.
+Every learner creates a **GitHub** (a website that hosts code repositories — where a project's saved versions live, on a page of its own on the internet, [→ GLOSSARY](../../GLOSSARY.md#github)) account, no matter which track you picked. Sign up at [github.com](https://github.com) in your browser, with an email you'll keep using. Pick a real-looking username — this is your public identity on GitHub.
 
 Right now, GitHub is just the place where this course's material lives, and you're mostly a reader here. That changes in Module 4: the project you build in this course gets its own home page on GitHub, and from that point your agent handles everything that happens there on your behalf — saving versions, keeping them in sync. You'll never need to operate that machinery yourself. Creating the account, in your browser, is the one part of that story that's always a person's job.
 

@@ -157,7 +157,7 @@ A field in one row that points at the id of a row in another table. *Example: a 
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
 ### free-tier
-The portion of a paid service you can use at no cost — usually capped by hours, requests, or rate limits. *Example: GitHub Codespaces' free tier covers 120 core-hours per month before billing kicks in.*
+The portion of a paid service you can use at no cost — usually capped by hours, requests, or rate limits. *Example: Codex is included on ChatGPT's free tier, which OpenAI's own wording says is offered "for a limited time."*
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
 
 ## G
