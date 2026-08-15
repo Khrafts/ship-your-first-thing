@@ -543,7 +543,7 @@ check_lesson_against_module_contract() {
   done <<< "$requires_terms"
 }
 
-# Run the jargon-density check across M0–M3.5 lessons (M4–M7 dirs join when those modules ship).
+# Run the jargon-density check across M0–M3 lessons (M4–M7 dirs join when those modules ship).
 # Args: $1 = mode ("default" | "fixtures")
 scan_jargon_density() {
   local mode="$1"
@@ -564,10 +564,10 @@ scan_jargon_density() {
     return
   fi
 
-  # Default mode: run against M0–M3.5 lessons in WARN mode.
+  # Default mode: run against M0–M3 lessons in WARN mode (M4–M7 dirs join when those modules ship).
   # The audience-vocabulary contract is strict; current prose has known gaps against it
   # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0, plus a larger backlog
-  # across M2/M3/M3.5 whose prose predates this check covering those modules). Those gaps are
+  # across M2/M3 whose prose predates this check covering those modules). Those gaps are
   # triaged via the editorial backlog, not by hard-failing the lint. The check is still informative —
   # it surfaces every gap as a WARN line so contributors can see what would be flagged once the
   # contract and prose converge. The fixture self-test exercises the strict (violation) path.
@@ -594,12 +594,6 @@ scan_jargon_density() {
     for lesson in modules/03-the-loop/*.md; do
       [ -f "$lesson" ] || continue
       check_lesson_against_module_contract "$lesson" "M3" "Module 3 (M3)" "warn"
-    done
-  fi
-  if [ -d modules/03.5-reading-code ]; then
-    for lesson in modules/03.5-reading-code/*.md; do
-      [ -f "$lesson" ] || continue
-      check_lesson_against_module_contract "$lesson" "M3.5" "Module 3.5 (M3.5)" "warn"
     done
   fi
 }
@@ -724,7 +718,8 @@ scan_m3_dual_agent() {
 
 # Debugging-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
 # (Historical name: M3.5 diagnostic-framing — widened course-wide in the accessibility
-# remake, Phase 0 Task 7; the M3.5-only scope and check name predate that widening.)
+# remake on 2026-08-13; the M3.5-only scope and the fixture filename predate that widening,
+# and Module 3.5 itself was retired on 2026-08-12.)
 #
 # Agent-Responsibility Boundary: the learner SPOTS symptoms and ASKS the agent. The agent
 # OWNS reading errors, parsing code, framework mechanics, and diagnosing root causes.
@@ -734,9 +729,12 @@ scan_m3_dual_agent() {
 # This check emits WARN-only signals (does not increment VIOLATION_COUNT) — the gate
 # stays open; reviewers triage. WARNs do increment WARN_COUNT for the self-test.
 #
-# Scope: every lesson file under modules/ (README.md and non-lesson files are excluded).
+# Scope: every *.md file under modules/, at any depth, except files whose basename is
+# README.md — that `-not -name 'README.md'` filter is the ONLY exclusion applied, so any
+# non-lesson markdown added under modules/ (say, inside a lesson's scratch/ subdirectory)
+# is scanned as well.
 # The check applies uniformly across all modules — the Agent-Responsibility Boundary
-# (CLAUDE.md hard rule 12) is a course-wide invariant, not an M3.5-only one.
+# (CLAUDE.md hard rule 12) is a course-wide invariant, not a per-module one.
 #
 # Patterns (case-insensitive, applied to stripped lesson body — frontmatter, fenced code,
 # blockquote, inline code, link destinations, D-04 callout definitions are stripped first):

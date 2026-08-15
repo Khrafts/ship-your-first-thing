@@ -55,6 +55,8 @@ Uniqueness: each new analogy gets its own decision-log entry and a distinct pict
 
 The Phase 02.1 entries by lesson, named here so future authors can find them without opening the phase log: D-40 craftsperson's workbench (M2 L1 the IDE), D-41 librarian's request slip (M2 L2 the terminal), D-42 sheet music vs. the musician (M2 L3 the runtime), D-43 corner-store delivery service (M2 L4 npm), D-44 junior teammate who started yesterday (M2 L6 AI coding agents), D-45 office directory in the lobby (M3.5 L1 reading a file tree), D-46 contractor who painted the wrong room (M3.5 L2 spotting wrong-file edits), D-47 receipt with the line item circled (M3.5 L3 error message to file pointer), D-48 framed picture vs. touchscreen (M3.5 L4 the `'use client'` server/client split).
 
+**Historical note (2026-08-15).** Every lesson named in that D-40..D-48 list is retired: the accessibility remake collapsed Module 2 to three lessons on 2026-08-12 and deleted Module 3.5 entirely, so none of those nine analogies is attached to a live lesson any more. The list stands as the decision log's history — do not treat any entry as the locked analogy for a lesson that carries the same number today (today's M2 L1 is "Your AI coding agent", M2 L2 is "The engine room", M2 L3 is "The save system", each with its own analogy locked in the remake's phase context). What survives from Phase 02.1 as live doctrine is the *patterns* below: two-touch placement, the "Why this matters" felt-pain template, and forward-ref pruning.
+
 #### Analogy two-test gate (D-A17)
 
 Before an analogy is locked in the phase's CONTEXT.md decision log, the entry must carry an explicit two-test verdict alongside the felt picture, mapping, and alternates-considered. The gate exists because a sustained-with-callbacks analogy (D-A1) can still be decorative — sustained-and-decorative is the failure mode this test catches.
@@ -89,7 +91,7 @@ Total ban on the syllabus-architecture opener pattern: no instances of "Module N
 
 Self-test before shipping a "Why this matters" — the M0/M1-amnesia self-test: "If I deleted Module 0 and Module 1 from this learner's memory, would this opener still motivate them to read the lesson?" If the answer is no, the opener depends on course architecture rather than on learner pain, and rewrite it against the felt-rhythm template.
 
-Gold-standard reference: `modules/02-toolchain/05-git-and-github.md`'s "Why this matters" — the felt rhythm of "you change a file → you save → you push to GitHub → Vercel rebuilds" lands before any course-architecture naming. Read it before drafting any other lesson's opener.
+Gold-standard reference: `modules/02-toolchain/03-the-save-system.md`'s "Why this matters" — one clause of prior-lesson payoff (allowed by Part 3's "sets up the next" rule), then straight into the felt rhythm: you spend weeks changing a project you don't read yourself, some of those changes turn out wrong, and without somewhere to fall back to every change is a gamble with everything you've built. The resolution lands in the same breath — "the worst afternoon of your project costs you an afternoon" — before the lesson names a single tool. Read it before drafting any other lesson's opener. *(This exemplar pointed at the pre-remake `05-git-and-github.md` until 2026-08-15; that lesson was deleted when the accessibility remake collapsed Module 2 to three lessons.)*
 
 #### Forward-ref pruning (D-A9..D-A12)
 
@@ -104,7 +106,7 @@ What stays:
 
 What goes: Core-read body paragraphs whose primary job is anxiety management — "you don't have to understand this until Module 7", "the next lesson explains how", "Phase 3+ material". When you catch one, ask whether the paragraph teaches anything the lesson needs RIGHT NOW. If it doesn't, cut it.
 
-Worked contrast (post-Phase-2 read): M2 L1's current "Why this matters" ends on "Naming the category once is what lets the rest of Module 2 say…" — that's syllabus-architecture framing, and the Phase 02.1 rewrite replaces it with the workbench felt rhythm before any naming happens. M2 L5's "Why this matters" already opens on the felt rhythm ("you change a file → you save → you push to GitHub → Vercel rebuilds") with no naming-this-category framing in sight. The contrast is the pattern.
+Worked contrast: the pre-remake M2 L1 ended its "Why this matters" on "Naming the category once is what lets the rest of Module 2 say…" — syllabus-architecture framing, and the shape to avoid. The live `modules/02-toolchain/03-the-save-system.md` opener does the opposite: it spends its whole runway on the felt cost of a change going wrong, and never tells the learner where the lesson sits in the course. The contrast is the pattern. *(Both lessons this contrast originally named — the old M2 L1 and M2 L5 — were deleted by the 2026-08-12 accessibility remake; the pattern they illustrated is unchanged.)*
 
 Enforcement: Phase 02.1 ships forward-ref pruning via human review against this section plus the locked analogy. No new voice-lint check is added in Phase 02.1 — a grep-based check for forward-ref counts or syllabus-opener phrases (`Module N named`, `Lessons N and M named`, `naming this category now means`) competes with REVIEW.md WR-04 (general voice-lint hardening) and is deferred to a follow-on phase whose scope is explicitly "voice-lint patterns layered on top of Phase 02.1's content rewrite." When you draft a lesson revision, run the pruning sweep yourself; do not wait for the lint to flag it.
 
@@ -284,7 +286,7 @@ Map terms to the module where the learner **does** them hands-on, not the phase 
 
 ### M0 stays diagram-light
 
-Module 0 lessons (welcome, hardware check, cost-path triage, account creation, and the environment-setup lesson) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
+Module 0 lessons (welcome, hardware check, cost-path triage, account creation, and the agent-app install lesson `05-install-your-agent-app.md`) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
 
 ### M2+ uses the disclosure pattern selectively
 
@@ -316,7 +318,7 @@ The **learner owns**:
 2. **Observing the running app matches intent.** Open the deployed app. Click around. Sign out. Sign in as a second user. Did the agent build what you asked for?
 3. **Running the phase's check inventory.** A named list of behavioural checks in exactly two admissible forms (next section). Every check is performed in the running app or spoken to the agent — never against code, a diff, or a migration. The inventory is the bridge between the general Agent-Responsibility Boundary (hard rule 12) and M4+'s execution responsibility.
 4. **Telling the agent to save each working chunk.** "Save this as a working version" is the learner's verb — the agent performs all git and GitHub operations. Working state gets saved before the next chunk starts.
-5. **Knowing when to start a fresh conversation in the app and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, start over with a tighter prompt.
+5. **Knowing when to start a fresh conversation in the app and begin the chunk again.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, begin the chunk again with a tighter prompt.
 
 ### The check inventory — two admissible forms
 
@@ -410,12 +412,12 @@ The course names six core agent failure modes. Each gets a per-module surface an
 
 | # | Limitation | Plain definition | Module where smell-test first appears |
 |---|---|---|---|
-| 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L6 |
-| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (`/clear` as recovery) — first named M2 L6 |
+| 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L1 |
+| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (`/clear` as recovery) — first named M2 L1 |
 | 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized via the slash-command surface (`/context`, `/cost`, `/compact`) |
-| 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype + M2 L6 freshness framing |
+| 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype + M2 L1 freshness framing |
 | 5 | **Confident-wrong** | The agent's tone and the agent's correctness are independent; fluent-sounding answers can be wrong; uncertainty is rarely surfaced unless the prompt explicitly asks for it | M3 L3 (the lesson IS about this) |
-| 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L6 first surfacing |
+| 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L1 first surfacing |
 
 ### The smell-test pattern (per-limit)
 
@@ -427,7 +429,7 @@ For each limit, the lesson where it's first taught provides:
 
 ### Anchor lessons (Tenet 6 surfaces)
 
-- **M2 L6 (`06-ai-coding-agents.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms; three forward-references to where the smell-tests are taught.
+- **M2 L1 (`modules/02-toolchain/01-your-ai-coding-agent.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms, each armed with its own one-line smell-test in the lesson itself (Hard Rule 14 option (a)), plus forward-references to where each goes deeper (M3 for hallucination and drift, M5 for risk-blindness). *(This anchor duty moved here on 2026-08-15 when the accessibility remake collapsed Module 2 to three lessons and deleted the former M2 L6, `06-ai-coding-agents.md`.)*
 - **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
 - **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via `/clear` hygiene).
 - **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
@@ -439,10 +441,10 @@ A failure-mode term can be **Forbidden in a module's vocabulary tier yet still b
 The rule:
 
 - **The anchor lesson introduces the term** with a D-04 callout + GLOSSARY anchor + a Hard-Rule-14 forward-reference to where the smell-test lives. It does not explain the mechanism beyond the callout's depth.
-- **Every other lesson in that module defers** — names the failure mode in plain words and forward-references the anchor (or the smell-test lesson). Using the term as a bare concept outside the anchor is a check #6 WARN and breaks the deferral the tier is protecting.
-- **`docs/audience-vocabulary.md` records the exception** on the term itself (e.g., `hallucination` is Forbidden in M2 *except* its anchor lesson M2 L6).
+- **Every other lesson in that module defers** — names the failure mode in plain words and forward-references the anchor (or the smell-test lesson). Using the term as a bare concept outside the anchor breaks the deferral the tier is protecting. Note that check #6 does **not** catch this today (verified 2026-08-15): the `*(anchor-lesson exception applies …)*` marker on the tier row leaves the extracted term with the italic markers attached, so anchor-excepted terms never match anything in a lesson and the rule is human-review-only. The same inertness is what stops the check from flagging the anchor lesson's own sanctioned uses — the check has no exception mechanism, so making it see these rows would need one first.
+- **`docs/audience-vocabulary.md` records the exception** on the term itself (e.g., `hallucination` is Forbidden in M2 *except* its anchor lesson M2 L1).
 
-**Worked case — `hallucination`.** The M2 tier marks `hallucination` Forbidden. But this Part designates **M2 L6** as the Tenet 6 anchor, so M2 L6 introduces `hallucination` with a callout and a forward-ref to M3 L3. A *different* M2 lesson that needs to warn about invented package names must NOT write "hallucination" — it says "the agent sometimes invents commands or packages that don't exist" and forward-references M2 L6 / M3 L3.
+**Worked case — `hallucination`.** The M2 tier marks `hallucination` Forbidden. But this Part designates **M2 L1** (`modules/02-toolchain/01-your-ai-coding-agent.md`) as the Tenet 6 anchor, so M2 L1 introduces `hallucination` with a callout and its smell-test, pointing forward to M3 L3 for the in-depth version. A *different* M2 lesson that needs to warn about invented package names must NOT write "hallucination" — it says "the agent sometimes invents commands or packages that don't exist" and forward-references M2 L1 / M3 L3. The same holds for `drift` and `risk-blindness`: M2 L1 is the one lesson in the module that may name them.
 
 ### Forward-reference template (Hard Rule 14 compliance)
 
@@ -456,7 +458,7 @@ This satisfies Hard Rule 14's forward-reference requirement. Vague "we'll cover 
 
 ### What NOT to do
 
-- Don't name hallucination outside its anchor lesson. M0/M1 don't surface it at all; within M2, only the anchor lesson (M2 L6) introduces the term — see "The anchor-lesson exception" above. Other M2 lessons defer in plain words.
+- Don't name hallucination (or drift, or risk-blindness) outside its anchor lesson. M0/M1 don't surface them at all; within M2, only the anchor lesson (M2 L1) introduces the terms — see "The anchor-lesson exception" above. Other M2 lessons defer in plain words.
 - Don't introduce a failure-mode term in a callout and then explain the underlying neural-network mechanics. The audience floor does not benefit from "attention head misalignment" or "next-token prediction without grounding."
 - Don't write "the agent might be wrong" without naming WHICH failure mode + the smell-test. Vague risk-naming inflates anxiety without arming the learner.
 - Don't conflate confident-wrong with hallucination. Confident-wrong is the *tone*; hallucination is the *content*. Both can occur independently.
@@ -589,7 +591,7 @@ Phase 2 reshoots Module 3 for the desktop-app tracks named in CLAUDE.md; until t
 
 ### Which lessons check #6 scans (module scope)
 
-Check #6 runs in the default scan against **M0, M1, M2, M3, and M3.5** lesson directories, in WARN mode. (M4–M7 directories don't exist yet; they're added to the runner when those modules ship.) Earlier the check covered only M0/M1 — meaning the vocabulary contract was unenforced from M2 onward, and a bare Forbidden term or a missing callout in an M2+ lesson would pass the gate silently. That gap is closed for the modules that exist; the contract is now machine-surfaced (as WARN) wherever there are lessons to scan.
+Check #6 runs in the default scan against the **M0, M1, M2, and M3** lesson directories, in WARN mode. (M4–M7 directories don't exist yet; they're added to the runner when those modules ship. The Module 3.5 directory was in this list until that module was retired on 2026-08-12; its scan block is gone from the runner.) Earlier the check covered only M0/M1 — meaning the vocabulary contract was unenforced from M2 onward, and a bare Forbidden term or a missing callout in an M2+ lesson would pass the gate silently. That gap is closed for the modules that exist; the contract is now machine-surfaced (as WARN) wherever there are lessons to scan.
 
 **Honest scope of enforcement.** #6 is WARN-only everywhere — it *surfaces* contract gaps, it does not block on them. For M4–M7 (no lessons yet) the vocabulary contract is human-review-only until those modules exist and join the runner. Tenet 3 (analogies) and Tenet 4 (coherence) have no lint at all — they are GUIDANCE, enforced by review. Don't read "exit 0" as "contract satisfied" for anything #6 doesn't yet cover.
 
@@ -621,7 +623,7 @@ Check #6 emits both:
 
 Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) is WARN-only, like #6.
 
-**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
+**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3 (the M2/M3 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 
 ### Self-test mode
 

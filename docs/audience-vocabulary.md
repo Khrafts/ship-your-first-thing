@@ -20,7 +20,7 @@ Audience floor: comfortable using a computer; has used GitHub at most to view a 
 
 Everyday computing nouns the audience already uses:
 
-- file, folder, browser, tab, window, menu, button, link, click, type, search, save, copy, paste, password, account, sign in, sign out, email, phone, message, internet, app, conversation, new chat, approve/reject (the buttons), download, install, dashboard, URL (as a "web address" — the structural details land in M1)
+- file, folder, browser, tab, window, menu, button, link, click, type, search, save, copy, paste, password, account, sign in, sign out, email, phone, message, internet, app, conversation, new chat, approve/reject (the buttons), approval prompt (the agent app's own approve-or-decline dialog — the compound is Safe from M0; the prompt-engineering sense of "prompt" stays reserved for M3+), download, install, dashboard, URL (as a "web address" — the structural details land in M1), ChatGPT (a consumer app brand the audience floor already meets in everyday use — see the ride-along note under Requires-callout)
 
 ### Requires-callout (D-04 pattern on first use)
 
@@ -28,11 +28,21 @@ Tool nouns introduced in M0 that the audience hasn't met:
 
 - markdown, GitHub (as a *site*, distinct from "git"), repository (or repo), code editor, AI coding agent, API key, free tier, rate limit, token (as in AI-tool token, distinct from auth token in M1)
 
+The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15; the rebuilt M0 lessons already introduce each with a D-04 callout):
+
+- Claude Code desktop (the paid track's agent app), Codex (the free track's agent app, which lives inside the ChatGPT desktop app), OpenCode desktop (named once as a third alternative and never taught), git (M0's narrow sense only — see the scope note below)
+
+**`git` in M0 is the named-install caveat, nothing more.** M0 L5 (`05-install-your-agent-app.md`) names it once, in the Windows-only caveat about what gets installed alongside the agent app, with a D-04 callout; M2 L3 (`03-the-save-system.md`) is where it becomes the machinery the agent operates on the learner's behalf. An M0 lesson may not use `git` for anything beyond that install caveat — no commits, no saving, no version history. (Before 2026-08-15 this contract listed `git` as Forbidden-until-M2, which contradicted the shipped M0 L5 caveat.)
+
+**`ChatGPT` rides along inside the `Codex` callout.** The lessons never write a standalone `**ChatGPT**` callout — the `**Codex**` callout defines the relationship in place ("the AI coding agent that lives inside the ChatGPT desktop app"), and the brand itself is an everyday consumer-app name at the audience floor. It is therefore classified Safe from M0 (see Safe above) rather than Requires-callout. Settled 2026-08-15; it had been listed as M2 Requires-callout, which no lesson honoured.
+
 ### Forbidden (deferred to a later module)
 
 **Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
 
-- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+- terminal (one boundary-naming exception — see the note below), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
+**Boundary-naming exception (`terminal`), added 2026-08-15.** `terminal` stays Forbidden as a thing the learner ever opens, uses, or is told about as tooling. The one sanctioned use is *naming the boundary the learner never crosses*: M0 L5's "what you will never be asked to do" beat (and the exercise that asks the learner to recall it) and M2 L2's off-contract smell-test (the list of requests that mean you're being handed the wrong kind of instruction, and its exercise). In those places the word appears only inside a sentence that refuses it — never in an instruction the learner follows. Voice-lint check #6 has no exception mechanism, so it surfaces these as WARN lines; they are contract-sanctioned and stay. Any *other* appearance of the word in M0 or M2 prose is a real violation of the tier.
 
 Reserved for M1+:
 
@@ -40,11 +50,11 @@ Reserved for M1+:
 
 Reserved for M2+:
 
-- git (as a tool, distinct from "GitHub" the site), commit, push, pull, branch, merge
+- commit, push, pull, branch, merge (git itself left this bucket on 2026-08-15 — it is Requires-callout in M0 for the install caveat only, and M2 re-introduces it as the machinery the agent operates; see the scope note above)
 
-Reserved for M3+: prompt, context window, `/clear`, `/compact`, `/tokens`
+Reserved for M3+: prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0 — see Safe above), context window, `/clear`, `/compact`. *(`/tokens` was removed from this list on 2026-08-15: it is the deprecated command name that the Module 3 section bans outright, not a term that becomes legal at M3.)*
 
-**M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace, Node, or git — Codespace is retired course surface under Hard Rule 15, not a deferred noun to define later. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a D-04 callout on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
+**M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace or Node — Codespace is retired course surface under Hard Rule 15, not a deferred noun to define later. It names `git` exactly once, in M0 L5's Windows install caveat with a D-04 callout (see the scope note above), and never as something the learner operates. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a D-04 callout on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
 
 ---
 
@@ -78,7 +88,7 @@ Reserved for M2+:
 
 Reserved for M3+:
 
-- prompt, context window, `/clear`, `/compact`, agent loop, planning conversation, execution conversation
+- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, `/clear`, `/compact`, agent loop, planning conversation, execution conversation
 
 Reserved for M4+:
 
@@ -101,10 +111,9 @@ Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, 
 New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced Requires-callout on first use and is Safe after:
 
 - **Claude Code desktop** — one of the course's two taught agent apps.
-- **ChatGPT** — the desktop app that hosts Codex.
-- **Codex** — the coding agent inside the ChatGPT desktop app; the course's other taught track, alongside Claude Code desktop.
+- **Codex** — the coding agent inside the ChatGPT desktop app; the course's other taught track, alongside Claude Code desktop. This callout is also where the ChatGPT relationship gets defined — the brand name itself is Safe from M0 and gets no callout of its own (its standalone **ChatGPT** row was removed here on 2026-08-15; see the M0 ride-along note).
 - **OpenCode desktop** — named once as a third alternative agent app; not taught in this course.
-- git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M1 Requires-callout in its own right, as a tool distinct from GitHub the site; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
+- git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M0 Requires-callout for the Windows install caveat only, and M1 Requires-callout in its own right as a tool distinct from GitHub the site; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
 - GitHub (re-introduced as the account the agent saves work TO, distinct from M1's "GitHub-as-host" site definition)
 - repository (as a git artifact — a saved project's home on GitHub; the learner sees its name and URL, never operates git on it directly)
 - commit (a saved checkpoint of working code; the agent creates one when it says "save this as a working version")
@@ -120,11 +129,17 @@ New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced R
 
 **Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
 
-- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+- terminal (one boundary-naming exception — the M0 note applies here too), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+
+**Boundary-naming exception (`terminal`).** Same exception as M0's, recorded there in full: M2 L2 (`02-the-engine-room.md`) may name `terminal` inside the off-contract smell-test — the list of requests that mean the learner is being handed the wrong kind of instruction — and in the exercise that rehearses it. The word appears only in a sentence that refuses it, never in an instruction. The lint surfaces these as WARN lines; they are contract-sanctioned. Added 2026-08-15.
 
 Reserved for M3+:
 
-- prompt, context window, `/clear`, `/compact`, `/context`, `/cost`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*
+- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, `/clear`, `/compact`, `/context`, `/cost`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*, drift *(anchor-lesson exception applies — see note below; M3 L2 and M3 L4 teach it in depth)*
+
+Reserved for M5+ *(first surfaced by M2's anchor lesson; taught in depth by the M5 watch-it-fail walkthroughs)*:
+
+- risk-blindness *(anchor-lesson exception applies — see note below)*
 
 Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 2 re-homing them alongside the M4 reshoot)*:
 
@@ -136,7 +151,7 @@ Reserved for M4+:
 
 **M2 rewrite implications:** M2 no longer teaches tools as things the learner installs and runs by hand — that hands-on, terminal-and-package-manager shape is retired under Hard Rule 15. Instead M2 introduces the agent (Claude Code desktop, or Codex in the ChatGPT desktop app) and names the machinery the agent drives on the learner's behalf: git, GitHub, commits, packages, dependencies. The lesson body uses each term with a D-04 callout on first use and then drops the callout, but the callout defines what the learner SEES or SAYS (the agent reports "saved to GitHub"; the learner asks for a feature) — never a mechanism the learner performs themselves. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — that framing described a retired hands-on step; describe what the agent does and what the learner observes instead.
 
-**Anchor-lesson exception (`hallucination`).** `hallucination` is Forbidden as a concept term in M2 prose, with ONE exception: **M2 L6** (`06-ai-coding-agents.md`) is the Tenet 6 anchor lesson and introduces the term with a D-04 callout in the "notice the name" framing (forward-referencing the M3 L3 smell-test). Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L6 / M3 L3. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception.
+**Anchor-lesson exception (`hallucination`, `drift`, `risk-blindness`).** All three are Forbidden as concept terms in M2 prose, with ONE exception: **M2 L1** (`01-your-ai-coding-agent.md`) is the Tenet 6 anchor lesson and introduces each with a D-04 callout in the "notice the name" framing, each paired with its own one-line smell-test and a pointer to where it goes deeper (M3 for hallucination and drift, M5 for risk-blindness). Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L1. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception. *(Anchor duty moved from the former M2 L6, `06-ai-coding-agents.md`, on 2026-08-15 — that lesson was deleted when the remake collapsed Module 2 to three lessons; `drift` and `risk-blindness` were classified here in the same pass, having been anchored in the lesson but absent from this tier.)*
 
 ---
 
@@ -164,6 +179,7 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 - evaluate (as named loop step)
 - steer (as named loop step)
 - hallucination (AI-output sense)
+- drift (the agent-behaviour sense — first named by M2's anchor lesson; M3 L2 and M3 L4 are where the smell-test and the recovery are taught)
 
 ### Forbidden (deferred to a later module)
 
@@ -262,6 +278,7 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still s
 - **regression** — when a working feature breaks because of an unrelated change; M5 introduces this in the context of "the agent's fix broke X."
 - **deploy preview** — the Vercel-generated preview URL for an unmerged branch; M5 surfaces it as a smell-test surface (you can sanity-check before merge).
 - **env-var leak** — a SYMPTOM: when a secret value appears in the public bundle or in a logged error.
+- **risk-blindness** — the agent proposes something that can't be undone with the same calm as a small fix. First named by M2's anchor lesson (M2 L1) with a one-line smell-test; M5's watch-it-fail walkthroughs are where the learner catches a real one. Classified here 2026-08-15.
 
 ### Forbidden in M5 specifically
 

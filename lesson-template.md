@@ -46,7 +46,7 @@ deviations: []                        # per D-02: list any anatomy elements the 
      stating intent at the feature level + observing the running app matches intent + running
      the phase's CHECK INVENTORY (refusal checks + pre-flight questions) + telling the agent
      to save each working chunk ("save this as a working version") + knowing when to start a
-     fresh conversation in the app and start over. Every M4+ term must pass the say-it-or-see-it
+     fresh conversation in the app and begin the chunk again. Every M4+ term must pass the say-it-or-see-it
      rule: the learner says it to the agent, or sees it in the running app or on a dashboard
      screen they operate themselves — never a label to scan for in the agent's diff. The check
      inventory for the phase lives in .planning/phases/NN-name/NN-CONTEXT.md and is locked
