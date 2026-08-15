@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 03
 est_minutes: 15
 prereqs: ["01-welcome", "02-hardware-check"]
-updated: "2026-05-09"
+updated: "2026-08-15"
 deviations: []
 ---
 
@@ -12,86 +12,74 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will have picked one of the three named cost paths in this course and you will know which AI-coding-agent account you need to create in the next lesson — and which ones you can skip.
+By the end of this lesson, you will have picked one of this course's two tracks — Path 1 or Path 2 — and you will be able to say, in dollars, what it costs you to run.
 
 ## Why this matters
 
-The biggest reason learners quit this kind of course mid-Module-4 is **cost shock**: the free trial runs out, a single message to the AI has just eaten 30% of a daily budget, and panic kicks in. This lesson prevents that. The triage takes ten minutes; doing it now saves you from creating two accounts, paying for a subscription you don't need, or burning through a free tier in three days because nobody told you that talking to the AI costs something every time.
+The last lesson confirmed your computer can run either track. This one answers the question that actually decides which account you create next: what does each track cost you, in real dollars or real limits, before you sign up for anything? The biggest reason learners quit a course like this partway through is cost shock — a subscription renews for more than expected, or a free tool suddenly asks you to wait or pay. Five minutes here, before Lesson 4 creates an account, is what prevents that.
 
 ## Core read
 
-There are three honest paths through this course. They differ in friction, predictability, and how much they ask you to manage tokens by hand. Pick one *before* the next lesson, where you'll create accounts. Picking before you create accounts means you don't end up with three sign-ups for tools you'll never use.
+### The honest premise
 
-The triage is short. Walk through the questions in order. Stop at the first path that fits.
+Every path through this course costs you something — money, or limits, or both. There's no free-forever option, and this lesson isn't going to pretend otherwise. What you're choosing between is: pay a predictable monthly amount and get a track with no built-in interruptions (Path 1), or pay nothing and accept that the free allowance can run out on a busy day, or change, without much warning (Path 2). Both are honest paths. Neither is a trap, as long as you know which one you picked and why.
 
-### Question 1: Do you have ~$20/month to spend on this?
+### Path 1 — Claude Code desktop (the paid track)
 
-> If **yes** → consider **Path 1: Claude Code Pro**. Skip to Question 2 if you want to confirm fit; otherwise go straight to "If you picked Path 1" below.
->
-> If **no** → continue to Question 3 (the free-or-careful track).
+Path 1 installs **Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)). It costs **$20/month billed monthly, or $17/month if you sign up for a year up front.** That's the floor — there's no cheaper way to get Claude Code, and no free plan includes it.
 
-### Question 2: Do you want predictability over savings?
+What the $20 buys: every lesson in this course, every day, with nothing that runs out partway through a workday. You won't hit a wall in the middle of a build and have to wait for a clock to reset.
 
-> If **yes** → **Path 1: Claude Code Pro** ($17/mo annual / $20/mo monthly). Predictable monthly ceiling. Recommended for most. Skip to "If you picked Path 1" below.
->
-> If **no** (you want to spend less even though you have the budget) → continue to Question 3.
+Pick Path 1 if you have $20/month you're comfortable spending on this course and you'd rather pay for predictability than manage a free allowance.
 
-### Question 3: Are you willing to learn **token-discipline** (the set of habits that keep AI-coding sessions cheap on pay-per-token plans, [→ GLOSSARY](../../GLOSSARY.md#token-discipline))?
+### Path 2 — Codex, inside the ChatGPT desktop app (the free track)
 
-> If **no** → **Path 2: Gemini CLI free tier**. The **free tier** (the portion of a paid service you can use at no cost, capped by hours, requests, or rate limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) is genuinely free; **rate limits** (caps on how many calls you can make to a service in a window of time, [→ GLOSSARY](../../GLOSSARY.md#rate-limit)) enforce the discipline by default. Skip to "If you picked Path 2."
->
-> If **yes** → continue to Question 4.
+Path 2 installs the ChatGPT desktop app and uses **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)) from inside it. Codex is included on the **free tier** (the portion of a paid service you can use at no cost, usually capped by hours, requests, or limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) of ChatGPT — no card, no subscription, $0 to start. That's genuinely free, and it genuinely works: this course confirmed it end-to-end before writing a single Path 2 lesson.
 
-### Question 4: Are you OK with rate limits more than with a small bill?
+Two honest catches. First, OpenAI's own wording says Codex is on the Free plan **"for a limited time."** If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
 
-> If **yes** (rate limits are fine) → **Path 2: Gemini CLI free tier**. $0. Tied to Google's free-tier behavior. When you set up your toolchain, the course re-verifies the current daily/monthly caps before lessons are authored.
->
-> If **no** (you'd rather pay a little to avoid rate limits) → **Path 3: Claude Code via Anthropic API (token-careful)**. $30–$200 total over the course depending on discipline. You will use Claude Sonnet (not Opus) by default; you will reset the conversation between unrelated tasks; you will watch the running token count like a hawk. Module 3 covers the discipline in depth.
+Pick Path 2 if $0 matters more to you than never waiting, and you're fine with an occasional pause on a heavy day.
 
-That's the whole tree. Four questions, three paths.
+### The comparison, side by side
 
-### If you picked Path 1: Claude Code Pro
+Same two facts, side by side:
 
-- Account you'll need next lesson: **Anthropic** (for Claude Code) plus the universal accounts (GitHub, plus later in the course Vercel and Supabase).
-- Cost expectation: ~$60 over a 3-month focused completion; ~$120 over 6 months.
-- Read [`BUDGET.md`](../../BUDGET.md) § "Path 1: Claude Code Pro" for the table.
+| | Path 1: Claude Code desktop | Path 2: Codex (ChatGPT desktop app) |
+|---|---|---|
+| Monthly cost | $20 ($17 if billed yearly) | $0 to start |
+| What you get | Every lesson, no built-in pauses | Every lesson, for free, for as long as the free tier lasts |
+| What runs out first | Nothing — $20 is a flat ceiling | Your free allowance on a busy day, or the free tier itself if OpenAI ever changes it |
 
-### If you picked Path 2: Gemini CLI free tier
+### The third option: OpenCode desktop
 
-- Account you'll need next lesson: **Google** (for the Gemini API key) plus the universal accounts (GitHub, plus later Vercel and Supabase).
-- Cost expectation: **$0**.
-- Read [`BUDGET.md`](../../BUDGET.md) § "Path 2: Gemini CLI free tier" for the table.
+There's a third agent app worth knowing exists: **OpenCode desktop** (a third agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. And it's the least polished of the three — still in beta. This course names it once, here, and doesn't walk you through it.
 
-> **Note:** Seeing different daily or monthly caps than this lesson describes for Gemini's free tier? Google changes these over time. On the course site, open the lesson chat ("Ask about this lesson") and tell it the limit you're seeing versus what this lesson says — it can help you reconcile the difference and decide whether Path 2 still fits. For the full record of caps changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+### Switching is cheap
 
-### If you picked Path 3: Claude Code via Anthropic API (token-careful)
+Nothing in this course locks you to the path you pick today. From here forward, lessons that meaningfully differ between the two tracks show both side by side, so switching later costs you exactly one thing: creating the account you skipped the first time.
 
-- Account you'll need next lesson: **Anthropic** (for the API) plus the universal accounts (GitHub, plus later Vercel and Supabase).
-- Cost expectation: **$30–$200 total** depending on discipline.
-- Read [`BUDGET.md`](../../BUDGET.md) § "Path 3: Claude Code via Anthropic API — token-careful" for the table — and read it carefully. This path is cheap if you watch tokens and ruinous if you don't.
+### No pay-per-use path
 
-### What if you change your mind later?
-
-You can switch paths mid-course. The course's loop works on both Claude Code and Gemini CLI; lessons that meaningfully diverge between them show parallel walkthroughs (starting in Module 3). The cost is creating an additional account if you switch *to* a path you didn't pick in lesson 04.
+Earlier versions of this course had a third path: pay only for what you use, by pasting in a long code that identifies your account and watching a running total so it didn't add up. That path is retired, along with the separate program it needed to run in. Both of this course's tracks live entirely inside one app window, and neither asks you to manage a running total by hand.
 
 ## Exercise
 
-1. Walk the four questions above out loud.
-2. Write your chosen path on a piece of paper or in a note where you'll see it tomorrow.
-3. Open [`BUDGET.md`](../../BUDGET.md) and read the row for your chosen path in detail — pay attention to the per-path course-completion projection in dollars.
-4. If your chosen path is Path 3, read the token-discipline subsection of [`BUDGET.md`](../../BUDGET.md) twice. The discipline is the path.
+1. Reread the comparison above, out loud if that helps.
+2. Say your path out loud, in one sentence: "I'm on Path 1" or "I'm on Path 2."
+3. Say your path's monthly cost out loud — a number, not a shrug: "$20 a month" or "$0 to start."
+4. Write your path down somewhere you'll see it before Lesson 4 — a note, a piece of paper, whatever you'll actually look at again.
 
 ## Checkpoint
 
 You've got this if you can:
 
 - Name your chosen path in one phrase.
-- Tell a friend how much the course will cost you, end-to-end, in dollars (range is fine for Path 3).
-- Name which AI-agent account you'll create in the next lesson (Anthropic, Google, or Anthropic for the API).
+- Say what it costs you per month, in dollars.
+- Say which account Lesson 4 has you create next: an Anthropic account for Path 1, or a ChatGPT account for Path 2.
 
 ## What you just did
 
-You picked the cost path *before* you created accounts. This is the second time you've done a triage-before-install in Module 0; it'll be the last time you do it formally, but the pattern continues — you'll do something like this every time the course introduces a tool with a cost. The discipline is: ask "what does this cost me?" before "how do I install it?" Module 3 generalizes the pattern to AI prompts.
+You picked a path and put a real number on it before creating a single account. That's the same discipline the last lesson used for hardware, aimed at money instead: check honestly, before you sign up. Lesson 4 is the payoff — you'll create exactly the account your path needs, nothing more.
 
 ## Navigation
 
