@@ -4,7 +4,7 @@
 
 export interface LessonMeta {
   title: string;
-  /** Parent module slug, e.g. "01-mental-models" or "03.5-reading-code". */
+  /** Parent module slug, e.g. "01-mental-models" or "04-thread-project". */
   module: string;
   /** Zero-padded string ("01".."06") — YAML may parse `01` as the number 1,
    *  so loaders must normalize back to the padded string form. */
@@ -39,9 +39,10 @@ export interface Lesson extends LessonRef {
 
 export interface ModuleInfo {
   slug: string;
-  /** Numeric module order — 0, 1, 2, 3, 3.5 — parsed as a decimal. */
+  /** Numeric module order — 0, 1, 2, 3, 4 — parsed as a decimal, so a
+   *  fractional slug (the retired "03.5-reading-code") still sorts correctly. */
   number: number;
-  /** Full README h1, e.g. "Module 3.5 — Reading code, just enough". */
+  /** Full README h1, e.g. "Module 2 — Your agent and the machinery it drives". */
   title: string;
   /** Title without the "Module N — " prefix. */
   shortTitle: string;
@@ -59,7 +60,6 @@ export interface UpcomingModule {
 }
 
 export const UPCOMING_MODULES: UpcomingModule[] = [
-  { number: 4, shortTitle: "Designing & building the thread project" },
   { number: 5, shortTitle: "Operating the build" },
   { number: 6, shortTitle: "After it's live" },
   { number: 7, shortTitle: "Where to go from here" },

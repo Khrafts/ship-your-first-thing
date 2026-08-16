@@ -16,13 +16,13 @@ import {
 describe("getModules", () => {
   it("discovers the five live modules in course order", async () => {
     const modules = await getModules();
-    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 3.5]);
+    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 4]);
     expect(modules.map((mod) => mod.slug)).toEqual([
       "00-welcome",
       "01-mental-models",
       "02-toolchain",
       "03-the-loop",
-      "03.5-reading-code",
+      "04-thread-project",
     ]);
   });
 
@@ -61,7 +61,7 @@ describe("getAllLessonRefs", () => {
     const expected = modules.reduce((sum, mod) => sum + mod.lessonCount, 0);
     expect(refs).toHaveLength(expected);
     expect(refs[0].moduleSlug).toBe("00-welcome");
-    expect(refs[refs.length - 1].moduleSlug).toBe("03.5-reading-code");
+    expect(refs[refs.length - 1].moduleSlug).toBe("04-thread-project");
   });
 });
 

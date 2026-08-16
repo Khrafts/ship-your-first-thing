@@ -26,7 +26,7 @@ export function formatDateTimeUtc(value: Date): string {
   return `${formatted} UTC`;
 }
 
-/** 0 → "Module 0", 3.5 → "Module 3.5". */
+/** 0 → "Module 0", 4 → "Module 4". */
 export function moduleLabel(number: number): string {
   return `Module ${number}`;
 }

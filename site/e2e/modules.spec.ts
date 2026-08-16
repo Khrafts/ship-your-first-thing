@@ -44,7 +44,7 @@ test.describe("modules index", () => {
       page.getByRole("heading", { name: "Coming later" }),
     ).toBeVisible();
     // Second <ol> holds the upcoming (non-linked) modules.
-    await expect(page.locator("ol").nth(1).locator("li")).toHaveCount(4);
+    await expect(page.locator("ol").nth(1).locator("li")).toHaveCount(3);
   });
 });
 
@@ -91,13 +91,4 @@ test.describe("module detail", () => {
     ).toBeVisible();
   });
 
-  test("dot-in-slug module route resolves (03.5 regression)", async ({
-    page,
-  }) => {
-    const response = await page.goto("/modules/03.5-reading-code");
-    expect(response?.status()).toBe(200);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Reading code, just enough",
-    );
-  });
 });
