@@ -26,6 +26,12 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
 
+## 2026-08-16 — The course now runs in a desktop agent app, not a terminal
+
+**Change:** Modules 0 through 2 are rebuilt around two desktop agent apps — Claude Code desktop and Codex in the ChatGPT desktop app. No terminal, no Codespace: Module 0 walks you from hardware check to installing your app, and your agent handles everything that runs on a machine.
+**If you're affected:** If you set up with Codespaces before this date, start Module 0 again from the beginning — it is a shorter path. Modules 3 and 4 still show the older tools until their rewrites land; the loop they teach is unchanged.
+**Details:** The rebuilt modules are `modules/00-welcome/` and `modules/02-toolchain/`; the code-reading module that sat between Modules 3 and 4 is retired.
+
 ## 2026-07-25 — Module 4 Lesson 2 is published: the profile page
 
 **Change:** Module 4 Lesson 2 builds a profile — a display name, a short bio, and a photo people upload — that anyone can read and only its owner can change. It includes the one step you run yourself in the Supabase dashboard, with screenshots.
