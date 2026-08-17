@@ -21,10 +21,16 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 
 | What you're seeing | What happened | Where to look |
 |---|---|---|
-| A slash command from the course doesn't exist in your session | Claude Code replaced /tokens with /context (window usage) and /cost (spend); Gemini CLI uses /stats and /compress | [`CHEATSHEET.md`](./CHEATSHEET.md) |
+| An older copy of a lesson tells you to type a command starting with "/" | The course no longer teaches typed commands (since 2026-08-16) — you ask in plain words, and "start a fresh conversation" is the reset move | [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md) |
 | Your agent's replies look different from a lesson's transcripts | Captured transcripts age; the loop the lesson teaches still works | The lesson's "Last captured" date, then the entries below dated after it |
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
-| An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
+| An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
+
+## 2026-08-17 — Module 3 now runs in your agent app's chat window
+
+**Change:** Module 3's four loop lessons are reshot for Claude Code desktop and Codex in the ChatGPT desktop app. Your agent creates the practice page, you watch it in your browser, and "start a fresh conversation" replaces the typed `/clear` command everywhere.
+**If you're affected:** The loop you learned is unchanged — only the surfaces moved. If you learned Module 3 before this date, skim Lesson 2's fresh-conversation section.
+**Details:** The lessons are in `modules/03-the-loop/`; the wider desktop-app move is the entry below dated 2026-08-16.
 
 ## 2026-08-16 — The course now runs in a desktop agent app, not a terminal
 
