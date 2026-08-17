@@ -4,7 +4,7 @@ module: "03-the-loop"
 lesson_number: 03
 est_minutes: 50
 prereqs: ["02-planning-vs-execution"]
-updated: "2026-05-14"
+updated: "2026-08-17"
 deviations: []
 ---
 
@@ -12,135 +12,148 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to name five observation patterns that tell you the AI agent produced wrong output, and apply them to a real captured session without reading the code.
+By the end of this lesson, you will be able to name five observation patterns that flag wrong output, and run all five against your own page and your agent's own words — without reading a line of code.
 
 ## Why this matters
 
-Lesson 2 sharpened how you ASK. This lesson sharpens how you EVALUATE — how to know whether the agent's output matches your intent. The catch: you cannot always tell by reading the code. Module 3.5 covers code-level recognition; this lesson stays at the OBSERVATION floor. What you can always do is look at the page, read the agent's narration, compare its plan against its output, and notice when something the agent says it did is invisible. Five observation patterns carry you through almost every M3+ session.
+The page changed, the reply sounded pleased with itself, and you believed it. That is how most bad afternoons with these tools actually start — not with an obvious failure, but with a confident one. Nothing announces itself. Your agent writes the same way whether it worked from something real or invented the whole thing on the spot, so confidence tells you nothing, and "it looks fine" is a feeling rather than a check. What you need is a short list of specific things to look at, small enough to run every single time. Five of them cover almost everything, and none of them require you to open a file.
 
-> **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
+> **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
-> **Last captured:** 2026-05-14. Seeing transcripts that look different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
-AI agents are confident. They will write code that "works" (in the sense of running without errors) but produces the wrong thing. They will say they did something they did not. They will invent details that look plausible — book titles, function names, file paths, configuration values — but are not real. The skill of the EVALUATE step is recognizing wrong output WITHOUT having to read the code line by line. Module 3.5 picks up code-level recognition; this lesson holds the observation floor.
+This lesson lives in the third step of the loop: **evaluate** (looking at what came back and deciding whether it matches what you actually wanted, [→ GLOSSARY](../../GLOSSARY.md#evaluate)). Lesson 2 sharpened the step before it — the **ask** (writing a specific request the agent can act on, [→ GLOSSARY](../../GLOSSARY.md#ask)) — and Lesson 1 gave you this one in its simplest form: refresh the page, does it match? That version holds up longer than you would think. This lesson is what you do when the answer is subtler than yes or no.
 
-The most common failure shape has a name. A **hallucination** (a one-line definition: when an AI agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing, [→ GLOSSARY](../../GLOSSARY.md#hallucination)) is the failure that fools beginners most often. The output looks plausible because the agent is fluent at producing plausible-looking text; the catch is that plausibility does not mean accuracy.
+Start from the thing that makes it subtle. Your agent is fluent, and fluency is the wrong signal to trust. It produces smooth, plausible, well-organized sentences whether or not there is anything real behind them, and it does not sound less certain when it is guessing. Being wrong feels exactly like being right from where it sits.
 
-This lesson walks one deliberately under-specified ask and watches both agents hallucinate together. The worked example continues on `index.html`: the file already shows today's date and a button that hides or shows it (Lessons 1 and 2). The new ask is short and under-specified:
+The sharpest version of that has a name you met in Module 2: a **hallucination** (when your agent produces specific details that look correct but were invented — titles, names, values it had no way of knowing, [→ GLOSSARY](../../GLOSSARY.md#hallucination)). Module 2 gave you the one-line smell-test — it names something you never made or mentioned. This lesson is where you catch one on purpose, on your own page, and see how ordinary it looks while it is happening.
+
+So what do you check against? Three things, and only three:
+
+- **The page**, in your browser, refreshed.
+- **The agent's own account** of what it just did.
+- **The plan**, when you asked for one — Lesson 2's discipline paying off a lesson later.
+
+You may be waiting for a fourth: the one where you open up what your agent wrote and check the work yourself. It isn't coming, and not because you haven't earned it yet. Checking the code is the agent's job — permanently, at every level of this course, including the real project you build in Module 4. That boundary is a feature of how this works, not a gap in your training. Your agent reads faster than you, never gets bored, and can hold the whole project in view at once; you can tell whether the thing in front of you is what you wanted, which it cannot do at all, because it cannot see your screen and has no idea what you meant. Each of you does the half you are actually good at. The three surfaces above are not the beginner version of evaluating. They are the whole job.
+
+### An ask that has to be invented
+
+Your practice page is where Lesson 2 left it: your name, the tagline, today's date, and a button below the date that hides it and brings it back. You are also in a fresh conversation, because that was the last thing Lesson 2 had you do — which matters more here than it did there.
+
+Here is the new ask, and it is deliberately thin:
 
 > Add a list of 3 favorite books below the button.
 
-Read that ask. Nothing about it tells the agent which three books — because the agent has no way of knowing your favorite books. There is no file in the project that names them. There is no past message in the conversation that lists them. There is nothing the agent could possibly look up. So what happens?
+Read it once more as your agent has to read it. Which three books? Nothing in the folder says. Nothing earlier in the conversation says, because there is no earlier in the conversation. There is no place in the world it could look this up, since the answer exists only in your head and you did not say it out loud. That leaves it two options: ask you which books, or pick three. Watch which one it takes.
 
-Here is what each agent produced on the day this lesson was captured.
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
-> **Capture slot — Claude Code response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your L3 session (see `screenshots/m3/03-reading-plans-recognizing-wrong/CAPTURE.md`).
+**In Claude Code desktop:**
 
-```text
-Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the L3 session.
-Show enough of the agent's output to see (a) the three book titles it invented and
-(b) any narration around them — e.g., "I'll add a list of your favorite books" or
-similar. Keep the standalone "Claude Code:" line above; voice-lint check #8 requires
-it.]
-```
+> **You:** Add a list of 3 favorite books below the button.
+> **The app asks:** Allow changes to `index.html`? — you approve.
+> **The agent:** Added below the button, above the footer line: a small heading and a three-item list, each line a title with its author beside it in a quieter grey. The styling reuses the colours the page already has, so it follows the light and dark versions for free. One thing I did not do: render the page. There's no build step here, but I'd rather tell you that than imply I checked it visually — open it and confirm the spacing reads right above the footer.
 
-> **Capture slot — Gemini CLI response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your L3 session.
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-```text
-Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the L3 session.
-Show the same kind of moment captured above for Claude Code — the three invented book
-titles plus any narration around them. Keep the standalone "Gemini CLI:" line above;
-voice-lint check #8 requires it.]
-```
+**In the ChatGPT app (Codex):**
 
-> **Annotation slot — divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two book lists. Examples (pick the one that matches your captures, or write your own): "Claude Code invented three classic-canon titles I have never read; Gemini CLI invented three contemporary titles that sound plausible but I have never said are my favorites. Both produced valid HTML; both invented the data." OR "Both agents converged on three of the same widely-cited titles — neither of which is mine. The convergence is the lesson: when an agent has nothing to go on, it reaches for the most-cited candidates and presents them as if specified." Your transcript will look like the one for your chosen agent.
+> **You:** Add a list of 3 favorite books below the button.
+> **The app asks:** Codex wants to change `index.html` — approve? — you approve.
+> **The agent:** Done — a short heading and three books in a list, sitting under the button. You didn't say which books, so I put in three that suit your tagline. Refresh the page and tell me what they should be.
 
-Notice what just happened. The agent had no way of knowing which three books to pick, so it picked three. The page now contains plausible-looking content that has nothing to do with you. The CODE works (the list renders correctly); the OUTPUT does not match your intent. That is hallucination — and it is invisible if you only check "did the page change."
+Two apps, two personalities, one outcome. The first one said nothing at all about where the titles came from; it described what it built, flagged a limit of its own checking, and stopped. The second mentioned that it had chosen for you — after the part about what it built, in the tone you would use for a detail rather than a problem. Neither of them refused, neither of them asked first, and neither of them could possibly have known. Both invented. That convergence is the lesson: this is not one app's flaw you can avoid by picking the other one.
+
+### Now go and look
+
+Refresh the browser tab. Below the button there is a small heading — "Three favourite books" — and three lines under it. On the day this lesson was run, they were *Shape Up* by Ryan Singer, *The Pragmatic Programmer* by Hunt and Thomas, and *Show Your Work!* by Austin Kleon.
+
+Yours will be three different books, and that difference is the most useful thing on the page. Run the same ask twice and the list changes: when it was run a second time here, two titles stayed and the third became *Deep Work* by Cal Newport. Nothing was consulted, because there was nothing to consult.
+
+Be precise about what went wrong, because it is not what a beginner expects. All three of those books are real. The authors are real. The list is spelled correctly, sits in the right place, and looks like it belongs on the page. The invented part is the claim that they are *yours* — a fact about you that your agent manufactured to fill a gap you left, and then presented in exactly the same voice it uses for things it actually knows. The work is fine. The output is wrong. Those are two different questions, and only the second one is yours.
 
 ### Five observation patterns
 
-Five observation patterns surface wrong output. You do not need to read code for any of them.
+Five things to look for. You will run all five in the exercise; after a week they take about thirty seconds.
 
-**1. Visual divergence.** You asked for X; the page shows nothing where X should be. Example: "I asked for the date in the page; the page is blank." The page is the ground truth. If the page does not show what you wanted, the EVALUATE step says no — regardless of how good the agent's prose was.
+**1. Visual divergence — you asked for it and it isn't there.** You refresh, and the page looks exactly as it did before. No list, no heading, nothing where the new thing should be. The page is the ground truth, so however good the reply was, evaluate says no.
 
-**2. Output divergence.** Something IS there, but it is wrong. Example, and the canonical L3 case: "I asked for a list of 3 favorite books; the agent picked 3 books I have never read." Or: "I asked for today's date; the page shows yesterday's date / a date in the wrong timezone / the word `undefined`." The shape is right; the content is wrong.
+**2. Output divergence — it's there, and it's wrong.** Something appeared, in the right place, and the content is not what you meant. The book list is the case in front of you. So is a date that shows yesterday, a button whose label says the opposite of what it does, or a tagline that came back rewritten when you never asked for it to change. The shape is right; the substance isn't.
 
-**3. Plan-vs-actual divergence.** The agent's plan listed N steps; the agent executed fewer or different steps. Example: "The plan said: 1. open the file, 2. add a list element, 3. add three list items with book titles, 4. style them. The agent did steps 1, 2, and 3 — but skipped step 4 and did not mention skipping it." Read the PLAN. Compare it to what the agent says it DID. Look for the gap.
+**3. Plan-vs-actual divergence — the plan promised more than the summary claims.** This one only exists if you asked for a plan first, which is half of why Lesson 2 exists. You are comparing two pieces of ordinary English, both written for you: what your agent said it would do, and what it afterwards says it did. If the plan mentioned styling the list to match the rest of the page and the summary never mentions styling again, that gap is worth one sentence: "Your plan mentioned styling the list to match the page — did that part happen?" You are not auditing the work. You are noticing that two paragraphs don't line up.
 
-**4. Narration divergence.** The agent says it did something the page does not show. Example: "The agent said: I added a button to clear the list. There is no button on the page." Trust the page, not the narration. The agent's prose is sometimes confident about edits it did not actually make.
+**4. Narration divergence — it says it did something the page doesn't show.** The reply mentions a button to clear the list; you refresh and there is no such button. This is the pattern where you have to actively decide who to believe, and the answer never changes: believe the page. Your agent is describing what it intended; the browser is showing you what exists.
 
-**5. Error messages.** The browser's preview tab shows a red error icon, or the console panel shows a wall of red text. You do not need to read the details — that is M3.5 territory. The observation is just: "there is something red where there should not be." Copy the visible error text and paste it back to the agent (Lesson 4 covers feeding errors back as the STEER step).
+**5. Something looks broken.** A block of red text where content should be. A region that has gone blank. Half the page missing below a certain point. You do not read it, work out what it means, or copy it anywhere — you say what you see and where you saw it, in plain words: *"there's a red block of text where the book list should be, and everything below it is gone."* Your agent can see the project; reading the details is its side of the arrangement, and it is faster at it than you will ever be. Your side is noticing and saying so.
 
-### Where the L3 capture trips a pattern
+What the five have in common is the point of the list: every one of them is something you can see with your eyes or read in plain English. Nothing on that list requires you to know what any of it is made of.
 
-In the captured session above, observation pattern #2 (output divergence) is what flags the problem. The book list IS there. The shape is right. The content is wrong — these are not your favorite books, because the agent never had your favorite books to work from. The right next move is the STEER step (Lesson 4): tell the agent "These books are not actually my favorites. Replace with placeholder text that reads 'add your three favorite books here.'" That is a real-world steer that produces actual learner-shaped output.
+### Which one caught the books
 
-If your capture happened to surface a different pattern — say, the agent stopped after listing two of the three books (plan-vs-actual divergence) — pattern #3 is the one that caught it. Same skill, different surface. The patterns are not exclusive; one capture may surface two or three of them. The point is naming the one that flagged the problem first.
+Pattern 2 — output divergence. Watch the other four pass while it fails, because that is the part worth practicing:
 
-### Why agents hallucinate — briefly
+- **Visual:** there is a list below the button. Passes.
+- **Output:** those are not your favorite books, and nothing about the ask could have made them so. **Fails.**
+- **Plan-vs-actual:** there was barely a plan — the agent went straight to work — and what it said afterwards matches what it did. Passes.
+- **Narration:** everything the reply claimed is on the page. Passes.
+- **Something broken:** the page renders cleanly. Passes.
 
-The agent's strength is writing fluent sentences. Its weakness is that fluent sentences can contain invented details — when the agent has nothing concrete to reference (your specific code, your actual files, your real data), it reaches for plausible candidates and presents them as if specified.
+Four out of five said fine. That is the reason for running all five rather than trusting a general impression: a general impression is a vote, and it would have lost four to one.
 
-### What this lesson does not teach
+The patterns are not tidy compartments, either. Suppose the agent had stopped after two books — that trips pattern 2 (wrong content) and pattern 1 (a missing third line) at once, and pattern 3 as well if the plan had promised three. Overlap is normal and costs you nothing. Name the one that flagged the problem first. That is the one your **steer** (course-correcting when what came back is off, [→ GLOSSARY](../../GLOSSARY.md#steer)) gets written around, and steering is the whole of Lesson 4.
 
-This lesson does NOT teach you to read the agent's code edits to find bugs. That is Module 3.5. The point of M3 L3 is that you can recognize most wrong output WITHOUT reading code. The agent invented book titles; you did not have to read the list element to know that. The page IS the evaluation surface.
+### Why this happens
 
-### Reading the agent's plan as one of the observations
+Your agent is a very good writer with no way of knowing when it has run out of material. Writing fluent sentences is the thing it does; fluent sentences need specifics; and when there are no specifics available — no file that names your favorite books, no earlier message, no fact of any kind — it reaches for the most plausible candidates and writes them in with the same steady hand it uses for everything else. It is not lying, and it is not broken. It is finishing the sentence, which is what it was built to do.
 
-Reading the agent's PLAN is one of the five observations — pattern #3 (plan-vs-actual divergence). When you start an execution conversation by reading the plan first (Lesson 2's discipline), you can flag missing steps BEFORE the agent edits. Example: "You listed step 4 as 'style the list'; I do not see styling in your edit. Please add the styling step." That is plan-vs-actual divergence caught BEFORE the loop wastes work on it. Lessons 2 and 3 are paired by design: planning conversations give you something to compare against in the evaluate step.
+The same mechanism covers a second case you will meet in the real project. Your agent's knowledge of the world stops at a date, so anything that changed after that date is simply not there — and instead of saying so, it fills the gap the same fluent way. The smell-test doesn't change: it named something specific and confident that you cannot find anywhere.
 
-Five patterns. Visual / output / plan-vs-actual / narration / error message. Module 3.5 layers code-reading detection on top of these. Module 5 hand-curates three real bug walkthroughs against the deployed thread project. The five patterns from this lesson carry you through everything until then.
+Which is why the fix is never "trust it less" in some general, anxious way. The fix is the five patterns, run every time, on the page in front of you.
 
 ## Exercise
 
-Run the L3 ask on your chosen agent. Plan twenty to twenty-five minutes.
+Run the under-specified ask on your own page and put all five patterns through their paces. Plan twenty-five to thirty minutes.
 
-1. **Confirm** that `index.html` shows today's date below the tagline AND a button that hides or shows it (the Lesson 2 state). If it does not, run Lesson 2's exercise first.
-2. **Open your agent.** Type `claude` (Path 1 or Path 3) or `gemini` (Path 2) in the terminal. Open the scratch file in VS Code's Live Preview (right-click → Show Preview).
-3. **Type the L3 ask, verbatim:** `Add a list of 3 favorite books below the button.`
-4. **Watch the agent edit.** Wait for it to finish. Switch to the Live Preview tab.
-5. **Evaluate using the five observation patterns,** in order:
+1. **Confirm where you are.** Your practice page should show your name, your tagline, today's date, and a button below the date that hides it and brings it back. Click the button once each way to be sure. If it isn't there, run Lesson 2's exercise first.
+2. **Ask straight out, with no plan step.** Type: *"Add a list of 3 favorite books below the button."* Approve what the app asks you to approve. You know from Lesson 2 that asking for a plan first is the better habit — skipping it here is deliberate, so you can watch what an under-specified ask produces when nothing catches it early.
+3. **Run the five patterns, in order,** with the browser tab refreshed and your agent's reply on screen:
+   - **Visual divergence:** is there a list below the button at all?
+   - **Output divergence:** are those your actual favorite books?
+   - **Plan-vs-actual divergence:** did your agent describe what it would do before doing it? Does its account afterwards match?
+   - **Narration divergence:** does everything the reply claims actually show up on the page?
+   - **Something looks broken:** does the page render cleanly, top to bottom?
+4. **Write three sentences,** anywhere you like:
+   - Which pattern flagged the problem first.
+   - What your agent invented — the three titles, word for word.
+   - What your next ask would be, in one sentence. That is the steer, and Lesson 4 is entirely about it.
+5. **Do not save this one.** No "save this as a working version" at the end of this lesson — and that is deliberate. This state is wrong on purpose: you save working versions, not broken ones. Lesson 4 makes it right first, and then you save it.
 
-   - **Visual divergence:** is there a list on the page below the button? (Probably yes — modern agents will produce visible output.)
-   - **Output divergence:** are these your actual favorite books? (Almost certainly no.)
-   - **Plan-vs-actual divergence:** did the agent describe a plan? Did its action match? Did it stop early or do extra?
-   - **Narration divergence:** what did the agent say it did, and does the page reflect it?
-   - **Error messages:** is the page rendering cleanly? Any red anywhere?
-
-6. **Write three sentences** in a scratch file (any plain-text note):
-
-   - Which observation pattern caught the problem first.
-   - What the agent invented (the three specific titles).
-   - What your next ask — the STEER step, next lesson — would be.
-
-Do not commit `index.html` yet. Lesson 4 progresses the same file further.
+Your deliverable is a practice page with three invented books on it, three sentences, and nothing saved.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Name the five observation patterns without looking.
-2. Apply at least one of them to your captured L3 session and identify the wrongness.
+1. Name the five observation patterns without looking at this lesson.
+2. Say which one caught the book list, and why the other four passed.
 
 ## Going deeper
 
-Optional, only if you are curious:
+Optional, only if you're curious:
 
-- **Module 3.5** picks up where this lesson stops: code-level recognition (reading folders, recognizing wrong-file edits, reading an error message back to a file pointer). The four M3.5 lessons stay strictly at "you can detect this symptom" — they do not teach explanation from first principles.
-- **Module 5** ships three hand-curated "watch the AI fail" walkthroughs against the deployed thread project. Together, the three layers (M3 L3 observation / M3.5 code reading / M5 case studies) cover the recognize-wrong skill end-to-end. This lesson is the OBSERVATION floor.
-- **Anthropic's hallucination explainer** at `https://www.anthropic.com/research` (search for "hallucination") covers the deep "why." Most of it is for product builders; the parts about why specific-but-invented output happens apply to agent sessions too.
+- **Do it again with something else you never said.** Ask for "a short list of my three favorite films" or "a line about where I live", and watch the same thing happen with a straight face. Two or three repetitions is when the pattern stops being a lesson and starts being an instinct.
+- **Module 5 puts you in front of three real failures.** Three walkthroughs, on the actual project you will have built by then, where you watch an agent get something wrong and then work out the recovery. This lesson gives you the noticing; those give you the recovering, on failures with real consequences instead of a throwaway page.
+- **The next lesson is the other half of this one.** You are holding a wrong result right now and doing nothing about it. Lesson 4 is where you say the sentence that fixes it — and where you learn what to do when saying it twice hasn't worked.
 
 ## Loop check
 
-> **Loop check — evaluate.** Module 3 Lesson 3 sharpens the *evaluate* step of the agent loop. Five observation patterns turn "is the agent right?" from a vague question into a checklist you can run after every ask. The next lesson teaches the *steer* step. The loop step this lesson reinforces is **evaluate**.
+> **Loop check — evaluate.** Lesson 1 named all four steps; this lesson goes deep on the third. Evaluating is not a feeling about the reply — it is five named checks against the page, your agent's own words, and the plan, and it never once involves reading what your agent wrote into the file. The loop step this lesson reinforces is **evaluate**.
 
 ## What you just did
 
-You ran an ask that was deliberately under-specified, watched the agent hallucinate three book titles, and named the observation pattern that flagged the problem. You saw that the EVALUATE step is not about reading code — it is about looking at the page, the narration, and the plan, and noticing the gap between what the agent said it did and what is actually there. Lesson 4 covers what you DO with that recognition: the STEER step.
+You wrote an ask that could not be answered honestly, watched your agent answer it anyway with three books it made up, and named the pattern that caught it while four other checks were saying everything looked fine. Then you left it broken on purpose, which is its own small skill: knowing that a wrong page is a thing you fix rather than a thing you save. Lesson 4 is where you fix it — the three-part steer, what to do when your agent does far more than you asked, and the point where starting over beats trying again.
 
 ## Navigation
 
