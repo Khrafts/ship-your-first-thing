@@ -45,7 +45,7 @@ There is nothing to download for this module. The first thing you do is ask your
 **In Claude Code desktop:**
 
 > **You:** Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser.
-> **The agent:** I'll put a folder called `loop-practice` on your Desktop with a single self-contained page in it — your name, a divider, and a one-line tagline, centered.
+> **The agent:** I'll put a folder called `loop-practice` on your Desktop, with one page in it called `index.html` showing your name above a one-line tagline.
 > **The app asks:** Allow creating `loop-practice/index.html`? — you approve.
 > **The agent:** Written. Now I'll open it in your browser.
 > **The app asks:** Allow opening the page in your browser? — you approve.
@@ -133,8 +133,8 @@ That's the loop end to end: four steps, one iteration. Most real work chains sev
 
 Run the whole thing yourself, in your own app. Plan twenty to twenty-five minutes.
 
-1. **Open your agent app** and get to the window this course uses — the Code tab in Claude Code desktop, or the Codex switch in the ChatGPT desktop app.
-2. **Run the setup ask.** Type: *"Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser."* Approve what it asks you to approve. When the page opens in your browser, leave that tab open — you'll come back to it several times this module.
+1. **Open your agent app** and get to the tab or mode this course uses — Code for Claude Code desktop, Codex for the ChatGPT desktop app.
+2. **Run the setup ask.** Type: *"Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser."* Read each approval prompt before you approve it — this is the first time it's real. Everything it asks for on this step is safe to approve. When the page opens in your browser, leave that tab open; you'll come back to it several times this module.
 3. **If the name or tagline is wrong,** tell it what they should say and let it fix them.
 4. **Set your intent.** Say it out loud or write it down: add today's date below the tagline.
 5. **Ask.** Type: *"Add today's date below the tagline."* Nothing else — resist the urge to explain how.
