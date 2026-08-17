@@ -167,10 +167,6 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 
 - prompt
 - context window
-- `/clear`
-- `/compact`
-- `/context`
-- `/cost`
 - agent loop
 - planning conversation
 - execution conversation
@@ -180,14 +176,15 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 - steer (as named loop step)
 - hallucination (AI-output sense)
 - drift (the agent-behaviour sense — first named by M2's anchor lesson; M3 L2 and M3 L4 are where the smell-test and the recovery are taught)
+- over-engineering (M3 L4 callouts it today)
 
 ### Forbidden (deferred to a later module)
 
-**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake). `/clear`/`/compact`/`/context` are excluded from this bucket — they remain Requires-callout above, kept functional for the still-published M3 dual-agent lessons pending the Phase 2 reshoot:
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake):
 
-- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost
+- terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, slash command
 
-Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 2 re-homing them alongside the M4 reshoot)*:
+Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 3 re-homing them alongside the M4 reshoot)*:
 
 - file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
 
@@ -195,7 +192,7 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M3 rewrite implications:** M3 names the loop. Every lesson uses the loop-step nouns (intent / ask / evaluate / steer) freely AFTER the first-use callout in M3 L1. The slash commands appear in CHEATSHEET first; lessons re-introduce them with D-04 callouts only at first lesson-internal use. CRITICAL: do NOT introduce `/tokens` — that's the deprecated name. M3 L2 teaches the canonical commands `/context` (Claude Code, window usage) and `/cost` (Claude Code, spend). *(Transitional note, 2026-08-12: the still-published M3 L2 lesson also currently teaches Gemini CLI's `/compress` and `/stats`; those two commands are removed from this section's Requires-callout tier under the Gemini CLI retirement — see Maintenance — and no longer count as go-forward vocabulary. The lesson itself is unedited pending the Phase 2 reshoot of Module 3 for the desktop-app tracks.)* The same-PR migration of CHEATSHEET/BUDGET/GLOSSARY off `/tokens` ships in Plan 02-02 (Wave 1) before any M3 lesson is written.
+**M3 rewrite implications:** M3 lessons introduce the loop-step nouns (intent / ask / evaluate / steer) with D-04 callouts in L1 and use them freely after. The session-reset move is the plain phrase "start a fresh conversation" — no typed command is ever taught.
 
 ---
 

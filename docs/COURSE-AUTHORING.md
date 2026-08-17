@@ -574,7 +574,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 
 `scripts/voice-lint.sh` is the programmatic gate. It has ten checks; understand each before writing or editing lessons.
 
-Phase 2 reshoots Module 3 for the desktop-app tracks named in CLAUDE.md; until then, check #8 below and the `/clear`-in-M3-lesson references elsewhere in this file describe the currently published dual-agent (Claude Code + Gemini CLI) lessons.
+The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lessons present Claude Code desktop and Codex in parallel as prose conversation panels, with no lint-enforced labels.
 
 | # | Check | What trips it | Fixture |
 |---|-------|---------------|---------|
@@ -585,7 +585,6 @@ Phase 2 reshoots Module 3 for the desktop-app tracks named in CLAUDE.md; until t
 | 5 | Broken relative path | A link from `modules/**/*.md` to a root cross-cutting doc (GLOSSARY, BUDGET, …) whose relative path doesn't resolve | `05-broken-glossary-relative-path.md` |
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
-| 8 | M3 dual-agent rendering (D-27) | An M3 lesson (`modules/03-the-loop/0[1-4]-*.md`) missing a standalone `Claude Code:` or `Gemini CLI:` label line | `08-m3-dual-agent.md` |
 | 9 | Debugging-framing (hard rule 12) | Prose anywhere in `modules/` drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
 | 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 bytes of summary, over 300 bytes on one line, or leaking internal codenames (`D-xx`, `CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, `SC #n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
 
