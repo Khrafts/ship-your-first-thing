@@ -4,7 +4,7 @@ module: "03-the-loop"
 lesson_number: 04
 est_minutes: 55
 prereqs: ["03-reading-plans-recognizing-wrong"]
-updated: "2026-05-14"
+updated: "2026-08-17"
 deviations: []
 ---
 
@@ -12,201 +12,220 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to write a steer ask that course-corrects an AI agent's output, recognize when an agent is over-engineering and steer it back to scope, and know when `/clear` and a fresh start is faster than another steer.
+By the end of this lesson, you will be able to write a three-part steer, recognize when your agent has done far more than you asked and pull it back to scope, and know when starting a fresh conversation beats writing another steer.
 
 ## Why this matters
 
-Lessons 1, 2, and 3 named the loop and sharpened ask + evaluate. This last Module 3 lesson closes the cycle. When you have evaluated and the answer is no, the loop's STEER step is what you do next. The skill is rarely dramatic — most steers are one or two short follow-up asks. But recognizing the OTHER failure mode (the agent is over-engineering; or it has lost the plot; or it has dug a hole) is what keeps a session from spiraling into hours of wasted work.
+You are looking at a page with three books on it that were never yours, and you already know it is wrong. Knowing is not the same as fixing. The sentence you say next either lands in ten seconds, or it sends your agent off rebuilding half the page in a direction you never asked for — and then you have two problems where you had one. This lesson is the three moves that keep the second thing from happening: how to write the sentence, how to spot the moment your agent has run away with the job, and how to tell when saying it again is not going to work at all.
 
-> **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
+> **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
-> **Last captured:** 2026-05-14. Seeing transcripts that look different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
-In Lesson 3 you ran an under-specified ask and the agent hallucinated three book titles. The natural next move is to STEER — to course-correct by writing one more ask that uses what just happened as context. The steer step is rarely a big production. Most of the time it is: "That is not quite right. Here is what I actually wanted: [more specific intent]." Two-thirds of the AI-coding sessions you will run land in one or two steers. The hour-long sessions usually have one moment where steering failed and a clean `/clear`-and-restart would have saved time.
+This is the fourth step of the loop: the **steer** (course-correcting when what came back is off, [→ GLOSSARY](../../GLOSSARY.md#steer)). It closes the circle. You knew what you wanted, you asked for it, you looked at what came back and it was not right — and now you say the thing that makes it right.
 
-### Steer #1 — fixing the hallucination
+Most steers are undramatic. A steer is one more **ask** (writing a specific request the agent can act on, [→ GLOSSARY](../../GLOSSARY.md#ask)), written with the advantage of knowing exactly how the last one went wrong. Most of the time it is two sentences and it lands on the first try. The reason this lesson runs an hour is not the steer that works — it is the other two cases: the steer that produces far more than you wanted, and the session where steering has stopped helping at all. Those are the ones that eat afternoons.
 
-Start by steering the L3 hallucination. The agent invented three books; you want a placeholder instead. The ask:
+### Steer #1 — fixing the invented list
+
+Start with the one in front of you. Your agent invented three books; you want a placeholder in their place until you decide what really goes there.
 
 > These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."
 
-Here is what each agent produced on the day this lesson was captured.
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
-> **Capture slot — Claude Code hallucination-steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your hallucination-steer session (see `screenshots/m3/04-steering-and-recovery/CAPTURE.md`).
+**In Claude Code desktop:**
 
-```text
-Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the hallucination-steer
-session. Show the agent's response to the steer ask — typically a short
-acknowledgement followed by the edit replacing the three invented titles with the
-placeholder text. Keep the standalone "Claude Code:" line above; voice-lint check #8
-requires it.]
-```
+> **You:** These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."
+> **The app asks:** Allow changes to `index.html`? — you approve.
+> **The agent:** Replaced. The three titles are gone and the section now reads "Add your three favorite books here." I kept the small heading above it — that labels the section rather than being part of the made-up data, so dropping it would leave a floating sentence with nothing to explain it. Two small things worth your call: the heading spells it "favourite" and your placeholder says "favorite", so both spellings now sit two lines apart; and you wrote it in lower case, but I've put a capital on it since it reads as a sentence on the page.
 
-> **Capture slot — Gemini CLI hallucination-steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your hallucination-steer session.
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-```text
-Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the hallucination-steer
-session. Show the same kind of moment captured above for Claude Code — the steer
-acknowledgement plus the placeholder-text edit. Keep the standalone "Gemini CLI:"
-line above; voice-lint check #8 requires it.]
-```
+**In the ChatGPT app (Codex):**
 
-> **Annotation slot — hallucination-steer divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two responses. Examples (pick the one that matches your captures, or write your own): "Both agents accepted the steer cleanly and replaced the list with placeholder text in a single edit. One-shot steers like this are the norm — the steer just names the gap and the agent fills it." OR "Claude Code rewrote the entire `<ul>` block with an `<em>` wrapper around the placeholder; Gemini CLI kept the list shape and replaced only the `<li>` contents. Both honored the ask; the shape of the edit differed." Your transcript will look like the one for your chosen agent.
+> **You:** These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."
+> **The app asks:** Codex wants to change `index.html` — approve? — you approve.
+> **The agent:** Done — the three books are gone and the line now reads "Add your three favorite books here." Refresh the page and it should be the only thing under the heading.
 
-That is the canonical steer pattern: name what was wrong (the agent invented data), state what you wanted instead (placeholder text), and let the agent run the edit. One-shot steers are the most common steer in any session.
+One of them handed two judgement calls back to you on the way past; the other did the job and pointed you at the page. Neither asked what "placeholder text" meant, because it did not need to — you had said the words you wanted on the page. Both landed on the first try, and that is the ordinary case: most steers are one exchange and then you are moving again.
+
+That is the canonical pattern, and it has three moving parts worth naming.
 
 ### Anatomy of a steer ask
 
-A useful steer ask has three parts:
+1. **What was wrong**, in one sentence. "These books are not actually my favorites." "The button does not hide the date." "The page came back blank."
+2. **What you actually want**, in one sentence. "Replace them with placeholder text saying this." "Make the click hide the date." "Put the date back where it was."
+3. **Any limit you want held**, in one sentence — optional, and the one people leave out. "Keep the button working." "Don't change anything else on the page."
 
-1. **What was wrong** (one sentence). "The book list is wrong." "The button does not toggle." "The page is blank."
-2. **What you actually want** (one sentence). "Replace the books with placeholder text." "Make the click handler hide the date." "Show today's date below the tagline."
-3. **Any constraint the agent missed** (one sentence, optional). "No frameworks." "Inline CSS only." "Keep the existing button working."
+Two ways to get this wrong, and they fail in opposite directions.
 
-Anti-pattern: "fix it" — too vague, the agent will guess at what "it" was. Anti-pattern: "use Tailwind CSS, then add Material UI icons, also a 3D bookshelf rendering" — over-specified back at the agent, which often makes the over-engineering worse. The sweet spot is one or two specific sentences. Short steers usually land in one iteration; long steers usually need their own steer.
+The first is **"fix it."** Two words, no information. Your agent knows something displeased you and has to guess which thing — so it guesses, and now you are steering the guess as well as the original problem.
 
-### Steer #2 — the open-ended ask and over-engineering
+The second is over-correcting: answering a small problem with a long list of instructions about how to solve it. It feels safer, and it does the opposite. A pile of specifics invites a pile of work, and you end up steering a bigger result than the one you were unhappy with. Two specific sentences beat ten. Short steers usually land in one pass; long ones usually need a steer of their own.
 
-Now ask the most open-ended ask you can. The Module 3 Lesson 4 worked-example ask is:
+### Steer #2 — the open-ended ask
 
-> Make the list look like a real bookshelf.
+Now try the loosest ask in the lesson, on purpose:
 
-Open-ended asks are a magnet for **over-engineering** (a one-line definition: when an AI agent does MORE than asked — adding frameworks, libraries, image lookups, fancy effects — because the ask did not bound the scope, [→ GLOSSARY](../../GLOSSARY.md#over-engineering)). Agents tend to read "look like a real bookshelf" as "rebuild this with a UI framework." Watch what each agent did with that ask.
+> Make the list look like a real bookshelf
 
-> **Capture slot — Claude Code open-ended-ask over-engineering response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your open-ended-ask session.
+Read what you just asked for. "A real bookshelf" is a picture in your head and nowhere else — the placeholder text does not say how far to take it, and neither do you. An ask with no edges is an invitation, and what it invites is **over-engineering** (when your agent does much more than you asked for, because nothing in the ask said where to stop, [→ GLOSSARY](../../GLOSSARY.md#over-engineering)).
 
-```text
-Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the
-open-ended ask. Show the full over-engineering response — typical shapes include
-suggesting a CSS framework like Tailwind, suggesting image lookups for book covers,
-suggesting fancy 3D shelf effects, or proposing a multi-file refactor. The whole
-response is the teaching surface; keep enough of it to show the over-shoot. Keep
-the standalone "Claude Code:" line above; voice-lint check #8 requires it.]
-```
+The exchange below was approved so you can see the whole shape of the over-shoot. In your own run you may well see it coming when the app asks you to approve, and stop it there instead, which is the cheapest steer there is.
 
-> **Capture slot — Gemini CLI open-ended-ask over-engineering response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your open-ended-ask session.
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
-```text
-Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the
-open-ended ask. Show the same kind of moment captured above for Claude Code — the
-over-engineering response in full enough detail to make the over-shoot visible.
-Keep the standalone "Gemini CLI:" line above; voice-lint check #8 requires it.]
-```
+**In Claude Code desktop:**
 
-> **Annotation slot — open-ended-ask divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two over-engineering responses. Examples (pick the one that matches your captures, or write your own): "Claude Code suggested installing Tailwind CSS and looking up book-cover images from an external service; Gemini CLI suggested CSS Grid with custom wooden-background images. Both interpreted 'real bookshelf' as a redesign rather than light styling. That is the recognize-wrong moment for over-engineering." OR "Both agents proposed multi-file changes — a `styles.css` file, a `bookshelf.css` file, a `book-cover.js` lookup — for a one-line styling ask. The convergence is the lesson: open-ended asks invite over-shoot regardless of which agent runs them." Your transcript will look like the one for your chosen agent.
+> **You:** Make the list look like a real bookshelf
+> **The app asks:** Allow changes to `index.html`? — you approve.
+> **The agent:** Done. The list is now three upright spines standing on a plank, with the last one leaning into the gap at the end the way a half-full shelf does. Each spine carries a label — "Book one", "Book two", "Book three", with "Author" under each — and your line "Add your three favorite books here." has moved down to sit under the shelf as a caption. I picked three spine colours and checked each against the text so they stay readable in both the light and dark versions of the page. One thing I could not do: I have not seen it rendered. Open it and check two things — whether the spines are thick enough for the text at your font size, and whether the lean reads as leaning or as crooked.
 
-The point is not that the agent was being unhelpful — it was being TOO helpful, in the direction you did not want. Recognizing over-engineering is its own observation skill. The shape: the agent's response is bigger than the task, the agent's plan has more steps than the task needs, and the keywords are framework / library / install / refactor when none of those was asked for.
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-### The steer-back-to-scope move
+**In the ChatGPT app (Codex):**
 
-Steer back to scope. The follow-up ask:
+> **You:** Make the list look like a real bookshelf
+> **The app asks:** Codex wants to change `index.html` — approve? — you approve.
+> **The agent:** Here's a bookshelf. The three lines are standing books on a shelf board now, with a wood-grain background, a different colour per spine, and a soft shadow under each so they sit on the shelf instead of floating. I put "Book one / Book two / Book three" on the spines so there is something to read on them. Want me to add cover pictures next?
 
-> Too much. I just want simple inline CSS to give the list a wooden background and some line spacing. No frameworks.
+Both of them heard "bookshelf" and built one. That is the divergence and the convergence at once: the apps differ in how much they narrate and what they offer next, and neither of them treated "real bookshelf" as a small styling change. Nothing here is disobedience. It is enthusiasm pointed at an ask that never said where to stop.
 
-Three sentences. Names the over-shoot, restates the intent with tighter scope, and rules out the framework path. Watch how the agents scale back.
+### Recognizing it
 
-> **Capture slot — Claude Code scope-steer response.** Replace the bracketed lines below with the verbatim Claude Code transcript from your scope-steer session.
+Two things give over-engineering away, and you can see both without knowing anything about how the page is built.
 
-```text
-Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the
-scope-steer session. Show the agent's scaled-back response — typically a short
-inline-CSS edit on the `<ul>` element with a wooden background color and some
-line spacing. Keep the standalone "Claude Code:" line above; voice-lint check #8
-requires it.]
-```
+**The response is bigger than the task.** You asked for one thing to look different, and what came back describes several new things — a plank, spines, a lean, a set of colors — where you were expecting a sentence. When a small ask produces a long answer, the extra length is work you did not ask for.
 
-> **Capture slot — Gemini CLI scope-steer response.** Replace the bracketed lines below with the verbatim Gemini CLI transcript from your scope-steer session.
+**It adds things nobody asked for.** One exchange after you told your agent to take three invented books off your page, it put three invented book labels back on. "Book one", "Book two", "Author" — none of that was in your ask. It also moved your placeholder line somewhere else without mentioning it first, then handed you two homework questions about a shelf you never wanted.
 
-```text
-Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the
-scope-steer session. Show the same kind of moment captured above for Claude Code —
-the scaled-back inline-CSS edit. Keep the standalone "Gemini CLI:" line above;
-voice-lint check #8 requires it.]
-```
+The same shape takes three other forms you will meet in Module 4: your agent reaches for a new tool to do something small, spreads a one-line change across extra files, or proposes rebuilding a thing that already works. New tools, extra files, big rebuilds — when a modest ask produces any of those, that is the smell.
 
-> **Annotation slot — scope-steer divergence.** Replace this blockquote with one or two sentences naming what each agent scaled back to. Examples: "Claude Code dropped the framework suggestion and applied an inline `style` attribute on the `<ul>` with a brown background and 1.5em line height. Gemini CLI did the same but used a `<style>` block in the `<head>` instead of inline attributes. Both honored 'no frameworks'; the shape of the styling differed slightly." OR "Both agents converged on a `style` attribute with a wooden-brown background color and adjusted line spacing. The convergence is the lesson: tight scope language ('inline CSS', 'no frameworks') produces tight edits." Your transcript will look like the one for your chosen agent.
+The fix is not to distrust your agent. It is to put an edge on the ask.
 
-That is the canonical steer pattern at full size: name the over-shoot, restate intent with tighter scope, rule out the path you did not want. The result usually lands in one iteration.
+### The steer back to scope
 
-### When steering fails — `/clear` and start over
+> Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else.
 
-Sometimes steering is not working. The agent keeps over-engineering despite your scope constraint, or it is stuck in a loop where every steer makes the code WORSE. The right move is `/clear`. The conversation history wipes; the agent loses memory of the hole it dug; you start fresh with a sharper initial ask that bounds the scope from the start. The agent had committed to a path — `/clear` wipes that commitment and starts fresh.
+Three sentences doing three jobs. "Too much" names the over-shoot without arguing about it. The middle sentence restates what you actually wanted, small and concrete. And **"Nothing else"** is the edge the first ask was missing — the shortest way to say *do not go looking for anything to improve.*
 
-`/clear` is not failure. It is hygiene. Think of it the way you think of restarting a meeting that has gone in circles — sometimes the fastest path forward is a fresh page. Lesson 2 introduced `/clear` as part of context-window discipline; this lesson uses the same command for the same reason. The token-and-cost angle from Lesson 2 (`/clear` resets the context so you stop paying for stale history) is the same angle here (`/clear` resets the context so you stop fighting stale assumptions).
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
-Example fresh ask after `/clear`:
+**In Claude Code desktop:**
 
-> I have an HTML file with a `<ul>` of placeholder text. Add inline CSS — no frameworks, no images — to give the `<ul>` a wooden background color and ~1.5em line height. Nothing else.
+> **You:** Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else.
+> **The app asks:** Allow changes to `index.html`? — you approve.
+> **The agent:** Reverted. The spines, the plank, the lean and the spine colours are all gone. What is left is the plain list with a wood-grain panel behind it and more space between the lines. One change to flag: your single line "Add your three favorite books here." is now three separate rows, because that is what gives the list lines to space apart. Say the word if you would rather have the one sentence back.
 
-That is a tighter ask than "make it look like a bookshelf," and it does the work the original ask was trying to do — without leaving the agent any room to over-engineer. The "nothing else" line is doing a lot of work: it explicitly forbids the framework / refactor / multi-file paths that the open-ended version invited.
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-### Feeding errors back
+**In the ChatGPT app (Codex):**
 
-The second steer pattern is errors. When something throws an error — a red icon on the browser preview tab, a wall of red in the console panel, a yellow warning the agent's narration referenced — you do not need to read the details to fix it. The console panel sits below the browser preview — open it and look for red text; that's the error message to paste into your next ask. Reading error messages back to a file pointer is Module 3.5 territory. The simplest steer is:
+> **You:** Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else.
+> **The app asks:** Codex wants to change `index.html` — approve? — you approve.
+> **The agent:** Scaled it back. The books are a plain list again on a wooden background, with the lines further apart. Nothing else on the page changed.
 
-> I see this error: [paste the visible error text]. What should I do?
+Both scaled back on the first try, and neither argued. The interesting difference is the last line of the first one: it flagged a side effect — your one sentence is now three rows — that you would otherwise have found on the page and wondered about. That is worth a decision, not a shrug. Refresh the page and take the sixty seconds: is the wood there, are the lines further apart, and is the placeholder still saying what you want it to say?
 
-The agent already has the rest of the conversation as context — it knows what file you were editing, what change just happened, what the original intent was. With the error text added, its next ask is usually accurate. Even when it is not, the back-and-forth converges fast: paste error, get fix, paste new error if one appears, repeat. Two or three iterations is normal. More than five is the signal that `/clear` would be faster than another iteration.
+Notice what the over-shoot cost you: one wasted exchange and one approval. Not an afternoon. That is what steering is for, and most sessions never get worse than this.
 
-### When to start over — the bigger `/clear`
+### When steering stops working
 
-If a SESSION is going poorly across many iterations — the agent is confused about file paths, contradicting earlier statements, repeating mistakes — the steer is bigger: end the session. Close the agent. Open a fresh terminal. Run the agent again. Start from intent.
+Some sessions do get worse than that. You write the scope-steer and the next reply over-shoots again. You rule something out and it comes back two replies later. Every steer produces something slightly further from what you wanted, and you find yourself explaining, for the third time, a thing you explained clearly the first time.
 
-The cost of starting fresh is one or two minutes; the cost of fighting through a confused session is often an hour or more. Module 7 covers session hygiene patterns in more detail. For now, the heuristic is: when the loop has stopped converging — every steer makes the agent more confident and more wrong — close the door, walk away, come back fresh.
+That is **drift** (when the agent loses the thread of what it agreed to do, usually deep into a long session, [→ GLOSSARY](../../GLOSSARY.md#drift)), and Lesson 2 gave you the smell-test: the latest reply is about something you did not ask for. It also gave you the limit — two tries. Past two clear restatements, more steering is not going to work, because the problem is no longer your wording. It is the conversation.
+
+So you do what Lesson 2 taught: **start a fresh conversation.**
+
+Think of it the way you think about a meeting that has gone in circles. Nobody in the room is being difficult, everyone has heard everything twice, and the useful thing is not another lap — it is to stop, walk out, and come back at it from the top with one clear question. That is what a new conversation buys you. The hole your agent dug itself into was made of things it said and things you said back, and none of that follows it into the new conversation.
+
+Two things make this cheap rather than frightening. The first is that your work was never in the conversation: your folder and your page are files on your computer, and they sit where they were no matter how many conversations you start or end. The second is that your saved versions are the floor you land on. If the session left the page in a state you do not want, you do not have to fix it by hand or explain what went wrong. You say:
+
+> Take us back to the last working version.
+
+That sentence is always available and it costs you nothing to use. Your agent does the work of getting back there. Going back is not an admission that you failed — it is the reason you saved.
+
+Then re-ask, with the edge you now know the first ask was missing:
+
+> The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else.
+
+Run that against a page at the placeholder stage, in a conversation with no history behind it, and it lands in one pass: the wood goes on, the lines get more room, and nothing else moves. Your agent says as much without being asked — heading, button, footer and background all untouched. No shelf, no invented labels, no side effect to decide about afterwards.
+
+The lesson is not that starting over is better. It is that the tighter ask was always available: "Nothing else" did in the first sentence what the scope-steer had to do in the third, and it did it before anything was built.
+
+### When something looks broken
+
+One more case, and it is the one people brace for. Sometimes a change does not leave you with a wrong page — it leaves you with a page that has clearly fallen over. A block of red text where your list used to be. A region gone blank. Everything below a certain point missing.
+
+You do not need to read any of it. Say what you see, in the plainest words you have, and hand it straight back:
+
+> The page went blank after that change.
+
+> There's a red error where the list was.
+
+That is the whole move. Your agent can look at the project itself, and working out what the red text means is its side of the arrangement — it will read the details and come back with a fix, usually in one round. What it does not have is the one thing you do: you looked at the page and it was broken. Noticing and saying so is the job.
+
+Two or three rounds of this is normal. If it is still stuck after that — the same problem, described differently, the third time round — you have stopped steering and started going in circles, and the fresh conversation is the faster path. Same signal, same move.
 
 ### The loop closes
 
-Module 3 ends here. You have run all four loop steps on the same scratch starter: intent → ask → evaluate → steer. You have watched two agents shape the same task differently. You have named the moves you can re-bind to any agent that comes next.
+Module 3 ends here, and it ends where it started: on one page, with four moves. You worked out what you wanted, asked for it, looked at what came back, and said what should be different. One lesson per step, four iterations, on a page that did not exist before Lesson 1.
 
-> **Note:** You can delete `index.html` now if you want a clean slate — your real project starts in Module 4. That starter was always throwaway by design. The loop you learned in Module 3 carries forward; the file you ran it on does not.
+You also ran every one of those steps in two apps, which was the other half of the point. The windows look different, the wording is different, one narrates more than the other. The four moves did not change once. That is the thing you are actually taking to Module 4 — not an app, a habit that outlives whichever app you happen to be holding.
+
+Your page is working now, so finish it properly:
+
+> Save this as a working version — the practice page is done.
+
+> **Note:** The practice page was always throwaway. Your real project starts in Module 4 and does not build on this one, so you can ask your agent to delete the practice folder if you want the clean slate — or keep it as a souvenir of the first thing you ever made this way. Either is fine. The loop you ran on it is what carries forward.
 
 ## Exercise
 
-Run the Lesson 4 sequence on your chosen agent. Plan twenty to twenty-five minutes.
+Run the full steer sequence on your own page, over-shoot included. Plan twenty-five to thirty minutes.
 
-1. **Steer #1 — fix the hallucination.** From the post-Lesson-3 state of `index.html` (today's date + toggle button + hallucinated book list), type: `These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."`
-2. **Steer #2 — open-ended.** Type: `Make the list look like a real bookshelf.` Watch what your agent suggests. Is it over-engineering? Note the shape — framework suggestion, image lookup, multi-file refactor.
-3. **Steer back to scope.** Type: `Too much. I just want simple inline CSS to give the list a wooden background and some line spacing. No frameworks.` Watch the agent scale back.
-4. **`/clear` practice.** Type `/clear` to wipe the session. Open a new session with a tighter initial ask: `I have an HTML file with a <ul> of placeholder text. Add inline CSS — no frameworks, no images — to give the <ul> a wooden background color and ~1.5em line height. Nothing else.` Notice how the tighter initial ask removes the over-engineering temptation.
-5. **Write four sentences** in a scratch note:
-   - What your agent suggested initially for "make it look like a bookshelf."
-   - How you steered back to scope.
-   - What the tighter post-`/clear` ask produced.
-   - Which approach (steer or restart) felt cleaner on this task.
+1. **Steer #1 — fix the invented list.** Your page should still show the three books your agent made up in Lesson 3. Type: *"These books are not actually my favorites. Please replace with placeholder text saying 'add your three favorite books here.'"* Approve what the app asks you to approve.
+2. **Go and look.** Refresh the browser tab. The books should be gone and your placeholder line should be sitting where they were. Click the show/hide button once each way to confirm nothing else broke.
+3. **Steer #2 — the loose ask.** Type: *"Make the list look like a real bookshelf"* and read the reply before you touch anything. Is the answer bigger than the ask? Is it adding things you never mentioned? **If what it proposes is much larger than what you asked for, decline it when the app asks you to approve** rather than approving and undoing it afterwards — then steer back with step 4. Approving it first is also fine; you will just be steering a shelf instead of a proposal.
+4. **Steer back to scope.** Type: *"Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else."*
+5. **Go and look again.** Refresh. Wooden background, more space between the lines, placeholder text still saying what you want it to say — and check whether your agent flagged anything it changed on the side.
+6. **Practice the fresh start.** Start a fresh conversation in your app and type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what a conversation with no history does with an ask that has an edge on it from the first word.
+7. **Save it.** Say: *"Save this as a working version — the practice page is done."*
 
-You can commit the final state of `index.html` if you want a record of where Module 3 ended — or you can delete it entirely. Module 4 starts a fresh project.
+Then write four sentences, anywhere you like:
+
+- What the open-ended ask invited your agent to do.
+- The sentence you used to steer it back, and what it gave up.
+- What the fresh start produced, compared to the steered version.
+- Which of the two felt cleaner on this task — and whether you would reach for the same one next time.
+
+Your deliverable is a finished practice page, saved as a working version, and four sentences.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Write a steer ask in three parts (what was wrong, what you wanted, any constraint).
-2. Recognize when an agent is over-engineering and write the scope-steer that names the limit.
-3. Decide when `/clear` is faster than another steer.
+1. Write a steer in its three parts — what was wrong, what you want, and any limit you want held.
+2. Name the two things that give over-engineering away, and write the sentence that pulls a run-away ask back to scope.
+3. Say when you stop steering and start a fresh conversation instead.
 
 ## Going deeper
 
-Optional, only if you are curious:
+Optional, only if you're curious:
 
-- **Module 5** ships three hand-curated "watch the AI fail" walkthroughs against the deployed thread project. Each one names a smell test you should have caught and the recovery prompt that worked. The walkthroughs are the case-study layer on top of the observation + steering skills Module 3 just taught.
-- **Module 6** covers steering during bug fixes against a live deployed product. The pressure shape is different — a real bug means a real user is affected — but the loop is the same: observe, name what is wrong, steer.
-- **Module 7** covers session hygiene patterns: when to `/clear`, when to switch agents, when to step away from the keyboard entirely. The patterns generalize beyond AI coding to any tight-feedback-loop tool.
+- **Module 5 puts you through three real recoveries.** Three walkthroughs on the project you will have built by then, where an agent gets something genuinely wrong and you work out the way back. This lesson gives you the moves on a throwaway page; those give you the same moves when something is actually at stake.
+- **Module 6 is steering under pressure.** Fixing a bug in a product that is already live, where someone may be looking at the broken version while you work. The feeling is different. The loop is not.
+- **Module 7 covers session hygiene.** When to start fresh, when to switch to a different agent, and when the right move is to leave the keyboard entirely. The patterns generalize well past AI coding — they belong to any tool with a tight feedback loop.
 
 ## Loop check
 
-> **Loop check — steer.** Module 3 Lesson 4 sharpens the *steer* step of the agent loop. Three-part steer asks + recognizing over-engineering + `/clear` as a hygiene move round out the loop. The loop step this lesson reinforces is **steer**.
+> **Loop check — steer.** Lesson 1 named all four steps; this lesson closes the loop on the last one. A steer is a short ask written with the advantage of hindsight — what was wrong, what you want, what limit to hold — and its two failure modes have their own answers: an over-shoot gets an edge put on it, and a conversation that has stopped listening gets replaced rather than argued with. The loop step this lesson reinforces is **steer**.
 
 ## What you just did
 
-You closed the loop. You steered an agent away from a hallucination, recognized over-engineering on an open-ended ask, steered back to scope, and practiced the `/clear`-and-restart move. You have now run the full intent → ask → evaluate → steer cycle end-to-end on two agents (or one, if you are on a single path) and seen each step in depth. Module 3.5 (next) teaches the code-reading floor — pattern recognition for non-coders. Then Module 4 onward starts the thread project.
+You took a wrong page and made it right in one sentence, then watched your agent turn a loose ask into a bookshelf nobody wanted and pulled it back with three more. You practiced the move that beats steering when steering has stopped working, and you finished the page and saved it. That is the whole loop, run end to end on something real: Module 4 hands you a project worth building and you run the same four moves on it, for weeks instead of an afternoon.
 
 ## Navigation
 
