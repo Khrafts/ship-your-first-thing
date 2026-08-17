@@ -2,9 +2,9 @@
 title: "Introducing the loop"
 module: "03-the-loop"
 lesson_number: 01
-est_minutes: 50
-prereqs: ["06-ai-coding-agents"]
-updated: "2026-05-14"
+est_minutes: 45
+prereqs: ["03-the-save-system"]
+updated: "2026-08-17"
 deviations: []
 ---
 
@@ -12,148 +12,168 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to name the four steps of the AI-coding loop (intent → ask → evaluate → steer) and run one complete iteration of them on the scratch starter, using the agent you picked in Module 0.
+By the end of this lesson, you will be able to name the four steps of the AI-coding loop (intent → ask → evaluate → steer) and run one complete iteration of them in your agent app, on a practice page your agent builds for you.
 
 ## Why this matters
 
-Module 2 named the tools. This lesson names the moves. The loop is the durable shape of every AI-coding session — every fix, every new feature, every recovery. The keystrokes change as agents evolve; the loop does not. Once you can name the four steps, you can spot which step is going wrong in any session you run.
+You have an agent, you know what it runs for you below deck, and you know the sentence that saves your work. What you don't have yet is a way to talk about a session that is going badly — and sessions go badly routinely. You ask for something, what comes back isn't it, you ask again in slightly different words, and forty minutes later you have a strong feeling that this isn't working and no idea which part to change. Naming the four parts is what turns that feeling into a decision. The names outlive the app, too: the window will be redesigned, the buttons will move, and the four steps will still be the four steps.
 
-> **Following along:** Run this loop on the agent you picked in Module 0. Both transcripts are shown for reference, but you only need to run your own.
+> **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
-> **Last captured:** 2026-05-14. Seeing transcripts that look different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
 
-AI coding agents look magical until you have used one for an hour, at which point you realize they are predictable: every session moves through four steps.
+AI coding agents look like magic for about an hour, and then they look like something better: predictable. Every session you will ever run with one moves through the same four steps, in the same order, however big or small the job is.
 
-**intent** (a one-line definition: knowing what you are trying to build before you start asking, [→ GLOSSARY](../../GLOSSARY.md#intent)). **ask** (a one-line definition: writing a specific request the agent can act on, [→ GLOSSARY](../../GLOSSARY.md#ask)). **evaluate** (a one-line definition: reading the agent's output and deciding if it matches your intent, [→ GLOSSARY](../../GLOSSARY.md#evaluate)). **steer** (a one-line definition: course-correcting when the agent's output is off, [→ GLOSSARY](../../GLOSSARY.md#steer)). Together, the four-step shape is called the **agent loop** (a one-line definition: the iterative cycle of intent → ask → evaluate → steer, repeated until your task is done, [→ GLOSSARY](../../GLOSSARY.md#agent-loop)). Module 1's mental models taught you the SHAPE of software; this module teaches you the SHAPE of working with an AI agent to build software.
+**intent** (knowing what you are trying to build before you start asking, [→ GLOSSARY](../../GLOSSARY.md#intent)). **ask** (writing a specific request the agent can act on, [→ GLOSSARY](../../GLOSSARY.md#ask)). **evaluate** (looking at what came back and deciding whether it matches your intent, [→ GLOSSARY](../../GLOSSARY.md#evaluate)). **steer** (course-correcting when what came back is off, [→ GLOSSARY](../../GLOSSARY.md#steer)). Together, the four-step shape is the **agent loop** (the cycle of intent → ask → evaluate → steer, repeated until the job is done, [→ GLOSSARY](../../GLOSSARY.md#agent-loop)). Module 1 taught you the shape of software; Module 2 taught you the shape of your agent. This module teaches you the shape of the work itself.
 
-Here is what a steer sounds like in practice — if the date appeared above the tagline instead of below, you would say: "The date appeared above the tagline — it should be below." The steer step is a short, concrete sentence that names what you saw and names what should be different. You will run this lesson's example without needing to steer; the sample shows the shape.
+The text you type at each ask is a **prompt** (the words you send your agent describing what you want, [→ GLOSSARY](../../GLOSSARY.md#prompt)). A specific one produces specific work; a vague one produces vague work. The loop is the discipline of getting from vague to specific without starting over every time.
 
-The text you type to the agent at each ask is called a **prompt** (a one-line definition: the specific text you send to an AI agent describing what you want, [→ GLOSSARY](../../GLOSSARY.md#prompt)). A specific prompt produces specific output; a vague prompt produces vague output. The loop is the discipline of getting from vague to specific without rewriting from scratch every time.
+Here is what a steer sounds like, so you know the shape before you need it. Suppose you asked for today's date below the tagline and it landed above it instead. You would say: "The date appeared above the tagline — it should be below." That is the whole move. Name what you saw, name what should be different. This lesson's example is small enough that you will probably not need to steer at all; the sample is there so the fourth step isn't a stranger when you do.
 
-The rest of this lesson walks one complete iteration on `index.html` — the starter file in your workspace. You will see one full pass through the four steps with both agents shown side by side, then run it yourself on the one you picked.
+One thing to carry through all four steps, because it changes how you read everything your agent tells you:
+
+> **Heads up — you'll meet this again.** Your agent writes with the same easy confidence whether it is right or wrong, so a confident answer is not evidence of a correct one. The smell-test for catching it lives in Module 3 Lesson 3 (`03-reading-plans-recognizing-wrong`); for now, just notice the name.
+
+### Setup — your agent builds the practice page
+
+There is nothing to download for this module. The first thing you do is ask your agent to make you something to practice on — which is also your first look at the whole loop, end to end, on something real. Here is the exchange, in both apps. The sentence you type is the same either way, and you can use it word for word.
+
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
+
+**In Claude Code desktop:**
+
+> **You:** Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser.
+> **The agent:** I'll put a folder called `loop-practice` on your Desktop with a single self-contained page in it — your name, a divider, and a one-line tagline, centered.
+> **The app asks:** Allow creating `loop-practice/index.html`? — you approve.
+> **The agent:** Written. Now I'll open it in your browser.
+> **The app asks:** Allow opening the page in your browser? — you approve.
+> **The agent:** Done — it should be up in your browser now. I can't see your screen, so confirm it rendered. Two things I filled in for you: your name, which I took from your computer's saved settings since you didn't give me one, and the tagline — "Building things that ship, and teaching other people to ship theirs." That one is my invention, not yours. Tell me what either should say and I'll change it.
+
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
+
+**In the ChatGPT app (Codex):**
+
+> **You:** Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser.
+> **The agent:** Here's the plan: a `loop-practice` folder in an easy place, one page inside it called `index.html` with your name as the heading and a one-line tagline under it, then I'll open it in your browser. You didn't give me a tagline, so I'll put something in as a placeholder and you can tell me what it should say.
+> **The app asks:** Codex wants to make changes to your files — approve? — you approve.
+> **The agent:** Made it and opened it. Have a look and tell me what the name and the tagline should actually say.
+
+Two apps, one sentence from you, and something exists that didn't exist before. Both of them did the same three things: said what they were going to do, stopped and waited for your approval, then reported back. That pause is the approval prompt from Module 2, and this is it happening on something real for the first time.
+
+Notice what your surfaces are here, because they don't change for the rest of the course. You have the chat window, where you say what you want and read what your agent says back. And you have a browser tab, where you look at the thing itself. That's it. There is no third place you're supposed to be looking, and nothing on this page is yours to open up and read.
+
+If your agent guessed your name or your tagline wrong, tell it what they should say and let it fix them. That exchange — you noticed something was off, you said what should be different, it changed — is the loop, already, on your first try.
 
 ### 1. intent
 
 Before you type anything: what do you actually want?
 
-Open `index.html` in your IDE. It is a small page with two placeholders — a name and a tagline — and an empty `<script>` block. The page renders almost nothing if you open the preview right now; that is on purpose, because every Module 3 lesson is one iteration of the loop adding one visible piece.
+Your intent for this lesson is one sentence: **add today's date below the tagline.**
 
-Your intent for this lesson: **add today's date below the tagline.**
+Look at the shape of that sentence. It names a concrete change — today's date — in a concrete place — below the tagline. It isn't "make the page nicer." It isn't "add something dynamic." Those are wishes, and a wish hands the agent the job of guessing what you meant, which it will do confidently and often wrongly.
 
-Notice the shape of that sentence. It names a concrete change (add today's date) in a concrete location (below the tagline). It is not "make the page nicer." It is not "add some dynamic content." The work of the intent step is BEING SPECIFIC about what done looks like, in your head, before you open your mouth.
+The work of the intent step happens entirely in your head, before you open your mouth: deciding what *done* looks like specifically enough that you would recognize it. If you can't picture the finished thing well enough to know whether you got it, you can't evaluate what comes back, and without evaluation the rest of the loop is just hoping.
 
-A clear intent is the cheapest part of the loop. Spend two minutes here and you save twenty minutes of steering later.
+It is also the cheapest step by a wide margin. Two minutes here saves twenty minutes of steering later.
 
 ### 2. ask
 
-Now you type.
+Now you type. Into the chat window in your agent app, in your own words:
 
-Open a terminal panel in your Codespace (`` Ctrl+` `` if it is not already visible). Start your agent — `claude` if you picked Path 1 or Path 3 in Module 0, `gemini` if you picked Path 2. The smallest ask:
+> Add today's date below the tagline.
 
-> Add today's date below the tagline in `index.html`.
+That's the whole prompt. Notice what it doesn't contain: nothing about which part of the page to change, nothing about how to work out what today is, nothing about what the date should look like. Those are engine-room decisions, and you have an agent precisely so you don't make them. Your ask names the outcome; the how belongs to the agent.
 
-That is your prompt. Notice it does not say "use JavaScript." It does not say "use `toLocaleDateString`." It does not say "put it in a `<p>` tag." The ask names the OUTCOME you want; the HOW is the agent's job.
+<!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
-The agent's first response is where the two agents diverge in interesting ways. Here is what each one did on the day this lesson was captured.
+**In Claude Code desktop:**
 
-> **Capture slot — Claude Code first response.** Replace the bracketed lines below with the verbatim transcript from your Claude Code session (see `screenshots/m3/01-introducing-the-loop/CAPTURE.md`).
+> **You:** Add today's date below the tagline.
+> **The app asks:** Allow changes to `index.html`? — you approve.
+> **The agent:** Done — the date now sits directly under the tagline, above the line at the bottom, in the same muted grey as the small text so it reads as one tier down. One thing to be aware of: it's written in as fixed text, so it will still say 17 August 2026 tomorrow. If you want it to show the real current date every time the page is opened, say the word and I'll change it to do that.
 
-```text
-Claude Code:
-[Replace this block with the verbatim Claude Code transcript from the capture session.
-Show the agent's planning surface — what it proposes BEFORE editing — plus either its
-diff/file-panel output OR its narration of the edit, depending on which is more
-instructive. Keep it short: the smallest excerpt that lets the divergence annotation
-below land. The standalone "Claude Code:" line above is required by voice-lint
-check #8 — do not remove it.]
-```
+<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-> **Capture slot — Gemini CLI first response.** Replace the bracketed lines below with the verbatim transcript from your Gemini CLI session.
+**In the ChatGPT app (Codex):**
 
-```text
-Gemini CLI:
-[Replace this block with the verbatim Gemini CLI transcript from the capture session.
-Show the same kind of moment captured above for Claude Code — the planning surface
-and the edit (or its narration). The standalone "Gemini CLI:" line above is required
-by voice-lint check #8 — do not remove it.]
-```
+> **You:** Add today's date below the tagline.
+> **The agent:** I'll add today's date as a line under the tagline, styled to sit quietly against the rest of the page.
+> **The app asks:** Codex wants to change `index.html` — approve? — you approve.
+> **The agent:** Added. Refresh the page and today's date should be under the tagline.
 
-> **Annotation slot — divergence.** Replace this blockquote with one or two sentences naming the meaningful difference between the two transcripts above. Examples (pick the one that matches your captures, or write your own): "Claude Code asked for confirmation before editing; Gemini CLI proceeded directly to the change. Same intent, different shape, same loop." OR "Claude Code used `toLocaleDateString()`; Gemini CLI built the string by hand with `getMonth()` + `getDate()` + `getFullYear()`. Two different routes to the same outcome." Your transcript will look like the one for the agent you picked in Module 0.
-
-Both agents will produce something specific. Neither is wrong. The divergence is the lesson: the loop is the same on both surfaces, but the keystrokes and the framing are not. That is why this course teaches every M3 lesson on both agents — the loop is durable; the keystrokes are not.
+The two apps shaped the same ask differently, and that is worth watching for rather than worrying about. One volunteered a trade-off it had made and offered you a different version; the other did the job and told you to go look. Neither is wrong, and the difference isn't a ranking — it's the personality of the app around the agent. The loop underneath is identical on both.
 
 ### 3. evaluate
 
-Now you look at what the agent produced. Two questions, in order:
+There is one surface for this step, and it is the same surface every time: **refresh the page in your browser.**
 
-1. **Did the file actually change?** Open `index.html`. Look at the `<script>` block. Is there real JavaScript there now, or did the agent only describe what it would do without doing it? Most modern agents will make the edit; some will pause for confirmation first. Either is fine — what matters is that you READ what changed.
-2. **Does the page show what you wanted?** Open the file in VS Code's Live Preview (right-click → Show Preview). Today's date should appear below the tagline. If it does, the loop closed in one iteration. If it does not, you steer.
+Then answer one question, the one you set in the intent step: does today's date sit below the tagline?
 
-> **Capture slot — evaluate moment.** Replace the next sentence with what you actually observed during the capture session. Example: "In both sessions, the agent produced a small JavaScript snippet that inserts today's date after the tagline; the browser preview shows today's date below the tagline as expected." If a screenshot of the browser preview is in `screenshots/m3/01-introducing-the-loop/`, embed it here with descriptive alt text.
+If yes, the loop closed in one iteration. If no, you steer. That is the whole of the evaluate step at this size, and the reason it's this simple is a rule that holds for the rest of the course: **the running page is the ground truth, and reading the code to check your agent's work is your agent's job, not yours.** You are not missing a step by not looking. There is no hidden layer of checking that a more advanced learner would be doing here.
 
-Evaluate is the cheapest place to catch wrong output. The agent is going to be confidently wrong sometimes — that is unavoidable. The skill is noticing it before you commit, deploy, or build on top of it. Module 3 Lesson 3 teaches the evaluate step in depth; for now, the discipline is: stop, look, decide.
+The agent's own words are your second signal, and they carry things the page can't show you. In the exchange above, the agent said something you would never have discovered by looking: the date is written in as fixed text, so it will still say the same thing next week. The page was right for today and would quietly be wrong tomorrow. That's why you read what your agent says as well as looking, and why "it looks fine" is not the same as "I checked."
+
+On the practice page that trade-off costs nothing and isn't worth fixing — this page gets thrown away at the end of the module. On something you cared about, it would be a steer. Lesson 3 turns this step into five specific things to look for.
 
 ### 4. steer
 
-When evaluate says no, you steer.
+When evaluate says no, you steer. A steer is one more ask, informed by what just came back:
 
-The steer step is one more ask — but informed by what just went wrong. "The date is showing yesterday's date — please use the local timezone." "The date appeared above the tagline — it should be below." "You added the date but also rewrote my `<h1>`; please leave that alone." Steering is just intent → ask again, with the agent's previous output as new context.
+- "The date appeared above the tagline — it should be below."
+- "The date is showing yesterday's — it should be today's."
+- "You added the date, but the tagline changed too. Put the tagline back the way it was."
 
-> **Capture slot — steer moment.** Pick the description that matches what your capture session actually showed:
->
-> - **If neither agent needed steering:** "In this iteration, no steer was needed — both agents produced working output on the first ask. That is the common case for tiny intents like this one. Module 3 Lessons 3 and 4 walk through what steering looks like when the agent gets it wrong."
-> - **If one or both agents needed steering:** "In this iteration, [Claude Code | Gemini CLI]'s first output [briefly describe what was wrong]; the steer was [the exact follow-up prompt the lesson author typed]. The agent's second response [resolved it / required another steer]." Keep it to two or three sentences.
+Each of those does the same two things: names what you saw, names what should be different. It doesn't apologize, it doesn't explain how to do it, and it doesn't start over. Steering is intent → ask again, with what just happened as new context.
 
-That is the loop end-to-end. Four steps, one iteration. Most real tasks chain several iterations: ask → evaluate → small steer → ask again → evaluate → done. The next three M3 lessons unpack each step: Lesson 2 is the ask step in depth (planning vs execution conversations, slash commands, context discipline); Lesson 3 is the evaluate step in depth (reading plans, spotting wrong output); Lesson 4 is the steer step in depth (feeding errors back, when to start over).
-
-The course teaches the loop on two agents because the LOOP is durable; the keystrokes are not. Claude Code today, Gemini CLI today, some other agent next year — the four steps stay the same. Naming them once, on two different surfaces, makes the skill portable.
+That's the loop end to end: four steps, one iteration. Most real work chains several — ask, look, small steer, look again, done. Lesson 4 is where steering gets its own hour, including the harder case: what to do when steering itself stops working.
 
 ## Exercise
 
-Run this exact loop on YOUR chosen agent. Plan twenty to twenty-five minutes.
+Run the whole thing yourself, in your own app. Plan twenty to twenty-five minutes.
 
-1. **Reset** your `index.html` if you have already edited it. In VS Code's source-control panel, right-click the file → Discard changes; or from the terminal, run `git checkout index.html`. You want to start from the empty-`<script>` state.
-2. **Open the file** in your IDE. Open Live Preview on it (right-click → Show Preview). You should see a blank-ish page with the name and tagline placeholders.
-3. **Open your agent.** Type `claude` (Path 1 or Path 3) or `gemini` (Path 2) in the terminal.
-4. **Ask the smallest ask:** "Add today's date below the tagline in `index.html`." Type that sentence; nothing else.
-5. **Evaluate.** Switch to the Live Preview tab. Does the page now show today's date below the tagline? If yes, the loop closed in one iteration.
-6. **(If no) Steer.** One follow-up ask describing what went wrong. Keep it short. Watch the agent's second response. Re-evaluate.
-7. **Stop.** When the date renders correctly, the iteration is done.
+1. **Open your agent app** and get to the window this course uses — the Code tab in Claude Code desktop, or the Codex switch in the ChatGPT desktop app.
+2. **Run the setup ask.** Type: *"Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser."* Approve what it asks you to approve. When the page opens in your browser, leave that tab open — you'll come back to it several times this module.
+3. **If the name or tagline is wrong,** tell it what they should say and let it fix them.
+4. **Set your intent.** Say it out loud or write it down: add today's date below the tagline.
+5. **Ask.** Type: *"Add today's date below the tagline."* Nothing else — resist the urge to explain how.
+6. **Evaluate.** Switch to the browser tab and refresh. Is today's date below the tagline? Read what your agent said, too, in case it told you something the page doesn't show.
+7. **Steer only if you need to.** One short follow-up naming what you saw and what should be different. Then refresh again.
+8. **Save it.** Say the sentence from Module 2: *"Save this as a working version, with a one-line note about what changed"* — the note being that the practice page now shows the date. This is the first time you've said it to something real, so your agent may need to do a little setup first and show you an approval prompt or two along the way. Approve them and let it work.
 
-When you finish, write three sentences in a scratch file (any plain-text note will do):
+Then write three sentences anywhere you like — a note on your phone, a scrap of paper, a document on your computer:
 
-- What shape did your agent's first response take? (Did it plan first, edit directly, ask for confirmation?)
-- Did you need to steer? If so, what was the follow-up ask?
-- What is one thing you noticed about your agent's behavior that surprised you?
+- What shape did your agent's first response take? Did it lay out a plan first, ask you something, or go straight to doing it?
+- Did you need to steer? If so, what did you say?
+- What is one thing about your agent's behavior that surprised you?
 
-Do not commit the `index.html` change yet. The file evolves across all four M3 lessons; we will commit at module close.
+Your deliverable is a browser tab showing your name, your tagline, and today's date under it — plus a saved working version and three sentences.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Name the four loop steps in order without looking at the lesson.
-2. Run one iteration on your chosen agent and decide whether you needed to steer.
+1. Name the four loop steps, in order, without looking at this lesson.
+2. Say whether your own iteration needed a steer, and what the evidence was either way.
 
 ## Going deeper
 
-Optional, only if you are curious:
+Optional, only if you're curious:
 
-- **Module 3 Lesson 2** covers the ask step in depth — specifically, the difference between planning conversations and execution conversations, and the slash commands you use to keep sessions efficient. [`CHEATSHEET.md`](../../CHEATSHEET.md) already lists the slash commands this course teaches under `## AI prompts` and `## Token discipline`, if you want a preview.
-- **Anthropic's prompting guide** at `https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview` covers prompt-writing in general. Most of it is for API users building products with Claude; the parts about being specific apply to agent sessions too.
-- **Google's Gemini CLI README** at `https://github.com/google-gemini/gemini-cli` lists the CLI's first-use commands and configuration. Skim it; do not try to absorb the configuration details — Module 3 lands the ones you actually need.
+- **The ask step gets sharper next.** Lesson 2 splits asks into two kinds — the ones where you want a plan and no changes yet, and the ones where you want the work done — and adds the move for when a conversation has been going long enough to get muddy.
+- **The evaluate step gets five patterns.** Lesson 3 turns "does it look right?" into five specific things to check, including the case where your agent invents something out of nothing and hands it to you with a straight face.
+- **The steer step gets an anatomy.** Lesson 4 breaks a good steer into three parts, shows you what it looks like when your agent does far more than you asked, and names the point where starting a fresh conversation beats steering again.
 
 ## Loop check
 
-> **Loop check — intent.** Module 3 Lesson 1 names all four loop steps, but the step this lesson reinforces is *intent* — because every other step depends on the intent being clear. You ran one iteration with a sharp intent ("add today's date below the tagline"); the agent's clarity tracked your intent's clarity. The loop step this lesson reinforces is **intent**: knowing what you are trying to build before you start asking.
+> **Loop check — intent.** This lesson names all four steps, but the one it reinforces is *intent* — because the other three are all measured against it. You ran an iteration with a sharp intent ("add today's date below the tagline"), and that sharpness is what made the evaluate step a one-second question instead of a judgement call. The loop step this lesson reinforces is **intent**: knowing what you're trying to build before you start asking.
 
 ## What you just did
 
-You met the agent loop end-to-end. You ran one iteration on a real worked example, on the agent you picked in Module 0. The next three lessons unpack the loop step by step on the same scratch starter — Lesson 2 (ask), Lesson 3 (evaluate), Lesson 4 (steer). By the end of Module 3, you will have run four iterations on the same file and seen what each step looks like in depth.
+You met the loop end to end and ran one full iteration of it — on a page that didn't exist until you asked for it, in an app that stopped and checked with you before touching anything. You also said the save sentence for the first time on something real. The next three lessons take the same page and go one step deeper each time: Lesson 2 on the ask, Lesson 3 on evaluate, Lesson 4 on steer. By the end of the module you'll have run four iterations on the same page and seen every step from the inside.
 
 ## Navigation
 
-[← Previous: AI coding agents](../02-toolchain/06-ai-coding-agents.md)
+[← Previous: The save system](../02-toolchain/03-the-save-system.md)
 [Next: Planning vs execution conversations →](./02-planning-vs-execution.md)
