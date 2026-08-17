@@ -35,7 +35,7 @@ The newer routing system in Next.js, where files in the `app/` folder define URL
 Used in: Module 3.5 (retired 2026-08-12).
 
 ### ask
-The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline in `index.html`."*
+The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline."*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
 ### async-cookies
@@ -253,7 +253,7 @@ A third AI-coding-agent desktop app, free and capable but the least user-friendl
 Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### over-engineering
-When an AI agent does MORE than asked — building or adding whole structures, extra styling, or content nobody mentioned for a small request, because nothing in the ask said where to stop. The fix is a scope-tightening steer that restates what you actually wanted and then puts an edge on it: "Nothing else." *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" got the list rebuilt in place as upright wooden spines standing on a plank, each spine carrying a label the agent invented — far more than the wooden background and the extra line spacing the learner actually wanted.*
+When an AI agent does MORE than asked — building or adding whole structures, extra styling, or content nobody mentioned for a small request, because nothing in the ask said where to stop. The fix is a scope-tightening steer that restates what you actually wanted and then puts an edge on it: "Nothing else." *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" got the list rebuilt in place as upright spines standing on a plank, each spine carrying a label the agent invented — far more than the wooden background and the extra line spacing the learner actually wanted.*
 Used in: [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ## P
@@ -267,7 +267,7 @@ A tool that downloads and tracks the code your project depends on. *Example: npm
 Used in: Module 2 (lesson retired 2026-08-12).
 
 ### planning-conversation
-An AI-agent session where you ask the agent to describe what it WOULD do without writing code yet. *Example: a prompt starting with "Plan:" and ending with "don't write code yet" opens a planning conversation.*
+An AI-agent session where you ask the agent to describe what it WOULD do without writing code yet. *Example: a prompt starting with "Plan:" and ending with "Don't make changes yet" opens a planning conversation.*
 Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ### prompt

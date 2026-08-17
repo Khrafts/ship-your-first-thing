@@ -2,7 +2,7 @@
 
 Module 3 names the durable AI-coding loop end-to-end: **intent → ask → evaluate → steer**. Four lessons, one step each.
 
-Every lesson runs the same worked example on one practice page — a page your agent creates for you in Lesson 1 and you watch change in your browser after every iteration. Each exchange is shown twice, in parallel: once as it looks in Claude Code desktop, once as it looks in the ChatGPT desktop app with Codex. You run only the app you picked in Module 0. The second panel is there so you can see the same loop landing on a different surface, which is the point of the module.
+Every lesson runs the same worked example on one practice page — a page your agent creates for you in Lesson 1 and you watch change in your browser after every iteration. Each exchange is shown twice, in parallel: once as it looks in Claude Code desktop, once as it looks in the ChatGPT desktop app with Codex. You run only the app you picked in Module 0. The second panel is there so you can see the same loop landing on a different surface — the loop, not the panel, is the point of the module.
 
 Loop checks across the four lessons name `intent`, `ask`, `evaluate`, `steer` — one per lesson, in order.
 

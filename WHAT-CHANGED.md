@@ -22,7 +22,7 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | What you're seeing | What happened | Where to look |
 |---|---|---|
 | An older copy of a lesson tells you to type a command starting with "/" | The course no longer teaches typed commands (since 2026-08-16) — you ask in plain words, and "start a fresh conversation" is the reset move | [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md) |
-| Your agent's replies look different from a lesson's transcripts | Captured transcripts age; the loop the lesson teaches still works | The lesson's "Last captured" date, then the entries below dated after it |
+| Your agent's replies look different from a lesson's conversation panels | Panels show real captured behavior; it ages, but the loop the lesson teaches still works | The lesson's "Last verified" date, then the entries below dated after it |
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
 

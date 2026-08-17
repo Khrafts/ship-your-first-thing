@@ -34,7 +34,7 @@ Here is what a steer sounds like, so you know the shape before you need it. Supp
 
 One thing to carry through all four steps, because it changes how you read everything your agent tells you:
 
-> **Heads up — you'll meet this again.** Your agent writes with the same easy confidence whether it is right or wrong, so a confident answer is not evidence of a correct one. The smell-test for catching it lives in Module 3 Lesson 3 (`03-reading-plans-recognizing-wrong`); for now, just notice the name.
+> **Heads up — you'll meet this again.** Your agent writes with the same easy confidence whether it is right or wrong, so a confident answer is not evidence of a correct one. The smell-test for catching it lives in Module 3 Lesson 3 (`03-reading-plans-recognizing-wrong`); for now, just notice the pattern.
 
 ### Setup — your agent builds the practice page
 

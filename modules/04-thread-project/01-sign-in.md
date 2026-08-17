@@ -108,7 +108,7 @@ A different kind of sideways: the agent keeps circling, reworking the same thing
 
 ### Saving it
 
-Once you have signed in, refreshed, and signed out with your own hands, save the working version: "Save this as a working version." The agent does this in **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version is what a fresh start goes back to if the next chunk goes sideways.
+Once you have signed in, refreshed, and signed out with your own hands, save the working version: "Save this as a working version." The agent does this in **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version is what you go back to if the next chunk goes sideways.
 
 ## Exercise
 
