@@ -75,7 +75,7 @@ When this chunk was really built, the live page came up at a real public address
 
 The steer to keep ready is the mismatch one: "On my computer the page loads, but the public link is blank or shows an error. I want both to behave the same. Find out why and fix it." You are not diagnosing the cause — you are naming what you saw and handing it back.
 
-A different kind of sideways: the agent keeps circling — reworking the same thing, losing track of what you asked. When that happens, do not keep arguing with it. Type `/clear` to reset the conversation and start this chunk again from your last saved version — the same recovery you learned in Module 3.
+A different kind of sideways: the agent keeps circling — reworking the same thing, losing track of what you asked. When that happens, do not keep arguing with it. Start a fresh conversation and begin this chunk again from your last saved version — the same recovery you learned in Module 3.
 
 Sometimes the blocker is not in the code at all. When this chunk was really built, the first attempt to go live failed — not because anything was wrong with the app or the agent's work, but because the hosting account had been suspended over a billing issue. The app was fine. Days later, once the account was sorted out (switched to the free plan), the fix was one message to the agent: "Earlier we set this app up and connected it to my database, but getting it live failed because my account was suspended. I've fixed it now — it's on the free plan. Pick up where we left off: get the app live at a public web address I can open from my phone, and give me the link." The agent rebuilt, deployed, and verified the link — and this time reported that no dashboard copying was needed, because it already had what it needed set up locally. The lesson underneath: when the live link fails, the cause is not always the code. Fix the outside thing, then tell the agent to resume.
 
@@ -89,7 +89,7 @@ Ship an empty app to a public web address. The deliverable is a live link that l
 
 1. If you have not already, create your Supabase and Vercel accounts — Module 0 deferred these to now. Ask your agent to walk you through each one; you do the signing-up and click the confirmation link in your email. Stop when you have a Supabase project and a Vercel account.
 
-2. Open a fresh conversation with your agent — if you are picking up in a session that is already open, `/clear` it first — and give it the plan ask, exactly as intent-first as you learned in Module 3:
+2. Open a fresh conversation with your agent — if you are picking up in a conversation that is already open, start a fresh one first — and give it the plan ask, exactly as intent-first as you learned in Module 3:
 
    > "Start a brand-new app, connect it to my database, and get it live at a public web address I can open from my phone. No features yet, just an empty page that's really online. Tell me what you'll do, and what you need from me, before you write anything."
 

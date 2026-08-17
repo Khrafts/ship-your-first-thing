@@ -38,7 +38,7 @@ The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15
 
 ### Forbidden (deferred to a later module)
 
-**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; amended 2026-08-16 — the slash commands never become legal in a later module either: the Module 3 reshoot retired typed commands and teaches "start a fresh conversation" instead, so `slash command` is Forbidden there too — see the Module 3 section):
 
 - terminal (one boundary-naming exception — see the note below), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
 
@@ -52,7 +52,7 @@ Reserved for M2+:
 
 - commit, push, pull, branch, merge (git itself left this bucket on 2026-08-15 — it is Requires-callout in M0 for the install caveat only, and M2 re-introduces it as the machinery the agent operates; see the scope note above)
 
-Reserved for M3+: prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0 — see Safe above), context window, `/clear`, `/compact`. *(`/tokens` was removed from this list on 2026-08-15: it is the deprecated command name that the Module 3 section bans outright, not a term that becomes legal at M3.)*
+Reserved for M3+: prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0 — see Safe above), context window. *(`/clear` and `/compact` left this list on 2026-08-16: they never become legal at M3 — they are retired course surface in every module, listed in the bucket above. `/tokens` was removed on 2026-08-15 for the same kind of reason: it is a deprecated command name the Module 3 section bans outright, not a term that becomes legal at M3.)*
 
 **M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace or Node — Codespace is retired course surface under Hard Rule 15, not a deferred noun to define later. It names `git` exactly once, in M0 L5's Windows install caveat with a D-04 callout (see the scope note above), and never as something the learner operates. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a D-04 callout on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
 
@@ -78,7 +78,7 @@ Technical nouns M1 intentionally defines:
 
 ### Forbidden (deferred to a later module)
 
-**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; amended 2026-08-16 — the slash commands never become legal in a later module either: the Module 3 reshoot retired typed commands and teaches "start a fresh conversation" instead, so `slash command` is Forbidden there too — see the Module 3 section):
 
 - terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
 
@@ -88,7 +88,9 @@ Reserved for M2+:
 
 Reserved for M3+:
 
-- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, `/clear`, `/compact`, agent loop, planning conversation, execution conversation
+- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, agent loop, planning conversation, execution conversation
+
+*(`/clear` and `/compact` left this bullet on 2026-08-16 — they never become legal at M3; they stay in the retired-course-surface bucket above, Forbidden in every module.)*
 
 Reserved for M4+:
 
@@ -127,15 +129,17 @@ New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced R
 
 ### Forbidden (deferred to a later module)
 
-**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; `/clear`/`/compact`/`/context` remain legal in Module 3 only, for the still-published M3 dual-agent lessons — see the Module 3 section):
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; amended 2026-08-16 — the slash commands never become legal in a later module either: the Module 3 reshoot retired typed commands and teaches "start a fresh conversation" instead, so `slash command` is Forbidden there too — see the Module 3 section):
 
-- terminal (one boundary-naming exception — the M0 note applies here too), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`
+- terminal (one boundary-naming exception — the M0 note applies here too), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`, `/cost`
 
 **Boundary-naming exception (`terminal`).** Same exception as M0's, recorded there in full: M2 L2 (`02-the-engine-room.md`) may name `terminal` inside the off-contract smell-test — the list of requests that mean the learner is being handed the wrong kind of instruction — and in the exercise that rehearses it. The word appears only in a sentence that refuses it, never in an instruction. The lint surfaces these as WARN lines; they are contract-sanctioned. Added 2026-08-15.
 
 Reserved for M3+:
 
-- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, `/clear`, `/compact`, `/context`, `/cost`, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*, drift *(anchor-lesson exception applies — see note below; M3 L2 and M3 L4 teach it in depth)*
+- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*, drift *(anchor-lesson exception applies — see note below; M3 L2 and M3 L4 teach it in depth)*
+
+*(`/clear`, `/compact`, `/context` and `/cost` left this bullet on 2026-08-16 — they never become legal at M3; they stay in the retired-course-surface bucket above, Forbidden in every module.)*
 
 Reserved for M5+ *(first surfaced by M2's anchor lesson; taught in depth by the M5 watch-it-fail walkthroughs)*:
 
@@ -374,4 +378,4 @@ When a term that was Forbidden becomes legal in a later module:
 
 This file is authoritative. If a lint flags a violation that the lesson author believes is correct, update the contract first, then the lesson — never silently bypass.
 
-**Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are now Claude Code desktop and Codex in the ChatGPT desktop app, with OpenCode desktop named once as a third alternative (CLAUDE.md hard rule 15). The M3 section is the one exception: its still-published dual-agent lessons (Claude Code + Gemini CLI) remain live pending the Phase 2 reshoot of Module 3, so `/clear`/`/compact`/`/context` stay Requires-callout there — but Gemini-CLI-specific slash commands (`/compress`, `/stats`) are removed from the tier list regardless, per the transitional note in the Module 3 section.
+**Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are now Claude Code desktop and Codex in the ChatGPT desktop app, with OpenCode desktop named once as a third alternative (CLAUDE.md hard rule 15). The M3 section carried a transitional exception until its lessons were reshot: **that exception closed 2026-08-16.** Module 3 now presents Claude Code desktop and Codex in parallel and teaches "start a fresh conversation" as the session-reset move, so no typed command becomes legal at M3 — `slash command` is Forbidden in the M3 section, and `/clear`/`/compact`/`/context`/`/cost` stay in the retired-course-surface bucket of every module's Forbidden tier.

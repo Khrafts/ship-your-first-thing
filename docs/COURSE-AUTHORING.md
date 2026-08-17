@@ -413,8 +413,8 @@ The course names six core agent failure modes. Each gets a per-module surface an
 | # | Limitation | Plain definition | Module where smell-test first appears |
 |---|---|---|---|
 | 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L1 |
-| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (`/clear` as recovery) — first named M2 L1 |
-| 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized via the slash-command surface (`/context`, `/cost`, `/compact`) |
+| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (fresh-conversation recovery) — first named M2 L1 |
+| 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized from the outside (replies stop matching the ask; a long conversation feels muddy), recovered by starting a fresh conversation |
 | 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype |
 | 5 | **Confident-wrong** | The agent's tone and the agent's correctness are independent; fluent-sounding answers can be wrong; uncertainty is rarely surfaced unless the prompt explicitly asks for it | M3 L3 (the lesson IS about this) |
 | 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L1 first surfacing |
@@ -431,7 +431,7 @@ For each limit, the lesson where it's first taught provides:
 
 - **M2 L1 (`modules/02-toolchain/01-your-ai-coding-agent.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms, each armed with its own one-line smell-test in the lesson itself (Hard Rule 14 option (a)), plus forward-references to where each goes deeper (M3 for hallucination and drift, M5 for risk-blindness). *(This anchor duty moved here on 2026-08-15 when the accessibility remake collapsed Module 2 to three lessons and deleted the former M2 L6, `06-ai-coding-agents.md`.)*
 - **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
-- **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via `/clear` hygiene).
+- **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via fresh-conversation hygiene).
 - **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
 
 ### The anchor-lesson exception (Forbidden-tier terms)
@@ -572,7 +572,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 
 ## Part 9 — The voice-lint contract
 
-`scripts/voice-lint.sh` is the programmatic gate. It has ten checks; understand each before writing or editing lessons.
+`scripts/voice-lint.sh` is the programmatic gate. It has nine active checks, numbered 1–10 — #8 retired and its number is not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
 
 The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lessons present Claude Code desktop and Codex in parallel as prose conversation panels, with no lint-enforced labels.
 

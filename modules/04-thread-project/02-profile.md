@@ -131,7 +131,7 @@ Three steers to keep ready. The first two are the same move you already know —
 
 The third is not a steer at all. If the profile pages complain that something does not exist — "table not found", or wording close to it — the file never made it into your database. Go back to the dashboard step above, paste it, run it, reload. The agent flagged this one in advance when this chunk was built, and it is the likeliest reason a working build looks broken today.
 
-And the familiar one: if the agent keeps circling — reworking the same thing, losing the thread of what you asked — do not keep arguing with it. Type `/clear` to reset the conversation and start this chunk again from your last saved version.
+And the familiar one: if the agent keeps circling — reworking the same thing, losing the thread of what you asked — do not keep arguing with it. Start a fresh conversation and begin this chunk again from your last saved version.
 
 ### Saving it
 
@@ -143,7 +143,7 @@ Look first, save second — the habit worth keeping on any chunk that changes th
 
 Give the app you signed into in the last chunk a profile page. The deliverable is a running app where you can set a name, a bio, and a photo, where a signed-out visitor can read them and cannot change them — plus a saved version.
 
-1. Open a fresh conversation with your agent — `/clear` first if you are picking up in a session that is already open — and ask for the plan:
+1. Open a fresh conversation with your agent — if you are picking up in a conversation that is already open, start a fresh one first — and ask for the plan:
 
    > "I want signed-in people to create a profile with a display name, a short bio, and a photo they upload from their computer. Anyone can view any profile, but a person can only edit their own. The profile page should leave an empty area where that person's posts will appear later. Plan this out before you write any code, and tell me where the uploaded photos get stored."
 

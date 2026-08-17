@@ -27,7 +27,7 @@ The contract between two programs about which questions can be asked and how the
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
 ### api-key
-A long string that identifies your account when a program calls a paid (or rate-limited) service on your behalf. Treat it like a password: never paste it into chat, never commit it to a public repo. *Example: a Gemini API key starts with `AI...`; an Anthropic API key starts with `sk-ant-...`.*
+A long string that identifies your account when a program calls a paid (or rate-limited) service on your behalf. Treat it like a password: never paste it into chat, never commit it to a public repo. *Example: an Anthropic API key starts with `sk-ant-...`.*
 Used in: [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md).
 
 ### app-router
@@ -91,7 +91,7 @@ One saved working version of a project, carrying a one-line note about what chan
 Used in: [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md).
 
 ### context-window
-The amount of text an AI agent can see at once — your conversation history plus any file content it has loaded. Finite; as the conversation grows, older parts scroll out. *Example: Claude Code shows current usage via `/context`; Gemini CLI shows it via `/stats`.*
+The amount of text an AI agent can see at once — your conversation history plus any file content it has loaded. Finite; as the conversation grows, older parts scroll out. Nothing announces it: what you feel from the outside is the agent answering about the wrong thing. *Example: replies deep into a long session stop matching what you asked for, so you start a fresh conversation and say what you want again in full. Retired from the course 2026-08-16: lessons no longer teach typed commands for reading a usage meter; the taught move is starting a fresh conversation.*
 Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ### cookie
@@ -125,7 +125,7 @@ Domain Name System — the system that translates a human-readable URL into the 
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
 ### drift
-When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate what you want. Deeper smell-test surface: Module 3 Lesson 2. Recovery move: `/clear` and a tighter restart, taught in Module 3 Lesson 4.*
+When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent edits a file you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate what you want. Deeper smell-test surface: Module 3 Lesson 2. Recovery move: start a fresh conversation and a tighter restart, taught in Module 3 Lesson 4.*
 Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ## E
@@ -163,7 +163,7 @@ Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triag
 ## G
 
 ### gemini-cli
-Google's open-source command-line AI coding agent; this course's genuinely-free path (Path 2 in `BUDGET.md`). *Example: install via `npm install -g @google/gemini-cli` on any platform with Node 20 or newer.*
+Google's open-source command-line AI coding agent. It was this course's free-path agent until 2026-08-15; the free track is now Codex in the ChatGPT desktop app. *Example: the course's old Path 2 ran on it, and no current lesson does.*
 Used in: Module 2 (lesson retired 2026-08-12).
 
 ### git
@@ -253,7 +253,7 @@ A third AI-coding-agent desktop app, free and capable but the least user-friendl
 Used in: [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### over-engineering
-When an AI agent does MORE than asked — suggesting frameworks, libraries, image lookups, or fancy designs for a small request. The fix is a scope-tightening steer that names the limit ("no frameworks", "inline CSS only", "nothing else"). *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" prompted both agents to suggest CSS frameworks and image lookups — over-engineering compared to the simple inline-CSS solution the learner wanted.*
+When an AI agent does MORE than asked — building or adding whole structures, extra styling, or content nobody mentioned for a small request, because nothing in the ask said where to stop. The fix is a scope-tightening steer that restates what you actually wanted and then puts an edge on it: "Nothing else." *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" got the list rebuilt in place as upright wooden spines standing on a plank, each spine carrying a label the agent invented — far more than the wooden background and the extra line spacing the learner actually wanted.*
 Used in: [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ## P
@@ -291,7 +291,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 ## R
 
 ### rate-limit
-A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: the Gemini CLI free tier enforces daily caps on requests-per-minute and requests-per-day.*
+A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: on a free tier, once the day's allowance is used up the app asks you to wait before you can keep going.*
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
 
 ### react
@@ -353,32 +353,32 @@ A string the browser sends with each request to prove "I'm the same person who j
 Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do-what.md).
 
 ### slash-command
-A short keyword starting with `/` typed inside an AI agent's session to control the session itself rather than asking the agent to do work. *Example: `/clear` resets conversation history; `/context` shows context-window usage on Claude Code; `/stats` is Gemini CLI's equivalent.*
+A short keyword starting with `/` typed inside an AI agent's session to control the session itself rather than asking the agent to do work. *Example: `/clear` resets conversation history; `/context` shows context-window usage on Claude Code. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
 Used in: Module 2 (lesson retired 2026-08-12).
 
 ### slash-clear
-The `/clear` slash command — reset the conversation history; start a fresh session inside the same agent invocation. Same keystroke on Claude Code AND Gemini CLI. *Example: type `/clear` between unrelated tasks.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/clear` slash command — reset the conversation history; start a fresh session inside the same agent invocation. *Example: type `/clear` between unrelated tasks. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### slash-compact
-The `/compact` slash command (Claude Code) — compress conversation history without losing the gist. Gemini CLI's equivalent is `/compress`. *Example: use mid-session when context-window usage is high but you do not want to `/clear` and lose recent context.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/compact` slash command (Claude Code) — compress conversation history without losing the gist. *Example: use mid-session when context-window usage is high but you do not want to `/clear` and lose recent context. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### slash-compress
-The `/compress` slash command (Gemini CLI) — Gemini CLI's equivalent of Claude Code's `/compact`. Same purpose, different keystroke. *Example: Path 2 learners use this whenever Claude Code learners would use `/compact`.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/compress` slash command — the Gemini CLI counterpart of Claude Code's `/compact`. Same purpose, different keystroke. *Example: it did the compacting job on the free path this course taught until 2026-08-15. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### slash-context
-The `/context` slash command (Claude Code) — shows how much of the context window is currently in use. Gemini CLI's equivalent is `/stats`. *Example: type `/context` to see usage as a percentage or a tokens-used / tokens-remaining pair.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/context` slash command (Claude Code) — shows how much of the context window is currently in use. *Example: type `/context` to see usage as a percentage or a tokens-used / tokens-remaining pair. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### slash-cost
-The `/cost` slash command (Claude Code) — shows running session spend in dollars. Most relevant to Path 3 (Anthropic API token-careful) learners. *Example: type `/cost` to see spend so far this session.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/cost` slash command (Claude Code) — shows running session spend in dollars. *Example: type `/cost` to see spend so far this session. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### slash-stats
-The `/stats` slash command (Gemini CLI) — Gemini CLI's equivalent of Claude Code's `/context`. Shows conversation statistics including token usage. *Example: Path 2 learners use this whenever Claude Code learners would use `/context`.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+The `/stats` slash command — the Gemini CLI counterpart of Claude Code's `/context`. Shows conversation statistics including token usage. *Example: it showed context usage on the free path this course taught until 2026-08-15. Retired from the course 2026-08-16: lessons no longer teach typed commands; the taught move is starting a fresh conversation.*
+Used in: retired from Module 3 (2026-08-16).
 
 ### smell-test
 One thing to look for and one question to ask when it is not there — a check you run on the agent's work, either in what it changed or in the running app, without understanding the code underneath. *Example: looking for `WITH CHECK` next to every rule that lets someone edit something, and asking the agent about it when it is missing.*
@@ -394,7 +394,7 @@ Used in: Module 3.5 (retired 2026-08-12).
 
 ### steer
 The "steer" step of the agent loop — course-correcting when the agent's output does not match your intent. *Example: "The date appeared above the tagline; please put it below" is a steer.*
-Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
+Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ### supabase
 A SYMPTOM-only name for the service that gives the thread project an account system, a database, and file storage in one. You see it in the agent's changes and in `package.json`; you do not learn its internals. *Example: the Chunk 0 deploy connects the empty app to a Supabase database before any feature exists.*
@@ -407,7 +407,7 @@ The text panel inside a code editor (or as a standalone app) where you type comm
 Not used in any current lesson — the desktop-app remake retired this course's terminal-facing walkthrough. This entry retires fully in Phase 4.
 
 ### token-discipline
-The set of habits that keep AI-coding sessions cheap on pay-per-token plans: clearing context between unrelated tasks, watching the running token count, summarizing long histories, and choosing the smaller model when the bigger one isn't needed. *Example: Module 3 teaches `/clear`, `/compact`, `/context` (window usage), and `/cost` (spend) on Claude Code, and `/clear`, `/compress`, `/stats` as the Gemini CLI equivalents.*
+The set of habits that keep AI-coding sessions cheap on pay-per-token plans: clearing context between unrelated tasks, watching the running token count, summarizing long histories, and choosing the smaller model when the bigger one isn't needed. *Example: Module 3 teaches one of these habits and only one — start a fresh conversation between unrelated tasks, and again whenever a long one has gone muddy. Typed commands for the rest were retired from the course 2026-08-16.*
 Used in: [Module 3 — Planning vs execution](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ### typescript

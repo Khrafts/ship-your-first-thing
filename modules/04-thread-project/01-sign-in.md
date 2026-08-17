@@ -108,7 +108,7 @@ A different kind of sideways: the agent keeps circling, reworking the same thing
 
 ### Saving it
 
-Once you have signed in, refreshed, and signed out with your own hands, save the working version: "Save this as a working version." The agent does this in **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version is where `/clear` sends you back to if the next chunk goes sideways.
+Once you have signed in, refreshed, and signed out with your own hands, save the working version: "Save this as a working version." The agent does this in **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version is what a fresh start goes back to if the next chunk goes sideways.
 
 ## Exercise
 
@@ -116,7 +116,7 @@ Put a working sign-in on the app you deployed in the last chunk. The deliverable
 
 1. In your Supabase dashboard, go to Authentication → Sign In / Providers and turn **Confirm email** off. This is the one part nobody can do for you.
 
-2. Open a fresh conversation with your agent — `/clear` first if you are picking up in a session that is already open — and ask for the plan:
+2. Open a fresh conversation with your agent — if you are picking up in a conversation that is already open, start a fresh one first — and ask for the plan:
 
    > "I want people to sign in with an email address and a password. If someone has never signed up before, signing in should create their account and let them straight in — no confirmation email. They stay signed in if they refresh the page, and there's a sign-out button. Plan this out before you write any code, and tell me what I need to set up."
 

@@ -48,14 +48,15 @@ Review-enforced (not lint-checked, but expected):
 
 **Forgot one?** When you open a PR that changes learner-facing content (a lesson, `VERSIONS.md`, or a capture) without adding an entry, the `whatchanged-reminder` check posts a note and a ready-to-fill stub in the PR's summary. It is advisory — it never blocks the PR, and it is the complement to check #10: #10 validates an entry you *wrote*, the reminder catches one you *forgot*. If your change genuinely needs no entry, dismiss it by adding the `no-changelog` label or putting `[skip changelog]` in the PR description.
 
-### Re-running a Module 3 transcript capture
+### Refreshing a Module 3 conversation panel
 
-This is the canonical re-capture protocol (the historical per-lesson copies live inside the collapsed `WHAT-CHANGED.md` entries). When Claude Code or Gemini CLI changes its output shape, open a PR that:
+Every Module 3 ask is shown twice — once in Claude Code desktop, once in the ChatGPT app (Codex) — as a prose conversation panel, not a terminal transcript. This is the canonical refresh protocol (the historical per-lesson capture copies live inside the collapsed `WHAT-CHANGED.md` entries). When either app's behavior visibly drifts from what a lesson's panels show, open a PR that:
 
-1. Re-runs the lesson's capture phases against `modules/03-the-loop/scratch/index.html` in its per-lesson state.
-2. Replaces the fenced transcript blocks verbatim — real captures, never idealized. Do not clean up hallucinations or over-engineering; they are the pedagogy.
-3. Bumps the lesson's front-matter `updated:` date AND its `> **Last captured:**` date.
-4. Adds ONE thin WHAT-CHANGED entry covering every lesson re-captured in that PR.
+1. Re-runs that lesson's asks in the named app, against the `loop-practice` page in its per-lesson state.
+2. Updates the panel wording to match what the app actually did — real behavior, never idealized. Do not clean up hallucinations or over-engineering; they are the pedagogy the lesson teaches the learner to recognize.
+3. Updates the grounding comments that sit above the panels (the dated `Grounded in a real agent run` line above a Claude Code panel, the verification slot above a Codex one) so the note matches the wording it vouches for.
+4. Bumps the lesson's front-matter `updated:` date AND its `> **Last verified:**` date.
+5. Adds ONE thin WHAT-CHANGED entry covering every lesson refreshed in that pass.
 
 ## What we do NOT want yet
 
