@@ -5,7 +5,8 @@ lesson_number: 02
 est_minutes: 50
 prereqs: ["01-hello-world-deploy"]
 updated: "2026-08-17"
-deviations: []
+deviations:
+  - long-core-read
 ---
 
 # Sign in with an email and a password
@@ -23,6 +24,8 @@ The app you put online in the last chunk is a room with no door: everyone who op
 > **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
+
+> **Deviation note:** This read runs longer than most in the course. One part of this chunk happens on your Supabase dashboard rather than in the conversation with your agent, and the run that was really built is walked through step by step; the rest is the usual length.
 
 You are not writing this app. Your agent is. The split from the last chunk does not move: your agent owns the code and the plumbing; you own saying what you want, watching the running app, running the chunk's checks, and saying when to save. What changes is that this chunk adds something people can actually use, so for the first time there are things to click — and clicking is most of your job today.
 

@@ -5,7 +5,8 @@ lesson_number: 01
 est_minutes: 55
 prereqs: ["00-the-plan"]
 updated: "2026-08-17"
-deviations: []
+deviations:
+  - long-core-read
 ---
 
 # Hello-world deploy: an empty app, truly online
@@ -23,6 +24,8 @@ Your plan has eight features on it, and this lesson builds the first one. It is 
 > **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
 ## Core read
+
+> **Deviation note:** This read runs longer than most in the course. Two accounts get created in your browser rather than in the conversation with your agent, and the run that was really built is walked through step by step; the rest is the usual length.
 
 You are not writing this app. Your agent is. Across this module the split never moves: your agent owns the code and the plumbing; you own saying what you want, watching the running app, running the chunk's checks, and saying when to save. This chunk is the cleanest example of that split, because there is no feature to get lost in — only the pipe.
 
