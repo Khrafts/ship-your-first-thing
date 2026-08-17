@@ -562,13 +562,15 @@ scan_jargon_density() {
     return
   fi
 
-  # Default mode: run against M0–M3 lessons in WARN mode (M4–M7 dirs join when those modules ship).
+  # Default mode: run against M0–M4 lessons in WARN mode (M5–M7 dirs join when those modules ship).
   # The audience-vocabulary contract is strict; current prose has known gaps against it
   # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0, plus a larger backlog
-  # across M2/M3 whose prose predates this check covering those modules). Those gaps are
-  # triaged via the editorial backlog, not by hard-failing the lint. The check is still informative —
-  # it surfaces every gap as a WARN line so contributors can see what would be flagged once the
-  # contract and prose converge. The fixture self-test exercises the strict (violation) path.
+  # across M2/M3 whose prose predates this check covering those modules, and a fresh M4 pile
+  # from the Phase 3 contract flip that adds modules/04-thread-project to this scan for the
+  # first time). Those gaps are triaged via the editorial backlog, not by hard-failing the
+  # lint. The check is still informative — it surfaces every gap as a WARN line so
+  # contributors can see what would be flagged once the contract and prose converge. The
+  # fixture self-test exercises the strict (violation) path.
   local lesson
   if [ -d modules/00-welcome ]; then
     for lesson in modules/00-welcome/*.md; do
@@ -592,6 +594,12 @@ scan_jargon_density() {
     for lesson in modules/03-the-loop/*.md; do
       [ -f "$lesson" ] || continue
       check_lesson_against_module_contract "$lesson" "M3" "Module 3 (M3)" "warn"
+    done
+  fi
+  if [ -d modules/04-thread-project ]; then
+    for lesson in modules/04-thread-project/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M4" "Module 4 (M4)" "warn"
     done
   fi
 }

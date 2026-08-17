@@ -39,8 +39,8 @@ The "ask" step of the agent loop — writing a specific request the agent can ac
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
 ### async-cookies
-A SYMPTOM-only label: the `await` your agent puts in front of `cookies()`. You scan the agent's changes for `await cookies()` rather than a bare `cookies()`, and ask the agent when the `await` is missing — you do not learn what it is waiting for. *Example: seeing `const store = cookies()` with no `await` and asking the agent why.*
-Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
+Retired from the course 2026-08-17: the course no longer teaches checking the agent's work by scanning its changes; the taught checks live in Module 4's lessons.
+Not used in any current lesson.
 
 ### authentication
 Confirming you are who you claim to be. Sometimes shortened to "authn." *Example: a password check, or clicking a magic link sent to your email.*
@@ -104,12 +104,16 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 A program that stores structured data in tables and answers queries about it. *Example: PostgreSQL, Supabase's database engine.*
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
+### definition-of-done
+The checks the agent must run and show you, in plain words, before it is allowed to say a build chunk is done. Also called a **test gate**. *Example: before reporting Chunk 1 finished, the agent shows that a brand-new email can sign in, that refreshing keeps them signed in, and that a signed-out visitor cannot reach account pages.*
+Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+
 ### dependency
 A package your project NEEDS to run, listed under `dependencies` in `package.json`. *Example: the Module 3.5 sample-app's `package.json` lists `next`, `react`, and `react-dom` as dependencies.*
 Used in: Module 2 (lesson retired 2026-08-12).
 
 ### deployment
-The act of moving an app from a developer's laptop (localhost) to a public server so anyone on the internet can reach it. *Example: pushing to GitHub and letting Vercel build and host the result.*
+The act of moving an app from a developer's own machine to a public server so anyone on the internet can reach it. *Example: the agent saves the working version to GitHub, and Vercel builds and hosts the result at a public web address.*
 Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
 
 ### diff-summary
@@ -129,6 +133,10 @@ When an AI agent loses the thread of what it agreed to do — usually after a lo
 Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ## E
+
+### environment-variable
+A named setting the deployed app reads at runtime that isn't checked into git — typically a secret or a per-environment value. *Example: `NEXT_PUBLIC_SUPABASE_URL` is listed as an environment variable on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is whether a setting is missing on the live site.*
+Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
 
 ### error-message-anatomy
 The structure of a typical error message: a description on top followed by a stack trace listing file paths and line numbers. *Example: a `TypeError: Cannot read properties of undefined` with stack frames pointing at `app/components/InteractiveButton.tsx:5:18`.*
@@ -235,7 +243,7 @@ Used in: Module 2 (lesson retired 2026-08-12).
 ## N
 
 ### next-js
-A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the thread project in Phase 3 uses. *Example: the read-only scaffold at `sample-app/` in your workspace is a tiny Next.js project shown for reading practice.*
+A popular framework for building web apps. Bundles React, routing, and server-rendering into one tool. The framework the Module 4 thread project is built with.
 Used in: Module 3.5 (retired 2026-08-12).
 
 ### node
@@ -270,9 +278,17 @@ Used in: Module 2 (lesson retired 2026-08-12).
 An AI-agent session where you ask the agent to describe what it WOULD do without writing code yet. *Example: a prompt starting with "Plan:" and ending with "Don't make changes yet" opens a planning conversation.*
 Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
 
+### pre-flight-question
+Before any irreversible step — anything pasted into a dashboard, anything run against data that already exists — a named question you ask the agent about consequences, and wait for the answer before continuing. *Example: before pasting a database change into the Supabase SQL editor, asking "will this affect any existing posts?" and waiting for the agent's answer.*
+Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+
 ### prompt
 The specific text you send to an AI agent describing what you want. *Example: "Add today's date below the tagline" is a prompt; a series of prompts plus the agent's responses is a session.*
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
+
+### publishable-key
+The one of Supabase's two dashboard keys that is safe to be seen — you copy it off the dashboard when the agent asks for it. The other key (the secret key) never leaves the dashboard. *Example: pasting the value labelled "publishable key" from the Supabase API settings screen into the agent's chat when it asks for it during the Chunk 0 deploy.*
+Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
 
 ### pull
 Fetch commits from a remote git host (like GitHub) and merge them into your local copy. *Example: `git pull` at the start of a coding session brings down any commits you (or someone else) pushed from another machine.*
@@ -301,6 +317,10 @@ Used in: Module 3.5 (retired 2026-08-12).
 ### react-server-components
 An architectural model in React for components that render entirely on the server before being sent to the browser; the default in Next.js App Router. The deeper "why" behind the server/client split that `'use client'` toggles; covered in depth in Module 7's where-to-go-next track. *Example: a `StaticHero.tsx` file with no `'use client'` directive is a React Server Component.*
 Used in: Module 3.5 (retired 2026-08-12).
+
+### refusal-check
+In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
+Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
 
 ### repository
 A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; when you ask your agent to put a copy on your computer, the whole history comes with it.*
@@ -337,8 +357,8 @@ A program that runs continuously, waiting for requests, and sends back responses
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md), [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md).
 
 ### server-action
-A SYMPTOM-only name for the agent's pattern for code that runs on the server when someone clicks something. You scan for it in the agent's changes; you do not learn how it works. *Example: a sign-in button press that fails with "Invalid Server Actions request." — you report the words on the screen and the agent finds the cause.*
-Used in: [Module 4 — Sign in with an email and a password](./modules/04-thread-project/01-sign-in.md).
+Retired from the course 2026-08-17: the course no longer teaches checking the agent's work by scanning its changes; the taught checks live in Module 4's lessons.
+Not used in any current lesson.
 
 ### server-component
 A Next.js file that renders on the server before sending HTML to the browser; the default in App Router. No `'use client'` directive needed. *Example: `app/components/StaticHero.tsx` in Module 3.5's sample-app is pure JSX with no interactivity, so it stays a Server Component.*
@@ -381,7 +401,7 @@ The `/stats` slash command — the Gemini CLI counterpart of Claude Code's `/con
 Used in: retired from Module 3 (2026-08-16).
 
 ### smell-test
-One thing to look for and one question to ask when it is not there — a check you run on the agent's work, either in what it changed or in the running app, without understanding the code underneath. *Example: looking for `WITH CHECK` next to every rule that lets someone edit something, and asking the agent about it when it is missing.*
+A check you can run without reading a line of code — you try something and watch what the app does. It is a try, not a decode: never something you read or judge in the agent's changes, always something you do in the running app. It takes exactly two shapes: a **refusal check** (try the thing that should not be allowed and confirm it is refused) or a **pre-flight question** (before an irreversible step, ask the agent a named question about consequences and wait for the answer). *Example: signing in as a second account, trying to edit a comment the first account wrote, and telling the agent exactly what you did if the edit goes through.*
 Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
 
 ### sql
@@ -397,7 +417,7 @@ The "steer" step of the agent loop — course-correcting when the agent's output
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ### supabase
-A SYMPTOM-only name for the service that gives the thread project an account system, a database, and file storage in one. You see it in the agent's changes and in `package.json`; you do not learn its internals. *Example: the Chunk 0 deploy connects the empty app to a Supabase database before any feature exists.*
+The service that gives the thread project an account system, a database, and file storage in one. You say it in prompts to the agent and operate its dashboard — the SQL Editor, the key-copy screens — without learning its internals. *Example: the Chunk 0 deploy connects the empty app to a Supabase database before any feature exists.*
 Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/00-hello-world-deploy.md).
 
 ## T
@@ -436,5 +456,5 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 ## W
 
 ### with-check
-A SYMPTOM-only label: the safety latch you scan for next to every rule that lets someone edit something. You check whether the words are there and ask the agent when they are not — you do not learn how the rule is written or what it does. *Example: scanning a set of database rules for `WITH CHECK` and asking "what stops a person from editing a post to look like somebody else wrote it?" when it is absent.*
-Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
+Retired from the course 2026-08-17: the course no longer teaches checking the agent's work by scanning its changes; the taught checks live in Module 4's lessons.
+Not used in any current lesson.

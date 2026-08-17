@@ -145,9 +145,9 @@ Reserved for M5+ *(first surfaced by M2's anchor lesson; taught in depth by the 
 
 - risk-blindness *(anchor-lesson exception applies — see note below)*
 
-Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 2 re-homing them alongside the M4 reshoot)*:
+Reserved (Module 3.5 is retired 2026-08-12; these terms have no active tier in any module. Next.js, React, `'use client'`, hydration, and file tree were re-homed to Module 4's Forbidden-in-M4 "Reserved for Module 7's curiosity track" block by the Phase 3 contract flip — see the Module 4 section):
 
-- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
+- stack trace, error message anatomy, server component, client component, directive (React directive), file panel, diff summary, TypeScript, JSX, App Router, React Server Components
 
 Reserved for M4+:
 
@@ -188,9 +188,9 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 
 - terminal, command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, slash command
 
-Reserved for M3.5+ *(destination retired 2026-08-12: Module 3.5 is now a tombstoned section with zero active tiers — these terms currently have no active tier anywhere in this contract, pending Phase 3 re-homing them alongside the M4 reshoot)*:
+Reserved (Module 3.5 is retired 2026-08-12; these terms have no active tier in any module. Next.js, React, `'use client'`, hydration, and file tree were re-homed to Module 4's Forbidden-in-M4 "Reserved for Module 7's curiosity track" block by the Phase 3 contract flip — see the Module 4 section below):
 
-- file tree, stack trace, error message anatomy, `'use client'`, server component, client component, hydration, directive (React directive), file panel, diff summary, Next.js, React, TypeScript, JSX, App Router, React Server Components
+- stack trace, error message anatomy, server component, client component, directive (React directive), file panel, diff summary, TypeScript, JSX, App Router, React Server Components
 
 Reserved for M4+:
 
@@ -214,23 +214,24 @@ Audience floor: M3 complete. (Module 3.5 is retired 2026-08-12 — see its tombs
 
 ### Safe (no callout needed)
 
-- All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The still-published M4 chunks were written when M3.5 existed and may assume some of its terms, e.g. Next.js, React, `'use client'`, hydration, file tree — those terms currently have no active tier anywhere in this contract; flagged as a gap for the Phase 2 M4 reshoot.)
+- All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The still-published M4 chunks were written when M3.5 existed and assume some of its terms, e.g. Next.js, React, `'use client'`, hydration, file tree — those are re-homed to the "Reserved for Module 7's curiosity track" bullet under Forbidden below by the Phase 3 contract flip; the chunks that assume them are recut against that tier in the tasks that follow this one.)
+- **plan** / **plan file** — the file the agent reads back to the learner in plain words at the start of every conversation. The learner says "the plan" and hears its contents; they never open or edit the file directly, so the term carries no mechanism to define and needs no callout.
 
 ### Requires-callout (D-04 pattern on first use; every entry passes say-it-or-see-it)
 
 Build-phase nouns the learner says to the agent or sees on a screen they operate:
 
 - **Supabase** — introduce as "the service that gives the thread project an account system, a database, and file storage in one." The learner says it in prompts and operates its dashboard (SQL Editor, key-copy screens); doesn't learn Supabase internals.
-- **env var** / **environment variable** — introduce as "a named setting the deployed app reads at runtime that isn't checked into git (typically a secret)." The learner sees env vars listed on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is "is a setting missing on the live site?"
-- **`NEXT_PUBLIC_SUPABASE_URL`** — the one env-var name the learner really reads and compares themselves, on the Vercel settings screen, when checking that the live site points at the same Supabase project as their machine. The learner never learns the `NEXT_PUBLIC_` build rule; the agent decides which values need which prefix.
-- **secret key** / **publishable key** — "Supabase's settings screen shows two keys; one is safe to be seen, one must never be." The learner copies the publishable one off the dashboard when the agent asks for it, and never pastes the secret one anywhere public; the agent uses each correctly in config.
-- **magic link** — re-introduce as "the email-with-a-link sign-in flow you used in M0; this time you're building it." Already met in M0; M4 surfaces it as a feature, not a concept.
+- **env var** / **environment variable** — introduce as "a named setting the deployed app reads at runtime that isn't checked into git (typically a secret)." The learner sees env vars listed on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is "is a setting missing on the live site?" GLOSSARY anchor `environment-variable` must exist before first callout.
+- **`NEXT_PUBLIC_SUPABASE_URL`** — the one env-var name the learner really reads and compares themselves, on the Vercel settings screen, when checking that the live site points at the same Supabase project as their machine. The learner never learns the `NEXT_PUBLIC_` build rule; the agent decides which values need which prefix. The real key system is publishable/secret keys (`sb_publishable_…`, plus `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on the settings screen); `NEXT_PUBLIC_SUPABASE_ANON_KEY` is retired and must not appear as a current claim in a lesson.
+- **secret key** / **publishable key** — "Supabase's settings screen shows two keys; one is safe to be seen, one must never be." The learner copies the publishable one off the dashboard when the agent asks for it, and never pastes the secret one anywhere public; the agent uses each correctly in config. GLOSSARY anchor `publishable-key` must exist before first callout (see the model callout in rule 1 below).
 
 The named skills the learner runs on every chunk:
 
 - **smell-test** — the behavioural nose the learner develops for "something is off." First met as an unnamed observation skill in Module 3's evaluate step (M3.5's reading-floor lessons used to house a more advanced version of this skill; that module is retired — see its tombstoned section above); **M4 is where it is named and first called out**. In M4+ a smell-test is always one of two moves (CLAUDE.md hard rule 13): a **refusal check** or a **pre-flight question**. It is never "read what the agent wrote." Safe from M5 onward.
 - **refusal check** — in the running app, try the thing that should NOT be allowed and confirm it is refused; if it goes through, tell the agent what you did and what should have stopped it.
 - **pre-flight question** — before an irreversible step (a dashboard paste, anything run against data that already exists), ask the agent a named question about consequences and wait for the answer.
+- **definition of done** / **test gate** — the ritual's name for the phase's check inventory. Introduce as "the checks the agent must run and show you before it may say done." Requires-callout on first use, in the plan lesson or Chunk 0; GLOSSARY anchor `definition-of-done` must exist before first callout.
 
 ### Forbidden in M4 specifically (deferred to Module 7 or out of scope for V1)
 
@@ -249,6 +250,14 @@ Reserved for Module 7's curiosity track:
 - Drizzle / Prisma / Kysely ORM internals (the thread project uses the Supabase JS client directly, not an ORM)
 - Migration framework internals (Supabase migrations as a workflow vs. concept)
 
+Re-homed here 2026-08-17 from the M3.5 orphan list (Module 3.5 is retired; these predate the desktop-app remake and fail say-it-or-see-it for M4):
+
+- Next.js
+- React
+- `'use client'`
+- hydration
+- file tree
+
 **Cut by the 2026-07-27 re-cut (fail say-it-or-see-it; may not appear in an M4 lesson body at all — not as a concept, not as a scan-target):** `RLS`, `WITH CHECK`, `USING`, `auth.uid()`, `OR author_id = auth.uid()`, `check (follower_id <> following_id)`, `follows_follower_idx` / `follows_following_idx`, `Server Action`, `revalidatePath`, `useOptimistic`, `async` / `await`, `cookies()` / `headers()` / `params`, `DROP TABLE`, the `NEXT_PUBLIC_` prefix as a standalone topic. These lived only inside code the agent wrote; each one's risk now surfaces as a refusal check or a pre-flight question instead (see the phase CONTEXT gates). Pasted dashboard code may *contain* such strings — that is cargo, not vocabulary; the lesson never asks the learner to read it.
 
 ### M4 say-it-or-see-it introduction rule (per Hard Rule 13; replaced the SYMPTOM-only rule 2026-07-27)
@@ -259,7 +268,7 @@ Every M4 Requires-callout term must name something the learner *says* to the age
 2. **Surrounding prose does not exceed the callout's depth.** If the callout is operational, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
 3. **The check inventory is the bridge between intent and recovery.** Each chunk maps to refusal checks and pre-flight questions in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson states the intent; the check inventory tests the fence; the agent owns everything in between.
 
-**M4 rewrite implications:** M4 lessons exist (chunks 0 onward) and were re-cut to this contract on 2026-07-27 — any earlier copy of a lesson that tells the learner to look for a term in the agent's changes predates the re-cut and does not set precedent. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
+**M4 rewrite implications:** M4 lessons exist (Chunks 0 onward), but as of this restructure (2026-08-17) they still predate it — they use the retired SYMPTOM-only scan form this contract replaces. The re-cut against this contract lands as the chunks that follow this restructure are authored; until each lesson is re-cut, it does not set precedent, and an earlier copy that tells the learner to look for a term in the agent's changes is exactly the pattern being replaced, not an example to follow. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
 
 ---
 
