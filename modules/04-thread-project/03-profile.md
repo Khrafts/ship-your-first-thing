@@ -1,10 +1,10 @@
 ---
 title: "The profile page: name, bio, and photo"
 module: "04-thread-project"
-lesson_number: 02
+lesson_number: 03
 est_minutes: 50
-prereqs: ["01-sign-in"]
-updated: "2026-07-25"
+prereqs: ["02-sign-in"]
+updated: "2026-08-17"
 deviations:
   - long-core-read
   - next-links-to-module-readme
@@ -57,11 +57,11 @@ The agent will write a file of instructions for your database — the profile it
 
 So: open your Supabase dashboard, find the SQL Editor in the strip of icons down the left edge, start a new query, paste in the whole file the agent tells you to open, and press Run.
 
-![The Supabase dashboard, on the SQL Editor page, with a new query open and the agent's file pasted into it. A numbered marker ① points to the SQL Editor icon in the narrow strip of icons down the left edge — the page you open. Marker ② points to the large area in the middle where the whole file goes, shown here holding the last lines of it. Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/02-profile/run-migration.png)
+![The Supabase dashboard, on the SQL Editor page, with a new query open and the agent's file pasted into it. A numbered marker ① points to the SQL Editor icon in the narrow strip of icons down the left edge — the page you open. Marker ② points to the large area in the middle where the whole file goes, shown here holding the last lines of it. Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/03-profile/run-migration.png)
 
 Pressing Run raises a dialog first.
 
-![The same SQL Editor page with a dialog in the middle of the screen. A numbered marker ① points to the dialog, headed "Potential issue detected", which warns that the query includes destructive operations and may permanently change or remove data. Marker ② points to the "Run query" button at the bottom right of the dialog, beside a Cancel button — "Run query" is the one you press to continue.](../../screenshots/m4/02-profile/run-query-confirm.png)
+![The same SQL Editor page with a dialog in the middle of the screen. A numbered marker ① points to the dialog, headed "Potential issue detected", which warns that the query includes destructive operations and may permanently change or remove data. Marker ② points to the "Run query" button at the bottom right of the dialog, beside a Cancel button — "Run query" is the one you press to continue.](../../screenshots/m4/03-profile/run-query-confirm.png)
 
 The wording is alarming and the file is not. What trips that warning is the handful of lines that clear out an earlier copy of the file's *own* rules before writing them again — which is exactly what makes the file safe to run twice, and the file's opening note says so. Read that note before you dismiss the dialog. If it does not account for the warning, do not press Run query yet: ask the agent what in this file is destructive, and wait for an answer you are happy with. When it does, press Run query. The Results pane comes back with "Success. No rows returned" — nothing came back because nothing was asked for; things were made.
 
@@ -187,7 +187,7 @@ You gave everyone who signs in a profile: a name, a bio, and a photo they upload
 
 ## Navigation
 
-> **Deviation note:** Lesson 3 (`03-posts.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 3 once that lesson ships.
+> **Deviation note:** Lesson 4 (`04-posts.md`) is not published yet, so "Next" points at the Module 4 overview instead of the next lesson. It will point to Lesson 4 once that lesson ships.
 
-[← Previous: Sign in with an email and a password](./01-sign-in.md)
-[Next: Module 4 overview — Lesson 3 (Posts) is next →](./README.md)
+[← Previous: Sign in with an email and a password](./02-sign-in.md)
+[Next: Module 4 overview — Lesson 4 (Posts) is next →](./README.md)

@@ -1,10 +1,10 @@
 ---
 title: "Sign in with an email and a password"
 module: "04-thread-project"
-lesson_number: 01
+lesson_number: 02
 est_minutes: 50
-prereqs: ["00-hello-world-deploy"]
-updated: "2026-07-25"
+prereqs: ["01-hello-world-deploy"]
+updated: "2026-08-17"
 deviations: []
 ---
 
@@ -45,7 +45,7 @@ flowchart LR
 
 Your agent cannot click around your dashboard for you, so one thing is yours, and it is a switch, not code. Open your **Supabase** (a one-line definition: a SYMPTOM-only name for the service that gives your app an account system, a database, and file storage in one — you see it in the agent's changes, you do not learn its internals, [→ GLOSSARY](../../GLOSSARY.md#supabase)) dashboard, go to Authentication → Sign In / Providers, and turn **Confirm email** off.
 
-![The Supabase dashboard, on the Authentication section's "Sign In / Providers" page. A numbered marker ① points to "Sign In / Providers" in the left sidebar — the page you open. Marker ② points to the "Confirm email" switch on the right, shown turned off, which is what you are changing. Marker ③ points to the "Save changes" button below it, which you press afterwards.](../../screenshots/m4/01-sign-in/confirm-email-off.png)
+![The Supabase dashboard, on the Authentication section's "Sign In / Providers" page. A numbered marker ① points to "Sign In / Providers" in the left sidebar — the page you open. Marker ② points to the "Confirm email" switch on the right, shown turned off, which is what you are changing. Marker ③ points to the "Save changes" button below it, which you press afterwards.](../../screenshots/m4/02-sign-in/confirm-email-off.png)
 
 That is so signing up does not wait on an email. With it off, the first time someone signs in with an address nobody has used before, their account is created and they are let straight in. Nothing else on that screen needs your attention today.
 
@@ -158,5 +158,5 @@ You put a front door on the app you shipped in the last chunk: people create an 
 
 ## Navigation
 
-[← Previous: Hello-world deploy: an empty app, truly online](./00-hello-world-deploy.md)
-[Next: The profile page: name, bio, and photo →](./02-profile.md)
+[← Previous: Hello-world deploy: an empty app, truly online](./01-hello-world-deploy.md)
+[Next: The profile page: name, bio, and photo →](./03-profile.md)

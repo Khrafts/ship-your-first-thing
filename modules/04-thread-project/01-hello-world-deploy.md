@@ -1,10 +1,10 @@
 ---
 title: "Hello-world deploy: an empty app, truly online"
 module: "04-thread-project"
-lesson_number: 00
+lesson_number: 01
 est_minutes: 55
-prereqs: ["03-the-loop (all four lessons)"]
-updated: "2026-07-25"
+prereqs: ["00-the-plan"]
+updated: "2026-08-17"
 deviations: []
 ---
 
@@ -133,5 +133,5 @@ You shipped an empty app to a real public web address, connected to your databas
 
 ## Navigation
 
-[← Previous: Steering and recovery](../03-the-loop/04-steering-and-recovery.md)
-[Next: Sign in with an email and a password →](./01-sign-in.md)
+[← Previous: The plan: what you're building, and who with](./00-the-plan.md)
+[Next: Sign in with an email and a password →](./02-sign-in.md)

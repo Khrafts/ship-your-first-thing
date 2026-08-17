@@ -106,7 +106,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### definition-of-done
 The checks the agent must run and show you, in plain words, before it is allowed to say a build chunk is done. Also called a **test gate**. *Example: before reporting Chunk 1 finished, the agent shows that a brand-new email can sign in, that refreshing keeps them signed in, and that a signed-out visitor cannot reach account pages.*
-Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+Used in: [Module 4 — The plan](./modules/04-thread-project/00-the-plan.md) and the [Module 4 overview](./modules/04-thread-project/README.md).
 
 ### dependency
 A package your project NEEDS to run, listed under `dependencies` in `package.json`. *Example: the Module 3.5 sample-app's `package.json` lists `next`, `react`, and `react-dom` as dependencies.*
@@ -280,7 +280,7 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 
 ### pre-flight-question
 Before any irreversible step — anything pasted into a dashboard, anything run against data that already exists — a named question you ask the agent about consequences, and wait for the answer before continuing. *Example: before pasting a database change into the Supabase SQL editor, asking "will this affect any existing posts?" and waiting for the agent's answer.*
-Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
 
 ### prompt
 The specific text you send to an AI agent describing what you want. *Example: "Add today's date below the tagline" is a prompt; a series of prompts plus the agent's responses is a session.*
@@ -320,7 +320,7 @@ Used in: Module 3.5 (retired 2026-08-12).
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
-Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+Used in: [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md).
 
 ### repository
 A project's full history of commits, tracked by git. Often shortened to "repo." *Example: this course is one git repository; when you ask your agent to put a copy on your computer, the whole history comes with it.*
@@ -418,7 +418,7 @@ Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducin
 
 ### supabase
 The service that gives the thread project an account system, a database, and file storage in one. You say it in prompts to the agent and operate its dashboard — the SQL Editor, the key-copy screens — without learning its internals. *Example: the Chunk 0 deploy connects the empty app to a Supabase database before any feature exists.*
-Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/00-hello-world-deploy.md).
+Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md).
 
 ## T
 
