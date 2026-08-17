@@ -39,7 +39,7 @@ That last question deserves its paragraph. In Module 3 you watched a loose ask t
 
 ### The thread project
 
-The app this module builds is the **thread project**: a small social app of the kind Threads and Instagram are underneath. Someone signs in, keeps a profile with a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post to comment on it, and likes it. Eight features, one per lesson from here on.
+The app this module builds is the **thread project**: a small social app of the kind Threads and Instagram are underneath. The first thing on the list is getting it online and empty — a live web address anyone can open, before there is anything on it to look at. After that: someone signs in, keeps a profile with a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post to comment on it, and likes it. Eight features, one per lesson from here on.
 
 The subject on top of that is yours. A book club, a running group, a street full of neighbours swapping tool loans — the words in your plan should be the words you would use telling a friend about it, and your agent will use them right back at you for the rest of the module. What does not move is the eight features and the order they come in. Every lesson from here is written against that order, each one landing on the working thing the last one left behind, so the plan you write today carries the same eight in the same sequence.
 
@@ -109,10 +109,8 @@ Your deliverable is a plan file you agreed with, a read-back that matched, and a
 
 Before you accept "done", your agent shows you the results of these checks, in plain words:
 
-1. The plan file exists in your project, and reads back — in plain words — what the app is, who it is for, and the eight features in build order.
-2. What it says is what you said: your subject, your audience, your wording.
-3. Your "deliberately not building" list is in there.
-4. Your agent confirms it will re-read the plan at the start of every conversation from here on.
+1. The plan file exists in your project, and reads back — in plain words, and in the words you used — what the app is, who it is for, and the eight features in build order, with your "deliberately not building" list alongside them.
+2. Your agent confirms it will re-read the plan at the start of every conversation from here on.
 
 If your agent says "done" without showing these, say: "Run the checks we agreed on and show me the results first."
 
@@ -125,7 +123,7 @@ You've got this if you can:
 
 ## Going deeper
 
-Nothing to read — something to notice. The next lesson puts an empty app on a public web address before a single feature exists, and its first ask starts from the plan you just wrote. Watch how much shorter that ask is than it would have been an hour ago.
+Nothing to read — something to notice. The next lesson builds the first feature on your list — the app online and empty, at a public web address, with nothing on it yet — and its first ask starts from the plan you just wrote. Watch how much shorter that ask is than it would have been an hour ago.
 
 ## Loop check
 
@@ -133,7 +131,7 @@ Nothing to read — something to notice. The next lesson puts an empty app on a 
 
 ## What you just did
 
-You wrote down what you are building and who it is for, in your own words, by answering your agent's questions instead of filling in a form. You steered the part that came back wrong while it was still one sentence, checked the plan by having it read back to you, and saved it. That page is what the next eight lessons all start from: in Lesson 1 you put an empty version of it on a public web address, before a single feature exists.
+You wrote down what you are building and who it is for, in your own words, by answering your agent's questions instead of filling in a form. You steered the part that came back wrong while it was still one sentence, checked the plan by having it read back to you, and saved it. That page is what the next eight lessons all start from: in Lesson 1 you build the first feature on it — the app online and empty, at a public web address, with nothing on it yet.
 
 ## Navigation
 

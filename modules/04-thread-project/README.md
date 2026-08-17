@@ -15,7 +15,7 @@ Done looks like this: you open the live link in two different browsers, sign in 
 Each lesson builds on the last:
 
 - **Lesson 0 — The plan:** co-write, with your agent, what your app is, who it's for, and the eight features in the order they get built → sets up Lesson 1 by giving every later ask a written thing to point back at.
-- **Lesson 1 — Hello-world deploy:** get an empty app onto a public address — your first **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) — before a single feature exists, so every later chunk ships onto something already known to work → sets up Lesson 2 with a live app nobody can sign in to yet.
+- **Lesson 1 — Hello-world deploy:** get an empty app onto a public address — your first **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) — the first feature on the plan's list, and the only one with nothing on it to look at, so every later chunk ships onto something already known to work → sets up Lesson 2 with a live app nobody can sign in to yet.
 - **Lesson 2 — Sign in with an email and a password:** people sign up and sign in with an email address and a password, stay signed in when the page reloads, and can sign out → sets up Lesson 3 with a signed-in person who has nothing to their name yet.
 - **Lesson 3 — The profile page:** a name, a bio, and a photo — anyone can look at a profile, only its owner can change it → sets up Lesson 4 by leaving an empty space on the profile where posts will go.
 - **Lesson 4 — Writing posts:** write, edit, and delete your own posts, with an optional image, and let signed-out visitors read them → sets up Lesson 5 with every profile still an island, because nobody can follow anybody.
@@ -61,7 +61,7 @@ A **smell-test** (a one-line definition: a check you run without reading a line 
 Lessons 0 through 3 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
 
 0. [`00-the-plan.md`](./00-the-plan.md) — what you're building, who it's for, and the order it gets built in
-1. [`01-hello-world-deploy.md`](./01-hello-world-deploy.md) — an empty app at a public address before any feature exists
+1. [`01-hello-world-deploy.md`](./01-hello-world-deploy.md) — an empty app at a public address, before there is anything on it to see
 2. [`02-sign-in.md`](./02-sign-in.md) — sign in with an email and a password, and stay signed in across a reload
 3. [`03-profile.md`](./03-profile.md) — name, bio, photo: anyone looks, only the owner changes
 4. [`04-posts.md`](./04-posts.md) — write, edit, delete your own posts; signed-out visitors can read them
