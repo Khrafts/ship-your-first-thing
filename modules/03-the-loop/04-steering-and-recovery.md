@@ -146,9 +146,11 @@ Two things make this cheap rather than frightening. The first is that your work 
 
 > Take us back to the last working version.
 
-That sentence is always available and it costs you nothing to use. Your agent does the work of getting back there. Going back is not an admission that you failed — it is the reason you saved.
+That sentence is always available, and the only thing it costs you is whatever happened since your last save. Your agent does the work of getting back there, and going back is not an admission that you failed — it is the reason you save. It is also why the gap between saves is worth keeping short: the sentence is cheap in proportion to how recently you used the other one.
 
-Then re-ask, with the edge you now know the first ask was missing:
+Notice how long that gap is right now. Lesson 3 ended unsaved on purpose, so your last working version is the page as it stood at the end of Lesson 2 — before any of the books existed. Rolling back today would take the list with it. That is the argument for saving the moment something works rather than at the end of an afternoon.
+
+You have not had to reach for it in this lesson, because the scope-steer landed. When you do reach for it, what follows is the same either way — re-ask, with the edge you now know the first ask was missing:
 
 > The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else.
 
@@ -191,8 +193,9 @@ Run the full steer sequence on your own page, over-shoot included. Plan twenty-f
 3. **Steer #2 — the loose ask.** Type: *"Make the list look like a real bookshelf"* and read the reply before you touch anything. Is the answer bigger than the ask? Is it adding things you never mentioned? **If what it proposes is much larger than what you asked for, decline it when the app asks you to approve** rather than approving and undoing it afterwards — then steer back with step 4. Approving it first is also fine; you will just be steering a shelf instead of a proposal.
 4. **Steer back to scope.** Type: *"Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else."*
 5. **Go and look again.** Refresh. Wooden background, more space between the lines, placeholder text still saying what you want it to say — and check whether your agent flagged anything it changed on the side.
-6. **Practice the fresh start.** Start a fresh conversation in your app and type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what a conversation with no history does with an ask that has an edge on it from the first word.
-7. **Save it.** Say: *"Save this as a working version — the practice page is done."*
+6. **Reset the list so there is something to compare.** You are about to reach the same result by a second route, so put the page back to where that route starts. Type: *"Put the list back to plain placeholder text, nothing else."* Refresh and confirm the wood is gone.
+7. **Practice the fresh start.** Start a fresh conversation in your app and type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what one ask with an edge on it from the first word does in a conversation that has never heard of a bookshelf.
+8. **Save it.** Say: *"Save this as a working version — the practice page is done."*
 
 Then write four sentences, anywhere you like:
 
