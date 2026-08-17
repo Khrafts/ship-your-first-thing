@@ -77,9 +77,9 @@ When this chunk was really built, the run finished with the agent saying the app
 
 ### The one thing you copy
 
-A **smell-test** (a one-line definition: a check you run without reading a line of code — you try something, or you ask something, and watch what comes back, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) is a try, not a decode. Nothing in this chunk asks you to look at anything your agent wrote. There are two, and both live on surfaces that are yours: your Supabase dashboard, and your phone.
+A **smell-test** (a one-line definition: a check you can run without reading a line of code — you try something and watch what the app does, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) is a try, not a decode. It never asks you to look at anything your agent wrote, and it comes in exactly two shapes across this whole module. This chunk carries one of them, and it lives on a screen that is yours: your Supabase dashboard.
 
-The first is a **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)), arriving here for the first time in the build.
+It is a **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)), arriving here for the first time in the build.
 
 > **BEFORE YOU COPY** anything off your Supabase dashboard: look at the label next to it. That screen shows more than one key. The only one you ever copy is the one labelled **publishable key** (a one-line definition: the one of Supabase's two keys that is safe to be seen — you copy it off the dashboard when your agent asks for it, and the other one, labelled secret, never leaves the dashboard, [→ GLOSSARY](../../GLOSSARY.md#publishable-key)), the one whose value begins `sb_publishable_`.
 >
@@ -97,7 +97,7 @@ And if anything at all asks you to put the key labelled secret somewhere a visit
 
 ### The check: the live link works away from your machine
 
-The second one runs on your phone, and it is the check this whole chunk exists for.
+The other thing you do with your own hands is not a smell-test at all. It is the plainest move there is — open the running app and look at it — with one condition on where you stand while you do it. It is also the check this whole chunk exists for.
 
 > **TRY THIS:** open the live link on your phone, on your own data connection — not your home wifi, and not the computer that built it.
 >
@@ -107,7 +107,13 @@ The second one runs on your phone, and it is the check this whole chunk exists f
 
 The phone is not a formality. This is the most common way a hello-world deploy looks finished and is not: the app runs beautifully on the machine that built it, where all the connection settings already live, and the live site was never told about any of them — so it works for you and fails for everyone else on earth. Your own computer cannot catch that, because your own computer is the one place the problem does not exist. Your phone can. A stranger's phone is what the app is actually for, and yours stands in for it.
 
-What the page must not do is show an error screen, or spin forever without finishing. Plain and empty is a pass; that is the whole ambition of this chunk. (Your Vercel dashboard does have a settings screen listing what the live site knows about, and you can open it whenever you like. The phone is the check. That list stays scenery until the last lesson of this module, where you read one line of it yourself.)
+What the page must not do is show an error screen, or spin forever without finishing. Plain and empty is a pass; that is the whole ambition of this chunk.
+
+<!-- VERCEL VERIFICATION SLOT: verify the settings-screen claim against a real Vercel deploy — user-assisted evidence pass -->
+
+Your Vercel dashboard does have a settings screen listing what the live site knows about, and you can open it whenever you like. The phone is still the check, though. That list stays scenery until the last lesson of this module, where you read one line of it yourself.
+
+<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c0); presented in the desktop app's framing. -->
 
 When this chunk was really built, the live page came up at a real public address with no sign-in wall in the way: a near-black page with one line of centred text reading "thread project — online", and a second line under it saying the pipeline was live. Two lines of text on a dark background — and that is a success, because those two lines travelled from a database, through a hosting service, onto a screen that had nothing to do with the machine that made them.
 
@@ -117,7 +123,11 @@ The steer to keep ready is the mismatch one: *"On my computer the page loads, bu
 
 A different kind of sideways: your agent starts circling — reworking the same thing, losing the thread of what you asked for. Do not keep arguing with it. Start a fresh conversation and begin this chunk again from your last saved version, the same recovery you learned in Module 3.
 
-And sometimes the blocker is not in the app at all. When this chunk was really built, the first attempt to go live failed — nothing wrong with the app, nothing wrong with the agent's work: the hosting account had been suspended over a billing problem. Days later, once the account was sorted out and moved to the free plan, the fix was one message:
+And sometimes the blocker is not in the app at all.
+
+<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c0); presented in the desktop app's framing. -->
+
+When this chunk was really built, the first attempt to go live failed — nothing wrong with the app, nothing wrong with the agent's work: the hosting account had been suspended over a billing problem. Days later, once the account was sorted out and moved to the free plan, the fix was one message:
 
 > Earlier we set this app up and connected it to my database, but getting it live failed because my account was suspended. I've fixed it now — it's on the free plan. Pick up where we left off: get the app live at a public web address I can open from my phone, and give me the link.
 
