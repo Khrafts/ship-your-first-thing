@@ -288,7 +288,7 @@ Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducin
 
 ### publishable-key
 The one of Supabase's two dashboard keys that is safe to be seen — you copy it off the dashboard when the agent asks for it. The other key (the secret key) never leaves the dashboard. *Example: pasting the value labelled "publishable key" from the Supabase API settings screen into the agent's chat when it asks for it during the Chunk 0 deploy.*
-Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md).
 
 ### pull
 Fetch commits from a remote git host (like GitHub) and merge them into your local copy. *Example: `git pull` at the start of a coding session brings down any commits you (or someone else) pushed from another machine.*
