@@ -84,7 +84,7 @@ Two smaller ones, a line each. Two fast taps on Follow used to be a good way to 
 
 Same as the last two chunks. Your agent writes a file of instructions for your database — the follows themselves, and the rules about who may create one and remove one — and it cannot run that file for you. Only you can, from your **Supabase** (a one-line definition: the service that gives your app an account system, a database, and file storage in one — you say its name to your agent and operate its dashboard, and never learn its internals, [→ GLOSSARY](../../GLOSSARY.md#supabase)) dashboard.
 
-The screen is the one you used last chunk, and the move is the one you already made twice: in the SQL Editor you open a *new* query alongside the two sitting there from the profile and posts chunks, rather than typing over either of them. The file is full of code, and none of it is for you to read — it is cargo, moved whole from one screen to another. What is yours is the same **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)) you asked the last two times, one of the two shapes a **smell-test** (a one-line definition: a check you can run without reading a line of code — you try something and watch what the app does, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) takes.
+One difference from last time, and it is only arithmetic: there are now two query tabs sitting in the SQL Editor from the profile and posts chunks, so you are opening a third one beside them rather than typing over either. The file is full of code, and none of it is for you to read — it is cargo, moved whole from one screen to another. What is yours is the same **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)) you asked the last two times, one of the two shapes a **smell-test** (a one-line definition: a check you can run without reading a line of code — you try something and watch what the app does, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) takes.
 
 > **BEFORE YOU PASTE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
 >
@@ -92,13 +92,17 @@ The screen is the one you used last chunk, and the move is the one you already m
 
 Wait for the answer. There is more in your database each time you ask this: last chunk it held a profile, and now it holds your posts and their pictures as well. The question costs you thirty seconds and it is the only thing standing between you and a step nobody can undo.
 
-So: open your Supabase dashboard, find the SQL Editor, start a new query alongside the old ones, paste in the whole file your agent tells you to open, and press Run. Pressing Run raises the same "Potential issue detected" dialog you met in the last two chunks, for the same reason, and the button on it is labelled **Run query**. If its warning is accounted for by the answer you just got, press it. If it names something the answer did not predict — or you skipped the question — press nothing: hand the dialog's own words back to your agent — *"The dialog says the query may permanently change or remove data. You told me nothing existing would change. Which is it?"* — and wait for an answer you are happy with. When it runs, the Results pane comes back with "Success. No rows returned" — nothing came back because nothing was asked for; things were made.
+So: open your Supabase dashboard, find the SQL Editor, start a third query alongside the two already there, paste in the whole file your agent tells you to open, and press Run.
+
+![The Supabase dashboard, on the SQL Editor page, with a third query tab open beside the two left over from the profile and posts chunks. A numbered marker ① points to the small "+" button at the end of the row of query tabs — pressing it opens a new, empty query beside the old ones. Marker ② points to the large query area filling the middle of the screen, holding the whole file your agent wrote, scrolled to its last lines, with the Results pane below it still reading "Click Run to execute your query". Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/05-follow/run-follows-migration.png)
+
+Pressing Run raises the same "Potential issue detected" dialog you met in the last two chunks, for the same reason, and the button on it is labelled **Run query**. If its warning is accounted for by the answer you just got, press it. If it names something the answer did not predict — or you skipped the question — press nothing: hand the dialog's own words back to your agent — *"The dialog says the query may permanently change or remove data. You told me nothing existing would change. Which is it?"* — and wait for an answer you are happy with. When it runs, the Results pane comes back with "Success. No rows returned" — nothing came back because nothing was asked for; things were made.
 
 Your own dashboard may not look identical — Supabase moves things around — but the SQL Editor is named the same, and the file you paste is the one your agent points you at.
 
 ### The checks you run
 
-Three things get checked when it comes back, and one of them cannot be run from your own account at all. None of the three asks you to look at anything your agent wrote.
+Four things get checked when it comes back, and two of them cannot be run from your own account at all. None of the four asks you to look at anything your agent wrote.
 
 **Following goes one way.** The plain one — you are allowed to do it, and you are watching what it does on the other person's screen.
 
@@ -124,28 +128,37 @@ Three things get checked when it comes back, and one of them cannot be run from 
 >
 > **IF IT WORKS:** *"While signed out I could ⟨what you did⟩. A signed-out visitor should only be able to read. Fix that."*
 
+**Nothing of someone else's is yours to change.** The third refusal check, and the one this chunk gives a new shape. A follow belongs to the person who made it, the same way a post belongs to whoever wrote it — so the person on the receiving end of one does not get to undo it.
+
+> **TRY THIS:** signed in as your second account, open its own page, find the first account sitting in its Followers list, and try to remove it from there — or to change the first account's Following list from your side.
+>
+> **EXPECT:** no control that does either — you can unfollow people *you* followed, and nothing else — and after a refresh both lists are unchanged.
+>
+> **IF IT WORKS:** *"As ⟨account B⟩ I could ⟨what you did⟩ to ⟨account A⟩'s follow. Only its owner should be able to. Fix that."*
+
 ### What the checks are actually for
 
 Your agent will tell you what it built in a calm, even voice — the same one it uses for fixing a spelling mistake — whether or not the thing it describes is standing. It has no sense of which of its sentences is load-bearing and which is decoration, so a rule it forgot and a rule it wrote sound exactly alike coming back to you. That is not dishonesty. It is the absence of a stake.
 
-And the two failures in this chunk are the quiet kind. A missing self-follow rule looks like nothing at all until somebody pushes on it. A follow that runs both ways looks like a correct app from the only screen you normally look at. Neither one announces itself, which is why every check above is a push on a fence rather than a look at anything, and why one of them sends you to a different browser to be somebody else.
+And the two failures in this chunk are the quiet kind. A missing self-follow rule looks like nothing at all until somebody pushes on it. A follow that runs both ways looks like a correct app from the only screen you normally look at. Neither one announces itself, which is why every check above is a push on a fence rather than a look at anything, and why two of them send you to a different browser to be somebody else.
 
 > **Heads up — you'll meet this again.** An agent that proposes something with real consequences in the same flat tone it uses for the trivial thing is one of the three "watch the AI fail" walkthroughs Module 5 puts you in front of. You already have both moves that catch it, and you just ran them both: the question before the step you cannot take back, and the push on the fence afterwards. Module 5 is where you watch what it looks like when nobody runs either.
 
 ### Checking it yourself
 
-Open the running app and go through it in order. The last two need the second account, and that is not optional here — the mirror bug is invisible from your own screen.
+Open the running app and go through it in order. Three of these need the second account, and that is not optional here — the mirror bug is invisible from your own screen.
 
 - Open a second person's profile while signed in as yourself. The button reads Follow.
 - Tap it. It flips to Unfollow right away. Tap again — back to Follow. Tap once more and leave it following.
 - Open your own page. The person you just followed is under Following. Your Followers list is empty.
 - Sign in as that second person, in another browser. You are under their Followers, and their Following list is empty — the plain check above.
+- Still signed in as that second person, look for a way to take you back out of their Followers, or to change your Following list from their side — the third refusal check. There should be none.
 - On either of your own profiles, there is no Follow button anywhere — the first refusal check.
 - Sign out entirely and open a profile again. Both lists still read, and there is nothing on the page to follow anybody with — the second refusal check.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c4); presented in the desktop app's framing. -->
 
-When this chunk was really built, all of them held. Alice opened Bob's profile, tapped Follow, watched it read Unfollow, tapped back to Follow, and tapped once more to leave it following. Her own page listed Bob under Following — shown as "Unnamed", because Bob had never set up a profile and that is the app's fallback for a person with no name yet — and her Followers list read "Nobody is following you yet." Signed in as Bob in a second browser, Alice was under his Followers and his Following list read "You aren't following anyone yet." One direction, confirmed from both ends. Neither account saw a Follow button on its own page.
+When this chunk was really built, the flip, both lists, and the self-follow fence all held. Alice opened Bob's profile, tapped Follow, watched it read Unfollow, tapped back to Follow, and tapped once more to leave it following. Her own page listed Bob under Following — shown as "Unnamed", because Bob had never set up a profile and that is the app's fallback for a person with no name yet — and her Followers list read "Nobody is following you yet." Signed in as Bob in a second browser, Alice was under his Followers and his Following list read "You aren't following anyone yet." One direction, confirmed from both ends. Neither account saw a Follow button on its own page.
 
 One wrinkle worth naming because it may happen to you. The app had been left alone between chunks and had stopped running, so the first page opened after the dashboard step showed an error instead. Saying "the app page shows an error" was the entire fix — the agent worked out that its own way of checking whether the app was running had fooled it, and started the app again. You did not diagnose that. You reported a screen.
 
@@ -167,7 +180,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson. Your agent runs those checks and reports what happened in plain words; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your four checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson. Your agent runs those checks and reports what happened in plain words; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
@@ -189,7 +202,7 @@ Build the fifth feature on your plan: connect the islands. The deliverable is a 
 4. **When your agent tells you it has written a file for your database, run the pre-flight first:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* Wait for the answer — your profile and your posts are in there now. Then do the step that is yours: Supabase dashboard → SQL Editor → **+** for a new query alongside the old ones → paste the whole file → Run → **Run query** on the dialog, if its warning is accounted for by the answer you just got. Wait for "Success. No rows returned" before you go on.
 5. **Go through the running app in order:** open a second person's profile, tap Follow, watch it flip to Unfollow and back, and leave it following. Then open your own page and find that person under Following with your Followers list empty.
 6. **Run the plain check from the other side.** Sign in as the second person in another browser. You should be under their Followers, and their Following list should be empty.
-7. **Run both refusal checks.** On either of your own profiles, look for a Follow button and press it if it is there. Then open a private window that has never signed in, open a profile with followers on it, read both lists, and find nothing on the page that would follow, unfollow, or change either one.
+7. **Run all three refusal checks.** Still signed in as that second person, try to take the first account back out of their Followers, or to change its Following list from their side — there should be no control that does either, and a refresh should leave both lists alone. Then, on either of your own profiles, look for a Follow button and press it if it is there. Then open a private window that has never signed in, open a profile with followers on it, read both lists, and find nothing on the page that would follow, unfollow, or change either one.
 8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4. If the app will not load at all, say so; it may only need starting again.
 9. **Save it.** *"Save this as a working version."*
 
