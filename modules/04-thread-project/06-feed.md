@@ -156,14 +156,14 @@ Open the running app and go through it in order. Most of this needs both account
 - Write a post from that account's profile, then go Home. Your own post is in the feed — with zero people followed. That is the first check.
 - Sign in as the other account in another browser — the one that did the following last chunk. Its feed carries the followed account's post *and* its own older one, one under the other in a single stream — not the followed account's posts in one block and yours in another.
 - Write a new post from that account, then go Home. It is at the top, and the order reads newest to oldest as you go down.
-- Look at the Edit links. They appear on your own posts and on nobody else's, in both accounts' feeds — the second refusal check, from the inside.
+- Look at the Edit links. They appear on your own posts and on nobody else's, in this account's feed — the second refusal check, from the inside.
 - Sign out entirely and open the home page — the first refusal check. You should land on sign-in rather than on somebody's feed.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c5); presented in the desktop app's framing. -->
 
 When this chunk was really built, all of them held. Bob — following nobody, nothing written — got "Your feed is empty. Follow someone, or write your first post on your profile." He posted, tapped Home, and there it was, with an Edit link on it. Alice, who had followed Bob last chunk, saw Bob's newer post at the top with no Edit link on it, and her own post from two days earlier under it, carrying its "edited" marker and its Edit link. She posted again: her new one went to the top, Bob's under that, her older one third.
 
-One detail from those screens is worth a line of its own. Bob's byline read "Unnamed" — he had never set up a profile, and rather than leaving a blank where a name goes, the app puts a word there. That is the app's fallback doing its job, not a fault, and you saw the same word in his Following list last chunk.
+One detail from those screens is worth a line of its own. Bob's byline read "Unnamed" — he had never set up a profile, and rather than leaving a blank where a name goes, the app puts a word there. That is the app's fallback doing its job, not a fault, and you saw the same word standing in for him in Alice's Following list last chunk.
 
 ### What was left out on purpose
 

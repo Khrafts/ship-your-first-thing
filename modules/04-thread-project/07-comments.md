@@ -130,7 +130,7 @@ Your own dashboard may not look identical — Supabase moves things around — b
 
 ### The dialog that says it may remove data
 
-Pressing Run raises a dialog you have now met four times, and this is the chunk that owes you the explanation instead of the instruction.
+Pressing Run raises a dialog you have now met four times, and this is the chunk that owes you the fuller explanation instead of the instruction.
 
 ![The same SQL Editor page with a dialog opened in the middle of it, headed "Potential issue detected". A numbered marker ① points to the dialog's text, which says the query includes destructive operations, that it may permanently change or remove data, and that it should be run only if you intend these changes and understand the risks. Marker ② points to the "Run query" button at the bottom right of the dialog, next to Cancel — that is the one that goes through.](../../screenshots/m4/07-comments/destructive-warning.png)
 
@@ -207,7 +207,7 @@ Open the running app and go through it in order. The last two need your second a
 - Open a post's page while signed out — the date on any post card is the link. The post is there and every comment under it is there.
 - Still signed out, look for somewhere to type. There isn't one. In its place is a way to sign in — the first refusal check.
 - Sign in and leave a comment. It appears in the thread, under the older ones — the thread reads oldest first.
-- Click Edit on your own comment. The address in your browser's bar gains `?edit=` and that one comment turns into a small form in place, with the rest of the page unchanged. Save it: the words change, the date line gains `· edited`, and the comment is still yours, still under your name, still carrying its Edit and Delete.
+- Click Edit on your own comment. The address in your browser's bar gains something like `?edit=` and that one comment turns into a small form in place, with the rest of the page unchanged. Save it: the words change, the date line gains `· edited`, and the comment is still yours, still under your name, still carrying its Edit and Delete.
 - Sign in as your second person in another browser and open the same post. Their own comment carries Edit and Delete. Yours carries neither — and trying anyway is the second refusal check.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->

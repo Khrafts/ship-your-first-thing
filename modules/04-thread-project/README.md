@@ -2,7 +2,7 @@
 
 Module 4 is where you stop practicing and start shipping. Across nine lessons you build one real product — the thread project, a small social app where people sign in, keep a profile, write posts, follow each other, read a feed, comment, and like. The first lesson writes down what you're building; the eight after it build it, one feature chunk at a time, each ending in a working thing you can see and a saved version you can go back to. Your coding agent writes every line of code. You decide what gets built, check the running app against what you asked for, and say when to save.
 
-Every lesson runs the full loop you named in Module 3 — intent → ask → evaluate → steer — once per chunk. `evaluate` carries the most weight in this module, because every chunk ends with you opening the running app and comparing it against what you actually asked for.
+Every build lesson runs the full loop you named in Module 3 — intent → ask → evaluate → steer — once per chunk. `evaluate` carries the most weight in this module, because every chunk ends with you opening the running app and comparing it against what you actually asked for.
 
 Every ask in this module is written once and works in either taught app. You run only the app you picked in Module 0.
 

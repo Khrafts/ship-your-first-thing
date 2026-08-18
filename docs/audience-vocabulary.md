@@ -214,7 +214,7 @@ Audience floor: M3 complete. (Module 3.5 is retired 2026-08-12 — see its tombs
 
 ### Safe (no callout needed)
 
-- All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The still-published M4 chunks were written when M3.5 existed and assume some of its terms, e.g. Next.js, React, `'use client'`, hydration, file tree — those are re-homed to the "Reserved for Module 7's curiosity track" bullet under Forbidden below by the Phase 3 contract flip; the chunks that assume them are recut against that tier in the tasks that follow this one.)
+- All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The terms M4 used to inherit from it — Next.js, React, `'use client'`, hydration, file tree — are re-homed to the "Reserved for Module 7's curiosity track" bullet under Forbidden below, and no current M4 lesson uses any of them.)
 - **plan** / **plan file** — the file the agent reads back to the learner in plain words at the start of every conversation. The learner says "the plan" and hears its contents; they never open or edit the file directly, so the term carries no mechanism to define and needs no callout.
 
 ### Requires-callout (D-04 pattern on first use; every entry passes say-it-or-see-it)
@@ -268,7 +268,7 @@ Every M4 Requires-callout term must name something the learner *says* to the age
 2. **Surrounding prose does not exceed the callout's depth.** If the callout is operational, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
 3. **The check inventory is the bridge between intent and recovery.** Each chunk maps to refusal checks and pre-flight questions in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson states the intent; the check inventory tests the fence; the agent owns everything in between.
 
-**M4 rewrite implications:** M4 lessons exist (Chunks 0 onward), but as of this restructure (2026-08-17) they still predate it — they use the retired SYMPTOM-only scan form this contract replaces. The re-cut against this contract lands as the chunks that follow this restructure are authored; until each lesson is re-cut, it does not set precedent, and an earlier copy that tells the learner to look for a term in the agent's changes is exactly the pattern being replaced, not an example to follow. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
+**M4 rewrite implications:** the re-cut against this contract landed with the M4 restructure on 2026-08-18. All nine shipped M4 lessons — the plan lesson plus the eight build lessons — are written against it, and none uses the retired SYMPTOM-only scan form it replaced, so they are the precedent for anything written next. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
 
 ---
 

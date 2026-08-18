@@ -136,7 +136,7 @@ Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-c
 
 ### environment-variable
 A named setting the deployed app reads at runtime that isn't checked into git — typically a secret or a per-environment value. *Example: `NEXT_PUBLIC_SUPABASE_URL` is listed as an environment variable on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is whether a setting is missing on the live site.*
-Not used in any current lesson — added ahead of the Module 4 lesson recut (Phase 3) so the anchor exists before the first callout that links here.
+Used in: [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
 
 ### error-message-anatomy
 The structure of a typical error message: a description on top followed by a stack trace listing file paths and line numbers. *Example: a `TypeError: Cannot read properties of undefined` with stack frames pointing at `app/components/InteractiveButton.tsx:5:18`.*

@@ -129,7 +129,7 @@ Your app has had a public address since the very first chunk, and **Vercel** (a 
 
 That is what the third check is for. The **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) can carry every line of your code and still not carry every setting your code needs, and the symptom is precise and confusing: everything works at home and one thing goes dead on the live link. Likes are a good tripwire for it because clicking like is the first thing anybody does.
 
-That is also where the promise made in the first chunk of this module comes due. Vercel has a settings screen that lists what the live site knows about, one **environment variable** (a one-line definition: a named setting the live app reads while it runs, kept out of the project's saved history because it is usually a secret — this screen is where you see them listed, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)) per row. You have never had to open it. You open it now, once, and you read exactly one of those rows: **`NEXT_PUBLIC_SUPABASE_URL`** (a one-line definition: the row holding the address of your Supabase project — the one value on that screen that is not a secret, which is why it is the one you read and compare yourself, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)). It is the same value your agent set up on your machine back in chunk one, and putting the two side by side is exactly what the third check asks of you.
+That is also where the promise made in the first chunk of this module comes due. Vercel has a settings screen that lists what the live site knows about, one **environment variable** (a one-line definition: a named setting the live app reads while it runs, kept out of the project's saved history because it is usually a secret — this screen is where you see them listed, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)) per row. You have never had to open it. You open it now, once, and you read exactly one of those rows: **`NEXT_PUBLIC_SUPABASE_URL`** (a one-line definition: the row holding the address of your Supabase project — the one value on that screen that is not a secret, which is why it is the one you read and compare yourself, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)). What that row should hold is the address of your own Supabase project — the same address your Supabase dashboard shows for it, on the project you have been opening since the first chunk. So both halves of the comparison are things you can see for yourself: the row on the Vercel screen, and your project's address on the Supabase one.
 
 You are not auditing that screen and you are not judging the rest of it. One row, one comparison, one sentence back to your agent about whether it matches. Everything else on that page stays what it has always been: your agent's.
 
@@ -163,7 +163,7 @@ Three, and the third one needs the live address rather than your machine. None o
 
 ### The walkthrough this whole module has been for
 
-Then the closing ritual, and it is the definition of done for the module rather than the chunk.
+Then the closing ritual, and it is the module's finish line rather than this chunk's.
 
 Open the live link in two different browsers, sign in as two different people, and watch the two accounts behave correctly toward each other — one follows the other and shows up in the right list, each feed carries the right posts, each person can edit only their own words, and a signed-out visitor can read the public parts without being able to change anything.
 
@@ -230,7 +230,7 @@ Build the eighth and last feature on your plan, then prove the whole app live. T
 6. **Run the two like checks at home.** Click like and watch the number move at once; refresh and confirm it agrees. Then, in a private window that has never signed in, open a post with likes on it — the count reads, and there is nothing to press.
 7. **Save it.** *"Save this as a working version."* Do this before the live walkthrough, so the live copy is built from the finished chunk.
 8. **Run the module's walkthrough on the live link.** Two different browsers, two different people: follow, post, comment, like, and a signed-out third window that can read everything and press nothing.
-9. **If the live link behaves differently from home,** open the Vercel settings screen, read the `NEXT_PUBLIC_SUPABASE_URL` row, and tell your agent whether it matches — then use the mismatch steer and let it fix the live site.
+9. **If the live link behaves differently from home,** open the Vercel settings screen, read the `NEXT_PUBLIC_SUPABASE_URL` row, and tell your agent whether it holds your own Supabase project's address — the one your Supabase dashboard shows for that project — then use the mismatch steer and let it fix the live site.
 10. **Save the version that has been through two browsers.**
 
 ## Definition of done

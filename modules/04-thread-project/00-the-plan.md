@@ -127,7 +127,7 @@ Nothing to read — something to notice. The next lesson builds the first featur
 
 ## Loop check
 
-> **Loop check — intent.** Every step of the loop is measured against intent, and this lesson is the one place in the module where intent is the entire job: no ask, no evaluate, no steer on a running app — just getting what you actually want out of your head and onto a page both of you can point at. The loop step this lesson reinforces is **intent**.
+> **Loop check — intent.** Every step of the loop is measured against intent, and this lesson is the one place in the module where intent is the entire job: no ask against a running app, no evaluate, no steer on something built — just getting what you actually want out of your head and onto a page both of you can point at. The loop step this lesson reinforces is **intent**.
 
 ## What you just did
 

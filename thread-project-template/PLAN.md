@@ -30,4 +30,4 @@
 
 - We agree on the plan above before we build anything.
 - Every feature has a definition of done — a short list of checks — that the agent runs and shows you before saying it's finished.
-- The agent saves a working version after every feature that works.
+- After every feature that works, you say "save this as a working version" — and the agent does the saving.

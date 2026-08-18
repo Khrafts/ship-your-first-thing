@@ -102,9 +102,9 @@ Your own dashboard may not look identical — Supabase moves things around — b
 
 ### The checks you run
 
-Three things get checked when it comes back, and they are not all the same kind of thing. One is plain watching: you do the allowed thing and see whether the app kept its word. The other two are **refusal check** (a one-line definition: in the running app you try the thing that should NOT be allowed and confirm it is refused — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check))s, and they are the two halves of what you asked for: everybody may read, nobody else may touch. None of the three asks you to look at anything your agent wrote.
+Three things get checked when it comes back, and they are not all the same kind of thing. One is plain watching: you do the allowed thing and see whether the app kept its word. The other two are both the same move — a **refusal check** (a one-line definition: in the running app you try the thing that should NOT be allowed and confirm it is refused — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) — and they are the two halves of what you asked for: everybody may read, nobody else may touch. None of the three asks you to look at anything your agent wrote.
 
-**Your own edit never changes whose post it is.** This is the plain one — you are allowed to do it, and you are watching what it costs.
+**Your own edit never changes whose post it is.** This is the plain one — you are allowed to do it, and you are watching what it changes.
 
 > **TRY THIS:** edit one of your own posts and save it.
 >
