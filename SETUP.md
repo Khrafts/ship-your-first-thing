@@ -6,34 +6,23 @@ This course is verified against the tool versions in [`VERSIONS.md`](./VERSIONS.
 
 ## Required accounts
 
-- **GitHub** — needed to host the repo, run Codespaces, and (later) deploy.
+- **GitHub** — create your account in your browser at [github.com](https://github.com/). From there, your agent performs all the git and GitHub setup and operations for you, once you reach the lessons that need them.
 
-Your cost-path triage in Module 0 will tell you which AI-coding agent account to create — Anthropic for Claude Code Pro or the API, Google for Gemini CLI. See [`BUDGET.md`](./BUDGET.md) for the path comparison; do not create AI accounts until you've finished the cost-path lesson.
+Your cost-path triage in Module 0 will tell you which agent-app account to create: a **Claude** account for Claude Code desktop (Path 1), or a **ChatGPT** account for Codex (Path 2). See [`BUDGET.md`](./BUDGET.md) for the path comparison; do not create either account until you've finished the cost-path lesson.
 
-## Codespaces flow
+The accounts your build itself needs — Supabase and Vercel — aren't created here. Module 4's lessons walk you through creating each one exactly when the build first needs it.
 
-You read the course in your browser (here on GitHub or on the course site); you do your work in your own copy of a small starter workspace. Set the workspace up once:
+## The setup itself
 
-1. Make your own copy of the starter: go to [github.com/Khrafts/syft-starter](https://github.com/Khrafts/syft-starter), click `Use this template` → `Create a new repository`, and name it anything you like (`my-first-thing` works). This copy is yours, so your work can save into it.
-2. On your new repository, click `Code` → `Codespaces` → `Create codespace on main`. Wait ~60–90 seconds for it to boot. Use the default 2-core machine type to stay inside GitHub's free monthly core-hours.
-3. The Codespace opens VS Code in the browser, showing your workspace — `index.html`, a `sample-app` folder, and the file hygiene Module 2 covers. Keep the course open in a separate tab and start with `modules/00-welcome/README.md`.
-4. Use `Ctrl+S` (or `Cmd+S` on Mac) to save edits as you work; commit and push your work back to your repository with the Source Control panel or the terminal.
-5. When you're done for the day, close the browser tab. The Codespace will auto-stop after 30 minutes idle.
+Start with [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md), the cost-path triage: it walks you through the honest cost of each track — a flat $20/month with no built-in pauses, or $0 to start with an occasional wait on a heavy day — so you pick knowing what it costs you.
 
-## Local install (appendix)
+Once you've picked, [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) installs your agent app step by step: download it, sign in with the account you just created, and open the tab or mode this course uses. That's the one app every remaining lesson happens inside.
 
-If you already have Node, git, and a code editor you prefer, see the local install steps below. Codespaces is the primary on-ramp for V1; local install is supported but not the default path.
+From there, your agent sets up anything a project needs on your machine by itself — nothing for you to install or type. Every time it's about to do something on your machine, the app shows you an approval prompt first, and nothing happens until you click approve.
 
-### Local install steps
+## The third option: OpenCode desktop
 
-1. Make your own copy of the starter workspace at [github.com/Khrafts/syft-starter](https://github.com/Khrafts/syft-starter) (`Use this template` → `Create a new repository`), then clone your copy: `git clone <your-repo-url>`.
-2. Confirm Node is at version 20 or higher: `node --version`.
-3. Open the workspace folder in your editor of choice.
-4. That's it for Module 0 and Module 1 — they are pure markdown you read in your browser. Module 2 and beyond add tool requirements (terminal, package manager, git CLI, AI coding agent), each introduced in the lesson where it first matters.
-
-## Codespaces budget reality
-
-GitHub Free includes 120 core-hours per month on a 2-core machine — that's 60 clock-hours of active editing time. The default auto-stop is 30 minutes idle, and the storage cap is 15 GB. Push your work to GitHub frequently so you don't lose anything if you delete a Codespace to free space. If you start to bump into either limit, the cost-path lesson in Module 0 explains the upgrade math.
+There's a third agent app worth knowing exists: **OpenCode desktop**, free and capable, but the least user-friendly of the three. It's built for people comfortable finding their own way, not for a first-ever build — its free models are trial models offered for a limited time and may learn from what you submit while you're using them, and this course hasn't verified how it saves your work. This page names it so you know what it is; it isn't a track this course walks you through.
 
 ## What's next
 
