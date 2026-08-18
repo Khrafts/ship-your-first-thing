@@ -40,7 +40,7 @@ Nothing in this course locks you to the track you pick today. Lessons that meani
 
 ### The third option: OpenCode desktop
 
-There's a third agent app worth knowing exists: OpenCode desktop. It's genuinely free and genuinely capable, but it's the least user-friendly of the three, and it's built for people comfortable finding their own way, not for a first-ever build. Two honest caveats stand: its shell permissions default to allow, which is the inverse of the approval-prompt pattern this course teaches, and its free-model terms — including what happens to what you submit, and whether a card is ever required — aren't publicly documented. This file names it so you know what it exists; it isn't a track this course walks you through.
+There's a third agent app worth knowing exists: OpenCode desktop. It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build, and it's the least polished of the three — still in beta. Cost-wise, its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them; this course also hasn't verified how it saves your work, so there's no cost or safety story here as settled as Track 1 or Track 2's. This file names it so you know it exists; it isn't a track this course walks you through.
 
 ### Retired: Gemini CLI
 
