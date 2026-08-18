@@ -24,7 +24,7 @@ This is the single source of truth for every tool the course is verified against
 | Next.js | 16.x (App Router) | Async `cookies()` / `headers()` / `params` is the breaking-change surface AI agents trained pre-2026 will get wrong | 2026-05-08 |
 | TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 |
 | `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 |
-| Supabase CLI | latest stable | Migrations live under `supabase/migrations/` per Module 4 conventions | 2026-05-08 |
+| Supabase dashboard (SQL Editor) | n/a (web dashboard) | Database changes are pasted by hand: the agent writes a SQL file, the learner runs it from the Supabase dashboard's SQL Editor, one query tab per chunk — no CLI, no `supabase/migrations/` directory | 2026-08-17 |
 | Vercel CLI | latest stable | Deploy target | 2026-05-08 |
 | `zod` | ^3.x | Form validation for thread project | 2026-05-08 |
 
