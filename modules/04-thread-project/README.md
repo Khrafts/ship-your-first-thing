@@ -58,7 +58,7 @@ A **smell-test** (a one-line definition: a check you run without reading a line 
 
 ## Lessons in this module
 
-Lessons 0 through 3 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
+All nine lessons are published — every link below is live. The filenames and their order are fixed, so this is the sequence you will work through:
 
 0. [`00-the-plan.md`](./00-the-plan.md) — what you're building, who it's for, and the order it gets built in
 1. [`01-hello-world-deploy.md`](./01-hello-world-deploy.md) — an empty app at a public address, before there is anything on it to see

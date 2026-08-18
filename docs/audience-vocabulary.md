@@ -46,7 +46,7 @@ The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15
 
 Reserved for M1+:
 
-- HTTP, DNS, request, response, server, client, browser-as-program (M1 elevates the everyday "browser" noun to a technical role), database, schema, SQL, query, row, table, foreign key, API (as a *contract* — M1 bundle 2), authentication, authorization, session, cookie, deployment, CI/CD, build server, JWT, RLS, magic link
+- HTTP, DNS, request, response, server, client, browser-as-program (M1 elevates the everyday "browser" noun to a technical role), database, schema, SQL, query, row, table, foreign key, API (as a *contract* — M1 bundle 2), authentication, authorization, session, cookie, deployment, CI/CD, build server, JWT, RLS
 
 Reserved for M2+:
 
@@ -94,7 +94,7 @@ Reserved for M3+:
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (as Supabase Auth implementation), JWT, RLS, WITH CHECK, USING, server action, revalidatePath
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, JWT, RLS, WITH CHECK, USING, server action, revalidatePath
 
 **M1 rewrite implications:** The current M1 lessons drop HTTP / DNS / methods / SQL / schema / foreign key as if defined; the existing 02-where-data-lives.md exemplar uses the callout pattern correctly for those terms (it was the exemplar of the pattern). The rewrite (Plan 01-6 Task 3) brings 01 and the new 03 + 04 up to the same standard, and confirms 02 has not regressed.
 
@@ -151,7 +151,7 @@ Reserved (Module 3.5 is retired 2026-08-12; these terms have no active tier in a
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link (Supabase Auth), JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M2 rewrite implications:** M2 no longer teaches tools as things the learner installs and runs by hand — that hands-on, terminal-and-package-manager shape is retired under Hard Rule 15. Instead M2 introduces the agent (Claude Code desktop, or Codex in the ChatGPT desktop app) and names the machinery the agent drives on the learner's behalf: git, GitHub, commits, packages, dependencies. The lesson body uses each term with a D-04 callout on first use and then drops the callout, but the callout defines what the learner SEES or SAYS (the agent reports "saved to GitHub"; the learner asks for a feature) — never a mechanism the learner performs themselves. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — that framing described a retired hands-on step; describe what the agent does and what the learner observes instead.
 
@@ -194,7 +194,7 @@ Reserved (Module 3.5 is retired 2026-08-12; these terms have no active tier in a
 
 Reserved for M4+:
 
-- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, magic link, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
+- env var, environment variable, NEXT_PUBLIC, secret key, publishable key, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
 **M3 rewrite implications:** M3 lessons introduce the loop-step nouns (intent / ask / evaluate / steer) with D-04 callouts in L1 and use them freely after. The session-reset move is the plain phrase "start a fresh conversation" — no typed command is ever taught.
 
@@ -388,3 +388,5 @@ When a term that was Forbidden becomes legal in a later module:
 This file is authoritative. If a lint flags a violation that the lesson author believes is correct, update the contract first, then the lesson — never silently bypass.
 
 **Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are now Claude Code desktop and Codex in the ChatGPT desktop app, with OpenCode desktop named once as a third alternative (CLAUDE.md hard rule 15). The M3 section carried a transitional exception until its lessons were reshot: **that exception closed 2026-08-16.** Module 3 now presents Claude Code desktop and Codex in parallel and teaches "start a fresh conversation" as the session-reset move, so no typed command becomes legal at M3 — `slash command` is Forbidden in the M3 section, and `/clear`/`/compact`/`/context`/`/cost` stay in the retired-course-surface bucket of every module's Forbidden tier.
+
+**`magic link` retired from every tier list 2026-08-17.** The thread project's sign-in has been an email address and a password since 2026-07-25, and Module 4's own tier lists name no emailed sign-in link, so the term's `Reserved for M1+` / `Reserved for M4+` rows in the Module 0, 1, 2, and 3 sections were forward-references to a lesson that no longer teaches it. The term now has no active tier in any module. (`GLOSSARY.md`'s `authentication` entry still uses a magic link as one everyday *example* of proving who you are — that is illustration, not a course term, and it stays.)

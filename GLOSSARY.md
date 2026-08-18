@@ -432,7 +432,6 @@ Used in: [Module 3 — Planning vs execution](./modules/03-the-loop/02-planning-
 
 ### typescript
 A version of JavaScript with extra type information. TypeScript files end in `.ts`; TypeScript files that include React JSX end in `.tsx`. A separate tool (the TypeScript compiler) checks the types before the runtime runs the code. *Example: every file inside Module 3.5's sample-app is a TypeScript file (`.tsx`).*
-Used in: Module 3.5 (retired 2026-08-12).
 Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
 
 ## U

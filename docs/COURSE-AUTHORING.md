@@ -670,7 +670,7 @@ That separates the analogy from the bridge content visually. Learners who DO wan
 
 ### Trap: "The lint flagged 'API' in `Anthropic API`, the lint is broken"
 
-It isn't. The brand-prefix stripping rule in check #6 explicitly handles `Anthropic API`, `Gemini API`, `Google API`. If you see a violation on `Foo API`, check that `Foo` starts with a capital letter and is followed by exactly one space and `API`. If you legitimately need to use `API` bare (e.g., the M3 lesson that introduces the concept), update `docs/audience-vocabulary.md` to move `API` out of M3's Forbidden list when M3 ships.
+It isn't. The brand-prefix stripping rule in check #6 explicitly handles `Anthropic API`, `Gemini API`, `Google API`. If you see a violation on `Foo API`, check that `Foo` starts with a capital letter and is followed by exactly one space and `API`. Before treating a bare `API` as a violation, check its tier: `API` is Requires-callout in M1 (D-04 on first use, as a *contract*) and Safe from M2 onward, so an M2+ lesson may use it bare. It is not in M3's Forbidden list — that clause was written before M3 shipped and was resolved 2026-08-17. Only a term still listed Forbidden for the module you are writing needs a `docs/audience-vocabulary.md` change first.
 
 ### Trap: "I should fix all the WARNs"
 

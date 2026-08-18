@@ -1,10 +1,9 @@
 # WHAT-CHANGED.md — Freshness log
 
-The first place to check when reality drifts from a lesson. Your lesson's `> **Last captured:**` or
-`> **Last verified:**` banner — or, when it has neither, the `updated:` date at the top of the lesson —
-tells you WHEN the page was last true. [`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was
-true against. This file tells you WHAT has shifted since — newest first. Find the entries dated after your
-lesson's date and read those.
+The first place to check when reality drifts from a lesson. Your lesson's `> **Last verified:**` banner — or,
+when it has none, the `updated:` date at the top of the lesson — tells you WHEN the page was last true.
+[`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was true against. This file tells you WHAT
+has shifted since — newest first. Find the entries dated after your lesson's date and read those.
 
 Each entry is a dated heading plus three labeled lines:
 
@@ -42,13 +41,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 
 **Change:** Module 4 Lesson 2 builds a profile — a display name, a short bio, and a photo people upload — that anyone can read and only its owner can change. It includes the one step you run yourself in the Supabase dashboard, with screenshots.
 **If you're affected:** Nothing to do. If you have finished Lesson 1, Lesson 2 is the next chunk.
-**Details:** The lesson is `modules/04-thread-project/02-profile.md`.
+**Details:** The lesson is `modules/04-thread-project/03-profile.md` (renumbered from `02-profile.md` on 2026-08-17).
 
 ## 2026-07-25 — Thread project sign-in is an email and a password
 
 **Change:** Module 4 Lesson 1 is published, and it builds sign-in with an email address and a password — not the emailed sign-in link earlier pages described. Module 1 Lesson 3 and the Module 4 overview now say the same thing.
 **If you're affected:** Nothing to do before Lesson 1. If you already read that the thread project would email you a link to sign in, that is the part that changed.
-**Details:** The lesson is `modules/04-thread-project/01-sign-in.md`.
+**Details:** The lesson is `modules/04-thread-project/02-sign-in.md` (renumbered from `01-sign-in.md` on 2026-08-17).
 
 ## 2026-06-28 — The Codespaces walkthrough has labeled, zoomable screenshots
 

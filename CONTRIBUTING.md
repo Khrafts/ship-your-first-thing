@@ -22,7 +22,7 @@ If you're an AI agent (Claude, Gemini, Cursor, Copilot, etc.) running on this re
 
 `WHAT-CHANGED.md` is a learner-facing freshness log, not a contributor changelog. **PR bodies and commit messages are the contributor changelog of record** — depth goes there, never in the entry.
 
-An entry is required when your change: updates a verified tool version (`VERSIONS.md` step 2), re-captures a transcript or screenshot, shifts a lesson's content meaningfully, changes a locked decision, or closes a phase. One entry per PR — a multi-lesson re-capture pass is ONE batched entry naming the lessons in its **Change:** line, not one entry per lesson.
+An entry is required when your change: updates a verified tool version (`VERSIONS.md` step 2), refreshes a conversation panel or a screenshot, shifts a lesson's content meaningfully, changes a locked decision, or closes a phase. One entry per PR — a multi-lesson refresh pass is ONE batched entry naming the lessons in its **Change:** line, not one entry per lesson.
 
 Insert the entry at the top of the live region (above the boundary comment, newest first), in exactly this shape:
 
