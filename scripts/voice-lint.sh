@@ -315,15 +315,27 @@ scan_broken_relative_paths() {
 }
 
 # Parse a section of docs/audience-vocabulary.md to extract bulleted terms.
-# Args: $1 = module header (e.g., "Module 0 (M0)"), $2 = subsection ("Forbidden" | "Requires-callout")
+# Args: $1 = module header (e.g., "Module 0 (M0)"), $2 = subsection ("Forbidden" | "Requires-callout"),
+#       $3 = optional source file override (defaults to docs/audience-vocabulary.md; self-test uses
+#       this to exercise the extractor directly against a fixture without touching the real contract).
 # Strategy: locate the H2 line, then within that section find the H3 subsection, then read bullet lines
 # until the next H2/H3 or EOF. A bullet line is one that starts with "- " (optionally with leading spaces).
 # Terms may appear as plain "- term" or with descriptive text "- term (note...)" — we extract the first
 # comma-or-paren-delimited token only.
+# Two bullet shapes exist in the contract file:
+#   (a) A plain comma-separated term list, e.g. "- HTTP, DNS, request, ..." — split on ", ".
+#   (b) A bolded term (or slash-joined terms) followed by definition prose, e.g.
+#       "- **Supabase** — introduce as \"...an account system, a database, and file storage
+#       in one.\" ..." — here the definition prose is NOT parenthetical, so it survives the
+#       paren-strip step, and comma-splitting the whole line turns its descriptive clauses
+#       (like "a database") into phantom terms. For this shape we extract ONLY the leading
+#       run of **term** segments (joined by " / " for entries like "**secret key** /
+#       **publishable key**") and discard everything from the first non-bold separator on —
+#       the definition text is never a term, no matter what punctuation it contains.
 extract_vocab_terms() {
   local module_header="$1"
   local subsection="$2"
-  local file="docs/audience-vocabulary.md"
+  local file="${3:-docs/audience-vocabulary.md}"
   [ ! -f "$file" ] && return
 
   awk -v mh="$module_header" -v subname="$subsection" '
@@ -338,10 +350,33 @@ extract_vocab_terms() {
       else { next }
     }
     in_sub && /^- / {
-      # Strip leading "- ", then remove any inline parentheticals globally (handles per-item
-      # descriptions like "browser-as-program (M1 elevates...)", "API (as a *contract*)").
+      # Strip leading "- ".
       line = $0
       sub(/^- /, "", line)
+
+      # Shape (b): bullet opens on a bolded term. Extract only the leading run of
+      # **term** segments (optionally chained with " / "); everything after that —
+      # the definition/description clause — is prose, not a term, and is dropped
+      # whole (including any commas inside it).
+      if (line ~ /^\*\*/) {
+        rest = line
+        while (match(rest, /^\*\*[^*]+\*\*/) > 0) {
+          term = substr(rest, RSTART + 2, RLENGTH - 4)
+          gsub(/^[ \t]+|[ \t]+$/, "", term)
+          if (term != "") print term
+          rest = substr(rest, RSTART + RLENGTH)
+          if (match(rest, /^ \/ /) > 0) {
+            rest = substr(rest, RSTART + RLENGTH)
+          } else {
+            break
+          }
+        }
+        next
+      }
+
+      # Shape (a): plain comma-separated term list. Remove any inline parentheticals
+      # globally (handles per-item descriptions like "browser-as-program (M1
+      # elevates...)", "API (as a *contract*)"), then split on ", ".
       # Iteratively remove (....) groups (handles non-nested parens; we do not encounter nested
       # parens in the contract file).
       while (match(line, / *\([^)]*\)/) > 0) {
@@ -1002,6 +1037,31 @@ run_self_test() {
     fail=1
   else
     echo "  self-test OK: jargon-density fixture tripped $((after - before)) violations"
+  fi
+
+  # Vocab term extractor comma-clause fix (fixture 06-vocab-extractor-comma-clause) — proves
+  # extract_vocab_terms() no longer explodes a bold-bullet's definition prose into phantom terms.
+  # Exercises the extractor directly (via its file-path override) against a bullet shaped exactly
+  # like the real M4 Supabase entry that produced the "a database" phantom term: the clean bolded
+  # term must be extracted whole, and no comma-clause fragment from the definition text may appear.
+  local vocab_fixture="scripts/voice-lint-fixtures/06-vocab-extractor-comma-clause.md"
+  if [ -f "$vocab_fixture" ]; then
+    local extracted
+    extracted=$(extract_vocab_terms "Module Fixture (MF)" "Requires-callout" "$vocab_fixture")
+    if ! printf '%s\n' "$extracted" | grep -qxF "Widget"; then
+      echo "SELFTEST FAIL: vocab-extractor fixture did not yield the clean term 'Widget'; got:"
+      printf '%s\n' "$extracted"
+      fail=1
+    elif printf '%s\n' "$extracted" | grep -qF "a widget"; then
+      echo "SELFTEST FAIL: vocab-extractor fixture still emits a phantom comma-clause term ('a widget'); got:"
+      printf '%s\n' "$extracted"
+      fail=1
+    else
+      echo "  self-test OK: vocab-extractor fixture yields only the clean term, no phantom comma-clause fragment"
+    fi
+  else
+    echo "SELFTEST FAIL: vocab-extractor fixture missing: $vocab_fixture"
+    fail=1
   fi
 
   # Mermaid <br> outside quoted node labels (fixture 07) — expect at least 3 violations
