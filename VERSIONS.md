@@ -13,7 +13,7 @@ This is the single source of truth for every tool the course is verified against
 | ChatGPT desktop app (Codex) | verified working 2026-08-15 | Path 2 | The free track's agent — Codex is the mode you switch to next to the message box. Free "for a limited time" per OpenAI's own wording; the paid ChatGPT tiers keep it working the same way if that changes. | 2026-08-15 |
 | ~~Gemini CLI~~ | retired 2026-08-12 | was Path 2 | Replaced as the free-track agent by Codex, inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md). | 2026-08-12 |
 
-> **Note:** Neither app has a captured version *number* yet. "Verified working 2026-08-15" records the date the install flow and approval-prompt behavior were last confirmed against the vendor docs (`.planning/research/2026-08-12-desktop-agent-apps.md`), not a version string read off the app itself. A hands-on install pass still needs to capture the actual number from each app's own About or Settings screen.
+> **Note:** Neither app has a captured version *number* yet. "Verified working 2026-08-15" records the date the install flow and approval-prompt behavior were last confirmed against the vendors' own documentation and the install lessons ([Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md), [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)), not a version string read off the app itself. A hands-on install pass still needs to capture the actual number from each app's own About or Settings screen.
 
 > **Note:** Windows installs of Claude Code desktop need **git** installed separately — from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — before local sessions work, then the app needs a restart. Most Macs already have git. You never open git yourself; your agent operates it for you once it's installed. See [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md).
 
@@ -25,7 +25,7 @@ This is the single source of truth for every tool the course is verified against
 | TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 |
 | `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 |
 | Supabase dashboard (SQL Editor) | n/a (web dashboard) | Database changes are pasted by hand: the agent writes a SQL file, the learner runs it from the Supabase dashboard's SQL Editor, one query tab per chunk — no CLI, no `supabase/migrations/` directory | 2026-08-17 |
-| Vercel CLI | latest stable | Deploy target | 2026-05-08 |
+| Vercel dashboard | n/a (web dashboard) | Deploy target — the agent deploys by saving/pushing, Vercel rebuilds the live copy automatically; the learner's only touchpoint is the dashboard's settings screen, read once to check an environment variable such as `NEXT_PUBLIC_SUPABASE_URL` | 2026-08-17 |
 | `zod` | ^3.x | Form validation for thread project | 2026-05-08 |
 
 ## Course platform stack (`site/`)
