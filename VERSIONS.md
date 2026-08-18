@@ -1,26 +1,21 @@
 # VERSIONS.md — Pinned tool versions
 
-**Last verified:** 2026-05-14
+**Last verified:** 2026-08-15
 **Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual).
 
 This is the single source of truth for every tool the course is verified against. When a tool releases a new version, the course is *not* automatically updated to it; the maintainer re-verifies the lesson flows against the new version, then updates this table and notes the change in `WHAT-CHANGED.md`.
 
-## Required tools
+## Agent apps
 
-| Tool | Pinned version | Purpose | Last verified |
-|---|---|---|---|
-| GitHub Codespaces (default image) | `mcr.microsoft.com/devcontainers/universal:2` | Quick-start environment | 2026-05-08 |
-| Node.js | 20.x LTS | Runtime for the thread project; M2 L3 (`03-runtime-node.md`) teaches `node --version` verification | 2026-05-14 |
-| npm | 10.x (bundled with Node 20) | Package manager; M2 L4 (`04-package-manager-npm.md`) teaches `npm install` / `npm run`; pnpm divergence noted in CHEATSHEET sidebar | 2026-05-14 |
-| git | 2.40+ | Version control | 2026-05-08 |
-| GitHub CLI (`gh`) | 2.50+ | Optional; convenient for Codespaces operations | 2026-05-08 |
-
-## AI coding agents
-
-| Tool | Pinned version | Path | Notes | Last verified |
+| App | Version | Path | Notes | Last verified |
 |---|---|---|---|---|
-| Claude Code | latest stable (auto-updates) | Path 1 / Path 3 | Treat keystrokes as ephemeral per the freshness model; M3 dual-agent transcripts (`modules/03-the-loop/01..04`) captured against this version on the Last-verified date | 2026-05-14 |
-| Gemini CLI | latest stable (auto-updates) | Path 2 | M3 dual-agent transcripts captured against this version on the Last-verified date; ignore-file syntax = `.geminiignore` per D-38; install command `npm install -g @google/gemini-cli` requires Node 20+ | 2026-05-14 |
+| Claude Code desktop | verified working 2026-08-15 | Path 1 | The paid track's agent app, opening in its own window. Default Manual mode: it proposes a change and waits — nothing touches your files until you accept. | 2026-08-15 |
+| ChatGPT desktop app (Codex) | verified working 2026-08-15 | Path 2 | The free track's agent — Codex is the mode you switch to next to the message box. Free "for a limited time" per OpenAI's own wording; the paid ChatGPT tiers keep it working the same way if that changes. | 2026-08-15 |
+| ~~Gemini CLI~~ | retired 2026-08-12 | was Path 2 | Replaced as the free-track agent by Codex, inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md). | 2026-08-12 |
+
+> **Note:** Neither app has a captured version *number* yet. "Verified working 2026-08-15" records the date the install flow and approval-prompt behavior were last confirmed against the vendor docs (`.planning/research/2026-08-12-desktop-agent-apps.md`), not a version string read off the app itself. A hands-on install pass still needs to capture the actual number from each app's own About or Settings screen.
+
+> **Note:** Windows installs of Claude Code desktop need **git** installed separately — from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — before local sessions work, then the app needs a restart. Most Macs already have git. You never open git yourself; your agent operates it for you once it's installed. See [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md).
 
 ## Thread project stack (Phase 3 onward)
 
@@ -47,8 +42,9 @@ The course site lives in `site/` (built; deploys to Railway, where it will serve
 
 ## How to update this table
 
-1. When you re-verify a tool against a new version, change its row's `Last verified` cell to the new date.
-2. If the tool itself changed in a way that affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
-3. If a tool is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
+1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date.
+2. If the change affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
+3. If a tool or app is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
+4. For the two agent apps, only replace "verified working YYYY-MM-DD" with an actual version number once a hands-on install captures it straight from the app's own About or Settings screen — an evidence pass, never a guess from a changelog.
 
 See `CONTRIBUTING.md` for the quarterly smoke-test ritual that surfaces freshness issues.
