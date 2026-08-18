@@ -24,6 +24,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | Your agent's replies look different from a lesson's conversation panels | Panels show real captured behavior; it ages, but the loop the lesson teaches still works | The lesson's "Last verified" date, then the entries below dated after it |
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
+| An older copy of Module 4 tells you to look for words in the agent's changes | Module 4 no longer asks you to read the agent's work — you try things in the running app, and the agent runs its own checks (since 2026-08-18) | [Module 4](./modules/04-thread-project/README.md) |
+
+## 2026-08-18 — Module 4 is rebuilt: a plan lesson, eight chunks, and test gates
+
+**Change:** Module 4 now opens with a plan you co-write with your agent, and every build chunk ships a definition of done the agent must check and show you before saying "done". All lessons run in your desktop agent app; the lesson files are renumbered.
+**If you're affected:** If you started Module 4 before this date, begin again from the plan lesson — the chunks are the same features, rebuilt around checks you can actually run.
+**Details:** The lessons are in `modules/04-thread-project/`; the desktop-app move is the entry dated 2026-08-16.
 
 ## 2026-08-17 — Module 3 now runs in your agent app's chat window
 
