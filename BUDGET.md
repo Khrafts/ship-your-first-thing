@@ -9,9 +9,9 @@ Most coding courses pretend the tools are free, then learners hit a paywall part
 
 ## The two tracks (and a third option)
 
-Every track through this course costs you something — money, or limits, or both. There's no free-forever option. What you're choosing between is: pay a predictable monthly amount and get a track with no built-in interruptions (Track 1), or pay nothing and accept that the free allowance can run out on a busy day, or change, without much warning (Track 2). Both are honest tracks.
+Every path through this course costs you something — money, or limits, or both. There's no free-forever option. What you're choosing between is: pay a predictable monthly amount and get a track with no built-in interruptions (Path 1), or pay nothing and accept that the free allowance can run out on a busy day, or change, without much warning (Path 2). Both are honest paths.
 
-### Track 1: Claude Code desktop — predictable
+### Path 1: Claude Code desktop — predictable
 
 | Item | Cost |
 |---|---|
@@ -20,31 +20,31 @@ Every track through this course costs you something — money, or limits, or bot
 
 That $20 is the floor — there's no cheaper way to get Claude Code desktop, and no free plan includes it. What it buys: every lesson in this course, every day, with nothing that runs out partway through a workday.
 
-**Pick Track 1 if:** you have $20/month you're comfortable spending on this course and you'd rather pay for predictability than manage a free allowance.
+**Pick Path 1 if:** you have $20/month you're comfortable spending on this course and you'd rather pay for predictability than manage a free allowance.
 
-### Track 2: Codex, inside the ChatGPT desktop app — free to start
+### Path 2: Codex, inside the ChatGPT desktop app — free to start
 
 | Item | Cost |
 |---|---|
 | ChatGPT desktop app + Codex (free tier) | $0 to start — no card, no subscription |
-| ChatGPT Plus (optional upgrade, same track) | Keeps Codex working the same way if the free tier ever narrows |
+| ChatGPT Plus (optional upgrade, same path) | Keeps Codex working the same way if the free tier ever narrows |
 | Everything else the course needs | Free (see the module rows below) |
 
-Codex is included on the free tier of ChatGPT, and that's genuinely free — this course confirmed it end-to-end before writing a single Track 2 lesson. Two honest catches. First, OpenAI's own wording says Codex is on the Free plan "for a limited time." If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
+Codex is included on the free tier of ChatGPT, and that's genuinely free — this course confirmed it end-to-end before writing a single Path 2 lesson. Two honest catches. First, OpenAI's own wording says Codex is on the Free plan "for a limited time." If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
 
-**Pick Track 2 if:** $0 matters more to you than never waiting, and you're fine with an occasional pause on a heavy day.
+**Pick Path 2 if:** $0 matters more to you than never waiting, and you're fine with an occasional pause on a heavy day.
 
 ### Switching is cheap
 
-Nothing in this course locks you to the track you pick today. Lessons that meaningfully differ between the two tracks show both side by side, so switching later costs you exactly one thing: creating the account you skipped the first time.
+Nothing in this course locks you to the path you pick today. Lessons that meaningfully differ between the two tracks show both side by side, so switching later costs you exactly one thing: creating the account you skipped the first time.
 
 ### The third option: OpenCode desktop
 
-There's a third agent app worth knowing exists: OpenCode desktop. It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build, and it's the least polished of the three — still in beta. Cost-wise, its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them; this course also hasn't verified how it saves your work, so there's no cost or safety story here as settled as Track 1 or Track 2's. This file names it so you know it exists; it isn't a track this course walks you through.
+There's a third agent app worth knowing exists: OpenCode desktop. It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build, and it's the least polished of the three — still in beta. Cost-wise, its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them; this course also hasn't verified how it saves your work, so there's no cost or safety story here as settled as Path 1 or Path 2's. This file names it so you know it exists — it isn't a path this course walks you through.
 
 ### Retired: Gemini CLI
 
-Gemini CLI was this course's free track through 2026-08-12. It's retired — the free track is Track 2, Codex inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md).
+Gemini CLI was this course's free track through 2026-08-12. It's retired — the free track is Path 2, Codex inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md).
 
 ### No pay-per-use path
 
@@ -56,8 +56,8 @@ Two questions, in order:
 
 | Question | Answer |
 |---|---|
-| Can you spend $20/month on this course? | **Yes → Track 1, Claude Code desktop.** Flat, predictable, no built-in pauses. |
-| (If no) Are you OK with an occasional wait on a heavy day, in exchange for $0? | **Yes → Track 2, Codex in the ChatGPT desktop app.** Free to start, upgradeable in place if you ever need to. |
+| Can you spend $20/month on this course? | **Yes → Path 1, Claude Code desktop.** Flat, predictable, no built-in pauses. |
+| (If no) Are you OK with an occasional wait on a heavy day, in exchange for $0? | **Yes → Path 2, Codex in the ChatGPT desktop app.** Free to start, upgradeable in place if you ever need to. |
 
 Switching later is cheap — see above. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) walks through this triage in more detail before you create any accounts.
 
@@ -73,17 +73,17 @@ No AI tokens used. Module 1 is reading and diagramming exercises. Free for both 
 
 ### Modules 2 and 3 (Toolchain & The Loop) — both tracks
 
-Token use is light. Neither track's per-lesson cost differs from its baseline: Track 1 stays inside the flat $20/month ceiling, Track 2 stays inside the free ChatGPT allowance, with the same occasional-wait possibility as any other day.
+Expect token use to stay light through these modules. Neither path's per-lesson cost should differ from its baseline: Path 1 stays inside the flat $20/month ceiling, Path 2 stays inside the free ChatGPT allowance, with the same occasional-wait possibility as any other day.
 
 > **Note:** Module 3.5 (the code-reading module that sat between Modules 3 and 4) was retired 2026-08-12, alongside the rest of the terminal-era course. What used to be "Modules 2 / 3 / 3.5" is now Modules 2 and 3.
 
 ### Module 4 (Thread project — build)
 
-Module 4 adds two more accounts: Supabase (your database) and Vercel (where the app goes live). Both are free tier — the lessons state that both free plans cover everything this module builds. This is the highest AI-token use of the course; the divergence between tracks is the same shape as every other module, not a new one — Track 1 stays inside its flat ceiling, Track 2 stays inside its free allowance.
+Module 4 adds two more accounts: Supabase (your database) and Vercel (where the app goes live). Both are free tier — the lessons state that both free plans cover everything this module builds. Expect this to be the course's heaviest module for AI use; the divergence between paths is the same shape as every other module, not a new one — Path 1 stays inside its flat ceiling, Path 2 stays inside its free allowance.
 
 ### Module 5 (Operating the build)
 
-Not yet authored under the two-track rebuild — see [`README.md`](./README.md). Expect the same shape as every other module: Track 1 inside its flat $20/month ceiling, Track 2 inside its free allowance with the same occasional-wait possibility.
+Not yet authored under the two-track rebuild — see [`README.md`](./README.md). Expect the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility.
 
 ## Hidden costs not on this table
 
