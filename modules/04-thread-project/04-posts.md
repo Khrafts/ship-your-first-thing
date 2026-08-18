@@ -185,7 +185,7 @@ Underneath your three checks sits the layer that is your agent's job. This chunk
 
 Look first, say the sentence second. When this chunk was really built the saving was held back on purpose until the app had been clicked through, and then the whole chunk went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version carrying four things: the file for the database, the code behind writing and editing and deleting, the edit page, and the profile page that now lists posts.
 
-That first item is the one to watch. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. If your agent lists what it saved and the file for the database is not among them, ask where it went. Then, once you have clicked through it and it holds: *"Save this as a working version."*
+That first item is the one to watch. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."*
 
 ## Exercise
 
@@ -203,7 +203,7 @@ Build the fourth feature on your plan: give the profile you built last chunk som
 6. **Go through the running app in order:** write a post; write one with a picture; edit the first and watch the name stay yours; delete one and reload. Then run the first refusal check — sign out, open your own profile address, read the posts, and find nothing on the page to write, edit, or delete with.
 7. **Run the second refusal check.** Sign in as your second person, find the first person's post, and *try* to edit or delete it — including by typing its editing address straight into the address bar. Refresh afterwards and confirm the post is unchanged.
 8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4.
-9. **Save it.** *"Save this as a working version."* Check that the file for the database is in what it saved.
+9. **Save it.** *"Save this as a working version."*
 
 ## Definition of done
 
