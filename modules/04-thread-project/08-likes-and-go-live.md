@@ -119,6 +119,20 @@ If pressing Run raises the "Potential issue detected" dialog you have now met fo
 
 Wait for an answer you are happy with before you press anything. Your own dashboard may not look identical to the earlier chunks' — Supabase moves things around — but the SQL Editor is named the same, and the file you paste is the one your agent points you at.
 
+### Where the live site is allowed to differ
+
+<!-- VERCEL VERIFICATION SLOT: verify wording and UI behavior against a real deploy — user-assisted evidence pass -->
+
+Before the checks, one thing about the other half of your ask. Putting the whole app online is not a step your agent takes at the end, and knowing why makes the last of the three checks make sense.
+
+Your app has had a public address since the very first chunk, and **Vercel** (a one-line definition: the service that runs your code on the public internet and serves it at a web address, [→ GLOSSARY](../../GLOSSARY.md#vercel)) has been watching your project's home page online ever since, rebuilding the live copy each time you said *save this as a working version*. So the live app is not new. What is new is that anybody has looked at it. Seven chunks of checking happened on the machine that built the thing, which is the one place on earth where every connection setting is already sitting there because your agent put it there while it worked.
+
+That is what the third check is for. The **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) can carry every line of your code and still not carry every setting your code needs, and the symptom is precise and confusing: everything works at home and one thing goes dead on the live link. Likes are a good tripwire for it because clicking like is the first thing anybody does.
+
+That is also where the promise made in the first chunk of this module comes due. Vercel has a settings screen that lists what the live site knows about, one **environment variable** (a one-line definition: a named setting the live app reads while it runs, kept out of the project's saved history because it is usually a secret — this screen is where you see them listed, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)) per row. You have never had to open it. You open it now, once, and you read exactly one of those rows: **`NEXT_PUBLIC_SUPABASE_URL`** (a one-line definition: the row holding the address of your Supabase project — the one value on that screen that is not a secret, which is why it is the one you read and compare yourself, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)). It is the same value your agent set up on your machine back in chunk one, and putting the two side by side is exactly what the third check asks of you.
+
+You are not auditing that screen and you are not judging the rest of it. One row, one comparison, one sentence back to your agent about whether it matches. Everything else on that page stays what it has always been: your agent's.
+
 ### The checks you run
 
 Three, and the third one needs the live address rather than your machine. None of them asks you to look at anything your agent wrote.
@@ -146,18 +160,6 @@ Three, and the third one needs the live address rather than your machine. None o
 > **EXPECT:** same behavior as at home.
 >
 > **IF IT DIFFERS:** open the Vercel settings screen and read the one setting you can read yourself — `NEXT_PUBLIC_SUPABASE_URL` — and tell your agent whether it matches what the lesson said to expect.
-
-### Where the live site is allowed to differ
-
-<!-- VERCEL VERIFICATION SLOT: verify wording and UI behavior against a real deploy — user-assisted evidence pass -->
-
-Your app has had a public address since the very first chunk, and **Vercel** (a one-line definition: the service that runs your code on the public internet and serves it at a web address, [→ GLOSSARY](../../GLOSSARY.md#vercel)) has been watching your project's home page online ever since, rebuilding the live copy each time you said *save this as a working version*. So the live app is not new. What is new is that anybody has looked at it. Seven chunks of checking happened on the machine that built the thing, which is the one place on earth where every connection setting is already sitting there because your agent put it there while it worked.
-
-That is what the last check is for. The **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) can carry every line of your code and still not carry every setting your code needs, and the symptom is precise and confusing: everything works at home and one thing goes dead on the live link. Likes are a good tripwire for it because clicking like is the first thing anybody does.
-
-That is also where the promise made in the first chunk of this module comes due. Vercel has a settings screen that lists what the live site knows about, one **environment variable** (a one-line definition: a named setting the live app reads while it runs, kept out of the project's saved history because it is usually a secret — this screen is where you see them listed, [→ GLOSSARY](../../GLOSSARY.md#environment-variable)) per row. You have never had to open it. You open it now, once, and you read exactly one row: `NEXT_PUBLIC_SUPABASE_URL`. It is the address of your Supabase project, and the reason you can read it is that it is not a secret — it is the same value your agent set up on your machine in chunk one.
-
-You are not auditing that screen and you are not judging the rest of it. One row, one comparison, one sentence back to your agent about whether it matches. Everything else on that page stays what it has always been: your agent's.
 
 ### The walkthrough this whole module has been for
 
