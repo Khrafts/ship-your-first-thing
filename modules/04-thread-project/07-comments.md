@@ -166,6 +166,8 @@ Two things get checked when it comes back, and the second one cannot be run from
 >
 > **IF IT WORKS:** *"As ⟨account B⟩ I could ⟨edit/delete⟩ ⟨account A⟩'s comment. Only its owner should be able to. Fix that."*
 
+<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->
+
 One habit carries both of them, and it matters more here than anywhere so far: **"no error" is not the same as "refused."** When you try a forbidden thing, do not only watch for a complaint. Refresh the page and look at whether the thing actually changed. A forbidden delete that quietly does nothing is the fence holding; a forbidden delete that quietly works is the fence down — and only the refresh tells you which one you got. This is not hypothetical. When this chunk's fences were tested for real, the cross-account delete came back with no error at all and no change either: the comment was still sitting there after a refresh. That is what a refusal can look like.
 
 ### The confident answer, and what actually settled it
@@ -193,6 +195,8 @@ That is why the checks in this lesson are shaped the way they are. Not "ask your
 ### What the checks are actually for
 
 Your agent will propose something with real consequences in the same calm voice it uses for fixing a spelling mistake, and comments are where that has the most room to hurt. This is the first thing in your app that other people write into. If the rules around it are looser than you asked for, somebody can change words they did not write, on a page anyone can open, under a post carrying your name — and every screen in the app will look correct while it happens. Loose rules do not look like anything. That is why you push on the fence instead of looking at it: the two checks above are the only instrument you have that measures the thing that matters.
+
+<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->
 
 Here, the fences held. When this chunk was really built, all three of the attempts you just read about came back refused, or changed nothing at all. The reason to run your own pushes anyway, every chunk, is that the one time a fence is not real, nothing else you can see will tell you.
 
