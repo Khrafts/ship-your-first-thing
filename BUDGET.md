@@ -83,7 +83,7 @@ Module 4 adds two more accounts: Supabase (your database) and Vercel (where the 
 
 ### Module 5 (Operating the build)
 
-Module 5 adds no new accounts and no new costs — nothing new gets built, and every lesson runs against the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility.
+Module 5 adds no new accounts and no new costs — nothing new gets built, and the lessons need nothing beyond the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility.
 
 ## Hidden costs not on this table
 

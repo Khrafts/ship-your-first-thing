@@ -52,7 +52,7 @@ Neither of them asks you to look at anything your agent wrote, and that has not 
 
 ## Before you start
 
-Module 4, complete — your app live at its public address. Every lesson in this module runs against that link and the accounts you already made on it, so a half-finished build has nothing here to work on. Modules 0 through 3 still apply underneath: the app you picked, the machinery your agent drives, and the loop you run with it.
+Module 4, complete — your app live at its public address. Every lesson in this module assumes that link and the accounts you already made on it, so a half-finished build has nothing here to work on. Modules 0 through 3 still apply underneath: the app you picked, the machinery your agent drives, and the loop you run with it.
 
 ## Navigation
 
