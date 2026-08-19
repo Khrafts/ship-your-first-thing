@@ -286,7 +286,7 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still s
 - **multi-account testing** — the two-browser, alice+bob ritual: signing in as two real accounts at once to surface bugs single-user testing misses; first-class skill per LESSON-13. Callout home: Lesson 01 (`01-two-people-one-app.md`).
 - **recovery prompt** — the message written after a check trips: say what you did and saw, ask the agent to find and fix it — never fix it yourself. Callout home: Lesson 01 (first trip) or Lesson 02.
 - **regression** — a working feature that breaks because of an unrelated change; introduced in the context of "the agent's fix broke X." Callout home: Lesson 05 (`05-the-day-something-breaks.md`).
-- **risk-blindness** — the agent proposes something that can't be undone with the same calm as a small fix. First named by M2's anchor lesson (M2 L1) with a one-line smell-test; M5's watch-it-fail walkthroughs are where the learner catches a real one. Classified here 2026-08-15. Callout home: Lesson 02 (first M5 use; reinforced without a second callout in Lesson 04).
+- **risk-blindness** — the agent proposes something that can't be undone with the same calm as a small fix. First named by M2's anchor lesson (M2 L1) with a one-line smell-test; M5's watch-it-fail walkthroughs put the learner in front of a real one. Classified here 2026-08-15. Callout home: Lesson 02 (first M5 use; reinforced without a second callout in Lesson 04).
 
 **Removed 2026-08-19:** `deploy preview` and `env-var leak` were seeded for the retired fresh-fork-deploy lesson; no M5 lesson has a home for them. Under the desktop doctrine the learner never operates a branch/merge surface. M6/M7 may resurrect them if a lesson earns them.
 
