@@ -154,13 +154,13 @@ Three things to keep ready. The first two are the move you already know — name
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c2); presented in the desktop app's framing. -->
 
-The third is not a steer at all. If the profile pages complain that something does not exist — "table not found", or wording close to it — the file never made it into your database. Go back to the dashboard step above, paste it, run it, reload. Your agent flagged this one in advance when this chunk was really built, and it is the likeliest reason a working build looks broken today.
+The third is not a steer at all. If the profile pages complain that something does not exist — "table not found", or wording close to it — the file never made it into your database. Go back to the dashboard step above, paste it, run it, reload. You do not read the complaint past recognizing it; say what the page showed and where, and let your agent read the rest. Your agent flagged this one in advance when this chunk was really built, and it is the likeliest reason a working build looks broken today.
 
 And the familiar one: if your agent keeps circling — reworking the same thing, losing the thread of what you asked — do not keep arguing with it. Start a fresh conversation and begin this chunk again from your last saved version.
 
 ### Before it is allowed to say done
 
-This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and it is longer than the last one's because there is more that can quietly not work. Your agent runs those checks and reports what happened. Your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and it grows more specific than the last one's because there is more that can quietly not work. Your agent runs those checks and reports what happened. Your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
