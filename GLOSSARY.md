@@ -248,11 +248,11 @@ Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome
 
 ### recovery-prompt
 The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
-Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md).
+Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
-Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md).
+Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
 
 ### regression
 A working feature that breaks because of an unrelated change the agent made somewhere else. *Example: a fix to the feed accidentally breaks sign-in, so after any fix the checks that used to pass are re-run — not just the one thing that changed.*
@@ -272,7 +272,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### risk-blindness
 When an AI agent proposes something that cannot be undone — deleting work, wiping data, sending or spending — with the same calm as fixing a typo. The agent has no sense of stakes; every change reads the same to it. *Example: it proposes deleting the file that set up your database, to tidy up — routine-sounding to it, destructive to your project. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve. Module 5 puts you in the driver's seat for a real one.*
-Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
 
 ### row
 A single record in a database table — like one index card in a filing-cabinet drawer.
@@ -338,4 +338,4 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### watch-it-fail-walkthrough
 A narrated scenario where the agent fails on a specific known-bad pattern, followed by the learner practicing the recovery — first watched happening in someone else's build, then checked against their own live app. *Example: the fence-that-was-down walkthrough narrates bob successfully editing alice's comment when he shouldn't be able to, then has the learner run the same refusal check on their own app.*
-Used in: no current lesson.
+Used in: [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
