@@ -142,7 +142,7 @@ Your agent will tell you what it built in a calm, even voice — the same one it
 
 And the two failures in this chunk are the quiet kind. A missing self-follow rule looks like nothing at all until somebody pushes on it. A follow that runs both ways looks like a correct app from the only screen you normally look at. Neither one announces itself, which is why every check above is a push on a fence rather than a look at anything, and why two of them send you to a different browser to be somebody else.
 
-> **Heads up — you'll meet this again.** An agent that proposes something with real consequences in the same flat tone it uses for the trivial thing is one of the three "watch the AI fail" walkthroughs Module 5 puts you in front of. You already have both moves that catch it, and you just ran them both: the question before the step you cannot take back, and the push on the fence afterwards. Module 5 is where you watch what the first of them is worth on the day the answer comes back bad.
+> **Heads up — you'll meet this again.** An agent that proposes something with real consequences in the same flat tone it uses for the trivial thing is one of the three "watch the AI fail" walkthroughs Module 5 puts you in front of. You already have both moves that catch it, and you just ran them both: the question before the step you cannot take back, and the push on the fence afterwards. Module 5 is where you watch what the pre-flight question is worth on the day the answer comes back bad.
 
 ### Checking it yourself
 

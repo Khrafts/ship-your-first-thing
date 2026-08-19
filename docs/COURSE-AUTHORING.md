@@ -432,7 +432,7 @@ For each limit, the lesson where it's first taught provides:
 - **M2 L1 (`modules/02-toolchain/01-your-ai-coding-agent.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms, each armed with its own one-line smell-test in the lesson itself (Hard Rule 14 option (a)), plus forward-references to where each goes deeper (M3 for hallucination and drift, M5 for risk-blindness). *(This anchor duty moved here on 2026-08-15 when the accessibility remake collapsed Module 2 to three lessons and deleted the former M2 L6, `06-ai-coding-agents.md`.)*
 - **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
 - **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via fresh-conversation hygiene).
-- **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
+- **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with a narrated known-bad build and the learner's recovery prompt. Anchors limits 5 + 6.
 
 ### The anchor-lesson exception (Forbidden-tier terms)
 
