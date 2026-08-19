@@ -94,7 +94,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### definition-of-done
 The checks the agent must run and show you, in plain words, before it is allowed to say a piece of work is finished. Also called a **test gate**. *Example: before reporting the sign-in work finished, the agent shows that a brand-new email can sign in, that refreshing the page keeps them signed in, and that a signed-out visitor cannot reach account pages.*
-Used in: [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — The plan](./modules/04-thread-project/00-the-plan.md), and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md).
+Used in: [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — The plan](./modules/04-thread-project/00-the-plan.md), and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md).
 
 ### dependency
 A package your app needs in order to run at all. Your agent adds them and keeps the list current; the list is never yours to edit. *Example: the thread project needs several before it will start, and getting that list right is the agent's job.*
@@ -248,7 +248,7 @@ Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome
 
 ### recovery-prompt
 The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
-Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
+Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md), [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md).
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
@@ -256,7 +256,7 @@ Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons 
 
 ### regression
 A working feature that breaks because of an unrelated change the agent made somewhere else. *Example: a fix to the feed accidentally breaks sign-in, so after any fix the checks that used to pass are re-run — not just the one thing that changed.*
-Used in: no current lesson.
+Used in: [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md).
 
 ### repository
 A project's full history of saved versions, tracked by git, with a home page of its own on GitHub. Often shortened to "repo." *Example: this course is one repository; the thread project becomes another one when your agent sets it up.*
