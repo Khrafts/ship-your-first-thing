@@ -119,7 +119,7 @@ Phase 1 ships the *documented ritual* in CONTRIBUTING.md; Phase 5 OPS-02 ships t
 
 Once per quarter, the maintainer (or any willing contributor) does this:
 
-1. Open a fresh GitHub Codespace from `main`.
+1. Install a clean copy of an agent app — Claude Code desktop or Codex in the ChatGPT desktop app — following [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) (the course retired the GitHub Codespaces launch flow 2026-08-12; see `WHAT-CHANGED.md`).
 2. Walk through Module 0 → Module 4 Chunk 1 (the Auth chunk in the thread project; lands in Phase 3).
 3. Note any deviation between what's written and what actually happens.
 4. For each deviation, file an issue tagged `freshness` with:
