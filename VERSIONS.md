@@ -17,7 +17,7 @@ This is the single source of truth for every tool the course is verified against
 
 > **Note:** Windows installs of Claude Code desktop need **git** installed separately — from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — before local sessions work, then the app needs a restart. Most Macs already have git. You never open git yourself; your agent operates it for you once it's installed. See [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md).
 
-## Thread project stack (Phase 3 onward)
+## Thread project stack (the app you build in Module 4)
 
 | Tool | Pinned version | Notes | Last verified |
 |---|---|---|---|

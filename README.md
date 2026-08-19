@@ -75,4 +75,4 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## A note on freshness
 
-AI tools change every few months — model versions, CLI flags, default behavior, even what the tools are called. The course's loop (intent → ask → evaluate → steer) is durable; the keystrokes are not. If reality drifts from a page, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) before you assume the lesson is wrong.
+AI tools change every few months — model versions, app behavior, default settings, even what the tools are called. The course's loop (intent → ask → evaluate → steer) is durable; the keystrokes are not. If reality drifts from a page, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) before you assume the lesson is wrong.
