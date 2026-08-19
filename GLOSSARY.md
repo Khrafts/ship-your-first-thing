@@ -248,7 +248,7 @@ Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome
 
 ### recovery-prompt
 The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
-Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
+Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md).
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
@@ -338,4 +338,4 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### watch-it-fail-walkthrough
 A narrated scenario where the agent fails on a specific known-bad pattern, followed by the learner practicing the recovery — first watched happening in someone else's build, then checked against their own live app. *Example: the fence-that-was-down walkthrough narrates bob successfully editing alice's comment when he shouldn't be able to, then has the learner run the same refusal check on their own app.*
-Used in: [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md).
+Used in: [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md).
