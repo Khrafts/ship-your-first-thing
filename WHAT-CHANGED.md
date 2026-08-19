@@ -26,6 +26,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
 | An older copy of Module 4 tells you to look for words in the agent's changes | Module 4 no longer asks you to read the agent's work — you try things in the running app, and the agent runs its own checks (since 2026-08-18) | [Module 4](./modules/04-thread-project/README.md) |
 | An older copy of SETUP or the cheatsheet tells you to open a terminal or launch a Codespace | The course runs in a desktop agent app; the reference pages were rebuilt to match (since 2026-08-19) | [SETUP](./SETUP.md) |
+| Module 4 keeps mentioning walkthroughs "in Module 5" and you can't find them | Module 5 exists now — the walkthroughs are its lessons 2 through 4 (since 2026-08-19) | [Module 5](./modules/05-operating/README.md) |
+
+## 2026-08-19 — Module 5 is here: operating the app you shipped
+
+**Change:** Module 5 (Operating the build) is published — the two-account testing ritual, three watch-the-AI-fail walkthroughs you recover from, and the moves for the day something breaks.
+**If you're affected:** If you finished Module 4, the course continues at [Module 5](./modules/05-operating/README.md). A handful of Module 1, 2, and 4 sentences were corrected to match — nothing you built or already did changed.
+**Details:** Module 4's forward-references to Module 5 now link to the real lessons.
 
 ## 2026-08-19 — The reference pages match the desktop-app course
 
