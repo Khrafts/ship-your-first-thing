@@ -218,7 +218,7 @@ You've got this if you can:
 
 Optional, only if you're curious:
 
-- **Module 5 puts you through three real recoveries.** Three walkthroughs on the project you will have built by then, where an agent gets something genuinely wrong and you work out the way back. This lesson gives you the moves on a throwaway page; those give you the same moves when something is actually at stake.
+- **Module 5 puts you through three real recoveries.** Three walkthroughs, each on an app with real information in it, where an agent gets something genuinely wrong and you work out the way back. This lesson gives you the moves on a throwaway page; those give you the same moves when something is actually at stake.
 - **Module 6 is steering under pressure.** Fixing a bug in a product that is already live, where someone may be looking at the broken version while you work. The feeling is different. The loop is not.
 - **Module 7 covers session hygiene.** When to start fresh, when to switch to a different agent, and when the right move is to leave the keyboard entirely. The patterns generalize well past AI coding — they belong to any tool with a tight feedback loop.
 

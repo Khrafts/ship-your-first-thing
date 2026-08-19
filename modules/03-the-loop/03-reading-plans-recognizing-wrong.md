@@ -144,7 +144,7 @@ You've got this if you can:
 Optional, only if you're curious:
 
 - **Do it again with something else you never said.** Ask for "a short list of my three favorite films" or "a line about where I live", and watch the same thing happen with a straight face. Two or three repetitions is when the pattern stops being a lesson and starts being an instinct.
-- **Module 5 puts you in front of three real failures.** Three walkthroughs, on the actual project you will have built by then, where you watch an agent get something wrong and then work out the recovery. This lesson gives you the noticing; those give you the recovering, on failures with real consequences instead of a throwaway page.
+- **Module 5 puts you in front of three real failures.** Three walkthroughs, each on an app with real information in it, where you watch an agent get something wrong and then work out the recovery. This lesson gives you the noticing; those give you the recovering, on failures with real consequences instead of a throwaway page.
 - **The next lesson is the other half of this one.** You are holding a wrong result right now and doing nothing about it. Lesson 4 is where you say the sentence that fixes it — and where you learn what to do when saying it twice hasn't worked.
 
 ## Loop check
