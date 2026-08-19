@@ -106,7 +106,7 @@ A rehearsal. Nothing on your app breaks, nothing changes, and the one thing you 
 1. **Set the scene.** Picture opening your live link on your phone and finding that every profile comes up blank — yours, alice's, bob's. Everything else looks normal: the home page loads, the feed has posts on it, and you have not touched the project since last week.
 2. **Write the message from memory.** Before looking back at this lesson, write what you would send. Where you were looking, what the page showed, since when — and the handover.
 3. **Compare it with the one in this lesson.** *"On my live link, opening any profile shows a blank page since this morning. Find out why and fix it."* Check yours for the three jobs, then check it for what should not be there: a guess at the cause, a suggestion about where to look, anything that would have needed you to open something first.
-4. **Ask the real question.** Open your agent app and ask, in your own words: *"What is the last saved working version of this project, and when was it saved?"* Nothing changes and nothing runs — it is a question. Write the answer down.
+4. **Ask the real question.** Open your agent app and ask, in your own words: *"What is the last saved working version of this project, and when was it saved?"* Nothing about your app changes — it is a question. If your agent asks to run something so it can go and look, that is safe to approve. Write the answer down.
 5. **Look at the gap.** With that answer in front of you, ask yourself what going back would cost you today. If the honest answer is "more than I would like", the fix is not to remember harder on the bad morning. It is to say *"Save this as a working version"* more often on the ordinary ones.
 
 ## Checkpoint
