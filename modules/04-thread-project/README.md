@@ -77,5 +77,4 @@ You need Modules 0 through 3 finished, all of them. Module 0 got your accounts a
 ## Navigation
 
 [← Module 3 — The loop](../03-the-loop/README.md)
-
-Module 5 — Operating the build — comes next; it starts once you have the live app this module ends with.
+[Next: Module 5 — Operating the build →](../05-operating/README.md)

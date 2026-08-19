@@ -103,7 +103,7 @@ Two things about how to hold the answer. Read it for whether it names what alrea
 
 Now the part to be honest about. Your agent will not raise this for you. It will describe a change that cannot be undone in exactly the same even voice it uses for renaming a button, and there is no tone to listen for — weighing what a step costs when it goes wrong is not something it does unprompted, and it is not carelessness on its part. The question exists because nothing else in the conversation is going to ask it.
 
-> **Heads up — you'll meet this again.** An agent that proposes a change that cannot be taken back without ever mentioning that it cannot be taken back is one of the named ways these tools fail, and it is the third of the "watch the AI fail" walkthroughs Module 5 puts you in front of — on an app with real information in it, where the question does not get asked and you watch what that costs. You already have the whole defence, and it is the one you just read: the question comes before the approval, every time, and the dashboard's own warning gets adjudicated against the answer rather than clicked past.
+> **Heads up — you'll meet this again.** An agent that proposes a change that cannot be taken back without ever mentioning that it cannot be taken back is one of the named ways these tools fail, and it is the third of the "watch the AI fail" walkthroughs Module 5 puts you in front of — on an app with real information in it, where the question gets asked in time and you watch what that saves. You already have the whole defence, and it is the one you just read: the question comes before the approval, every time, and the dashboard's own warning gets adjudicated against the answer rather than clicked past.
 
 ### The step that is yours, a fifth time
 
@@ -113,7 +113,7 @@ The mechanics are the ones you know. Open the dashboard, find the SQL Editor, op
 
 Ask it before you paste, the same as the last four times — and this time read the answer against a database that has something in it. From a file whose whole job is to add somewhere for likes to go, the answer to expect is that nothing existing is touched.
 
-If pressing Run raises the "Potential issue detected" dialog you have now met four times, the rule has not changed: an answer that accounted for it means **Run query** is the way through, and a dialog naming something the answer did not predict means you press nothing and hand its words back.
+If pressing Run raises the "Potential issue detected" dialog you have met in the earlier chunks, the rule has not changed: an answer that accounted for it means **Run query** is the way through, and a dialog naming something the answer did not predict means you press nothing and hand its words back.
 
 > "The dashboard says this query includes destructive operations, and that's not what you told me before I pasted it. What in this file removes anything, and what happens to what is already in my database if I run it?"
 
@@ -268,5 +268,4 @@ You finished the app. You added the last feature on your plan — a count that m
 ## Navigation
 
 [← Previous: Comments: a page for every post, and a thread under it](./07-comments.md)
-
-Module 5 — Operating the build — comes next. It starts from the live app you just finished.
+[Next: Module 5 — Operating the build →](../05-operating/README.md)

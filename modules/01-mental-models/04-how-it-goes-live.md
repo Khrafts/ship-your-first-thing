@@ -37,9 +37,9 @@ flowchart LR
 ```
 
 <details>
-<summary>Optional: same pipeline with the technical labels (Module 5 hands-on)</summary>
+<summary>Optional: same pipeline with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll run this pipeline yourself in Module 5; the kitchen-to-restaurant picture is the one to hold onto today.
+> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll watch your agent run this pipeline in Module 4, and Module 5 is where you operate what comes out of it; the kitchen-to-restaurant picture is the one to hold onto today.
 
 ```mermaid
 flowchart LR
@@ -63,7 +63,7 @@ A few things confuse beginners here, and naming them now saves you debugging tim
 
 **Localhost is invisible to the internet.** When you run the app on your laptop, only your laptop can see that page. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
 
-**Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers the deploy-debugging mental model in depth; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
+**Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers what to do when the live app misbehaves — describing what you see and steering the fix; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
 
 **The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything you haven't saved to git and uploaded to GitHub may as well not exist when the build server starts cooking. Module 2 unpacks the daily rhythm of saving changes and keeping the recipe binder current.
 

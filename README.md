@@ -39,7 +39,7 @@ The course is designed to be picked up cold. A learner who has never written pro
 - [Module 2 — Your agent and the machinery it drives](./modules/02-toolchain/README.md)
 - [Module 3 — Working with an AI coding agent](./modules/03-the-loop/README.md)
 - [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md)
-- Module 5 — Operating the build *Coming in later phases*
+- [Module 5 — Operating the build](./modules/05-operating/README.md)
 - Module 6 — After it's live *Coming in later phases*
 - Module 7 — Where to go from here *Coming in later phases*
 

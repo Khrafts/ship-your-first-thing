@@ -271,7 +271,7 @@ A structured message replying to a request — like the receptionist's paper rep
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
 ### risk-blindness
-When an AI agent proposes something that cannot be undone — deleting work, wiping data, sending or spending — with the same calm as fixing a typo. The agent has no sense of stakes; every change reads the same to it. *Example: it proposes deleting the file that set up your database, to tidy up — routine-sounding to it, destructive to your project. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve. Module 5 puts you in the driver's seat for a real one.*
+When an AI agent proposes something that cannot be undone — deleting work, wiping data, sending or spending — with the same calm as fixing a typo. The agent has no sense of stakes; every change reads the same to it. *Example: it proposes deleting the file that set up your database, to tidy up — routine-sounding to it, destructive to your project. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve. Module 5 puts you in front of a real one.*
 Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
 
 ### row

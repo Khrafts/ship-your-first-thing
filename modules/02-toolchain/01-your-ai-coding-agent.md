@@ -40,7 +40,7 @@ Three ways this goes sideways happen often enough, and matter enough, that this 
 
 **Risk-blindness** (the agent proposes something that can't be undone with the same calm as a small fix, [→ GLOSSARY](../../GLOSSARY.md#risk-blindness)) shows up right at the approval prompt. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve.
 
-These three are not the whole list — they're the three worth knowing on day one. Module 3 goes deeper on hallucination and on drift; Module 5 puts you in the driver's seat for risk-blindness, with a real one to catch.
+These three are not the whole list — they're the three worth knowing on day one. Module 3 goes deeper on hallucination and on drift; for risk-blindness, Module 5 puts you in front of a real one.
 
 None of this makes your agent a search engine or a mind reader. It doesn't know your actual preferences unless you've told it. It isn't always right, and it doesn't know when it's wrong — confidence and correctness are two different things for it, and only one of them shows up on the screen. That's the whole reason this course spends an entire module, right after this one, on the skill of steering: noticing when the agent's output doesn't match what you asked for, and knowing what to do about it. You just met the three earliest, most common ways it goes sideways. Module 3 teaches the skill that catches all of them.
 
