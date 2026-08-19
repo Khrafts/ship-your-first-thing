@@ -34,7 +34,7 @@ Operating, at this floor, is three things:
 
 ### The three lessons where you watch a build fail
 
-Lessons 2, 3 and 4 are not about breaking your own app. Each one tells you about a build where something specific went wrong — what the person asked for, what the agent did, what the screen looked like, and the moment the thing was finally caught. Then you run that same check against your own live app, where you expect it to come back clean, and you write out the message you would have sent if it had not.
+Lessons 2, 3 and 4 are not about breaking your own app. Each one tells you about a build where something specific went wrong — what the person asked for, what the agent did, what the screen looked like, and the moment the thing was finally caught. Then you run that same check against your own live app, where you expect it to come back clean, and you write out the message you would have sent if it had not — except in Lesson 4, whose check fires while the change is still a proposal, so there is nothing of yours to run it against and the writing is the whole of it.
 
 That is the promise Module 4 kept making you. You meet a build where the fence is genuinely down. You do not have to live in one.
 
