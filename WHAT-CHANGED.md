@@ -31,7 +31,7 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 ## 2026-08-19 — Module 5 is here: operating the app you shipped
 
 **Change:** Module 5 (Operating the build) is published — the two-account testing ritual, three watch-the-AI-fail walkthroughs you recover from, and the moves for the day something breaks.
-**If you're affected:** If you finished Module 4, the course continues at [Module 5](./modules/05-operating/README.md). A handful of Module 1, 2, and 4 sentences were corrected to match — nothing you built or already did changed.
+**If you're affected:** If you finished Module 4, the course continues at [Module 5](./modules/05-operating/README.md). A handful of Module 1, 2, 3, and 4 sentences were corrected to match — nothing you built or already did changed.
 **Details:** The lessons are in [`modules/05-operating/`](./modules/05-operating/README.md); the Module 4 rebuild they continue is the entry dated 2026-08-18.
 
 ## 2026-08-19 — The reference pages match the desktop-app course
