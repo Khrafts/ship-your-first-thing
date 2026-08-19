@@ -7,6 +7,7 @@ prereqs: ["03-the-missing-post"]
 updated: "2026-08-19"
 deviations:
   - long-core-read
+  - staged-comment-wording
 ---
 
 # Caught before it ran: the question that goes before you press anything
@@ -19,7 +20,7 @@ By the end of this lesson, you will be able to stop a database change that would
 
 The last two lessons put you in front of things that had already happened. Something was wrong before you arrived: a fence that was down before anybody pushed on it, a post missing from a feed its owner opened every day. Both were recoverable, and neither cost anybody anything they could not get back. This one is different in the only way that matters. The damage is still in the future at the moment you meet it, sitting in a change nobody has run yet — and the whole of your defence is a question you have been asking since your first empty app, back when there was nothing in your database worth losing. This is the lesson where there is.
 
-> **Following along:** This lesson runs against your own live app from Module 4, in the agent app you picked in Module 0. The failure it walks through comes from a build that is not yours — your app is not expected to have it, and the checks are the part you run for real.
+> **Following along:** Unlike the other walkthroughs, this lesson runs nothing against your own live app — nothing here touches it. The failure it walks through comes from a build that is not yours, and the check is a question you rehearse now and ask for real, in the agent app you picked in Module 0, the next time your agent proposes a change to your database.
 
 > **Last verified:** 2026-08-19. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
@@ -33,19 +34,20 @@ This is the third **watch-it-fail walkthrough** (a one-line definition: a story 
 
 ### A change handed over mid-fix
 
+<!-- Deviation (staged-comment-wording): Lessons 02/03 end this comment "not the 2026-07 build, which passed this check". That clause cannot be used here — no chunk-7 evidence exists at all, so there is no run to have passed anything. The substituted clause states the absence instead. -->
 <!-- Staged walkthrough story (known-bad pattern; the 2026-07 build produced no such proposal — no archived run exists for it). -->
 
 Another build, further along than either of the last two: live for a while, with real accounts on it and writing on it that belonged to other people. Something in the comments had started behaving oddly, and the person did the ordinary thing — said what they saw, handed it over, and let their agent go and find out why.
 
-Their agent came back with an account of what was wrong and a file for the database, the same kind of file that had gone into the dashboard four times while the app was being built. Paste this in, it said, and that clears it. The file was full of code and none of it was for reading — cargo, the way all four of the others had been, moved whole from one screen to another.
+Their agent came back with an account of what was wrong and a file for the database, the same kind of file that had gone into the dashboard five times while the app was being built. Paste this in, it said, and that clears it. The file was full of code and none of it was for reading — cargo, the way all five of the others had been, moved whole from one screen to another.
 
-Nothing in how it arrived marked it as different from those four. Same steady voice, same shape of handover, same screen waiting at the other end of it. And every one of those four had been an addition: things that did not exist before, going in beside things that already did.
+Nothing in how it arrived marked it as different from those five. Same steady voice, same shape of handover, same screen waiting at the other end of it. And every one of those five had been an addition: things that did not exist before, going in beside things that already did.
 
 ### The question goes first
 
 <!-- Staged walkthrough story (known-bad pattern; the 2026-07 build produced no such proposal — no archived run exists for it). -->
 
-They did not paste it. What they did first was the thing Module 4 had made them do before all four of the others:
+They did not paste it. What they did first was the thing Module 4 had made them do before all five of the others:
 
 > **BEFORE YOU APPROVE ANYTHING THAT TOUCHES THE DATABASE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
 
@@ -69,7 +71,7 @@ That is what a caught one looks like, and it is why this is the hardest of the t
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->
 
-There is a second surface where this can reach you, and you have already met it four times.
+There is a second surface where this can reach you, and you met it during Module 4.
 
 When you paste something into your Supabase dashboard and press Run, the dashboard sometimes stops you with a warning of its own, headed "Potential issue detected" — saying the query includes destructive operations and may permanently change or remove data, and offering **Run query** and **Cancel**. Module 4 gave you the rule for it, and the rule is a comparison rather than a judgement. If the warning is accounted for by the answer you already have in hand, **Run query** is the way through. If it names something your answer did not predict — or you never asked — you press nothing and hand the dialog's words back.
 
@@ -101,7 +103,7 @@ There is nothing to break here and nothing to try. The other check you know — 
 
 So the drill on your own app is the ritual itself, and it is short enough to say in one breath: **before any change that touches your database, the question goes first, and you wait for the answer.** Every time. On this app and on the next one, whether you are mid-build with a plan open or fixing something on an ordinary Tuesday. Not only before a dashboard paste — before anything your agent proposes that goes near the place your app keeps things.
 
-Three things will argue you out of it, and they are worth naming now because the exercise is written against them. You are mid-fix and you want this over. The change looks small. The last four went fine. Not one of those is a statement about what this particular change does to what you already have, which is the only thing the question is about.
+Three things will argue you out of it, and they are worth naming now because the exercise is written against them. You are mid-fix and you want this over. The change looks small. The last five went fine. Not one of those is a statement about what this particular change does to what you already have, which is the only thing the question is about.
 
 ## Exercise
 
