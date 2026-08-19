@@ -190,6 +190,10 @@ Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md).
 Folding the work from a separate line back into the version that works. Agent-performed. *Example: you ask for the experiment to be brought into the working version, and your agent does the folding.*
 Used in: no current lesson.
 
+### multi-account-testing
+The ritual of testing the live app as two real people at once — signed in as alice in one browser and bob in a different browser (or a private/incognito window) — to catch what single-user testing can't. *Example: alice follows bob, then both windows are checked against each other — does bob's Followers list show alice? does alice's own page still offer herself a Follow button?*
+Used in: no current lesson.
+
 ## O
 
 ### opencode-desktop
@@ -242,9 +246,17 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: on a free tier, once the day's allowance is used up the app asks you to wait before you can keep going.*
 Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md) describes the free allowance running out without naming the cap.
 
+### recovery-prompt
+The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
+Used in: no current lesson.
+
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
 Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md).
+
+### regression
+A working feature that breaks because of an unrelated change the agent made somewhere else. *Example: a fix to the feed accidentally breaks sign-in, so after any fix the checks that used to pass are re-run — not just the one thing that changed.*
+Used in: no current lesson.
 
 ### repository
 A project's full history of saved versions, tracked by git, with a home page of its own on GitHub. Often shortened to "repo." *Example: this course is one repository; the thread project becomes another one when your agent sets it up.*
@@ -321,3 +333,9 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 ### vercel
 A service that runs your code on the public internet. It watches a GitHub repository, builds the code each time a new saved version arrives, and serves the result at a public web address. *Example: the thread project goes live on Vercel in Module 4.*
 Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md), [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
+
+## W
+
+### watch-it-fail-walkthrough
+A narrated scenario where the agent fails on a specific known-bad pattern, followed by the learner practicing the recovery — first watched happening in someone else's build, then checked against their own live app. *Example: the fence-that-was-down walkthrough narrates bob successfully editing alice's comment when he shouldn't be able to, then has the learner run the same refusal check on their own app.*
+Used in: no current lesson.

@@ -576,7 +576,7 @@ check_lesson_against_module_contract() {
   done <<< "$requires_terms"
 }
 
-# Run the jargon-density check across M0–M3 lessons (M4–M7 dirs join when those modules ship).
+# Run the jargon-density check across M0–M5 lessons (M6–M7 dirs join when those modules ship).
 # Args: $1 = mode ("default" | "fixtures")
 scan_jargon_density() {
   local mode="$1"
@@ -597,7 +597,7 @@ scan_jargon_density() {
     return
   fi
 
-  # Default mode: run against M0–M4 lessons in WARN mode (M5–M7 dirs join when those modules ship).
+  # Default mode: run against M0–M5 lessons in WARN mode (M6–M7 dirs join when those modules ship).
   # The audience-vocabulary contract is strict; current prose has known gaps against it
   # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0, plus a larger backlog
   # across M2/M3 whose prose predates this check covering those modules, and a fresh M4 pile
@@ -635,6 +635,12 @@ scan_jargon_density() {
     for lesson in modules/04-thread-project/*.md; do
       [ -f "$lesson" ] || continue
       check_lesson_against_module_contract "$lesson" "M4" "Module 4 (M4)" "warn"
+    done
+  fi
+  if [ -d modules/05-operating ]; then
+    for lesson in modules/05-operating/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M5" "Module 5 (M5)" "warn"
     done
   fi
 }

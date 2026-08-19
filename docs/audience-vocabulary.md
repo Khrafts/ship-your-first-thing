@@ -282,13 +282,13 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still s
 
 ### Requires-callout (D-04 pattern on first use)
 
-- **watch-it-fail walkthrough** — a curated scenario where the agent fails on a specific known-bad pattern and the learner recovers via a smell-test + steer.
-- **multi-account testing** — the ritual of signing in as multiple test users (alice, bob) to surface bugs single-user testing misses; first-class skill per LESSON-13.
-- **recovery prompt** — the prompt the learner writes after a smell-test trips, naming what they observed and what they want next.
-- **regression** — when a working feature breaks because of an unrelated change; M5 introduces this in the context of "the agent's fix broke X."
-- **deploy preview** — the Vercel-generated preview URL for an unmerged branch; M5 surfaces it as a smell-test surface (you can sanity-check before merge).
-- **env-var leak** — a SYMPTOM: when a secret value appears in the public bundle or in a logged error.
-- **risk-blindness** — the agent proposes something that can't be undone with the same calm as a small fix. First named by M2's anchor lesson (M2 L1) with a one-line smell-test; M5's watch-it-fail walkthroughs are where the learner catches a real one. Classified here 2026-08-15.
+- **watch-it-fail walkthrough** — a story where the agent fails on a known-bad pattern and you practice the recovery. Callout home: Lesson 02 (`02-the-fence-that-was-down.md`); the README may pre-name it in plain words.
+- **multi-account testing** — the two-browser, alice+bob ritual: signing in as two real accounts at once to surface bugs single-user testing misses; first-class skill per LESSON-13. Callout home: Lesson 01 (`01-two-people-one-app.md`).
+- **recovery prompt** — the message written after a check trips: say what you did and saw, ask the agent to find and fix it — never fix it yourself. Callout home: Lesson 01 (first trip) or Lesson 02.
+- **regression** — a working feature that breaks because of an unrelated change; introduced in the context of "the agent's fix broke X." Callout home: Lesson 05 (`05-the-day-something-breaks.md`).
+- **risk-blindness** — the agent proposes something that can't be undone with the same calm as a small fix. First named by M2's anchor lesson (M2 L1) with a one-line smell-test; M5's watch-it-fail walkthroughs are where the learner catches a real one. Classified here 2026-08-15. Callout home: Lesson 02 (first M5 use; reinforced without a second callout in Lesson 04).
+
+**Removed 2026-08-19:** `deploy preview` and `env-var leak` were seeded for the retired fresh-fork-deploy lesson; no M5 lesson has a home for them. Under the desktop doctrine the learner never operates a branch/merge surface. M6/M7 may resurrect them if a lesson earns them.
 
 ### Forbidden in M5 specifically
 
@@ -305,6 +305,8 @@ Reserved for Module 7 / out of scope:
 - Multi-region deployment
 
 **M5 SYMPTOM-only rule:** The three watch-it-fail walkthroughs (LESSON-13) name the failure mode + the smell-test + the recovery prompt. The walkthroughs do NOT teach RLS grammar, Postgres internals, or React reconciliation — they teach the OBSERVATION ("I saw X; I asked the agent Y; the agent shipped Z") + the RECOVERY pattern. See COURSE-AUTHORING.md Part 7 § Anchor lessons for which limit each walkthrough surfaces.
+
+**M5 rewrite implications (2026-08-19):** Unlike M4's rewrite implications, this is not a correction to shipped prose — the module lands with this phase, so this re-cut is the precedent Tasks 3–7 (and the Lesson-05 task, 8) author their lesson bodies against, not a repair of drifted lessons. The `.planning/phases/05-remake-operating/05-CONTEXT.md` gate is what this section encodes: five Requires-callout terms with their tier and callout home locked here, `deploy preview` and `env-var leak` adjudicated out (no lesson has a home for a branch/merge surface the learner never operates), and `risk-blindness` carried forward from its M2 anchor with no wording change needed. When Module 5's five lessons are planned and drafted, this contract — not the archived 2026-07-27 gate — is what keeps them on the say-it-or-see-it floor; no Module-5 lesson may be planned until the CONTEXT gate above is locked, and it already is.
 
 ---
 
