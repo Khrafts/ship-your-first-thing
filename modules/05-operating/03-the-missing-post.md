@@ -114,7 +114,7 @@ You've got this if you can do both:
 Optional, only if you're curious:
 
 - The same check has the same shape on anything you build later that gathers things from more than one place — a notifications list, a search results page, an inbox. Make the thing yourself, then go and look for it where it should have landed. The absence worth checking for is always your own.
-- Lesson 4 is the last of the three, and its failure hasn't happened yet at the moment you catch it: a change handed to you to run against your live app that would have taken real information with it. The instrument changes — a question you ask before you press anything, rather than a look at the app afterwards. Nothing to prepare.
+- Lesson 4 is the last of the three, and its failure hasn't happened yet at the moment you catch it: somebody else's change, still waiting to be approved, that would have taken real information with it. The instrument changes — a question you ask before you press anything, rather than a look at the app afterwards. Nothing to prepare.
 
 ## Loop check
 

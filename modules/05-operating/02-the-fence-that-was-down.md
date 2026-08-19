@@ -29,7 +29,7 @@ There is a version of your app you have never seen, and from where you are sitti
 
 Nothing gets built in this lesson, and nothing of yours gets broken. The split has not moved: your agent owns the code, the rules, and every fix; you own saying what you want, watching the running app, running the checks, and saying when to save.
 
-What is new is the shape. This is a **watch-it-fail walkthrough** (a one-line definition: a story about a build where the agent shipped something known to be bad, told so you can practise the recovery before the app in question is yours, [→ GLOSSARY](../../GLOSSARY.md#watch-it-fail-walkthrough)), the first of three. Each one runs the same way: you watch somebody else's build fail, you run the same check against your own live app where you expect it to hold, and you write the message you would have sent if it hadn't. Watching is cheaper than breaking something of your own to make the point, and the check is the part you keep either way.
+What is new is the shape. This is a **watch-it-fail walkthrough** (a one-line definition: a story about a build where the agent shipped something known to be bad, told so you can practise the recovery before the app in question is yours, [→ GLOSSARY](../../GLOSSARY.md#watch-it-fail-walkthrough)), the first of three. This one and the next run the same way: you watch somebody else's build fail, you run the same check against your own live app where you expect it to hold, and you write the message you would have sent if it hadn't. Watching is cheaper than breaking something of your own to make the point, and the check is the part you keep either way.
 
 ### A build that looked exactly like yours
 
