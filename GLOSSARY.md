@@ -337,5 +337,5 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 ## W
 
 ### watch-it-fail-walkthrough
-A narrated scenario where the agent fails on a specific known-bad pattern, followed by the learner practicing the recovery — first watched happening in someone else's build, then checked against their own live app. *Example: the fence-that-was-down walkthrough narrates bob successfully editing alice's comment when he shouldn't be able to, then has the learner run the same refusal check on their own app.*
+A narrated scenario where the agent fails on a specific known-bad pattern, followed by the learner practicing the recovery — first watched happening in someone else's build, then run as their own check: against their own live app where there is something to look at, or before anything runs where there is not. *Example: the fence-that-was-down walkthrough narrates bob successfully editing alice's comment when he shouldn't be able to, then has the learner run the same refusal check on their own app.*
 Used in: [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
