@@ -62,7 +62,7 @@ One distinction before you run it, because a feed is full of things that are leg
 
 Same as last lesson: the build this course was made from does not have this fault. The feed chunk was checked for exactly this, in the situation that hides it best — a new account following nobody, where a feed of only the people you follow comes back empty and looks entirely reasonable doing it.
 
-Bob signed in, following no one, with nothing written. His feed said so in plain words: "Your feed is empty. Follow someone, or write your first post on your profile." He wrote a post from his profile and went back to the home page, and there it was — on a feed belonging to somebody who follows nobody. Then Alice, who had followed Bob, opened hers: Bob's newest at the top, her own from two days earlier underneath — one stream, not his posts in one block and hers in another.
+Bob signed in, following no one, with nothing written. His feed said so in plain words: "Your feed is empty. Follow someone, or write your first post on your profile." He wrote a post from his profile and went back to the home page, and there it was — on a feed belonging to somebody who follows nobody. Then alice, who had followed bob, opened hers: bob's newest at the top, her own older one underneath — one stream, not his posts in one block and hers in another.
 
 That is the healthy version, and it is what yours should do. The build above is a story about one that didn't — told because a check you have only ever watched pass is the easiest kind to stop running.
 
