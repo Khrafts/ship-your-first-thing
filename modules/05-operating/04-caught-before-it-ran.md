@@ -8,6 +8,7 @@ updated: "2026-08-19"
 deviations:
   - long-core-read
   - staged-comment-wording
+  - recut-following-along-banner
 ---
 
 # Caught before it ran: the question that goes before you press anything
@@ -19,6 +20,8 @@ By the end of this lesson, you will be able to stop a database change that would
 ## Why this matters
 
 The last two lessons put you in front of things that had already happened. Something was wrong before you arrived: a fence that was down before anybody pushed on it, a post missing from a feed its owner opened every day. Both were recoverable, and neither cost anybody anything they could not get back. This one is different in the only way that matters. The damage is still in the future at the moment you meet it, sitting in a change nobody has run yet — and the whole of your defence is a question you have been asking since your first empty app, back when there was nothing in your database worth losing. This is the lesson where there is.
+
+<!-- Deviation (recut-following-along-banner): the shared "Following along" banner asserts the lesson runs against the learner's live app. This lesson contradicts that by design — nothing here touches it — so the banner is re-cut per-lesson, and the README and BUDGET say the same. -->
 
 > **Following along:** Unlike the other walkthroughs, this lesson runs nothing against your own live app — nothing here touches it. The failure it walks through comes from a build that is not yours, and the check is a question you rehearse now and ask for real, in the agent app you picked in Module 0, the next time your agent proposes a change to your database.
 
@@ -99,7 +102,7 @@ In that build, what came back was a version that changed what needed changing an
 
 ### Your turn, on your own app
 
-There is nothing to break here and nothing to try. The other check you know — the **refusal check** (a one-line definition: in the running app you try the thing that should not be allowed and confirm you are turned down — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) — needs a running app and something already built to push on. This one has neither, by design: it fires while the thing is still a proposal, which is the only moment it is worth anything.
+There is nothing to break here and nothing to try. The other check you know — the **refusal check** (a one-line definition: in the running app you try the thing that should NOT be allowed and confirm it is refused — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) — needs a running app and something already built to push on. This one has neither, by design: it fires while the thing is still a proposal, which is the only moment it is worth anything.
 
 So the drill on your own app is the ritual itself, and it is short enough to say in one breath: **before any change that touches your database, the question goes first, and you wait for the answer.** Every time. On this app and on the next one, whether you are mid-build with a plan open or fixing something on an ordinary Tuesday. Not only before a dashboard paste — before anything your agent proposes that goes near the place your app keeps things.
 

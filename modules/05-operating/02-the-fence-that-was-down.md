@@ -61,7 +61,7 @@ The second is the answer. It was not a lie and it was not a lazy answer — by e
 
 One thing to carry before you try this on your own app, because it decides whether your check tells you the truth or a comfortable version of it.
 
-When this chunk was really built for this course, the fences held — pushed on from two accounts, and tried directly against the database besides. But one of them held in a way that could easily be read as the opposite. The attempt to delete somebody else's comment produced no error at all: no complaint, no warning, nothing on screen to react to. The comment was simply still sitting there after a refresh, exactly as its author had left it.
+When this chunk was really built for this course, the fences held — pushed on from two accounts, and tried directly against the database besides. But one of them held in a way that could easily be read as the opposite. The attempt to delete somebody else's comment — made against the database directly, not through any screen — produced no error at all: no complaint, no warning, nothing to react to. The comment was simply still there afterwards, exactly as its author had left it.
 
 That is what a refusal can look like — not a message, just nothing having happened. Which makes the check two moves rather than one. Try the forbidden thing, then refresh the page and read what is actually there. A forbidden edit that quietly does nothing is the fence holding; a forbidden edit that quietly works is the fence down. Only the refresh separates them.
 
@@ -69,7 +69,7 @@ The other tell in that real build was on the page from the start: somebody else'
 
 ### Your turn, on your own app
 
-This is the **refusal check** (a one-line definition: in the running app you try the thing that should not be allowed and confirm you are turned down — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) you have run in every chunk since sign-in, pointed now at the one thing this lesson is about. Set up the two windows from the last lesson — alice in your everyday browser, bob in a different browser or a private window — and go:
+This is the **refusal check** (a one-line definition: in the running app you try the thing that should NOT be allowed and confirm it is refused — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) you have run in every chunk since sign-in, pointed now at the one thing this lesson is about. Set up the two windows from the last lesson — alice in your everyday browser, bob in a different browser or a private window — and go:
 
 > **TRY THIS:** signed in as bob, open a post alice wrote and find a comment of hers in the thread under it. Look for any way in to her words — an Edit link, a box you can type in, anything. If there is one, use it: change a word and save.
 >
@@ -77,7 +77,7 @@ This is the **refusal check** (a one-line definition: in the running app you try
 >
 > **IF IT WORKS:** it is not yours to fix. Write the message below and hand it over.
 
-Yours will almost certainly refuse; every chunk of Module 4 was checked against this one as it was built. Run it today anyway, on an app you expect to pass, because two minutes spent on a check that passes is what makes you quick at the one that doesn't.
+Yours will almost certainly refuse; the chunk where comments arrived was checked against exactly this as it was built. Run it today anyway, on an app you expect to pass, because two minutes spent on a check that passes is what makes you quick at the one that doesn't.
 
 ### The message you would send
 

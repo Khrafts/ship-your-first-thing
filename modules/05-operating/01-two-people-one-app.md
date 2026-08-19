@@ -56,11 +56,11 @@ That is **multi-account testing** (a one-line definition: testing your live app 
 
 ### The four scenarios
 
-Run each of these against the LIVE app, in order. Two of them are things you are allowed to do, where you are watching what happens on the other person's screen. Two of them are the other shape — the refusal check you ran in every chunk of Module 4, where you try the thing that should not be allowed and confirm you are turned down.
+Run each of these against the LIVE app, in order. Two of them are things you are allowed to do, where you are watching what happens on the other person's screen. Two of them are the other shape — the refusal check you ran in every Module 4 chunk from sign-in on, where you try the thing that should not be allowed and confirm you are turned down.
 
 - **Follow is one-directional:** alice follows bob → bob's window shows alice in his **Followers**; alice does NOT silently appear in bob's Following; neither profile shows a Follow button on its OWN page.
 - **Feed differs per account:** alice and bob see different feeds; each sees their own posts plus the people they follow.
-- **Nothing of the other person's is yours to change:** as bob, try to edit or delete alice's post and alice's comment — expect refusal both times.
+- **Nothing of the other person's is yours to change:** as bob, try to edit or delete alice's post and alice's comment — expect refusal both times, and refresh afterwards to read alice's words for yourself rather than taking silence for a refusal.
 - **Signed-out can read, can't act:** a third window signed in as nobody can READ public posts, threads, and like counts but cannot post, comment, like, or follow.
 
 Two of those four are the ground the next lessons are built on, and it is worth knowing which as you run them. The third one — nothing of the other person's is yours to change — is where Lesson 2 goes: a build where that edit went through, on an app that looked perfectly healthy right up until somebody tried it. The second one, the feed, is Lesson 3's: a feed that was reported finished and was quietly leaving out the one post its owner had just written. You are running both checks today on an app you expect to pass them. That is the point of running them today.
@@ -92,7 +92,7 @@ Run the full ritual against your live app, and write one recovery prompt whether
 1. **Set up the two windows.** Your everyday browser signed in as alice; a different browser, or a private window, signed in as bob. If one of the accounts does not exist yet, sign up for it in the second browser first.
 2. **Scenario one — follow is one-directional.** As alice, follow bob. Switch to bob's window and open his profile: alice should be in his Followers, and his Following list should be untouched by anything you just did. Check both of your own pages for a Follow button while you are there; neither should offer one.
 3. **Scenario two — feed differs per account.** Open alice's feed and bob's feed and compare them. Each should carry that person's own posts plus the people they follow, and the two should not be the same page.
-4. **Scenario three — nothing of the other person's is yours to change.** As bob, open a post alice wrote and try to change or delete it. Then open a comment alice wrote and try the same. Both should refuse.
+4. **Scenario three — nothing of the other person's is yours to change.** As bob, open a post alice wrote and try to change or delete it. Then open a comment alice wrote and try the same. Both should refuse — then refresh and read both, because the result you are after is alice's words unchanged, not the absence of a complaint.
 5. **Scenario four — signed-out can read, can't act.** Open a third window that has never signed in. Read a profile, a post's page and its thread, and the like counts. Then look for anything at all you can press: posting, commenting, liking, following. There should be nothing.
 6. **Write one recovery prompt.** Pick any one of the four — the most interesting is usually the one you would least expect to fail — and write the message you *would* send if it had come back wrong. Three parts: what you did, what you saw, what should have been true. No cause, no theory, no instructions about where to look. If something did in fact come back wrong, send that one for real, and re-run the scenario once your agent says it is fixed.
 

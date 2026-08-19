@@ -63,7 +63,7 @@ A fix is a change, and a change lands somewhere. Sometimes it lands somewhere yo
 
 So after any fix, two things run, and they are the two you already have.
 
-**The ones your agent runs and shows you.** Every feature in your plan came with a **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)), agreed before the work started. That did not stop applying when the building stopped. A fix gets a gate exactly like a feature does, and the sentence when one arrives without it is the sentence Module 4 gave you:
+**The ones your agent runs and shows you.** Every feature in your plan came with a **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)), agreed before the work started. That did not stop applying when the building stopped. A fix gets a gate exactly like a feature does, with one difference: nobody planned this one, so nothing was agreed in advance. You supply the agreement yourself, in the same breath as the description — one line saying what done means for this fix — *"Done is that I can open any profile and see it."* Once that is said, the sentence when the work comes back without its results is the sentence Module 4 gave you:
 
 > "Run the checks we agreed on and show me the results first."
 
@@ -114,7 +114,7 @@ A rehearsal. Nothing on your app breaks, nothing changes, and the one thing you 
 You've got this if you can do both:
 
 1. Say the four moves in order without looking them up, and say which two you run every single time and which two you reach for when going forward has stopped paying.
-2. Write the message for a live app whose profiles have gone blank — and then say what happens after your agent reports the fix finished: what gets re-run, who runs each part of it, and the sentence you send if "done" arrives without the results.
+2. Write the message for a live app whose profiles have gone blank, and say what done means for that fix in one line before you hand it over — and then say what happens after your agent reports it finished: what gets re-run, who runs each part of it, and the sentence you send if "done" arrives without the results.
 
 ## Going deeper
 
