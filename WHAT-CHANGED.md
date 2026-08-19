@@ -25,6 +25,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
 | An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
 | An older copy of Module 4 tells you to look for words in the agent's changes | Module 4 no longer asks you to read the agent's work — you try things in the running app, and the agent runs its own checks (since 2026-08-18) | [Module 4](./modules/04-thread-project/README.md) |
+| An older copy of SETUP or the cheatsheet tells you to open a terminal or launch a Codespace | The course runs in a desktop agent app; the reference pages were rebuilt to match (since 2026-08-19) | [SETUP](./SETUP.md) |
+
+## 2026-08-19 — The reference pages match the desktop-app course
+
+**Change:** SETUP, BUDGET, VERSIONS, COMMON-ISSUES, CHEATSHEET, and the GLOSSARY are rebuilt for the desktop agent apps. Setup is now "install your app, create your accounts"; the cheatsheet lists phrases you say to your agent and buttons you press, not commands.
+**If you're affected:** If you bookmarked any of these pages, re-read them — the old Codespaces and command-line instructions are gone.
+**Details:** The pages live at the repo root; the module content they describe changed in the entries dated 2026-08-16, 2026-08-17, and 2026-08-18.
 
 ## 2026-08-18 — Module 4 is rebuilt: a plan lesson, eight chunks, and test gates
 
