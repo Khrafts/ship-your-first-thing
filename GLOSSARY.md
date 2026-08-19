@@ -8,6 +8,8 @@
 > One-line plain-English definition. *Example or context.*
 > Used in: `[→ source lesson](path/to/lesson.md)`.
 
+**Reading the `Used in:` line.** It answers one question — where in the course does this word actually appear? — and it has two readings, told apart by the wording of the line itself. Most entries name the lessons that **link here through a vocab callout**; that link is the contract this file exists to keep. Some name a lesson that only **uses the word in passing**, with no callout and no link back. A few say no lesson uses the term at all.
+
 **How to contribute:** See `CONTRIBUTING.md`. The norm is: when a lesson uses a term for the first time, the lesson author adds an entry here in the same PR. If you find a vocab callout in a lesson without a matching anchor here, file an issue or PR a fix.
 
 **Scope note (re-cut 2026-08-19).** This file was re-cut for the shape the course has now: the learner works inside an agent app, approves what the agent proposes, and is never asked to open a terminal or type a command. Terms that existed only to describe hand-run tooling — the browser-hosted workspace, the package manager, the JavaScript runtime, the typed session commands — were removed rather than redefined, along with the terms belonging to the read-the-code module retired 2026-08-12 and to the free-path command-line agent retired the same day. No current lesson linked to any of them. Terms the learner still meets are defined here by what they **say** to the agent or **see** in the running app, never by the mechanics underneath.
@@ -48,7 +50,7 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 
 ### branch
 A separate line of saved versions, used to try something without disturbing the version that already works. Your agent starts one and folds it back in; you ask in plain words and never operate it yourself. *Example: "try that on a separate line of work and leave the working version alone" is the whole of your side of it.*
-Used in: no current lesson. Module 2's save system stops at saving and sending up.
+Used in: no lesson calls it out; [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing, in the line about every push to the main branch going through the pipeline. Module 2's save system stops at saving and sending up.
 
 ### browser
 A program on your computer that knows how to ask servers for webpages and render them. *Example: Chrome, Firefox, Safari.*
@@ -226,7 +228,7 @@ Used in: no current lesson.
 
 ### push
 Sending saved versions up from your computer to the project's home page on GitHub, so a copy survives even if your machine doesn't. Agent-performed — it's part of what "saved" means when your agent says it. *Example: after saving a working version, your agent sends it up, and that version appears on the project's home page on GitHub.*
-Used in: no current lesson. [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md) teaches the send-up without naming it.
+Used in: no lesson calls it out; [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing, in the pipeline picture and again in its exercise. [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md) teaches the send-up without naming it.
 
 ## Q
 
