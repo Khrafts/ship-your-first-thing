@@ -192,7 +192,7 @@ Used in: no current lesson.
 
 ### multi-account-testing
 The ritual of testing the live app as two real people at once — signed in as alice in one browser and bob in a different browser (or a private/incognito window) — to catch what single-user testing can't. *Example: alice follows bob, then both windows are checked against each other — does bob's Followers list show alice? does alice's own page still offer herself a Follow button?*
-Used in: no current lesson.
+Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md).
 
 ## O
 
@@ -248,7 +248,7 @@ Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome
 
 ### recovery-prompt
 The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
-Used in: no current lesson.
+Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md).
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
