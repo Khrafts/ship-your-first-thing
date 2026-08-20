@@ -108,7 +108,7 @@ Then the one that pushes rather than watches. This is a **refusal check** (a one
 >
 > **EXPECT:** no way to change it, or the attempt refuses. Refresh afterwards and read the line: it still says what its owner wrote.
 >
-> **IF IT WORKS:** report it in one sentence — *"Signed in as bob, I changed alice's currently line and the change stuck. Only a profile's owner should be able to change it. Find out why and fix it, then I'll run the same check again."*
+> **IF IT WORKS:** hand it back in one sentence — *"Signed in as bob, I changed alice's currently line and the change stuck. Only a profile's owner should be able to change it. Find out why and fix it, then I'll run the same check again."*
 
 The refresh at the end is not optional and it is the half people skip. Nothing visibly happening and nothing actually happening look identical from the outside, and only reading the line afterwards separates them.
 
@@ -136,7 +136,11 @@ Three moves, in order.
 
 **Then run the whole net again** when the repair comes back — not only the scenario that failed. A repair is a change, and a change is what the trigger is about.
 
-If the same scenario keeps failing across two or three rounds, stop steering it. Start a fresh conversation in your agent app, go back to your last saved version, and begin this feature again from there. The saved version is why that is a small decision rather than a frightening one.
+If the same scenario keeps failing across two or three rounds, stop steering it. Module 5 left you the sentence for exactly this:
+
+> "Take us back to the last saved working version."
+
+Your agent does every part of that, the same as it does the saving; your side is the sentence. Then start a fresh conversation and begin this feature again from your last saved version — and because going back is itself a change, the net runs after a restore too, the same as after a fix. The saved version is why that is a small decision rather than a frightening one.
 
 ### Saving it
 
