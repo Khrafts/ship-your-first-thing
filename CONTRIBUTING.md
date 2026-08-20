@@ -37,6 +37,7 @@ Insert the entry at the top of the live region (above the boundary comment, newe
 voice-lint check #10 blocks an entry in the live region that breaks any of these:
 
 - At most 6 non-blank body lines per entry; summary at most 72 characters; no line over 300 characters (the caps count bytes, so a summary heavy in `—`/curly quotes has a little less headroom).
+- The 300-character cap applies to **every line in the live region**, including rows of the `## Fast answers` triage table — not just the lines inside a dated entry. A table row cannot be wrapped without breaking the table, so when a row trips the cap the fix is to shorten it, never to split it across lines. Existing rows run 144–292 bytes; stay in that range.
 - All three labels present: `**Change:**`, `**If you're affected:**`, `**Details:**`.
 - A dated `## YYYY-MM-DD — summary` heading, and the boundary comment still in place.
 - No internal codenames (decision IDs `D-xx`/`CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, success-criterion `SC #n`) and no `.planning/` paths — those mean nothing to learners. Put them in the PR body.
