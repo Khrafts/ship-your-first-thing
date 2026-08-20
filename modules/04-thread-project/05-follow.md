@@ -186,7 +186,7 @@ Underneath your four checks sits the layer that is your agent's job. This chunk'
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c4); presented in the desktop app's framing. -->
 
-Look first, say the sentence second. When this chunk was really built the saving was held back on purpose through the whole exchange above — the dashboard step and both accounts — and then the chunk went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version carrying three things: the file for the database, the code behind following and unfollowing, and the profile page that now shows a button and two lists. The note on it read "Chunk 4 — follow and unfollow, one direction only".
+Look first, say the sentence second. When this chunk was really built the saving was held back on purpose through the whole exchange above — the dashboard step and both accounts — and then the chunk went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version carrying three things: the file for the database, the code behind following and unfollowing, and the profile page that now shows a button and two lists. The note on it read "follow and unfollow, one direction only".
 
 That first item is the same one to watch as last chunk. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."*
 

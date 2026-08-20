@@ -57,5 +57,6 @@ Module 4, complete — your app live at its public address. Every lesson in this
 ## Navigation
 
 [← Module 4 — Designing & building the thread project](../04-thread-project/README.md)
+[Next: Module 6 — After it's live →](../06-after-live/README.md)
 
-Module 6 — After it's live — comes next. It starts once you have the operating moves this module ends with.
+It starts once you have the operating moves this module ends with.

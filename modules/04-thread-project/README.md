@@ -46,12 +46,15 @@ A **smell-test** (a one-line definition: a check you run without reading a line 
 **The refusal check.** A **refusal check** (a one-line definition: in the running app, you try the thing that should not be allowed and confirm the app turns you down, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) is how you test a fence by walking into it. From Lesson 2 onward, every chunk carries at least one.
 
 > **TRY THIS:** open a private browser window that has never signed in, read what should be public, then try to change something.
+>
 > **EXPECT:** reading works, and every way of changing anything is missing, switched off, or bounces you to the sign-in page.
+>
 > **IF IT WORKS:** hand it back in one sentence — *"While signed out I could delete a post. A signed-out visitor should only be able to read. Fix that."*
 
 **The pre-flight question.** A **pre-flight question** (a one-line definition: before a step you can't take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)) comes before, never after. It is due ahead of anything you paste into a dashboard, and ahead of anything that runs against information already in your project.
 
 > **BEFORE YOU PASTE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
+>
 > **THEN:** if the dashboard's own warning matches the answer you got, continue. If the warning names something the answer didn't predict — or you never asked — press nothing, and hand the warning's words back to your agent.
 
 **And the third layer, which is your agent's job, not yours.** Every chunk ends with a **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it may say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) — agreed before the work starts, run by your agent, reported to you in plain words. Your side is one sentence: when "done" arrives without the report, say *"Run the checks we agreed on and show me the results first."*

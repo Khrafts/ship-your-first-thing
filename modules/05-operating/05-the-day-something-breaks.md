@@ -134,5 +134,6 @@ You wrote the message you would send on a morning that starts badly, and you ask
 ## Navigation
 
 [← Previous: Caught before it ran: the question that goes before you press anything](./04-caught-before-it-ran.md)
+[Next: Module 6 — After it's live →](../06-after-live/README.md)
 
-Module 6 — After it's live — comes next. It starts from the app you now know how to operate.
+It starts from the app you now know how to operate.

@@ -197,7 +197,7 @@ Look first, say the sentence second. When this chunk was really built, the check
 
 > "All my checks passed: Bob follows nobody and still sees his own post in his feed, my feed has my newest post on top, Bob's under it, my older post under that, and Edit only shows on my own posts. Save this as a working version."
 
-It went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering six files — two new ones and four changed, including the profile page, which now shows posts using the same piece the feed does. The note on it read "Chunk 5 — a home feed of the people you follow, and yourself".
+It went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering six files — two new ones and four changed, including the profile page, which now shows posts using the same piece the feed does. The note on it read "a home feed of the people you follow, and yourself".
 
 What to watch this time is different from the last three chunks. There is no database file in this saved version, because this chunk did not touch your database. What matters instead is that the profile page changed in this chunk too, so it belongs in the same saved version as the feed — a version that saved half of a change cannot rebuild the app it describes. Once you have clicked through the feed and it holds, open a profile and confirm posts still look the way they did before. Then: *"Save this as a working version."*
 

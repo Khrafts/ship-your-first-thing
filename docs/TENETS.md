@@ -19,7 +19,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 **Why this exists.** A learner with the right mental model can reason about almost any product; a learner buried in jargon stalls at the first unfamiliar word. Every "you already know X" assumption silently excludes the audience the course exists for — if a learner can't follow because of an undefined term, the course failed at line 1 of that lesson. Mechanics belong to the agent; frameworks belong to the learner.
 
 **Operationalized:** `COURSE-AUTHORING.md` Part 1 (audience floor + three-tier vocab contract). `docs/audience-vocabulary.md` is the authoritative per-module term list.
-**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M5; human review for M6+*.
+**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M6; human review for M7*.
 
 ---
 
@@ -93,7 +93,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 1. **Read this file before reading anything else.** TENETS.md is the first read for every authoring task.
 2. **Read `docs/COURSE-AUTHORING.md` for the operational playbook.** The tenets state WHAT; COURSE-AUTHORING explains HOW.
 3. **Read CLAUDE.md for the hard rules.** Fifteen hard rules. Don't violate without explicit user permission.
-4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M5.
+4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M6.
 5. **Check the audience-vocabulary contract for the target module before writing.** Forbidden / Requires-callout / Safe / SYMPTOM-only.
 6. **For M4+ sections, apply the check inventory and test gate section-by-section as you write** (COURSE-AUTHORING Part 6). Symptom-and-steer is harder to retrofit than to draft.
 7. **Honor the module spine** (COURSE-AUTHORING Part 3): build on the named prior payoff, set up the next.

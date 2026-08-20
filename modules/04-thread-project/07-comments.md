@@ -236,7 +236,7 @@ And after the section you just read, one thing about that report is worth saying
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->
 
-Look first, say the sentence second. When this chunk was really built, the save was held back through the whole of it — the dashboard step and the two-account walkthrough both — and then went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering nine files. The note on it read "Chunk 6 - a page for every post, with its comments".
+Look first, say the sentence second. When this chunk was really built, the save was held back through the whole of it — the dashboard step and the two-account walkthrough both — and then went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering nine files. The note on it read "a page for every post, with its comments".
 
 Same watch as the other database chunks: this one changed your database, so the file that changed it belongs in the same saved version as the page and the commenting — a version that saved half a change cannot rebuild the app it describes. Once you have clicked through the thread from both accounts and it holds: *"Save this as a working version."*
 

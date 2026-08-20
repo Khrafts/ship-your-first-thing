@@ -42,7 +42,7 @@ If you picked the paid path, you're installing **Claude Code desktop** (an AI co
 
 <!-- SCREENSHOT SLOT: the Claude desktop app with the Code tab selected, showing the empty first-run state — captured in the user-assisted evidence pass -->
 
-<!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart, fetched 2026-08-15 (Windows requires installing `git` separately for local sessions; most Macs already have it); download page `git-scm.com/downloads/win`, per .planning/research/2026-08-12-desktop-agent-apps.md:43. -->
+<!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart, fetched 2026-08-15 (Windows requires installing `git` separately for local sessions; most Macs already have it); download page `git-scm.com/downloads/win`, per the 2026-08-12 desktop-agent research memo. -->
 
 > **Note:** On Windows, one extra step comes first: download and install **git** (part of the save system your agent operates for you later in this course — you install it once now and never open it yourself, [→ GLOSSARY](../../GLOSSARY.md#git)) from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — the same download-and-run-the-installer step you just did for Claude Code desktop — then restart Claude Code desktop. Most Macs already have it, so this step is Windows-only.
 
@@ -62,7 +62,7 @@ If you picked the free path, you're installing the ChatGPT desktop app and using
 
 <!-- SCREENSHOT SLOT: the ChatGPT desktop app with the Chat/Codex switch visible near the message box — captured in the user-assisted evidence pass -->
 
-<!-- Tool claim source: chatgpt.com and help.openai.com return 403 to automated fetch (matches the 2026-08-12 research memo's note); the sign-in flow and Chat/Codex switch above are cross-checked against learn.chatgpt.com/codex/app and learn.chatgpt.com/codex/quickstart, fetched 2026-08-15, both of which loaded successfully. Free-tier and "for a limited time" wording follows .planning/research/2026-08-12-desktop-agent-apps.md, which neither of those pages contradicted or confirmed directly. -->
+<!-- Tool claim source: chatgpt.com and help.openai.com return 403 to automated fetch (matches the 2026-08-12 research memo's note); the sign-in flow and Chat/Codex switch above are cross-checked against learn.chatgpt.com/codex/app and learn.chatgpt.com/codex/quickstart, fetched 2026-08-15, both of which loaded successfully. Free-tier and "for a limited time" wording follows the 2026-08-12 desktop-agent research memo, which neither of those pages contradicted or confirmed directly. -->
 
 > **Note:** Codex is included free "for a limited time" on the Free plan. If that changes before you finish the course, the paid ChatGPT tiers keep Codex working the same way — nothing about how you use it changes, only what it costs.
 
