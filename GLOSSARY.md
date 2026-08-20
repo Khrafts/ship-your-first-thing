@@ -231,7 +231,7 @@ The specific text you send to an AI agent describing what you want. *Example: "A
 Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md).
 
 ### prompt-injection
-When content pasted from outside the conversation — a user's comment, a bug report someone sent — carries instructions that confuse the agent into acting on them instead of on what you asked. *Example: pasting in a bug report about a like count that ends with a paragraph addressed to the agent — telling it to change the site's heading and add a maintenance banner — then seeing those two changes on the plan that comes back, and declining at the approval prompt.*
+When content pasted from outside the conversation — a user's comment, a bug report someone sent — carries instructions your agent treats as yours, so the next thing it offers includes work you never asked for. What you did ask for is usually still there, which is what makes the extra easy to miss; now and then it gets crowded out as well. *Example: pasting in a bug report about a like count that ends with a paragraph addressed to the agent — telling it to change the site's heading and add a maintenance banner — then seeing those two changes on the plan that comes back, and declining at the approval prompt.*
 Used in: [Module 6 — When what you paste isn't yours](./modules/06-after-live/03-when-what-you-paste-isnt-yours.md).
 
 ### publishable-key

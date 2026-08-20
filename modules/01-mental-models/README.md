@@ -27,4 +27,4 @@ The thread that ties it together: one picture grows across all four lessons. A r
 ## Navigation
 
 [← Module 0 — Welcome](../00-welcome/README.md)
-[Next: Module 2 — Toolchain →](../../README.md)
+[Next: Module 2 — Your agent and the machinery it drives →](../02-toolchain/README.md)

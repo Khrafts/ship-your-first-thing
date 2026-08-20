@@ -126,7 +126,7 @@ Your agent does every part of that, the same as it does the saving. Your side is
 
 ### The name for it
 
-You have now watched one all the way through and you have the move for it, so the name is safe to hand over: what happened there is **prompt injection** (a one-line definition: text you pasted from outside your conversation carrying instructions your agent acts on instead of the ones you gave it, [→ GLOSSARY](../../GLOSSARY.md#prompt-injection)).
+You have now watched one all the way through and you have the move for it, so the name is safe to hand over: what happened there is **prompt injection** (a one-line definition: text you pasted from outside your conversation carrying instructions your agent takes as yours, so it offers work you never asked for, [→ GLOSSARY](../../GLOSSARY.md#prompt-injection)).
 
 Take the name as a label rather than a subject. There is a large field behind it and none of it is yours; it will not help you at the approval prompt, and the thing that will help you is small enough to carry:
 
