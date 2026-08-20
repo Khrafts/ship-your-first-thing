@@ -67,7 +67,7 @@ The second is that what you paste decides which question you have asked. Hand so
 
 Three honest answers, in the order most people find them.
 
-Somebody who builds software — and it does not have to be somebody who has ever seen the kind of app you built. The conditions above are not about this framework or this database; a person who has been stuck in a loop with a tool will recognise all three instantly.
+Somebody who builds software — and it does not have to be somebody who has ever seen the kind of app you built. The conditions above are not about what your app is made of; a person who has been stuck in a loop with a tool will recognise all three instantly.
 
 The people already standing next to the project. The person who reported the fault can tell you what they did in a way you cannot get from the app. Whoever else uses it can tell you whether they see it too. That is not the same help as a developer, and on the first two conditions it is often better, because it goes at the disagreement about what the words mean.
 
@@ -92,7 +92,7 @@ Nothing runs and nothing changes. The deliverable is one written handover and on
 3. **Count the rounds.** How many times did you say the same thing in different words before something moved? Write the number down next to it. That number is the one you will want next time, and it is the one nobody remembers afterwards.
 4. **Read it back and cut anything that is not one of the three parts** — especially anything you would have copied out of your agent's replies.
 5. **Name your person.** Somebody who builds things, somebody using your app, or a place you would go looking if you had to today. If the honest answer is that you do not have one, write that down as it is. It is the most useful line on the page.
-6. **Keep it with the messages you wrote in Lessons 1 to 3.** Four lessons, four written things, one place to find them.
+6. **Keep it with what you wrote down in Lessons 1 to 3.** Four lessons, four written things, one place to find them.
 
 ## Checkpoint
 
