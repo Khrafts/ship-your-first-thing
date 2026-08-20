@@ -49,7 +49,7 @@ flowchart LR
   Level -->|you say the save sentence| Save
   Save -->|your agent sends a copy up| Home
   Save -->|you carry on changing things| Bad
-  Bad -->|take us back to the last working version| Save
+  Bad -->|take us back to the last saved working version| Save
 ```
 
 ### The ritual
@@ -80,7 +80,7 @@ The second thing the picture predicts is about fear, and it's the more useful ha
 
 When something has gone wrong — the app stopped working, the last hour made things worse, you've lost the thread of what changed — you have one sentence:
 
-> **"Take us back to the last working version."**
+> **"Take us back to the last saved working version."**
 
 That sentence is always available to you. It is not an admission of failure, it is not a thing to feel sheepish about, and there is no number of times that counts as too many. Your agent does the whole thing; you don't touch any of the machinery involved. What you get back is the project exactly as it was at your last save point, and the only thing you lose is whatever happened after it.
 

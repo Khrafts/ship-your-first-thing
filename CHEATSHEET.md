@@ -17,6 +17,7 @@
 | Phrase | Say it when | Taught in |
 |---|---|---|
 | *"Save this as a working version."* | The moment a feature works — before you move on to the next chunk. | [Module 4 Lesson 0](./modules/04-thread-project/00-the-plan.md) |
+| *"Take us back to the last saved working version."* | A change made things worse, or you have lost the thread of what changed. You lose only what happened after your last save. | [Module 2 Lesson 3](./modules/02-toolchain/03-the-save-system.md) (it becomes the day-something-breaks move in [Module 5 Lesson 5](./modules/05-operating/05-the-day-something-breaks.md)) |
 | *"Start a fresh conversation and begin this chunk again from your last saved version."* | Your agent keeps circling the same problem instead of fixing it. Don't keep arguing with it — restart instead. | [Module 4 Lesson 4](./modules/04-thread-project/04-posts.md) (the same line closes every chunk from Lesson 1 on) |
 | *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* | Before you approve anything that touches data you already have saved, and before you paste anything into a dashboard. | [Module 4 overview](./modules/04-thread-project/README.md) |
 | *"Run the checks we agreed on and show me the results first."* | Your agent reports a chunk "done" without showing you the checks it ran. | [Module 4 Lesson 0](./modules/04-thread-project/00-the-plan.md) |

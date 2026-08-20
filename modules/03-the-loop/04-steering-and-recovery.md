@@ -144,7 +144,7 @@ Think of it the way you think about a meeting that has gone in circles. Nobody i
 
 Two things make this cheap rather than frightening. The first is that your work was never in the conversation: your folder and your page are files on your computer, and they sit where they were no matter how many conversations you start or end. The second is that your saved versions are the floor you land on. If the session left the page in a state you do not want, you do not have to fix it by hand or explain what went wrong. You say:
 
-> Take us back to the last working version.
+> Take us back to the last saved working version.
 
 That sentence is always available, and the only thing it costs you is whatever happened since your last save. Your agent does the work of getting back there, and going back is not an admission that you failed — it is the reason you save. It is also why the gap between saves is worth keeping short: the sentence is cheap in proportion to how recently you used the other one.
 
