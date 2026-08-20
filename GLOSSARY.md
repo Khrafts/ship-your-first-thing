@@ -20,7 +20,7 @@
 
 ### additive-feature
 A new feature added to a working app without breaking the parts that already work. *Example: adding a bookmark button to posts without touching sign-in, profiles, or the feed that already work.*
-Used in: no current lesson.
+Used in: [Module 6 — Adding without breaking](./modules/06-after-live/02-adding-without-breaking.md).
 
 ### agent-loop
 The iterative cycle of intent → ask → evaluate → steer, repeated until the AI agent has produced what you wanted. *Example: every Module 3 lesson is one or more turns of the agent loop.*
@@ -102,7 +102,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### definition-of-done
 The checks the agent must run and show you, in plain words, before it is allowed to say a piece of work is finished. Also called a **test gate**. *Example: before reporting the sign-in work finished, the agent shows that a brand-new email can sign in, that refreshing the page keeps them signed in, and that a signed-out visitor cannot reach account pages.*
-Used in: [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — The plan](./modules/04-thread-project/00-the-plan.md), and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md).
+Used in: [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — The plan](./modules/04-thread-project/00-the-plan.md), and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md), [Module 6 — Adding without breaking](./modules/06-after-live/02-adding-without-breaking.md).
 
 ### dependency
 A package your app needs in order to run at all. Your agent adds them and keeps the list current; the list is never yours to edit. *Example: the thread project needs several before it will start, and getting that list right is the agent's job.*
@@ -224,7 +224,7 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 
 ### pre-flight-question
 Before any irreversible step — anything pasted into a dashboard, anything run against data that already exists — a named question you ask the agent about consequences, and wait for the answer before continuing. *Example: before pasting a database file into the Supabase SQL Editor, asking "Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today." and waiting for the answer.*
-Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
+Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [1](./modules/04-thread-project/01-hello-world-deploy.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md), [Module 6 — Adding without breaking](./modules/06-after-live/02-adding-without-breaking.md).
 
 ### prompt
 The specific text you send to an AI agent describing what you want. *Example: "Add today's date below the tagline" is a prompt; a series of prompts plus the agent's responses is a session.*
@@ -264,7 +264,7 @@ Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people
 
 ### refusal-check
 In the running app, trying the thing that should NOT be allowed and confirming it is refused; if it goes through, telling the agent exactly what you did and what should have stopped it. *Example: signing in as a second account and trying to edit a comment the first account wrote — the edit should be refused.*
-Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
+Used in: [Module 4 overview](./modules/04-thread-project/README.md) and Lessons [2](./modules/04-thread-project/02-sign-in.md), [3](./modules/04-thread-project/03-profile.md), [4](./modules/04-thread-project/04-posts.md), [5](./modules/04-thread-project/05-follow.md), [6](./modules/04-thread-project/06-feed.md), [7](./modules/04-thread-project/07-comments.md), [8](./modules/04-thread-project/08-likes-and-go-live.md); [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md), [Module 6 — Adding without breaking](./modules/06-after-live/02-adding-without-breaking.md).
 
 ### regression
 A working feature that breaks because of an unrelated change the agent made somewhere else. *Example: a fix to the feed accidentally breaks sign-in, so after any fix the checks that used to pass are re-run — not just the one thing that changed.*
