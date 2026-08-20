@@ -120,7 +120,7 @@ That is the shape every chunk from here repeats: a signed-out visitor reads, and
 
 ### The fence you cannot reach from a browser
 
-One fence neither the app nor your dashboard will let you push on is the photo storage itself — whether one person could get a file into another person's folder by going around the app entirely. You cannot try that from a browser, and you are not asked to. It is your agent's to build, and Module 5's multi-account walkthroughs re-test everything this module ships. What is yours today is the intent, in plain words: *"Who is allowed to upload a photo, and where does each person's photo go?"* — and holding the answer against what you asked for.
+One fence neither the app nor your dashboard will let you push on is the photo storage itself — whether one person could get a file into another person's folder by going around the app entirely. You cannot try that from a browser, and you are not asked to. It is your agent's to build, and Module 5's multi-account walkthroughs re-test what two accounts can reach. What is yours today is the intent, in plain words: *"Who is allowed to upload a photo, and where does each person's photo go?"* — and holding the answer against what you asked for.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c2); presented in the desktop app's framing. -->
 
