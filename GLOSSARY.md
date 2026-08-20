@@ -62,7 +62,7 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ### bug-report
 Someone telling you the deployed app does something wrong. *Example: a friend messages "the follow button doesn't do anything on my phone" — that's a bug report; you reproduce it before asking the agent to fix it.*
-Used in: no current lesson.
+Used in: [Module 6 overview](./modules/06-after-live/README.md), [Module 6 — A bug report arrives](./modules/06-after-live/01-a-bug-report-arrives.md).
 
 ## C
 
@@ -276,7 +276,7 @@ Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 �
 
 ### reproduce
 Opening the deployed app, following the steps in a bug report, and confirming you see the same wrong thing. *Example: the report says "click Follow twice" — you click Follow twice on the live app and watch whether the count goes up by two.*
-Used in: no current lesson.
+Used in: [Module 6 — A bug report arrives](./modules/06-after-live/01-a-bug-report-arrives.md).
 
 ### request
 A structured message asking a server for something — like a paper form handed to a receptionist. *Example: `GET /api/posts` is a request.*
