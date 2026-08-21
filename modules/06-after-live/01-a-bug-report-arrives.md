@@ -27,7 +27,7 @@ Module 5 left you four moves for the day your live app stops behaving, and every
 
 > **Deviation note:** This read runs longer than most in the course. It follows one repair from the message that starts it to the check that closes it, and the order those beats arrive in is the whole lesson — splitting them would hand you the ending without the part that earned it.
 
-There is nothing to prepare for this module. No new account, no dashboard to open, nothing to install, nothing to set up. You start from the app exactly as Module 5 left it: live at its link, with alice and bob already on it.
+There is nothing to prepare for this module. No new account, nothing to install, nothing to set up. You start from the app exactly as Module 5 left it: live at its link, with alice and bob already on it.
 
 Nothing gets built in this lesson either, and nothing of yours gets broken. The split has not moved — your agent owns the code, the rules, and every fix; you own saying what you want, watching the running app, running the checks, and saying when to save.
 

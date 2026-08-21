@@ -40,7 +40,7 @@ Every ask in this module is written once and works in either taught app. You run
 
 ## Before you start
 
-Module 5, complete — and nothing else. There is nothing to prepare for this module: no new account, no dashboard, nothing to install and nothing to set up. It starts from your app exactly as Module 5 left it, live at its link with your two accounts already on it, and from the operating moves that module ends with.
+Module 5, complete — and nothing else. There is nothing to prepare for this module: no new account to make, nothing to install and nothing to set up before you start. It starts from your app exactly as Module 5 left it, live at its link with your two accounts already on it, and from the operating moves that module ends with.
 
 ## Navigation
 

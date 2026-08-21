@@ -68,7 +68,7 @@ The fourth line is the one that makes this a live-app ask rather than a Module 4
 
 A new line on a profile is a change to what your app stores, and your app now stores real things: two profiles with photos on them, posts, follows, a comment thread. Module 4's last chunk widened one rule for exactly this moment, and it has been waiting for a day like today.
 
-Before you approve anything that touches your database — whether it arrives as a file for you to paste on your dashboard, the way every one in Module 4 did, or as a step your agent asks you to approve — one thing goes first. It is a **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)), and it is the same sentence you have sent before every one of these:
+Before you approve anything that touches your database — whether it arrives as a file for you to paste on your dashboard, [the way every one in Module 4 did](../04-thread-project/04-posts.md), or as a step your agent asks you to approve — one thing goes first. It is a **pre-flight question** (a one-line definition: before a step you cannot take back, you ask your agent a named question about what it changes, and wait for the answer, [→ GLOSSARY](../../GLOSSARY.md#pre-flight-question)), and it is the same sentence you have sent before every one of these:
 
 > **BEFORE YOU APPROVE ANYTHING THAT TOUCHES THE DATABASE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
 >
