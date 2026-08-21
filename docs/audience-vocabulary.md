@@ -381,6 +381,10 @@ Added 2026-08-21 by the escape-valve adjudication, because the five surviving po
 - **Row Level Security** / **RLS** — the name of the rules that decide who can read and change each row; pointer 1 has to say it to name Supabase's own page. Four modules refused this term on purpose; M7 is the module where naming it with a callout is the point.
 - **Server Components** — the name of the split pointer 2 points at.
 
+Added 2026-08-21 with Lesson 3 itself, under the standing obligation below — the noun appeared on no tier list anywhere in this contract, which made it invisible to check #6 in exactly the way `framework` was:
+
+- **automated test** — "a check written down in a form the agent can run again on demand and report back on." Pointer 4 names the topic and cannot name it without this word. The learner never writes one, reads one, or runs one: they say the sentence that asks for them and hear the results back in plain words, which is what keeps the noun inside the say-it-or-see-it floor. GLOSSARY anchor `automated-test`. The pointer stays fenced at what the learner says — it names no continuous-integration surface, no pipeline and no linter, all of which were adjudicated CUT as retired surface.
+
 **Standing obligation.** Module 7 is the highest-risk module in the course for the untiered-noun gap, because pointers name technologies for the first time. Every technical noun an M7 lesson introduces is checked against every tier list by hand and added here in the same commit that ships the lesson — a noun absent from every list is invisible to check #6.
 
 ### M7 IS where deeper explanation lives — for the entries that survived adjudication

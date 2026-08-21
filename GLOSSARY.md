@@ -50,6 +50,10 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 Deciding what an identified user is allowed to do. Sometimes shortened to "authz." *Example: a logged-in user can edit their own posts but not someone else's.*
 Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do-what.md).
 
+### automated-test
+A check written down in a form your agent can run again on demand and report back on, instead of one you re-agree and re-click by hand every time. *Example: once a feature works, asking the agent to write tests for what was just built, run them, and show you the passes and failures in plain words.*
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
+
 ## B
 
 ### branch
@@ -96,7 +100,7 @@ Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do
 
 ### curated-resources
 Module 7's external pointers to canonical docs — dated, and named as "is this for you?" reading rather than curriculum. *Example: a Module 7 lesson on going deeper on RLS links to canonical docs and names what's there, without replicating the Module 4 RLS deep-dive.*
-Used in: no current lesson.
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
 
 ## D
 
@@ -206,6 +210,12 @@ Used in: no current lesson.
 The ritual of testing the live app as two real people at once — signed in as alice in one browser and bob in a different browser (or a private/incognito window) — to catch what single-user testing can't. *Example: alice follows bob, then both windows are checked against each other — does bob's Followers list show alice? does alice's own page still offer herself a Follow button?*
 Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md).
 
+## N
+
+### nextjs
+What the thread project is built out of — the name printed on your own project screen. *Example: Module 7 points at its documentation for the split between the parts of a page finished before they are sent and the parts that wake up in the browser; no lesson in this course teaches it.*
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
+
 ## O
 
 ### opencode-desktop
@@ -262,6 +272,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: on a free tier, once the day's allowance is used up the app asks you to wait before you can keep going.*
 Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md) describes the free allowance running out without naming the cap.
 
+### react
+The older and much larger thing Next.js is built on, and the name most answers you find on the internet about your own app are really about. *Example: knowing the name is what makes a search for help land on pages that are about the app you have rather than about something else entirely.*
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
+
 ### recovery-prompt
 The message written after a check trips: saying exactly what was done and seen, then asking the agent to find and fix it — never fixing it yourself, never explaining the cause. *Example: "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."*
 Used in: [Module 5 — Two people, one app](./modules/05-operating/01-two-people-one-app.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — The missing post](./modules/05-operating/03-the-missing-post.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md), [Module 5 — The day something breaks](./modules/05-operating/05-the-day-something-breaks.md).
@@ -298,6 +312,10 @@ Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-c
 A single record in a database table — like one index card in a filing-cabinet drawer.
 Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md).
 
+### row-level-security
+The rules that decide, one record at a time, who is allowed to read a thing and who is allowed to change it. *Example: the thread project already runs under them — Module 4 put them in and Module 5 had you sign in as a second person and try to break one; Module 7 points at the vendor's own page rather than teaching the rules themselves.*
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
+
 ## S
 
 ### schema
@@ -307,6 +325,10 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 ### server
 A program that runs continuously, waiting for requests, and sends back responses.
 Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-web-works.md), [Module 1 — Where data lives, how programs talk](./modules/01-mental-models/02-where-data-lives.md), [Module 4 overview](./modules/04-thread-project/README.md).
+
+### server-components
+The parts of a page that are put together and finished before being sent, as opposed to the parts that wake up after they arrive in the browser. *Example: which side a piece lands on is what settles whether it can answer a click — the agent has been choosing the sides since Module 4, and Module 7 points at the vendor's own page rather than explaining the split.*
+Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-to-go-from-here.md).
 
 ### session
 A remembered "yes, you're you" so an app doesn't re-check identity on every request. Lives between authentication and the next sign-out. *Example: after you log in, the app remembers you for the next 24 hours.*
