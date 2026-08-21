@@ -28,6 +28,13 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | An older copy of SETUP or the cheatsheet tells you to open a terminal or launch a Codespace | The course runs in a desktop agent app; the reference pages were rebuilt to match (since 2026-08-19) | [SETUP](./SETUP.md) |
 | Module 4 keeps mentioning walkthroughs "in Module 5" and you can't find them | Module 5 exists now — the walkthroughs are its lessons 2 through 4 (since 2026-08-19) | [Module 5](./modules/05-operating/README.md) |
 | An older copy of Module 2 or 3 drops "saved" from the go-back sentence | Both wordings work; the course now says it one way everywhere — "Take us back to the last saved working version" (since 2026-08-20) | [Module 5 Lesson 5](./modules/05-operating/05-the-day-something-breaks.md) |
+| An older copy of Module 5 says Module 6 "comes next" but gives you nothing to click | Module 6 is published — Module 5's overview and its last lesson now link straight to it (since 2026-08-21) | [Module 6](./modules/06-after-live/README.md) |
+
+## 2026-08-21 — Module 6 is here: bug reports, new features, asking a person
+
+**Change:** Module 6 (After it's live) is published — reproducing a bug someone reports, adding a feature without breaking what works, spotting work you never asked for after pasting in text from outside, and knowing when to stop steering and ask a person.
+**If you're affected:** If you finished Module 5, the course continues at [Module 6](./modules/06-after-live/README.md). Module 1's "Next" link now reaches Module 2 instead of the course home page, and Module 4 got small wording and layout fixes — nothing you built changed.
+**Details:** The lessons are in [`modules/06-after-live/`](./modules/06-after-live/README.md); the four new words they use are in the [GLOSSARY](./GLOSSARY.md).
 
 ## 2026-08-19 — Module 5 is here: operating the app you shipped
 
