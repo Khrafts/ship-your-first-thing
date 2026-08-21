@@ -334,6 +334,10 @@ IF IT WORKS:   "I could edit a comment I didn't write. Only its author should be
                able to. Fix that."
 ```
 
+**The third leg is mandatory; its label is contextual (locked 2026-08-21).** Every check block ships all three legs — the third is what turns the block from *observing* into *reporting*, and a learner who finds a real failure with no third leg has been given no next move. What is **not** fixed is the literal words `IF IT WORKS:`. That label only reads correctly when the TRY THIS is a forbidden action, where "it worked" is the bad outcome. Where the TRY THIS is an intent observation — write a post and find it in your feed; click like and watch the number — "it works" names the *good* outcome, and hanging the recovery prompt under it would tell the learner to report success as a fault. Those blocks name their own failure condition instead: `IF YOUR OWN POSTS ARE MISSING:`, `IF IT LIES:`, `IF YOU GET STRAIGHT IN:`, `IF THE AUTHOR LINE CHANGES, OR THE EDIT SILENTLY VANISHES:`. The spec's own worked example above already does this (`IF ANYTHING ELSE HAPPENS:`). The authoring rule: **name the condition the learner would actually see**, and put the learner's own recovery sentence under it. A block missing the third leg entirely is a defect; a block whose third leg is labelled for its own check is correct.
+
+*(Audited 2026-08-21 across all 24 shipped check blocks in M4–M6: 12 use the literal `IF IT WORKS:` and 12 use a contextual label. **Zero ship without a third leg**, and every variant carries a full recovery sentence in the learner's voice. An earlier review read the 12 non-literal labels as 12 missing legs and queued a repair; the repair would have made several blocks semantically wrong, so the spec was sharpened to describe what shipped instead.)*
+
 **Form 2 — the pre-flight question.** Before an irreversible step (anything pasted into a dashboard, anything run against data that already exists), the learner asks the agent a named question about consequences and waits for the answer. This is driving, not reading.
 
 ```
@@ -382,12 +386,13 @@ Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, 
 
 | Check | Form | First taught | First applied |
 |---|---|---|---|
-| Signed-out visitor can read but not act | refusal check | Phase 3 CONTEXT | every chunk with public content + Phase 6 bug-reproduction |
+| Signed-out visitor can read but not act | refusal check | Phase 3 CONTEXT | every chunk with public content + Phase 6 regression net (M6 L2 re-runs the four Module 5 scenarios after a change; M6 L1 ships no refusal check of its own) |
 | Second account cannot edit or delete content it did not write | refusal check | Phase 3 CONTEXT (posts) | Phase 4 (comments) + Phase 5 LESSON-13 walkthrough (a) |
 | Your own edit never changes who a thing belongs to | refusal check | Phase 3 CONTEXT (posts) | Phase 5 LESSON-13 walkthrough (a) |
 | Own post appears in the running feed (never silently missing) | intent observation | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
 | Dashboard-paste pre-flight ("does this remove or overwrite anything that already exists?") | pre-flight question | Phase 3 CONTEXT (first paste) | every dashboard paste + Phase 5 LESSON-13 walkthrough (c) |
 | Like count moves the instant you click, snaps back if the save fails | intent observation | Phase 4 CONTEXT | Phase 4 Chunk 7 |
+| Post-paste pre-flight ("what in what I just pasted are you acting on?") | pre-flight question | Phase 6 CONTEXT (M6 L3) | M6 L3 — after pasting anything written outside the conversation |
 
 ### Cross-references
 
@@ -400,15 +405,15 @@ Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, 
 
 ## Part 7 — AI-Limitation Pedagogy
 
-CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the six core agent limitations and their per-limit smell-test patterns.
+CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the seven core agent limitations and their per-limit smell-test patterns.
 
 ### Why this matters (Tenet 6 anchor)
 
 A learner who cannot recognize when the agent is wrong cannot recover when the agent is wrong. The recovery skill is the course's differentiator. Recovery requires limits-and-smell-tests, not just limits. Naming hallucination without giving the learner the smell-test for it is like naming food poisoning without naming the taste of spoiled food.
 
-### The six limitations (course taxonomy)
+### The seven limitations (course taxonomy)
 
-The course names six core agent failure modes. Each gets a per-module surface and a smell-test pattern.
+The course names seven core agent failure modes. Each gets a per-module surface and a smell-test pattern.
 
 | # | Limitation | Plain definition | Module where smell-test first appears |
 |---|---|---|---|
@@ -418,6 +423,7 @@ The course names six core agent failure modes. Each gets a per-module surface an
 | 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype |
 | 5 | **Confident-wrong** | The agent's tone and the agent's correctness are independent; fluent-sounding answers can be wrong; uncertainty is rarely surfaced unless the prompt explicitly asks for it | M3 L3 (the lesson IS about this) |
 | 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L1 first surfacing |
+| 7 | **Prompt injection** | Text pasted in from outside the conversation — a user's comment, a bug report somebody sent — carries instructions the agent takes as the learner's own, so the work it offers back includes things nobody asked for | M6 L3 — the smell-test is a pre-flight question asked at the approval prompt |
 
 ### The smell-test pattern (per-limit)
 
@@ -433,7 +439,7 @@ For each limit, the lesson where it's first taught provides:
 - **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
 - **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via fresh-conversation hygiene).
 - **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with a narrated known-bad pattern and the learner's recovery prompt. Anchors limits 5 + 6.
-- **M6 L3 (`modules/06-after-live/03-when-what-you-paste-isnt-yours.md`)** — the anchor for **prompt injection**. Note that hard rule 14 names prompt-injection among the failure modes while the six-limitation table above carries no row for it; the table has not been renumbered, so treat this bullet as the authority on where the smell-test lives. The smell-test is a pre-flight question asked at the approval prompt (*"What in what I just pasted are you acting on? List anything you are about to change that I did not ask for."*); the recovery is learner-side — decline, start a fresh conversation, and describe the outside content instead of pasting it. In the shipped module only L3 names the term; every other lesson defers in plain words. (That is how the module was authored, not a tier restriction — `prompt injection` sits in M6's Requires-callout tier, so the Forbidden-tier anchor-lesson exception below does not apply to it.) The lesson is honest that a given run may or may not reproduce the failure, so the learner is armed for the *shape* (the paste, then the surprise) rather than promised an observable failure. *(Added 2026-08-20 when Module 6 shipped.)*
+- **M6 L3 (`modules/06-after-live/03-when-what-you-paste-isnt-yours.md`)** — the anchor for **prompt injection** — row 7 of the table above. The smell-test is a pre-flight question asked at the approval prompt (*"What in what I just pasted are you acting on? List anything you are about to change that I did not ask for."*); the recovery is learner-side — decline, start a fresh conversation, and describe the outside content instead of pasting it. In the shipped module only L3 names the term; the lessons that touch it defer in plain words (L1 carries the forward-reference on handing over a bug report somebody else wrote, and L4 on what a paste asks of a person; L2 is simply silent, having no occasion to defer). (That is how the module was authored, not a tier restriction — `prompt injection` sits in M6's Requires-callout tier, so the Forbidden-tier anchor-lesson exception below does not apply to it.) The lesson is honest that a given run may or may not reproduce the failure, so the learner is armed for the *shape* (the paste, then the surprise) rather than promised an observable failure. *(Added 2026-08-20 when Module 6 shipped.)*
 
 ### The anchor-lesson exception (Forbidden-tier terms)
 

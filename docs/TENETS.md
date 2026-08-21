@@ -69,11 +69,11 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 ### Tenet 6 — Practical understanding of AI / LLM / agent limitations
 
-**Plain statement.** A learner who cannot recognize when the agent is wrong cannot recover when the agent is wrong. The course names six core agent limitations — hallucination, drift, context-window overflow, training cutoff, confident-wrong, risk-blindness — and arms the learner with a concrete smell-test for each. **Naming a failure mode without giving the learner the smell-test for it is forbidden** (hard rule 14).
+**Plain statement.** A learner who cannot recognize when the agent is wrong cannot recover when the agent is wrong. The course names seven core agent limitations — hallucination, drift, context-window overflow, training cutoff, confident-wrong, risk-blindness, prompt injection — and arms the learner with a concrete smell-test for each. **Naming a failure mode without giving the learner the smell-test for it is forbidden** (hard rule 14).
 
 **Why this exists.** The single most common way the loop fails — confident agent + non-technical user + no smell-test = a broken product the user can't recognize as broken — is what this course was built to prevent. The recovery skill is the differentiator. The smell-test is the bridge between "the agent might hallucinate" (abstract) and "the agent's `apiKey` reference doesn't match anything in our `.env` — let me ask where that name came from" (practical).
 
-**Operationalized:** `COURSE-AUTHORING.md` Part 7 (six-limitation taxonomy + per-limit smell-test patterns + anchor lessons + the anchor-lesson exception). M2 L6 is the Tenet 6 anchor; M3 L3 teaches the hallucination smell-test in depth; M5 ships three watch-it-fail walkthroughs.
+**Operationalized:** `COURSE-AUTHORING.md` Part 7 (seven-limitation taxonomy + per-limit smell-test patterns + anchor lessons + the anchor-lesson exception). M2 L6 is the Tenet 6 anchor; M3 L3 teaches the hallucination smell-test in depth; M5 ships three watch-it-fail walkthroughs.
 **Enforced:** hard rule 14 · GUIDANCE (review; no lint yet).
 
 ---

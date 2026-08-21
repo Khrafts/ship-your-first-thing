@@ -43,7 +43,7 @@ You are not writing this code. Your agent is. The split is the same in every les
 
 A **smell-test** (a one-line definition: a check you run without reading a line of code — you try something and watch what the app does, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) in this module is always one of exactly two moves. Neither of them asks you to look at anything your agent wrote.
 
-**The refusal check.** A **refusal check** (a one-line definition: in the running app, you try the thing that should not be allowed and confirm the app turns you down, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) is how you test a fence by walking into it. From Lesson 2 onward, every chunk carries at least one.
+**The refusal check.** A **refusal check** (a one-line definition: in the running app you try the thing that should NOT be allowed and confirm it is refused — and if it goes through, you tell your agent what you did and what should have stopped it, [→ GLOSSARY](../../GLOSSARY.md#refusal-check)) is how you test a fence by walking into it. From Lesson 2 onward, every chunk carries at least one.
 
 > **TRY THIS:** open a private browser window that has never signed in, read what should be public, then try to change something.
 >
