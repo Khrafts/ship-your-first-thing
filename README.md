@@ -35,13 +35,13 @@ The course is designed to be picked up cold. A learner who has never written pro
 **Modules**
 
 - [Module 0 — Welcome](./modules/00-welcome/README.md)
-- [Module 1 — Mental models](./modules/01-mental-models/README.md)
+- [Module 1 — How software works (mental models)](./modules/01-mental-models/README.md)
 - [Module 2 — Your agent and the machinery it drives](./modules/02-toolchain/README.md)
-- [Module 3 — Working with an AI coding agent](./modules/03-the-loop/README.md)
+- [Module 3 — The loop in depth](./modules/03-the-loop/README.md)
 - [Module 4 — Designing & building the thread project](./modules/04-thread-project/README.md)
 - [Module 5 — Operating the build](./modules/05-operating/README.md)
 - [Module 6 — After it's live](./modules/06-after-live/README.md)
-- Module 7 — Where to go from here *Coming in later phases*
+- [Module 7 — Where to go from here](./modules/07-where-next/README.md)
 
 **Cross-cutting docs**
 

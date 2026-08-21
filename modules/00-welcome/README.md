@@ -27,4 +27,4 @@ The thread that ties it together: ask "what does this cost me?" before "how do I
 ## Navigation
 
 [← Course README](../../README.md)
-[Next: Module 1 — Mental models →](../01-mental-models/README.md)
+[Next: Module 1 — How software works (mental models) →](../01-mental-models/README.md)

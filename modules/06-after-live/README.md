@@ -45,5 +45,4 @@ Module 5, complete — and nothing else. There is nothing to prepare for this mo
 ## Navigation
 
 [← Module 5 — Operating the build](../05-operating/README.md)
-
-Module 7 — Where to go from here — comes next.
+[Next: Module 7 — Where to go from here →](../07-where-next/README.md)

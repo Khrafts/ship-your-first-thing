@@ -119,5 +119,6 @@ You wrote the handover you would give a person, in the same three parts you have
 ## Navigation
 
 [← Previous: When what you paste isn't yours: the instruction you didn't write](./03-when-what-you-paste-isnt-yours.md)
+[Next: Module 7 — Where to go from here →](../07-where-next/README.md)
 
-Module 7 — Where to go from here — comes next. It is the last module, and it starts from an app you can build, operate, and change.
+It is the last module, and it starts from an app you can build, operate, and change.

@@ -19,7 +19,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 **Why this exists.** A learner with the right mental model can reason about almost any product; a learner buried in jargon stalls at the first unfamiliar word. Every "you already know X" assumption silently excludes the audience the course exists for — if a learner can't follow because of an undefined term, the course failed at line 1 of that lesson. Mechanics belong to the agent; frameworks belong to the learner.
 
 **Operationalized:** `COURSE-AUTHORING.md` Part 1 (audience floor + three-tier vocab contract). `docs/audience-vocabulary.md` is the authoritative per-module term list.
-**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M6; human review for M7*.
+**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M7*.
 
 ---
 

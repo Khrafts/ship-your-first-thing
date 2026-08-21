@@ -362,7 +362,7 @@ Module 7 is the only module where the **forbidden lists from prior modules** can
 2. **Each pointer carries an "is this for you?" framing.** Module 7 names the LEARNER PROFILE that should follow each pointer (e.g., "if you want to operate the thread project long-term, this RLS reading is the next 30 minutes"; "if you're never going to touch RLS again, skip this").
 3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other AI coding agents this course does not teach is Module 7's job. The agents it names are the locked list below.
 
-**The agents Module 7 names — LOCKED 2026-08-21** (Phase 7 escape-valve adjudication; replaces the retired "Cursor, Cline, Continue" list):
+**The agents Module 7 names — LOCKED 2026-08-21** (Phase 7 escape-valve adjudication; replaces the retired pre-remake roster):
 
 - **OpenCode desktop** — already the course's named third alternative, and already characterised in `modules/00-welcome/03-cost-path-triage.md`, `modules/00-welcome/05-install-your-agent-app.md`, `modules/02-toolchain/01-your-ai-coding-agent.md` and `SETUP.md`. Naming it in M7 adds no new proper noun and no fresh verification claim.
 - **Agents that live inside a code editor** — named as a *category*, never by product. The retired list collapsed two things: an editor and two editor extensions, all one category. Product names in that category churn faster than the quarterly smoke-test can verify, and the loop's translation is identical across every one of them, so the category is the durable fact and the roster is a maintenance liability.

@@ -104,4 +104,4 @@ You went from a picked path and a fresh account to an open, signed-in app window
 ## Navigation
 
 [← Previous: Account creation](./04-account-creation.md)
-[Next: Module 1 — Mental models →](../01-mental-models/README.md)
+[Next: Module 1 — How software works (mental models) →](../01-mental-models/README.md)

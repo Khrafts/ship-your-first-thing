@@ -24,5 +24,5 @@ The thread that ties it together: this whole module is the same app window, look
 
 ## Navigation
 
-[← Module 1 — How software works](../01-mental-models/README.md)
+[← Module 1 — How software works (mental models)](../01-mental-models/README.md)
 [Next: Module 3 — The loop in depth →](../03-the-loop/README.md)
