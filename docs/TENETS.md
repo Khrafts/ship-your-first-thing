@@ -93,7 +93,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 1. **Read this file before reading anything else.** TENETS.md is the first read for every authoring task.
 2. **Read `docs/COURSE-AUTHORING.md` for the operational playbook.** The tenets state WHAT; COURSE-AUTHORING explains HOW.
 3. **Read CLAUDE.md for the hard rules.** Fifteen hard rules. Don't violate without explicit user permission.
-4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M6.
+4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M7.
 5. **Check the audience-vocabulary contract for the target module before writing.** Forbidden / Requires-callout / Safe / SYMPTOM-only.
 6. **For M4+ sections, apply the check inventory and test gate section-by-section as you write** (COURSE-AUTHORING Part 6). Symptom-and-steer is harder to retrofit than to draft.
 7. **Honor the module spine** (COURSE-AUTHORING Part 3): build on the named prior payoff, set up the next.
