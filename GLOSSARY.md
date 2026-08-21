@@ -344,7 +344,7 @@ Used in: no current lesson names the phrase. [Module 3 — Planning vs execution
 
 ### translation-key
 The mapping from the durable loop (Module 3) to other AI coding agents this course does not teach. *Example: a Module 7 lesson names what changes and what stays the same if you ever steer the loop from a different agent app.*
-Used in: no current lesson.
+Used in: [Module 7 — The loop on other agents](./modules/07-where-next/02-the-loop-on-other-agents.md).
 
 ## U
 
