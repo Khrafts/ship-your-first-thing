@@ -73,7 +73,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 **Why this exists.** The single most common way the loop fails — confident agent + non-technical user + no smell-test = a broken product the user can't recognize as broken — is what this course was built to prevent. The recovery skill is the differentiator. The smell-test is the bridge between "the agent might hallucinate" (abstract) and "the agent's `apiKey` reference doesn't match anything in our `.env` — let me ask where that name came from" (practical).
 
-**Operationalized:** `COURSE-AUTHORING.md` Part 7 (seven-limitation taxonomy + per-limit smell-test patterns + anchor lessons + the anchor-lesson exception). M2 L6 is the Tenet 6 anchor; M3 L3 teaches the hallucination smell-test in depth; M5 ships three watch-it-fail walkthroughs.
+**Operationalized:** `COURSE-AUTHORING.md` Part 7 (seven-limitation taxonomy + per-limit smell-test patterns + anchor lessons + the anchor-lesson exception). M2 L1 is the Tenet 6 anchor (the duty moved there on 2026-08-15 when the remake collapsed Module 2 and deleted the former M2 L6); M3 L3 teaches the hallucination smell-test in depth; M5 ships three watch-it-fail walkthroughs.
 **Enforced:** hard rule 14 · GUIDANCE (review; no lint yet).
 
 ---
