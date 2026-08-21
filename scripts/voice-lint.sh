@@ -649,6 +649,12 @@ scan_jargon_density() {
       check_lesson_against_module_contract "$lesson" "M6" "Module 6 (M6)" "warn"
     done
   fi
+  if [ -d modules/07-where-next ]; then
+    for lesson in modules/07-where-next/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M7" "Module 7 (M7)" "warn"
+    done
+  fi
 }
 
 # Mermaid <br>/<br/> outside quoted node labels check.

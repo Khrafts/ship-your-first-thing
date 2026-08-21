@@ -94,6 +94,10 @@ Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loo
 A small piece of data the browser stores and re-sends to the same site on every request. *Example: a session cookie tells the server "this is the same Alice who logged in 5 minutes ago."*
 Used in: [Module 1 — Who can do what](./modules/01-mental-models/03-who-can-do-what.md).
 
+### curated-resources
+Module 7's external pointers to canonical docs — dated, and named as "is this for you?" reading rather than curriculum. *Example: a Module 7 lesson on going deeper on RLS links to canonical docs and names what's there, without replicating the Module 4 RLS deep-dive.*
+Used in: no current lesson.
+
 ## D
 
 ### database
@@ -337,6 +341,10 @@ Used in: Module 4 Lessons [1](./modules/04-thread-project/01-hello-world-deploy.
 ### token-discipline
 The habits that keep agent sessions cheap and clear-headed — on a flat monthly plan and inside a free allowance alike. *Example: Module 3 teaches one of them and only one — start a fresh conversation between unrelated tasks, and again whenever a long one has gone muddy. The typed commands the course used to teach for the rest were retired 2026-08-16.*
 Used in: no current lesson names the phrase. [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md) teaches the habit.
+
+### translation-key
+The mapping from the durable loop (Module 3) to other AI coding agents this course does not teach. *Example: a Module 7 lesson names what changes and what stays the same if you ever steer the loop from a different agent app.*
+Used in: no current lesson.
 
 ## U
 

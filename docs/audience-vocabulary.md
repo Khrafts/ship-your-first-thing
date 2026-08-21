@@ -360,11 +360,11 @@ Module 7 is the only module where the **forbidden lists from prior modules** can
 
 1. **Topics are POINTERS, not curriculum.** A Module 7 lesson on "going deeper on RLS" links to canonical docs + names what's there; it does NOT replicate a Module 4 RLS deep-dive.
 2. **Each pointer carries an "is this for you?" framing.** Module 7 names the LEARNER PROFILE that should follow each pointer (e.g., "if you want to operate the thread project long-term, this RLS reading is the next 30 minutes"; "if you're never going to touch RLS again, skip this").
-3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other agents (Cursor, Cline, Continue) is Module 7's job.
+3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other AI coding agents this course does not teach is Module 7's job.
 
 ### Requires-callout (D-04 pattern on first use)
 
-- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents (Cursor, Cline, Continue, etc.)."
+- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents this course does not teach."
 - **curated resources** — Module 7's external pointers; date-stamped per the freshness model.
 
 ### M7 IS where deeper explanation lives
