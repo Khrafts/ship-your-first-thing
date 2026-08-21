@@ -17,9 +17,9 @@ By the end of this lesson, you will be able to name the three moves that act on 
 
 ## Why this matters
 
-You have already made two of these three moves and never had a name for either. You started a fresh conversation in Module 3, the first time restating stopped helping. Module 6 gave you the conditions under which the next move is a person rather than another message — and somewhere in the last six modules you shut the laptop on a bad afternoon and found the answer sitting there in the morning. What you have not had is a name for them as one thing, or a way of telling which of the three you are standing in, so the cheapest one gets used for all three jobs and the other two get reached for late, after the afternoon has already gone.
+You have already met two of these three moves and never had a name for either. Module 3 had you start a fresh conversation, at the point where restating stops helping. Module 6 gave you the conditions under which the next move is a person rather than another message — and shutting the laptop on a bad afternoon, then finding the answer sitting there in the morning, is something everybody who works at anything hard has done. What you have not had is a name for them as one thing, or a way of telling which of the three you are standing in, so the cheapest one gets used for all three jobs and the other two get reached for late, after the afternoon has already gone.
 
-> **Following along:** Nothing in this module runs — no build, no repair and no check — and nothing here touches your app. The app you finished Module 6 with is the app you keep, exactly as you left it. What this lesson gives you is three moves you have been making anyway, named, with the conditions that tell them apart.
+> **Following along:** Nothing in this module runs — no build, no repair and no check — and nothing here touches your app. The app you finished Module 6 with is the app you keep, exactly as you left it. What this lesson gives you is three moves, named, with the conditions that tell them apart.
 
 > **Last verified:** 2026-08-21. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
@@ -49,7 +49,7 @@ This is the one you have never done, and people either never think of it or reac
 
 **Your app is not available or not affordable today.** It is down, or you have used up whatever your path gives you for the day, and the work is not going to wait. [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) said this out loud when you picked a path: nothing locks you to the path you picked, and switching costs you exactly one thing — creating the account you skipped the first time. That price has not changed.
 
-This move has a real failure mode. **Switching is not a way to get a better answer to the same loose ask.** If what you said had no edge on it, the second agent will run off in its own direction as happily as the first one — Module 3 put the same bookshelf ask in front of both apps and both of them built a bookshelf nobody wanted. Going shopping for an agent that will read your mind is an expensive way to avoid tightening one sentence. The switch is worth exactly one try, and the useful part is the answer it gives you either way: if the other app clears the wall, the wall was the app's; if it lands in the same place, you have stopped guessing, and "both of them do this, here is what I asked" is the best sentence you can hand the person Module 6 taught you to find.
+This move has a real failure mode. **Switching is not a way to get a better answer to the same loose ask.** If what you said had no edge on it, the second agent will run off in its own direction as happily as the first one — [Module 3 Lesson 4](../03-the-loop/04-steering-and-recovery.md) put the same bookshelf ask in front of both apps and both of them built a bookshelf nobody wanted. Going shopping for an agent that will read your mind is an expensive way to avoid tightening one sentence. The switch is worth exactly one try, and the useful part is the answer it gives you either way: if the other app clears the wall, the wall was the app's; if it lands in the same place, you have stopped guessing, and "both of them do this, here is what I asked" is the best sentence you can hand the person Module 6 taught you to find.
 
 One condition where you skip this move entirely: when what is at stake is money, other people's information, or something that cannot be taken back. A second agent does not make that situation smaller. That one goes straight to move three.
 
@@ -120,7 +120,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You wrote down three moves you had already been making without a name for them, put a number and a price on each, and named two tools with nothing to do with AI where the same three apply — which is the part of this lesson that will outlive both of the apps it was taught in. The moves that survive a change of tool are what this last module is for, and there is one more of them: the four moves of the loop themselves. Lesson 2 hands you those, translated for agents this course never taught you.
+You wrote down three moves that act on the session rather than on the work, put a number and a price on each, and named two tools with nothing to do with AI where the same three apply — which is the part of this lesson that will outlive both of the apps it was taught in. The moves that survive a change of tool are what this last module is for, and there is one more of them: the four moves of the loop themselves. Lesson 2 hands you those, translated for agents this course never taught you.
 
 ## Navigation
 

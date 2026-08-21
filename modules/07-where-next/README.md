@@ -8,11 +8,11 @@ Nothing here runs. There is no build, no repair and no check in any of these thr
 
 ## What this module builds
 
-By the end of this module you can name the three moves that act on the working session rather than on the work — starting a fresh conversation, moving to a different agent, and leaving the keyboard — and say which condition selects each one; you can run the four moves of the loop with an agent this course never taught you; and you have a short, honest list of what is worth learning next, where every item on it tells you who should follow it and who should skip it.
+By the end of this module you can name the three moves that act on the working session rather than on the work — starting a fresh conversation, moving to a different agent, and leaving the keyboard — and say which condition selects each one; you can say which parts of the way you work belong to the loop rather than to the app you learned it in, and name the five questions that locate them in an agent app you have never opened; and you have a short, honest list of what is worth learning next, where every item on it tells you who should follow it and who should skip it.
 
 Each lesson builds on the last:
 
-- **Lesson 1 — Session hygiene:** the three moves you have been making since Module 3 without a name for them, the condition that tells you which one you are in, and why none of the three is a beginner phase you grow out of → sets up Lesson 2, which does the same thing for the loop itself.
+- **Lesson 1 — Session hygiene:** two moves you have already met without a name for them and a third you have not, the condition that tells you which one you are in, and why none of the three is a beginner phase you grow out of → sets up Lesson 2, which does the same thing for the loop itself.
 - **Lesson 2 — The loop on other agents:** the four moves from Module 3, carried across to agents this course does not teach → sets up Lesson 3, because once the loop travels the only question left is what to point it at.
 - **Lesson 3 — Where to go from here:** what is not worth learning next, and then a short set of pointers, each one naming who should follow it and who should skip it → closes the course.
 
@@ -20,7 +20,7 @@ The thread that ties it together: everything in this module is the part that out
 
 ## How this module works
 
-Every earlier module taught you something and then had you do it. This one mostly points. It names a topic, says who it is for, says who should skip it, and sends you somewhere that goes into it properly — because the honest version of "where to go next" is a short list with a reason attached to each line, not a syllabus.
+Every earlier module taught you something and then had you do it. This one teaches twice and then points. It names a topic, says who it is for, says who should skip it, and sends you somewhere that goes into it properly — because the honest version of "where to go next" is a short list with a reason attached to each line, not a syllabus.
 
 So there is nothing to run here, and no check to run either. The two checks you have carried since Module 4 — trying the thing that should be refused, and asking before a step nobody can take back — both need something running to be run against, and nothing here runs. Each lesson still ends with a Loop check, which is the same short reflection it has always been: it names which of the four moves the lesson was really about, and it is not something you do.
 

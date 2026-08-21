@@ -52,7 +52,7 @@ Everything else — which sounds like a lot until you see the list:
 - **What it calls starting over.** A button, a menu item, a new tab down the side — the same move under a different label.
 - **What it costs, and what happens when you reach the end of what it gives you.** [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) priced that for the two apps here. Nothing on that page transfers to a third one — only the habit of finding out before you need to.
 - **Where the work lands on your computer**, and whether the app tells you without being asked.
-- **The personality.** Module 3 put one ask in front of both apps and got two different-shaped answers: one volunteered a trade-off it had made, the other did the job and told you to go and look. That difference is not a ranking, and the loop underneath was identical.
+- **The personality.** Module 3 put one ask in front of both apps and got two different-shaped answers: one volunteered the limits of what it had done and named what to go and look at, the other did the job and offered to do more. That difference is not a ranking, and the loop underneath was identical.
 
 ### Five questions for an app you have never opened
 
