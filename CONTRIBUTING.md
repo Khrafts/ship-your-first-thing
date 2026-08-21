@@ -109,7 +109,7 @@ This iterates over `scripts/voice-lint-fixtures/` and asserts every fixture trip
 
 ## Issue tags
 
-- `freshness` — a tool, version, or upstream behavior changed and a lesson is now stale. The maintainer triages these in the quarterly smoke-test (below).
+- `freshness` — a tool, version, or upstream behavior changed and a lesson is now stale — including an external link that no longer reaches what the lesson says it reaches. The maintainer triages these in the quarterly smoke-test (below).
 - `common-issues` — you hit a reproducible issue. Maintainer or you can convert this into a `COMMON-ISSUES.md` entry.
 - `voice` — tutorial fiction or filler was spotted in a lesson. Editorial pass treats this as a hard fix.
 - `vocab` — a term is used without a `GLOSSARY.md` anchor. Editorial pass.
@@ -123,13 +123,53 @@ Once per quarter, the maintainer (or any willing contributor) does this:
 1. Install a clean copy of an agent app — Claude Code desktop or Codex in the ChatGPT desktop app — following [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) (the course retired the GitHub Codespaces launch flow 2026-08-12; see `WHAT-CHANGED.md`).
 2. Walk through Module 0 → Module 4 Chunk 2 (the sign-in chunk in the thread project, `modules/04-thread-project/02-sign-in.md`).
 3. Note any deviation between what's written and what actually happens.
-4. For each deviation, file an issue tagged `freshness` with:
+4. **Re-check every dated external link** — the step below, in this same pass. Deviations it turns up are deviations for step 5 like any other.
+5. For each deviation, file an issue tagged `freshness` with:
    - The lesson path (e.g., `modules/01-mental-models/02-where-data-lives.md`)
    - What's stale
    - What you saw instead
-5. The maintainer batches these into a revision pass; updates `VERSIONS.md`, `WHAT-CHANGED.md`, and the affected lessons.
+6. The maintainer batches these into a revision pass; updates `VERSIONS.md`, `WHAT-CHANGED.md`, and the affected lessons.
 
 The first dry-run of this ritual happens before Phase 5 closes.
+
+### Link freshness — dated pointers to other people's documentation
+
+*Locked 2026-08-21.* Some lessons — Module 7 Lesson 3 above all — point at documentation this repo does not control. An outbound link is the one thing in
+this course that can rot without anybody touching the repo: the page moves, the section is rewritten, the product renames the feature, and the lesson goes
+on claiming it. This is **step 4 of the ritual above, not a second cadence.** There is one cadence or none.
+
+**The stamp.** Every curated external pointer ends with its own verification date, as the last sentence of the pointer's line:
+
+```
+- [Row Level Security](https://example.invalid/docs/rls) — the rules that decide who can read and change each row, with worked examples. **Link last verified: 2026-08-21.**
+```
+
+Bold label, ISO date, full stop. No admonition, no HTML, no table — it renders as plain bold text on github.com and under every SSG the course has to survive.
+One stamp per external link, placed after the one-line description of what is there, so the reader meets the topic and the "is this for you?" framing before
+the housekeeping.
+
+**What the date means.** It is the date somebody last opened that link and confirmed it still reaches *what the lesson says it reaches*. It is **not** the
+date the link was added and **not** the date the lesson was edited. Those three diverge, and the divergence is the entire value of the stamp.
+
+**What to do with each link, in this pass.** Open it. Then exactly one of:
+
+- Still reaches what the pointer claims → refresh the date. Nothing else changes.
+- Moved, but the new page still covers the topic → update the URL and the date in the same edit.
+- No longer covers what the pointer claims, or is gone → **do not refresh the date.** Re-cut the pointer or drop it, and file the `freshness` issue.
+  A refreshed stamp over a claim that has drifted is worse than a stale one: the stamp is the only thing telling a reader the claim was ever checked.
+
+**Scope.** The stamp is required on Module 7 Lesson 3's curated pointers and permitted anywhere else; this step covers every dated external link under
+`modules/`. Undated external links in older lessons (Module 1's "Going deeper" lists, Module 0's signup links) are outside it until they adopt the stamp —
+adopting it is what enrols a link in the cadence.
+
+**The learner is not part of this.** This is a maintainer contract with a learner-visible date; it asks a reader for nothing. A lesson carrying dated
+pointers says once, above the list, what to do if one is dead — in the same shape as the `> **Last verified:**` tutor-drift banner, pointing at the
+in-lesson tutor rather than at a task:
+
+> **If one of these links is dead:** nothing here touches your app and there is nothing you need to fix — on the course site, open the lesson chat
+> ("Ask about this lesson"), tell it which pointer you were following, and it can tell you what that pointer was about and what to search for instead.
+
+Anyone who *wants* to report a dead link has the `freshness` issue tag above. Nobody is asked to.
 
 ## License of contributions
 

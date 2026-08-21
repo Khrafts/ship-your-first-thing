@@ -360,16 +360,42 @@ Module 7 is the only module where the **forbidden lists from prior modules** can
 
 1. **Topics are POINTERS, not curriculum.** A Module 7 lesson on "going deeper on RLS" links to canonical docs + names what's there; it does NOT replicate a Module 4 RLS deep-dive.
 2. **Each pointer carries an "is this for you?" framing.** Module 7 names the LEARNER PROFILE that should follow each pointer (e.g., "if you want to operate the thread project long-term, this RLS reading is the next 30 minutes"; "if you're never going to touch RLS again, skip this").
-3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other AI coding agents this course does not teach is Module 7's job.
+3. **Translation keys count as Module 7 material.** The PROJECT.md decision to ship a translation key from the durable loop to other AI coding agents this course does not teach is Module 7's job. The agents it names are the locked list below.
+
+**The agents Module 7 names — LOCKED 2026-08-21** (Phase 7 escape-valve adjudication; replaces the retired "Cursor, Cline, Continue" list):
+
+- **OpenCode desktop** — already the course's named third alternative, and already characterised in `modules/00-welcome/03-cost-path-triage.md`, `modules/00-welcome/05-install-your-agent-app.md`, `modules/02-toolchain/01-your-ai-coding-agent.md` and `SETUP.md`. Naming it in M7 adds no new proper noun and no fresh verification claim.
+- **Agents that live inside a code editor** — named as a *category*, never by product. The retired list collapsed two things: an editor and two editor extensions, all one category. Product names in that category churn faster than the quarterly smoke-test can verify, and the loop's translation is identical across every one of them, so the category is the durable fact and the roster is a maintenance liability.
+
+The taught tracks are unchanged — Claude Code desktop, and Codex in the ChatGPT desktop app (CLAUDE.md hard rule 15). **Naming is not teaching:** M7 names these to place them, never with install steps or a walkthrough. No further product name enters Module 7 without a gate amendment.
 
 ### Requires-callout (D-04 pattern on first use)
 
-- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents this course does not teach."
-- **curated resources** — Module 7's external pointers; date-stamped per the freshness model.
+- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents this course does not teach." Which agents those are is the locked list under "Module 7 is the escape valve" above; the definition clause stays agent-agnostic on purpose, because it has to fit on one line inside a D-04 callout.
+- **curated resources** — Module 7's external pointers; date-stamped per the link-freshness model (`CONTRIBUTING.md` § Quarterly smoke-test ritual).
 
-### M7 IS where deeper explanation lives
+Added 2026-08-21 by the escape-valve adjudication, because the five surviving pointers cannot be written without saying these words. Tiering them here is what makes check #6 able to see them — the untiered-noun gap that let `framework` reach Module 6 undetected is closed for M7 by tiering ahead of the lesson, not after it:
 
-The "What NOT to Teach" appendix (COURSE-AUTHORING.md Part 8) repeatedly says "escape to Module 7 only" for traps like RLS grammar, async/await semantics, hook internals, hydration mechanism, bundler internals. Module 7 IS that escape. But Module 7 lessons are POINTERS, not deep-dives — the canonical content lives in external docs the learner is now equipped to read.
+- **Next.js** — the framework the thread project is built with; the learner sees the name on their own Vercel project screen, and pointer 2 below has to say it to name what is at the resource.
+- **React** — what Next.js is built on. Same reason. *(Known lint shape: check #6 matches case-insensitively, so a bare English verb "react" in an M7 lesson will WARN. Write around it.)*
+- **Row Level Security** / **RLS** — the name of the rules that decide who can read and change each row; pointer 1 has to say it to name Supabase's own page. Four modules refused this term on purpose; M7 is the module where naming it with a callout is the point.
+- **Server Components** — the name of the split pointer 2 points at.
+
+**Standing obligation.** Module 7 is the highest-risk module in the course for the untiered-noun gap, because pointers name technologies for the first time. Every technical noun an M7 lesson introduces is checked against every tier list by hand and added here in the same commit that ships the lesson — a noun absent from every list is invisible to check #6.
+
+### M7 IS where deeper explanation lives — for the entries that survived adjudication
+
+The "What NOT to Teach" appendix (COURSE-AUTHORING.md Part 8) sends several traps to Module 7, and the three "Reserved for Module 7" blocks in the M4, M5 and M6 sections above send more. **Not all of them arrive.** All 31 deferred entries were adjudicated on 2026-08-21 against the desktop-app learner, and **five** pointer topics survived:
+
+1. **The rules about who can see and change what** — Part 8 traps E and C, and M4's "RLS policy grammar as a concept".
+2. **What the app is built out of, and why parts of it run in two places** — Part 8 traps H and I (rendering half), and M4's React Server Components, hydration, Next.js and React entries. *(M4's `'use client'` entry is **not** here: it is a token inside a file the learner never opens, and the pointer names the behaviour instead.)*
+3. **What happens when text somebody else wrote reaches the agent** — M6's prompt-injection attack-vector taxonomy entry.
+4. **Checks that run themselves** — M6's test pyramid / test strategy entry.
+5. **The keys, and the day one leaks** — M6's security-hardening entry, narrowed to the part the learner operates.
+
+Everything else was cut, and **cut means cut** — not deferred again to somewhere later. An entry cut as *agent territory* stays the agent's end to end; an entry cut as *retired surface* names a screen or a command the learner never operates under CLAUDE.md hard rule 15, and a pointer would re-open a door that rule closed. **A "Reserved for Module 7" line in an earlier module's Forbidden tier is an inventory record of where a term was deferred *from* — it is not a promise that Module 7 carries it.** The full 31-row record, one verdict and one reason each, is the Phase 7 gate's adjudication table.
+
+The five that survived ship as POINTERS, not deep-dives — the canonical content lives in external docs, and every dated pointer carries the link-freshness stamp locked with the adjudication (`CONTRIBUTING.md` § Quarterly smoke-test ritual).
 
 ---
 

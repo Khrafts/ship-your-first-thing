@@ -479,6 +479,8 @@ Authors and AI agents both tend to over-explain. The audience-vocabulary contrac
 
 Read this section before every lesson. Trap-spotting is faster than rewrite-after-the-fact.
 
+> **Escape clauses were adjudicated 2026-08-21.** Seven traps below used to say "escape to Module 7". Module 7 ships three pointer lessons, not a curriculum, so each escape was re-decided against the desktop-app learner: some traps escape to a Module 7 pointer, and some escape **nowhere** — the topic simply stays out of the course. A trap whose escape is now "nowhere" still describes a real authoring hazard for Modules 0–6; what changed is where the depth is allowed to go, not whether the temptation exists.
+
 ### The trap catalog
 
 #### Trap A — Explaining HTTP request/response anatomy
@@ -497,7 +499,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 
 **Temptation.** "Set `httpOnly: true` and `Secure: true` and `SameSite: 'Lax'` to mitigate XSS and CSRF..."
 **Right move.** M1 L3 uses plain language: "the stamp on your hand is hard to copy; the door staff changes the stamp pattern often; the door staff asks for ID again before letting you into the safe room." The agent handles flag configuration; the learner observes "I can stay signed in across browser refresh."
-**Where to escape to.** Module 7 only — and only as a "if you want to go deeper on auth, here's where to look" pointer.
+**Where to escape to.** **Module 7 — KEEP, merged (2026-08-21).** Folded into Module 7's permission-rules pointer together with trap E: sessions are how the app knows who is at the fence, row rules are the fence, and one pointer covers both for the same learner profile. Still a pointer, never a deep-dive.
 
 #### Trap D — Explaining async/await semantics
 
@@ -509,7 +511,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 
 **Temptation.** "An RLS policy has a `FOR` clause (SELECT / INSERT / UPDATE / DELETE), a `USING` predicate that filters reads, and a `WITH CHECK` predicate that filters writes..."
 **Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner tests the fence in the running app with a refusal check — sign in as the second account, try to change something the first account wrote, expect refusal; if it goes through, tell the agent exactly what you did. No policy text ever reaches the learner's eyes.
-**Where to escape to.** Module 7 — RLS deep-dive is the canonical Module 7 territory for learners who want to extend the thread project.
+**Where to escape to.** **Module 7 — KEEP (2026-08-21).** This is the carrier for Module 7's permission-rules pointer, and trap C merges into it. It survives adjudication because getting these rules wrong fails *silently* — the app looks fine while showing the wrong person the wrong row — and because the learner already operates the Supabase dashboard where the rules live. The pointer names the topic and links Supabase's own page; it never reproduces policy grammar.
 
 #### Trap F — Explaining React hook internals (`useState`, `useEffect`, `useOptimistic`, etc.)
 
@@ -527,31 +529,31 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 
 **Temptation.** "Hydration is the process React uses to attach event listeners to server-rendered HTML, matching the server-rendered tree to the client-rendered tree..."
 **Right move.** Hydration is agent territory end to end under CLAUDE.md hard rule 12: a message in the browser console meaning "the page disagreed with itself," which the agent reads and diagnoses. The learner never sees the console message — they only see the running page not matching what they asked for, and say so.
-**Where to escape to.** Module 7 only, for learners who want to extend.
+**Where to escape to.** **Module 7 — KEEP, merged (2026-08-21).** Folded into Module 7's server-and-browser pointer together with trap I. It survives because the learner already has the symptom from Module 4 onward (the page not matching what they asked for), and the pointer gives that symptom a name they can search.
 
 #### Trap I — Explaining bundle splitting / Server vs. Client component rendering execution
 
 **Temptation.** "The bundler decides which files become client bundles based on the `'use client'` directive. Server Components run only on the server; their output is serialized as RSC payload..."
 **Right move.** `'use client'` never reaches the learner's eyes — under CLAUDE.md hard rule 12 the learner never reads a file the agent wrote. The learner watches the running page instead: a button that does nothing when clicked is the tell — say what you clicked and what didn't happen, and let the agent find the cause.
-**Where to escape to.** Module 7 — React Server Components architecture is canonical Module 7 territory.
+**Where to escape to.** **Module 7 — KEEP (rendering half), merged; CUT (bundling half) (2026-08-21).** The server-vs-client rendering half is the carrier for Module 7's server-and-browser pointer, with trap H merged in — it survives because "the button does nothing when clicked" is a symptom the learner really sees and can now name. The bundle-splitting half is covered by trap K's verdict below: cut, and it goes nowhere.
 
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
 
 **Temptation.** "`^1.2.3` matches `>=1.2.3 <2.0.0`; `~1.2.3` matches `>=1.2.3 <1.3.0`..."
 **Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions and installation; the learner observes the app works.
-**Where to escape to.** Module 7 — for learners who want to operate the build long-term.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (retired surface).** `npm` is named in the retired-course-surface bucket of every module's Forbidden tier under hard rule 15, and a version range is only ever visible inside a file the agent wrote — which hard rule 12 forbids asking the learner to open. A pointer here would be the course's single instruction to go read a file, which is a worse outcome than not knowing what `^` means.
 
 #### Trap K — Explaining what "build" actually does (bundler internals, tree-shaking, dead-code elimination)
 
 **Temptation.** "The bundler walks the import graph, applies tree-shaking to remove unreferenced exports..."
 **Right move.** "The build packages your code so the deployment server can run it." That's the floor. The agent owns build configuration; the learner observes "the build passed; the site updated."
-**Where to escape to.** Module 7 — bundler internals are canonical Module 7 territory.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The build is the agent's end to end, and the learner's entire build surface is pass/fail on the Vercel dashboard, which Module 5 already teaches them to read and act on. Tree-shaking is a thing they cannot observe and cannot act on, so a pointer offers a lever with nothing attached. M5's "bundle analysis / size optimization" entry merges into this verdict.
 
 #### Trap L — Explaining git internals (objects, hashes, DAG, the staging area as a content-addressable store)
 
 **Temptation.** "Each commit is a snapshot identified by a SHA-1 hash; the parent commit pointer creates a directed acyclic graph..."
 **Right move.** M2 L5 (the gold standard) names the four daily commands and what they do at the felt level. No internals. Read M2 L5 before drafting any other lesson that mentions git.
-**Where to escape to.** Module 7 — git internals are canonical Module 7 territory for the small population of learners who want to operate the build deeply.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L5.
 
 ### How to use this appendix
 
