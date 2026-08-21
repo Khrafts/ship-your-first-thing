@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to add one small new feature to your
 
 ## Why this matters
 
-Everything you have built so far landed somewhere forgiving. Module 4's chunks stacked onto an app that was private and mostly empty, where the worst case was a feature that did not work yet. Module 5 taught you to hold a live app steady without changing a thing on it. The last lesson watched a repair run in somebody else's build. Today you change your own running app on purpose, while it is live at its link and people can open it. The risk is not that the new thing fails — you will see that in about ten seconds. The risk is the other one: something you finished weeks ago quietly stops working, the new feature looks perfect, and nothing in what your agent tells you distinguishes the two.
+Everything you have built so far landed somewhere forgiving. Module 4's chunks stacked onto an app that was private and mostly empty, where the worst case was a feature that did not work yet. Module 5 taught you to hold a live app steady without changing a thing on it. The last lesson watched a repair run in somebody else's build and had you run the net on your own. Today you change your own running app on purpose, while it is live at its link and people can open it. The risk is not that the new thing fails — you will see that in about ten seconds. The risk is the other one: something you finished weeks ago quietly stops working, the new feature looks perfect, and nothing in what your agent tells you distinguishes the two.
 
 > **Following along:** This lesson runs against your own live app from Module 4, in the agent app you picked in Module 0. Your agent's exact words will differ from any this lesson describes, and that is normal.
 

@@ -10,7 +10,7 @@ That turns out to be a different skill from building was. In Module 4 every chun
 
 By the end of this module you can take a fault somebody else reported and turn it into a repair you can actually check; you have added one new thing to your live app and proved that the rest of it still works; you know what it looks like when text from outside your conversation pulls your agent off the job you gave it, and where you stop it; and you know the conditions under which the right move is to stop steering and ask a person instead.
 
-Only one lesson here changes your app on purpose. Lesson 2 is the build, and it is the only place in the module where anything of yours is meant to move. The rest is a repair watched in somebody else's build and a net cast over your own, a moment met at an approval prompt, and a set of conditions worth recognising before you are standing in them.
+Only one lesson here changes your app on purpose. Lesson 2 is the build, and it is the only place in the module where anything of yours is meant to move. The rest is a repair watched in somebody else's build (with a net cast over your own), a moment met at an approval prompt, and a set of conditions worth recognising before you are standing in them.
 
 Each lesson builds on the last:
 
