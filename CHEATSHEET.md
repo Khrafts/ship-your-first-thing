@@ -56,3 +56,10 @@ The re-cut of what this page used to call "token discipline" — the same goal, 
 - **One feature per conversation.** Finished the thing you were working on and want to start a different one? That's a fresh conversation, not a continuation.
 - **A fresh conversation per chunk.** Every chunk in Module 4 opens by pointing your agent at the plan; carrying an old chunk's back-and-forth into the next one is how a plan and a build quietly drift apart.
 - **Tell your agent what you saw, not a wall of text.** "The button didn't hide the date" beats pasting in everything the app printed. Say what you saw and what should be different, and let your agent do the reading. [Module 3 Lesson 4](./modules/03-the-loop/04-steering-and-recovery.md)
+
+**Three moves that act on the session, not on the work.** Each has one condition that selects it, and none of them is a beginner phase you grow out of. [Module 7 Lesson 1](./modules/07-where-next/01-session-hygiene.md)
+
+- **Start a fresh conversation** — when the problem is the conversation: something you ruled out has come back, or an instruction from earlier has quietly stopped applying.
+- **Move to a different agent** — when a fresh conversation hit the same wall the same way twice, or your app is down or out of allowance for the day. Worth exactly one try. Skip it entirely when money, other people's information, or something that cannot be taken back is at stake — that goes straight to the next move.
+- **Leave the keyboard** — either hand it to a person ([Module 6 Lesson 4](./modules/06-after-live/04-when-to-ask-a-person.md)), or stop for today: you cannot say in one plain sentence what you want, the rounds are getting shorter and sharper, or it is late and the thing waiting at the approval prompt is one you would rather be awake for. Say *"save this as a working version"* before you close the lid.
+- **The rule that picks between them:** *a move you have already made twice is not the move.*

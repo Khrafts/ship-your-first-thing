@@ -1,6 +1,6 @@
 # VERSIONS.md — Pinned tool versions
 
-**Last verified:** 2026-08-15
+**Last verified:** 2026-08-17 — the newest row date below. Each row carries its own; this line reports the most recent of them, not a sweep of the whole file.
 **Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual).
 
 This is the single source of truth for every tool the course is verified against. When a tool releases a new version, the course is *not* automatically updated to it; the maintainer re-verifies the lesson flows against the new version, then updates this table and notes the change in `WHAT-CHANGED.md`.
@@ -42,7 +42,7 @@ The course site lives in `site/` (built; deploys to Railway, where it will serve
 
 ## How to update this table
 
-1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date.
+1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date — and if that date is now the newest in the file, update the `Last verified` line at the top to match.
 2. If the change affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
 3. If a tool or app is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
 4. For the two agent apps, only replace "verified working YYYY-MM-DD" with an actual version number once a hands-on install captures it straight from the app's own About or Settings screen — an evidence pass, never a guess from a changelog.

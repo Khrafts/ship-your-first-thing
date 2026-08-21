@@ -80,7 +80,7 @@ Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md
 
 ### code-editor
 A program for reading and editing source files by hand, with niceties like syntax highlighting and search across files. This course never asks you to open one — your agent app is the whole working environment. *Example: Module 2 Lesson 1 names it only to say there is no editor standing between you and the work.*
-Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: no lesson calls it out; [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md) names it in passing, in the line above, and [Module 7 — The loop on other agents](./modules/07-where-next/02-the-loop-on-other-agents.md) names it in passing again, for the category of agents that live inside one.
 
 ### codex
 The AI coding agent that lives inside the ChatGPT desktop app; this course's Path 2, the free track. *Example: after signing in with a ChatGPT account, a switch next to the message box moves you from ordinary chat into Codex.*
@@ -290,7 +290,7 @@ Used in: [Module 5 — The day something breaks](./modules/05-operating/05-the-d
 
 ### repository
 A project's full history of saved versions, tracked by git, with a home page of its own on GitHub. Often shortened to "repo." *Example: this course is one repository; the thread project becomes another one when your agent sets it up.*
-Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md).
+Used in: no lesson calls it out; [Module 0 — Welcome](./modules/00-welcome/01-welcome.md) names it in passing, inside the GitHub callout's own definition and in the line about the course living in a public one, and [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing in its exercise.
 
 ### reproduce
 Opening the deployed app, following the steps in a bug report, and confirming you see the same wrong thing. *Example: the report says the Follow button does nothing — you press Follow on the live app, see nothing on the page change, then reload and find it had followed after all.*
@@ -306,7 +306,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### risk-blindness
 When an AI agent proposes something that cannot be undone — deleting work, wiping data, sending or spending — with the same calm as fixing a typo. The agent has no sense of stakes; every change reads the same to it. *Example: it proposes deleting the file that set up your database, to tidy up — routine-sounding to it, destructive to your project. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve. Module 5 puts you in front of a real one.*
-Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md), [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md).
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 5 — The fence that was down](./modules/05-operating/02-the-fence-that-was-down.md); [Module 5 — Caught before it ran](./modules/05-operating/04-caught-before-it-ran.md) names it in passing, in its other shape, without a callout.
 
 ### row
 A single record in a database table — like one index card in a filing-cabinet drawer.
