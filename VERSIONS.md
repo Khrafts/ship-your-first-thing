@@ -1,7 +1,7 @@
 # VERSIONS.md — Pinned tool versions
 
 **Last verified:** 2026-08-17 — the newest row date below. Each row carries its own; this line reports the most recent of them, not a sweep of the whole file.
-**Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual).
+**Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual). A row is past cadence once its own *Last verified* date is more than a quarter old; those rows carry **(past cadence)** in that cell. The marker means the pinned version has not been re-checked since its date — not that it is known to be wrong.
 
 This is the single source of truth for every tool the course is verified against. When a tool releases a new version, the course is *not* automatically updated to it; the maintainer re-verifies the lesson flows against the new version, then updates this table and notes the change in `WHAT-CHANGED.md`.
 
@@ -21,12 +21,14 @@ This is the single source of truth for every tool the course is verified against
 
 | Tool | Pinned version | Notes | Last verified |
 |---|---|---|---|
-| Next.js | 16.x (App Router) | Async `cookies()` / `headers()` / `params` is the breaking-change surface AI agents trained pre-2026 will get wrong | 2026-05-08 |
-| TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 |
-| `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 |
+| Next.js | 16.x (App Router) | Async `cookies()` / `headers()` / `params` is the breaking-change surface AI agents trained pre-2026 will get wrong | 2026-05-08 **(past cadence)** |
+| TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 **(past cadence)** |
+| `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 **(past cadence)** |
 | Supabase dashboard (SQL Editor) | n/a (web dashboard) | Database changes are pasted by hand: the agent writes a SQL file, the learner runs it from the Supabase dashboard's SQL Editor, one query tab per chunk — no CLI, no `supabase/migrations/` directory | 2026-08-17 |
 | Vercel dashboard | n/a (web dashboard) | Deploy target — the agent deploys by saving/pushing, Vercel rebuilds the live copy automatically; the learner's only touchpoint is the dashboard's settings screen, read once to check an environment variable such as `NEXT_PUBLIC_SUPABASE_URL` | 2026-08-17 |
-| `zod` | ^3.x | Form validation for thread project | 2026-05-08 |
+| `zod` | ^3.x | Form validation for thread project | 2026-05-08 **(past cadence)** |
+
+> **Note:** The rows marked **(past cadence)** were last verified 2026-05-08 and are overdue against the quarterly cadence above — nobody has re-verified them since that date. Their dates are left alone on purpose: moving a date forward would claim a check that never happened, and the date is the only thing telling you when the claim was last true. What the table pins is still what Module 4's lessons were written against.
 
 ## Course platform stack (`site/`)
 
@@ -42,7 +44,7 @@ The course site lives in `site/` (built; deploys to Railway, where it will serve
 
 ## How to update this table
 
-1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date — and if that date is now the newest in the file, update the `Last verified` line at the top to match.
+1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date — and if that date is now the newest in the file, update the `Last verified` line at the top to match. Drop the **(past cadence)** marker from that cell in the same edit, and add it to any row whose date has crossed a quarter since the last pass.
 2. If the change affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
 3. If a tool or app is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
 4. For the two agent apps, only replace "verified working YYYY-MM-DD" with an actual version number once a hands-on install captures it straight from the app's own About or Settings screen — an evidence pass, never a guess from a changelog.
