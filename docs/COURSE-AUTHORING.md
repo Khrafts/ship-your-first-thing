@@ -654,7 +654,7 @@ Before opening a PR with a new or modified lesson:
    - Mermaid renders (both simple and technical when the disclosure is expanded)
    - GLOSSARY links resolve when clicked
    - Prev/next nav at the bottom of the lesson works
-9. **WHAT-CHANGED.md** — add a dated entry if the change shifts a lesson's content meaningfully (new lesson, new analogy, changed bundle, contract update). Thin entry per `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry — **Change:** / **If you're affected:** / **Details:**, at most 6 body lines, no internal codenames; the contributor narrative belongs in the PR body, linked from **Details:**. voice-lint check #10 blocks non-conforming entries.
+9. **WHAT-CHANGED.md** — add a dated entry if the change shifts a lesson's content meaningfully (new lesson, new analogy, changed bundle, contract update). Thin entry per `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry — **Change:** / **If you're affected:** / **Details:**, at most 6 body lines, no internal codenames; the contributor narrative belongs in the PR body, linked from **Details:**.
 10. **Commit** with the conventional commit shape (`feat(NN-M):`, `fix(NN):`, `docs(NN):`).
 
 ---
