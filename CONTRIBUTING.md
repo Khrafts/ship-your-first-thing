@@ -18,6 +18,8 @@ Read **`docs/COURSE-AUTHORING.md`** first. It covers the audience-vocabulary con
 
 If you're an AI agent (Claude, Gemini, Cursor, Copilot, etc.) running on this repo, **`CLAUDE.md`** at the root is your entry point — it lists the hard rules and points at the deeper authoring playbook.
 
+> **Note:** Those documents cite paths beginning `.planning/` — the maintainer's phase plans, roadmap, requirements, and per-phase decision logs. That directory is gitignored project-wide, so your fork does not contain it and no PR can add it. Nothing you need in order to contribute lives there: `README.md` says what the course covers, `docs/TENETS.md` what it is trying to be, `CLAUDE.md` the hard rules, and `docs/COURSE-AUTHORING.md` the authoring playbook. Read a `.planning/` path as a note about where a decision was recorded, not as a document you are expected to open.
+
 ## Adding a WHAT-CHANGED entry
 
 `WHAT-CHANGED.md` is a learner-facing freshness log, not a contributor changelog. **PR bodies and commit messages are the contributor changelog of record** — depth goes there, never in the entry.
@@ -61,7 +63,7 @@ Every Module 3 ask is shown twice — once in Claude Code desktop, once in the C
 
 ## What we do NOT want yet
 
-- New module content. The course's V1 scope is locked (see `.planning/REQUIREMENTS.md`). Out-of-scope feature ideas live in `.planning/ROADMAP.md` Out of Scope.
+- New module content. The course's V1 scope is locked, and the module list in [`README.md`](./README.md#table-of-contents) is what it ships — if a module is not in that list, it is not in V1. Out-of-scope feature ideas belong in an issue, not a branch; the maintainer tracks them outside this repo.
 - Style/grammar bikeshedding. Fix factual errors, not voice opinions.
 - New static-site-generator integrations. The course is plain markdown for V1; the deployed course platform at `https://shipyourfirstthing.com` lives in `site/` and is not contributor-facing yet.
 
