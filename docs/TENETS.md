@@ -124,7 +124,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 - `CLAUDE.md` — hard rules 1–15 (enforcement layer).
 - `docs/COURSE-AUTHORING.md` — the authoring playbook (operational layer). Part 1 vocab · Part 3 coherence · Part 6 M4+ execution floor + test gates · Part 7 AI-limitation.
 - `docs/audience-vocabulary.md` — per-module termlist contract (the authoritative term list).
-- `.planning/PROJECT.md` Key Decisions — the historical decision log.
+- `.planning/PROJECT.md` Key Decisions — the historical decision log (gitignored; maintainer-only, not present in a fork).
 - `scripts/voice-lint.sh` — programmatic enforcement (where it exists).
 - `lesson-template.md` — the nine-element lesson anatomy (plus the optional Definition-of-done element in build-phase lessons) + the Q1–Q3 + Execution-Floor authors' notes.
 

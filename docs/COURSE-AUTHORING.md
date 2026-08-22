@@ -558,7 +558,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 
 **Temptation.** "Each commit is a snapshot identified by a SHA-1 hash; the parent commit pointer creates a directed acyclic graph..."
 **Right move.** M2 L3 (`modules/02-toolchain/03-the-save-system.md`) is the gold standard: the learner's verb is "save," the agent performs the operation, and the felt model is a save point plus a cloud copy. No commands for the learner to type, no internals. Read it before drafting any other lesson that touches saving work.
-**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L3.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L3 (`modules/02-toolchain/03-the-save-system.md`).
 
 ### How to use this appendix
 
