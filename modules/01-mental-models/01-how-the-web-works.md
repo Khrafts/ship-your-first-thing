@@ -3,7 +3,7 @@ title: "How the web works"
 module: "01-mental-models"
 lesson_number: 01
 est_minutes: 45
-prereqs: []
+prereqs: ["00-welcome (all five lessons)"]
 updated: "2026-05-08"
 deviations: []
 ---
