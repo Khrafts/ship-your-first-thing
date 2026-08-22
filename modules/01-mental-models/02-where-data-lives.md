@@ -61,7 +61,7 @@ flowchart TB
 <details>
 <summary>Optional: same filing cabinet with the technical labels (Module 3 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names land hands-on in Module 3 when you write your first queries. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
+> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names come back for real in Module 3, where your agent writes the queries and you check what comes back. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
 
 ```mermaid
 flowchart TB
@@ -124,7 +124,7 @@ A **query** (one-line definition: a written question asking the database for spe
 
 The language the clerk uses for those queries is usually **SQL** (one-line definition: the standard query language for relational databases, [→ GLOSSARY](../../GLOSSARY.md#sql)). You don't need to write SQL; your AI agent writes it for you.
 
-> **Note:** None of this lesson teaches you how to build any of these things. Module 1 is about the *shape* of a software product. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time you'll write code that opens a real database is when you add sign-in to the thread project.
+> **Note:** None of this lesson teaches you how to build any of these things. Module 1 is about the *shape* of a software product. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time your project opens a real database is when you add sign-in to the thread project — written by your agent, checked by you.
 
 ## Exercise
 

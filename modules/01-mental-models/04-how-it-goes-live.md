@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to describe — in plain language an
 
 ## Why this matters
 
-Until now, every Module 1 mental model has lived inside a single private machine: a browser talking to a server (bundle 1), a server reading from a database (bundle 2), a sign-in flow gating access (bundle 3). This fourth lesson covers the question every real product has to answer last: how does this stop being a private thing on someone's laptop and become a public thing on the internet? The opening-night analogy makes it click. Your first deploy — a Hello-World page — is the first time you'll run this pipeline yourself — but bringing the right mental model to that exercise saves you days of "why doesn't my deploy work?" debugging.
+Until now, every Module 1 mental model has lived inside a single private machine: a browser talking to a server (bundle 1), a server reading from a database (bundle 2), a sign-in flow gating access (bundle 3). This fourth lesson covers the question every real product has to answer last: how does this stop being a private thing on someone's laptop and become a public thing on the internet? The opening-night analogy makes it click. Your first deploy — a Hello-World page — is the first time you'll watch this pipeline run on your own project — but bringing the right mental model to that exercise saves you days of "why doesn't my deploy work?" debugging.
 
 ## Core read
 
@@ -39,7 +39,7 @@ flowchart LR
 <details>
 <summary>Optional: same pipeline with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where you push your code. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll watch your agent run this pipeline in Module 4, and Module 5 is where you operate what comes out of it; the kitchen-to-restaurant picture is the one to hold onto today.
+> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where your agent files each saved version of your project. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll watch your agent run this pipeline in Module 4, and Module 5 is where you operate what comes out of it; the kitchen-to-restaurant picture is the one to hold onto today.
 
 ```mermaid
 flowchart LR
@@ -51,27 +51,27 @@ flowchart LR
 
 </details>
 
-You save changes to **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and upload them to **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
+You tell your agent to save your work, and it records the new version in **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and files a copy on **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
 
 Then **Vercel** (one-line definition: a service that runs your code on the public internet, [→ GLOSSARY](../../GLOSSARY.md#vercel)) watches the recipe binder. When new recipes land, Vercel's prep cooks (build servers) read the new version, get the kitchen ready, and flip the sign on the door from "Closed" to "Open."
 
 That whole pipeline is **CI/CD** (one-line definition: continuous integration / continuous deployment — the automated path from "I committed code" to "it's live on the internet," [→ GLOSSARY](../../GLOSSARY.md#ci-cd)).
 
-For your thread project, every push to the main branch will go through this pipeline automatically.
+For your thread project, every version your agent files on GitHub goes through this pipeline automatically.
 
 A few things confuse beginners here, and naming them now saves you debugging time later.
 
-**Localhost is invisible to the internet.** When you run the app on your laptop, only your laptop can see that page. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
+**Localhost is invisible to the internet.** While the app is only running on your laptop, only your laptop can see that page. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
 
 **Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers what to do when the live app misbehaves — describing what you see and steering the fix; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
 
-**The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything you haven't saved to git and uploaded to GitHub may as well not exist when the build server starts cooking. Module 2 unpacks the daily rhythm of saving changes and keeping the recipe binder current.
+**The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything your agent hasn't saved and filed on GitHub may as well not exist when the build server starts cooking. Module 2 unpacks the daily rhythm of saving changes and keeping the recipe binder current.
 
 ## Exercise
 
 Sketch the deploy pipeline. Plan 15 minutes.
 
-On paper or [excalidraw.com](https://excalidraw.com), draw four boxes: `your laptop`, `git push`, `GitHub`, `Vercel`. Then draw arrows showing what travels between each pair: what does your laptop send to GitHub? What does GitHub trigger at Vercel? What does Vercel produce? Add the public URL on the far right with an arrow pointing into "anyone on the internet." Don't look anything up. The point is to commit your current model to paper.
+On paper or [excalidraw.com](https://excalidraw.com), draw four boxes: `your laptop`, `saving`, `GitHub`, `Vercel`. Then draw arrows showing what travels between each pair: what goes from your laptop to GitHub? What does GitHub trigger at Vercel? What does Vercel produce? Add the public URL on the far right with an arrow pointing into "anyone on the internet." Don't look anything up. The point is to commit your current model to paper.
 
 ## Checkpoint
 

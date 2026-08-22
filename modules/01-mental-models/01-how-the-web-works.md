@@ -54,7 +54,7 @@ flowchart LR
 <details>
 <summary>Optional: same picture with the technical labels (you'll meet these properly in Module 3)</summary>
 
-> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll write your first API route by hand. If the labeled diagram feels heavy, close this and move on — the restaurant picture is the one that has to stick.
+> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll watch your agent put them to work on something real. If the labeled diagram feels heavy, close this and move on — the restaurant picture is the one that has to stick.
 
 ```mermaid
 flowchart LR
@@ -134,7 +134,7 @@ You'll meet the term **DNS** (one-line definition: the system that translates a 
 
 When you type `example.com`, your browser doesn't know which computer to ask. DNS is the phone book it consults: "who is example.com? Tell me their IP address." Then it sends the request to that address. For everyday purposes, DNS is invisible; for "this domain isn't loading," DNS is one of the first places to look.
 
-> **Note:** None of this lesson teaches you how to *build* a server or a webpage. Module 1 is about the shape of what the web is. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time you'll deploy your own page is your first deploy — a Hello-World page.
+> **Note:** None of this lesson teaches you how to *build* a server or a webpage. Module 1 is about the shape of what the web is. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time a page of your own is live on the internet is your first deploy — a Hello-World page your agent builds and ships while you check it from your phone.
 
 ## Exercise
 
