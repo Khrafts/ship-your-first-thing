@@ -580,9 +580,11 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 
 ## Part 9 — The voice-lint contract
 
-`scripts/voice-lint.sh` is the programmatic gate. It has nine active checks, numbered 1–10 — #8 retired and its number is not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
+`scripts/voice-lint.sh` is the programmatic gate. It has eight active checks, numbered 1–9 — #8 and #10 retired and their numbers are not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
 
 The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lessons present Claude Code desktop and Codex in parallel as prose conversation panels, with no lint-enforced labels.
+
+The WHAT-CHANGED.md thin-entry contract (formerly #10) retired 2026-08-22 — WHAT-CHANGED.md is no longer maintained (Phase 8 aftercare, Amendment A). The file itself is untouched; only the automated gate on its entry shape is gone.
 
 | # | Check | What trips it | Fixture |
 |---|-------|---------------|---------|
@@ -594,7 +596,6 @@ The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lesson
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
 | 9 | Debugging-framing (hard rule 12) | Lesson prose under `modules/` (every `*.md` except `README.md`) drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
-| 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 bytes of summary, over 300 bytes on one line, or leaking internal codenames (`D-xx`, `CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, `SC #n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
 
 ### Which lessons check #6 scans (module scope)
 
