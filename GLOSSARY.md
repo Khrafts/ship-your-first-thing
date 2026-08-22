@@ -58,7 +58,7 @@ Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-t
 
 ### branch
 A separate line of saved versions, used to try something without disturbing the version that already works. Your agent starts one and folds it back in; you ask in plain words and never operate it yourself. *Example: "try that on a separate line of work and leave the working version alone" is the whole of your side of it.*
-Used in: no lesson calls it out; [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing, in the line about every push to the main branch going through the pipeline. Module 2's save system stops at saving and sending up.
+Used in: no current lesson uses the word. [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) named it in passing until the 2026-08-22 aftercare pass rewrote that line; on an older copy of the course it is still there, in the sentence about every push to the main branch going through the pipeline. Module 2's save system stops at saving and sending up.
 
 ### browser
 A program on your computer that knows how to ask servers for webpages and render them. *Example: Chrome, Firefox, Safari.*
@@ -258,7 +258,7 @@ Used in: no current lesson.
 
 ### push
 Sending saved versions up from your computer to the project's home page on GitHub, so a copy survives even if your machine doesn't. Agent-performed — it's part of what "saved" means when your agent says it. *Example: after saving a working version, your agent sends it up, and that version appears on the project's home page on GitHub.*
-Used in: no lesson calls it out; [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing, in the pipeline picture and again in its exercise. [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md) teaches the send-up without naming it.
+Used in: no lesson calls it out; [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md) names it in passing, in the pipeline picture. [Module 2 — The save system](./modules/02-toolchain/03-the-save-system.md) teaches the send-up without naming it.
 
 ## Q
 
