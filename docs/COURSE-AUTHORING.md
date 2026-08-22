@@ -45,13 +45,13 @@ Phase 02.1 extended the locked-analogy convention to nine Module 2 and Module 3.
 
 #### Analogy authoring policy (D-A1..D-A4)
 
-Sustained-with-callbacks is the depth that makes an analogy land. One passing simile in the opener does not. The pattern is one to two paragraphs of an everyday scene, plus one to three callbacks distributed across the 600-1500 word Core read so the picture stays alive as new mechanics get named. M1 bundle 1 (restaurant) and M2 L5 (recipe-binder) are the depth references; read either before drafting a new analogy.
+Sustained-with-callbacks is the depth that makes an analogy land. One passing simile in the opener does not. The pattern is one to two paragraphs of an everyday scene, plus one to three callbacks distributed across the 600-1500 word Core read so the picture stays alive as new mechanics get named. M1 bundle 1 (restaurant) is the depth reference; read it before drafting a new analogy.
 
 Through Phase 02.1, every Module 2, Module 3, and Module 3.5 lesson that named a tool or skill category got a new analogy, with no structural exemptions — including lessons whose subject matter could be argued to already contain its own picture. Module 3.5 is retired (see Part 5's tombstone); this policy now applies to Module 2 and Module 3. The audience reads each lesson without remembering yesterday's lesson; the felt picture has to be there to be reasoned against.
 
 Two-touch placement: the analogy opens "Why this matters" as the felt rhythm, then re-anchors at the top of the Core read at the moment the lesson formally names the tool. The first touch sets the picture before any naming happens; the second touch makes the naming feel like the picture rather than a definition. A third touch in "What you just did" is optional, not required.
 
-Uniqueness: each new analogy gets its own decision-log entry and a distinct picture. No reuse of the D-07 locked analogies (restaurant, filing cabinet, door staff, recipe-binder) or M2 L5's recipe-binder framing. Themes may rhyme between lessons in the same module (M2's workbench and junior-teammate both inhabit a craftsperson worldview), but the analogy noun, the felt scene, and the mapping must each be different.
+Uniqueness: each new analogy gets its own decision-log entry and a distinct picture. No reuse of the D-07 locked analogies (restaurant, filing cabinet, door staff, recipe-binder). Themes may rhyme between lessons in the same module (M2's workbench and junior-teammate both inhabit a craftsperson worldview), but the analogy noun, the felt scene, and the mapping must each be different.
 
 The Phase 02.1 entries by lesson, named here so future authors can find them without opening the phase log: D-40 craftsperson's workbench (M2 L1 the IDE), D-41 librarian's request slip (M2 L2 the terminal), D-42 sheet music vs. the musician (M2 L3 the runtime), D-43 corner-store delivery service (M2 L4 npm), D-44 junior teammate who started yesterday (M2 L6 AI coding agents), D-45 office directory in the lobby (M3.5 L1 reading a file tree), D-46 contractor who painted the wrong room (M3.5 L2 spotting wrong-file edits), D-47 receipt with the line item circled (M3.5 L3 error message to file pointer), D-48 framed picture vs. touchscreen (M3.5 L4 the `'use client'` server/client split).
 
@@ -75,11 +75,11 @@ Two-test gate:
 
 PARTIAL is allowed and means "ships with a known gap that a later phase must extend or revise." FAIL means propose a different picture before the entry is locked. Reviewers checking the CONTEXT.md entry can spot a missing or hand-waved two-test block at a glance.
 
-**Worked contrast from Phase 02.1.**
+**Worked contrast from Phase 02.1.** Both lessons below are retired (see the historical note above); the entries stand as worked records of how the two tests are argued, not as analogies attached to any live lesson. Do not resolve their lesson numbers against today's Module 2.
 
-- **D-42 sheet music vs. musician (M2 L3 runtime) — PASS / PASS.** Standalone: paper-and-dots-sitting-silent-on-a-stand is a coherent scene every reader recognizes. Load-bearing tie: the load-bearing distinction is "text-that-exists" vs. "the agent that makes it act" — sheet music vs. musician maps that exactly, and the two-musicians extension (browser + Node) predicts "JavaScript has two runtimes." Failure mode predicted: file exists but page is silent = sheet music sitting on the stand with no musician.
+- **D-42 sheet music vs. musician (the retired Module 2 runtime lesson) — PASS / PASS.** Standalone: paper-and-dots-sitting-silent-on-a-stand is a coherent scene every reader recognizes. Load-bearing tie: the load-bearing distinction is "text-that-exists" vs. "the agent that makes it act" — sheet music vs. musician maps that exactly, and the two-musicians extension (browser + Node) predicts "JavaScript has two runtimes." Failure mode predicted: file exists but page is silent = sheet music sitting on the stand with no musician.
 
-- **D-43 corner-store delivery (M2 L4 npm) — PASS / PARTIAL.** Standalone: list / fetch / bags is a familiar rhythm. Load-bearing tie: maps `package.json` / `npm install` / `node_modules` cleanly. PARTIAL because the analogy does not predict (i) **version pinning** — a corner store doesn't ask for soap-version-1.2.3 — and (ii) **transitive dependencies** — the bags don't contain bags. Both will hit a Phase 3 learner; either D-43 gets extended (e.g., "the store ALSO delivers what your items came packaged with") or a follow-up phase revises the analogy.
+- **D-43 corner-store delivery (the retired Module 2 npm lesson) — PASS / PARTIAL.** Standalone: list / fetch / bags is a familiar rhythm. Load-bearing tie: maps `package.json` / `npm install` / `node_modules` cleanly. PARTIAL because the analogy does not predict (i) **version pinning** — a corner store doesn't ask for soap-version-1.2.3 — and (ii) **transitive dependencies** — the bags don't contain bags. Both would have hit a Phase 3 learner. No revision is queued: the lesson was retired before either gap was closed, so the entry survives only as the reference picture of what a PARTIAL verdict reads like.
 
 The two-test gate is not a one-time hurdle. When a downstream lesson finds the analogy missing a load-bearing tie because a learner hit the gap, the analogy gets re-evaluated and either extended or revised. The gate is the conversation; the CONTEXT.md entry is its record.
 
@@ -399,7 +399,6 @@ Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, 
 - CLAUDE.md hard rule 12 — the generalized Agent-Responsibility Boundary this part extends to the execution floor
 - CLAUDE.md hard rule 13 — the boundary itself
 - `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase check inventory
-- M2 L5 — gold-standard exemplar of the symptom-and-steer floor
 
 ---
 
@@ -546,7 +545,7 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
 
 **Temptation.** "`^1.2.3` matches `>=1.2.3 <2.0.0`; `~1.2.3` matches `>=1.2.3 <1.3.0`..."
-**Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions and installation; the learner observes the app works.
+**Right move.** The agent manages versions and installation; the learner observes the app works. The analogy that used to carry this went with the retired Module 2 npm lesson, and no live lesson replaces it — none needs to, per the verdict below.
 **Where to escape to.** **Nowhere — CUT 2026-08-21 (retired surface).** `npm` is named in the retired-course-surface bucket of every module's Forbidden tier under hard rule 15, and a version range is only ever visible inside a file the agent wrote — which hard rule 12 forbids asking the learner to open. A pointer here would be the course's single instruction to go read a file, which is a worse outcome than not knowing what `^` means.
 
 #### Trap K — Explaining what "build" actually does (bundler internals, tree-shaking, dead-code elimination)
@@ -558,8 +557,8 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap L — Explaining git internals (objects, hashes, DAG, the staging area as a content-addressable store)
 
 **Temptation.** "Each commit is a snapshot identified by a SHA-1 hash; the parent commit pointer creates a directed acyclic graph..."
-**Right move.** M2 L5 (the gold standard) names the four daily commands and what they do at the felt level. No internals. Read M2 L5 before drafting any other lesson that mentions git.
-**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L5.
+**Right move.** M2 L3 (`modules/02-toolchain/03-the-save-system.md`) is the gold standard: the learner's verb is "save," the agent performs the operation, and the felt model is a save point plus a cloud copy. No commands for the learner to type, no internals. Read it before drafting any other lesson that touches saving work.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L3.
 
 ### How to use this appendix
 

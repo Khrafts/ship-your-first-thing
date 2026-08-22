@@ -40,7 +40,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 **Why this exists.** Decorative analogies ("kind of like X") are filler that exhaust attention without return. Load-bearing analogies do the inverse — they replace pages of prose with a felt picture, and they predict the failure modes the learner needs to spot when steering an agent. The locked pictures (restaurant, filing cabinet, door staff, recipe binder) each survived the gate.
 
-**Operationalized:** `COURSE-AUTHORING.md` Part 2 (locked analogies D-07 + the two-test gate D-A17). New analogies are proposed in the phase's CONTEXT.md with an explicit two-test verdict before the lesson body is drafted; M2 L5 is the gold-standard exemplar.
+**Operationalized:** `COURSE-AUTHORING.md` Part 2 (locked analogies D-07 + the two-test gate D-A17). New analogies are proposed in the phase's CONTEXT.md with an explicit two-test verdict before the lesson body is drafted; M1 bundle 1 (restaurant) is the depth reference for how far an analogy has to be sustained.
 **Enforced:** hard rules 9 + 11 · GUIDANCE (review at the CONTEXT.md gate; no lint).
 
 ---
