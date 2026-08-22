@@ -97,7 +97,7 @@ You've got this if you can do both:
 
 Optional, only if you're curious:
 
-- The dates on those lines are the honest part of the list rather than decoration. Each one says a person opened that page on that day and confirmed it still reached what the line claims. A page can move the week after, and no date can prevent that — what the date gives you is how much weight the line will bear, which is more than most reading lists ever tell you.
+- The dates on those lines are the honest part of the list rather than decoration. Each one says somebody opened that page on that day and confirmed it still reached what the line claims. A page can move the week after, and no date can prevent that — what the date gives you is how much weight the line will bear, which is more than most reading lists ever tell you.
 - The two-shape test outlives this list. Most "should I learn this?" questions answer themselves once you ask what new thing you could do afterwards, and notice how often the honest answer is that you would be able to check somebody else's work, or to stand somewhere you have never needed to stand.
 
 ## Loop check

@@ -12,7 +12,7 @@ By the end of this module you can name the three moves that act on the working s
 
 Each lesson builds on the last:
 
-- **Lesson 1 — Session hygiene:** two moves you have already met without a name for them and a third you have not, the condition that tells you which one you are in, and why none of the three is a beginner phase you grow out of → sets up Lesson 2, which does the same thing for the loop itself.
+- **Lesson 1 — Session hygiene:** two moves you have already met without a name for them and a third you have never done, the condition that tells you which one you are in, and why none of the three is a beginner phase you grow out of → sets up Lesson 2, which does the same thing for the loop itself.
 - **Lesson 2 — The loop on other agents:** the four moves from Module 3, carried across to agents this course does not teach → sets up Lesson 3, because once the loop travels the only question left is what to point it at.
 - **Lesson 3 — Where to go from here:** what is not worth learning next, and then a short set of pointers, each one naming who should follow it and who should skip it → closes the course.
 

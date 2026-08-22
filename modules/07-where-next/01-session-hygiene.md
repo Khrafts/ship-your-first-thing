@@ -120,7 +120,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You wrote down three moves that act on the session rather than on the work, put a number and a price on each, and named two tools with nothing to do with AI where the same three apply — which is the part of this lesson that will outlive both of the apps it was taught in. The moves that survive a change of tool are what this last module is for, and there is one more of them: the four moves of the loop themselves. Lesson 2 hands you those, translated for agents this course never taught you.
+You wrote down three moves that act on the session rather than on the work, put a number on one and a price on another, and named two tools with nothing to do with AI where the same three apply — which is the part of this lesson that will outlive both of the apps it was taught in. The moves that survive a change of tool are what this last module is for, and there is one more of them: the four moves of the loop themselves. Lesson 2 hands you those, translated for agents this course never taught you.
 
 ## Navigation
 

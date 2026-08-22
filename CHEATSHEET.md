@@ -57,7 +57,7 @@ The re-cut of what this page used to call "token discipline" — the same goal, 
 - **A fresh conversation per chunk.** Every chunk in Module 4 opens by pointing your agent at the plan; carrying an old chunk's back-and-forth into the next one is how a plan and a build quietly drift apart.
 - **Tell your agent what you saw, not a wall of text.** "The button didn't hide the date" beats pasting in everything the app printed. Say what you saw and what should be different, and let your agent do the reading. [Module 3 Lesson 4](./modules/03-the-loop/04-steering-and-recovery.md)
 
-**Three moves that act on the session, not on the work.** Each has one condition that selects it, and none of them is a beginner phase you grow out of. [Module 7 Lesson 1](./modules/07-where-next/01-session-hygiene.md)
+**Three moves that act on the session, not on the work.** Each has conditions that select it, and none of them is a beginner phase you grow out of. [Module 7 Lesson 1](./modules/07-where-next/01-session-hygiene.md)
 
 - **Start a fresh conversation** — when the problem is the conversation: something you ruled out has come back, or an instruction from earlier has quietly stopped applying.
 - **Move to a different agent** — when a fresh conversation hit the same wall the same way twice, or your app is down or out of allowance for the day. Worth exactly one try. Skip it entirely when money, other people's information, or something that cannot be taken back is at stake — that goes straight to the next move.

@@ -2,7 +2,7 @@
 
 ## Pinned versions
 
-This course is verified against the tool versions in [`VERSIONS.md`](./VERSIONS.md). `VERSIONS.md` is the source of truth and is updated on revision day. If a step on this page doesn't match what you see (button names, click paths, free-tier numbers), check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — the page may have shifted since the verification date in `VERSIONS.md`.
+This course is verified against the tool versions in [`VERSIONS.md`](./VERSIONS.md). `VERSIONS.md` is the source of truth and is updated on revision day. If a step on this page doesn't match what you see (button names, click paths, free-tier numbers), check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — the page may have shifted since that tool's verification date in `VERSIONS.md`.
 
 ## Required accounts
 
