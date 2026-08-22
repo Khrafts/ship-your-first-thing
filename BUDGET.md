@@ -85,6 +85,14 @@ Module 4 adds two more accounts: Supabase (your database) and Vercel (where the 
 
 Module 5 adds no new accounts and no new costs — nothing new gets built, and the lessons need nothing beyond the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility.
 
+### Module 6 (After it's live)
+
+Module 6 adds no new accounts and no new costs. Its lessons say so directly: nothing to install, nothing to set up, and nothing to prepare — the module works on the app Module 5 left live, at the link it already has. Only one of its four lessons changes that app on purpose. Expect AI use in the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility. The re-check this module has you run after any change happens in your browser, against your own live app — it costs about fifteen minutes of your time and nothing else.
+
+### Module 7 (Where to go from here)
+
+No AI tokens used, no accounts, nothing to install. Nothing in Module 7 runs — no build, no repair and no check — and its three lessons ask you to write things down rather than to ask your agent for anything. Free for both tracks. This is also where the list ends, because Module 7 is the last module.
+
 ## Hidden costs not on this table
 
 These are zero or near-zero today but the course names them so you're not surprised:

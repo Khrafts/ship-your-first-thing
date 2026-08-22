@@ -68,12 +68,12 @@ Every Module 3 ask is shown twice — once in Claude Code desktop, once in the C
 ## How to PR
 
 1. Fork this repo.
-2. Make your change on a topic branch (`git checkout -b common-issues/codespaces-port`).
-3. Run any verification commands from the affected lesson's `## Checkpoint` section.
+2. Make your change on a topic branch (`git checkout -b common-issues/github-verification`).
+3. Re-read the affected lesson's `## Checkpoint` section and confirm every line in it is still true after your change.
 4. PR against `main`. Include in the PR description:
    - **What you changed** (one sentence)
    - **Why** (one sentence)
-   - **Tested how** (the command you ran or the lesson section you re-read)
+   - **Tested how** (the lesson section you re-read, or the lint run below)
 
 ### Before you push: run the voice lint
 
@@ -116,7 +116,7 @@ This iterates over `scripts/voice-lint-fixtures/` and asserts every fixture trip
 
 ## Quarterly smoke-test ritual
 
-Phase 1 ships the *documented ritual* in CONTRIBUTING.md; Phase 5 OPS-02 ships the *first dry-run* of it. The ritual is the same in both phases — the formal OPS-02 acceptance is the dry-run, not the documentation.
+This ritual is the course's freshness cadence, and it is documented and ready to run. Its first full dry-run is still outstanding: walking a clean install start to finish needs a person driving a desktop app on their own machine, which is not something the repo can do for itself. Until that happens, treat the steps below as written but unrehearsed — a step that doesn't match what you meet is worth a `freshness` issue in its own right.
 
 Once per quarter, the maintainer (or any willing contributor) does this:
 
@@ -129,8 +129,6 @@ Once per quarter, the maintainer (or any willing contributor) does this:
    - What's stale
    - What you saw instead
 6. The maintainer batches these into a revision pass; updates `VERSIONS.md`, `WHAT-CHANGED.md`, and the affected lessons.
-
-The first dry-run of this ritual happens before Phase 5 closes.
 
 ### Link freshness — dated pointers to other people's documentation
 
