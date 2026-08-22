@@ -56,7 +56,7 @@ sequenceDiagram
 <details>
 <summary>Optional: same door staff with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. These four names get hands-on treatment in Module 4, where you add sign-in and per-row access rules to your project. "Door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough today.
+> *Peek ahead — skim, don't memorize:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. Sign-in itself is built in Module 4, where you add it and its per-row access rules to your project. The four names above are for recognizing, not for writing — your agent handles what they stand for. "Door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough today.
 
 ```mermaid
 sequenceDiagram

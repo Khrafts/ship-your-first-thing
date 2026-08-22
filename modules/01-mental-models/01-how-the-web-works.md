@@ -52,9 +52,9 @@ flowchart LR
 ```
 
 <details>
-<summary>Optional: same picture with the technical labels (you'll meet these properly in Module 3)</summary>
+<summary>Optional: same picture with the technical labels (names to recognize, not to learn today)</summary>
 
-> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages") properly in Module 3, where you'll watch your agent put them to work on something real. If the labeled diagram feels heavy, close this and move on — the restaurant picture is the one that has to stick.
+> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled: **HTTP**, **request**, **response**, **server**, and **browser** (as a *technical* role, not just "the program you use to read web pages"). They are worth recognizing when your agent uses one in a reply — this course never asks you to write one. If the labeled diagram feels heavy, close this and move on — the restaurant picture is the one that has to stick.
 
 ```mermaid
 flowchart LR
@@ -104,9 +104,9 @@ sequenceDiagram
 ```
 
 <details>
-<summary>Optional: same round trip with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same round trip with the technical labels (names to recognize, not to learn today)</summary>
 
-> *Peek ahead — skim, don't memorize:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands. The `GET /` shape and status codes (`200 OK`, `404 Not Found`) get hands-on coverage in Module 3 — for now, the round-trip picture is what matters.
+> *Peek ahead — skim, don't memorize:* In a real web round trip, the customer is your browser, the waiter speaks HTTP, and the kitchen is the server. The "side dishes" are the CSS, JavaScript, and image files the page references after the main HTML lands. The `GET /` shape and status codes (`200 OK`, `404 Not Found`) are worth recognizing for the day a page shows you one or your agent mentions one — for now, the round-trip picture is what matters.
 
 ```mermaid
 sequenceDiagram

@@ -59,9 +59,9 @@ flowchart TB
 ```
 
 <details>
-<summary>Optional: same filing cabinet with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same filing cabinet with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names come back for real in Module 3, where your agent writes the queries and you check what comes back. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
+> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. **Table** and **row** return in Module 4, where your agent builds the thread project on a real database and you check that it behaves. **Schema** and **foreign key** are names to recognize if your agent says one — nothing more. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
 
 ```mermaid
 flowchart TB
@@ -91,9 +91,9 @@ sequenceDiagram
 ```
 
 <details>
-<summary>Optional: same question-and-answer with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same question-and-answer with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. All four — API, HTTP request, SQL, database — get hands-on coverage in Module 3. The receptionist-and-form picture is what carries the concept.
+> *Peek ahead — skim, don't memorize:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. **SQL** and **database** return in Module 4, where your agent builds the thread project on a real one. **API** and **HTTP request** are names to recognize if they turn up in your agent's replies; this course never asks you to write either. The receptionist-and-form picture is what carries the concept.
 
 ```mermaid
 sequenceDiagram
@@ -116,7 +116,7 @@ Two things tend to confuse beginners here, and both are worth noticing now:
 
 **Second, the API is just a list of paper-form templates.** When someone says "the API supports `GET /api/posts` and `POST /api/posts`," they mean: there are two paper forms the receptionist accepts. One says "show me the posts." The other says "here's a new post; please file it." The list of forms is finite, written down, and (in a good app) documented. There's no magic.
 
-You'll meet two more terms in Module 3 and beyond.
+Two more terms belong to the same picture.
 
 A **schema** (one-line definition: the fixed shape of fields in a table, [→ GLOSSARY](../../GLOSSARY.md#schema)) is the printed template at the top of every card in a drawer.
 
@@ -124,7 +124,7 @@ A **query** (one-line definition: a written question asking the database for spe
 
 The language the clerk uses for those queries is usually **SQL** (one-line definition: the standard query language for relational databases, [→ GLOSSARY](../../GLOSSARY.md#sql)). You don't need to write SQL; your AI agent writes it for you.
 
-> **Note:** None of this lesson teaches you how to build any of these things. Module 1 is about the *shape* of a software product. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time your project opens a real database is when you add sign-in to the thread project — written by your agent, checked by you.
+> **Note:** None of this lesson teaches you how to build any of these things. Module 1 is about the *shape* of a software product. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time your project opens a real database is when you add sign-in to the thread project: your agent writes it, you check that it works.
 
 ## Exercise
 
