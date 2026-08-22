@@ -29,6 +29,15 @@ The quickest routes from "my screen doesn't match the lesson" to an answer:
 | Module 4 keeps mentioning walkthroughs "in Module 5" and you can't find them | Module 5 exists now — the walkthroughs are its lessons 2 through 4 (since 2026-08-19) | [Module 5](./modules/05-operating/README.md) |
 | An older copy of Module 2 or 3 drops "saved" from the go-back sentence | Both wordings work; the course now says it one way everywhere — "Take us back to the last saved working version" (since 2026-08-20) | [Module 5 Lesson 5](./modules/05-operating/05-the-day-something-breaks.md) |
 | An older copy of Module 5 says Module 6 "comes next" but gives you nothing to click | Module 6 is published — Module 5's overview and its last lesson now link straight to it (since 2026-08-21) | [Module 6](./modules/06-after-live/README.md) |
+| An older copy of Module 6 says Module 7 "comes next" but gives you nothing to click | Module 7 is published — Module 6's overview and its last lesson now link straight to it (since 2026-08-22) | [Module 7](./modules/07-where-next/README.md) |
+
+## 2026-08-22 — Module 7 is here: the last module, and the course runs end to end
+
+**Change:** Module 7 (Where to go from here) is published — keeping a long session clear-headed, carrying the same loop to agents this course doesn't teach, and a short list of what's worth learning next and what to skip. It is the last module: Modules 0 through 7 are all published.
+**If you're affected:** If you finished Module 6, the course continues at [Module 7](./modules/07-where-next/README.md) — nothing you built changed, and the contents list now names Modules 1 and 3 the way their own pages do.
+Two lines you may have read before were corrected. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) and [BUDGET](./BUDGET.md) now say the free track was installed and used for a first edit, rather than confirmed end-to-end.
+And [Module 4](./modules/04-thread-project/README.md)'s refusal check now says what to do when the thing you tried goes through: tell your agent what you did and what should have stopped it.
+**Details:** The lessons are in [`modules/07-where-next/`](./modules/07-where-next/README.md); their new words are in the [GLOSSARY](./GLOSSARY.md), the last two module cost rows in [BUDGET](./BUDGET.md), and three session moves in [CHEATSHEET](./CHEATSHEET.md).
 
 ## 2026-08-21 — Module 6 is here: bug reports, new features, asking a person
 
