@@ -61,7 +61,7 @@ For your thread project, every version your agent files on GitHub goes through t
 
 A few things confuse beginners here, and naming them now saves you debugging time later.
 
-**Localhost is invisible to the internet.** Until it is deployed, only your laptop can see that page. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
+**Localhost is invisible to the internet.** Until your app is deployed, only your laptop can see it. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
 
 **Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers what to do when the live app misbehaves — describing what you see and steering the fix; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
 
