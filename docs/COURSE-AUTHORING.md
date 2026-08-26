@@ -580,7 +580,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 
 ## Part 9 — The voice-lint contract
 
-`scripts/voice-lint.sh` is the programmatic gate. It has eight active checks, numbered 1–9 — #8 and #10 retired and their numbers are not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
+`scripts/voice-lint.sh` is the programmatic gate. It has nine active checks, numbered 1–11 — #8 and #10 retired and their numbers are not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
 
 The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lessons present Claude Code desktop and Codex in parallel as prose conversation panels, with no lint-enforced labels.
 
@@ -596,6 +596,7 @@ The WHAT-CHANGED.md thin-entry contract (formerly #10) retired 2026-08-22 — WH
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
 | 9 | Debugging-framing (hard rule 12) | Lesson prose under `modules/` (every `*.md` except `README.md`) drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
+| 11 | Glossary `Used in:` citations | A `Used in:` line in GLOSSARY.md naming a lesson that does not exist, or one that neither links that anchor nor names the term — a citation falsified by a later lesson edit. **WARN-only** | `11-glossary-used-in-citation.md` |
 
 ### Which lessons check #6 scans (module scope)
 
@@ -629,7 +630,7 @@ Check #6 emits both:
 - **WARN** lines for callout-missing cases (a Requires-callout term used without a callout) and bare Forbidden cases — these document the editorial backlog but do NOT block the gate.
 - **VIOLATION** lines would block — currently no VIOLATIONS are emitted from #6 by default (the WARN-only behavior is documented in `01-8-SUMMARY.md` as a deliberate choice to ship the lint without retroactively blocking on every legacy phrasing).
 
-Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) is WARN-only, like #6.
+Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) and check #11 (glossary `Used in:` citations) are WARN-only, like #6.
 
 **Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3 (the M2/M3 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 

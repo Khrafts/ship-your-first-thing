@@ -22,6 +22,10 @@
 #   8. (retired 2026-08-16) M3 dual-agent rendering — removed with the desktop-app reshoot of Module 3.
 #   9. Debugging-framing — WARN-only signals when any lesson drifts into learner-debugs posture
 #      (CLAUDE.md hard rule 12). See the scan_debugging_framing comment for the pattern list.
+#  10. (retired 2026-08-22) WHAT-CHANGED.md thin-entry contract — removed with the WHAT-CHANGED log
+#      itself; the file stays on disk but its entry shape is no longer gated.
+#  11. Glossary `Used in:` citations — WARN-only. Every lesson a GLOSSARY.md entry cites must exist,
+#      and must either link that anchor or name the term. See the scan_glossary_used_in comment.
 #
 # Note: `set -e` is intentionally omitted; grep returns 1 on no-match, which is our happy path.
 # Code review findings closed: WR-01..WR-05, IN-04 (see .planning/phases/01-foundation-front-door/01-REVIEW.md).
@@ -867,6 +871,131 @@ scan_debugging_framing() {
   done
 }
 
+# Glossary `Used in:` citation check (#11) — WARN-only.
+#
+# Every `### anchor` entry in GLOSSARY.md carries a `Used in:` line naming the lessons where
+# the term appears. Nothing validated those citations against the lessons they name, so a
+# lesson edit could silently falsify them — which happened: a Module 1 rewrite left two
+# entries citing prose that no longer existed, and neither the edit nor its review caught it.
+# Check #4 validates the opposite direction (lesson anchor -> glossary entry) and is blind to
+# a stale citation by construction.
+#
+# GLOSSARY.md's own header declares the two ways a citation can be truthful: the lesson
+# "links here through a vocab callout" ("that link is the contract this file exists to keep"),
+# or the lesson "uses the word in passing", with no callout and no link back. This check
+# accepts either — a citation is satisfied by a `GLOSSARY.md#anchor` link in the named lesson
+# OR by the term appearing in that lesson's prose. Encoding a stricter rule would enforce a
+# contract the file does not claim to keep.
+#
+#   11a (cited file exists)  — every lesson path on a `Used in:` line must resolve to a real
+#       file. Applied to every entry including self-declaring ones: a dead path is a defect
+#       under either reading of the line. Nothing else in the lint validates GLOSSARY.md's
+#       outbound links (check #5 only walks modules/** -> repo-root docs).
+#   11b (term present)       — the cited lesson must link the anchor or name the term.
+#       Skipped for self-declaring entries; see below.
+#
+# Self-declaring entries: a `Used in:` line whose first word after the colon is "no"
+# ("no current lesson.", "no lesson calls it out; ...") states outright that no lesson uses
+# the term. These are deliberate landing pads, and any lesson such a line goes on to cite is
+# named for context ("... records that retirement", "... names it in passing") rather than as
+# a usage claim. 11b is skipped for them; 11a still applies. Twelve entries self-declare
+# today and five of them cite a lesson that does not name the term — without this carve-out
+# the check would emit five false positives against deliberate, verified content.
+#
+# Declared surface forms accepted by 11b, matched case-insensitively against the lesson with
+# markdown link destinations stripped — stripping the destinations is what stops the anchor's
+# own `GLOSSARY.md#anchor` href from satisfying the prose arm and making the check circular:
+#   - a hyphen in the anchor may render as a hyphen, whitespace, `/`, `.`, or nothing
+#     ("row-level security", "CI/CD", "Next.js", "server components");
+#   - a trailing `s`, `es`, or `'s` (plural / possessive);
+#   - a final `y` may render as `ies` ("dependency" -> "dependencies").
+# Both ends are boundary-guarded so a short anchor ("api") cannot match inside a longer word
+# ("rapid"). The relaxations only ever suppress a warning, never create one, which is the
+# safe direction for a check whose false positives would get it disabled.
+#
+# Known gap: an entry whose lesson keeps the callout link while the bolded term drifts is
+# satisfied by the link arm alone. That leaves the entry navigable, which is the contract the
+# link stands for, so it is deliberately not flagged.
+glossary_term_regex() {
+  local t
+  t=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
+  local IFS='-'
+  # shellcheck disable=SC2206
+  local segs=($t)
+  local out="" seg first=1
+  for seg in "${segs[@]}"; do
+    if [ "$first" -eq 1 ]; then first=0; else out="${out}[-[:space:]/.]*"; fi
+    out="${out}${seg}"
+  done
+  case "$out" in
+    *y) out="${out%y}(y|ies)" ;;
+  esac
+  printf "(^|[^A-Za-z0-9])%s(s|es|'s)?([^A-Za-z0-9]|\$)" "$out"
+}
+
+scan_glossary_used_in() {
+  local mode="$1"
+  local glossary link_base
+  if [ "$mode" = "fixtures" ]; then
+    glossary="scripts/voice-lint-fixtures/11-glossary-used-in-citation.md"
+    link_base="scripts/voice-lint-fixtures"
+  else
+    glossary="GLOSSARY.md"
+    link_base="."
+  fi
+
+  echo "==> Scanning GLOSSARY 'Used in:' citations against the lessons they name (WARN-only)..."
+
+  [ -f "$glossary" ] || return
+
+  local lineno=0 anchor="" line self_declaring targets tgt path rel rx
+  while IFS= read -r line; do
+    lineno=$((lineno + 1))
+    case "$line" in
+      '### '*)
+        anchor="${line#\#\#\# }"
+        continue
+        ;;
+      'Used in:'*) ;;
+      *) continue ;;
+    esac
+    [ -z "$anchor" ] && continue
+
+    self_declaring=0
+    case "$line" in
+      'Used in: no '*) self_declaring=1 ;;
+    esac
+
+    # An optional `#fragment` is tolerated and stripped: without it a citation written as
+    # `(./modules/x.md#section)` would be skipped silently, which is the failure mode this
+    # whole check exists to prevent.
+    targets=$(printf '%s\n' "$line" | grep -oE '\]\([^)]*\.md(#[^)]*)?\)' | sed -E 's/^\]\(//; s/\)$//; s/#.*$//' || true)
+    [ -z "$targets" ] && continue
+
+    while IFS= read -r tgt; do
+      [ -z "$tgt" ] && continue
+      rel="${tgt#./}"
+      path="${link_base}/${rel}"
+      path="${path#./}"
+      if [ ! -f "$path" ]; then
+        echo "WARN (glossary-used-in 11a): $glossary:$lineno: entry \"$anchor\" cites $rel, which does not exist"
+        WARN_COUNT=$((WARN_COUNT + 1))
+        continue
+      fi
+      [ "$self_declaring" -eq 1 ] && continue
+      if grep -qF "GLOSSARY.md#${anchor}" "$path"; then
+        continue
+      fi
+      rx=$(glossary_term_regex "$anchor")
+      if sed -E 's/\]\([^)]*\)/]/g' "$path" | grep -qiE "$rx"; then
+        continue
+      fi
+      echo "WARN (glossary-used-in 11b): $glossary:$lineno: entry \"$anchor\" cites $rel, but that lesson neither links #$anchor nor names the term — the citation may have been falsified by a later edit"
+      WARN_COUNT=$((WARN_COUNT + 1))
+    done <<< "$targets"
+  done < "$glossary"
+}
+
 # ===== Self-test mode =====
 # Each fixture in scripts/voice-lint-fixtures/ MUST trip the check it's designed for.
 # We run each scan_* function with mode="fixtures" and capture the violation count delta;
@@ -978,6 +1107,35 @@ run_self_test() {
     echo "  self-test OK: debugging-framing fixture tripped $((after - before)) WARNs"
   fi
 
+  # Glossary Used-in citations (fixture 11) — WARN-only check. The fixture carries three
+  # synthetic entries: one citing a lesson file that does not exist (11a), one citing a real
+  # fixture file that never names the term and never links the anchor (11b), and one
+  # self-declaring landing-pad entry that cites a real file it does not claim to use the term
+  # in. Assert the first two WARN and the third does NOT — the carve-out is the half of this
+  # check most likely to regress into false positives, so it is asserted, not assumed.
+  before=$WARN_COUNT
+  scan_glossary_used_in fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$WARN_COUNT
+  if [ "$((after - before))" -lt 2 ]; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) tripped only $((after - before)) WARN(s); expected >= 2 (11a missing file + 11b term absent)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11a' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11a (citation to a nonexistent lesson)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11b' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11b (cited lesson never names the term)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif grep -q 'orphan-sprocket' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in check warned on the self-declaring landing-pad entry 'orphan-sprocket'; the carve-out has regressed"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: glossary-used-in fixture tripped $((after - before)) WARNs (11a + 11b) and left the self-declaring entry alone"
+  fi
+
   if [ "$fail" -ne 0 ]; then
     echo "==> voice-lint.sh --self-test: FAIL"
     exit 1
@@ -999,6 +1157,7 @@ scan_broken_relative_paths default
 scan_jargon_density default
 scan_mermaid_br default
 scan_debugging_framing default
+scan_glossary_used_in default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"
