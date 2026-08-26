@@ -276,18 +276,24 @@ GitHub's Mermaid parser has different rules for HTML break tags depending on whe
 
 `scripts/voice-lint.sh` check #7 enforces this. The check strips `["..."]` quoted regions inside Mermaid fences and then flags any remaining `<br/?>` as a render-breaker. Fixture: `scripts/voice-lint-fixtures/07-mermaid-br-outside-quotes.md`.
 
-### The "Module N hands-on" pointer
+### The summary pointer: saying where the terms go
 
-When the technical Mermaid introduces M3+ vocabulary, the disclosure summary line and the peek-ahead callout both name which later module the learner will use those terms hands-on. The current mapping:
+When the technical Mermaid introduces M3+ vocabulary, the disclosure summary line and the peek-ahead callout say where those terms are going. **Neither is obliged to name a module.** Naming one is correct only where a later module really does cover that family hands-on; where none does, both say plainly that the terms are for recognizing. Both forms are set out under "The simple-first / bridge-collapsed convention" above, and both ship.
 
-| Bundle | Technical terms introduced | Hands-on module |
-|--------|---------------------------|-----------------|
-| 1 (how-the-web-works) | HTTP, request, response, server, browser-as-program, HTML, GET/POST/PUT/DELETE, status codes | Module 3 (single-user vertical slice) |
-| 2 (where-data-lives) | table, row, foreign key, schema, API, HTTP request, SQL, database | Module 3 |
-| 3 (who-can-do-what) | authentication, authorization, session token, cookie, sign-in | Module 4 (multi-user social graph) |
-| 4 (how-it-goes-live) | build server, public URL, deployment, CI/CD | Module 4 (first deploy, then go-live) |
+The peek-ahead callout is finer-grained than the summary line: inside a single bundle, some terms are picked up hands-on later and others never are, and the shipped callouts mark that split term by term even when the summary names a module. Preserve the split — do not flatten a bundle to one destination.
 
-Map terms to the module where the learner **does** them hands-on, not the phase where they're first mentioned in passing.
+The current mapping, as shipped:
+
+| Bundle | Technical terms introduced | Where they actually go |
+|--------|---------------------------|------------------------|
+| 1 (how-the-web-works) | HTTP, request, response, server, browser-as-program, HTML, GET/POST/PUT/DELETE, status codes | **Nowhere hands-on.** No later module covers this family, so both panels use the recognition-only form. |
+| 2 (where-data-lives) | table, row, SQL, database | Module 4 — the thread project is built on a real database. |
+| 2 (where-data-lives) | schema, foreign key, API, HTTP request | Recognition-only. The callouts name these as words to recognize if the agent says one; the course never asks the learner to write either. |
+| 3 (who-can-do-what) | sign-in | Module 4 — added to the project along with its per-row access rules. |
+| 3 (who-can-do-what) | authentication, authorization, session token, cookie | Recognition-only. The callout says these four are "for recognizing, not for writing". |
+| 4 (how-it-goes-live) | build server, public URL, deployment, CI/CD, localhost, GitHub | Module 4 (the learner watches the agent run the pipeline), then Module 5 (operating what comes out of it). |
+
+Map terms to the module where the learner **does** them hands-on, not the phase where they're first mentioned in passing — and where no module does them at all, say so instead of reaching for the nearest plausible one. A pointer at a module that does not cover the family is a promise the course does not keep, and the learner is the one who discovers it was empty.
 
 ### M0 stays diagram-light
 
@@ -496,8 +502,8 @@ Read this section before every lesson. Trap-spotting is faster than rewrite-afte
 #### Trap A — Explaining HTTP request/response anatomy
 
 **Temptation.** "An HTTP request has a method (GET, POST, PUT, DELETE), a path, headers, and a body. The server responds with a status code (200, 404, 500), headers, and an optional body."
-**Right move.** M1 names the restaurant analogy. The technical version goes in a `<details>` disclosure with a forward-reference to Module 3 hands-on. Body prose stays in the analogy.
-**Where to escape to.** Module 3 (single-user vertical slice) — when the learner is actually triggering requests via a deployed app, not learning HTTP from a textbook.
+**Right move.** M1 names the restaurant analogy. The technical version goes in a `<details>` disclosure in the recognition-only form — the terms are named as things to recognize, and no module is promised. Body prose stays in the analogy.
+**Where to escape to.** **Nowhere.** No module after M1 covers the HTTP/status-code family hands-on, which is why the shipped M1 panels use the recognition-only form rather than pointing at one. The learner meets a status code only as something a page shows them or their agent mentions — that is the whole exposure the course gives it, and it is enough.
 
 #### Trap B — Teaching SQL JOIN mechanics or foreign-key constraints as concepts
 
