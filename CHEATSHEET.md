@@ -35,11 +35,11 @@ Both apps put the same three things within reach; only the location changes.
 
 ### Path 2: Codex, inside the ChatGPT desktop app
 
-- **The approval prompt.** Codex proposes a change, the app asks, and you approve or reject before anything happens on your machine — the same shape as the Claude Code desktop prompt, in the ChatGPT app's own wording. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
+- **The approval prompt.** Codex proposes a change, the app asks, and you approve or reject before anything happens on your machine. The exact question and where it appears are not yet verified for this app — see the note below. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
 - **Starting a new conversation.** The same new-chat move you already use in ChatGPT for anything else. [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md)
 - **Finding an old conversation.** Not yet verified for this app — see the note below.
 
-> **Note:** This course hasn't confirmed exactly where either app keeps a list of past conversations you can reopen. If you need an old one back, ask your agent, or look near where you start a new conversation — that's usually where an app keeps the control for both.
+> **Note:** This course hasn't confirmed exactly where either app keeps a list of past conversations you can reopen. If you need an old one back, ask your agent, or look near where you start a new conversation — that's usually where an app keeps the control for both. It also hasn't confirmed how the ChatGPT app words its approval question, so read the one on your own screen rather than expecting the Path 1 example above — what matters is that one choice approves and the other rejects.
 
 ## Checks you run
 
