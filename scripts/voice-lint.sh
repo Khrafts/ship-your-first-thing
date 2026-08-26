@@ -929,6 +929,13 @@ scan_debugging_framing() {
 #     how the Module 1 defect was repaired. The check cannot tell a truthful landing pad from a
 #     citation silenced to dodge the check. Second-guessing it would warn on five true statements,
 #     so the carve-out stands and this stays a human-review responsibility.
+#   - The link arm is a three-stage pipeline ending in `grep -q` under `set -o pipefail`. If
+#     `grep -q` exited on a match while an upstream stage still had output to write, the SIGPIPE
+#     would surface as a non-zero pipeline status and a real match would read as a miss. It cannot
+#     bite at present scale — no lesson emits enough anchor lines to fill a pipe buffer before
+#     `grep -q` returns — but a future stage that buffers more, or a lesson with far more glossary
+#     references, would put it in range. Rework the arm rather than adding a `|| true` if that day
+#     comes: `|| true` would mask a genuine failure of the same pipeline.
 glossary_term_regex() {
   local t out
   t=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
