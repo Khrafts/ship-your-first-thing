@@ -893,6 +893,9 @@ scan_debugging_framing() {
 #       outbound links (check #5 only walks modules/** -> repo-root docs).
 #   11b (term present)       — the cited lesson must link the anchor or name the term.
 #       Skipped for self-declaring entries; see below.
+#   11c (line cites nothing) — a `Used in:` line that claims usage but names no lesson at all is
+#       a mangled or malformed citation. Self-declaring lines are exempt: citing nothing is the
+#       correct shape for them.
 #
 # Self-declaring entries: a `Used in:` line whose first word after the colon is "no"
 # ("no current lesson.", "no lesson calls it out; ...") states outright that no lesson uses
@@ -913,20 +916,26 @@ scan_debugging_framing() {
 # ("rapid"). The relaxations only ever suppress a warning, never create one, which is the
 # safe direction for a check whose false positives would get it disabled.
 #
-# Known gap: an entry whose lesson keeps the callout link while the bolded term drifts is
-# satisfied by the link arm alone. That leaves the entry navigable, which is the contract the
-# link stands for, so it is deliberately not flagged.
+# `nextjs` is permanently link-arm-only: prose writes "Next.js", the anchor merges the words,
+# and the separator flex has no hyphen to work on in a single-segment anchor, so the prose arm
+# can never match it. That is a shape of the matcher, not a defect in the entry.
+#
+# Known gaps, all deliberate:
+#   - An entry whose lesson keeps the callout link while the bolded term drifts is satisfied by
+#     the link arm alone. That leaves the entry navigable, which is the contract the link stands
+#     for, so it is not flagged.
+#   - The self-declaring carve-out is asserted by the very text being validated: prefixing a line
+#     with "no current lesson uses the word." permanently disables 11b for it, which is exactly
+#     how the Module 1 defect was repaired. The check cannot tell a truthful landing pad from a
+#     citation silenced to dodge the check. Second-guessing it would warn on five true statements,
+#     so the carve-out stands and this stays a human-review responsibility.
 glossary_term_regex() {
-  local t
+  local t out
   t=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
-  local IFS='-'
-  # shellcheck disable=SC2206
-  local segs=($t)
-  local out="" seg first=1
-  for seg in "${segs[@]}"; do
-    if [ "$first" -eq 1 ]; then first=0; else out="${out}[-[:space:]/.]*"; fi
-    out="${out}${seg}"
-  done
+  # Replace each hyphen with the separator class using sed rather than splitting on '-' into an
+  # unquoted array: an unquoted split pathname-expands a glob metacharacter, and check #4's
+  # anchor charset does not forbid one appearing in a future anchor.
+  out=$(printf '%s' "$t" | sed -E 's|-|[-[:space:]/.]*|g')
   case "$out" in
     *y) out="${out%y}(y|ies)" ;;
   esac
@@ -970,7 +979,18 @@ scan_glossary_used_in() {
     # `(./modules/x.md#section)` would be skipped silently, which is the failure mode this
     # whole check exists to prevent.
     targets=$(printf '%s\n' "$line" | grep -oE '\]\([^)]*\.md(#[^)]*)?\)' | sed -E 's/^\]\(//; s/\)$//; s/#.*$//' || true)
-    [ -z "$targets" ] && continue
+    if [ -z "$targets" ]; then
+      # A self-declaring line legitimately cites nothing ("Used in: no current lesson." — five
+      # entries today). A line that claims usage and yet names no lesson is a mangled or
+      # malformed citation, and skipping it silently is the same shape of hole the fragment
+      # tolerance above closes. Zero non-self-declaring lines lack a citation today, so this
+      # arm cannot manufacture a false positive on any legitimate line shape now in the file.
+      if [ "$self_declaring" -eq 0 ]; then
+        echo "WARN (glossary-used-in 11c): $glossary:$lineno: entry \"$anchor\" claims usage but its 'Used in:' line names no lesson — the citation link is missing or malformed"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
+      continue
+    fi
 
     while IFS= read -r tgt; do
       [ -z "$tgt" ] && continue
@@ -983,7 +1003,15 @@ scan_glossary_used_in() {
         continue
       fi
       [ "$self_declaring" -eq 1 ] && continue
-      if grep -qF "GLOSSARY.md#${anchor}" "$path"; then
+      # Link arm. `grep -F "GLOSSARY.md#${anchor}"` would let a LONGER anchor's link satisfy a
+      # shorter anchor that prefixes it — eight such pairs exist today (api/api-key, git/github,
+      # http/http-method, http/http-status-code, prompt/prompt-injection, row/row-level-security,
+      # server/server-components, session/session-token). Extract the anchors the lesson actually
+      # references, using check #4's anchor charset, and compare whole-string with `grep -qxF`.
+      # That settles the boundary by construction and interpolates the anchor into no pattern at
+      # all, so a future anchor containing a regex metacharacter cannot widen the match.
+      if grep -oE 'GLOSSARY\.md#[A-Za-z0-9._-]+' "$path" \
+        | sed -E 's|.*GLOSSARY\.md#||' | grep -qxF "$anchor"; then
         continue
       fi
       rx=$(glossary_term_regex "$anchor")
@@ -1116,8 +1144,12 @@ run_self_test() {
   before=$WARN_COUNT
   scan_glossary_used_in fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
   after=$WARN_COUNT
-  if [ "$((after - before))" -lt 2 ]; then
-    echo "SELFTEST FAIL: glossary-used-in fixture (11) tripped only $((after - before)) WARN(s); expected >= 2 (11a missing file + 11b term absent)"
+  if [ "$((after - before))" -lt 3 ]; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) tripped only $((after - before)) WARN(s); expected >= 3 (11a missing file + 11b term absent + 11c line cites nothing)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11c' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11c (Used-in line claiming usage but naming no lesson)"
     cat /tmp/voice-lint-selftest.out
     fail=1
   elif ! grep -q 'glossary-used-in 11a' /tmp/voice-lint-selftest.out; then
@@ -1133,7 +1165,7 @@ run_self_test() {
     cat /tmp/voice-lint-selftest.out
     fail=1
   else
-    echo "  self-test OK: glossary-used-in fixture tripped $((after - before)) WARNs (11a + 11b) and left the self-declaring entry alone"
+    echo "  self-test OK: glossary-used-in fixture tripped $((after - before)) WARNs (11a + 11b + 11c) and left the self-declaring entry alone"
   fi
 
   if [ "$fail" -ne 0 ]; then

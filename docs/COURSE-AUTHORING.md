@@ -596,7 +596,7 @@ The WHAT-CHANGED.md thin-entry contract (formerly #10) retired 2026-08-22 — WH
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
 | 9 | Debugging-framing (hard rule 12) | Lesson prose under `modules/` (every `*.md` except `README.md`) drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
-| 11 | Glossary `Used in:` citations | A `Used in:` line in GLOSSARY.md naming a lesson that does not exist, or one that neither links that anchor nor names the term — a citation falsified by a later lesson edit. **WARN-only** | `11-glossary-used-in-citation.md` |
+| 11 | Glossary `Used in:` citations | A `Used in:` line in GLOSSARY.md naming a lesson that does not exist (11a), one that neither links that anchor nor names the term (11b), or one that claims usage but names no lesson at all (11c) — a citation falsified by a later lesson edit. Entries that self-declare no lesson uses the term are exempt from 11b and 11c. **WARN-only** | `11-glossary-used-in-citation.md` |
 
 ### Which lessons check #6 scans (module scope)
 

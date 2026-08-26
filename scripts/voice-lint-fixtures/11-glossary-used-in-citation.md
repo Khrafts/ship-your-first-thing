@@ -24,3 +24,8 @@ A synthetic term that self-declares no lesson uses it, then names a real file fo
 entry must NOT warn: arm 11a passes because the file exists, and arm 11b is skipped because the
 line opens with "no". *Example: none.*
 Used in: no current lesson. [Fixture lesson](./09-m35-diagnostic-framing.md) records the retirement.
+
+### mangled-cog
+A synthetic term whose `Used in:` line claims usage but names no lesson at all — the shape a
+mangled or half-deleted citation link leaves behind. *Example: none.*
+Used in: Fixture lesson (link mangled away).
