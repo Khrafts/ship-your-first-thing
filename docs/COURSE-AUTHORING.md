@@ -198,7 +198,12 @@ This is where Phase 1's UAT walkthrough surfaced the most subtle pedagogy bugs. 
 For every M1+ lesson that uses Mermaid to teach a spatial or relational concept:
 
 1. **The simple-form Mermaid comes first**, in plain view in the lesson body. It uses ONLY the locked D-07 analogy nouns. No technical labels.
-2. **The technical Mermaid comes second**, wrapped in a `<details><summary>` HTML5 disclosure widget. It uses the real names (HTTP, SQL, schema, CI/CD, etc.). The summary line names which later module covers those terms hands-on.
+2. **The technical Mermaid comes second**, wrapped in a `<details><summary>` HTML5 disclosure widget. It uses the real names (HTTP, SQL, schema, CI/CD, etc.). The summary line frames the panel as optional and says where those terms are going. It takes one of two forms, and which one is correct is a question of fact about the course, not a matter of taste:
+
+   - **Module-naming form** — use it when a later module really does cover that term family hands-on, and name that module: `(Module 4 hands-on)`. The four shipped panels covering the data, auth, and deploy families use this form (`02-where-data-lives.md` ×2, `03-who-can-do-what.md`, `04-how-it-goes-live.md`), and Module 4 builds all three.
+   - **Recognition-only form** — use it when no later module covers that family hands-on, and say so plainly instead of naming one: `(names to recognize, not to learn today)`. The two shipped panels in `01-how-the-web-works.md` use this form, because nothing after Module 1 teaches the HTTP/status-code family; the course's one later appearance of `404` is a quoted agent line in M4 L4, not instruction. The peek-ahead callout inside carries the same posture — the terms are worth recognizing when the agent uses one, and the course never asks the learner to write one.
+
+   **Never name a module you have not checked.** A summary that points at a module which does not cover that family is a promise the course does not keep, and reintroduces the false-promise defect this convention exists to prevent. The recognition-only form is not a weaker fallback; where it is true, it is the only honest option.
 3. **Inside the disclosure**, before the technical Mermaid, a `> *Peek ahead — skim, don't memorize:*` blockquote callout carries the analogy → real-term mapping with the technical terms in bold.
 
 **Why both diagrams cannot just sit side-by-side:** a learner who sees the technical diagram in their peripheral vision feels obligated to absorb the labels. Those labels are exactly the M3-M5 vocabulary M1 is designed to defer. Optionality has to be a real visual affordance, not just framing in the surrounding prose.
@@ -220,9 +225,9 @@ flowchart LR
 ```
 
 <details>
-<summary>Optional: same picture with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same picture with the technical labels (names to recognize, not to learn today)</summary>
 
-> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** properly in Module 3, where you'll write your first API route by hand. If the labeled diagram feels heavy, close this and move on.
+> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled: **HTTP**, **request**, **response**, **server**, and **browser**. They are worth recognizing when your agent uses one in a reply — this course never asks you to write one. If the labeled diagram feels heavy, close this and move on.
 
 ```mermaid
 flowchart LR
