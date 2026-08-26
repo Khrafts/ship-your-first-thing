@@ -1,5 +1,7 @@
 # WHAT-CHANGED.md — Freshness log
 
+> **This log closed on 2026-08-22.** What changed in the course up to that date is written below, newest first — that record stays here and stays useful. Nothing new is added to it. If your screen doesn't match a lesson and nothing below explains why, open the lesson chat ("Ask about this lesson") and tell it what you see next to what the lesson says.
+
 The first place to check when reality drifts from a lesson. Your lesson's `> **Last verified:**` banner — or,
 when it has none, the `updated:` date at the top of the lesson — tells you WHEN the page was last true.
 [`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was true against. This file tells you WHAT
@@ -11,8 +13,6 @@ Each entry is a dated heading plus three labeled lines:
 > **Change:** what shifted, in one or two sentences.
 > **If you're affected:** the one thing to do — or "No learner action — internal change."
 > **Details:** links to where the change landed and the doc that owns the detail.
-
-Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry).
 
 ## Fast answers
 

@@ -21,34 +21,14 @@ If you're an AI agent (Claude, Gemini, Cursor, Copilot, etc.) running on this re
 
 ## Adding a WHAT-CHANGED entry
 
-> **Note:** This log is no longer maintained as of 2026-08-22. New PRs are not expected to add entries, and no lint check gates their shape. The rules below describe the contract the existing entries were written to — kept for reading the log, not for adding to it.
+**Don't — the log closed on 2026-08-22.** `WHAT-CHANGED.md` stays in the repo as the record of what changed up to that date, and the lessons still link to it for exactly that. Nothing adds to it: no PR is expected to, and no lint check gates it.
 
-`WHAT-CHANGED.md` is a learner-facing freshness log, not a contributor changelog. **PR bodies and commit messages are the contributor changelog of record** — depth goes there, never in the entry.
+Two things follow for contributors:
 
-An entry was required when your change: updates a verified tool version (`VERSIONS.md` step 2), refreshes a conversation panel or a screenshot, shifts a lesson's content meaningfully, changes a locked decision, or closes a phase. One entry per PR — a multi-lesson refresh pass is ONE batched entry naming the lessons in its **Change:** line, not one entry per lesson.
+- **Never edit an existing entry.** They are the record; editing one rewrites history a learner may have already read.
+- **Depth belongs in your PR body and commit messages**, which were always the contributor changelog of record.
 
-Insert the entry at the top of the live region (above the boundary comment, newest first), in exactly this shape:
-
-```markdown
-## YYYY-MM-DD — plain-words summary (72 characters or fewer)
-
-**Change:** What shifted, in one or two sentences a Module 0 reader can follow.
-**If you're affected:** One concrete action — or the literal sentence "No learner action — internal change."
-**Details:** Links only: the PR, plus the doc that owns the substance (VERSIONS.md, CHEATSHEET.md, …).
-```
-
-An entry in the live region satisfies all of these:
-
-- At most 6 non-blank body lines per entry; summary at most 72 characters; no line over 300 characters (the caps count bytes, so a summary heavy in `—`/curly quotes has a little less headroom).
-- The 300-character cap applies to **every line in the live region**, including rows of the `## Fast answers` triage table — not just the lines inside a dated entry. A table row cannot be wrapped without breaking the table, so when a row trips the cap the fix is to shorten it, never to split it across lines. Existing rows run 144–292 bytes; stay in that range.
-- All three labels present: `**Change:**`, `**If you're affected:**`, `**Details:**`.
-- A dated `## YYYY-MM-DD — summary` heading, and the boundary comment still in place.
-- No internal codenames (decision IDs `D-xx`/`CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, success-criterion `SC #n`) and no `.planning/` paths — those mean nothing to learners. Put them in the PR body.
-
-Also expected:
-
-- Start the summary with `Internal:` when the entry has no learner-visible effect, so learners can skip it from the heading alone.
-- Entries below the boundary comment are historical and preserved verbatim — never edit them.
+When a lesson has drifted from what a tool actually does now, the fix is the lesson itself — see [Refreshing a Module 3 conversation panel](#refreshing-a-module-3-conversation-panel) for the pattern, and note that lessons route a learner's live drift question to the in-lesson chat, not to this log.
 
 ### Refreshing a Module 3 conversation panel
 
