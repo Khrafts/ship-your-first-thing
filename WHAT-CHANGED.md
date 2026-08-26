@@ -12,7 +12,7 @@ Each entry is a dated heading plus three labeled lines:
 > **If you're affected:** the one thing to do — or "No learner action — internal change."
 > **Details:** links to where the change landed and the doc that owns the detail.
 
-Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry) — voice-lint check #10 enforces them.
+Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry).
 
 ## Fast answers
 
@@ -114,7 +114,7 @@ When a lesson names `index.html` or `sample-app/`, those are now at the root of 
 **If you're affected:** Nothing changes about how you use this file — find the entries dated after your lesson's date.
 **Details:** Entry rules live in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry).
 
-<!-- voice-lint check #10 boundary: entries below this line predate the 2026-06-12 entry contract and are preserved verbatim. New entries go ABOVE this line. -->
+<!-- Boundary: entries below this line predate the 2026-06-12 entry contract and are preserved verbatim. New entries go ABOVE this line. -->
 
 ## Earlier entries (before 2026-06-12)
 

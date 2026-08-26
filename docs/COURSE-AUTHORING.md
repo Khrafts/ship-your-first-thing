@@ -629,7 +629,7 @@ Check #6 emits both:
 - **WARN** lines for callout-missing cases (a Requires-callout term used without a callout) and bare Forbidden cases — these document the editorial backlog but do NOT block the gate.
 - **VIOLATION** lines would block — currently no VIOLATIONS are emitted from #6 by default (the WARN-only behavior is documented in `01-8-SUMMARY.md` as a deliberate choice to ship the lint without retroactively blocking on every legacy phrasing).
 
-Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) is WARN-only, like #6.
+Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) is WARN-only, like #6.
 
 **Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3 (the M2/M3 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 

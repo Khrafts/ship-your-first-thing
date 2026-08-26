@@ -7,10 +7,9 @@ Thank you for considering contributing to Ship Your First Thing. This is an open
 In rough priority order:
 
 1. **`COMMON-ISSUES.md` entries** — you hit something that broke; you fixed it; the fix is reproducible. PR it.
-2. **`WHAT-CHANGED.md` updates** — a tool released a new version that affects a lesson. Add a thin entry per [the entry rules](#adding-a-what-changed-entry).
-3. **Freshness fixes** — a screenshot, command, or version reference is stale. PR a correction.
-4. **Vocab/glossary fills** — a lesson uses a term that isn't yet in `GLOSSARY.md`. PR an entry.
-5. **Voice fixes** — you spotted tutorial fiction (the *frictionless-clicks* trope where reality has ten steps and bureaucracy) or filler (the *fast-paced-world* opener that says nothing). PR a rewrite.
+2. **Freshness fixes** — a screenshot, command, or version reference is stale. PR a correction.
+3. **Vocab/glossary fills** — a lesson uses a term that isn't yet in `GLOSSARY.md`. PR an entry.
+4. **Voice fixes** — you spotted tutorial fiction (the *frictionless-clicks* trope where reality has ten steps and bureaucracy) or filler (the *fast-paced-world* opener that says nothing). PR a rewrite.
 
 ## If you're authoring a new lesson or editing one substantially
 
@@ -22,9 +21,11 @@ If you're an AI agent (Claude, Gemini, Cursor, Copilot, etc.) running on this re
 
 ## Adding a WHAT-CHANGED entry
 
+> **Note:** This log is no longer maintained as of 2026-08-22. New PRs are not expected to add entries, and no lint check gates their shape. The rules below describe the contract the existing entries were written to — kept for reading the log, not for adding to it.
+
 `WHAT-CHANGED.md` is a learner-facing freshness log, not a contributor changelog. **PR bodies and commit messages are the contributor changelog of record** — depth goes there, never in the entry.
 
-An entry is required when your change: updates a verified tool version (`VERSIONS.md` step 2), refreshes a conversation panel or a screenshot, shifts a lesson's content meaningfully, changes a locked decision, or closes a phase. One entry per PR — a multi-lesson refresh pass is ONE batched entry naming the lessons in its **Change:** line, not one entry per lesson.
+An entry was required when your change: updates a verified tool version (`VERSIONS.md` step 2), refreshes a conversation panel or a screenshot, shifts a lesson's content meaningfully, changes a locked decision, or closes a phase. One entry per PR — a multi-lesson refresh pass is ONE batched entry naming the lessons in its **Change:** line, not one entry per lesson.
 
 Insert the entry at the top of the live region (above the boundary comment, newest first), in exactly this shape:
 
@@ -36,7 +37,7 @@ Insert the entry at the top of the live region (above the boundary comment, newe
 **Details:** Links only: the PR, plus the doc that owns the substance (VERSIONS.md, CHEATSHEET.md, …).
 ```
 
-voice-lint check #10 blocks an entry in the live region that breaks any of these:
+An entry in the live region satisfies all of these:
 
 - At most 6 non-blank body lines per entry; summary at most 72 characters; no line over 300 characters (the caps count bytes, so a summary heavy in `—`/curly quotes has a little less headroom).
 - The 300-character cap applies to **every line in the live region**, including rows of the `## Fast answers` triage table — not just the lines inside a dated entry. A table row cannot be wrapped without breaking the table, so when a row trips the cap the fix is to shorten it, never to split it across lines. Existing rows run 144–292 bytes; stay in that range.
@@ -44,12 +45,10 @@ voice-lint check #10 blocks an entry in the live region that breaks any of these
 - A dated `## YYYY-MM-DD — summary` heading, and the boundary comment still in place.
 - No internal codenames (decision IDs `D-xx`/`CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, success-criterion `SC #n`) and no `.planning/` paths — those mean nothing to learners. Put them in the PR body.
 
-Review-enforced (not lint-checked, but expected):
+Also expected:
 
 - Start the summary with `Internal:` when the entry has no learner-visible effect, so learners can skip it from the heading alone.
-- Entries below the boundary comment are historical and preserved verbatim — never edit them. The lint only scans the live region above the boundary, so an entry placed below it escapes the caps entirely; always insert above the boundary.
-
-**Forgot one?** When you open a PR that changes learner-facing content (a lesson, `VERSIONS.md`, or a capture) without adding an entry, the `whatchanged-reminder` check posts a note and a ready-to-fill stub in the PR's summary. It is advisory — it never blocks the PR, and it is the complement to check #10: #10 validates an entry you *wrote*, the reminder catches one you *forgot*. If your change genuinely needs no entry, dismiss it by adding the `no-changelog` label or putting `[skip changelog]` in the PR description.
+- Entries below the boundary comment are historical and preserved verbatim — never edit them.
 
 ### Refreshing a Module 3 conversation panel
 
@@ -59,7 +58,6 @@ Every Module 3 ask is shown twice — once in Claude Code desktop, once in the C
 2. Updates the panel wording to match what the app actually did — real behavior, never idealized. Do not clean up hallucinations or over-engineering; they are the pedagogy the lesson teaches the learner to recognize.
 3. Updates the grounding comments that sit above the panels (the dated `Grounded in a real agent run` line above a Claude Code panel, the verification slot above a Codex one) so the note matches the wording it vouches for.
 4. Bumps the lesson's front-matter `updated:` date AND its `> **Last verified:**` date.
-5. Adds ONE thin WHAT-CHANGED entry covering every lesson refreshed in that pass.
 
 ## What we do NOT want yet
 
@@ -93,7 +91,6 @@ The script enforces (and exits non-zero on violation):
 - Every relative path from a lesson to a repo-root cross-cutting doc (`GLOSSARY.md`, `BUDGET.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`, `CONTRIBUTING.md`, `WHAT-CHANGED.md`, `VERSIONS.md`, `LICENSING.md`, `README.md`, `SETUP.md`) resolves to a real file (the broken-relative-path check catches the bare-`GLOSSARY.md#anchor` 404 bug shape) — added in Plan 01-8
 - Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the prose across M0–M7 has known gaps against the strict contract — those are surfaced as `WARN` lines (run `./scripts/voice-lint.sh | grep -c '^WARN'` for the live count) and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. The check scans **M0–M7**. — added in Plan 01-8; extended to M2–M3.5 on 2026-06-08, then to M4, M5, M6 and M7 as each of those modules shipped (the runner guards each block on the module directory existing). The Module 3.5 scan block went away with that module's retirement on 2026-08-12
 - Check #9 (debugging-framing) flags lesson prose under `modules/` drifting into agent-owned mechanics — WARN-only, per CLAUDE.md hard rule 12. The runner scans every `*.md` under `modules/` **except `README.md`**, and within a scanned file it skips front-matter, fenced code blocks, and blockquote lines — so a module README, a code fence, or a `>` callout never trips it
-- Check #10 (whatchanged-entry-shape) enforces the [thin-entry contract](#adding-a-what-changed-entry) on `WHAT-CHANGED.md`'s live region — dated heading, three labeled lines, size caps, no internal codenames — added 2026-06-12
 
 ## Tooling / package manager
 
