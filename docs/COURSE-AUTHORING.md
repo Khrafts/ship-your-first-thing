@@ -278,7 +278,7 @@ GitHub's Mermaid parser has different rules for HTML break tags depending on whe
 
 ### The summary pointer: saying where the terms go
 
-When the technical Mermaid introduces M3+ vocabulary, the disclosure summary line and the peek-ahead callout say where those terms are going. **Neither is obliged to name a module.** Naming one is correct only where a later module really does cover that family hands-on; where none does, both say plainly that the terms are for recognizing. Both forms are set out under "The simple-first / bridge-collapsed convention" above, and both ship.
+When the technical Mermaid introduces vocabulary the course defers past Module 1, the disclosure summary line and the peek-ahead callout say where those terms are going. **Neither is obliged to name a module.** Naming one is correct only where a later module really does cover that family hands-on; where none does, both say plainly that the terms are for recognizing. Both forms are set out under "The simple-first / bridge-collapsed convention" above, and both ship.
 
 The peek-ahead callout is finer-grained than the summary line: inside a single bundle, some terms are picked up hands-on later and others never are, and the shipped callouts mark that split term by term even when the summary names a module. Preserve the split — do not flatten a bundle to one destination.
 
