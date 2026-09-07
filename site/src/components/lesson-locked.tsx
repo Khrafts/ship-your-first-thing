@@ -62,7 +62,8 @@ export function LessonLocked({
       ) : (
         <div className="mt-4 font-sans text-sm leading-relaxed text-ink-secondary">
           <p>
-            Lessons unlock in order as you complete them.{" "}
+            Module 0 is open to everyone; from Module 2 on, lessons unlock in
+            order as you complete them.{" "}
             <Link
               href="/signin"
               className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"

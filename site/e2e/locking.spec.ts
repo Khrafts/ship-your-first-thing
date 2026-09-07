@@ -8,29 +8,62 @@ import {
   uniqueEmail,
 } from "./helpers";
 
-// Second lesson of the course — locked for anyone who hasn't completed the
-// first one (src/lib/unlock.ts sequential model).
-const LESSON_TWO_URL = MODULE_ZERO_LESSONS[1];
-// First lesson of module 1 — unlocks only once all of Module 0 is complete.
+// Progression model (src/lib/unlock.ts): Module 0 open to everyone; Module 1
+// and Module 2 Lessons 1–2 on-demand (readable, never gating); the gating
+// chain runs M0 L1 … M0 L6 → M2 L3 → M3 L1 → … This spec walks the real route.
+const MODULE_ZERO_LESSON_TWO = MODULE_ZERO_LESSONS[1];
+const MODULE_ZERO_LAST = MODULE_ZERO_LESSONS[5];
 const MODULE_ONE_FIRST_LESSON = "/modules/01-mental-models/01-how-the-web-works";
+const MODULE_TWO_FIRST_LESSON = "/modules/02-toolchain/01-your-ai-coding-agent";
+const MODULE_TWO_SAVE_LESSON = "/modules/02-toolchain/03-the-save-system";
+const MODULE_THREE_FIRST_LESSON = "/modules/03-the-loop/01-introducing-the-loop";
 
 const LOCKED_HEADING = "This lesson is locked";
 
-test.describe("sequential locking (signed out)", () => {
-  test("lesson 2 of module 0 is locked with a sign-in prompt", async ({
-    page,
-  }) => {
-    await page.goto(LESSON_TWO_URL);
+test.describe("progression (signed out)", () => {
+  test("every Module 0 lesson is readable without an account", async ({ page }) => {
+    for (const url of MODULE_ZERO_LESSONS) {
+      await page.goto(url);
+      await expect(
+        page.getByRole("heading", { name: LOCKED_HEADING }),
+      ).toHaveCount(0);
+    }
+    await page.goto(MODULE_ZERO_LESSON_TWO);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Hardware check" }),
+    ).toBeVisible();
+  });
+
+  test("Module 1 and Module 2 Lessons 1–2 are readable without an account", async ({ page }) => {
+    for (const [url, title] of [
+      [MODULE_ONE_FIRST_LESSON, "How the web works"],
+      [MODULE_TWO_FIRST_LESSON, "Your AI coding agent"],
+    ] as const) {
+      await page.goto(url);
+      await expect(page.getByRole("heading", { level: 1, name: title })).toBeVisible();
+      await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toHaveCount(0);
+    }
+  });
+
+  test("the build-first lesson shows a practical-next card pointing at the save lesson", async ({ page }) => {
+    await page.goto(MODULE_ZERO_LAST);
+    const card = page.getByTestId("practical-next");
+    await expect(card).toBeVisible();
+    await expect(card.getByRole("link")).toHaveAttribute("href", MODULE_TWO_SAVE_LESSON);
+  });
+
+  test("Module 2 Lesson 3 is locked with a sign-in prompt", async ({ page }) => {
+    await page.goto(MODULE_TWO_SAVE_LESSON);
     await expect(
       page.getByRole("heading", { name: LOCKED_HEADING }),
     ).toBeVisible();
 
-    // Signed-out copy: unlock-in-order explainer with a sign-in link, plus a
-    // pointer to the course's first lesson. Scoped to the article — the site
-    // header carries its own "Sign in" link.
+    // Signed-out copy: Module 0 open, later lessons unlock in order, sign-in
+    // link, and a pointer to the course's first lesson. Scoped to the article
+    // — the site header carries its own "Sign in" link.
     const article = page.locator("article");
     await expect(
-      article.getByText("Lessons unlock in order as you complete them."),
+      article.getByText("Module 0 is open to everyone"),
     ).toBeVisible();
     await expect(
       article.getByRole("link", { name: "Sign in" }),
@@ -46,10 +79,10 @@ test.describe("sequential locking (signed out)", () => {
   });
 });
 
-// One fresh account walks the whole gate: lesson 1 unlocks lesson 2, and
-// finishing Module 0 unlocks module 1. Serial — the tests share progress
-// state in order.
-test.describe("sequential locking (signed in)", () => {
+// One fresh account walks the real route: finishing Module 0 opens Module 2
+// Lesson 3 directly (Module 1 and M2 L1–L2 untouched), and finishing that
+// opens Module 3. Serial — the tests share progress state in order.
+test.describe("progression (signed in) — the practical route", () => {
   test.describe.configure({ mode: "serial" });
 
   let page: Page;
@@ -67,46 +100,45 @@ test.describe("sequential locking (signed in)", () => {
     await page.close();
   });
 
-  test("lesson 2 stays locked until lesson 1 is complete", async () => {
-    // Fresh account: lesson 2 is locked, and the card names the gating
-    // lesson (“Welcome”) as the way in.
-    await page.goto(LESSON_TWO_URL);
+  test("Module 2 Lesson 3 opens directly once all of Module 0 is complete", async () => {
+    test.setTimeout(120_000);
+    // Fresh account: the save lesson is locked and the card names Module 0's
+    // last lesson as the way in.
+    await page.goto(MODULE_TWO_SAVE_LESSON);
+    await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: LOCKED_HEADING }),
+      page.locator(`article a[href="${MODULE_ZERO_LAST}"]`),
+    ).toContainText("Build your first thing");
+
+    // Five of six Module 0 lessons: still locked.
+    await completeLessons(page, MODULE_ZERO_LESSONS.slice(0, 5));
+    await page.goto(MODULE_TWO_SAVE_LESSON);
+    await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toBeVisible();
+
+    // The build-first lesson: the save lesson opens. Module 1 and Module 2
+    // Lessons 1–2 were never touched.
+    await completeLessons(page, [MODULE_ZERO_LAST]);
+    await page.goto(MODULE_TWO_SAVE_LESSON);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "The save system" }),
     ).toBeVisible();
-    await expect(
-      page.locator(`article a[href="${FIRST_LESSON_URL}"]`),
-    ).toContainText("Welcome");
-
-    await completeLessons(page, [FIRST_LESSON_URL]);
-
-    // Lesson 2 now renders its body, locked card gone.
-    await page.goto(LESSON_TWO_URL);
-    await expect(
-      page.getByRole("heading", { name: LOCKED_HEADING }),
-    ).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toHaveCount(0);
     await expect(
       page.getByRole("button", { name: COMPLETE_LABEL, exact: true }),
     ).toBeVisible();
+
+    // Module 3 is still gated behind the save lesson.
+    await page.goto(MODULE_THREE_FIRST_LESSON);
+    await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toBeVisible();
   });
 
-  test("completing module 0 unlocks the first mental-models lesson", async () => {
-    test.setTimeout(120_000);
-    // Only lesson 1 is complete so far — module 1 is still gated.
-    await page.goto(MODULE_ONE_FIRST_LESSON);
+  test("completing Module 2 Lesson 3 opens Module 3's first lesson", async () => {
+    await completeLessons(page, [MODULE_TWO_SAVE_LESSON]);
+    await page.goto(MODULE_THREE_FIRST_LESSON);
     await expect(
-      page.getByRole("heading", { name: LOCKED_HEADING }),
+      page.getByRole("heading", { level: 1, name: "Introducing the loop" }),
     ).toBeVisible();
-
-    await completeLessons(page, MODULE_ZERO_LESSONS.slice(1));
-
-    await page.goto(MODULE_ONE_FIRST_LESSON);
-    await expect(
-      page.getByRole("heading", { level: 1, name: "How the web works" }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: LOCKED_HEADING }),
-    ).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: LOCKED_HEADING })).toHaveCount(0);
     await expect(
       page.getByRole("button", { name: COMPLETE_LABEL, exact: true }),
     ).toBeVisible();

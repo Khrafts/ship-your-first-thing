@@ -6,9 +6,9 @@ import { LessonArticle } from "@/components/lesson-article";
 import { LessonChat } from "@/components/lesson-chat/lesson-chat";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
 import { LessonLocked, LockIcon } from "@/components/lesson-locked";
-import { getAllLessonRefs, getLesson, getModule } from "@/lib/content";
+import { getAllLessonRefs, getLesson, getModule, getModules } from "@/lib/content";
 import { formatDateUtc, formatMinutes } from "@/lib/format";
-import { getUnlockState } from "@/lib/unlock";
+import { gatingLesson, getUnlockState } from "@/lib/unlock";
 
 // Reads the session cookie for gating + the completion toggle — render per
 // request.
@@ -37,9 +37,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const [session, mod] = await Promise.all([
+  const [session, mod, modules] = await Promise.all([
     auth(),
     getModule(lesson.moduleSlug),
+    getModules(),
   ]);
   const userId = session?.user?.id ?? null;
   const unlock = await getUnlockState(userId);
@@ -47,6 +48,13 @@ export default async function LessonPage({ params }: LessonPageProps) {
   const completed = unlock.completed.has(lesson.path);
   const nextUnlocked =
     lesson.next !== null && unlock.unlockedLessons.has(lesson.next.path);
+  const practicalUnlocked =
+    lesson.nextPractical !== null &&
+    unlock.unlockedLessons.has(lesson.nextPractical.path);
+  // The lesson that actually gates this one / the next one (chain order, not
+  // flat order — see gatingLesson).
+  const gate = gatingLesson(modules, lesson.path);
+  const nextGate = lesson.next ? gatingLesson(modules, lesson.next.path) : null;
 
   // Title and meta stay visible on locked lessons — the content is gated for
   // pacing, not secrecy (the markdown is public on github.com).
@@ -81,11 +89,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           {lessonHeader}
           <LessonLocked
             signedIn={userId !== null}
-            prev={
-              lesson.prev
-                ? { title: lesson.prev.title, href: lessonHref(lesson.prev) }
-                : null
-            }
+            prev={gate ? { title: gate.title, href: lessonHref(gate) } : null}
             firstLesson={{
               title: firstLesson.title,
               href: lessonHref(firstLesson),
@@ -124,6 +128,30 @@ export default async function LessonPage({ params }: LessonPageProps) {
           )}
         </div>
 
+        {lesson.nextPractical && (
+          <aside
+            data-testid="practical-next"
+            className="mt-10 rounded-md border border-line-strong bg-surface p-6"
+          >
+            <p className="font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+              Practical next step
+            </p>
+            <Link
+              href={lessonHref(lesson.nextPractical)}
+              className="mt-2 block font-serif text-2xl leading-snug text-ink transition-colors duration-150 hover:text-ink-secondary"
+            >
+              {lesson.nextPractical.title} →
+            </Link>
+            <p className="mt-2 font-sans text-sm leading-relaxed text-ink-secondary">
+              {practicalUnlocked
+                ? "The lesson this course recommends you do next. The reading-order "
+                : "Unlocks when you mark this lesson complete. The reading-order "}
+              next lesson below is reference you can read whenever a build
+              needs it.
+            </p>
+          </aside>
+        )}
+
         <nav className="mt-10 flex flex-col gap-4 border-t border-line pt-8 font-sans text-sm sm:flex-row sm:justify-between">
           {lesson.prev ? (
             <Link href={lessonHref(lesson.prev)} className="group max-w-xs">
@@ -154,7 +182,9 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 </span>
                 <span className="mt-1 block">{lesson.next.title}</span>
                 <span className="mt-1 block text-xs">
-                  Mark this lesson complete to unlock
+                  {nextGate && nextGate.path !== lesson.path
+                    ? `Complete “${nextGate.title}” to unlock`
+                    : "Mark this lesson complete to unlock"}
                 </span>
               </div>
             )

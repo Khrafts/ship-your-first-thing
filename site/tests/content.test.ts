@@ -7,6 +7,7 @@ import {
   getModule,
   getModules,
   rewriteUrl,
+  upcomingModules,
 } from "@/lib/content";
 
 // The loader reads the canonical course markdown from the repo root (the
@@ -14,16 +15,30 @@ import {
 // running app.
 
 describe("getModules", () => {
-  it("discovers the five live modules in course order", async () => {
+  it("discovers the eight live modules in course order", async () => {
     const modules = await getModules();
-    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 4]);
+    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
     expect(modules.map((mod) => mod.slug)).toEqual([
       "00-welcome",
       "01-mental-models",
       "02-toolchain",
       "03-the-loop",
       "04-thread-project",
+      "05-operating",
+      "06-after-live",
+      "07-where-next",
     ]);
+  });
+
+  it("lists the build-first lesson as Module 0's last lesson", async () => {
+    const mod = await getModule("00-welcome");
+    const last = mod!.lessons[mod!.lessons.length - 1];
+    expect(last.lessonSlug).toBe("06-build-your-first-thing");
+  });
+
+  it("filters upcoming modules that already have content", async () => {
+    const modules = await getModules();
+    expect(upcomingModules(modules)).toEqual([]);
   });
 
   it("parses module titles and strips the Module-N prefix for shortTitle", async () => {
@@ -61,7 +76,7 @@ describe("getAllLessonRefs", () => {
     const expected = modules.reduce((sum, mod) => sum + mod.lessonCount, 0);
     expect(refs).toHaveLength(expected);
     expect(refs[0].moduleSlug).toBe("00-welcome");
-    expect(refs[refs.length - 1].moduleSlug).toBe("04-thread-project");
+    expect(refs[refs.length - 1].moduleSlug).toBe("07-where-next");
   });
 });
 

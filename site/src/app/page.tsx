@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ShipGameHero from "@/components/ship-game/ShipGameHero";
-import { getModules, UPCOMING_MODULES } from "@/lib/content";
+import { getModules, upcomingModules } from "@/lib/content";
 import { TAGLINE } from "@/lib/copy";
 import { formatMinutes, moduleLabel } from "@/lib/format";
 
@@ -24,10 +24,10 @@ export default async function Home() {
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <Link
-            href="/modules"
+            href="/modules/00-welcome"
             className="inline-flex h-11 items-center rounded-md bg-ink px-5 font-sans text-sm font-medium text-paper transition-colors duration-150 hover:opacity-90"
           >
-            Start the course →
+            Start — build your first thing →
           </Link>
           <Link
             href="/signup"
@@ -36,6 +36,11 @@ export default async function Home() {
             Create an account
           </Link>
         </div>
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-secondary">
+          No account needed to try the first session: Module 0 is open to
+          everyone, and it ends with your agent building a page that&apos;s
+          yours. Sign in when you want your progress tracked.
+        </p>
         <p className="mt-6 font-mono text-xs text-ink-faint">
           {modules.length} modules live · {lessonCount} lessons ·{" "}
           {formatMinutes(totalMinutes)} of reading · free and open source
@@ -52,11 +57,13 @@ export default async function Home() {
             <div>
               <p className="font-mono text-sm text-ink-faint">01</p>
               <h3 className="mt-2 font-serif text-xl text-ink">
-                Build the mental models
+                Build your first thing
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
-                Plain-language lessons on how the web, data, access, and
-                deployment fit together — no prior code required.
+                Install one desktop agent app and, in the same sitting, have
+                it build a page that&apos;s yours — a checklist that remembers
+                your ticks. You check it, change it, and save it. No code, no
+                account required.
               </p>
             </div>
             <div>
@@ -65,8 +72,9 @@ export default async function Home() {
                 Work the loop with an AI agent
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
-                State your intent, read what the agent did, and steer. The
-                agent writes the code; you stay in charge of the outcome.
+                State your intent, look at what came back, and steer. The
+                agent writes the code; you stay in charge of the outcome. The
+                plain-language mental models arrive when a build needs them.
               </p>
             </div>
             <div>
@@ -116,7 +124,7 @@ export default async function Home() {
                 </Link>
               </li>
             ))}
-            {UPCOMING_MODULES.map((mod) => (
+            {upcomingModules(modules).map((mod) => (
               <li
                 key={mod.number}
                 className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"

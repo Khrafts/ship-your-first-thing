@@ -5,6 +5,7 @@
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import type { LessonRef, ModuleInfo } from "@/lib/content/types";
+import { pickResumeLesson } from "@/lib/route";
 
 export interface ProgressSummary {
   completed: number;
@@ -47,22 +48,17 @@ export async function getModuleProgressMap(
 }
 
 /**
- * First lesson in course order (modules as passed, lessons in module order)
- * the user has not completed. Null when every lesson is done.
+ * Where "Resume" / "Continue" should send the user: the first incomplete
+ * lesson on the practical route (see src/lib/route.ts), falling back to
+ * incomplete reference lessons only once the route is done. Null when every
+ * lesson is done.
  */
 export async function getResumeLesson(
   userId: string,
   modules: ModuleInfo[],
 ): Promise<LessonRef | null> {
   const completedPaths = await getCompletedLessonPaths(userId);
-  for (const mod of modules) {
-    for (const lesson of mod.lessons) {
-      if (!completedPaths.has(lesson.path)) {
-        return lesson;
-      }
-    }
-  }
-  return null;
+  return pickResumeLesson(modules, completedPaths);
 }
 
 /** Completion counts across every lesson in every module passed in. */

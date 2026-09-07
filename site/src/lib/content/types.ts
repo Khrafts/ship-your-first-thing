@@ -15,6 +15,11 @@ export interface LessonMeta {
   /** ISO date string, e.g. "2026-05-16". */
   updated: string;
   deviations: string[];
+  /** Optional repo-relative path of the lesson the course recommends as the
+   *  practical next step when it differs from flat course order (the
+   *  `next_practical` front-matter key, e.g. Module 0 Lesson 6 → Module 2
+   *  Lesson 3). */
+  nextPractical: string | null;
 }
 
 export interface LessonRef {
@@ -35,6 +40,9 @@ export interface Lesson extends LessonRef {
   html: string;
   prev: LessonRef | null;
   next: LessonRef | null;
+  /** Resolved `next_practical` target, when the front-matter names one that
+   *  exists; rendered as a prominent card beside the sequential prev/next. */
+  nextPractical: LessonRef | null;
 }
 
 export interface ModuleInfo {

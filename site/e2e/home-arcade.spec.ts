@@ -4,7 +4,7 @@ import { TAGLINE } from "../src/lib/copy";
 // Smoke coverage for the home-page pixel arcade (the <ShipGameHero /> client
 // island that sits above the hero copy). It must render a playable canvas and
 // let a visitor cycle all three games — WITHOUT disturbing the existing hero
-// (title, tagline, the single "Start the course →" link, curriculum).
+// (title, tagline, the single "Start — build your first thing →" link, curriculum).
 //
 // The three games, in switcher order (registry: builder → breaker → shooter):
 const GAMES = [
@@ -110,20 +110,24 @@ test.describe("home arcade", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Ship your first thing",
     );
-    await expect(page.getByText(TAGLINE, { exact: true })).toBeVisible();
+    // Scoped to main: the footer repeats the tagline at desktop widths.
+    await expect(
+      page.locator("#main").getByText(TAGLINE, { exact: true }),
+    ).toBeVisible();
 
-    // There is exactly ONE "Start the course →" link in the DOM — the arcade's
-    // own call-to-action reads "Take the course →" and is only mounted on the
+    // There is exactly ONE hero CTA link in the DOM — the arcade's own
+    // call-to-action reads "Take the course →" and is only mounted on the
     // game-over card, so it is absent on the fresh page.
     await expect(
-      page.getByRole("link", { name: "Start the course →" }),
+      page.getByRole("link", { name: "Start — build your first thing →" }),
     ).toHaveCount(1);
     await expect(
       page.getByRole("link", { name: "Take the course →" }),
     ).toHaveCount(0);
 
     // The curriculum sections below are unchanged.
-    await expect(page.getByText("coming later", { exact: true })).toHaveCount(4);
+    // Every module ships, so no "coming later" placeholder renders.
+    await expect(page.getByText("coming later", { exact: true })).toHaveCount(0);
     await expect(page.getByText("The curriculum", { exact: true })).toBeVisible();
   });
 

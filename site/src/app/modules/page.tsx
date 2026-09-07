@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { getModules, UPCOMING_MODULES } from "@/lib/content";
+import { getModules, upcomingModules } from "@/lib/content";
 import { formatMinutes, moduleLabel } from "@/lib/format";
 import { getModuleProgressMap, type ProgressSummary } from "@/lib/progress";
 import { getUnlockState } from "@/lib/unlock";
@@ -46,8 +46,10 @@ export default async function ModulesPage() {
       <div className="mx-auto max-w-3xl py-16">
         <h1 className="font-serif text-4xl tracking-tight text-ink">Modules</h1>
         <p className="mt-4 leading-relaxed text-ink-secondary">
-          The course in order. Each module builds on the one before it —
-          start at Module 0 unless you know what you&apos;re skipping.
+          The course in order. Module 0 is open to everyone and ends with
+          your first build; Module 1 is reference you can read any time;
+          from Module 2 on, each module unlocks when you finish the one
+          before it.
         </p>
         {!userId && (
           <p className="mt-3 font-sans text-sm text-ink-faint">
@@ -138,24 +140,28 @@ export default async function ModulesPage() {
           })}
         </ol>
 
-        <h2 className="mt-16 font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
-          Coming later
-        </h2>
-        <ol className="mt-4 divide-y divide-line">
-          {UPCOMING_MODULES.map((mod) => (
-            <li
-              key={mod.number}
-              className="flex items-baseline gap-6 py-4"
-            >
-              <span className="w-24 shrink-0 font-mono text-sm text-ink-faint">
-                {moduleLabel(mod.number)}
-              </span>
-              <span className="font-serif text-lg text-ink-faint">
-                {mod.shortTitle}
-              </span>
-            </li>
-          ))}
-        </ol>
+        {upcomingModules(modules).length > 0 && (
+          <>
+            <h2 className="mt-16 font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+              Coming later
+            </h2>
+            <ol className="mt-4 divide-y divide-line">
+              {upcomingModules(modules).map((mod) => (
+                <li
+                  key={mod.number}
+                  className="flex items-baseline gap-6 py-4"
+                >
+                  <span className="w-24 shrink-0 font-mono text-sm text-ink-faint">
+                    {moduleLabel(mod.number)}
+                  </span>
+                  <span className="font-serif text-lg text-ink-faint">
+                    {mod.shortTitle}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
       </div>
     </div>
   );

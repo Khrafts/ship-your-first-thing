@@ -20,6 +20,17 @@ import type { Lesson, LessonMeta, LessonRef, ModuleInfo } from "./types";
 
 export type { Lesson, LessonMeta, LessonRef, ModuleInfo, UpcomingModule } from "./types";
 export { UPCOMING_MODULES } from "./types";
+import { UPCOMING_MODULES } from "./types";
+import type { UpcomingModule } from "./types";
+
+/** Upcoming modules that do NOT yet have a content directory. The static
+ *  UPCOMING_MODULES list lags behind the repo, so filter by what actually
+ *  loaded — otherwise a shipped module renders twice (once live, once as
+ *  "coming later"). */
+export function upcomingModules(modules: ModuleInfo[]): UpcomingModule[] {
+  const live = new Set(modules.map((mod) => mod.number));
+  return UPCOMING_MODULES.filter((mod) => !live.has(mod.number));
+}
 
 /** Repo root holding modules/, GLOSSARY.md, SETUP.md. The site always runs
  *  with cwd = site/ (dev, build, start, Docker), so the parent directory is
@@ -342,6 +353,7 @@ interface ParsedFrontmatter {
   prereqs: string[];
   updated: string;
   deviations: string[];
+  nextPractical: string | null;
 }
 
 function parseFrontmatter(data: Record<string, unknown>, fallbackModule: string): ParsedFrontmatter {
@@ -353,6 +365,10 @@ function parseFrontmatter(data: Record<string, unknown>, fallbackModule: string)
     prereqs: toStringArray(data.prereqs),
     updated: String(data.updated ?? ""),
     deviations: toStringArray(data.deviations),
+    nextPractical:
+      typeof data.next_practical === "string" && data.next_practical.length > 0
+        ? data.next_practical
+        : null,
   };
 }
 
@@ -511,7 +527,13 @@ export async function getLesson(
     prereqs: parsed.prereqs,
     updated: parsed.updated,
     deviations: parsed.deviations,
+    nextPractical: parsed.nextPractical,
   };
+
+  const nextPractical =
+    parsed.nextPractical === null
+      ? null
+      : (allLessons.find((l) => l.path === parsed.nextPractical) ?? null);
 
   return {
     ...ref,
@@ -519,6 +541,7 @@ export async function getLesson(
     html,
     prev: index > 0 ? allLessons[index - 1] : null,
     next: index < allLessons.length - 1 ? allLessons[index + 1] : null,
+    nextPractical,
   };
 }
 
