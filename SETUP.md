@@ -18,7 +18,7 @@ Start with [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md), the
 
 Once you've picked, [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) installs your agent app step by step: download it, sign in with the account you just created, and open the tab or mode this course uses. That's the one app every remaining lesson happens inside.
 
-From there, your agent sets up anything a project needs on your machine by itself — nothing for you to install or type. Every time it's about to do something on your machine, the app shows you an approval prompt first, and nothing happens until you click approve.
+From there, your agent sets up anything a project needs on your machine by itself — nothing for you to install or type. The app can stop and ask you before it acts; how often it does is a setting the install lesson shows you (Manual in Claude Code desktop; a folder-boundary setting in the ChatGPT desktop app), and [Module 0 Lesson 6](./modules/00-welcome/06-build-your-first-thing.md) has you use it for real — your agent builds a checklist page that's yours before you read anything else.
 
 ## The third option: OpenCode desktop
 

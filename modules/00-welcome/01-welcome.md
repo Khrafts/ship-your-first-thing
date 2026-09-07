@@ -61,11 +61,11 @@ If that's you: welcome.
 
 **How to read this course:**
 
-- Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. Skipping Module 1 (mental models) to get to "the building" is the most common way learners stall in Module 3.
+- Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. You'll have built something by the end of Module 0, so the reading in Modules 1 and 2 has a real thing to point at. If you came here to build, Module 0's last lesson gives the practical route — Module 2's save lesson, then Module 3, then Module 4 — with Module 1's pictures read the first time a build needs them.
 - Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
 - When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Still stuck after that? File an issue.
 
-That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces your agent and the machinery it drives for you. Then we build.
+That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready, and the lesson after that has your agent build your first thing — a checklist page that's yours, in one sitting. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces your agent properly and the machinery it drives for you. Then we build for real.
 
 ## Exercise
 

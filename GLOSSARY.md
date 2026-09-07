@@ -76,7 +76,7 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### claude-code
 Anthropic's AI coding agent, opening in its own desktop app window; this course's Path 1, the paid track. *Example: after installing it and signing in with a Claude account, you select the app's Code tab, point it at a project folder, and start asking for changes in plain language.*
-Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### code-editor
 A program for reading and editing source files by hand, with niceties like syntax highlighting and search across files. This course never asks you to open one — your agent app is the whole working environment. *Example: Module 2 Lesson 1 names it only to say there is no editor standing between you and the work.*
@@ -84,7 +84,7 @@ Used in: no lesson calls it out; [Module 2 — Your AI coding agent](./modules/0
 
 ### codex
 The AI coding agent that lives inside the ChatGPT desktop app; this course's Path 2, the free track. *Example: after signing in with a ChatGPT account, a switch next to the message box moves you from ordinary chat into Codex.*
-Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### commit
 One saved working version of a project, carrying a one-line note about what changed. Your agent creates one when you tell it to save a working version. *Example: after a feature works, you say "save this as a working version, with a one-line note about what changed" — the agent makes the commit and confirms in plain words.*

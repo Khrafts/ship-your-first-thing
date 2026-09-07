@@ -12,7 +12,7 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will have installed and signed in to the agent app for the path you picked, opened it for the first time, and met the one control every action inside it runs through: the approval prompt.
+By the end of this lesson, you will have installed and signed in to the agent app for the path you picked, opened it for the first time, and met the approval prompt — and the setting that decides how often you see it.
 
 ## Why this matters
 
@@ -70,9 +70,13 @@ If you picked the free path, you're installing the ChatGPT desktop app and using
 
 ### Meet the approval prompt
 
-This is the one control that matters more than any button, tab, or menu in either app: **your agent proposes, and the app asks you before anything touches your machine.** You'll see this as a plain question — something like "allow this change?" — with an approve and a reject choice. Nothing happens to your files until you click approve.
+This is the control that matters more than any button, tab, or menu in either app: **your agent proposes a change, and the app can stop and ask you before it happens.** You'll see this as a plain question — something like "allow this change?" — with an approve and a reject choice.
 
-This is true no matter which track you're on, and it's true for everything the agent does on a machine, all the way to the end of the course: it proposes, the app shows you what it wants to do, and you decide. You'll meet this control again — and go deeper on what to actually check before approving — in Module 2.
+One honest thing to know before you rely on it: **how often the app asks is a setting, not a guarantee, and the two apps set it differently.** Claude Code desktop has a selector next to the send button. On the plan this course uses it starts in a mode called **Auto**, where the app makes changes on its own while a background check watches for risky ones; switching that selector to **Manual** makes it ask before each change, and that's the setting this course assumes. The ChatGPT desktop app with Codex has a permissions control below the message box; its usual setting lets Codex work inside the one folder you've chosen without asking, and asks before it reaches outside that folder or out to the internet. Neither is wrong. What matters is that you know which one you're looking at, so silence never reads as "nothing happened."
+
+Either way, your control doesn't depend on the question appearing. Whether the app asked or not, you look at the result and say what should be different — the next lesson has you do exactly that on a page of your own. Module 2 goes deeper on what to check when the app does ask.
+
+<!-- Tool claim source: code.claude.com/docs/en/desktop ("Choose a permission mode" — Manual: "Claude asks before editing files or running commands"; Auto: "executes all actions with background safety checks"; "mode selector next to the send button") and code.claude.com/docs/en/permission-modes ("On Pro, Max, and Team plans, the built-in starting permission mode is auto mode"), fetched 2026-09-07. learn.chatgpt.com/docs/agent-approvals-security ("Ask for approval … lets ChatGPT work within the current workspace and pauses before reaching beyond that boundary"; the default preset "can read files, make edits, and run commands in the workspace"; "the permissions control below the composer"), fetched 2026-09-07. This replaced an earlier claim that every action in both apps waits for approval, which the project could not evidence and which the docs contradict. -->
 
 ### What you will never be asked to do
 
@@ -86,7 +90,7 @@ There's a third agent app worth knowing exists: **OpenCode desktop** (a third AI
 
 1. Install the app for your path (Claude Code desktop, or the ChatGPT desktop app with Codex) and sign in with the account you made in the last lesson.
 2. Open the tab or mode this course uses — Code for Claude Code desktop, Codex for the ChatGPT desktop app.
-3. Find the approval prompt's controls. You don't need to trigger it yet — just locate the approve/reject buttons in the window so you recognize them next time.
+3. Find the setting that controls how often the app asks: the selector next to the send button in Claude Code desktop (set it to Manual), or the permissions control below the message box in the ChatGPT desktop app (leave it as it is — read what it says). You don't need to trigger an approval yet; you only need to know where the setting lives.
 4. Close the app, then reopen it. Confirm you're still signed in — you shouldn't have to sign in twice in one sitting.
 
 ## Checkpoint
@@ -94,14 +98,14 @@ There's a third agent app worth knowing exists: **OpenCode desktop** (a third AI
 You've got this if you can:
 
 - Open your agent app and see that it recognizes you — your account name or picture shows up somewhere in the window.
-- Say, in one sentence, what the approval prompt does before you've clicked anything on it.
+- Say, in one sentence, what the approval prompt does — and why silence from it doesn't mean nothing happened.
 - Name the one thing this course will never ask you to do (open a terminal or type a command).
 
 ## What you just did
 
-You went from a picked path and a fresh account to an open, signed-in app window — the same window every remaining lesson in this course happens inside. Module 1 is reading and diagramming next: no more installing. When Module 2 comes back to your agent and the machinery it drives for you, it's this same app you'll be looking at, going one layer deeper on what the approval prompt is actually protecting.
+You went from a picked path and a fresh account to an open, signed-in app window — the same window every remaining lesson in this course happens inside. Nothing more to install. The next lesson is the reason you installed it: in one sitting, your agent builds a page that's yours, and you check it, change it, and save it.
 
 ## Navigation
 
 [← Previous: Account creation](./04-account-creation.md)
-[Next: Module 1 — How software works (mental models) →](../01-mental-models/README.md)
+[Next: Build your first thing →](./06-build-your-first-thing.md)

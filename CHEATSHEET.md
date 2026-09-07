@@ -29,13 +29,13 @@ Both apps put the same three things within reach; only the location changes.
 
 ### Path 1: Claude Code desktop
 
-- **The approval prompt.** Your agent proposes a change, the app stops and asks a plain question — something like "allow this change?" — with an approve choice and a reject choice. Nothing touches your files until you approve. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
+- **The approval prompt.** Your agent proposes a change, the app stops and asks a plain question — something like "allow this change?" — with an approve choice and a reject choice. It asks before each change only when the selector next to the send button is set to **Manual**; on the plan this course uses it starts in Auto, so set Manual first. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
 - **Starting a new conversation.** You start one in the same Code tab you've already been working in — there's no separate screen to find. [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md)
 - **Finding an old conversation.** Not yet verified for this app — see the note below.
 
 ### Path 2: Codex, inside the ChatGPT desktop app
 
-- **The approval prompt.** Codex proposes a change, the app asks, and you approve or reject before anything happens on your machine. The exact question and where it appears are not yet verified for this app — see the note below. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
+- **The approval prompt.** Codex works inside the one folder you chose without asking, and asks before it reaches outside that folder or out to the internet — so you may see few questions, or none, while it edits your page. The setting lives in the permissions control below the message box; the exact question wording is not yet verified for this app — see the note below. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
 - **Starting a new conversation.** The same new-chat move you already use in ChatGPT for anything else. [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md)
 - **Finding an old conversation.** Not yet verified for this app — see the note below.
 

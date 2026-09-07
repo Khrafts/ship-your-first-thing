@@ -26,8 +26,8 @@ The course is designed to be picked up cold. A learner who has never written pro
 
 ## How to use this course
 
-1. Start with [Module 0 — Welcome](./modules/00-welcome/README.md). It checks your hardware, helps you choose a cost path before you create any accounts, and gets your agent app installed.
-2. Work through the modules in order — Module 0, then Module 1, then Module 2 onward.
+1. Start with [Module 0 — Welcome](./modules/00-welcome/README.md). It checks your hardware, helps you choose a cost path before you create any accounts, gets your agent app installed — and then, in the same sitting, has that agent [build your first thing](./modules/00-welcome/06-build-your-first-thing.md): a checklist page that's yours, checked in your browser, changed once, and saved.
+2. Work through the modules in order — Module 0, then Module 1, then Module 2 onward. Module 0's last lesson says which later exercises are optional if you came here to build, and which one isn't.
 3. When something breaks, check `COMMON-ISSUES.md`. When a page doesn't match what you see, check `WHAT-CHANGED.md`.
 
 ## Table of contents

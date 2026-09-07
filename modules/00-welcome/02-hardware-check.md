@@ -42,7 +42,7 @@ Once you're set up, this course happens across three places: the agent app's win
 
 ### What no longer matters
 
-You do not need a "developer machine," and nothing in this course has you installing a toolbox of separate developer programs by hand. When a later module needs something extra on your machine, your agent proposes it, the app shows you what it wants to do, and you approve or decline — the same approval prompt Lesson 5 introduces. Setup here isn't a pile of steps you do once at the start and hope you got right; it's a series of small, visible asks, each one you see before it happens.
+You do not need a "developer machine," and nothing in this course has you installing a toolbox of separate developer programs by hand. When a later module needs something extra on your machine, your agent proposes it, the app shows you what it wants to do when it's set to ask, and you approve or decline — the same approval prompt Lesson 5 introduces, along with the setting that decides how often you see it. Setup here isn't a pile of steps you do once at the start and hope you got right; it's a series of small, visible asks, each one you see before it happens.
 
 ## Exercise
 

@@ -49,7 +49,7 @@
 
 **You'll see:** An approval prompt with wording you don't recognize, or a request that doesn't obviously connect to what you asked for.
 
-**Most likely:** Your agent is asking before it does anything on your machine — that's the approval prompt working as designed, not a sign something's wrong.
+**Most likely:** Your agent is asking before it does something on your machine — that's the approval prompt working as designed, not a sign something's wrong. (Not seeing a question at all is also normal: how often the app asks is a setting — Module 0 Lesson 5 shows where it lives.)
 
 **Fix:**
 1. You always have one move, and it's always fair to use: ask your agent to "explain what this does in everyday words before I say yes." Wait for the explanation, then decide.
