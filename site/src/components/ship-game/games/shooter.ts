@@ -363,7 +363,7 @@ const shooter: GameModule<ShooterState> = {
 
   getScore: (state) => state.score,
   getStage: (state) => state.stage,
-  hasMilestones: () => true,
+  hasMilestones: true,
   isIdle: (state) => state.phase === "idle",
   isOver: (state) => state.phase === "over",
   gameOverLine: (state) =>

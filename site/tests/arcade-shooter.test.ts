@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import shooter, { type ShooterState } from "@/components/ship-game/games/shooter";
+import shooter from "@/components/ship-game/games/shooter";
 import type { GameInput } from "@/components/ship-game/types";
 
 const NONE: GameInput = { primary: false, left: false, right: false, pointerX: null };
