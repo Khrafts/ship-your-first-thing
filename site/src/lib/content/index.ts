@@ -16,6 +16,8 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 import { GITHUB_REPO_URL } from "@/lib/copy";
+import { contentRoot } from "./root";
+import { isScreenshotImagePath, screenshotRoute } from "./screenshots";
 import type { Lesson, LessonMeta, LessonRef, ModuleInfo } from "./types";
 
 export type { Lesson, LessonMeta, LessonRef, ModuleInfo, UpcomingModule } from "./types";
@@ -32,23 +34,13 @@ export function upcomingModules(modules: ModuleInfo[]): UpcomingModule[] {
   return UPCOMING_MODULES.filter((mod) => !live.has(mod.number));
 }
 
-/** Repo root holding modules/, GLOSSARY.md, SETUP.md. The site always runs
- *  with cwd = site/ (dev, build, start, Docker), so the parent directory is
- *  the default; CONTENT_ROOT overrides it for unusual layouts. */
-function contentRoot(): string {
-  const override = process.env.CONTENT_ROOT;
-  if (override && override.length > 0) {
-    return path.resolve(override);
-  }
-  return path.resolve(process.cwd(), "..");
-}
-
 // ---------------------------------------------------------------------------
 // Link rewriting
 // ---------------------------------------------------------------------------
 
-/** Raw-content host for the GitHub fallback. Blob URLs serve an HTML page,
- *  so image targets must point at raw.githubusercontent.com instead. */
+/** Raw-content host for the GitHub fallback (images outside screenshots/,
+ *  e.g. diagrams). Blob URLs serve an HTML page, so image targets must point
+ *  at raw.githubusercontent.com instead. */
 const GITHUB_RAW_URL = GITHUB_REPO_URL.replace(
   "https://github.com/",
   "https://raw.githubusercontent.com/",
@@ -117,6 +109,12 @@ export function rewriteUrl(url: string, sourceDir: string): string {
     return `/modules/${moduleMatch[1]}${hash}`;
   }
 
+  if (isScreenshotImagePath(resolved)) {
+    // Course screenshots ship with the checkout, so serve them from it: the
+    // GitHub fallback below would show main's copy (missing for new files,
+    // un-redacted for privacy fixes) instead of the one this build renders.
+    return `${screenshotRoute(resolved)}${hash}`;
+  }
   if (IMAGE_EXTENSION.test(resolved)) {
     return `${GITHUB_RAW_URL}/main/${resolved}${hash}`;
   }

@@ -111,6 +111,21 @@ describe("getLesson", () => {
   it("returns null for an unknown lesson", async () => {
     expect(await getLesson("01-mental-models", "99-made-up")).toBeNull();
   });
+
+  it("renders lesson screenshots from the same-origin route, not GitHub", async () => {
+    const lesson = await getLesson("04-thread-project", "02-sign-in");
+    expect(lesson).not.toBeNull();
+    expect(lesson!.html).toContain(
+      'src="/course-screenshots/m4/02-sign-in/confirm-email-off.png"',
+    );
+    expect(lesson!.html).not.toContain("raw.githubusercontent.com");
+
+    // Images added in this checkout (not yet on main) must also stay local.
+    const m0 = await getLesson("00-welcome", "06-build-your-first-thing");
+    expect(m0!.html).toContain(
+      'src="/course-screenshots/m0/06-build-your-first-thing/checklist-example.png"',
+    );
+  });
 });
 
 describe("getGlossaryHtml", () => {
@@ -197,6 +212,34 @@ describe("rewriteUrl", () => {
     // The "Last captured" freshness banners in every M3 lesson link here.
     expect(rewriteUrl("../../WHAT-CHANGED.md", fromLesson)).toBe(
       "/docs/what-changed",
+    );
+  });
+
+  it("routes course screenshots through the same-origin image route", () => {
+    expect(
+      rewriteUrl(
+        "../../screenshots/m4/02-sign-in/confirm-email-off.png",
+        "modules/04-thread-project",
+      ),
+    ).toBe("/course-screenshots/m4/02-sign-in/confirm-email-off.png");
+    // A file that exists only in this checkout must not be sent to main.
+    expect(
+      rewriteUrl(
+        "../../screenshots/m0/06-build-your-first-thing/checklist-example.png",
+        "modules/00-welcome",
+      ),
+    ).toBe("/course-screenshots/m0/06-build-your-first-thing/checklist-example.png");
+    expect(rewriteUrl("../../screenshots/m4/x/y.png#top", fromLesson)).toBe(
+      "/course-screenshots/m4/x/y.png#top",
+    );
+  });
+
+  it("keeps the GitHub raw fallback for images outside screenshots/", () => {
+    expect(rewriteUrl("../../diagrams/m1/flow.png", fromLesson)).toMatch(
+      /^https:\/\/raw\.githubusercontent\.com\/.+\/main\/diagrams\/m1\/flow\.png$/,
+    );
+    expect(rewriteUrl("../../screenshots/m1/vector.svg", fromLesson)).toMatch(
+      /^https:\/\/raw\.githubusercontent\.com\/.+\/main\/screenshots\/m1\/vector\.svg$/,
     );
   });
 

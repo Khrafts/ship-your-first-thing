@@ -97,10 +97,11 @@ test.describe("module detail", () => {
 
     // The lessons <ol> renders before the module README prose. Rows keep
     // their titles and estimated durations but none of them is an anchor.
-    // Durations come from each lesson's `est_minutes` front-matter and
-    // render through formatMinutes, which rolls 60 minutes over to "1 hr"
-    // rather than "60 min" — so the expected strings are pinned per row.
-    const expectedDurations = ["45 min", "50 min", "50 min", "1 hr"];
+    // Durations come from each lesson's `est_minutes` front-matter (30, 35,
+    // 35, 45 as of the 2026-09-07 plain-language edits) and render through
+    // formatMinutes, which would roll 60 minutes over to "1 hr" rather than
+    // "60 min" — so the expected strings are pinned per row, in lesson order.
+    const expectedDurations = ["30 min", "35 min", "35 min", "45 min"];
     const lessonRows = page.locator("ol").first().locator("li");
     await expect(lessonRows).toHaveCount(4);
     for (let i = 0; i < 4; i += 1) {

@@ -30,7 +30,7 @@ test.describe("progression (signed out)", () => {
     }
     await page.goto(MODULE_ZERO_LESSON_TWO);
     await expect(
-      page.getByRole("heading", { level: 1, name: "Hardware check" }),
+      page.getByRole("heading", { level: 1, name: "Check your computer" }),
     ).toBeVisible();
   });
 
