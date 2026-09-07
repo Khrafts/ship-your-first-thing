@@ -229,8 +229,11 @@ export interface GameModule<S = unknown> {
   getScore(state: S): number;
   /** Milestone stage (0 when the game has no milestones). */
   getStage(state: S): number;
-  /** Whether to show the "stage x/5" scoreboard slot. */
-  hasMilestones(state: S): boolean;
+  /**
+   * Whether to show the "stage x/5" scoreboard slot. A per-module constant
+   * (not a function of state) so the chrome can read it during render.
+   */
+  readonly hasMilestones: boolean;
   isIdle(state: S): boolean;
   isOver(state: S): boolean;
   gameOverLine(state: S): string;

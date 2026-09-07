@@ -35,7 +35,7 @@ const SESSIONS = [
   {
     weekNumber: 3,
     moduleSlug: "02-toolchain",
-    title: "Module 2 — The developer toolchain",
+    title: "Module 2 — Your agent and the machinery it drives",
     durationMinutes: 90,
   },
   {
@@ -43,12 +43,6 @@ const SESSIONS = [
     moduleSlug: "03-the-loop",
     title: "Module 3 — The loop in depth",
     durationMinutes: 90,
-  },
-  {
-    weekNumber: 5,
-    moduleSlug: "03.5-reading-code",
-    title: "Module 3.5 — Reading code, just enough",
-    durationMinutes: 60,
   },
 ] as const;
 

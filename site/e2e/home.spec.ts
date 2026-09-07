@@ -7,7 +7,10 @@ test.describe("home page", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Ship your first thing",
     );
-    await expect(page.getByText(TAGLINE, { exact: true })).toBeVisible();
+    // Scoped to main: the footer repeats the tagline at desktop widths.
+    await expect(
+      page.locator("#main").getByText(TAGLINE, { exact: true }),
+    ).toBeVisible();
   });
 
   test("curriculum lists live module cards and upcoming placeholders", async ({
@@ -15,13 +18,13 @@ test.describe("home page", () => {
   }) => {
     await page.goto("/");
 
-    // Live modules link to /modules/<slug>; the hero CTA (href="/modules")
-    // does not match this prefix.
+    // Live modules link to /modules/<slug> (the hero CTA also matches, since
+    // it points at Module 0).
     const moduleLinks = page.locator('a[href^="/modules/"]');
-    expect(await moduleLinks.count()).toBeGreaterThanOrEqual(5);
+    expect(await moduleLinks.count()).toBeGreaterThanOrEqual(8);
 
-    // The home page renders the upcoming label lowercase ("coming later").
-    await expect(page.getByText("coming later", { exact: true })).toHaveCount(4);
+    // Every module ships, so no "coming later" placeholder renders.
+    await expect(page.getByText("coming later", { exact: true })).toHaveCount(0);
   });
 
   test("footer carries the locked stack-divergence line", async ({ page }) => {
@@ -29,14 +32,10 @@ test.describe("home page", () => {
     await expect(page.locator("footer")).toContainText(FOOTER_STACK_DIVERGENCE);
   });
 
-  test("hero CTA navigates to the modules index", async ({ page }) => {
+  test("hero CTA navigates to Module 0 (the build-first entry)", async ({ page }) => {
     await page.goto("/");
-    // The home page's modules CTA reads "Start the course →" (there is no
-    // "Browse the modules" control anywhere in the app).
-    await page.getByRole("link", { name: "Start the course →" }).click();
-    await page.waitForURL("/modules");
-    await expect(
-      page.getByRole("heading", { level: 1, name: "Modules" }),
-    ).toBeVisible();
+    await page.getByRole("link", { name: "Start — build your first thing →" }).click();
+    await page.waitForURL("/modules/00-welcome");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Welcome");
   });
 });

@@ -1,69 +1,75 @@
 # Module 4 — Designing & building the thread project
 
-Module 4 is where you stop practicing and start shipping. Across eight lessons you build one real product — the thread project, a small social app where people sign in, keep a profile, write posts, follow each other, read a feed, comment, and like. You build it in chunks: one lesson, one working feature, one saved version you can go back to. Your coding agent writes the code. You decide what gets built, check that what came back matches what you asked for, and save the working version before starting the next chunk.
+This is where you stop practicing and start shipping. Across nine lessons you build one real product — a small social app where people sign in, keep a profile, write posts, follow each other, read a feed, comment, and like. The first lesson writes down what you're building; the eight after it build it, one feature at a time. Each feature ends with something you can see in a browser and a saved version you can go back to.
 
-Every lesson runs the full loop you named in Module 3 — intent → ask → evaluate → steer — once per chunk. `evaluate` carries the most weight in this module, because every chunk ends with you opening the running app and comparing it against what you actually asked for.
+Your coding agent writes every line of code and installs anything the project needs. You decide what gets built, look at the running app, try the things that should be refused, and say when to save. Every ask in this module is written once and works in either app you might have picked in Module 0.
 
 ## What this module builds
 
-By the end of this module you have a live social app at a public address that other people can open. Someone signs in with an email address and a password, sets a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post and comments on it, and likes it.
+By the end you have a live social app at a public address. Someone signs in with an email address and a password, sets a name and a bio and a photo, writes posts, follows other people, reads one feed of the newest posts from the people they follow plus their own, opens a post and comments on it, and likes it.
 
 Done looks like this: you open the live link in two different browsers, sign in as two different people, and watch the two accounts behave correctly toward each other — one follows the other and shows up in the right list, each feed carries the right posts, each person can edit only their own words, and a signed-out visitor can read the public parts without being able to change anything.
 
-Each lesson builds on the last:
-
-- **Lesson 0 — Hello-world deploy:** get an empty app onto a public address — your first **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) — before a single feature exists, so every later chunk ships onto something already known to work → sets up Lesson 1 with a live app nobody can sign in to yet.
-- **Lesson 1 — Sign in with an email and a password:** people sign up and sign in with an email address and a password, stay signed in when the page reloads, and can sign out → sets up Lesson 2 with a signed-in person who has nothing to their name yet.
-- **Lesson 2 — The profile page:** a name, a bio, and a photo — anyone can look at a profile, only its owner can change it → sets up Lesson 3 by leaving an empty space on the profile where posts will go.
-- **Lesson 3 — Writing posts:** write, edit, and delete your own posts, with an optional image, and let signed-out visitors read them → sets up Lesson 4 with every profile still an island, because nobody can follow anybody.
-- **Lesson 4 — Follow and followers:** follow another person, unfollow them, and see both lists on a profile — following someone does not make them follow you back → sets up Lesson 5 with a set of people whose posts now need somewhere to land.
-- **Lesson 5 — The feed:** one page carrying the newest posts from the people you follow and your own, newest first → sets up Lesson 6 by putting posts in front of readers who want to reply.
-- **Lesson 6 — Comments:** every post gets a page anyone can open and read; signed-in people can comment, and only a comment's author can edit or delete it → sets up Lesson 7 with one reaction still missing.
-- **Lesson 7 — Likes, then live:** a like count that moves the instant you click, then the whole app re-checked live with two real accounts → sets up Module 5, where you operate what you shipped.
-
-The thread that ties it together: one app grows across eight lessons and never stops working. Each lesson ends with a feature you can see in a browser and a saved version you can return to, so you are never more than one chunk away from something that worked.
+- **Lesson 0 — The plan:** write down with your agent what your app is, who it's for, and the eight features in build order, and give it the house rules it follows for the rest of the module.
+- **Lesson 1 — Put your app online:** an empty app at a public address, checked from your phone.
+- **Lesson 2 — Sign in:** an email address and a password; stays signed in across a reload; sign out.
+- **Lesson 3 — The profile page:** name, bio, photo — anyone can look, only the owner can change.
+- **Lesson 4 — Writing posts:** write, edit, and delete your own posts, with an optional picture; signed-out visitors can read them.
+- **Lesson 5 — Follow and followers:** follow, unfollow, two lists — and following someone never makes them follow you back.
+- **Lesson 6 — The feed:** the newest posts from the people you follow plus your own.
+- **Lesson 7 — Comments:** a page for every post; signed-in people comment; only a comment's author can edit or delete it.
+- **Lesson 8 — Likes, then live:** a like count that moves the instant you click, then the whole app checked at its public address with two accounts in two browsers.
 
 ## How this module works
 
-You are not writing this code. Your agent is. The split is the same in every lesson, and no lesson crosses it.
-
-**The agent owns the code.** How the data is shaped. How the rules about who may see and change what get written. What happens between a click in your browser and the **server** (a one-line definition: a program that runs continuously, waiting for requests, [→ GLOSSARY](../../GLOSSARY.md#server)) that answers it. Which files to touch, and every error that shows up along the way. None of that is taught here, and you are never asked to write or repair it.
+**Your agent owns the code** — how the data is shaped, the rules about who may see and change what, which files to touch, every error, and every tool that has to be installed. None of that is taught here, and you are never asked to write, read, or repair it.
 
 **You own four things:**
 
-1. **Stating intent at the feature level.** "Signed-out visitors should be able to read the posts on my profile but not write one." What, not how. Every lesson starts here.
-2. **Observing the running app.** Open it. Click things. Sign out and look again. Sign in as a second person in a second browser and watch how the two accounts see each other. Most of what goes wrong in this module is visible without reading a line of code.
-3. **Running the smell-test.** A **smell-test** (a one-line definition: one thing to look for and one question to ask when it is not there, [→ GLOSSARY](../../GLOSSARY.md#smell-test)) is a check you can run without understanding the code underneath. Each lesson hands you a short list of them — things to look for in what the agent changed, or in the app in front of you. You are looking, not decoding.
-4. **Saving each working chunk.** The moment a feature works, you save it into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)). That saved version — a **commit** (a one-line definition: one saved snapshot of the project, with a one-line note about what changed, [→ GLOSSARY](../../GLOSSARY.md#commit)) — is your way back when the next chunk goes sideways. And when the agent has been heading the wrong way for several turns, `/clear` and restart the chunk from that commit — the same recovery move you learned in Module 3.
+1. **Saying what you want.** "Signed-out visitors should be able to read the posts on my profile but not write one." What, not how. Every ask starts from the plan you write in Lesson 0.
+2. **Looking at the running app.** Open it, click things, sign out and look again, sign in as a second person in a second browser. Almost everything that goes wrong is visible from the outside. The running app is the copy your agent starts on your own computer — when nothing is open, say *"Start the app on my computer and open it in my browser."* The live link is the other copy, rebuilt from each save that goes up. Both copies use the same database.
+3. **Running each lesson's checks.** Short lists of things to try in the running app, and one question to ask before anything you can't take back. The two shapes are below.
+4. **Saying when to save.** The moment a feature works: *"Save this as a working version."* Then ask for all three parts of the answer — saved on this computer, the copy went up, and the live copy rebuilt successfully — because each can fail while the others hold. The saved version on this computer is your way back the moment your agent confirms it. When your agent has been heading the wrong way for several turns, start a fresh conversation with the same folder selected and restart the chunk from that saved version.
 
-### What a smell-test looks like
+**Nothing needs installing by you.** Assume this computer has none of the tools a web app needs. One of the house rules you give your agent in Lesson 0 is that whenever a step needs a tool that isn't here, it installs it, tells you what it's for, asks you only for the approvals only you can give, and checks it works before going on. If an install fails, it stops and tells you what it tried and what you can do next. You never type a command.
 
-You do not need to understand what something means to check whether it is there. Three you will meet in this module:
+## What your checks look like
 
-- Lesson 1 asks you to look for **`await cookies()`** (a one-line definition: a label to scan for, not to decode — the `await` should be in front of `cookies()`, [→ GLOSSARY](../../GLOSSARY.md#async-cookies)) in the agent's changes. If you see a bare `cookies()` instead, you ask the agent why.
-- Lesson 3 asks you to look for **`WITH CHECK`** (a one-line definition: a label to scan for, not to decode — it belongs next to every rule that lets someone edit something, [→ GLOSSARY](../../GLOSSARY.md#with-check)) in the agent's changes. If it is not there, you ask the agent what stops a person from editing a post to look like somebody else wrote it.
-- Lesson 5 asks you to open your own feed and check that your newest post is near the top of it. If it is not, you tell the agent your own posts are missing from your feed.
+Two moves, and neither asks you to look at anything your agent wrote.
 
-You are not reading any of this for meaning, and no lesson explains it. You check whether it is there, and you ask when it is not. The agent explains and fixes; you notice. If the wording differs from what the lesson shows, that is still a question for the agent — ask what it used instead.
+**Try the thing that should be refused.** In the running app, do what should NOT be allowed and confirm the app stops you. From Lesson 2 onward every chunk has at least one.
+
+> **TRY THIS:** open a private browser window that has never signed in, read what should be public, then try to change something.
+>
+> **EXPECT:** reading works, and every way of changing anything is missing, switched off, or bounces you to the sign-in page.
+>
+> **IF IT WORKS:** hand it back in one sentence — *"While signed out I could delete a post. A signed-out visitor should only be able to read. Fix that."*
+
+**Ask before anything you can't take back.** Ahead of anything you paste into a dashboard, and ahead of anything that changes information already in your project:
+
+> **BEFORE YOU PASTE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
+>
+> **THEN:** if the dashboard's own warning matches the answer you got, continue. If the warning names something the answer didn't predict — or you never asked — press nothing, and hand the warning's words back to your agent.
+
+**And one thing your agent does.** Every ask in this module ends with the short list of checks your agent must run and show you before it may say "done". If "done" arrives without that report, say *"Run the checks we agreed on and show me the results first."* If it says it could not run one of the checks, that check is yours to run or ask about — never to count as passed.
 
 ## Lessons in this module
 
-Lessons 0, 1, and 2 are published — the links below are live. The rest are on the way; this page shows where the module goes. The filenames and their order are fixed, so this is the sequence you will work through:
-
-0. [`00-hello-world-deploy.md`](./00-hello-world-deploy.md) — an empty app at a public address before any feature exists
-1. [`01-sign-in.md`](./01-sign-in.md) — sign in with an email and a password, and stay signed in across a reload
-2. [`02-profile.md`](./02-profile.md) — name, bio, photo: anyone looks, only the owner changes
-3. `03-posts.md` — write, edit, delete your own posts; signed-out visitors can read them
-4. `04-follow.md` — follow, unfollow, and two lists that stay one-directional
-5. `05-feed.md` — the people you follow, plus you, newest first
-6. `06-comments.md` — a page per post; signed-in people reply, authors edit their own
-7. `07-likes-and-go-live.md` — a count that moves on click, then the whole app re-checked live
+0. [`00-the-plan.md`](./00-the-plan.md) — what you're building, who it's for, and the order it gets built in
+1. [`01-hello-world-deploy.md`](./01-hello-world-deploy.md) — an empty app at a public address
+2. [`02-sign-in.md`](./02-sign-in.md) — sign in with an email and a password
+3. [`03-profile.md`](./03-profile.md) — name, bio, photo
+4. [`04-posts.md`](./04-posts.md) — write, edit, delete your own posts
+5. [`05-follow.md`](./05-follow.md) — follow, unfollow, and two lists
+6. [`06-feed.md`](./06-feed.md) — the people you follow, plus you, newest first
+7. [`07-comments.md`](./07-comments.md) — a page per post, with its thread
+8. [`08-likes-and-go-live.md`](./08-likes-and-go-live.md) — likes, then the whole app checked live
 
 ## Before you start
 
-You need Modules 0 through 3.5 finished, all of them. Module 0 got your workspace and your agent running; Module 1 gave you the shape of a web product; Module 2 gave you the tools; Module 3 gave you the loop; Module 3.5 gave you the observation floor — reading a file tree, spotting a wrong-file edit, following an error message back to one of your files, and recognizing a missing `'use client'`. This module uses all five, every chunk.
+You need Module 0's build (Lesson 6), Module 2 Lesson 3, and Module 3 finished. Module 1 is the shape of a web product — read it if you like, or read each lesson the first time a chunk points at it.
 
 ## Navigation
 
-[← Module 3.5 — Reading code, just enough](../03.5-reading-code/README.md)
-[Next: Module 5 — Operating the build →](../../README.md)
+[← Module 3 — The loop in depth](../03-the-loop/README.md)
+[Next: Module 5 — Operating the build →](../05-operating/README.md)

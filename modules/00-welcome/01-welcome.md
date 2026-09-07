@@ -2,9 +2,9 @@
 title: "Welcome"
 module: "00-welcome"
 lesson_number: 01
-est_minutes: 15
+est_minutes: 10
 prereqs: []
-updated: "2026-06-13"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,82 +12,68 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will know what this course is, who it's for, what you'll have built when you finish, and how to read the rest of Module 0.
+By the end of this lesson, you will know what this course is, who it's for, what you'll have built when you finish, and how to move through Module 0.
 
 ## Why this matters
 
-Most coding courses promise too much and deliver something close enough to feel like a win without actually being one. This course tries hard not to do that. Knowing the shape of what you're signing up for — what you'll learn, what you won't, what it'll cost, and where the hard parts are — is the difference between finishing and quitting at Module 3.
+Most coding courses promise too much and deliver something close enough to feel like a win without being one. Knowing what you're signing up for — what you'll build, what it costs, and where the hard parts are — is the difference between finishing and quitting partway.
 
 ## Core read
 
-Welcome. Briefly:
+This course is **Ship Your First Thing**: a self-paced course for people who have never written code and want to build a real product anyone on the internet can visit. By the end, you will have built a small social app — sign-up, profile, posts, follows, feed, comments, likes — running at a public web address.
 
-This course is **Ship Your First Thing**. It's an open-source, self-paced course for people who have never written production code and want to build a real, working product anyone on the internet can visit. By the end, you will have built a small social platform — sign-up, profile, posts, follows, feed, comments, likes — running at a public URL.
+You won't write the code. An **AI coding agent** (a program that reads your project files and writes code on your behalf, based on a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)) writes it. Your job is to say what you want, look at what came back, and say what should be different. That skill — noticing when the AI got it wrong and steering it back — is what this course teaches.
 
-There are two surfaces:
+The course lives on **GitHub** (a website that hosts code projects — where a project's saved versions live, on a page of its own on the internet, [→ GLOSSARY](../../GLOSSARY.md#github)). You can read it there, or on the course site, which shows the same lessons and tracks your progress.
 
-1. The **course material** — the words you're reading right now, written in **markdown** (a way of writing formatted documents using simple punctuation marks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). This is the canonical source. It lives in a public **GitHub** (a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) repository so anyone can fork it, contribute to it, or read it offline.
-2. The **course platform** — a web app that renders the same lessons with personalized features (sign-in, per-lesson progress tracking, cohort schedules). It is built and lives alongside the course material in this repository; once it goes live it will serve at [shipyourfirstthing.com](https://shipyourfirstthing.com). For now, focus on the course material — both surfaces show identical lessons.
-
-**Who this course is for:**
+**This course is for you if:**
 
 - You're comfortable using a computer.
-- You've never written production code.
-- You may have seen GitHub before, but only as a viewer.
-- You're curious about building real software.
-- You're a little intimidated by code.
-- You may or may not have budget for paid AI coding tools — this course handles all three honest cost paths.
+- You've never written code, and code intimidates you a little.
+- You want to build something real.
 
-If that's you: welcome.
-
-**Who this course is not for:**
-
-- People who already write production code professionally — this will be too slow for you.
-- People who want a fast, no-friction tutorial — this course is honest about friction.
-- People who want a guarantee — there are none here. The skill you'll learn is **the loop**: noticing when the AI is wrong and steering it back. Recovery, not happy paths.
+It is not for people who already write code for a living — it will be too slow for you.
 
 **What you'll have when you finish:**
 
-- A working social-platform thread project running at a public URL anyone on the internet can visit.
-- A working mental model of how software is built — you'll meet the technical names for these pieces in Module 1.
-- Real fluency in working with an **AI coding agent** (a program that reads your project files and writes code on your behalf based on a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)): planning, executing, recognizing wrong output, recovering.
-- A short shelf of habits — saving your work often, testing with multiple sign-ins, watching what your AI tool charges per session — that are durable across whichever AI tool you use next.
+- A working social app at a public web address.
+- Real fluency in working with an AI coding agent: asking, checking, recognizing wrong output, recovering.
+- A few durable habits — saving your work often, testing with two sign-ins, knowing what your tools cost — that carry over to whichever AI tool you use next.
 
 **What this course is honest about:**
 
-- AI tools change every few months. This course is written so the *loop* outlives the keystrokes. When a lesson's date stamp is old and the steps no longer match what's on your screen, that's drift — the keystrokes shifted, but the loop won't have. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says; it can help you reconcile the difference against this exact lesson. The full record of changes lives in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
-- The free path is real and capped by rate limits. The paid path is predictable and costs ~$20/month. The "token-careful" path is cheap if you're careful and ruinous if you're not. Module 0 lesson 03 walks you through the triage.
-- You will get stuck. The course expects this. [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is where you go when something breaks and you need the fix.
+- AI tools change every few months. When a lesson's steps no longer match what's on your screen, the steps shifted, not the skill.
+- Both paths have a usage allowance that can run out on a busy day and make you wait. One costs about $20/month, one is free to start. Lesson 3 helps you choose.
+- You will get stuck. The course expects this.
 
-**How to read this course:**
+> **Note:** Seeing something different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
-- Read in order. Module 0 → Module 1 → Module 2 → ... → Module 7. Skipping Module 1 (mental models) to get to "the building" is the most common way learners stall in Module 3.
-- Do the exercises. Each lesson ends with a 10–25 minute concrete exercise. Skipping exercises is how recognition (I've read this) fails to become recall (I can do this).
-- When a lesson doesn't match what you see, something probably shifted. On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. The full record of changes is in [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). When something breaks, check [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md). Still stuck after both? File an issue.
+**How to move through this course:**
 
-That's the whole course in two paragraphs. Module 0 spends the next four lessons getting your environment ready. Then Module 1 builds the mental models you'll use forever. Then Module 2 introduces the toolchain. Then we build.
+- Module 0 gets your tools set up, and its last lesson has your agent build a page that's yours — in the same sitting.
+- From there, follow the practical route that lesson gives you: save your page properly (Module 2, Lesson 3), practise the loop (Module 3), then build the real app (Module 4). Module 1 explains what's underneath; read it when a build points you there.
+- Do the exercises. Reading a lesson feels like knowing it. Doing the exercise is knowing it.
 
 ## Exercise
 
-Spend 5 minutes on each of these:
+Five minutes:
 
-1. Open [`BUDGET.md`](../../BUDGET.md) and skim the three named cost paths. Don't pick yet — lesson 03 walks the triage. Just know they exist.
-2. Open [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md). Read the V1 baseline entry (the last one, at the very bottom) so you know this full-record file exists. When reality drifts from a lesson on the course site, your faster first move is the lesson chat ("Ask about this lesson") — tell it what you see versus what the lesson says, and it reconciles the difference against that exact lesson.
-3. Open `modules/01-mental-models/README.md`. Read the four bundle titles. This is what Module 1 covers, and it is the most-skipped module in courses like this. (Don't skip it.)
+1. Know that two cost paths are coming — one about $20/month, one free to start, and both can ask you to wait on a heavy day. Don't pick yet; Lesson 3 walks you through it.
+2. Look at the list of Module 0 lessons in [the module README](./README.md), so you know what the next five lessons ask of you.
 
 ## Checkpoint
 
 You've got this if you can:
 
-- Name the three cost paths from [`BUDGET.md`](../../BUDGET.md) in one phrase each.
-- Say where you'd look first when something in a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson"; the full change record is [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md), and [`COMMON-ISSUES.md`](../../COMMON-ISSUES.md) is for things that break).
-- Name the four Module 1 bundles without re-opening Module 1's README.
+- Say what you'll have built when the course is done.
+- Name the two cost paths in one phrase each.
+- Say where you'd look first when a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson").
 
 ## What you just did
 
-You took five minutes to know the shape of the course before installing anything. That single habit — "what am I getting into?" before "what's the next button?" — is the closest thing this course has to a mantra. You'll use the same habit before every AI prompt in Module 3.
+You took five minutes to learn the shape of the course before installing anything. "What am I getting into?" before "what's the next button?" is the closest thing this course has to a motto, and you'll use it before every request you make of your agent.
 
 ## Navigation
 
 [← Back: Course README](../../README.md)
-[Next: Hardware check →](./02-hardware-check.md)
+[Next: Check your computer →](./02-hardware-check.md)

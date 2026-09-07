@@ -19,17 +19,13 @@
 #      lessons; terms marked Requires-callout must appear inside a D-04 vocab-callout the first time they appear.
 #   7. Mermaid `<br>` / `<br/>` outside quoted node labels — GitHub's Mermaid renderer rejects HTML break tags in
 #      sequenceDiagram Notes, sequenceDiagram messages, and flowchart edge labels. Only `["..."]` node labels accept them.
-#   8. M3 dual-agent rendering — every Module 3 lesson (modules/03-the-loop/0[1-4]-*.md) MUST contain both
-#      `Claude Code:` and `Gemini CLI:` as standalone-line labels (D-27 enforceability). Skip cleanly when no
-#      matching files exist (Wave 0/1/2 runs).
-#   9. M3.5 diagnostic-framing — WARN-only signals when M3.5 prose drifts into agent-owned mechanics
-#      (CLAUDE.md hard rule 12). See the scan_m35_diagnostic_framing comment for the pattern list.
-#  10. WHAT-CHANGED.md thin-entry contract — entries in the live region (above the check #10 boundary
-#      comment) must be dated `## YYYY-MM-DD — summary` headings (summary <= 72 chars) with the three
-#      labels **Change:** / **If you're affected:** / **Details:**, at most 6 non-blank body lines, no
-#      line over 300 chars, and no internal codenames (D-xx / CD-xx / SC #n / Plan n-n / Wave n /
-#      Phase n[.n] / .planning/ paths). Historical entries below the boundary are preserved verbatim
-#      and exempt. A missing boundary comment is itself a violation.
+#   8. (retired 2026-08-16) M3 dual-agent rendering — removed with the desktop-app reshoot of Module 3.
+#   9. Debugging-framing — WARN-only signals when any lesson drifts into learner-debugs posture
+#      (CLAUDE.md hard rule 12). See the scan_debugging_framing comment for the pattern list.
+#  10. (retired 2026-08-22) WHAT-CHANGED.md thin-entry contract — removed with the WHAT-CHANGED log
+#      itself; the file stays on disk but its entry shape is no longer gated.
+#  11. Glossary `Used in:` citations — WARN-only. Every lesson a GLOSSARY.md entry cites must exist,
+#      and must either link that anchor or name the term. See the scan_glossary_used_in comment.
 #
 # Note: `set -e` is intentionally omitted; grep returns 1 on no-match, which is our happy path.
 # Code review findings closed: WR-01..WR-05, IN-04 (see .planning/phases/01-foundation-front-door/01-REVIEW.md).
@@ -52,6 +48,7 @@ SCOPE_GLOBS=(
   --include=*.md
   --exclude-dir=.planning
   --exclude-dir=.claude
+  --exclude-dir=.superpowers
   --exclude-dir=node_modules
   --exclude-dir=voice-lint-fixtures
   --exclude=CLAUDE.md
@@ -316,15 +313,27 @@ scan_broken_relative_paths() {
 }
 
 # Parse a section of docs/audience-vocabulary.md to extract bulleted terms.
-# Args: $1 = module header (e.g., "Module 0 (M0)"), $2 = subsection ("Forbidden" | "Requires-callout")
+# Args: $1 = module header (e.g., "Module 0 (M0)"), $2 = subsection ("Forbidden" | "Requires-callout"),
+#       $3 = optional source file override (defaults to docs/audience-vocabulary.md; self-test uses
+#       this to exercise the extractor directly against a fixture without touching the real contract).
 # Strategy: locate the H2 line, then within that section find the H3 subsection, then read bullet lines
 # until the next H2/H3 or EOF. A bullet line is one that starts with "- " (optionally with leading spaces).
 # Terms may appear as plain "- term" or with descriptive text "- term (note...)" — we extract the first
 # comma-or-paren-delimited token only.
+# Two bullet shapes exist in the contract file:
+#   (a) A plain comma-separated term list, e.g. "- HTTP, DNS, request, ..." — split on ", ".
+#   (b) A bolded term (or slash-joined terms) followed by definition prose, e.g.
+#       "- **Supabase** — introduce as \"...an account system, a database, and file storage
+#       in one.\" ..." — here the definition prose is NOT parenthetical, so it survives the
+#       paren-strip step, and comma-splitting the whole line turns its descriptive clauses
+#       (like "a database") into phantom terms. For this shape we extract ONLY the leading
+#       run of **term** segments (joined by " / " for entries like "**secret key** /
+#       **publishable key**") and discard everything from the first non-bold separator on —
+#       the definition text is never a term, no matter what punctuation it contains.
 extract_vocab_terms() {
   local module_header="$1"
   local subsection="$2"
-  local file="docs/audience-vocabulary.md"
+  local file="${3:-docs/audience-vocabulary.md}"
   [ ! -f "$file" ] && return
 
   awk -v mh="$module_header" -v subname="$subsection" '
@@ -339,10 +348,33 @@ extract_vocab_terms() {
       else { next }
     }
     in_sub && /^- / {
-      # Strip leading "- ", then remove any inline parentheticals globally (handles per-item
-      # descriptions like "browser-as-program (M1 elevates...)", "API (as a *contract*)").
+      # Strip leading "- ".
       line = $0
       sub(/^- /, "", line)
+
+      # Shape (b): bullet opens on a bolded term. Extract only the leading run of
+      # **term** segments (optionally chained with " / "); everything after that —
+      # the definition/description clause — is prose, not a term, and is dropped
+      # whole (including any commas inside it).
+      if (line ~ /^\*\*/) {
+        rest = line
+        while (match(rest, /^\*\*[^*]+\*\*/) > 0) {
+          term = substr(rest, RSTART + 2, RLENGTH - 4)
+          gsub(/^[ \t]+|[ \t]+$/, "", term)
+          if (term != "") print term
+          rest = substr(rest, RSTART + RLENGTH)
+          if (match(rest, /^ \/ /) > 0) {
+            rest = substr(rest, RSTART + RLENGTH)
+          } else {
+            break
+          }
+        }
+        next
+      }
+
+      # Shape (a): plain comma-separated term list. Remove any inline parentheticals
+      # globally (handles per-item descriptions like "browser-as-program (M1
+      # elevates...)", "API (as a *contract*)"), then split on ", ".
       # Iteratively remove (....) groups (handles non-nested parens; we do not encounter nested
       # parens in the contract file).
       while (match(line, / *\([^)]*\)/) > 0) {
@@ -542,7 +574,7 @@ check_lesson_against_module_contract() {
   done <<< "$requires_terms"
 }
 
-# Run the jargon-density check across M0–M3.5 lessons (M4–M7 dirs join when those modules ship).
+# Run the jargon-density check across M0–M7 lessons.
 # Args: $1 = mode ("default" | "fixtures")
 scan_jargon_density() {
   local mode="$1"
@@ -563,13 +595,15 @@ scan_jargon_density() {
     return
   fi
 
-  # Default mode: run against M0–M3.5 lessons in WARN mode.
+  # Default mode: run against M0–M7 lessons in WARN mode.
   # The audience-vocabulary contract is strict; current prose has known gaps against it
   # (e.g., bare "commit"/"push" in M1, missing "GitHub" callout in M0, plus a larger backlog
-  # across M2/M3/M3.5 whose prose predates this check covering those modules). Those gaps are
-  # triaged via the editorial backlog, not by hard-failing the lint. The check is still informative —
-  # it surfaces every gap as a WARN line so contributors can see what would be flagged once the
-  # contract and prose converge. The fixture self-test exercises the strict (violation) path.
+  # across M2/M3 whose prose predates this check covering those modules, and a fresh M4 pile
+  # from the Phase 3 contract flip that adds modules/04-thread-project to this scan for the
+  # first time). Those gaps are triaged via the editorial backlog, not by hard-failing the
+  # lint. The check is still informative — it surfaces every gap as a WARN line so
+  # contributors can see what would be flagged once the contract and prose converge. The
+  # fixture self-test exercises the strict (violation) path.
   local lesson
   if [ -d modules/00-welcome ]; then
     for lesson in modules/00-welcome/*.md; do
@@ -595,10 +629,28 @@ scan_jargon_density() {
       check_lesson_against_module_contract "$lesson" "M3" "Module 3 (M3)" "warn"
     done
   fi
-  if [ -d modules/03.5-reading-code ]; then
-    for lesson in modules/03.5-reading-code/*.md; do
+  if [ -d modules/04-thread-project ]; then
+    for lesson in modules/04-thread-project/*.md; do
       [ -f "$lesson" ] || continue
-      check_lesson_against_module_contract "$lesson" "M3.5" "Module 3.5 (M3.5)" "warn"
+      check_lesson_against_module_contract "$lesson" "M4" "Module 4 (M4)" "warn"
+    done
+  fi
+  if [ -d modules/05-operating ]; then
+    for lesson in modules/05-operating/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M5" "Module 5 (M5)" "warn"
+    done
+  fi
+  if [ -d modules/06-after-live ]; then
+    for lesson in modules/06-after-live/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M6" "Module 6 (M6)" "warn"
+    done
+  fi
+  if [ -d modules/07-where-next ]; then
+    for lesson in modules/07-where-next/*.md; do
+      [ -f "$lesson" ] || continue
+      check_lesson_against_module_contract "$lesson" "M7" "Module 7 (M7)" "warn"
     done
   fi
 }
@@ -638,6 +690,7 @@ scan_mermaid_br() {
   files=$(find "${roots[@]}" -type f -name '*.md' \
             -not -path '*/.planning/*' \
             -not -path '*/.claude/*' \
+            -not -path '*/.superpowers/*' \
             -not -path '*/node_modules/*' \
             $([ "$mode" != "fixtures" ] && printf -- '-not -path */voice-lint-fixtures/*') \
             "${find_exempt_args[@]}" \
@@ -670,59 +723,14 @@ scan_mermaid_br() {
   done < <(printf '%s\n' "$files")
 }
 
-# M3 dual-agent rendering check.
-#
-# D-27 mandates every Module 3 lesson present BOTH agents in parallel — the lesson body
-# must contain `Claude Code:` and `Gemini CLI:` as standalone-line labels (the canonical
-# dual-agent rendering pattern D-25). Drifting to single-agent in any M3 lesson silently
-# teaches the opposite of the pedagogy ("the loop is durable across agents").
-#
-# Algorithm: glob modules/03-the-loop/0[1-4]-*.md (M3 lessons; excludes README.md and the
-# scratch/ subdirectory). For each match, grep -c '^Claude Code:$' AND '^Gemini CLI:$'
-# must each be >= 1. If either is 0, emit a VIOLATION. If the glob matches nothing
-# (Wave 3 hasn't run yet), return cleanly — this check doesn't block Wave 0/1/2 runs.
-#
-# In self-test mode, also scan scripts/voice-lint-fixtures/08-*.md so the fixture trips.
-scan_m3_dual_agent() {
-  local mode="$1"
-  echo "==> Scanning M3 lessons for dual-agent rendering (D-27)..."
+# (retired 2026-08-16) M3 dual-agent rendering check — removed with the desktop-app reshoot of Module 3.
 
-  local files=()
-  if [ "$mode" = "fixtures" ]; then
-    # Fixture mode: scan only the fixture(s).
-    local f
-    for f in scripts/voice-lint-fixtures/08-*.md; do
-      [ -f "$f" ] && files+=("$f")
-    done
-  else
-    # Default mode: scan M3 lessons matching 0[1-4]-*.md (numbered 01..04 with a slug).
-    # README.md and other non-numbered files are excluded.
-    local f
-    for f in modules/03-the-loop/0[1-4]-*.md; do
-      [ -f "$f" ] && files+=("$f")
-    done
-  fi
-
-  # Glob may produce no matches — return cleanly.
-  [ "${#files[@]}" -eq 0 ] && return
-
-  local file claude_count gemini_count
-  for file in "${files[@]}"; do
-    claude_count=$(grep -c '^Claude Code:$' -- "$file" 2>/dev/null || true)
-    gemini_count=$(grep -c '^Gemini CLI:$' -- "$file" 2>/dev/null || true)
-    # grep -c on no-match still prints 0; normalize empty just in case.
-    [ -z "$claude_count" ] && claude_count=0
-    [ -z "$gemini_count" ] && gemini_count=0
-    if [ "$claude_count" -eq 0 ] || [ "$gemini_count" -eq 0 ]; then
-      echo "VIOLATION (m3-dual-agent): $file is missing Claude Code: or Gemini CLI: standalone-line label (D-27); found Claude Code:=$claude_count, Gemini CLI:=$gemini_count"
-      VIOLATION_COUNT=$((VIOLATION_COUNT + 1))
-    fi
-  done
-}
-
-# M3.5 diagnostic-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
+# Debugging-framing check (CLAUDE.md hard rule 12; docs/COURSE-AUTHORING.md Part 4).
+# (Historical name: M3.5 diagnostic-framing — widened course-wide in the accessibility
+# remake on 2026-08-13; the M3.5-only scope and the fixture filename predate that widening,
+# and Module 3.5 itself was retired on 2026-08-12.)
 #
-# M3.5 Observation-Only Floor: the learner SPOTS symptoms and ASKS the agent. The agent
+# Agent-Responsibility Boundary: the learner SPOTS symptoms and ASKS the agent. The agent
 # OWNS reading errors, parsing code, framework mechanics, and diagnosing root causes.
 # Lessons that drift into "here's how to debug X" / "here's the anatomy of an error
 # message" / "common mistakes include..." / "renders on the server" cross the boundary.
@@ -730,14 +738,17 @@ scan_m3_dual_agent() {
 # This check emits WARN-only signals (does not increment VIOLATION_COUNT) — the gate
 # stays open; reviewers triage. WARNs do increment WARN_COUNT for the self-test.
 #
-# Scope: modules/03.5-reading-code/0[1-4]-*.md only. README and non-numbered files are
-# excluded. M0/M1/M2/M3 lessons are out of scope by design (steering and recovery in M3
-# IS the learner's job; Anatomy-of-a-steer-ask in M3 L4 is correct in context).
+# Scope: every *.md file under modules/, at any depth, except files whose basename is
+# README.md — that `-not -name 'README.md'` filter is the ONLY exclusion applied, so any
+# non-lesson markdown added under modules/ (say, inside a lesson's scratch/ subdirectory)
+# is scanned as well.
+# The check applies uniformly across all modules — the Agent-Responsibility Boundary
+# (CLAUDE.md hard rule 12) is a course-wide invariant, not a per-module one.
 #
 # Patterns (case-insensitive, applied to stripped lesson body — frontmatter, fenced code,
 # blockquote, inline code, link destinations, D-04 callout definitions are stripped first):
 #
-#   9a: bare "stack trace" — M3.5 Forbidden (moved 2026-05-18); agent's job to read it
+#   9a: bare "stack trace" — Forbidden; agent's job to read it
 #   9b: "common mistakes" — implies the learner debugs
 #   9c: "to debug" — implies the learner debugs
 #   9d: "if you see ... (error|exception|crash)" — diagnostic-framing
@@ -750,9 +761,9 @@ scan_m3_dual_agent() {
 # Agent-framing carve-out: if the line contains "the agent" (case-insensitive), the
 # match is suppressed. The rewrites legitimately say "the agent reads the stack trace"
 # — that is the boundary statement, not a violation.
-scan_m35_diagnostic_framing() {
+scan_debugging_framing() {
   local mode="$1"
-  echo "==> Scanning M3.5 lessons for diagnostic-framing patterns (WARN-only, CLAUDE.md hard rule 12)..."
+  echo "==> Scanning lessons for debugging-framing patterns (WARN-only, CLAUDE.md hard rule 12)..."
 
   local files=()
   if [ "$mode" = "fixtures" ]; then
@@ -761,10 +772,11 @@ scan_m35_diagnostic_framing() {
       [ -f "$f" ] && files+=("$f")
     done
   else
-    local f
-    for f in modules/03.5-reading-code/0[1-4]-*.md; do
-      [ -f "$f" ] && files+=("$f")
-    done
+    local lessons_list
+    lessons_list=$(find modules -type f -name '*.md' -not -name 'README.md' 2>/dev/null || true)
+    while IFS= read -r f; do
+      [ -n "$f" ] && [ -f "$f" ] && files+=("$f")
+    done <<< "$lessons_list"
   fi
 
   [ "${#files[@]}" -eq 0 ] && return
@@ -812,175 +824,211 @@ scan_m35_diagnostic_framing() {
 
       # 9a: bare "stack trace"
       if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])stack trace([^a-z0-9_]|$)'; then
-        echo "WARN (m35-diagnostic-framing 9a): $file:$lineno: bare 'stack trace' — M3.5 Forbidden under CLAUDE.md hard rule 12; rephrase or scope to agent-framing context"
+        echo "WARN (debugging-framing 9a): $file:$lineno: bare 'stack trace' — learner-debugs posture — Hard Rule 12; rephrase or scope to agent-framing context"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9b: "common mistakes"
       if printf '%s' "$lc" | grep -qE 'common mistakes'; then
-        echo "WARN (m35-diagnostic-framing 9b): $file:$lineno: 'common mistakes' framing — implies the learner debugs; mechanics belong to the agent"
+        echo "WARN (debugging-framing 9b): $file:$lineno: 'common mistakes' framing — implies the learner debugs; mechanics belong to the agent"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9c: "to debug"
       if printf '%s' "$lc" | grep -qE 'to debug'; then
-        echo "WARN (m35-diagnostic-framing 9c): $file:$lineno: 'to debug' framing — debugging is the agent's job at the M3.5 floor"
+        echo "WARN (debugging-framing 9c): $file:$lineno: 'to debug' framing — debugging is the agent's job"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9d: "if you see ... (error|exception|crash)" within ~60 chars
       if printf '%s' "$lc" | grep -qE 'if you see [^.]{0,60}(error|exception|crash)'; then
-        echo "WARN (m35-diagnostic-framing 9d): $file:$lineno: 'if you see X error/exception/crash' framing — diagnostic-teach posture; rewrite as symptom + ask-the-agent"
+        echo "WARN (debugging-framing 9d): $file:$lineno: 'if you see X error/exception/crash' framing — diagnostic-teach posture; rewrite as symptom + ask-the-agent"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9e: "renders on the server"
       if printf '%s' "$lc" | grep -qE 'renders on the server'; then
-        echo "WARN (m35-diagnostic-framing 9e): $file:$lineno: 'renders on the server' framing — rendering-execution-model is Module 7 territory, not M3.5"
+        echo "WARN (debugging-framing 9e): $file:$lineno: 'renders on the server' framing — rendering-execution-model is Module 7 territory"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9f: "anatomy of"
       if printf '%s' "$lc" | grep -qE 'anatomy of'; then
-        echo "WARN (m35-diagnostic-framing 9f): $file:$lineno: 'anatomy of' framing — concept-as-decomposition implies learner parses; agent's job"
+        echo "WARN (debugging-framing 9f): $file:$lineno: 'anatomy of' framing — concept-as-decomposition implies learner parses; agent's job"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9g: "four-part" or "four-step"
       if printf '%s' "$lc" | grep -qE 'four-part|four-step'; then
-        echo "WARN (m35-diagnostic-framing 9g): $file:$lineno: 'four-part/four-step' framing — over-decomposition of agent territory"
+        echo "WARN (debugging-framing 9g): $file:$lineno: 'four-part/four-step' framing — over-decomposition of agent territory"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9h: ":N:M" coordinate adjacent to "line" or "column"
       if printf '%s' "$lc" | grep -qE ':[0-9]+:[0-9]+' && printf '%s' "$lc" | grep -qE '(line|column)'; then
-        echo "WARN (m35-diagnostic-framing 9h): $file:$lineno: 'line:column' coordinate teaching — coordinates are the agent's reading; the learner names the file path, not the numbers"
+        echo "WARN (debugging-framing 9h): $file:$lineno: 'line:column' coordinate teaching — coordinates are the agent's reading; the learner names the file path, not the numbers"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
       # 9i: "diagnose" (not preceded by "the agent" — already filtered by carve-out)
       if printf '%s' "$lc" | grep -qE '(^|[^a-z0-9_])diagnose([^a-z0-9_]|$)'; then
-        echo "WARN (m35-diagnostic-framing 9i): $file:$lineno: 'diagnose' framing — diagnosis is the agent's job at the M3.5 floor"
+        echo "WARN (debugging-framing 9i): $file:$lineno: 'diagnose' framing — diagnosis is the agent's job — learner-debugs posture — Hard Rule 12"
         WARN_COUNT=$((WARN_COUNT + 1))
       fi
     done <<< "$stripped"
   done
 }
 
-# WHAT-CHANGED.md thin-entry contract (check #10).
+# Glossary `Used in:` citation check (#11) — WARN-only.
 #
-# WHAT-CHANGED.md is a learner-facing freshness log, not a contributor changelog —
-# PR bodies and commit messages are the contributor changelog of record. Entries
-# above the boundary comment (the "live region") follow the thin-entry contract
-# documented in CONTRIBUTING.md § Adding a WHAT-CHANGED entry:
+# Every `### anchor` entry in GLOSSARY.md carries a `Used in:` line naming the lessons where
+# the term appears. Nothing validated those citations against the lessons they name, so a
+# lesson edit could silently falsify them — which happened: a Module 1 rewrite left two
+# entries citing prose that no longer existed, and neither the edit nor its review caught it.
+# Check #4 validates the opposite direction (lesson anchor -> glossary entry) and is blind to
+# a stale citation by construction.
 #
-#   - every `## ` heading is either the literal `## Fast answers` (the symptom
-#     table) or dated `## YYYY-MM-DD — summary` with the summary at most 72 chars;
-#   - every dated entry carries the three labels **Change:** /
-#     **If you're affected:** / **Details:** and has at most 6 non-blank body
-#     lines (`---` separators excluded);
-#   - no internal codenames (D-xx / CD-xx / SC #n / Plan n-n / Wave n /
-#     Phase n[.n]) and no `.planning/` paths — they mean nothing to learners and
-#     `.planning/` 404s for every public reader;
-#   - no line longer than 300 characters — a line-count cap alone is gameable by
-#     writing one giant paragraph-line, which is exactly how past entries grew;
-#   - the boundary comment must exist: deleting it would silently unscope the
-#     contract, so its absence is a violation.
+# GLOSSARY.md's own header declares the two ways a citation can be truthful: the lesson
+# "links here through a vocab callout" ("that link is the contract this file exists to keep"),
+# or the lesson "uses the word in passing", with no callout and no link back. This check
+# accepts either — a citation is satisfied by a `GLOSSARY.md#anchor` link in the named lesson
+# OR by the term appearing in that lesson's prose. Encoding a stricter rule would enforce a
+# contract the file does not claim to keep.
 #
-# Entries below the boundary predate the contract and are preserved verbatim
-# (append-only history is a locked decision) — they are exempt. A corollary
-# limitation: an entry mistakenly placed BELOW the boundary escapes the caps
-# entirely. CONTRIBUTING.md and the boundary comment both instruct authors to
-# insert above the boundary; this check does not police placement (heuristics
-# for "a new entry landed in the history region" risk false positives on the
-# real history). The size caps count BYTES, not characters — a summary heavy in
-# multi-byte punctuation (em dash, curly quotes) has slightly less headroom than
-# the nominal 72/300; the messages say "bytes" so the cap is honest.
+#   11a (cited file exists)  — every lesson path on a `Used in:` line must resolve to a real
+#       file. Applied to every entry including self-declaring ones: a dead path is a defect
+#       under either reading of the line. Nothing else in the lint validates GLOSSARY.md's
+#       outbound links (check #5 only walks modules/** -> repo-root docs).
+#   11b (term present)       — the cited lesson must link the anchor or name the term.
+#       Skipped for self-declaring entries; see below.
+#   11c (line cites nothing) — a `Used in:` line that claims usage but names no lesson at all is
+#       a mangled or malformed citation. Self-declaring lines are exempt: citing nothing is the
+#       correct shape for them.
 #
-# What this check CANNOT do: judge whether entry prose actually sits at the
-# course's audience floor. Vocabulary above the codename level stays PR-review
-# judgment, same as every other root doc (check #6's vocab tiers scan modules/
-# lessons only).
-scan_whatchanged_entry_shape() {
-  local mode="$1"
-  echo "==> Scanning WHAT-CHANGED.md live region for the thin-entry contract (check #10)..."
+# Self-declaring entries: a `Used in:` line whose first word after the colon is "no"
+# ("no current lesson.", "no lesson calls it out; ...") states outright that no lesson uses
+# the term. These are deliberate landing pads, and any lesson such a line goes on to cite is
+# named for context ("... records that retirement", "... names it in passing") rather than as
+# a usage claim. 11b is skipped for them; 11a still applies. Twelve entries self-declare
+# today and five of them cite a lesson that does not name the term — without this carve-out
+# the check would emit five false positives against deliberate, verified content.
+#
+# Declared surface forms accepted by 11b, matched case-insensitively against the lesson with
+# markdown link destinations stripped — stripping the destinations is what stops the anchor's
+# own `GLOSSARY.md#anchor` href from satisfying the prose arm and making the check circular:
+#   - a hyphen in the anchor may render as a hyphen, whitespace, `/`, `.`, or nothing
+#     ("row-level security", "CI/CD", "Next.js", "server components");
+#   - a trailing `s`, `es`, or `'s` (plural / possessive);
+#   - a final `y` may render as `ies` ("dependency" -> "dependencies").
+# Both ends are boundary-guarded so a short anchor ("api") cannot match inside a longer word
+# ("rapid"). The relaxations only ever suppress a warning, never create one, which is the
+# safe direction for a check whose false positives would get it disabled.
+#
+# `nextjs` is permanently link-arm-only: prose writes "Next.js", the anchor merges the words,
+# and the separator flex has no hyphen to work on in a single-segment anchor, so the prose arm
+# can never match it. That is a shape of the matcher, not a defect in the entry.
+#
+# Known gaps, all deliberate:
+#   - An entry whose lesson keeps the callout link while the bolded term drifts is satisfied by
+#     the link arm alone. That leaves the entry navigable, which is the contract the link stands
+#     for, so it is not flagged.
+#   - The self-declaring carve-out is asserted by the very text being validated: prefixing a line
+#     with "no current lesson uses the word." permanently disables 11b for it, which is exactly
+#     how the Module 1 defect was repaired. The check cannot tell a truthful landing pad from a
+#     citation silenced to dodge the check. Second-guessing it would warn on five true statements,
+#     so the carve-out stands and this stays a human-review responsibility.
+#   - The link arm is a three-stage pipeline ending in `grep -q` under `set -o pipefail`. If
+#     `grep -q` exited on a match while an upstream stage still had output to write, the SIGPIPE
+#     would surface as a non-zero pipeline status and a real match would read as a miss. It cannot
+#     bite at present scale — no lesson emits enough anchor lines to fill a pipe buffer before
+#     `grep -q` returns — but a future stage that buffers more, or a lesson with far more glossary
+#     references, would put it in range. Rework the arm rather than adding a `|| true` if that day
+#     comes: `|| true` would mask a genuine failure of the same pipeline.
+glossary_term_regex() {
+  local t out
+  t=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
+  # Replace each hyphen with the separator class using sed rather than splitting on '-' into an
+  # unquoted array: an unquoted split pathname-expands a glob metacharacter, and check #4's
+  # anchor charset does not forbid one appearing in a future anchor.
+  out=$(printf '%s' "$t" | sed -E 's|-|[-[:space:]/.]*|g')
+  case "$out" in
+    *y) out="${out%y}(y|ies)" ;;
+  esac
+  printf "(^|[^A-Za-z0-9])%s(s|es|'s)?([^A-Za-z0-9]|\$)" "$out"
+}
 
-  local files=()
-  local f
+scan_glossary_used_in() {
+  local mode="$1"
+  local glossary link_base
   if [ "$mode" = "fixtures" ]; then
-    for f in scripts/voice-lint-fixtures/10-*.md; do
-      [ -f "$f" ] && files+=("$f")
-    done
+    glossary="scripts/voice-lint-fixtures/11-glossary-used-in-citation.md"
+    link_base="scripts/voice-lint-fixtures"
   else
-    [ -f WHAT-CHANGED.md ] && files+=(WHAT-CHANGED.md)
+    glossary="GLOSSARY.md"
+    link_base="."
   fi
 
-  [ "${#files[@]}" -eq 0 ] && return
+  echo "==> Scanning GLOSSARY 'Used in:' citations against the lessons they name (WARN-only)..."
 
-  local file sentinel_line region hits n pat
-  for file in "${files[@]}"; do
-    sentinel_line=$(grep -n -m1 -F 'voice-lint check #10 boundary' -- "$file" | cut -d: -f1)
-    if [ -z "$sentinel_line" ]; then
-      echo "VIOLATION (whatchanged-entry-shape): $file:1: missing the check #10 boundary comment — restore the '<!-- voice-lint check #10 boundary ... -->' line; without it the entry contract cannot be scoped"
-      VIOLATION_COUNT=$((VIOLATION_COUNT + 1))
+  [ -f "$glossary" ] || return
+
+  local lineno=0 anchor="" line self_declaring targets tgt path rel rx
+  while IFS= read -r line; do
+    lineno=$((lineno + 1))
+    case "$line" in
+      '### '*)
+        anchor="${line#\#\#\# }"
+        continue
+        ;;
+      'Used in:'*) ;;
+      *) continue ;;
+    esac
+    [ -z "$anchor" ] && continue
+
+    self_declaring=0
+    case "$line" in
+      'Used in: no '*) self_declaring=1 ;;
+    esac
+
+    # An optional `#fragment` is tolerated and stripped: without it a citation written as
+    # `(./modules/x.md#section)` would be skipped silently, which is the failure mode this
+    # whole check exists to prevent.
+    targets=$(printf '%s\n' "$line" | grep -oE '\]\([^)]*\.md(#[^)]*)?\)' | sed -E 's/^\]\(//; s/\)$//; s/#.*$//' || true)
+    if [ -z "$targets" ]; then
+      # A self-declaring line legitimately cites nothing ("Used in: no current lesson." — five
+      # entries today). A line that claims usage and yet names no lesson is a mangled or
+      # malformed citation, and skipping it silently is the same shape of hole the fragment
+      # tolerance above closes. Zero non-self-declaring lines lack a citation today, so this
+      # arm cannot manufacture a false positive on any legitimate line shape now in the file.
+      if [ "$self_declaring" -eq 0 ]; then
+        echo "WARN (glossary-used-in 11c): $glossary:$lineno: entry \"$anchor\" claims usage but its 'Used in:' line names no lesson — the citation link is missing or malformed"
+        WARN_COUNT=$((WARN_COUNT + 1))
+      fi
       continue
     fi
 
-    region=$(head -n "$((sentinel_line - 1))" -- "$file")
-
-    # Heading shape, mandatory labels, entry size, line length — one awk pass.
-    # The affected-label regex uses `.` for the apostrophe to stay quoting-safe.
-    hits=$(printf '%s\n' "$region" | awk -v file="$file" \
-      -v lbl_change="**Change:**" -v lbl_affected="**If you're affected:**" -v lbl_details="**Details:**" '
-      function flush_entry() {
-        if (entry_line == 0) return
-        if (!has_change)   printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_change
-        if (!has_affected) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_affected
-        if (!has_details)  printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry is missing the %s label\n", file, entry_line, lbl_details
-        if (body_lines > 6) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry has %d non-blank body lines (max 6) — depth belongs in the PR body, linked from the Details line\n", file, entry_line, body_lines
-      }
-      /^## / {
-        flush_entry()
-        entry_line = 0; in_entry = 0
-        has_change = 0; has_affected = 0; has_details = 0; body_lines = 0
-        if ($0 == "## Fast answers") next
-        if ($0 ~ /^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /) {
-          summary = $0
-          sub(/^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] — /, "", summary)
-          if (length(summary) > 72) printf "VIOLATION (whatchanged-entry-shape): %s:%d: entry summary is %d bytes (max 72)\n", file, NR, length(summary)
-          entry_line = NR; in_entry = 1
-        } else {
-          printf "VIOLATION (whatchanged-entry-shape): %s:%d: live-region heading must be dated (## YYYY-MM-DD — summary): %s\n", file, NR, $0
-        }
-        next
-      }
-      {
-        if (length($0) > 300) printf "VIOLATION (whatchanged-entry-shape): %s:%d: line is %d bytes (max 300) — wrap the source line; markdown joins adjacent lines into one paragraph\n", file, NR, length($0)
-        if (in_entry && $0 !~ /^[[:space:]]*$/ && $0 !~ /^---+$/) {
-          body_lines++
-          if ($0 ~ /\*\*Change:\*\*/) has_change = 1
-          if ($0 ~ /\*\*If you.re affected:\*\*/) has_affected = 1
-          if ($0 ~ /\*\*Details:\*\*/) has_details = 1
-        }
-      }
-      END { flush_entry() }
-    ')
-    if [ -n "$hits" ]; then
-      echo "$hits"
-      n=$(count_lines "$hits")
-      VIOLATION_COUNT=$((VIOLATION_COUNT + n))
-    fi
-
-    # Forbidden internal codenames and paths in the live region.
-    for pat in \
-      '(^|[^A-Za-z0-9_-])D-A?[0-9]+' \
-      '(^|[^A-Za-z0-9_-])CD-[0-9]+' \
-      '(^|[^A-Za-z])SC ?#[0-9]+' \
-      '(^|[^A-Za-z0-9_-])Plan [0-9]+(-[0-9]+)?' \
-      '(^|[^A-Za-z0-9_-])Wave [0-9]+' \
-      '(^|[^A-Za-z0-9_-])Phase [0-9]+(\.[0-9]+)?' \
-      '\.planning/'; do
-      hits=$(printf '%s\n' "$region" | grep -nE -e "$pat" 2>/dev/null || true)
-      if [ -n "$hits" ]; then
-        echo "VIOLATION (whatchanged-entry-shape): $file live region contains an internal codename or path (pattern \"$pat\") — learners cannot decode these; put them in the PR body:"
-        printf '%s\n' "$hits" | sed "s|^|  $file:|"
-        n=$(count_lines "$hits")
-        VIOLATION_COUNT=$((VIOLATION_COUNT + n))
+    while IFS= read -r tgt; do
+      [ -z "$tgt" ] && continue
+      rel="${tgt#./}"
+      path="${link_base}/${rel}"
+      path="${path#./}"
+      if [ ! -f "$path" ]; then
+        echo "WARN (glossary-used-in 11a): $glossary:$lineno: entry \"$anchor\" cites $rel, which does not exist"
+        WARN_COUNT=$((WARN_COUNT + 1))
+        continue
       fi
-    done
-  done
+      [ "$self_declaring" -eq 1 ] && continue
+      # Link arm. `grep -F "GLOSSARY.md#${anchor}"` would let a LONGER anchor's link satisfy a
+      # shorter anchor that prefixes it — eight such pairs exist today (api/api-key, git/github,
+      # http/http-method, http/http-status-code, prompt/prompt-injection, row/row-level-security,
+      # server/server-components, session/session-token). Extract the anchors the lesson actually
+      # references, using check #4's anchor charset, and compare whole-string with `grep -qxF`.
+      # That settles the boundary by construction and interpolates the anchor into no pattern at
+      # all, so a future anchor containing a regex metacharacter cannot widen the match.
+      if grep -oE 'GLOSSARY\.md#[A-Za-z0-9._-]+' "$path" \
+        | sed -E 's|.*GLOSSARY\.md#||' | grep -qxF "$anchor"; then
+        continue
+      fi
+      rx=$(glossary_term_regex "$anchor")
+      if sed -E 's/\]\([^)]*\)/]/g' "$path" | grep -qiE "$rx"; then
+        continue
+      fi
+      echo "WARN (glossary-used-in 11b): $glossary:$lineno: entry \"$anchor\" cites $rel, but that lesson neither links #$anchor nor names the term — the citation may have been falsified by a later edit"
+      WARN_COUNT=$((WARN_COUNT + 1))
+    done <<< "$targets"
+  done < "$glossary"
 }
 
 # ===== Self-test mode =====
@@ -1043,6 +1091,31 @@ run_self_test() {
     echo "  self-test OK: jargon-density fixture tripped $((after - before)) violations"
   fi
 
+  # Vocab term extractor comma-clause fix (fixture 06-vocab-extractor-comma-clause) — proves
+  # extract_vocab_terms() no longer explodes a bold-bullet's definition prose into phantom terms.
+  # Exercises the extractor directly (via its file-path override) against a bullet shaped exactly
+  # like the real M4 Supabase entry that produced the "a database" phantom term: the clean bolded
+  # term must be extracted whole, and no comma-clause fragment from the definition text may appear.
+  local vocab_fixture="scripts/voice-lint-fixtures/06-vocab-extractor-comma-clause.md"
+  if [ -f "$vocab_fixture" ]; then
+    local extracted
+    extracted=$(extract_vocab_terms "Module Fixture (MF)" "Requires-callout" "$vocab_fixture")
+    if ! printf '%s\n' "$extracted" | grep -qxF "Widget"; then
+      echo "SELFTEST FAIL: vocab-extractor fixture did not yield the clean term 'Widget'; got:"
+      printf '%s\n' "$extracted"
+      fail=1
+    elif printf '%s\n' "$extracted" | grep -qF "a widget"; then
+      echo "SELFTEST FAIL: vocab-extractor fixture still emits a phantom comma-clause term ('a widget'); got:"
+      printf '%s\n' "$extracted"
+      fail=1
+    else
+      echo "  self-test OK: vocab-extractor fixture yields only the clean term, no phantom comma-clause fragment"
+    fi
+  else
+    echo "SELFTEST FAIL: vocab-extractor fixture missing: $vocab_fixture"
+    fail=1
+  fi
+
   # Mermaid <br> outside quoted node labels (fixture 07) — expect at least 3 violations
   # (one sequenceDiagram Note, one sequenceDiagram message, one flowchart edge label).
   before=$VIOLATION_COUNT
@@ -1056,44 +1129,50 @@ run_self_test() {
     echo "  self-test OK: mermaid-br fixture tripped $((after - before)) violations"
   fi
 
-  # M3 dual-agent rendering (fixture 08) — expect at least 1 violation (fixture has only
-  # the Claude Code: label, missing Gemini CLI: — D-27 demands both).
-  before=$VIOLATION_COUNT
-  scan_m3_dual_agent fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
-  after=$VIOLATION_COUNT
-  if [ "$((after - before))" -lt 1 ]; then
-    echo "SELFTEST FAIL: m3-dual-agent fixture (08) tripped only $((after - before)); expected >= 1"
-    cat /tmp/voice-lint-selftest.out
-    fail=1
-  else
-    echo "  self-test OK: m3-dual-agent fixture tripped $((after - before)) violations"
-  fi
-
-  # M3.5 diagnostic-framing (fixture 09) — WARN-only check; assert >= 3 WARNs emitted.
+  # Debugging-framing (fixture 09, historically m35-diagnostic-framing) — WARN-only check;
+  # assert >= 3 WARNs emitted.
   before=$WARN_COUNT
-  scan_m35_diagnostic_framing fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  scan_debugging_framing fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
   after=$WARN_COUNT
   if [ "$((after - before))" -lt 3 ]; then
-    echo "SELFTEST FAIL: m35-diagnostic-framing fixture (09) tripped only $((after - before)) WARN(s); expected >= 3"
+    echo "SELFTEST FAIL: debugging-framing fixture (09) tripped only $((after - before)) WARN(s); expected >= 3"
     cat /tmp/voice-lint-selftest.out
     fail=1
   else
-    echo "  self-test OK: m35-diagnostic-framing fixture tripped $((after - before)) WARNs"
+    echo "  self-test OK: debugging-framing fixture tripped $((after - before)) WARNs"
   fi
 
-  # WHAT-CHANGED thin-entry contract (fixture 10) — expect at least 6 violations
-  # (undated heading + missing affected-label + oversize entry + oversize summary +
-  # over-300-char line + at least one forbidden-codename line; content below the
-  # fixture's boundary comment must NOT trip, proving the region bound).
-  before=$VIOLATION_COUNT
-  scan_whatchanged_entry_shape fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
-  after=$VIOLATION_COUNT
-  if [ "$((after - before))" -lt 6 ]; then
-    echo "SELFTEST FAIL: whatchanged-entry-shape fixture (10) tripped only $((after - before)); expected >= 6"
+  # Glossary Used-in citations (fixture 11) — WARN-only check. The fixture carries three
+  # synthetic entries: one citing a lesson file that does not exist (11a), one citing a real
+  # fixture file that never names the term and never links the anchor (11b), and one
+  # self-declaring landing-pad entry that cites a real file it does not claim to use the term
+  # in. Assert the first two WARN and the third does NOT — the carve-out is the half of this
+  # check most likely to regress into false positives, so it is asserted, not assumed.
+  before=$WARN_COUNT
+  scan_glossary_used_in fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$WARN_COUNT
+  if [ "$((after - before))" -lt 3 ]; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) tripped only $((after - before)) WARN(s); expected >= 3 (11a missing file + 11b term absent + 11c line cites nothing)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11c' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11c (Used-in line claiming usage but naming no lesson)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11a' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11a (citation to a nonexistent lesson)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif ! grep -q 'glossary-used-in 11b' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in fixture (11) did not trip arm 11b (cited lesson never names the term)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif grep -q 'orphan-sprocket' /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: glossary-used-in check warned on the self-declaring landing-pad entry 'orphan-sprocket'; the carve-out has regressed"
     cat /tmp/voice-lint-selftest.out
     fail=1
   else
-    echo "  self-test OK: whatchanged-entry-shape fixture tripped $((after - before)) violations"
+    echo "  self-test OK: glossary-used-in fixture tripped $((after - before)) WARNs (11a + 11b + 11c) and left the self-declaring entry alone"
   fi
 
   if [ "$fail" -ne 0 ]; then
@@ -1116,9 +1195,8 @@ scan_glossary_anchors default
 scan_broken_relative_paths default
 scan_jargon_density default
 scan_mermaid_br default
-scan_m3_dual_agent default
-scan_m35_diagnostic_framing default
-scan_whatchanged_entry_shape default
+scan_debugging_framing default
+scan_glossary_used_in default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"

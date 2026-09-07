@@ -1,19 +1,21 @@
 import { expect, type Page } from "@playwright/test";
 import { AUTH_COPY } from "../src/lib/copy";
 
-/** First lesson of the course — the only lesson signed-out viewers can open. */
+/** First lesson of the course. Module 0 is open to signed-out viewers. */
 export const FIRST_LESSON_URL = "/modules/00-welcome/01-welcome";
 
 /**
- * Module 0's lessons in flat course order. Completing all five unlocks the
- * first mental-models lesson under the sequential model (src/lib/unlock.ts).
+ * Module 0's lessons in flat course order. All six are open to everyone;
+ * completing all six unlocks Module 2's first lesson (Module 1 is on-demand
+ * and never gates) under the progression model in src/lib/unlock.ts.
  */
 export const MODULE_ZERO_LESSONS = [
   FIRST_LESSON_URL,
   "/modules/00-welcome/02-hardware-check",
   "/modules/00-welcome/03-cost-path-triage",
   "/modules/00-welcome/04-account-creation",
-  "/modules/00-welcome/05-codespaces-walkthrough",
+  "/modules/00-welcome/05-install-your-agent-app",
+  "/modules/00-welcome/06-build-your-first-thing",
 ] as const;
 
 // Exact button labels from lesson-complete-button.tsx.
@@ -146,7 +148,8 @@ export async function completeLessons(
   }
 }
 
-/** Complete all five Module 0 lessons — unlocks 01-mental-models. */
+/** Complete all six Module 0 lessons — unlocks Module 2 Lesson 3 (Module 1 is
+ *  always readable; see src/lib/unlock.ts). */
 export async function completeModuleZero(page: Page): Promise<void> {
   await completeLessons(page, MODULE_ZERO_LESSONS);
 }

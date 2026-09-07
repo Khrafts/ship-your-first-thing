@@ -2,7 +2,7 @@
 
 **Purpose:** What to do when X breaks. Each entry is a symptom you might see, then most-likely cause, then fix. Designed to grow over time as learners hit issues and PR them in. The first place to check when reality drifts from a lesson is `WHAT-CHANGED.md`; the second is here.
 
-**Structure:** Grouped by where the symptom shows up (Codespaces, accounts, tools, build, deploy). Each entry:
+**Structure:** Grouped by where the symptom shows up (accounts, the agent app, going live). Each entry:
 
 > ### Symptom: {one-line description}
 > **You'll see:** {what the error or behavior looks like}
@@ -13,36 +13,6 @@
 **How to contribute:** See `CONTRIBUTING.md`. When you hit an issue, the contribution flow is: file an issue with a `common-issues` tag, or open a PR adding the entry here. Keep entries factual and short. Freshness-tagged issues (per `CONTRIBUTING.md`) often turn into entries here.
 
 ---
-
-## Codespaces
-
-### Symptom: "Your free tier is exhausted" notification
-
-**You'll see:** A banner in GitHub Codespaces or a refusal to start a new Codespace.
-
-**Most likely:** You hit the 120 core-hours/month free-tier ceiling on a 2-core machine (= 60 clock-hours). A 4-core machine burns the budget twice as fast. Stopped Codespaces still consume storage but not core-hours; running ones do.
-
-**Fix:**
-1. Check usage at [github.com/settings/billing](https://github.com/settings/billing) → Codespaces.
-2. Stop any running Codespaces you don't need: from the [github.com/codespaces](https://github.com/codespaces) page.
-3. Lower your machine spec to 2-core if you're on 4-core.
-4. Set auto-stop to 30 minutes idle if it's not already (default in this course's `.devcontainer.json`).
-5. If you're stuck out of free hours, the local install path in `SETUP.md` is the escape hatch.
-
-**First seen in:** Module 0 hardware check.
-
-### Symptom: "I clicked localhost:3000 and nothing loaded"
-
-**You'll see:** Browser shows "this site can't be reached" when you try `localhost:3000` from your laptop browser while the dev server runs in Codespaces.
-
-**Most likely:** Codespaces forwards ports to a Codespaces-issued URL, not to your laptop's `localhost`. The terminal where you ran `npm run dev` shows a clickable forwarded URL — that's the one to use, not `localhost`.
-
-**Fix:**
-1. Go to your Codespaces terminal where `npm run dev` is running.
-2. Look for a line that says `Local: ... <some-url>.app.github.dev`.
-3. Click that URL or copy it into your browser. That's the one wired to the running dev server.
-
-**First seen in:** Module 2 (port-forwarding lesson — *lands in Phase 2*).
 
 ## Account creation
 
@@ -60,6 +30,49 @@
 
 **First seen in:** Module 0 account creation.
 
+## The agent app
+
+### Symptom: "My agent app asks me to wait before I can keep going"
+
+**You'll see:** On Path 2 (Codex, inside the ChatGPT desktop app), a message asking you to wait, or an offer to move to a paid plan, instead of your agent picking up your request.
+
+**Most likely:** You've hit the free tier's daily allowance. That allowance is real, not unlimited — a heavy day can use it up. The exact size isn't published, and it isn't a failure on your part.
+
+**Fix:**
+1. Wait it out and pick your session back up once the allowance resets.
+2. If you'd rather pay for a track with no built-in pauses, Path 1 (Claude Code desktop, $20/month) is the alternative.
+3. Switching tracks costs you exactly one thing: creating the account you skipped the first time. Nothing else in this course locks you to the path you picked.
+
+**First seen in:** Module 0, Choose your plan.
+
+### Symptom: "The app is asking permission for something I don't understand"
+
+**You'll see:** An approval prompt with wording you don't recognize, or a request that doesn't obviously connect to what you asked for.
+
+**Most likely:** Your agent is asking before it does something on your machine — that's the approval prompt working as designed, not a sign something's wrong. (Not seeing a question at all is also normal: how often the app asks is a setting — Module 0 Lesson 5 shows where it lives.)
+
+**Fix:**
+1. You always have one move, and it's always fair to use: ask your agent to "explain what this does in everyday words before I say yes." Wait for the explanation, then decide.
+2. If the step can't be undone — anything you're about to paste into a dashboard, or anything that runs against data already saved — ask the fuller question instead, and wait for the answer: *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
+3. If a warning shows up that the answer didn't predict, approve nothing — hand the warning's words back to your agent instead.
+
+**First seen in:** Module 2 (the engine room) and Module 4 (the thread project).
+
+## Going live
+
+### Symptom: "The live site behaves differently from my machine"
+
+**You'll see:** A feature works when your agent shows it to you during the build, but looks or behaves differently on the public link.
+
+**Most likely:** Your code deployed, but not every setting your code needs made the trip with it.
+
+**Fix:**
+1. Tell your agent exactly what's different on the live link versus at home.
+2. Open the Vercel settings screen and read the one row you can check yourself: `NEXT_PUBLIC_SUPABASE_URL`. It should hold the address of your own Supabase project — the same address your Supabase dashboard shows for it.
+3. Tell your agent whether it matches, and let it fix the live site from there. You're not auditing the rest of that screen — that stays your agent's job.
+
+**First seen in:** Module 4, Lesson 8 (Likes, then live).
+
 ---
 
-*Phases 2 onward will append entries here as Module 2/3/4 lessons surface real issues.*
+*This file grows as learners hit issues and PR them in — see "How to contribute" above.*

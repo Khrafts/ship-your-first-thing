@@ -1,37 +1,34 @@
 # VERSIONS.md — Pinned tool versions
 
-**Last verified:** 2026-05-14
-**Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual).
+**Last verified:** 2026-08-17 — the newest row date below. Each row carries its own; this line reports the most recent of them, not a sweep of the whole file.
+**Cadence:** Re-verified quarterly (see `CONTRIBUTING.md` for the smoke-test ritual). A row is past cadence once its own *Last verified* date is more than a quarter old; those rows carry **(past cadence)** in that cell. The marker means the pinned version has not been re-checked since its date — not that it is known to be wrong.
 
 This is the single source of truth for every tool the course is verified against. When a tool releases a new version, the course is *not* automatically updated to it; the maintainer re-verifies the lesson flows against the new version, then updates this table and notes the change in `WHAT-CHANGED.md`.
 
-## Required tools
+## Agent apps
 
-| Tool | Pinned version | Purpose | Last verified |
-|---|---|---|---|
-| GitHub Codespaces (default image) | `mcr.microsoft.com/devcontainers/universal:2` | Quick-start environment | 2026-05-08 |
-| Node.js | 20.x LTS | Runtime for the thread project; M2 L3 (`03-runtime-node.md`) teaches `node --version` verification | 2026-05-14 |
-| npm | 10.x (bundled with Node 20) | Package manager; M2 L4 (`04-package-manager-npm.md`) teaches `npm install` / `npm run`; pnpm divergence noted in CHEATSHEET sidebar | 2026-05-14 |
-| git | 2.40+ | Version control | 2026-05-08 |
-| GitHub CLI (`gh`) | 2.50+ | Optional; convenient for Codespaces operations | 2026-05-08 |
-
-## AI coding agents
-
-| Tool | Pinned version | Path | Notes | Last verified |
+| App | Version | Path | Notes | Last verified |
 |---|---|---|---|---|
-| Claude Code | latest stable (auto-updates) | Path 1 / Path 3 | Treat keystrokes as ephemeral per the freshness model; M3 dual-agent transcripts (`modules/03-the-loop/01..04`) captured against this version on the Last-verified date | 2026-05-14 |
-| Gemini CLI | latest stable (auto-updates) | Path 2 | M3 dual-agent transcripts captured against this version on the Last-verified date; ignore-file syntax = `.geminiignore` per D-38; install command `npm install -g @google/gemini-cli` requires Node 20+ | 2026-05-14 |
+| Claude Code desktop | verified working 2026-08-15 | Path 1 | The paid track's agent app, opening in its own window. Default Manual mode: it proposes a change and waits — nothing touches your files until you accept. | 2026-08-15 |
+| ChatGPT desktop app (Codex) | verified working 2026-08-15 | Path 2 | The free track's agent — Codex is the mode you switch to next to the message box. Free "for a limited time" per OpenAI's own wording; the paid ChatGPT tiers keep it working the same way if that changes. | 2026-08-15 |
+| ~~Gemini CLI~~ | retired 2026-08-12 | was Path 2 | Replaced as the free-track agent by Codex, inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md). | 2026-08-12 |
 
-## Thread project stack (Phase 3 onward)
+> **Note:** Neither app has a captured version *number* yet. "Verified working 2026-08-15" records the date the install flow and approval-prompt behavior were last confirmed against the vendors' own documentation and the install lessons ([Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md), [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)), not a version string read off the app itself. A hands-on install pass still needs to capture the actual number from each app's own About or Settings screen.
+
+> **Note:** Windows installs of Claude Code desktop need **git** installed separately — from [git-scm.com/downloads/win](https://git-scm.com/downloads/win) — before local sessions work, then the app needs a restart. Most Macs already have git. You never open git yourself; your agent operates it for you once it's installed. See [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md).
+
+## Thread project stack (the app you build in Module 4)
 
 | Tool | Pinned version | Notes | Last verified |
 |---|---|---|---|
-| Next.js | 16.x (App Router) | Async `cookies()` / `headers()` / `params` is the breaking-change surface AI agents trained pre-2026 will get wrong | 2026-05-08 |
-| TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 |
-| `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 |
-| Supabase CLI | latest stable | Migrations live under `supabase/migrations/` per Module 4 conventions | 2026-05-08 |
-| Vercel CLI | latest stable | Deploy target | 2026-05-08 |
-| `zod` | ^3.x | Form validation for thread project | 2026-05-08 |
+| Next.js | 16.x (App Router) | Async `cookies()` / `headers()` / `params` is the breaking-change surface AI agents trained pre-2026 will get wrong | 2026-05-08 **(past cadence)** |
+| TypeScript | 5.x | Used for thread project; AI agents use types as guardrails | 2026-05-08 **(past cadence)** |
+| `@supabase/ssr` | ^0.5 | Use the new `sb_publishable_…` / `sb_secret_…` key naming from day one (legacy `anon`/`service_role` removed end-2026) | 2026-05-08 **(past cadence)** |
+| Supabase dashboard (SQL Editor) | n/a (web dashboard) | Database changes are pasted by hand: the agent writes a SQL file, the learner runs it from the Supabase dashboard's SQL Editor, one query tab per chunk — no CLI, no `supabase/migrations/` directory | 2026-08-17 |
+| Vercel dashboard | n/a (web dashboard) | Deploy target — the agent deploys by saving/pushing, Vercel rebuilds the live copy automatically; the learner's only touchpoint is the dashboard's settings screen, read once to check an environment variable such as `NEXT_PUBLIC_SUPABASE_URL` | 2026-08-17 |
+| `zod` | ^3.x | Form validation for thread project | 2026-05-08 **(past cadence)** |
+
+> **Note:** The rows marked **(past cadence)** were last verified 2026-05-08 and are overdue against the quarterly cadence above — nobody has re-verified them since that date. Their dates are left alone on purpose: moving a date forward would claim a check that never happened, and the date is the only thing telling you when the claim was last true. What the table pins is still what Module 4's lessons were written against.
 
 ## Course platform stack (`site/`)
 
@@ -47,8 +44,9 @@ The course site lives in `site/` (built; deploys to Railway, where it will serve
 
 ## How to update this table
 
-1. When you re-verify a tool against a new version, change its row's `Last verified` cell to the new date.
-2. If the tool itself changed in a way that affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
-3. If a tool is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
+1. When you re-verify a tool or app against a new version, change its row's `Last verified` cell to the new date — and if that date is now the newest in the file, update the `Last verified` line at the top to match. Drop the **(past cadence)** marker from that cell in the same edit, and add it to any row whose date has crossed a quarter since the last pass.
+2. If the change affects lessons, also update affected lessons' front-matter `updated:` field and add an entry to `WHAT-CHANGED.md`.
+3. If a tool or app is deprecated or replaced, do NOT delete the row — strike it through and link to its replacement, so historical reading still makes sense.
+4. For the two agent apps, only replace "verified working YYYY-MM-DD" with an actual version number once a hands-on install captures it straight from the app's own About or Settings screen — an evidence pass, never a guess from a changelog.
 
 See `CONTRIBUTING.md` for the quarterly smoke-test ritual that surfaces freshness issues.

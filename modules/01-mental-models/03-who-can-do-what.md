@@ -2,9 +2,9 @@
 title: "Who can do what"
 module: "01-mental-models"
 lesson_number: 03
-est_minutes: 35
+est_minutes: 25
 prereqs: ["02-where-data-lives"]
-updated: "2026-05-09"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,33 +12,25 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to describe — in plain language and on paper — how a web app decides whether you're allowed to do something, and what mechanism keeps you signed in once it's decided you're you.
+By the end of this lesson, you will be able to describe — in plain language and on paper — how a web app decides whether you're allowed to do something, and what keeps you signed in once it has decided you're you.
 
 ## Why this matters
 
-The first two Module 1 lessons covered the *shape* of a web app: how a browser talks to a server (bundle 1), and how a server talks to a database (bundle 2). This third lesson covers the question every real product has to answer next: who's allowed to do what? It's a question that becomes easy to reason about once you have the right analogy. It's also where AI coding agents go subtly wrong — the difference between "I'm signed in" and "I'm allowed to do this thing" is the most common security bug in self-built software, and the watch-it-fail walkthroughs in Module 5 will live partly here.
+Anyone can walk up to the front desk and ask for a card. A real product has to answer: who's allowed to? "I'm signed in" and "I'm allowed to do this" are two different questions, and mixing them up is the most common security mistake in self-built software — including software an agent builds for you. When you can tell the two apart, you can ask for the right thing and check that it holds.
 
 ## Core read
 
-Picture the busy door of a private club.
+Picture the door of a private club.
 
-There's a door. There's a person at the door — call them the door staff. There's a list at the door. Inside the club, there's a separate VIP room with a velvet rope. There's also a hand stamp at the entrance.
+There's a person at the door, a list, a hand stamp, and inside, a VIP room behind a velvet rope.
 
-When you walk up, the door staff first asks: "are you who you say you are?" You hand over your ID. They look at it; they decide whether the ID is real and whether the photo matches.
+When you walk up, the door staff asks: "are you who you say you are?" You hand over your ID; they check it's real and the photo matches. That's **authentication** (confirming you are who you claim to be, [→ GLOSSARY](../../GLOSSARY.md#authentication)) — a question about *identity*.
 
-That's **authentication** (one-line definition: confirming you are who you claim to be, [→ GLOSSARY](../../GLOSSARY.md#authentication)) — sometimes shortened to "authn." It's a question about *identity*.
+Then they ask: "are you on the list?" The VIP list says who may go into the VIP room. That's **authorization** (deciding what you're allowed to do once you're identified, [→ GLOSSARY](../../GLOSSARY.md#authorization)) — a question about *permissions*.
 
-The door staff then asks: "are you on the list?" They look at the VIP list (which is a different list from the door's general entry list). The list says who can go into the VIP room.
+Two different questions. The door staff might let you in (your ID is real) but turn you away at the rope (you're not on the list). "I logged in" is not the same as "I'm allowed to do this."
 
-That's **authorization** (one-line definition: deciding what you're allowed to do once you're identified, [→ GLOSSARY](../../GLOSSARY.md#authorization)) — sometimes shortened to "authz." It's a question about *permissions*.
-
-These are two different questions. The door staff might let you in the door (authn passes — your ID is real) but turn you away at the velvet rope (authz fails — you're not on the VIP list). Confusing the two is the most common security bug in real software: "I logged in" is not the same as "I'm allowed to do this thing I'm trying to do."
-
-Then the door staff stamps your hand. The stamp lets you go to the bathroom and come back without re-checking your ID every time.
-
-That's a **session** (one-line definition: a remembered "yes, you're you" so the app doesn't re-check on every request, [→ GLOSSARY](../../GLOSSARY.md#session)).
-
-The thing physically representing the session is usually a **session token** (one-line definition: a string the browser sends with each request to prove "I'm the same person who just authenticated," [→ GLOSSARY](../../GLOSSARY.md#session-token)) — often delivered as a **cookie** (one-line definition: a small piece of data the browser stores and re-sends to the same site, [→ GLOSSARY](../../GLOSSARY.md#cookie)) the server set during sign-in.
+Then they stamp your hand. The stamp lets you step out and back in without showing ID again. That's a **session** (a remembered "yes, you're you", [→ GLOSSARY](../../GLOSSARY.md#session)). Your agent handles how the browser carries the stamp; what you'll notice is that you stay signed in when you refresh the page.
 
 ```mermaid
 sequenceDiagram
@@ -56,7 +48,7 @@ sequenceDiagram
 <details>
 <summary>Optional: same door staff with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is a **session token** — usually carried by the browser as a **cookie** the server set during sign-in. These four names get hands-on treatment in Module 4, where you add sign-in and per-row access rules to your project. "Door staff at the entrance + VIP list at each table + hand stamp on your hand" is enough today.
+> *Peek ahead — skim, don't memorize:* Checking the ID is **authentication**. Checking the VIP list is **authorization**. The hand stamp is the **session**. Sign-in itself is built in Module 4, where your agent adds it and its access rules to your project and you check them in the running app. The names are for recognizing, not for writing.
 
 ```mermaid
 sequenceDiagram
@@ -66,51 +58,43 @@ sequenceDiagram
   Visitor->>Door: Hi, I'm Alice. Here's my ID.
   Door->>Door: Verify ID (authentication)
   Door->>Door: Check VIP list (authorization)
-  Door-->>Visitor: Hand stamp (session token)
+  Door-->>Visitor: Hand stamp (session)
   Visitor->>Backroom: Hand stamp shown
   Backroom-->>Visitor: Access granted
 ```
 
 </details>
 
-In this course, the thread project signs people in with an email address and a password. The mechanism is named and built when you build the thread project; for now, just know that "sign-in" usually means "show something only you should have." From the analogy: the ID the door staff asks for is an address plus a password chosen by whoever signed up at that address. It's not perfect (a password someone else guesses = identity compromise) but it's simple and learnable.
+In this course, your project signs people in with an email address and a password — that's the ID. Your agent builds the mechanism.
 
-A few things confuse beginners here, and naming them now saves you debugging time later.
+Two things worth noticing now.
 
-**Authentication doesn't replace authorization.** "I logged in" doesn't mean "I'm allowed to do this." Real apps check both, every time. The most common security bug in self-built apps is forgetting that authn ≠ authz — the app trusts that any signed-in user can do anything.
+**Signing in doesn't replace the list.** A real app checks both, every time. The common mistake is an app that trusts any signed-in person to do anything — edit someone else's post, read someone else's messages. That's why, later, you'll sign in as a second person and *try* to change something the first person wrote, expecting to be refused.
 
-**Sessions can be stolen.** If someone gets your hand stamp (your session cookie), they can walk back into the club as you. The safeguards are the same as a club's: the stamp is hard to forge, it changes often, and the door staff ask for ID again before they let anyone into the back rooms. The thread project covers the practical defaults; for now, just know that "logged in" is a state that needs guarding, not a property that's automatic.
-
-**The "VIP list" lives in the database.** When the door staff checks the list, they're really asking the filing cabinet from bundle 2. Permission rules in real apps are enforced both at the server (the clerk) and at the database (the cabinet itself, via per-row rules). Later in the course you build that double-check explicitly.
-
-> **Note:** Module 1 keeps auth at the mental-model layer. The actual code — the sign-in mechanism, the per-request permission checks, the database policies that enforce who-owns-what — lands when you add sign-in to the thread project and later in the course. This lesson explicitly does **not** teach you how to write auth code.
+**The list lives in the filing cabinet.** When the door staff checks the list, they're really asking the cabinet from the last lesson. Good apps enforce the rules at the desk *and* at the cabinet, so a card can't be pulled by the wrong person even if the desk slips. Your agent sets that up; you check it holds.
 
 ## Exercise
 
-Sketch the sign-in flow. Plan 15 minutes.
+Sketch one sign-in. Plan 10 minutes.
 
-Pick an app you use that signs you in (Twitter, your email provider, anything). On paper or [excalidraw.com](https://excalidraw.com), draw the steps from "click sign in" to "I see my home feed." Label the steps that are about *identity* (authn) versus *permissions* (authz). Add a step where the session token gets minted and stored. Don't look anything up. The point is to commit your current model to paper.
+Pick an app that signs you in. On paper or at [excalidraw.com](https://excalidraw.com), draw the steps from "click sign in" to "I see my home page." Mark which steps are about *identity* (is this really you?) and which are about *permissions* (may you do this?). Add the moment the hand stamp is given. Don't look anything up.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Explain the difference between authentication and authorization in two sentences without re-reading this lesson.
-2. Name what a session token is, where it lives, and what happens if someone else gets it.
+1. Explain the difference between authentication and authorization in two sentences, without re-reading this lesson.
+2. Say what the hand stamp does, and what you'd expect to happen if the app forgot to check the list.
 
 ## Going deeper
 
 Optional, only if you're curious:
 
-- The OWASP [Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) — short, dense, the canonical "what real auth defaults look like."
-
-## Loop check
-
-> **Loop check — intent.** Module 1 is pre-loop, but every mental model you build here changes the *intent* you'll bring to your next AI-coding session. Knowing that authentication and authorization are separate questions changes what you'll ask the AI to build — and changes which kind of answer you'll accept. The loop step this lesson reinforces is **intent**: knowing what you want the system to enforce before you ask the AI to enforce it.
+- The OWASP [Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) — short, dense, the canonical "what real sign-in defaults look like."
 
 ## What you just did
 
-You sketched a sign-in flow — the gate every real product has, no matter how big or small. You separated identity from permissions in your head, and that separation is the same separation an AI coding agent will assume when you ask it to build sign-in. The "intent" step of the loop, taught in Module 3, is exactly this: knowing the shape of what you want the system to enforce before you start asking. You've now practiced it three times.
+You sketched a sign-in and separated identity from permissions in your head. The club still only exists inside one private building, though — how it opens to the public is the last lesson.
 
 ## Navigation
 

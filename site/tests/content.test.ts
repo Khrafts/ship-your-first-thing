@@ -7,6 +7,7 @@ import {
   getModule,
   getModules,
   rewriteUrl,
+  upcomingModules,
 } from "@/lib/content";
 
 // The loader reads the canonical course markdown from the repo root (the
@@ -14,16 +15,30 @@ import {
 // running app.
 
 describe("getModules", () => {
-  it("discovers the five live modules in course order", async () => {
+  it("discovers the eight live modules in course order", async () => {
     const modules = await getModules();
-    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 3.5]);
+    expect(modules.map((mod) => mod.number)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
     expect(modules.map((mod) => mod.slug)).toEqual([
       "00-welcome",
       "01-mental-models",
       "02-toolchain",
       "03-the-loop",
-      "03.5-reading-code",
+      "04-thread-project",
+      "05-operating",
+      "06-after-live",
+      "07-where-next",
     ]);
+  });
+
+  it("lists the build-first lesson as Module 0's last lesson", async () => {
+    const mod = await getModule("00-welcome");
+    const last = mod!.lessons[mod!.lessons.length - 1];
+    expect(last.lessonSlug).toBe("06-build-your-first-thing");
+  });
+
+  it("filters upcoming modules that already have content", async () => {
+    const modules = await getModules();
+    expect(upcomingModules(modules)).toEqual([]);
   });
 
   it("parses module titles and strips the Module-N prefix for shortTitle", async () => {
@@ -61,7 +76,7 @@ describe("getAllLessonRefs", () => {
     const expected = modules.reduce((sum, mod) => sum + mod.lessonCount, 0);
     expect(refs).toHaveLength(expected);
     expect(refs[0].moduleSlug).toBe("00-welcome");
-    expect(refs[refs.length - 1].moduleSlug).toBe("03.5-reading-code");
+    expect(refs[refs.length - 1].moduleSlug).toBe("07-where-next");
   });
 });
 
@@ -95,6 +110,21 @@ describe("getLesson", () => {
 
   it("returns null for an unknown lesson", async () => {
     expect(await getLesson("01-mental-models", "99-made-up")).toBeNull();
+  });
+
+  it("renders lesson screenshots from the same-origin route, not GitHub", async () => {
+    const lesson = await getLesson("04-thread-project", "02-sign-in");
+    expect(lesson).not.toBeNull();
+    expect(lesson!.html).toContain(
+      'src="/course-screenshots/m4/02-sign-in/confirm-email-off.png"',
+    );
+    expect(lesson!.html).not.toContain("raw.githubusercontent.com");
+
+    // Images added in this checkout (not yet on main) must also stay local.
+    const m0 = await getLesson("00-welcome", "06-build-your-first-thing");
+    expect(m0!.html).toContain(
+      'src="/course-screenshots/m0/06-build-your-first-thing/checklist-example.png"',
+    );
   });
 });
 
@@ -182,6 +212,34 @@ describe("rewriteUrl", () => {
     // The "Last captured" freshness banners in every M3 lesson link here.
     expect(rewriteUrl("../../WHAT-CHANGED.md", fromLesson)).toBe(
       "/docs/what-changed",
+    );
+  });
+
+  it("routes course screenshots through the same-origin image route", () => {
+    expect(
+      rewriteUrl(
+        "../../screenshots/m4/02-sign-in/confirm-email-off.png",
+        "modules/04-thread-project",
+      ),
+    ).toBe("/course-screenshots/m4/02-sign-in/confirm-email-off.png");
+    // A file that exists only in this checkout must not be sent to main.
+    expect(
+      rewriteUrl(
+        "../../screenshots/m0/06-build-your-first-thing/checklist-example.png",
+        "modules/00-welcome",
+      ),
+    ).toBe("/course-screenshots/m0/06-build-your-first-thing/checklist-example.png");
+    expect(rewriteUrl("../../screenshots/m4/x/y.png#top", fromLesson)).toBe(
+      "/course-screenshots/m4/x/y.png#top",
+    );
+  });
+
+  it("keeps the GitHub raw fallback for images outside screenshots/", () => {
+    expect(rewriteUrl("../../diagrams/m1/flow.png", fromLesson)).toMatch(
+      /^https:\/\/raw\.githubusercontent\.com\/.+\/main\/diagrams\/m1\/flow\.png$/,
+    );
+    expect(rewriteUrl("../../screenshots/m1/vector.svg", fromLesson)).toMatch(
+      /^https:\/\/raw\.githubusercontent\.com\/.+\/main\/screenshots\/m1\/vector\.svg$/,
     );
   });
 

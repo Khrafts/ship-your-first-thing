@@ -45,15 +45,17 @@ Phase 02.1 extended the locked-analogy convention to nine Module 2 and Module 3.
 
 #### Analogy authoring policy (D-A1..D-A4)
 
-Sustained-with-callbacks is the depth that makes an analogy land. One passing simile in the opener does not. The pattern is one to two paragraphs of an everyday scene, plus one to three callbacks distributed across the 600-1500 word Core read so the picture stays alive as new mechanics get named. M1 bundle 1 (restaurant) and M2 L5 (recipe-binder) are the depth references; read either before drafting a new analogy.
+Sustained-with-callbacks is the depth that makes an analogy land. One passing simile in the opener does not. The pattern is one to two paragraphs of an everyday scene, plus one to three callbacks distributed across the 600-1500 word Core read so the picture stays alive as new mechanics get named. M1 bundle 1 (restaurant) is the depth reference; read it before drafting a new analogy.
 
-Every Module 2, Module 3, and Module 3.5 lesson that names a tool or skill category gets a new analogy. No structural exemptions, including lessons whose subject matter could be argued to already contain its own picture. The audience reads each lesson without remembering yesterday's lesson; the felt picture has to be there to be reasoned against.
+Through Phase 02.1, every Module 2, Module 3, and Module 3.5 lesson that named a tool or skill category got a new analogy, with no structural exemptions — including lessons whose subject matter could be argued to already contain its own picture. Module 3.5 is retired (see Part 5's tombstone); this policy now applies to Module 2 and Module 3. The audience reads each lesson without remembering yesterday's lesson; the felt picture has to be there to be reasoned against.
 
 Two-touch placement: the analogy opens "Why this matters" as the felt rhythm, then re-anchors at the top of the Core read at the moment the lesson formally names the tool. The first touch sets the picture before any naming happens; the second touch makes the naming feel like the picture rather than a definition. A third touch in "What you just did" is optional, not required.
 
-Uniqueness: each new analogy gets its own decision-log entry and a distinct picture. No reuse of the D-07 locked analogies (restaurant, filing cabinet, door staff, recipe-binder) or M2 L5's recipe-binder framing. Themes may rhyme between lessons in the same module (M2's workbench and junior-teammate both inhabit a craftsperson worldview), but the analogy noun, the felt scene, and the mapping must each be different.
+Uniqueness: each new analogy gets its own decision-log entry and a distinct picture. No reuse of the D-07 locked analogies (restaurant, filing cabinet, door staff, recipe-binder). Themes may rhyme between lessons in the same module (M2's workbench and junior-teammate both inhabit a craftsperson worldview), but the analogy noun, the felt scene, and the mapping must each be different.
 
 The Phase 02.1 entries by lesson, named here so future authors can find them without opening the phase log: D-40 craftsperson's workbench (M2 L1 the IDE), D-41 librarian's request slip (M2 L2 the terminal), D-42 sheet music vs. the musician (M2 L3 the runtime), D-43 corner-store delivery service (M2 L4 npm), D-44 junior teammate who started yesterday (M2 L6 AI coding agents), D-45 office directory in the lobby (M3.5 L1 reading a file tree), D-46 contractor who painted the wrong room (M3.5 L2 spotting wrong-file edits), D-47 receipt with the line item circled (M3.5 L3 error message to file pointer), D-48 framed picture vs. touchscreen (M3.5 L4 the `'use client'` server/client split).
+
+**Historical note (2026-08-15).** Every lesson named in that D-40..D-48 list is retired: the accessibility remake collapsed Module 2 to three lessons on 2026-08-12 and deleted Module 3.5 entirely, so none of those nine analogies is attached to a live lesson any more. The list stands as the decision log's history — do not treat any entry as the locked analogy for a lesson that carries the same number today (today's M2 L1 is "Your AI coding agent", M2 L2 is "The engine room", M2 L3 is "The save system", each with its own analogy locked in the remake's phase context). What survives from Phase 02.1 as live doctrine is the *patterns* below: two-touch placement, the "Why this matters" felt-pain template, and forward-ref pruning.
 
 #### Analogy two-test gate (D-A17)
 
@@ -73,11 +75,11 @@ Two-test gate:
 
 PARTIAL is allowed and means "ships with a known gap that a later phase must extend or revise." FAIL means propose a different picture before the entry is locked. Reviewers checking the CONTEXT.md entry can spot a missing or hand-waved two-test block at a glance.
 
-**Worked contrast from Phase 02.1.**
+**Worked contrast from Phase 02.1.** Both lessons below are retired (see the historical note above); the entries stand as worked records of how the two tests are argued, not as analogies attached to any live lesson. Do not resolve their lesson numbers against today's Module 2.
 
-- **D-42 sheet music vs. musician (M2 L3 runtime) — PASS / PASS.** Standalone: paper-and-dots-sitting-silent-on-a-stand is a coherent scene every reader recognizes. Load-bearing tie: the load-bearing distinction is "text-that-exists" vs. "the agent that makes it act" — sheet music vs. musician maps that exactly, and the two-musicians extension (browser + Node) predicts "JavaScript has two runtimes." Failure mode predicted: file exists but page is silent = sheet music sitting on the stand with no musician.
+- **D-42 sheet music vs. musician (the retired Module 2 runtime lesson) — PASS / PASS.** Standalone: paper-and-dots-sitting-silent-on-a-stand is a coherent scene every reader recognizes. Load-bearing tie: the load-bearing distinction is "text-that-exists" vs. "the agent that makes it act" — sheet music vs. musician maps that exactly, and the two-musicians extension (browser + Node) predicts "JavaScript has two runtimes." Failure mode predicted: file exists but page is silent = sheet music sitting on the stand with no musician.
 
-- **D-43 corner-store delivery (M2 L4 npm) — PASS / PARTIAL.** Standalone: list / fetch / bags is a familiar rhythm. Load-bearing tie: maps `package.json` / `npm install` / `node_modules` cleanly. PARTIAL because the analogy does not predict (i) **version pinning** — a corner store doesn't ask for soap-version-1.2.3 — and (ii) **transitive dependencies** — the bags don't contain bags. Both will hit a Phase 3 learner; either D-43 gets extended (e.g., "the store ALSO delivers what your items came packaged with") or a follow-up phase revises the analogy.
+- **D-43 corner-store delivery (the retired Module 2 npm lesson) — PASS / PARTIAL.** Standalone: list / fetch / bags is a familiar rhythm. Load-bearing tie: maps `package.json` / `npm install` / `node_modules` cleanly. PARTIAL because the analogy does not predict (i) **version pinning** — a corner store doesn't ask for soap-version-1.2.3 — and (ii) **transitive dependencies** — the bags don't contain bags. Both would have hit a Phase 3 learner. No revision is queued: the lesson was retired before either gap was closed, so the entry survives only as the reference picture of what a PARTIAL verdict reads like.
 
 The two-test gate is not a one-time hurdle. When a downstream lesson finds the analogy missing a load-bearing tie because a learner hit the gap, the analogy gets re-evaluated and either extended or revised. The gate is the conversation; the CONTEXT.md entry is its record.
 
@@ -89,7 +91,7 @@ Total ban on the syllabus-architecture opener pattern: no instances of "Module N
 
 Self-test before shipping a "Why this matters" — the M0/M1-amnesia self-test: "If I deleted Module 0 and Module 1 from this learner's memory, would this opener still motivate them to read the lesson?" If the answer is no, the opener depends on course architecture rather than on learner pain, and rewrite it against the felt-rhythm template.
 
-Gold-standard reference: `modules/02-toolchain/05-git-and-github.md`'s "Why this matters" — the felt rhythm of "you change a file → you save → you push to GitHub → Vercel rebuilds" lands before any course-architecture naming. Read it before drafting any other lesson's opener.
+Gold-standard reference: `modules/02-toolchain/03-the-save-system.md`'s "Why this matters" — one clause of prior-lesson payoff (allowed by Part 3's "sets up the next" rule), then straight into the felt rhythm: you spend weeks changing a project you don't read yourself, some of those changes turn out wrong, and without somewhere to fall back to every change is a gamble with everything you've built. The resolution lands in the same breath — "the worst afternoon of your project costs you an afternoon" — before the lesson names a single tool. Read it before drafting any other lesson's opener. *(This exemplar pointed at the pre-remake `05-git-and-github.md` until 2026-08-15; that lesson was deleted when the accessibility remake collapsed Module 2 to three lessons.)*
 
 #### Forward-ref pruning (D-A9..D-A12)
 
@@ -104,9 +106,28 @@ What stays:
 
 What goes: Core-read body paragraphs whose primary job is anxiety management — "you don't have to understand this until Module 7", "the next lesson explains how", "Phase 3+ material". When you catch one, ask whether the paragraph teaches anything the lesson needs RIGHT NOW. If it doesn't, cut it.
 
-Worked contrast (post-Phase-2 read): M2 L1's current "Why this matters" ends on "Naming the category once is what lets the rest of Module 2 say…" — that's syllabus-architecture framing, and the Phase 02.1 rewrite replaces it with the workbench felt rhythm before any naming happens. M2 L5's "Why this matters" already opens on the felt rhythm ("you change a file → you save → you push to GitHub → Vercel rebuilds") with no naming-this-category framing in sight. The contrast is the pattern.
+Worked contrast: the pre-remake M2 L1 ended its "Why this matters" on "Naming the category once is what lets the rest of Module 2 say…" — syllabus-architecture framing, and the shape to avoid. The live `modules/02-toolchain/03-the-save-system.md` opener does the opposite: it spends its whole runway on the felt cost of a change going wrong, and never tells the learner where the lesson sits in the course. The contrast is the pattern. *(Both lessons this contrast originally named — the old M2 L1 and M2 L5 — were deleted by the 2026-08-12 accessibility remake; the pattern they illustrated is unchanged.)*
 
 Enforcement: Phase 02.1 ships forward-ref pruning via human review against this section plus the locked analogy. No new voice-lint check is added in Phase 02.1 — a grep-based check for forward-ref counts or syllabus-opener phrases (`Module N named`, `Lessons N and M named`, `naming this category now means`) competes with REVIEW.md WR-04 (general voice-lint hardening) and is deferred to a follow-on phase whose scope is explicitly "voice-lint patterns layered on top of Phase 02.1's content rewrite." When you draft a lesson revision, run the pruning sweep yourself; do not wait for the lint to flag it.
+
+### The build-first entry (M0 L6) and the honest approval prompt
+
+Added 2026-09-07 (user-directed, outside the remake phase series). Two adjustments to local rules, both recorded here so the next author doesn't "correct" them back.
+
+**1. Module 0 is no longer setup-only.** `modules/00-welcome/06-build-your-first-thing.md` has the learner's agent build a checklist page of the learner's own, in the same sitting as the install: pick a list → point the agent at a folder → ask → open in the browser → three behaviour checks (own items / ticks survive close-and-reopen / anything broken) → one change → steer a mismatch → save (agent-confirmed) → reopen without the agent. Rules the lesson holds and later lessons must not contradict:
+
+- The first output has *useful behaviour* (ticks persist), not a static name/tagline. Stop when the behaviour works; no polish gate.
+- The page is retained: M2 L3's exercise applies the save-plus-cloud-copy to it. M3's `loop-practice` page is a *separate* throwaway; M4 is a separate project. Say which, whenever a lesson touches one of them.
+- The save keeps the page's *file*, not the browser-held ticks, and it is on the learner's computer only until M2 L3 connects GitHub. Restoring files never claims to restore live user data or undo external actions (M2 L3 states the boundary).
+- No absolutes about isolation ("only you can see it", "the folder is the boundary of everything it touches"): permissions, browser storage and synced folders make those false in real setups. Say what is true — not on the internet, no web address, may sync like any folder.
+- No sample agent transcript in L6; the browser page is the check. Every UI/plan/pricing claim carries a tool-claim HTML comment with the doc URL and fetch date, and says what was *not* verified on a live install.
+- Time is a target (30–45 min after the app is open) and is stated as unmeasured.
+
+**2. The practical route, and what the site does about it.** L6 closes with the route Module 0 → Module 2 Lesson 3 (save) → Module 3 (the loop) → Module 4, with **Module 1 on demand**: each M4 chunk names the M1 lesson whose picture it uses. Diagrams, vocabulary recall and paper exercises are not conditions for continuing; L6 says which one exercise is not optional (M2 L3). On the site, `site/src/lib/route.ts` holds the route as data (Module 0 open to everyone; Module 1 and Module 2 Lessons 1–2 on-demand; the gating chain M0 L1…L6 → M2 L3 → M3 L1 → …), `unlock.ts` gates from it, `progress.ts`'s Resume/Continue follows it (reference lessons are offered only once the chain is done), the locked card names the *gating* lesson, and L6's `next_practical` front-matter renders as a "Practical next step" card. `README.md`, `SETUP.md`, the M0/M1/M2/M4 READMEs and the homepage copy all say the same thing. M2 L3's paper warm-up is optional; its real exercise (save the Module 0 checklist, with the agent confirming both the local save and the GitHub copy) is the required outcome.
+
+**3. The approval prompt is a setting, not a guarantee (Hard Rule 15, amended).** Official docs fetched 2026-09-07: Claude Code desktop's Code tab starts in **Auto** on Pro/Max/Team (a classifier reviews actions instead of the user), with **Manual** ("asks before editing files or running commands") one click away in the selector next to the send button; Codex's default preset "can read files, make edits, and run commands in the workspace" and asks only before leaving the folder or reaching the network, set via "the permissions control below the composer". So M0 L5 names the setting and where it lives; L6 gives two rules that hold whether or not a dialog appears (approve what's about this folder/page; ask "what does this do and why?" for accounts, installs, internet, deletion; when it doesn't ask, the page is still the check); and prompt-level agreements ("tell me before you change anything") are called agreements, never app guarantees. Root docs (`SETUP.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`), M0 L2, M2 L1/L2, the nine M4 Codex panels ("wherever it is set to ask"), M6 L3 / M6 README (decline at the prompt, or tell the agent to stop and take it back when the app doesn't ask) and M7 L2 were narrowed to match — wording only, no transcripts invented.
+
+**4. M3 does not require a particular AI mistake.** M3 L3's book-list exercise now gives a short continuation for each honest response (asked which books / labelled placeholders / guessed and said so) that lands on the same page state L4 starts from, and forbids re-running the ask until the agent fails. L4's fresh-conversation move says to re-select the `loop-practice` folder and restate the task, and how to restore the placeholder if a rollback removes it.
 
 ### Voice contract (LESSON-12)
 
@@ -128,7 +149,7 @@ If you catch yourself writing one of these, rewrite. `scripts/voice-lint.sh` wil
 
 ## Part 2 — The nine-element lesson anatomy
 
-Every lesson uses `lesson-template.md` (or `lesson-template-m0.md` for Module 0). The nine elements, in order:
+Every lesson uses `lesson-template.md` (or `lesson-template-m0.md` for Module 0). The nine elements, in order, plus the optional Definition-of-done element in build-phase lessons (M4+, inserted after Exercise):
 
 1. **Objective** (LESSON-01) — one sentence: "By the end of this lesson, you'll be able to ___." Concrete and observable, not aspirational.
 2. **Why this matters** (LESSON-02) — 2-4 sentences linking the lesson to the learner's actual goal (shipping a deployed app).
@@ -196,7 +217,12 @@ This is where Phase 1's UAT walkthrough surfaced the most subtle pedagogy bugs. 
 For every M1+ lesson that uses Mermaid to teach a spatial or relational concept:
 
 1. **The simple-form Mermaid comes first**, in plain view in the lesson body. It uses ONLY the locked D-07 analogy nouns. No technical labels.
-2. **The technical Mermaid comes second**, wrapped in a `<details><summary>` HTML5 disclosure widget. It uses the real names (HTTP, SQL, schema, CI/CD, etc.). The summary line names which later module covers those terms hands-on.
+2. **The technical Mermaid comes second**, wrapped in a `<details><summary>` HTML5 disclosure widget. It uses the real names (HTTP, SQL, schema, CI/CD, etc.). The summary line frames the panel as optional and says where those terms are going. It takes one of two forms, and which one is correct is a question of fact about the course, not a matter of taste:
+
+   - **Module-naming form** — use it when a later module really does cover that term family hands-on, and name that module: `(Module 4 hands-on)`. The four shipped panels covering the data, auth, and deploy families use this form (`02-where-data-lives.md` ×2, `03-who-can-do-what.md`, `04-how-it-goes-live.md`), and Module 4 builds all three.
+   - **Recognition-only form** — use it when no later module covers that family hands-on, and say so plainly instead of naming one: `(names to recognize, not to learn today)`. The two shipped panels in `01-how-the-web-works.md` use this form, because nothing after Module 1 teaches the HTTP/status-code family; the course's one later appearance of `404` is a quoted agent line in M4 L4, not instruction. The peek-ahead callout inside carries the same posture — the terms are worth recognizing when the agent uses one, and the course never asks the learner to write one.
+
+   **Never name a module you have not checked.** A summary that points at a module which does not cover that family is a promise the course does not keep, and reintroduces the false-promise defect this convention exists to prevent. The recognition-only form is not a weaker fallback; where it is true, it is the only honest option.
 3. **Inside the disclosure**, before the technical Mermaid, a `> *Peek ahead — skim, don't memorize:*` blockquote callout carries the analogy → real-term mapping with the technical terms in bold.
 
 **Why both diagrams cannot just sit side-by-side:** a learner who sees the technical diagram in their peripheral vision feels obligated to absorb the labels. Those labels are exactly the M3-M5 vocabulary M1 is designed to defer. Optionality has to be a real visual affordance, not just framing in the surrounding prose.
@@ -218,9 +244,9 @@ flowchart LR
 ```
 
 <details>
-<summary>Optional: same picture with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same picture with the technical labels (names to recognize, not to learn today)</summary>
 
-> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled. You'll meet **HTTP**, **request**, **response**, **server**, and **browser** properly in Module 3, where you'll write your first API route by hand. If the labeled diagram feels heavy, close this and move on.
+> *Peek ahead — skim, don't memorize:* The same picture with the real names labeled: **HTTP**, **request**, **response**, **server**, and **browser**. They are worth recognizing when your agent uses one in a reply — this course never asks you to write one. If the labeled diagram feels heavy, close this and move on.
 
 ```mermaid
 flowchart LR
@@ -269,22 +295,28 @@ GitHub's Mermaid parser has different rules for HTML break tags depending on whe
 
 `scripts/voice-lint.sh` check #7 enforces this. The check strips `["..."]` quoted regions inside Mermaid fences and then flags any remaining `<br/?>` as a render-breaker. Fixture: `scripts/voice-lint-fixtures/07-mermaid-br-outside-quotes.md`.
 
-### The "Module N hands-on" pointer
+### The summary pointer: saying where the terms go
 
-When the technical Mermaid introduces M3+ vocabulary, the disclosure summary line and the peek-ahead callout both name which later module the learner will use those terms hands-on. The current mapping:
+When the technical Mermaid introduces vocabulary Module 1 does not ask the learner to learn today, the disclosure summary line and the peek-ahead callout say where those terms are going. **Neither is obliged to name a module.** Naming one is correct only where a later module really does cover that family hands-on; where none does, both say plainly that the terms are for recognizing. Both forms are set out under "The simple-first / bridge-collapsed convention" above, and both ship.
 
-| Bundle | Technical terms introduced | Hands-on module |
-|--------|---------------------------|-----------------|
-| 1 (how-the-web-works) | HTTP, request, response, server, browser-as-program, HTML, GET/POST/PUT/DELETE, status codes | Module 3 (single-user vertical slice) |
-| 2 (where-data-lives) | table, row, foreign key, schema, API, HTTP request, SQL, database | Module 3 |
-| 3 (who-can-do-what) | authentication, authorization, session token, cookie, sign-in | Module 4 (multi-user social graph) |
-| 4 (how-it-goes-live) | localhost, build server, public URL, CI/CD, git push | Module 5 (operating the build) |
+The peek-ahead callout is finer-grained than the summary line: inside a single bundle, some terms are picked up hands-on later and others never are, and the shipped callouts mark that split term by term even when the summary names a module. Preserve the split — do not flatten a bundle to one destination.
 
-Map terms to the module where the learner **does** them hands-on, not the phase where they're first mentioned in passing.
+The current mapping, as shipped:
+
+| Bundle | Technical terms introduced | Where they actually go |
+|--------|---------------------------|------------------------|
+| 1 (how-the-web-works) | HTTP, request, response, server, browser-as-program, HTML, GET/POST/PUT/DELETE, status codes | **Nowhere hands-on.** No later module covers this family, so both panels use the recognition-only form. |
+| 2 (where-data-lives) | table, row, SQL, database | Module 4 — the thread project is built on a real database. |
+| 2 (where-data-lives) | schema, foreign key, API, HTTP request | Recognition-only. The callouts name these as words to recognize if the agent says one; the course never asks the learner to write either. |
+| 3 (who-can-do-what) | sign-in | Module 4 — added to the project along with its per-row access rules. |
+| 3 (who-can-do-what) | authentication, authorization, session token, cookie | Recognition-only. The callout says these four are "for recognizing, not for writing". |
+| 4 (how-it-goes-live) | build server, public URL, deployment, CI/CD, localhost, GitHub | Module 4 (the learner watches the agent run the pipeline), then Module 5 (operating what comes out of it). |
+
+Map terms to the module where the learner **does** them hands-on, not the phase where they're first mentioned in passing — and where no module does them at all, say so instead of reaching for the nearest plausible one. A pointer at a module that does not cover the family is a promise the course does not keep, and the learner is the one who discovers it was empty.
 
 ### M0 stays diagram-light
 
-Module 0 lessons (welcome, hardware check, cost-path triage, account creation, Codespaces walkthrough) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
+Module 0 lessons (welcome, hardware check, cost-path triage, account creation, and the agent-app install lesson `05-install-your-agent-app.md`) deliberately do not use Mermaid. They're setup-task lessons, not mental-model lessons. LESSON-11 mandates Mermaid for spatial/relational concepts, which is M1+ territory.
 
 ### M2+ uses the disclosure pattern selectively
 
@@ -294,66 +326,17 @@ By Module 2 the learner has met the M3 vocabulary at least once (via the M1 peek
 
 ## Part 5 — Agent-Responsibility Checkpoint (M3.5 floor)
 
-CLAUDE.md hard rule 12 locks the Agent-Responsibility Boundary. This part operationalizes it for lesson authors. Read it before authoring or revising any M3.5 lesson — and treat it as a load-bearing audit gate for any later module that surfaces code, errors, or framework mechanics to the learner.
-
-### The boundary
-
-The AI agent owns: **reading errors, parsing code, diagnosing causes, framework mechanics, choosing which file to edit, build internals.** The learner owns: **stating intent, checking the agent edited the right file, recognizing wrongness, asking for help.** Every lesson section is one role or the other — never both. Mechanics the agent owns must not be taught at the audience floor.
-
-This is structurally parallel to D-07 (locked analogies) and D-A17 (analogy two-test gate). All three are non-negotiable rails the lesson author works inside.
-
-### The three audit questions
-
-Run these before shipping any M3.5 or M3.5-adjacent lesson. Walk through each major section (Why this matters, Core read, Exercise, Loop check, What you just did):
-
-1. **Q1 — Does this section ask the learner to do something the agent will do better and faster?** If yes, rewrite to "ask the agent, then read the result back to your intent." Examples that fail Q1: "read the stack trace line by line"; "parse the error type to figure out which library raised it"; "diff the file changes yourself."
-2. **Q2 — Does this section explain mechanics (framework rules, rendering execution, error-message anatomy) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Examples that fail Q2: "Next.js renders this on the server before sending HTML to the browser"; "the bundler decides which files become client bundles"; "here is the four-part anatomy of an error message."
-3. **Q3 — Is any term used as a concept to understand from first principles when it should be used as a symptom only?** If yes, demote the framing — no "anatomy of", no "how X works", no "to debug X." Examples that fail Q3: introducing `hydration` with a paragraph about React's state-synchronization process; introducing `'use client'` with an explanation of why the server/client split exists.
-
-If a section fails any of Q1–Q3, rewrite to the symptom-and-steer floor. The deeper "why" belongs in Module 7's curiosity track, not in M3.5's body.
-
-### M3.5 Observation-Only Floor — per-topic hard examples
-
-| Topic (lesson) | Learner floor (you teach this) | Above floor — agent owns (do NOT teach this) |
-|---|---|---|
-| File tree (L1) | Names what a folder is for at a glance; spots a `pages/` + `app/` co-existence smell; reads filenames to infer purpose | URL routing, the App Router model, `.ts` vs `.tsx` distinction, why Next.js has two routing systems, what `tsconfig.json` controls |
-| Wrong-file edits (L2) | Compares intent vs filename in the diff summary; spots when the agent touched the wrong file | Reads the diff line-by-line; spots missing imports or wrong indentation; explains what changed inside each file |
-| Error → file pointer (L3) | Finds the first line that names YOUR file (typically a path starting with `./app/`); opens that file; pastes the full error back to the agent | Reads the stack trace line-by-line; explains error types (`TypeError`, `ReferenceError`); parses `line:column` coordinates; diagnoses root causes |
-| `'use client'` and the split (L4) | Pattern-matches "interactive names (`useState`, `onClick`) appear → file needs `'use client'`"; reads "hydration" error in browser console as a symptom; pastes the file pointer + error to the agent | Explains React Server Components architecture; describes server-rendering execution model; explains the hydration mechanism; explains the bundler split or partner directives like `'use server'` |
-
-### Symptom-only term introduction
-
-When you must name a term to ground a steer, the term is a SYMPTOM, not a concept. Three rules:
-
-- **The D-04 callout defines the symptom, not the mechanism.** Wrong: `**hydration** (a one-line definition: the process React uses to attach event listeners to server-rendered HTML, ...)`. Right: `**hydration** (a one-line definition: a SYMPTOM-only term meaning "browser console said the page does not agree" — usually a file that needs `'use client'` missing the directive, ...)`.
-- **Surrounding prose does not exceed the callout's depth.** If the callout is symptom-only, the next paragraph cannot start "behind the scenes, React first renders…". The callout is the floor and the ceiling.
-- **`docs/audience-vocabulary.md` carries the symptom annotation.** Each M3.5 Requires-callout term has a one-line "SYMPTOM-only" tag plus, if applicable, a `do-not-introduce` flag. See the M3.5 SYMPTOM-only addendum.
-
-### When you're authoring a new lesson
-
-Apply Q1–Q3 to each section *as you write*, not just at the end. Symptom-and-steer is harder to retrofit than to draft. If your draft started teaching mechanics and the lesson now feels short without them, that is the floor working; do not refill with junior-dev material.
-
-### When you're auditing an existing lesson
-
-Read every section against Q1–Q3 and the per-topic floor table. Quote each failure with file:line. The fix is always one of: (a) cut the failing prose entirely and link to Module 7 if the curiosity track is the right home; (b) rewrite the prose as symptom + steer; (c) reframe the section as "the agent does X; you do Y." Never paper over a Q2 failure with a vocab callout — D-04 callouts permit the term, not the explanation depth.
-
-### Cross-references
-
-- CLAUDE.md hard rule 12 — the boundary itself
-- `.planning/PROJECT.md` Key Decisions — the locked decision row
-- `docs/audience-vocabulary.md` — M3.5 SYMPTOM-only addendum + per-term flags
-- `scripts/voice-lint.sh` check #9 — WARN-level diagnostic-framing detection
-- M3.5 L2 (`02-spotting-wrong-file-edits.md`) — the M3.5 gold-standard exemplar (Phase 02.2, parallel to M2 L5 in Phase 02.1)
+**Retired 2026-08-12.** Module 3.5 is removed from the course: the accessibility remake ended reading-floor pedagogy (reading file trees, diff summaries, error text). The one durable skill — noticing that the running app doesn't match what you asked for — lives in Module 3's evaluate step. The old Part 5 text survives in git history and the pre-remake archive. Do not author against this part; the boundary now lives in CLAUDE.md Hard Rule 12 and Part 6 below. Part numbering is preserved to keep cross-references stable.
 
 ---
 
 ## Part 6 — Execution-Floor Boundary (M4+ build phases)
 
-CLAUDE.md hard rule 13 translates the Agent-Responsibility Boundary from M3.5's **observation floor** to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
+CLAUDE.md hard rule 13 extends the generalized Agent-Responsibility Boundary (hard rule 12) to M4+'s **execution floor** — the phases where the learner ships code via the agent. This part operationalizes it. Read it before authoring or revising any Module 4, 5, or 6 lesson — and treat it as a load-bearing audit gate for the build-phase planner (`/gsd-plan-phase`) before it runs.
 
-### Why M3.5's boundary needed a translation
+### Why the execution floor needs its own rules
 
-M3.5's floor is OBSERVATION: the learner watches the agent edit code; the agent does the editing. M4+ is EXECUTION: the learner is now shipping the thread project. The agent still does the code-authoring, but the learner is in the driver's seat — naming what to build, sequencing the chunks, verifying that what just shipped matches what was asked for. The boundary translation is "what does it look like to drive without owning the engine?"
+Hard rule 12's floor is OBSERVATION: the learner watches the agent work; the agent does the reading, editing, and diagnosing. M4+ is EXECUTION: the learner is now shipping the thread project. The agent still does the code-authoring, but the learner is in the driver's seat — naming what to build, sequencing the chunks, verifying that what just shipped matches what was asked for. The translation is "what does it look like to drive without owning the engine?"
 
 ### The boundary
 
@@ -363,95 +346,137 @@ The **learner owns**:
 
 1. **Stating intent at the feature level.** Not "use `useOptimistic` with the right reducer signature" — but "the like count should update right away, then correct itself if the server returns an error."
 2. **Observing the running app matches intent.** Open the deployed app. Click around. Sign out. Sign in as a second user. Did the agent build what you asked for?
-3. **Applying the phase's smell-test inventory.** A named list of observable patterns ("look for this; if absent, ask the agent why") that the learner scans for in each chunk's diff or in the running app. The inventory is the bridge between M3.5's observation skill and M4+'s execution responsibility.
-4. **Committing each working chunk to git.** The atomic-commit discipline is the learner's safety net. Working state goes to git before the next chunk starts.
-5. **Knowing when to `/clear` and start over.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, restart the conversation tighter.
+3. **Running the phase's check inventory.** A named list of behavioural checks in exactly two admissible forms (next section). Every check is performed in the running app or spoken to the agent — never against code, a diff, or a migration. The inventory is the bridge between the general Agent-Responsibility Boundary (hard rule 12) and M4+'s execution responsibility.
+4. **Telling the agent to save each working chunk.** "Save this as a working version" is the learner's verb — the agent performs all git and GitHub operations. Working state gets saved before the next chunk starts.
+5. **Knowing when to start a fresh conversation in the app and begin the chunk again.** Same skill the learner met in M3 L4 (recovery), now applied at chunk scale. If the agent has committed to a wrong path across multiple turns, begin the chunk again with a tighter prompt.
 
-### The smell-test inventory
+### The check inventory — two admissible forms
 
-A smell-test is an OBSERVATION the learner can perform without understanding the underlying mechanics. The pattern:
+A check the learner runs must be something a non-coder can actually perform. There are exactly two admissible forms. **Anything that requires reading, scanning, or judging the agent's output — code, a diff, a migration, any file the agent wrote — is banned from learner-territory.**
+
+**Form 1 — the refusal check (the workhorse).** In the running app, attempt the thing that should *not* be allowed, and confirm it is refused. Happy-path observation confirms the feature works; the refusal check is its inversion, and it is the half that actually tests the fences.
 
 ```
-LOOK FOR: <observable pattern in the diff or in the running app>
-IF PRESENT: <what to do next>
-IF ABSENT: <what to ask the agent>
+TRY THIS:      sign in as your second account, open a comment you did not write,
+               and try to change it
+EXPECT:        there is no way to, or it refuses
+IF IT WORKS:   "I could edit a comment I didn't write. Only its author should be
+               able to. Fix that."
 ```
 
-Example smell-tests for Phase 4 (the chunk that adds posts editing):
+**The third leg is mandatory; its label is contextual (locked 2026-08-21).** Every check block ships all three legs — the third is what turns the block from *observing* into *reporting*, and a learner who finds a real failure with no third leg has been given no next move. What is **not** fixed is the literal words `IF IT WORKS:`. That label only reads correctly when the TRY THIS is a forbidden action, where "it worked" is the bad outcome. Where the TRY THIS is an intent observation — write a post and find it in your feed; click like and watch the number — "it works" names the *good* outcome, and hanging the recovery prompt under it would tell the learner to report success as a fault. Those blocks name their own failure condition instead: `IF YOUR OWN POSTS ARE MISSING:`, `IF IT LIES:`, `IF YOU GET STRAIGHT IN:`, `IF THE AUTHOR LINE CHANGES, OR THE EDIT SILENTLY VANISHES:`. The spec's own worked example below already does this (`IF ANYTHING ELSE HAPPENS:`). The authoring rule: **name the condition the learner would actually see**, and give the learner their next move under it — usually a recovery sentence in their own words, sometimes a pointer to where that message is written out, sometimes a single thing to go and read off a dashboard screen they operate themselves and report back. A block missing the third leg entirely is a defect; a block whose third leg is labelled for its own check is correct.
 
-- LOOK FOR: `WITH CHECK` after every `UPDATE` policy in the migration file.
-  IF PRESENT: continue. IF ABSENT: ask the agent "the `UPDATE` policy doesn't have `WITH CHECK` — what would prevent a user from rewriting `author_id` on their own post?"
-- LOOK FOR: On the deployed app, alice can edit her own post but the form does NOT appear on bob's post (signed in as alice).
-  IF PRESENT: continue. IF ABSENT: ask the agent "alice is seeing the edit form on bob's post — what's missing?"
-- LOOK FOR: When alice rewrites a post, the post stays attributed to alice (not silently re-attributed).
-  IF PRESENT: continue. IF ABSENT: this is the RLS-UPDATE-without-WITH-CHECK bug; see Phase 5 LESSON-13 walkthrough (a).
+*(Audited 2026-08-21 across all 24 shipped check blocks in M4–M6: 12 use the literal `IF IT WORKS:` and 12 use a contextual label. **Zero ship without a third leg**, and every one gives the learner a next move. Most quote a recovery sentence outright; three do not and are still correct — `05-operating/02:74` and `03:73` name the condition and send the learner to the message written out in the following section, and `04-thread-project/08-likes-and-go-live.md:158` sends them to the one Vercel setting they can read themselves. An earlier review read the 12 non-literal labels as 12 missing legs and queued a repair; the repair would have made several blocks semantically wrong, so the spec was sharpened to describe what shipped instead.)*
 
-The learner can perform every smell-test in the inventory without knowing RLS policy syntax, without parsing TypeScript, without understanding the Supabase client lifecycle. The smell-test is observation; the diagnosis is the agent's job.
+**Form 2 — the pre-flight question.** Before an irreversible step (anything pasted into a dashboard, anything run against data that already exists), the learner asks the agent a named question about consequences and waits for the answer. This is driving, not reading.
+
+```
+BEFORE YOU PASTE:  "Does this remove or overwrite anything that is already in my
+                    database? List exactly what changes for data that exists today."
+```
+
+Example checks for Phase 4 (the chunk that adds posts editing):
+
+- TRY THIS: signed in as your second account, open a post the first account wrote and try to change it. EXPECT: no edit control appears, or the save refuses. IF IT WORKS: "I could edit a post I didn't write — only its author should be able to. Fix that."
+- TRY THIS: edit one of your own posts and save. EXPECT: the edit lands and the post still shows you as its author. IF ANYTHING ELSE HAPPENS: "my post stopped being attributed to me after an edit — that must never happen. Fix it."
+- BEFORE YOU PASTE any database change into the dashboard: "Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."
+
+The learner can perform every check in the inventory without knowing RLS policy syntax, without parsing TypeScript, without opening a single file the agent wrote. The check is behaviour; the diagnosis is the agent's job.
+
+**Why the scan form is banned (locked 2026-07-27).** This part originally allowed a third form: scan the agent's diff or migration for a literal string (`LOOK FOR: WITH CHECK …`). It was retired on live evidence. Across three consecutive build chunks the same scan produced three different outcomes — string present; string legitimately absent (the risk lived in a different layer); string present but reordered and wrapped so the learner could not match it — and in the third case the escalation path ("ask the agent about the missing string") returned a confident, well-structured, reason-giving answer that was factually inverted. A learner scanning for a string cannot adjudicate semantics the course's own authors got wrong. The scan form's real failure mode is **false confidence**, which is worse than not looking. Where a retired scan pointed at a real risk, the *observation* it pointed at survives in behavioural form — the author-rewrite scan became the refusal check quoted above.
+
+### Test gates (the agent-run layer)
+
+Every build chunk's prompt ends with a **test gate**: a short, plain-language definition of done. Three authoring rules. (1) The gate's checks are run by the **agent**, never the learner — automated checks where they exist, the agent clicking through its own preview where they don't — and the agent must show the results in plain words before it may say "done". (2) The lesson teaches the ritual on the learner's side: do not accept "done" without the gate report; if the report is missing, the steer is "run the checks we agreed on and show me the results first." (3) The gate never smuggles mechanics into the learner's mouth: its checks are phrased as outcomes ("a signed-out visitor who opens a post page can read it but sees no comment box"), not as tests, assertions, or tools. The learner's own refusal checks and pre-flight questions stay exactly as specified above; the gate is a third layer, owned by the agent.
+
+Two further rules, locked 2026-09-07 when the M4 asks were made self-contained. (4) **The gate is written into the chunk's first ask, before the build.** Every M4 build ask (L1–L8) and the M6 L2 ask end with the same sentence — `Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing:` — followed by the chunk's outcomes; the lesson's `## Definition of done` stays as the reference copy and opens with "You wrote these into the ask". The two lists must match item for item (a lesson may tighten wording, never scope; the locked scopes are in the phase CONTEXT). The learner's exercise step 1 names the gate as part of what the ask carries. (5) **An unrun check is reported, never guessed.** The gate report may say a check was not run; that is an honest report, and the lesson treats the named check as the learner's to run or ask about — never as passed, and never as a failure of the agent. L8's third outcome (the two-browser walkthrough) is the standing example: the ask tells the agent to say which parts it checked and which it is leaving to the learner.
+
+### Local copy, live copy, shared data — what M4+ lessons may claim
+
+Locked 2026-09-07 (course-overhaul Package C). From M4 L1 on, the learner's app exists as two copies plus one shared store, and every lesson must be exact about which one a sentence is about. The learner's vocabulary is behavioural — "the copy on your own computer" / "at home", "the live link" / "the public copy", "your database" — and `localhost` stays Forbidden.
+
+| What | Where | What the learner says or sees |
+|---|---|---|
+| The copy on your own computer | started by the agent; alive only while it runs; where every change lands first, before any save | *"Start the app on my computer and open it in my browser."* / *"Stop the app and start it again, then tell me what you see."* (both taught in M4 L1 § "Two places your app runs from now on"; each build lesson's exercise repeats the first) |
+| A saved version | on this computer (the commit) | *"Save this as a working version."* |
+| The uploaded copy | the project's home page online (GitHub) — "when the sending works" (M2 L3) | the second of the three confirmations |
+| The public copy | rebuilt by Vercel from what went up — when the rebuild succeeds | the third confirmation; checked on the phone in L1 and with two browsers in L8 |
+| The database and its settings | one Supabase project used by both copies | the Confirm-email switch (L2), the SQL pastes, the accounts and posts |
+
+The three-part confirmation the learner asks for after every save — *saved on this computer, the copy went up, the live copy rebuilt successfully* — is the same sentence in every M4 lesson and the M4 README; keep it identical.
+
+Claims a lesson may **not** make, each because it is false in a real setup:
+
+- "The public copy is always your last save." It is the last version whose rebuild **succeeded**; a save can land while the upload or the rebuild fails. Say: usually your last save, never guaranteed, and never the half-finished middle of a chunk.
+- "Nobody has the link" / "the address keeps it private." Links get forwarded and remembered; the course cannot know who has it. M4 L2 states the sign-up exposure plainly: from the save that carries sign-in, anyone with the address can create an account on the public copy.
+- "Checking at home keeps you away from the live data." Both copies use the same database, so an account made at home is an account on the live link. The honest consequence, stated in L1 and L2: test accounts and made-up posts only until L8; M5 governs what changes once real people are in it.
+
+Every M4 build lesson's exercise starts a fresh conversation the same way (folder selected; if the agent does not open by saying where you are, *"Read the plan and the house rules, and tell me where we are."*), because the house rules the learner dictated in L0 are what make a fresh conversation start oriented (see Part 14).
 
 ### Where the inventory lives
 
-The smell-test inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
+The check inventory for each build phase is locked in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`) BEFORE the planner runs. CONTEXT.md must contain:
 
 - A **per-chunk boundary table** naming agent-territory vs. learner-territory for each chunk's deliverable.
-- The **smell-test inventory** for the phase: named observable patterns with LOOK FOR / IF PRESENT / IF ABSENT.
-- The **Tenet 6 surfaces** for the phase: which lessons name which agent failure mode + where the corresponding smell-test lives.
-- The **vocab additions** for the phase: which terms ship as SYMPTOM-only, which are Forbidden-as-concept, what the audience-vocabulary contract gains.
+- The **check inventory** for the phase: refusal checks (TRY THIS / EXPECT / IF …, the third leg labelled for its own check — see Part 6) and pre-flight questions (BEFORE YOU …), one entry per named risk.
+- The **Tenet 6 surfaces** for the phase: which lessons name which agent failure mode + where the corresponding check lives.
+- The **vocab additions** for the phase: which terms pass the say-it-or-see-it rule (the learner must say the term to the agent, or see it in the running app or on a dashboard screen they operate themselves), and which may not appear at all.
 
-Without this CONTEXT, the build-phase planner inherits only the ROADMAP success criteria — which already contain jargon-shaped trigger language (`@supabase/ssr cookies() correctly awaited`, RLS `WITH CHECK`, `useOptimistic`). That's the original drift vector.
+Without this CONTEXT, the build-phase planner inherits only the ROADMAP success criteria — which contain jargon-shaped trigger language (`@supabase/ssr cookies() correctly awaited`, RLS `WITH CHECK`, `useOptimistic`). That's the original drift vector: success-criterion phrasing turns into learner-facing scan instructions unless this file re-expresses each one as a refusal check or a pre-flight question.
 
 ### The three audit questions adapted for M4+
 
 Run these for every section of every M4+ lesson:
 
-1. **Q1-Exec — Does this section ask the learner to do something the agent will do better?** Examples that fail: "write a `UPDATE` policy with `WITH CHECK` matching this shape"; "configure your `cookies()` call to await before reading"; "destructure the `useOptimistic` return tuple." The fix: replace with the smell-test ("the agent will write this; look for X in the diff").
-2. **Q2-Exec — Does this section explain mechanics (framework internals, hook lifecycles, RLS grammar, async/await semantics, type narrowing) the learner does not need to direct the agent?** If yes, cut to the symptom + the steer. Mechanics belong to the agent.
-3. **Q3-Exec — Is any term used as a concept (something to understand from first principles) when it should be used as a symptom (something to scan for)?** If yes, demote the framing — no "anatomy of an RLS policy," no "how `useOptimistic` works," no "the lifecycle of a Server Action."
+1. **Q1-Exec — Does this section ask the learner to do something the agent will do better?** Examples that fail: "write a `UPDATE` policy with `WITH CHECK` matching this shape"; "configure your `cookies()` call to await before reading"; "destructure the `useOptimistic` return tuple" — and equally "open the migration and check it contains X." The fix: replace with the boundary statement plus the behavioural check ("the agent writes this; here is the forbidden thing to try in the running app, and what to say if it goes through").
+2. **Q2-Exec — Does this section explain mechanics (framework internals, hook lifecycles, RLS grammar, async/await semantics, type narrowing) the learner does not need to direct the agent?** If yes, cut to the intent + the check. Mechanics belong to the agent.
+3. **Q3-Exec — Does any term fail the say-it-or-see-it rule?** A term may appear only if the learner must say it to the agent or see it in the running app or on a dashboard screen they operate themselves. A term that exists only inside code or files the agent wrote gets cut — the behaviour it pointed at survives as a refusal check. No "anatomy of an RLS policy," no "how `useOptimistic` works," no "scan the diff for `WITH CHECK`."
 
-A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent does X; you observe Y; if Y is missing, ask the agent Z."
+A section that fails Q1-Exec, Q2-Exec, or Q3-Exec gets rewritten as "the agent does X; you try the forbidden thing Y in the running app; if it goes through, tell the agent Z."
 
-### The smell-test catalog (build out per phase)
+### The check catalog (build out per phase)
 
-Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md smell-test inventory. As phases land, the catalog below grows. Each entry names the lesson where the smell-test is taught + the phase where the learner first applies it.
+Phase 3 / 4 / 5 / 6 each maintain a CONTEXT.md check inventory. As phases land, the catalog below grows. Each entry names the form (the two inventory forms, plus the ambient learner skill of intent observation), where the check is first taught, and where the learner first applies it. Errors are agent territory end to end under CLAUDE.md hard rule 12: the agent reads them, diagnoses them, and reports the outcome in plain words — the learner never reads error text, even text the tool displayed. The reading-floor patterns formerly taught in Module 3.5 (right-file edit inspection, presence-checking for a code directive) are retired along with that module; they are not carried into M4+ lessons, where reading the agent's output stays banned.
 
-| Smell-test | First taught | First applied |
-|---|---|---|
-| Right-file edit (M3.5 L2 pattern) | M3.5 L2 | Phase 3 Chunk 1 onward |
-| First `./app/` line in error → paste to agent (M3.5 L3 pattern) | M3.5 L3 | Phase 3 Chunk 1 onward |
-| `'use client'` interactivity smell (M3.5 L4 pattern) | M3.5 L4 | Phase 3 Chunks 1–3 |
-| `WITH CHECK` after every `UPDATE` policy | Phase 4 CONTEXT | Phase 4 Chunk 4–7 + Phase 5 LESSON-13 walkthrough (a) |
-| Feed query includes `OR author_id = auth.uid()` | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
-| Migration drift smell (no `DROP TABLE` in the diff against shared state) | Phase 5 CONTEXT | Phase 5 LESSON-13 walkthrough (c) |
-| Logged-out visitor can read but not act | Phase 4 CONTEXT | Phase 4 + Phase 6 bug-reproduction |
+| Check | Form | First taught | First applied |
+|---|---|---|---|
+| Signed-out visitor can read but not act | refusal check | Phase 3 CONTEXT | every chunk with public content + Phase 6 regression net (M6 L2 re-runs the four Module 5 scenarios after a change; M6 L1 ships no refusal check of its own) |
+| Second account cannot edit or delete content it did not write | refusal check | Phase 3 CONTEXT (posts) | Phase 4 (comments) + Phase 5 LESSON-13 walkthrough (a) |
+| Your own edit never changes who a thing belongs to | refusal check | Phase 3 CONTEXT (posts) | Phase 5 LESSON-13 walkthrough (a) |
+| Own post appears in the running feed (never silently missing) | intent observation | Phase 4 CONTEXT | Phase 5 LESSON-13 walkthrough (b) |
+| Dashboard-paste pre-flight ("does this remove or overwrite anything that already exists?") | pre-flight question | Phase 3 CONTEXT (first paste) | every dashboard paste + Phase 5 LESSON-13 walkthrough (c) |
+| Like count moves the instant you click, snaps back if the save fails | intent observation | Phase 4 CONTEXT | Phase 4 Chunk 7 |
+| Post-paste pre-flight ("what in what I just pasted are you acting on?") | pre-flight question | Phase 6 CONTEXT (M6 L3) | M6 L3 — after pasting anything written outside the conversation |
 
 ### Cross-references
 
+- CLAUDE.md hard rule 12 — the generalized Agent-Responsibility Boundary this part extends to the execution floor
 - CLAUDE.md hard rule 13 — the boundary itself
-- COURSE-AUTHORING.md Part 5 — the M3.5 observation floor this part extends
-- `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase smell-test inventory
-- M2 L5 + M3.5 L2 — gold-standard exemplars of the symptom-and-steer floor
+- `.planning/phases/NN-name/NN-CONTEXT.md` — per-phase check inventory
 
 ---
 
 ## Part 7 — AI-Limitation Pedagogy
 
-CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the six core agent limitations and their per-limit smell-test patterns.
+CLAUDE.md hard rule 14 locks the pedagogical rule: when a lesson names an agent failure mode, it must arm the learner with a concrete smell-test for that failure mode (in the same lesson or via explicit forward-reference). This part catalogues the seven core agent limitations and their per-limit smell-test patterns.
 
 ### Why this matters (Tenet 6 anchor)
 
 A learner who cannot recognize when the agent is wrong cannot recover when the agent is wrong. The recovery skill is the course's differentiator. Recovery requires limits-and-smell-tests, not just limits. Naming hallucination without giving the learner the smell-test for it is like naming food poisoning without naming the taste of spoiled food.
 
-### The six limitations (course taxonomy)
+### The seven limitations (course taxonomy)
 
-The course names six core agent failure modes. Each gets a per-module surface and a smell-test pattern.
+The course names seven core agent failure modes. Each gets a per-module surface and a smell-test pattern.
 
 | # | Limitation | Plain definition | Module where smell-test first appears |
 |---|---|---|---|
-| 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L6 |
-| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (`/clear` as recovery) — first named M2 L6 |
-| 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized via the slash-command surface (`/context`, `/cost`, `/compact`) |
-| 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype + M2 L6 freshness framing |
+| 1 | **Hallucination** | The agent produces specific details that look correct but were invented — book titles, function names, API endpoints, file paths the agent has no way of knowing | M3 L3 (in-depth) — first named M2 L1 |
+| 2 | **Drift** | The agent loses the thread of an extended conversation; mid-session the responses stop matching the original intent | M3 L2 (context-window framing) + M3 L4 (fresh-conversation recovery) — first named M2 L1 |
+| 3 | **Context-window overflow** | The agent's working memory fills; old context is dropped silently; the agent starts answering as if earlier turns didn't happen | M3 L2 — recognized from the outside (replies stop matching the ask; a long conversation feels muddy), recovered by starting a fresh conversation |
+| 4 | **Training cutoff** | The agent's knowledge has a hard date boundary; anything more recent (a new version of a framework, a recent change to an API, a current best practice) is invisible to it | M3 L3 — surfaced as a hallucination subtype |
 | 5 | **Confident-wrong** | The agent's tone and the agent's correctness are independent; fluent-sounding answers can be wrong; uncertainty is rarely surfaced unless the prompt explicitly asks for it | M3 L3 (the lesson IS about this) |
-| 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L6 first surfacing |
+| 6 | **Risk-blindness** | The agent doesn't model the consequences of its changes — it can suggest deleting a migration, dropping a table, force-pushing a branch, or hardcoding a secret with the same calmness as a typo fix | M5 watch-it-fail walkthroughs (LESSON-13) + M2 L1 first surfacing |
+| 7 | **Prompt injection** | Text pasted in from outside the conversation — a user's comment, a bug report somebody sent — carries instructions the agent takes as the learner's own, so the work it offers back includes things nobody asked for | M6 L3 — the smell-test is a pre-flight question asked at the approval prompt |
 
 ### The smell-test pattern (per-limit)
 
@@ -459,14 +484,15 @@ For each limit, the lesson where it's first taught provides:
 
 - **The limit named** (with a D-04 callout on first use, mapped to the audience-vocabulary contract).
 - **One concrete symptom example** the learner can recognize without prior coding knowledge. Not abstract; specific. Not "the agent might be wrong" — but "the agent recommended `bookcover.io` as a free book-cover API; you searched and there is no such service."
-- **The smell-test action**: what to do when you spot it. Usually: re-ask with the symptom named explicitly; or `/clear` and start over with a tighter prompt; or paste the verifying evidence back to the agent.
+- **The smell-test action**: what to do when you spot it. Usually: re-ask with the symptom named explicitly; or start a fresh conversation in the app and try again with a tighter prompt; or paste the verifying evidence back to the agent.
 
 ### Anchor lessons (Tenet 6 surfaces)
 
-- **M2 L6 (`06-ai-coding-agents.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms; three forward-references to where the smell-tests are taught.
+- **M2 L1 (`modules/02-toolchain/01-your-ai-coding-agent.md`)** — first surface for limits 1, 2, 6. Three concrete symptoms, each armed with its own one-line smell-test in the lesson itself (Hard Rule 14 option (a)), plus forward-references to where each goes deeper (M3 for hallucination and drift, M5 for risk-blindness). *(This anchor duty moved here on 2026-08-15 when the accessibility remake collapsed Module 2 to three lessons and deleted the former M2 L6, `06-ai-coding-agents.md`.)*
 - **M3 L3 (`03-reading-plans-recognizing-wrong.md`)** — in-depth smell-test for limit 1 (hallucination). The hallucination *mechanism* is grounded non-technically in 2–3 sentences ("the agent writes fluent sentences; fluent sentences can contain invented details; when the agent has nothing to reference, it reaches for plausible candidates and presents them as if specified"). Do NOT punt mechanism explanation to Module 7 — explain it in plain prose here.
-- **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via `/clear` hygiene).
-- **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with verbatim agent failure captured and the learner's recovery prompt. Anchors limits 5 + 6.
+- **M3 L4 (`04-steering-and-recovery.md`)** — smell-test + recovery for limit 2 (drift via fresh-conversation hygiene).
+- **M5 watch-it-fail walkthroughs (LESSON-13)** — three smell-tests, each with a narrated known-bad pattern and the learner's recovery prompt. Anchors limits 5 + 6.
+- **M6 L3 (`modules/06-after-live/03-when-what-you-paste-isnt-yours.md`)** — the anchor for **prompt injection** — row 7 of the table above. The smell-test is a pre-flight question asked at the approval prompt (*"What in what I just pasted are you acting on? List anything you are about to change that I did not ask for."*); the recovery is learner-side — decline, start a fresh conversation, and describe the outside content instead of pasting it. In the shipped module only L3 names the term; the lessons that touch it defer in plain words (L1 carries the forward-reference on handing over a bug report somebody else wrote, and L4 on what a paste asks of a person; L2 is simply silent, having no occasion to defer). (That is how the module was authored, not a tier restriction — `prompt injection` sits in M6's Requires-callout tier, so the Forbidden-tier anchor-lesson exception below does not apply to it.) The lesson is honest that a given run may or may not reproduce the failure, so the learner is armed for the *shape* (the paste, then the surprise) rather than promised an observable failure. *(Added 2026-08-20 when Module 6 shipped.)*
 
 ### The anchor-lesson exception (Forbidden-tier terms)
 
@@ -475,10 +501,10 @@ A failure-mode term can be **Forbidden in a module's vocabulary tier yet still b
 The rule:
 
 - **The anchor lesson introduces the term** with a D-04 callout + GLOSSARY anchor + a Hard-Rule-14 forward-reference to where the smell-test lives. It does not explain the mechanism beyond the callout's depth.
-- **Every other lesson in that module defers** — names the failure mode in plain words and forward-references the anchor (or the smell-test lesson). Using the term as a bare concept outside the anchor is a check #6 WARN and breaks the deferral the tier is protecting.
-- **`docs/audience-vocabulary.md` records the exception** on the term itself (e.g., `hallucination` is Forbidden in M2 *except* its anchor lesson M2 L6).
+- **Every other lesson in that module defers** — names the failure mode in plain words and forward-references the anchor (or the smell-test lesson). Using the term as a bare concept outside the anchor breaks the deferral the tier is protecting. Note that check #6 does **not** catch this today (verified 2026-08-15): the `*(anchor-lesson exception applies …)*` marker on the tier row leaves the extracted term with the italic markers attached, so anchor-excepted terms never match anything in a lesson and the rule is human-review-only. The same inertness is what stops the check from flagging the anchor lesson's own sanctioned uses — the check has no exception mechanism, so making it see these rows would need one first.
+- **`docs/audience-vocabulary.md` records the exception** on the term itself (e.g., `hallucination` is Forbidden in M2 *except* its anchor lesson M2 L1).
 
-**Worked case — `hallucination`.** The M2 tier marks `hallucination` Forbidden. But this Part designates **M2 L6** as the Tenet 6 anchor, so M2 L6 introduces `hallucination` with a callout and a forward-ref to M3 L3. A *different* M2 lesson that needs to warn about invented package names must NOT write "hallucination" — it says "the agent sometimes invents commands or packages that don't exist" and forward-references M2 L6 / M3 L3.
+**Worked case — `hallucination`.** The M2 tier marks `hallucination` Forbidden. But this Part designates **M2 L1** (`modules/02-toolchain/01-your-ai-coding-agent.md`) as the Tenet 6 anchor, so M2 L1 introduces `hallucination` with a callout and its smell-test, pointing forward to M3 L3 for the in-depth version. A *different* M2 lesson that needs to warn about invented package names must NOT write "hallucination" — it says "the agent sometimes invents commands or packages that don't exist" and forward-references M2 L1 / M3 L3. The same holds for `drift` and `risk-blindness`: M2 L1 is the one lesson in the module that may name them.
 
 ### Forward-reference template (Hard Rule 14 compliance)
 
@@ -492,7 +518,7 @@ This satisfies Hard Rule 14's forward-reference requirement. Vague "we'll cover 
 
 ### What NOT to do
 
-- Don't name hallucination outside its anchor lesson. M0/M1 don't surface it at all; within M2, only the anchor lesson (M2 L6) introduces the term — see "The anchor-lesson exception" above. Other M2 lessons defer in plain words.
+- Don't name hallucination (or drift, or risk-blindness) outside its anchor lesson. M0/M1 don't surface them at all; within M2, only the anchor lesson (M2 L1) introduces the terms — see "The anchor-lesson exception" above. Other M2 lessons defer in plain words.
 - Don't introduce a failure-mode term in a callout and then explain the underlying neural-network mechanics. The audience floor does not benefit from "attention head misalignment" or "next-token prediction without grounding."
 - Don't write "the agent might be wrong" without naming WHICH failure mode + the smell-test. Vague risk-naming inflates anxiety without arming the learner.
 - Don't conflate confident-wrong with hallucination. Confident-wrong is the *tone*; hallucination is the *content*. Both can occur independently.
@@ -512,79 +538,81 @@ Authors and AI agents both tend to over-explain. The audience-vocabulary contrac
 
 Read this section before every lesson. Trap-spotting is faster than rewrite-after-the-fact.
 
+> **Escape clauses were adjudicated 2026-08-21.** Seven traps below used to say "escape to Module 7". Module 7 ships three pointer lessons, not a curriculum, so each escape was re-decided against the desktop-app learner: some traps escape to a Module 7 pointer, and some escape **nowhere** — the topic simply stays out of the course. A trap whose escape is now "nowhere" still describes a real authoring hazard for Modules 0–6; what changed is where the depth is allowed to go, not whether the temptation exists.
+
 ### The trap catalog
 
 #### Trap A — Explaining HTTP request/response anatomy
 
 **Temptation.** "An HTTP request has a method (GET, POST, PUT, DELETE), a path, headers, and a body. The server responds with a status code (200, 404, 500), headers, and an optional body."
-**Right move.** M1 names the restaurant analogy. The technical version goes in a `<details>` disclosure with a forward-reference to Module 3 hands-on. Body prose stays in the analogy.
-**Where to escape to.** Module 3 (single-user vertical slice) — when the learner is actually triggering requests via a deployed app, not learning HTTP from a textbook.
+**Right move.** M1 names the restaurant analogy. The technical version goes in a `<details>` disclosure in the recognition-only form — the terms are named as things to recognize, and no module is promised. Body prose stays in the analogy.
+**Where to escape to.** **Nowhere.** No module after M1 covers the HTTP/status-code family hands-on, which is why the shipped M1 panels use the recognition-only form rather than pointing at one. The learner meets a status code only as something a page shows them or their agent mentions — that is the whole exposure the course gives it, and it is enough.
 
 #### Trap B — Teaching SQL JOIN mechanics or foreign-key constraints as concepts
 
 **Temptation.** "A foreign key creates a referential constraint that prevents inserting a row that references a non-existent parent row..."
 **Right move.** Filing-cabinet analogy: "cards in one drawer remember other cards by ID." That's the floor. The agent writes the schema; the learner observes that "alice's posts disappear when alice is deleted" works.
-**Where to escape to.** Don't. JOIN mechanics belong to the agent. M4+ teaches the *symptom* ("when I delete a user, do their posts disappear or break?") as a smell-test.
+**Where to escape to.** Don't. JOIN mechanics belong to the agent. M4+ names the *behaviour* ("when I delete a user, do their posts disappear or break?") as a check performed in the running app.
 
 #### Trap C — Explaining cookie flags (`httpOnly`, `Secure`, `SameSite`)
 
 **Temptation.** "Set `httpOnly: true` and `Secure: true` and `SameSite: 'Lax'` to mitigate XSS and CSRF..."
 **Right move.** M1 L3 uses plain language: "the stamp on your hand is hard to copy; the door staff changes the stamp pattern often; the door staff asks for ID again before letting you into the safe room." The agent handles flag configuration; the learner observes "I can stay signed in across browser refresh."
-**Where to escape to.** Module 7 only — and only as a "if you want to go deeper on auth, here's where to look" pointer.
+**Where to escape to.** **Module 7 — KEEP, merged (2026-08-21).** Folded into Module 7's permission-rules pointer together with trap E: sessions are how the app knows who is at the fence, row rules are the fence, and one pointer covers both for the same learner profile. Still a pointer, never a deep-dive.
 
 #### Trap D — Explaining async/await semantics
 
 **Temptation.** "Next.js 16 made `cookies()`, `headers()`, and `params` async because the rendering pipeline needs to defer their resolution until..."
-**Right move.** Async/await is a SYMPTOM in the agent's diff. The learner scans for `await cookies()` in the agent's code — if it's `cookies()` without the `await`, ask the agent why. Don't explain the rendering pipeline.
-**Where to escape to.** Don't. Async/await semantics belong to the agent. The phase's CONTEXT.md catalogs `await` as a symptom-only term.
+**Right move.** Async/await belongs to the agent entirely — the learner never opens the code. What the learner owns is the behaviour: sign in, refresh the page, still signed in. If a page loses the session or an error appears, paste the error to the agent. Don't explain the rendering pipeline.
+**Where to escape to.** Don't. Async/await semantics belong to the agent, and per the say-it-or-see-it rule the words never appear in an M4+ lesson.
 
 #### Trap E — Explaining RLS policy grammar
 
 **Temptation.** "An RLS policy has a `FOR` clause (SELECT / INSERT / UPDATE / DELETE), a `USING` predicate that filters reads, and a `WITH CHECK` predicate that filters writes..."
-**Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner runs the smell-test inventory ("look for `WITH CHECK` after every `UPDATE`; if missing, ask the agent why").
-**Where to escape to.** Module 7 — RLS deep-dive is the canonical Module 7 territory for learners who want to extend the thread project.
+**Right move.** Door-staff analogy from M1 L3 carries forward. The agent writes the policies; the learner tests the fence in the running app with a refusal check — sign in as the second account, try to change something the first account wrote, expect refusal; if it goes through, tell the agent exactly what you did. No policy text ever reaches the learner's eyes.
+**Where to escape to.** **Module 7 — KEEP (2026-08-21).** This is the carrier for Module 7's permission-rules pointer, and trap C merges into it. It survives adjudication because getting these rules wrong fails *silently* — the app looks fine while showing the wrong person the wrong row — and because the learner already operates the Supabase dashboard where the rules live. The pointer names the topic and links Supabase's own page; it never reproduces policy grammar.
 
 #### Trap F — Explaining React hook internals (`useState`, `useEffect`, `useOptimistic`, etc.)
 
 **Temptation.** "`useOptimistic` returns a tuple of `[optimisticValue, addOptimistic]`. The reducer signature is `(currentState, optimisticValue) => newState`. Call `addOptimistic` inside a Server Action..."
-**Right move.** `useOptimistic` is a SYMPTOM in M3.5 L4 (interactivity marker). In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
-**Where to escape to.** Don't. Hook internals belong to the agent. The audience-vocabulary contract lists hooks as SYMPTOM-only across M3.5 and M4+.
+**Right move.** `useOptimistic` never reaches the learner at all — under CLAUDE.md hard rule 12 the learner never reads code, a file, or a diff, so there's no hook name to spot in the first place. In M4+, the learner observes the running app: "I click like; the count updates immediately; if the server fails the count corrects itself." The agent writes the hook; the learner verifies the behavior.
+**Where to escape to.** Don't. Hook internals belong to the agent. In M4+ hook names do not appear in lesson prose at all (say-it-or-see-it rule); the observable behaviour is what the lesson names.
 
 #### Trap G — Explaining stack-trace anatomy
 
 **Temptation.** "A stack trace lists call frames from the top (most recent) to the bottom (oldest). Each frame includes the function name, file path, line, and column. Read the trace bottom-up..."
-**Right move.** M3.5 L3 rule: "find the first line that names YOUR file (typically a path starting with `./app/`); paste the full error to the agent." The agent reads the trace; the learner gives it the pointer.
-**Where to escape to.** Don't. Stack traces are agent territory. The audience-vocabulary contract moved `stack trace` from M3.5 Requires-callout → Forbidden in May 2026.
+**Right move.** Stack traces are agent territory end to end under CLAUDE.md hard rule 12: the agent reads the trace, finds the file, and fixes it, then reports back in plain words. The learner never sees the trace at all.
+**Where to escape to.** Don't. Stack traces are agent territory.
 
 #### Trap H — Explaining the React hydration mechanism
 
 **Temptation.** "Hydration is the process React uses to attach event listeners to server-rendered HTML, matching the server-rendered tree to the client-rendered tree..."
-**Right move.** Hydration is a SYMPTOM (per M3.5 L4 SYMPTOM-only addendum): a message in the browser console meaning "the page disagreed with itself." The agent diagnoses; the learner pastes the error to the agent.
-**Where to escape to.** Module 7 only, for learners who want to extend.
+**Right move.** Hydration is agent territory end to end under CLAUDE.md hard rule 12: a message in the browser console meaning "the page disagreed with itself," which the agent reads and diagnoses. The learner never sees the console message — they only see the running page not matching what they asked for, and say so.
+**Where to escape to.** **Module 7 — KEEP, merged (2026-08-21).** Folded into Module 7's server-and-browser pointer together with trap I. It survives because the learner already has the symptom from Module 4 onward (the page not matching what they asked for), and the pointer gives that symptom a name they can search.
 
 #### Trap I — Explaining bundle splitting / Server vs. Client component rendering execution
 
 **Temptation.** "The bundler decides which files become client bundles based on the `'use client'` directive. Server Components run only on the server; their output is serialized as RSC payload..."
-**Right move.** M3.5 L4 framed-picture-vs-touchscreen analogy. `'use client'` is a SYMPTOM label. The agent decides the split; the learner scans for the symptom (interactivity markers + missing directive → ask the agent).
-**Where to escape to.** Module 7 — React Server Components architecture is canonical Module 7 territory.
+**Right move.** `'use client'` never reaches the learner's eyes — under CLAUDE.md hard rule 12 the learner never reads a file the agent wrote. The learner watches the running page instead: a button that does nothing when clicked is the tell — say what you clicked and what didn't happen, and let the agent find the cause.
+**Where to escape to.** **Module 7 — KEEP (rendering half), merged; CUT (bundling half) (2026-08-21).** The server-vs-client rendering half is the carrier for Module 7's server-and-browser pointer, with trap H merged in — it survives because "the button does nothing when clicked" is a symptom the learner really sees and can now name. The bundle-splitting half is covered by trap K's verdict below: cut, and it goes nowhere.
 
 #### Trap J — Explaining npm version-range syntax (`^`, `~`, `>=`)
 
 **Temptation.** "`^1.2.3` matches `>=1.2.3 <2.0.0`; `~1.2.3` matches `>=1.2.3 <1.3.0`..."
-**Right move.** M2 L4 corner-store-delivery analogy. The agent manages versions; the learner runs `npm install` and observes the app works.
-**Where to escape to.** Module 7 — for learners who want to operate the build long-term.
+**Right move.** The agent manages versions and installation; the learner observes the app works. The analogy that used to carry this went with the retired Module 2 npm lesson, and no live lesson replaces it — none needs to, per the verdict below.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (retired surface).** `npm` is named in the retired-course-surface bucket of every module's Forbidden tier under hard rule 15, and a version range is only ever visible inside a file the agent wrote — which hard rule 12 forbids asking the learner to open. A pointer here would be the course's single instruction to go read a file, which is a worse outcome than not knowing what `^` means.
 
 #### Trap K — Explaining what "build" actually does (bundler internals, tree-shaking, dead-code elimination)
 
 **Temptation.** "The bundler walks the import graph, applies tree-shaking to remove unreferenced exports..."
 **Right move.** "The build packages your code so the deployment server can run it." That's the floor. The agent owns build configuration; the learner observes "the build passed; the site updated."
-**Where to escape to.** Module 7 — bundler internals are canonical Module 7 territory.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The build is the agent's end to end, and the learner's entire build surface is pass/fail on the Vercel dashboard, which Module 5 already teaches them to read and act on. Tree-shaking is a thing they cannot observe and cannot act on, so a pointer offers a lever with nothing attached. M5's "bundle analysis / size optimization" entry merges into this verdict.
 
 #### Trap L — Explaining git internals (objects, hashes, DAG, the staging area as a content-addressable store)
 
 **Temptation.** "Each commit is a snapshot identified by a SHA-1 hash; the parent commit pointer creates a directed acyclic graph..."
-**Right move.** M2 L5 (the gold standard) names the four daily commands and what they do at the felt level. No internals. Read M2 L5 before drafting any other lesson that mentions git.
-**Where to escape to.** Module 7 — git internals are canonical Module 7 territory for the small population of learners who want to operate the build deeply.
+**Right move.** M2 L3 (`modules/02-toolchain/03-the-save-system.md`) is the gold standard: the learner's verb is "save," the agent performs the operation, and the felt model is a save point plus a cloud copy. No commands for the learner to type, no internals. Read it before drafting any other lesson that touches saving work.
+**Where to escape to.** **Nowhere — CUT 2026-08-21 (agent territory).** The agent performs every git operation under hard rule 15 and the learner's verb is "save"; six modules were spent handing that work over, and a closing pointer at the object model asks for it back. The model the learner actually needs — saved versions live on GitHub, and the agent can go back to one — is already shipped whole by M2 L3 (`modules/02-toolchain/03-the-save-system.md`).
 
 ### How to use this appendix
 
@@ -598,7 +626,7 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 ### Cross-references
 
 - `docs/audience-vocabulary.md` — the positive surface (what IS safe at each module)
-- COURSE-AUTHORING.md Part 5 — Q1–Q3 audit questions for M3.5
+- CLAUDE.md hard rule 12 — the generalized Agent-Responsibility Boundary (Part 5 is retired; see its tombstone)
 - COURSE-AUTHORING.md Part 6 — Q1-Exec / Q2-Exec / Q3-Exec audit questions for M4+
 - `docs/TENETS.md` § Tenet 5 — the philosophical foundation
 
@@ -606,7 +634,11 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 
 ## Part 9 — The voice-lint contract
 
-`scripts/voice-lint.sh` is the programmatic gate. It has ten checks; understand each before writing or editing lessons.
+`scripts/voice-lint.sh` is the programmatic gate. It has nine active checks, numbered 1–11 — #8 and #10 retired and their numbers are not reused, so the numbering below stays historical. Understand each before writing or editing lessons.
+
+The M3 dual-agent lint check (formerly #8) retired 2026-08-16. The reshot lessons present Claude Code desktop and Codex in parallel as prose conversation panels, with no lint-enforced labels.
+
+The WHAT-CHANGED.md thin-entry contract (formerly #10) retired 2026-08-22 — WHAT-CHANGED.md is no longer maintained (Phase 8 aftercare, Amendment A). The file itself is untouched; only the automated gate on its entry shape is gone.
 
 | # | Check | What trips it | Fixture |
 |---|-------|---------------|---------|
@@ -617,15 +649,14 @@ When you draft a lesson and find yourself reaching for one of the topics above:
 | 5 | Broken relative path | A link from `modules/**/*.md` to a root cross-cutting doc (GLOSSARY, BUDGET, …) whose relative path doesn't resolve | `05-broken-glossary-relative-path.md` |
 | 6 | Jargon-density (audience-vocabulary) | A Forbidden term used bare; or a Requires-callout term used without a D-04 callout in the same lesson | `06-jargon-density.md` |
 | 7 | Mermaid `<br>` outside quoted node labels | Any `<br>` or `<br/>` inside a ` ```mermaid ` fence that isn't inside `["..."]` quoting | `07-mermaid-br-outside-quotes.md` |
-| 8 | M3 dual-agent rendering (D-27) | An M3 lesson (`modules/03-the-loop/0[1-4]-*.md`) missing a standalone `Claude Code:` or `Gemini CLI:` label line | `08-m3-dual-agent.md` |
-| 9 | M3.5 diagnostic-framing (hard rule 12) | M3.5 prose drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — **WARN-only** | `09-m35-diagnostic-framing.md` |
-| 10 | WHAT-CHANGED thin-entry contract | A live-region `WHAT-CHANGED.md` entry that is undated, missing a **Change:** / **If you're affected:** / **Details:** label, over 6 non-blank body lines, over 72 bytes of summary, over 300 bytes on one line, or leaking internal codenames (`D-xx`, `CD-xx`, `Plan n-n`, `Wave n`, `Phase n`, `SC #n`, `.planning/`); also a missing boundary comment. Historical entries below the boundary are exempt. | `10-what-changed-entry-shape.md` |
+| 9 | Debugging-framing (hard rule 12) | Lesson prose under `modules/` (every `*.md` except `README.md`) drifting into agent-territory mechanics ("to debug", "renders on the server", "anatomy of", a `:line:col` coordinate, "diagnose", …) — flags learner-debugs posture. **WARN-only** | `09-m35-diagnostic-framing.md` |
+| 11 | Glossary `Used in:` citations | A `Used in:` line in GLOSSARY.md naming a lesson that does not exist (11a), one that neither links that anchor nor names the term (11b), or one that claims usage but names no lesson at all (11c) — a citation falsified by a later lesson edit. Entries that self-declare no lesson uses the term are exempt from 11b and 11c. **WARN-only** | `11-glossary-used-in-citation.md` |
 
 ### Which lessons check #6 scans (module scope)
 
-Check #6 runs in the default scan against **M0, M1, M2, M3, and M3.5** lesson directories, in WARN mode. (M4–M7 directories don't exist yet; they're added to the runner when those modules ship.) Earlier the check covered only M0/M1 — meaning the vocabulary contract was unenforced from M2 onward, and a bare Forbidden term or a missing callout in an M2+ lesson would pass the gate silently. That gap is closed for the modules that exist; the contract is now machine-surfaced (as WARN) wherever there are lessons to scan.
+Check #6 runs in the default scan against the **M0, M1, M2, M3, M4, M5, M6, and M7** lesson directories, in WARN mode. (`modules/07-where-next` joined when Module 7 shipped, guarded by `[ -d modules/07-where-next ]` like the M6 block before it. `modules/06-after-live` joined with the Phase 6 contract flip, guarded by `[ -d modules/06-after-live ]` like the M5 block before it. The Module 3.5 directory was in this list until that module was retired on 2026-08-12; its scan block is gone from the runner. `modules/04-thread-project` joined the runner when the M4 vocabulary contract was re-cut, and all nine of its lessons are written against that contract. **Fixed 2026-08-18:** the term extractor used to comma-split a bullet's entire line, and a bold-led bullet's *definition prose* — not just its parenthetical notes — survives the paren-stripping step, so the M4 **Supabase** entry's own description ("an account system, a database, and file storage in one") produced a phantom Requires-callout term, `a database`, that WARNed once per M4 build lesson (8 WARNs) for a term that never existed in the contract. The extractor now reads only the bullet's bolded `**term**` field(s) when a bullet opens on bold — stopping before the descriptive prose that follows, no matter what punctuation it contains — and falls back to the original comma-split only for plain comma-list bullets (the majority shape, e.g. `- HTTP, DNS, request, ...`); `scripts/voice-lint-fixtures/06-vocab-extractor-comma-clause.md` proves it against a synthetic bullet in self-test. The phantom-term class no longer WARNs. Fixing the extractor also correctly exercised two Requires-callout checks the bug had been silently disabling — **Claude Code desktop** (M2) and **secret key** (M4) each now report one genuine missing-D-04-callout WARN. Those are real editorial gaps the broken extractor was masking, not extractor artifacts; treat them like any other #6 WARN in the backlog.) Earlier the check covered only M0/M1 — meaning the vocabulary contract was unenforced from M2 onward, and a bare Forbidden term or a missing callout in an M2+ lesson would pass the gate silently. That gap is closed for the modules that exist; the contract is now machine-surfaced (as WARN) wherever there are lessons to scan.
 
-**Honest scope of enforcement.** #6 is WARN-only everywhere — it *surfaces* contract gaps, it does not block on them. For M4–M7 (no lessons yet) the vocabulary contract is human-review-only until those modules exist and join the runner. Tenet 3 (analogies) and Tenet 4 (coherence) have no lint at all — they are GUIDANCE, enforced by review. Don't read "exit 0" as "contract satisfied" for anything #6 doesn't yet cover.
+**Honest scope of enforcement.** #6 is WARN-only everywhere — it *surfaces* contract gaps, it does not block on them. M5 joined the runner with the Phase 5 contract flip (guarded by `[ -d modules/05-operating ]`, so it's a no-op until the module's lessons ship) and is lint-scanned WARN-only from here on, same as M0–M4. M6 joined the same way with the Phase 6 contract flip, and M7 with Module 7 itself. Tenet 3 (analogies) and Tenet 4 (coherence) have no lint at all — they are GUIDANCE, enforced by review. Don't read "exit 0" as "contract satisfied" for anything #6 doesn't yet cover.
 
 ### How the jargon-density check actually scopes
 
@@ -653,9 +684,9 @@ Check #6 emits both:
 - **WARN** lines for callout-missing cases (a Requires-callout term used without a callout) and bare Forbidden cases — these document the editorial backlog but do NOT block the gate.
 - **VIOLATION** lines would block — currently no VIOLATIONS are emitted from #6 by default (the WARN-only behavior is documented in `01-8-SUMMARY.md` as a deliberate choice to ship the lint without retroactively blocking on every legacy phrasing).
 
-Checks #1–#5, #7, #8, and #10 always emit VIOLATIONS (no WARN tier). Check #9 (M3.5 diagnostic-framing) is WARN-only, like #6.
+Checks #1–#5 and #7 always emit VIOLATIONS (no WARN tier). Check #9 (debugging-framing) and check #11 (glossary `Used in:` citations) are WARN-only, like #6.
 
-**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3.5 (the M2/M3/M3.5 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
+**Exit code 0 is the gate.** The default scan emits a WARN backlog and still exits 0. That backlog grew when #6 was extended from M0/M1 to M0–M3 (the M2/M3 prose was written before the check covered it) — the new WARNs are expected and non-blocking; for the live count run `./scripts/voice-lint.sh | grep -c '^WARN'`.
 
 ### Self-test mode
 
@@ -678,7 +709,7 @@ Before opening a PR with a new or modified lesson:
    - Mermaid renders (both simple and technical when the disclosure is expanded)
    - GLOSSARY links resolve when clicked
    - Prev/next nav at the bottom of the lesson works
-9. **WHAT-CHANGED.md** — add a dated entry if the change shifts a lesson's content meaningfully (new lesson, new analogy, changed bundle, contract update). Thin entry per `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry — **Change:** / **If you're affected:** / **Details:**, at most 6 body lines, no internal codenames; the contributor narrative belongs in the PR body, linked from **Details:**. voice-lint check #10 blocks non-conforming entries.
+9. **WHAT-CHANGED.md** — add a dated entry if the change shifts a lesson's content meaningfully (new lesson, new analogy, changed bundle, contract update). Thin entry per `CONTRIBUTING.md` § Adding a WHAT-CHANGED entry — **Change:** / **If you're affected:** / **Details:**, at most 6 body lines, no internal codenames; the contributor narrative belongs in the PR body, linked from **Details:**.
 10. **Commit** with the conventional commit shape (`feat(NN-M):`, `fix(NN):`, `docs(NN):`).
 
 ---
@@ -703,7 +734,7 @@ That separates the analogy from the bridge content visually. Learners who DO wan
 
 ### Trap: "The lint flagged 'API' in `Anthropic API`, the lint is broken"
 
-It isn't. The brand-prefix stripping rule in check #6 explicitly handles `Anthropic API`, `Gemini API`, `Google API`. If you see a violation on `Foo API`, check that `Foo` starts with a capital letter and is followed by exactly one space and `API`. If you legitimately need to use `API` bare (e.g., the M3 lesson that introduces the concept), update `docs/audience-vocabulary.md` to move `API` out of M3's Forbidden list when M3 ships.
+It isn't. The brand-prefix stripping rule in check #6 explicitly handles `Anthropic API`, `Gemini API`, `Google API`. If you see a violation on `Foo API`, check that `Foo` starts with a capital letter and is followed by exactly one space and `API`. Before treating a bare `API` as a violation, check its tier: `API` is Requires-callout in M1 (D-04 on first use, as a *contract*) and Safe from M2 onward, so an M2+ lesson may use it bare. It is not in M3's Forbidden list — that clause was written before M3 shipped and was resolved 2026-08-17. Only a term still listed Forbidden for the module you are writing needs a `docs/audience-vocabulary.md` change first.
 
 ### Trap: "I should fix all the WARNs"
 
@@ -747,3 +778,11 @@ A few things that catch agents more than humans:
 5. **Read this file fully** before writing your first lesson. The patterns are subtle and the wrong solutions are easy to invent (the side-by-side render that didn't work; the `<br/>` → `<br>` retry that didn't fix it; the lint that almost over-blocked on `Anthropic API`).
 
 If you change a load-bearing rule, update this file too. Future agents inherit only what's written down.
+
+---
+
+## Part 14 — The learner-project agent contract
+
+Every learner project carries base files that configure the agent before the first prompt: `CLAUDE.md` (read by Claude Code) and `AGENTS.md` (read by Codex and most other agents) — identical twins whose canonical wording lives in `thread-project-template/`. They enforce, from inside the agent: plain everyday language unless the learner asks for detail; a pre-flight ask before anything irreversible; the test-gate ritual before any "done", with unrun checks named rather than guessed; saving a version after every working chunk and reporting the three parts of a save (commit, push, deploy) separately; starting the local app on request; the agent owning all git/GitHub operations; and reading the plan and the rules at the start of every conversation and opening by saying where the project is.
+
+**Delivery path (2026-09-07; replaces the retired launch-repository sync).** Nothing copies the template into a learner's folder and the learner's agent never reads this course. The rules reach the project because the learner *says* them: the setup ask in `modules/04-thread-project/00-the-plan.md` restates every rule above in learner words and tells the agent to write them into the file it reads on its own (the ask names `CLAUDE.md` / `AGENTS.md`, which is legal under say-it-or-see-it because the learner says it and never opens it), alongside the eight plan features in build order (the same lines as `thread-project-template/PLAN.md`). L0's read-back check and fresh-conversation test are how the learner confirms the rules took. Authoring rule: the L0 ask, the twins, and `PLAN.md`'s "How we work" lines must say the same things — when a lesson changes what the agent is expected to do, change all three in the same commit (`thread-project-template/README.md` says the same). The contract files are written TO the agent ABOUT the learner, so they may use technical vocabulary freely; they are the one place the course's vocabulary tiers do not apply.

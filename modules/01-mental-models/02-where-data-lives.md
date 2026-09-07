@@ -2,9 +2,9 @@
 title: "Where data lives, how programs talk"
 module: "01-mental-models"
 lesson_number: 02
-est_minutes: 45
+est_minutes: 30
 prereqs: ["01-how-the-web-works"]
-updated: "2026-05-08"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,41 +12,27 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to describe — in plain language and on paper — where the data in a web app actually lives, and how a program on one machine asks a program on another machine for a piece of that data.
+By the end of this lesson, you will be able to describe — in plain language and on paper — where the information in a web app is kept, and how the part you see asks for a piece of it.
 
 ## Why this matters
 
-Every product you'll ever build moves data between three places: a person's screen, a server somewhere, and a database. If you can sketch which piece sits where and how the pieces ask each other for things, you can reason about almost any feature in almost any web app — including the bugs the AI will produce when it gets the answer wrong. This is the second of three mental models in Module 1; the first taught you what the *web* is, and the third will tell you how *who can do what* gets enforced.
+Every product you build moves information between three places: a person's screen, a server, and the place the information is filed. If you can say which of the three a feature lives in, you can describe what you want ("keep each person's posts", "show me only mine") and you can tell your agent where something looks wrong when the answer that comes back is off.
 
 ## Core read
 
 Imagine a small office.
 
-In the back, there's a metal **filing cabinet** (a one-line definition: a database, [→ GLOSSARY](../../GLOSSARY.md#database)). It has labeled drawers. One drawer is `users`, another is `posts`, another is `comments`. Inside each drawer are **index cards** (a one-line definition: a row, [→ GLOSSARY](../../GLOSSARY.md#row)). Every card in the `users` drawer has the same fixed set of fields: `id`, `email`, `display_name`, `created_at`. Cards in the `posts` drawer have different fields: `id`, `author_id`, `body`, `created_at`.
+In the back, there's a metal **filing cabinet** — the **database** (where an app's information is stored, [→ GLOSSARY](../../GLOSSARY.md#database)). It has labeled drawers: one for `users`, one for `posts`, one for `comments`. Inside each drawer are index cards; each card is a **row** (one record — one user, one post, [→ GLOSSARY](../../GLOSSARY.md#row)). Every card in a drawer has the same printed fields — a user card has an id, an email, a display name.
 
-The cabinet doesn't know who needs the cards. It just stores them. Anyone with a key can pull a drawer open, take a card out, write on it, file it back. Without rules about who can open which drawer, the cabinet is useless for an app where different people are supposed to see different things.
+The cabinet doesn't know who needs the cards. It just stores them.
 
-Now picture the rest of the office.
+Now the rest of the office. Clerks sit at desks — each clerk is a **server** (a program waiting for requests, [→ GLOSSARY](../../GLOSSARY.md#server)). A customer walks up to the front desk and asks, "what posts has Alice written?" The receptionist takes the question to a clerk; the clerk opens the `posts` drawer, finds every card that names Alice, copies the relevant fields onto a piece of paper, and hands it back. The customer never touches the cabinet.
 
-There are clerks at desks (**servers**, one-line definition: programs that run continuously waiting for requests, [→ GLOSSARY](../../GLOSSARY.md#server)). When someone outside the office wants information — say, a customer who walks up to the front desk and asks "what posts has Alice written?" — the receptionist takes the question, walks back to the clerk, and the clerk goes to the filing cabinet, opens the `posts` drawer, finds every card where `author_id` equals Alice's id, copies the relevant fields onto a piece of paper, and hands it back to the receptionist, who hands it to the customer.
+The paper with the question is a **request** ([→ GLOSSARY](../../GLOSSARY.md#request)); the paper with the answer is a **response** ([→ GLOSSARY](../../GLOSSARY.md#response)); carrying them back and forth is **HTTP** ([→ GLOSSARY](../../GLOSSARY.md#http)) — the waiter from the last lesson.
 
-The customer never touches the cabinet. The customer never even sees it. They just hand over a piece of paper with a question on it and get back a piece of paper with the answer.
+The set of forms the receptionist accepts — "show me the posts", "here's a new post, please file it" — is the **API** (the agreed list of questions one program will answer for another, [→ GLOSSARY](../../GLOSSARY.md#api)). It's finite and written down.
 
-The "piece of paper with a question" is a **request** (one-line definition: a structured message asking a server for something, [→ GLOSSARY](../../GLOSSARY.md#request)).
-
-The "piece of paper with the answer" is a **response** (one-line definition: a structured message replying to a request, [→ GLOSSARY](../../GLOSSARY.md#response)).
-
-Together, the question-and-answer pattern is **HTTP** (one-line definition: the protocol the web uses to send requests and responses, [→ GLOSSARY](../../GLOSSARY.md#http)).
-
-The way one program inside the office talks to another program — the receptionist talking to the clerk, or the clerk talking to a different clerk in another office — is also done by passing pieces of paper around. When two programs agree on what kinds of paper they'll accept and what they'll write back, that agreement is called an **API** (one-line definition: an agreed-on list of paper-form templates two programs share, [→ GLOSSARY](../../GLOSSARY.md#api)).
-
-So the office has three layers:
-
-1. The **filing cabinet** — the database — stores the cards.
-2. The **clerks** — the servers — open the cabinet on behalf of whoever asks.
-3. The **paperwork** — the API — is the system of forms used to ask and answer.
-
-Here's the filing cabinet up close:
+So the office has three layers: the cabinet stores the cards, the clerks open it on behalf of whoever asks, and the forms are how you ask.
 
 ```mermaid
 flowchart TB
@@ -59,9 +45,9 @@ flowchart TB
 ```
 
 <details>
-<summary>Optional: same filing cabinet with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same filing cabinet with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**; the dotted line is a **foreign key**. The labels on every card (`id`, `email`, `display_name`) are the **schema** — the printed template at the top of every card in a drawer. These names land hands-on in Module 3 when you write your first queries. The filing-cabinet picture is the load-bearing one — the labels are scaffolding you'll reuse later, not vocabulary to memorize today.
+> *Peek ahead — skim, don't memorize:* Each drawer is a **table**; each card is a **row**. **Table** and **row** return in Module 4, where your agent builds the thread project on a real database and you check that it behaves. The filing-cabinet picture is the one to hold onto.
 
 ```mermaid
 flowchart TB
@@ -75,9 +61,9 @@ flowchart TB
 
 </details>
 
-Notice the dotted line from `posts` back to `users`. That's a **foreign key** (one-line definition: a field in one row that points at the id of a row in another drawer, [→ GLOSSARY](../../GLOSSARY.md#foreign-key)). The `posts` drawer doesn't store the author's display name — it stores the author's `id`. One drawer's cards remember other cards by their ID — that's all "foreign key" means.
+Notice the dotted line. A post card doesn't carry the author's name — it carries the author's id, and one drawer's cards remember other drawers' cards by their id. That's how "Alice's posts" can be found, and why deleting Alice's card can leave her posts pointing at nobody — something you'll check in the running app later, not fix by hand.
 
-And here's the question-and-answer pattern up close, from your browser's perspective:
+Here's the question-and-answer up close:
 
 ```mermaid
 sequenceDiagram
@@ -91,9 +77,9 @@ sequenceDiagram
 ```
 
 <details>
-<summary>Optional: same question-and-answer with the technical labels (Module 3 hands-on)</summary>
+<summary>Optional: same question-and-answer with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* In a real web app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. All four — API, HTTP request, SQL, database — get hands-on coverage in Module 3. The receptionist-and-form picture is what carries the concept.
+> *Peek ahead — skim, don't memorize:* In a real app, the customer is your browser, the receptionist is the server (the **API**), and the filing cabinet is the **database**. The form the customer hands over is an **HTTP request**; the language the receptionist uses to talk to the cabinet is **SQL**. Your agent writes both; you never do.
 
 ```mermaid
 sequenceDiagram
@@ -108,49 +94,31 @@ sequenceDiagram
 
 </details>
 
-The browser never speaks SQL. The browser only ever speaks **HTTP** — it sends a request to a URL, and gets back a response. The server is the thing that knows how to translate the browser's HTTP request into a database query, and the database's response back into an HTTP response.
+The browser never opens the cabinet. It only hands forms to the receptionist. The server is the thing that turns a form into a question for the cabinet — written in **SQL** (the language servers use to ask a database for cards, [→ GLOSSARY](../../GLOSSARY.md#sql)) — and turns the cards into an answer. Your agent writes the SQL; you'll hear the word when it does.
 
-Two things tend to confuse beginners here, and both are worth noticing now:
-
-**First, the database is not "in the cloud" in any meaningful way.** It runs on a specific machine — usually a server you're paying a hosting company to run for you. The phrase "cloud database" mostly means "a database I'm not babysitting myself." Inside the wires, it's still a program running on a computer somewhere, with drawers and cards.
-
-**Second, the API is just a list of paper-form templates.** When someone says "the API supports `GET /api/posts` and `POST /api/posts`," they mean: there are two paper forms the receptionist accepts. One says "show me the posts." The other says "here's a new post; please file it." The list of forms is finite, written down, and (in a good app) documented. There's no magic.
-
-You'll meet two more terms in Module 3 and beyond.
-
-A **schema** (one-line definition: the fixed shape of fields in a table, [→ GLOSSARY](../../GLOSSARY.md#schema)) is the printed template at the top of every card in a drawer.
-
-A **query** (one-line definition: a written question asking the database for specific cards, [→ GLOSSARY](../../GLOSSARY.md#query)) is what the clerk writes when talking to the cabinet.
-
-The language the clerk uses for those queries is usually **SQL** (one-line definition: the standard query language for relational databases, [→ GLOSSARY](../../GLOSSARY.md#sql)). You don't need to write SQL yet; you'll see your AI agent write it, and Module 3.5 will teach you to read enough of it to know when it's wrong.
-
-> **Note:** None of this lesson teaches you how to build any of these things. Module 1 is about the *shape* of a software product. Building starts in Module 2 (toolchain) and Module 3 (the AI-coding loop), and the first time you'll write code that opens a real database is when you add sign-in to the thread project.
+One thing worth noticing now: **the database is not "in the cloud" in any meaningful way.** It runs on a specific computer that a hosting company runs for you. Inside the wires, it's still a cabinet with drawers and cards.
 
 ## Exercise
 
-Sketch the path of one click. Pick a familiar app — Twitter, Threads, a recipe site — and pick one specific moment, like "I clicked Save on a new post." On a piece of paper or at [excalidraw.com](https://excalidraw.com), draw three boxes labeled `browser`, `server`, `database`. Then draw the arrows showing what travels between them when the click happens. Label every arrow with what it carries: a request? a row? a response? Spend 15 minutes on it. Don't look anything up. The point is to commit your current model to paper so you can compare it to the next lesson's mental model and notice what shifted.
+Sketch one click. Pick a familiar app and one moment in it — "I pressed Save on a new post." On paper or at [excalidraw.com](https://excalidraw.com), draw three boxes: `browser`, `server`, `database`. Draw the arrows showing what travels between them when the click happens, and label each arrow with what it carries: a request? a card? a response? Spend 10 minutes. Don't look anything up.
 
 ## Checkpoint
 
-You've got this if you can do both:
+You've got this if you can:
 
-1. Point at any feature in any app you've used and explain — in one sentence — which of the three layers (browser, server, database) is doing the work.
-2. Explain the difference between a **request** and a **query** without reading this lesson again.
+1. Point at any feature in an app you use and say, in one sentence, which of the three layers (browser, server, database) does the work.
+2. Say what the filing cabinet keeps that the screen doesn't.
 
 ## Going deeper
 
 Optional, only if you're curious:
 
-- *Designing Data-Intensive Applications* by Martin Kleppmann — chapters 1 and 2 are the gold-standard plain-English explanation of why databases are shaped the way they are.
+- *Designing Data-Intensive Applications* by Martin Kleppmann — chapters 1 and 2 explain, in plain English, why databases are shaped the way they are.
 - The PostgreSQL docs' [tutorial chapter on tables](https://www.postgresql.org/docs/current/tutorial-table.html) — concrete and short.
-
-## Loop check
-
-> **Loop check — intent.** Module 1 is pre-loop, but every mental model you build here changes the *intent* you'll bring to your next AI-coding session. Knowing that data lives in a database — separate from the server and far separate from the browser — changes what you'll ask the AI to build, because you now know there are three places where the answer might live or where the bug might hide.
 
 ## What you just did
 
-You sketched the data path of one click — which is a tiny version of what designers do at the start of every feature. You separated the browser from the server from the database in your head, and that separation is the same separation an AI coding agent will assume when you ask it to build something. The "intent" step of the loop, taught in Module 3, is exactly this: knowing the shape of what you want before you start asking. You've started practicing it.
+You sketched the path of one click and separated the browser from the server from the database in your head. Anyone can walk up to the front desk and ask, though — who's actually allowed to is the next lesson.
 
 ## Navigation
 

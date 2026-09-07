@@ -1,83 +1,67 @@
 ---
-title: "Hardware check"
+title: "Check your computer"
 module: "00-welcome"
 lesson_number: 02
-est_minutes: 10
+est_minutes: 5
 prereqs: ["01-welcome"]
-updated: "2026-05-09"
+updated: "2026-09-07"
 deviations: []
 ---
 
-# Hardware check
+# Check your computer
 
 ## Learning objective
 
-By the end of this lesson, you will know whether you're using GitHub Codespaces (recommended for V1) or a local install, and what either choice costs you in time and money.
+By the end of this lesson, you will know whether your computer can run the agent app for either of this course's two tracks — without opening a settings menu.
 
 ## Why this matters
 
-This is the cheapest decision you'll make in the course, and getting it wrong is the most expensive way to start. Codespaces removes a category of "my computer is set up wrong" problems that cost beginners days. Local installs are faster once they work, but the working part is itself a learning project. Pick once, in this lesson, before you create any accounts.
+Before you decide how you're paying or which account to create, settle a smaller question: will the app you're about to install open on the computer you're using right now? You don't need a spec sheet. If your browser runs comfortably today, you're most of the way to an answer.
 
 ## Core read
 
-Two paths.
+### What your computer needs
 
-**Path A: GitHub Codespaces (recommended for V1).**
-A **Codespace** (a development environment GitHub runs for you on a remote machine; you reach it from your browser, but the files and commands live on a computer GitHub manages, [→ GLOSSARY](../../GLOSSARY.md#codespace)) lets you work on this course without installing anything on your laptop. You open it from your browser, edit text in a **code editor** (a program that lets you read and edit source files with niceties like syntax highlighting and integrated tools, [→ GLOSSARY](../../GLOSSARY.md#code-editor)) that looks and feels like VS Code, and use a panel where you type commands when later modules need them. Your laptop just needs a modern browser.
+Whichever track you pick in the next lesson, you install exactly one program: an **AI coding agent** (a program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)). It's a normal desktop app, the kind you already download and open.
 
-What this gets you:
+**Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)) installs on Windows, Mac, or Linux. **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)) installs on Windows, Mac, or Linux too.
 
-- No local install for Module 0 or Module 1: those modules are written in plain text — specifically, **markdown** (a way of writing formatted documents using simple punctuation marks like `#` for headings and triple-backticks for code blocks, [→ GLOSSARY](../../GLOSSARY.md#markdown)). Open the course in your browser; you're done.
-- For Module 2 onward (toolchain, AI agents, the thread project), the Codespace already has the tools later modules will need pre-installed and configured.
-- A consistent environment. The course is verified against the specific Codespace setup listed in [`VERSIONS.md`](../../VERSIONS.md). If it works for one learner, it works for all.
+Neither app publishes a minimum processor or memory size. The practical bar: if your computer runs a modern browser comfortably — several tabs open, maybe a video call, without freezing — it clears the bar for either app. A computer from roughly the last five years, kept updated, is normally enough.
 
-What it costs:
+<!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart and code.claude.com/docs/en/desktop, fetched 2026-08-15 (macOS universal build; Windows x64/ARM64; Linux beta via apt/.deb; no minimum RAM, CPU, or OS version published) — cross-checked against the 2026-08-12 desktop-agent research memo. learn.chatgpt.com/codex/app and learn.chatgpt.com/codex/quickstart, fetched 2026-08-15 (ChatGPT desktop app available for macOS, Windows, and Linux; no minimum OS version or hardware spec published) — that memo confirms Mac and Windows and is silent on Linux; the fetched pages are the source for including Linux here. -->
 
-- The GitHub **free tier** (the portion of a paid service you can use at no cost — usually capped by hours, requests, or rate limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) includes **120 core-hours per month** on a 2-core machine, which is **60 clock-hours per month**. Enough for a focused learner doing a few hours per week. Not enough for binge-watching every weekend.
-- Default auto-stop is **30 minutes idle** — leave a tab open and walk away, the Codespace pauses on its own.
-- Storage cap is **15 GB**. Delete unused Codespaces to free space.
-- If you blow past 120 core-hours, GitHub bills $0.18 per core-hour. Most learners don't hit this.
+### Nothing else needs to be there already
 
-> **Note:** GitHub's free-tier numbers (core-hours, idle auto-stop, storage, overage price) can change over time. Seeing different figures on GitHub than this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+This course assumes a fresh computer: no developer tools, nothing set up. When a later step needs something extra, you ask your agent to check what's missing and help you install it — you approve, you never type commands. Lesson 6 gives you the sentence for that.
 
-**Path B: Local install (appendix path).**
-If you already have a code editor you prefer (and you're comfortable troubleshooting your own environment), see the local install appendix in [`SETUP.md`](../../SETUP.md). That appendix names the tools Module 2+ teaches you to install — those tools come pre-installed in Codespaces but require manual setup if you go this route. Use this path if your free Codespace hours run out, or if you really prefer your own editor.
+One exception: Claude Code desktop needs one helper program before it can open a folder on your computer. Windows computers don't have it; most Macs already do. It's a normal download-and-run installer — Lesson 5 names it and says what to do if the app says a program is missing.
 
-What it costs:
+### Your three surfaces
 
-- Time. Setting up the Module 2+ toolchain on Windows is the rabbit hole this course's primary path was designed to avoid.
-- Self-troubleshooting. If your local install hits a "can't find this program" error, that's your problem to solve, not the course's.
-
-**Which to pick:**
-
-- If you've never written production code: **Codespaces**. No exceptions.
-- If you've already got a working development setup and you read code well enough to debug environment issues: either is fine.
-
-If you pick Codespaces and later want to switch to local, you can — the course works the same way on both surfaces, and [`SETUP.md`](../../SETUP.md) covers the switch. If you start on local and hit an environment issue you can't solve in 30 minutes, switch to Codespaces.
+This course happens in three places: the agent app's window (where you talk to your agent and approve what it does), your browser (where you look at your own project running, and later click through a dashboard or two), and your phone (much later). Nothing else to open. When a later module needs something extra on your machine, your agent proposes it and you approve or decline.
 
 ## Exercise
 
-This is a 5-minute decision exercise. Answer these out loud or on paper:
+A 5-minute check, not an install. Answer out loud or on paper:
 
-1. Do I have a modern browser on a computer I'll be using consistently? *(If yes, Codespaces will work. If no, this course has a hard prerequisite you're missing.)*
-2. Do I already have the Module 2+ toolchain installed? *(If no, pick Codespaces. If yes, you can pick either.)*
-3. Have I ever spent more than 30 minutes troubleshooting why a development tool wouldn't run on my computer? *(If you don't know, pick Codespaces. If yes and the experience was frustrating, pick Codespaces. If yes and you enjoyed it, you can pick either.)*
+1. Does your browser run comfortably right now — several tabs open, without the fan spinning up or things freezing? *(If yes, your computer clears the bar for either track.)*
+2. Are you on Windows or a Mac? *(Either works for both tracks. Windows plus Claude Code desktop means one extra download-and-run install in Lesson 5. A Mac usually needs none, and Lesson 5 says what to do if yours does.)*
 
-Your answer to question 2 or 3 picks your path.
+Those two answers are the whole check.
 
 ## Checkpoint
 
 You've got this if you can:
 
-- State your chosen path in one sentence.
-- Name the free-tier cap on Codespaces (120 core-hours, 60 clock-hours on a 2-core machine).
-- Find the local install appendix in [`SETUP.md`](../../SETUP.md) without re-reading this lesson.
+- Say, in one sentence, whether your computer can run Claude Code desktop, Codex in the ChatGPT desktop app, or both. (For almost everyone, the honest answer is "both.")
+- Say what's different if you're on Windows and pick Claude Code desktop (one extra install, in Lesson 5) — and that anything else your project needs gets installed with your agent's help, when it's needed.
+- Name the three places this course happens: the agent app, your browser, your phone.
 
 ## What you just did
 
-You picked your environment based on a 5-question triage instead of installing things and discovering the cost later. The next lesson does the same triage for AI tooling cost. The pattern — triage before install — is the most expensive bug-prevention you'll do all course.
+You checked whether your computer can run the agent app, using a browser-comfort test instead of a spec sheet. Next: the same honest check, but for cost. Lesson 3 walks through what each track charges you, before you create a single account.
 
 ## Navigation
 
 [← Previous: Welcome](./01-welcome.md)
-[Next: Cost-path triage →](./03-cost-path-triage.md)
+[Next: Choose your plan →](./03-cost-path-triage.md)

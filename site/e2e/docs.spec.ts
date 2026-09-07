@@ -26,18 +26,21 @@ test.describe("docs pages", () => {
     expect(response?.status()).toBe(404);
   });
 
-  test("lesson links to BUDGET.md resolve to /docs/budget", async ({
+  test("lesson links to WHAT-CHANGED.md resolve to /docs/what-changed", async ({
     page,
   }) => {
-    // The course's first lesson (publicly viewable) links BUDGET.md; the
-    // markdown pipeline rewrites root-doc links onto /docs routes.
+    // The course's first lesson (publicly viewable) links WHAT-CHANGED.md; the
+    // markdown pipeline rewrites root-doc links onto /docs routes. (It used to
+    // link BUDGET.md too; that link was dropped from the lesson on purpose in
+    // favour of the lesson chat, so this test follows the root-doc link the
+    // lesson still has.)
     await page.goto("/modules/00-welcome/01-welcome");
-    const budgetLinks = page.locator('article a[href="/docs/budget"]');
-    expect(await budgetLinks.count()).toBeGreaterThanOrEqual(1);
-    await budgetLinks.first().click();
-    await page.waitForURL("/docs/budget");
+    const docLinks = page.locator('article a[href="/docs/what-changed"]');
+    expect(await docLinks.count()).toBeGreaterThanOrEqual(1);
+    await docLinks.first().click();
+    await page.waitForURL("/docs/what-changed");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Course costs, honestly",
+      "Freshness log",
     );
   });
 });

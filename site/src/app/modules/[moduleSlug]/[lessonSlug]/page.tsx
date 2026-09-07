@@ -6,9 +6,12 @@ import { LessonArticle } from "@/components/lesson-article";
 import { LessonChat } from "@/components/lesson-chat/lesson-chat";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
 import { LessonLocked, LockIcon } from "@/components/lesson-locked";
-import { getAllLessonRefs, getLesson, getModule } from "@/lib/content";
-import { formatDateUtc, formatMinutes } from "@/lib/format";
-import { getUnlockState } from "@/lib/unlock";
+import { RouteTag } from "@/components/route-tag";
+import { getAllLessonRefs, getLesson, getModule, getModules } from "@/lib/content";
+import type { LessonRef } from "@/lib/content/types";
+import { formatDateUtc, formatMinutes, lessonHref, lessonLabel } from "@/lib/format";
+import { hasRouteProgress, isRouteComplete, lessonRole, routePointer } from "@/lib/route";
+import { gatingLesson, getUnlockState } from "@/lib/unlock";
 
 // Reads the session cookie for gating + the completion toggle — render per
 // request.
@@ -26,10 +29,6 @@ export async function generateMetadata({
   return { title: lesson ? lesson.title : "Lesson not found" };
 }
 
-function lessonHref(ref: { moduleSlug: string; lessonSlug: string }): string {
-  return `/modules/${ref.moduleSlug}/${ref.lessonSlug}`;
-}
-
 export default async function LessonPage({ params }: LessonPageProps) {
   const { moduleSlug, lessonSlug } = await params;
   const lesson = await getLesson(moduleSlug, lessonSlug);
@@ -37,9 +36,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const [session, mod] = await Promise.all([
+  const [session, mod, modules] = await Promise.all([
     auth(),
     getModule(lesson.moduleSlug),
+    getModules(),
   ]);
   const userId = session?.user?.id ?? null;
   const unlock = await getUnlockState(userId);
@@ -47,6 +47,42 @@ export default async function LessonPage({ params }: LessonPageProps) {
   const completed = unlock.completed.has(lesson.path);
   const nextUnlocked =
     lesson.next !== null && unlock.unlockedLessons.has(lesson.next.path);
+  // The lesson that actually gates this one / the next one (chain order, not
+  // flat order — see gatingLesson).
+  const gate = gatingLesson(modules, lesson.path);
+  const nextGate = lesson.next ? gatingLesson(modules, lesson.next.path) : null;
+  const role = lessonRole(lesson.moduleSlug, lesson.path);
+  const nextRole = lesson.next
+    ? lessonRole(lesson.next.moduleSlug, lesson.next.path)
+    : null;
+
+  // Where the route points from here (src/lib/route.ts): the next route
+  // lesson on a route lesson, or the way back to the route on a reference
+  // lesson. A `next_practical` in the front matter names the route lesson
+  // explicitly and wins when present. The card renders only when it says
+  // something the reading-order "Next →" below does not.
+  const pointer = routePointer(modules, lesson.moduleSlug, lesson.path, unlock.completed);
+  const routeTarget: LessonRef | null =
+    pointer?.kind === "next-step"
+      ? (lesson.nextPractical ?? pointer.lesson)
+      : (pointer?.lesson ?? null);
+  const showRouteCard =
+    routeTarget !== null &&
+    (pointer?.kind === "return" || routeTarget.path !== lesson.next?.path);
+  const routeTargetUnlocked =
+    routeTarget !== null && unlock.unlockedLessons.has(routeTarget.path);
+  const routeTargetModule = routeTarget
+    ? modules.find((entry) => entry.slug === routeTarget.moduleSlug)
+    : undefined;
+  const gateModule = gate
+    ? modules.find((entry) => entry.slug === gate.moduleSlug)
+    : undefined;
+  // A reference lesson read after the whole route is done: say so plainly
+  // instead of pointing at another reference lesson as if it were the route.
+  const routeDoneNote = role === "reference" && isRouteComplete(modules, unlock.completed);
+  // "Your route continues at" only once a route lesson is complete —
+  // completing this reference lesson (or any other) is not route progress.
+  const routeStarted = hasRouteProgress(modules, unlock.completed);
 
   // Title and meta stay visible on locked lessons — the content is gated for
   // pacing, not secrecy (the markdown is public on github.com).
@@ -62,9 +98,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
       </nav>
 
       <header className="mt-8">
-        <p className="font-mono text-xs uppercase tracking-wider text-ink-faint">
-          Lesson {lesson.lessonNumber} · {formatMinutes(lesson.estMinutes)}
-          {lesson.meta.updated && ` · updated ${formatDateUtc(lesson.meta.updated)}`}
+        <p className="flex flex-wrap items-baseline gap-x-3 font-mono text-xs uppercase tracking-wider text-ink-faint">
+          <span>
+            Lesson {lesson.lessonNumber} · {formatMinutes(lesson.estMinutes)}
+            {lesson.meta.updated && ` · updated ${formatDateUtc(lesson.meta.updated)}`}
+          </span>
+          <RouteTag role={role} />
         </p>
         <h1 className="mt-2 font-serif text-4xl leading-tight tracking-tight text-ink">
           {lesson.title}
@@ -81,9 +120,15 @@ export default async function LessonPage({ params }: LessonPageProps) {
           {lessonHeader}
           <LessonLocked
             signedIn={userId !== null}
-            prev={
-              lesson.prev
-                ? { title: lesson.prev.title, href: lessonHref(lesson.prev) }
+            gate={
+              gate
+                ? {
+                    title: gate.title,
+                    href: lessonHref(gate),
+                    label: gateModule
+                      ? lessonLabel(gateModule.number, gate.lessonNumber)
+                      : undefined,
+                  }
                 : null
             }
             firstLesson={{
@@ -124,6 +169,78 @@ export default async function LessonPage({ params }: LessonPageProps) {
           )}
         </div>
 
+        {showRouteCard && routeTarget && (
+          <aside
+            data-testid="practical-next"
+            className="mt-10 rounded-md border border-line-strong bg-surface p-6"
+          >
+            <p className="font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+              {pointer?.kind === "return"
+                ? routeStarted
+                  ? "Your route continues at"
+                  : "The practical route starts at"
+                : "Practical next step"}
+            </p>
+            <Link
+              href={lessonHref(routeTarget)}
+              className="mt-2 block font-serif text-2xl leading-snug text-ink transition-colors duration-150 hover:text-ink-secondary"
+            >
+              {routeTarget.title} →
+            </Link>
+            {routeTargetModule && (
+              <p className="mt-1 font-mono text-xs text-ink-faint">
+                {lessonLabel(routeTargetModule.number, routeTarget.lessonNumber)} ·{" "}
+                {formatMinutes(routeTarget.estMinutes)}
+              </p>
+            )}
+            <p className="mt-2 font-sans text-sm leading-relaxed text-ink-secondary">
+              {pointer?.kind === "return"
+                ? `This lesson is reference: read it whenever a build needs it — nothing later waits on it.${
+                    nextRole === "reference"
+                      ? " The reading-order next lesson below is more reference."
+                      : ""
+                  }`
+                : routeTargetUnlocked ? (
+                  "The lesson this course recommends you do next. The reading-order next lesson below is reference you can read whenever a build needs it."
+                ) : userId ? (
+                  "Unlocks when you mark this lesson complete. The reading-order next lesson below is reference you can read whenever a build needs it."
+                ) : (
+                  // Signed out there is no completion control on this page,
+                  // so "mark this lesson complete" is not something the
+                  // reader can do: say what actually opens the next step.
+                  <>
+                    It opens once this lesson is recorded as complete, and
+                    recording needs an account:{" "}
+                    <Link
+                      href="/signin"
+                      className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
+                    >
+                      sign in
+                    </Link>
+                    , come back here and mark this lesson complete. The
+                    reading-order next lesson below is reference you can read
+                    without an account whenever a build needs it.
+                  </>
+                )}
+            </p>
+          </aside>
+        )}
+
+        {routeDoneNote && (
+          <aside
+            data-testid="route-done"
+            className="mt-10 rounded-md border border-line bg-surface p-6 font-sans text-sm leading-relaxed text-ink-secondary"
+          >
+            <p className="font-sans text-xs font-medium uppercase tracking-widest text-ink-faint">
+              Reference
+            </p>
+            <p className="mt-2">
+              You&apos;ve finished the practical route. This lesson is
+              reference: read it in any order, whenever a build needs it.
+            </p>
+          </aside>
+        )}
+
         <nav className="mt-10 flex flex-col gap-4 border-t border-line pt-8 font-sans text-sm sm:flex-row sm:justify-between">
           {lesson.prev ? (
             <Link href={lessonHref(lesson.prev)} className="group max-w-xs">
@@ -131,6 +248,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <span className="mt-1 block text-ink transition-colors duration-150 group-hover:text-ink-secondary">
                 {lesson.prev.title}
               </span>
+              <RouteTag
+                role={lessonRole(lesson.prev.moduleSlug, lesson.prev.path)}
+                className="mt-1 block"
+              />
             </Link>
           ) : (
             <span />
@@ -145,6 +266,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 <span className="mt-1 block text-ink transition-colors duration-150 group-hover:text-ink-secondary">
                   {lesson.next.title}
                 </span>
+                {nextRole && <RouteTag role={nextRole} className="mt-1 block" />}
               </Link>
             ) : (
               <div className="max-w-xs text-ink-faint sm:text-right">
@@ -153,8 +275,11 @@ export default async function LessonPage({ params }: LessonPageProps) {
                   Next →
                 </span>
                 <span className="mt-1 block">{lesson.next.title}</span>
+                {nextRole && <RouteTag role={nextRole} className="mt-1 block" />}
                 <span className="mt-1 block text-xs">
-                  Mark this lesson complete to unlock
+                  {nextGate && nextGate.path !== lesson.path
+                    ? `Complete “${nextGate.title}” to unlock`
+                    : "Mark this lesson complete to unlock"}
                 </span>
               </div>
             )

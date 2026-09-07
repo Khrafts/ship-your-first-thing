@@ -1,10 +1,11 @@
 # WHAT-CHANGED.md — Freshness log
 
-The first place to check when reality drifts from a lesson. Your lesson's `> **Last captured:**` or
-`> **Last verified:**` banner — or, when it has neither, the `updated:` date at the top of the lesson —
-tells you WHEN the page was last true. [`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was
-true against. This file tells you WHAT has shifted since — newest first. Find the entries dated after your
-lesson's date and read those.
+> **This log closed on 2026-08-22.** What changed in the course up to that date is written below, newest first — that record stays here and stays useful. Nothing new is added to it. If your screen doesn't match a lesson and nothing below explains why, open the lesson chat ("Ask about this lesson") and tell it what you see next to what the lesson says.
+
+The first place to check when reality drifts from a lesson. Your lesson's `> **Last verified:**` banner — or,
+when it has none, the `updated:` date at the top of the lesson — tells you WHEN the page was last true.
+[`VERSIONS.md`](./VERSIONS.md) tells you WHICH tool versions it was true against. This file tells you WHAT
+has shifted since — newest first. Find the entries dated after your lesson's date and read those.
 
 Each entry is a dated heading plus three labeled lines:
 
@@ -13,37 +14,85 @@ Each entry is a dated heading plus three labeled lines:
 > **If you're affected:** the one thing to do — or "No learner action — internal change."
 > **Details:** links to where the change landed and the doc that owns the detail.
 
-Adding an entry? Follow the rules in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry) — voice-lint check #10 enforces them.
-
 ## Fast answers
 
 The quickest routes from "my screen doesn't match the lesson" to an answer:
 
 | What you're seeing | What happened | Where to look |
 |---|---|---|
-| A slash command from the course doesn't exist in your session | Claude Code replaced /tokens with /context (window usage) and /cost (spend); Gemini CLI uses /stats and /compress | [`CHEATSHEET.md`](./CHEATSHEET.md) |
-| Your agent's replies look different from a lesson's transcripts | Captured transcripts age; the loop the lesson teaches still works | The lesson's "Last captured" date, then the entries below dated after it |
+| An older copy of a lesson tells you to type a command starting with "/" | The course no longer teaches typed commands (since 2026-08-16) — you ask in plain words, and "start a fresh conversation" is the reset move | [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md) |
+| Your agent's replies look different from a lesson's conversation panels | Panels show real captured behavior; it ages, but the loop the lesson teaches still works | The lesson's "Last verified" date, then the entries below dated after it |
 | An install command or version number doesn't match what you see | Tools move between re-verification passes | [`VERSIONS.md`](./VERSIONS.md) |
-| An older copy of the course mentions a tool called Aider | The free path uses Gemini CLI (since 2026-05-08) | [`BUDGET.md`](./BUDGET.md) Path 2 |
+| An older copy of the course mentions Aider or Gemini CLI | The free path is Codex in the ChatGPT desktop app (since 2026-08-15) | [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) |
+| An older copy of Module 4 tells you to look for words in the agent's changes | Module 4 no longer asks you to read the agent's work — you try things in the running app, and the agent runs its own checks (since 2026-08-18) | [Module 4](./modules/04-thread-project/README.md) |
+| An older copy of SETUP or the cheatsheet tells you to open a terminal or launch a Codespace | The course runs in a desktop agent app; the reference pages were rebuilt to match (since 2026-08-19) | [SETUP](./SETUP.md) |
+| Module 4 keeps mentioning walkthroughs "in Module 5" and you can't find them | Module 5 exists now — the walkthroughs are its lessons 2 through 4 (since 2026-08-19) | [Module 5](./modules/05-operating/README.md) |
+| An older copy of Module 2 or 3 drops "saved" from the go-back sentence | Both wordings work; the course now says it one way everywhere — "Take us back to the last saved working version" (since 2026-08-20) | [Module 5 Lesson 5](./modules/05-operating/05-the-day-something-breaks.md) |
+| An older copy of Module 5 says Module 6 "comes next" but gives you nothing to click | Module 6 is published — Module 5's overview and its last lesson now link straight to it (since 2026-08-21) | [Module 6](./modules/06-after-live/README.md) |
+| An older copy of Module 6 says Module 7 "comes next" but gives you nothing to click | Module 7 is published — Module 6's overview and its last lesson now link straight to it (since 2026-08-22) | [Module 7](./modules/07-where-next/README.md) |
+
+## 2026-08-22 — Module 7 is here: the last module, and Modules 0 to 7 are published
+
+**Change:** Module 7 (Where to go from here) is published — keeping a long session clear-headed, carrying the same loop to agents this course doesn't teach, and a short list of what's worth learning next and what to skip. It is the last module: Modules 0 through 7 are all published.
+**If you're affected:** If you finished Module 6, the course continues at [Module 7](./modules/07-where-next/README.md) — nothing you built changed, and the contents list now names Modules 1 and 3 the way their own pages do.
+Three lines you may have read before were corrected. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) and [BUDGET](./BUDGET.md) now say the free track was installed and used for a first edit, rather than confirmed end-to-end.
+And [Module 4](./modules/04-thread-project/README.md)'s refusal check now says what to do when the thing you tried goes through: tell your agent what you did and what should have stopped it.
+**Details:** The lessons are in [`modules/07-where-next/`](./modules/07-where-next/README.md); their new words are in the [GLOSSARY](./GLOSSARY.md), the last two module cost rows in [BUDGET](./BUDGET.md), and three session moves in [CHEATSHEET](./CHEATSHEET.md).
+
+## 2026-08-21 — Module 6 is here: bug reports, new features, asking a person
+
+**Change:** Module 6 (After it's live) is published — reproducing a bug someone reports, adding a feature without breaking what works, spotting work you never asked for after pasting in text from outside, and knowing when to stop steering and ask a person.
+**If you're affected:** If you finished Module 5, the course continues at [Module 6](./modules/06-after-live/README.md). Module 1's "Next" link now reaches Module 2 instead of the course home page, and Module 4 got small wording and layout fixes — nothing you built changed.
+**Details:** The lessons are in [`modules/06-after-live/`](./modules/06-after-live/README.md); the four new words they use are in the [GLOSSARY](./GLOSSARY.md).
+
+## 2026-08-19 — Module 5 is here: operating the app you shipped
+
+**Change:** Module 5 (Operating the build) is published — the two-account testing ritual, three watch-the-AI-fail walkthroughs you recover from, and the moves for the day something breaks.
+**If you're affected:** If you finished Module 4, the course continues at [Module 5](./modules/05-operating/README.md). A handful of Module 1, 2, 3, and 4 sentences were corrected to match — nothing you built or already did changed.
+**Details:** The lessons are in [`modules/05-operating/`](./modules/05-operating/README.md); the Module 4 rebuild they continue is the entry dated 2026-08-18.
+
+## 2026-08-19 — The reference pages match the desktop-app course
+
+**Change:** SETUP, BUDGET, VERSIONS, COMMON-ISSUES, CHEATSHEET, and the GLOSSARY are rebuilt for the desktop agent apps. Setup is now "install your app, create your accounts"; the cheatsheet lists phrases you say to your agent and buttons you press, not commands.
+**If you're affected:** If you bookmarked any of these pages, re-read them — the old Codespaces and command-line instructions are gone.
+**Details:** The pages live at the repo root; the module content they describe changed in the entries dated 2026-08-16, 2026-08-17, and 2026-08-18.
+
+## 2026-08-18 — Module 4 is rebuilt: a plan lesson, eight chunks, and test gates
+
+**Change:** Module 4 now opens with a plan you co-write with your agent, and every build chunk ships a definition of done the agent must check and show you before saying "done". All lessons run in your desktop agent app; the lesson files are renumbered.
+**If you're affected:** If you started Module 4 before this date, begin again from the plan lesson — the chunks are the same features, rebuilt around checks you can actually run.
+**Details:** The lessons are in `modules/04-thread-project/`; the desktop-app move is the entry dated 2026-08-16.
+
+## 2026-08-17 — Module 3 now runs in your agent app's chat window
+
+**Change:** Module 3's four loop lessons are reshot for Claude Code desktop and Codex in the ChatGPT desktop app. Your agent creates the practice page, you watch it in your browser, and "start a fresh conversation" replaces the typed `/clear` command everywhere.
+**If you're affected:** The loop you learned is unchanged — only the surfaces moved. If you learned Module 3 before this date, skim Lesson 2's fresh-conversation section.
+**Details:** The lessons are in `modules/03-the-loop/`; the wider desktop-app move is the entry below dated 2026-08-16.
+
+## 2026-08-16 — The course now runs in a desktop agent app, not a terminal
+
+**Change:** Modules 0 through 2 are rebuilt around two desktop agent apps — Claude Code desktop and Codex in the ChatGPT desktop app. No terminal, no Codespace: Module 0 walks you from hardware check to installing your app, and your agent handles everything that runs on a machine.
+**If you're affected:** If you set up with Codespaces before this date, start Module 0 again from the beginning — it is a shorter path. Modules 3 and 4 still show the older tools until their rewrites land; the loop they teach is unchanged.
+**Details:** The rebuilt modules are `modules/00-welcome/` and `modules/02-toolchain/`; the code-reading module that sat between Modules 3 and 4 is retired.
 
 ## 2026-07-25 — Module 4 Lesson 2 is published: the profile page
 
 **Change:** Module 4 Lesson 2 builds a profile — a display name, a short bio, and a photo people upload — that anyone can read and only its owner can change. It includes the one step you run yourself in the Supabase dashboard, with screenshots.
 **If you're affected:** Nothing to do. If you have finished Lesson 1, Lesson 2 is the next chunk.
-**Details:** The lesson is `modules/04-thread-project/02-profile.md`.
+**Details:** The lesson is `modules/04-thread-project/03-profile.md` (renumbered from `02-profile.md` on 2026-08-17).
 
 ## 2026-07-25 — Thread project sign-in is an email and a password
 
 **Change:** Module 4 Lesson 1 is published, and it builds sign-in with an email address and a password — not the emailed sign-in link earlier pages described. Module 1 Lesson 3 and the Module 4 overview now say the same thing.
 **If you're affected:** Nothing to do before Lesson 1. If you already read that the thread project would email you a link to sign in, that is the part that changed.
-**Details:** The lesson is `modules/04-thread-project/01-sign-in.md`.
+**Details:** The lesson is `modules/04-thread-project/02-sign-in.md` (renumbered from `01-sign-in.md` on 2026-08-17).
 
 ## 2026-06-28 — The Codespaces walkthrough has labeled, zoomable screenshots
 
 **Change:** Module 0 Lesson 5 (the Codespaces walkthrough) now shows labeled screenshots of the key steps — the "Use this template" button, the new-repository form, the Code → Codespaces panel, and a booted Codespace with its terminal open — each marked with arrows and step numbers.
 On the course site you can click any screenshot to enlarge it, and the link to the starter workspace opens directly in a new tab.
 **If you're affected:** Nothing to do — the steps are unchanged; the clearer pictures just make them easier to follow.
-**Details:** Screenshots are in `screenshots/m0/05-codespaces-walkthrough/`; the lesson is `modules/00-welcome/05-codespaces-walkthrough.md`.
+**Details:** Screenshots were in `screenshots/m0/05-codespaces-walkthrough/`; the lesson was `modules/00-welcome/05-codespaces-walkthrough.md` (retired 2026-08-15 — replaced by `modules/00-welcome/05-install-your-agent-app.md`).
 
 ## 2026-06-27 — You now build in your own copy of a small workspace, not the course repo
 
@@ -65,7 +114,7 @@ When a lesson names `index.html` or `sample-app/`, those are now at the root of 
 **If you're affected:** Nothing changes about how you use this file — find the entries dated after your lesson's date.
 **Details:** Entry rules live in [`CONTRIBUTING.md`](./CONTRIBUTING.md#adding-a-what-changed-entry).
 
-<!-- voice-lint check #10 boundary: entries below this line predate the 2026-06-12 entry contract and are preserved verbatim. New entries go ABOVE this line. -->
+<!-- Boundary: entries below this line predate the 2026-06-12 entry contract and are preserved verbatim. New entries go ABOVE this line. -->
 
 ## Earlier entries (before 2026-06-12)
 

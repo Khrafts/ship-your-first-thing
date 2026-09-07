@@ -36,10 +36,12 @@ test.describe("lesson page (signed out)", () => {
   test("a later lesson shows the locked card instead of the body", async ({
     page,
   }) => {
-    await page.goto(LESSON_URL);
+    // Module 1 is on-demand (always readable); the first gated lesson for a
+    // signed-out viewer is Module 2 Lesson 3.
+    await page.goto("/modules/02-toolchain/03-the-save-system");
     // Title and meta stay visible — the gate is pacing, not secrecy.
     await expect(
-      page.getByRole("heading", { level: 1, name: "How the web works" }),
+      page.getByRole("heading", { level: 1, name: "The save system" }),
     ).toBeVisible();
     await expect(
       page.getByRole("heading", { name: "This lesson is locked" }),
@@ -51,7 +53,7 @@ test.describe("lesson page (signed out)", () => {
     ).toBeVisible();
   });
 
-  test("sidebar lists module 0's five lessons; current row marked, rest locked", async ({
+  test("sidebar lists module 0's six lessons; current row marked, rest open", async ({
     page,
   }) => {
     await page.goto(FIRST_LESSON_URL);
@@ -59,17 +61,17 @@ test.describe("lesson page (signed out)", () => {
     await expect(rail).toBeVisible();
 
     const rows = rail.locator("ol > li");
-    await expect(rows).toHaveCount(5);
+    await expect(rows).toHaveCount(6);
 
     // The lesson being viewed carries aria-current="page".
     const current = rail.locator('[aria-current="page"]');
     await expect(current).toBeVisible();
     await expect(current).toContainText("Welcome");
 
-    // Signed out, nothing beyond the first lesson is unlocked: the other
-    // four rows are aria-disabled lock rows, and no lesson row is an anchor.
-    await expect(rail.locator('ol [aria-disabled="true"]')).toHaveCount(4);
-    expect(await rail.locator("ol a").count()).toBe(0);
+    // Signed out, every Module 0 lesson is open: no lock rows, and the five
+    // other rows are anchors.
+    await expect(rail.locator('ol [aria-disabled="true"]')).toHaveCount(0);
+    expect(await rail.locator("ol a").count()).toBe(5);
   });
 });
 
@@ -143,7 +145,7 @@ test.describe("lesson page (unlocked)", () => {
     await expect(page.locator("#browser")).toBeAttached();
   });
 
-  test("sidebar shows module 1's four lessons with completion count and locks", async () => {
+  test("sidebar shows module 1's four lessons with completion count, none locked", async () => {
     await page.goto(LESSON_URL);
     const rail = sidebar(page);
     await expect(rail).toBeVisible();
@@ -153,10 +155,10 @@ test.describe("lesson page (unlocked)", () => {
     await expect(rail.locator('[aria-current="page"]')).toContainText(
       "How the web works",
     );
-    // Signed in: the rail shows the module completion counter. This lesson
-    // isn't complete yet, so the three later lessons are still locked rows.
+    // Signed in: the rail shows the module completion counter. Module 1 is
+    // on-demand reference, so no row is ever a locked row.
     await expect(rail.getByText("0/4 complete")).toBeVisible();
-    await expect(rail.locator('ol [aria-disabled="true"]')).toHaveCount(3);
+    await expect(rail.locator('ol [aria-disabled="true"]')).toHaveCount(0);
   });
 
   test("mark-complete control renders before the prev/next nav", async () => {
@@ -181,16 +183,19 @@ test.describe("lesson page (unlocked)", () => {
   });
 
   // Runs last in the serial block: it mutates completion state for this user.
-  test("next-lesson nav locks until this lesson is complete, then links lesson 02", async () => {
-    await page.goto(LESSON_URL);
+  // Module 1's lessons never lock, so the next-lock behaviour is exercised on
+  // a chain lesson: Module 2 Lesson 3 (open once Module 0 is complete) gates
+  // Module 3 Lesson 1.
+  test("next-lesson nav locks until this lesson is complete, then links the next chain lesson", async () => {
+    const SAVE_LESSON_URL = "/modules/02-toolchain/03-the-save-system";
+    const LOOP_LESSON_URL = "/modules/03-the-loop/01-introducing-the-loop";
+    await page.goto(SAVE_LESSON_URL);
     // Not yet complete — the next card is a locked placeholder, not a link.
     await expect(
       page.getByText("Mark this lesson complete to unlock"),
     ).toBeVisible();
     expect(
-      await page
-        .locator('article a[href="/modules/01-mental-models/02-where-data-lives"]')
-        .count(),
+      await page.locator(`article a[href="${LOOP_LESSON_URL}"]`).count(),
     ).toBe(0);
 
     await page
@@ -201,9 +206,6 @@ test.describe("lesson page (unlocked)", () => {
     ).toBeVisible();
 
     const nextLink = page.getByRole("link", { name: /Next →/ });
-    await expect(nextLink).toHaveAttribute(
-      "href",
-      "/modules/01-mental-models/02-where-data-lives",
-    );
+    await expect(nextLink).toHaveAttribute("href", LOOP_LESSON_URL);
   });
 });

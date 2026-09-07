@@ -17,7 +17,7 @@ describe("runner module (builder)", () => {
     expect(m.name).toBe("Build it");
     expect(m.highScoreId).toBe("builder");
     // builder has milestoneEvery, so it reports milestones.
-    expect(m.hasMilestones(m.createState({}))).toBe(true);
+    expect(m.hasMilestones).toBe(true);
   });
 
   it("starts idle, runs on primary, and scores over distance", () => {

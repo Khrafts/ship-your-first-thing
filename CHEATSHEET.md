@@ -1,210 +1,65 @@
 # Cheatsheet
 
-**Purpose:** A one-page reference for the things you'll do most often. Common AI prompts, git basics, deploy commands, token discipline. The goal is "I forgot how to do X — let me grab it from one place." Lessons link here for re-discoverable commands.
+> **Note:** Re-cut 2026-08-18 for the desktop-app course. The old command-line reference material — installing and running tools by hand — is gone: your agent does all of that machine-side work for you now, behind an approval prompt. What's left is what you actually say to your agent and where you click in its app.
 
-**Structure:** Four sections. Each entry is a tight one-liner with a one-line "why" comment.
+**Purpose:** The one page to check when you've forgotten the exact wording of a locked phrase or a check this course teaches. Not a tutorial — a reference.
 
-**Freshness:** If a command here doesn't work in your session, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — command names change over time, and the log records each change.
+**Structure:** Four sections. Phrases you say to your agent, buttons you press in the app, checks you run, and conversation hygiene. Each entry is a tight one-liner with a "when to say it" or "when to run it" note and a link to the lesson that teaches it in full.
 
-**How to contribute:** See `CONTRIBUTING.md`. When you author a lesson that introduces a re-usable command or prompt, add it here in the same PR. Keep entries terse — this is a reference, not a tutorial.
+**Freshness:** If a phrase or button here doesn't match what you see in your app, check [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) first — wording and app screens shift between course revisions, and the log records each change.
+
+**How to contribute:** See `CONTRIBUTING.md`. When you author a lesson that introduces a new locked phrase or check, add it here in the same PR. Keep entries terse — this is a reference, not a tutorial.
 
 ---
 
-## AI prompts
+## Phrases you say to your agent
 
-```
-Plan: I want to {feature}. The constraints are {list}. The current state is in {files}. Don't write code yet.
-```
-*Use to start a planning conversation. Module 3 covers the four-step prompt template (intent / constraints / context / ask) in depth.*
+| Phrase | Say it when | Taught in |
+|---|---|---|
+| *"Save this as a working version."* | The moment a feature works — before you move on to the next chunk. | [Module 4 Lesson 0](./modules/04-thread-project/00-the-plan.md) |
+| *"Take us back to the last saved working version."* | A change made things worse, or you have lost the thread of what changed. You lose only what happened after your last save. | [Module 2 Lesson 3](./modules/02-toolchain/03-the-save-system.md) (it becomes the day-something-breaks move in [Module 5 Lesson 5](./modules/05-operating/05-the-day-something-breaks.md)) |
+| *"Start a fresh conversation and begin this chunk again from your last saved version."* | Your agent keeps circling the same problem instead of fixing it. Don't keep arguing with it — restart instead. | [Module 4 Lesson 4](./modules/04-thread-project/04-posts.md) (the same line closes every chunk from Lesson 1 on) |
+| *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* | Before you approve anything that touches data you already have saved, and before you paste anything into a dashboard. | [Module 4 overview](./modules/04-thread-project/README.md) |
+| *"Run the checks we agreed on and show me the results first."* | Your agent reports a chunk "done" without showing you the checks it ran. | [Module 4 Lesson 0](./modules/04-thread-project/00-the-plan.md) |
+| Open your agent and point it at the next feature in your plan. | The start of every new chunk. Each lesson's opening ask names the feature's actual place in the plan you agreed on — "the first feature," "the second feature," and so on. | [Module 4 Lesson 1](./modules/04-thread-project/01-hello-world-deploy.md) (the pattern repeats, with the number changing, in every chunk lesson) |
 
-```
-/clear
-```
-*Reset Claude Code or Gemini CLI conversation history. Use between unrelated tasks; cuts token cost on the next prompt.*
+## Buttons you press in the app
 
-```
-/context
-```
-*Show how much of your context window is in use (Claude Code). Watch this when you're on Path 2 (Gemini CLI free tier — use `/stats` there) or Path 3 (Anthropic API token-careful) — see `BUDGET.md`.*
+Both apps put the same three things within reach; only the location changes.
 
-```
-/cost
-```
-*Show running session spend (Claude Code). Path 3 learners check this regularly.*
+### Path 1: Claude Code desktop
 
-## AI agent install + hygiene
+- **The approval prompt.** Your agent proposes a change, the app stops and asks a plain question — something like "allow this change?" — with an approve choice and a reject choice. It asks before each change only when the selector next to the send button is set to **Manual**; on the plan this course uses it starts in Auto, so set Manual first. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
+- **Starting a new conversation.** You start one in the same Code tab you've already been working in — there's no separate screen to find. [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md)
+- **Finding an old conversation.** Not yet verified for this app — see the note below.
 
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
-*Install Claude Code on macOS or Linux. Re-check `VERSIONS.md` for the latest verified command.*
+### Path 2: Codex, inside the ChatGPT desktop app
 
-```powershell
-irm https://claude.ai/install.ps1 | iex
-```
-*Install Claude Code on Windows (PowerShell).*
+- **The approval prompt.** Codex works inside the one folder you chose without asking, and asks before it reaches outside that folder or out to the internet — so you may see few questions, or none, while it edits your page. The setting lives in the permissions control below the message box; the exact question wording is not yet verified for this app — see the note below. [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md)
+- **Starting a new conversation.** The same new-chat move you already use in ChatGPT for anything else. [Module 3 Lesson 2](./modules/03-the-loop/02-planning-vs-execution.md)
+- **Finding an old conversation.** Not yet verified for this app — see the note below.
 
-```bash
-npm install -g @google/gemini-cli
-```
-*Install Gemini CLI on any platform with Node 20 or newer.*
+> **Note:** This course hasn't confirmed exactly where either app keeps a list of past conversations you can reopen. If you need an old one back, ask your agent, or look near where you start a new conversation — that's usually where an app keeps the control for both. It also hasn't confirmed how the ChatGPT app words its approval question, so read the one on your own screen rather than expecting the Path 1 example above — what matters is that one choice approves and the other rejects.
 
-```bash
-claude --version
-```
-*Confirm Claude Code installed (Path 1 or Path 3).*
+## Checks you run
 
-```bash
-gemini --version
-```
-*Confirm Gemini CLI installed (Path 2).*
+Two forms, and neither one asks you to look at anything your agent wrote. [Module 4 overview](./modules/04-thread-project/README.md#what-your-checks-look-like) has the worked examples for both.
 
-Hygiene templates ship at `thread-project-template/` — copy into a new project so AI agents skip secrets, planning notes, and dependency folders by default. See Module 2 Lesson 6.
+**The refusal check.** In the running app, you try the thing that should NOT be allowed and confirm it is refused. If it goes through instead, you tell your agent exactly what you did and what should have stopped it.
 
-## Terminal basics
+**The pre-flight question.** Before any step you can't take back — anything pasted into a dashboard, anything run against data that already exists — you ask your agent the named question above and wait for the answer before continuing.
 
-```bash
-pwd
-```
-*Print working directory — where am I? Run this when you've been `cd`-ing around and lost track.*
+## Conversation hygiene
 
-```bash
-ls
-```
-*List files in the current directory. Add a path to peek into a folder without `cd`-ing into it: `ls modules`.*
+The re-cut of what this page used to call "token discipline" — the same goal, at the level you actually act on:
 
-```bash
-cd <directory>
-```
-*Change into a directory. `cd ..` moves up one level; `cd` alone goes home.*
+- **One feature per conversation.** Finished the thing you were working on and want to start a different one? That's a fresh conversation, not a continuation.
+- **A fresh conversation per chunk.** Every chunk in Module 4 opens by pointing your agent at the plan; carrying an old chunk's back-and-forth into the next one is how a plan and a build quietly drift apart.
+- **Tell your agent what you saw, not a wall of text.** "The button didn't hide the date" beats pasting in everything the app printed. Say what you saw and what should be different, and let your agent do the reading. [Module 3 Lesson 4](./modules/03-the-loop/04-steering-and-recovery.md)
 
-```bash
-clear
-```
-*Wipe the visible terminal output. Cosmetic — your command history is still there (up arrow).*
+**Three moves that act on the session, not on the work.** Each has conditions that select it, and none of them is a beginner phase you grow out of. [Module 7 Lesson 1](./modules/07-where-next/01-session-hygiene.md)
 
-```bash
-mkdir <name>
-```
-*Make a new (empty) directory. Errors if the directory already exists.*
-
-```bash
-rmdir <name>
-```
-*Remove an EMPTY directory. Safer than `rm -rf` for cleanup; errors if the directory isn't empty.*
-
-## Runtime + tooling
-
-```bash
-node --version
-```
-*Print the installed Node version. Sanity check after opening a fresh Codespace; this course pins Node 20.x LTS (see `VERSIONS.md`).*
-
-```bash
-node
-```
-*Open Node's REPL (interactive prompt). Type JavaScript expressions and see results; `.exit` to leave.*
-
-```bash
-node <file.js>
-```
-*Run a JavaScript file directly with Node. Module 4 onward, you'll mostly use `npm run dev` instead — the project scaffold wires this up for you.*
-
-## Package management
-
-```bash
-npm --version
-```
-*Print the installed npm version. Sanity check after opening a fresh Codespace — npm and Node ship together but are separate tools, so their version numbers differ. This course pins npm 10.x (bundled with Node 20.x LTS, see `VERSIONS.md`).*
-
-```bash
-npm install
-```
-*Read `package.json` and download every dependency into `node_modules/`. The first command to run after cloning a fresh project that uses npm.*
-
-```bash
-npm install <package-name>
-```
-*Add a new package to `dependencies` AND download it. Example: `npm install date-fns`.*
-
-```bash
-npm uninstall <package-name>
-```
-*Remove a package from `dependencies` AND delete it from `node_modules/`.*
-
-```bash
-npm run dev
-```
-*Start the development server defined in `package.json`'s `scripts.dev`. Module 4 onward, you'll run this every day to see your app live in the browser preview.*
-
-## Git basics
-
-```bash
-git status
-```
-*Show what's changed but not committed. Run before every commit.*
-
-```bash
-git add . && git commit -m "describe what changed"
-```
-*Stage and commit everything. Default rhythm in Codespaces.*
-
-```bash
-git push
-```
-*Send your commits to GitHub. Push frequently — Codespaces lose your work if you delete them without pushing first.*
-
-```bash
-git pull
-```
-*Fetch commits from a remote host (like GitHub) and merge them into your local copy. Codespaces usually run this automatically when you open them; outside Codespaces, run it at the start of each session if you commit from more than one machine.*
-
-```bash
-git reset --hard HEAD
-```
-*Throw away ALL uncommitted changes back to your last commit. Use after a bad AI session that broke things. Module 3 covers this as "the undo button when the AI breaks things."*
-
-## Deploy commands
-
-*Phases 3 onward. Phase 1 seeds the section structure; Phase 3 fills in `vercel`, `npx vercel --prod`, env-var checklist commands.*
-
-## Token discipline
-
-```
-/clear
-```
-*See above — single biggest cost reducer.*
-
-```
-/compact
-```
-*Compress conversation history without losing the gist. Use when context is large but you don't want to lose continuity.*
-
-```
-/drop {filename}
-```
-*Remove a file from the AI's context. Use when the AI keeps editing the wrong file.*
-
-```
-/context
-```
-*Show how much of your context window is in use (Claude Code). Module 3 lesson covers when to act on the number.*
-
-```
-/cost
-```
-*Show running session spend (Claude Code). Path 3 learners check this regularly.*
-
-```
-/compress
-```
-*Gemini CLI's equivalent of Claude Code's `/compact` — compresses conversation history without losing the gist. Same purpose, different keystroke.*
-
-```
-/stats
-```
-*Gemini CLI's equivalent of Claude Code's `/context` — show conversation stats including token usage in the current session.*
-
-## npm vs pnpm note (D-21)
-
-Lessons in this course teach **npm** (the default package manager for `create-next-app`; what Claude Code and Gemini CLI reach for by default). The course platform at `site/` uses **pnpm** for security-cooling reasons. Both work. If you prefer pnpm for the thread project: `pnpm install` ↔ `npm install`; `pnpm add <pkg>` ↔ `npm install <pkg>`; `pnpm run dev` ↔ `npm run dev`. Lessons in M2/M3/M3.5 + the Phase 3 thread project use npm commands verbatim.
+- **Start a fresh conversation** — when the problem is the conversation: something you ruled out has come back, or an instruction from earlier has quietly stopped applying.
+- **Move to a different agent** — when a fresh conversation hit the same wall the same way twice, or your app is down or out of allowance for the day. Worth exactly one try. Skip it entirely when money, other people's information, or something that cannot be taken back is at stake — that goes straight to the next move.
+- **Leave the keyboard** — either hand it to a person ([Module 6 Lesson 4](./modules/06-after-live/04-when-to-ask-a-person.md)), or stop for today: you cannot say in one plain sentence what you want, the rounds are getting shorter and sharper, or it is late and the thing waiting at the approval prompt is one you would rather be awake for. Say *"save this as a working version"* before you close the lid.
+- **The rule that picks between them:** *a move you have already made twice is not the move.*

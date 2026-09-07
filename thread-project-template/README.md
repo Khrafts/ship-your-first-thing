@@ -1,20 +1,23 @@
-# thread-project template
+# Learner-project agent contract (template)
 
-Reference templates copied by Phase 3 Chunk 0 into the actual thread-project scaffold a learner will build. The files in this directory document the convention a learner's thread-project repo should follow from day one: which files to never commit (.gitignore), which paths AI agents should ignore (.claudeignore + .geminiignore + .claude/settings.json). Module 2 Lesson 6 (`modules/02-toolchain/06-ai-coding-agents.md`) walks through what each file does.
+This directory is the canonical wording of the agent contract and plan shape that every learner-built thread project carries. Nothing ships it; the learner dictates it (see below).
 
 ## What's in this directory
 
-- `.gitignore` — paths git ignores: build artifacts, dependencies, secrets, OS cruft.
-- `.claudeignore` — community-pattern file Claude Code does NOT natively support in May 2026 (see header comment in the file). Ships for two reasons: documents which paths a learner should NOT expose to Claude Code's context, and future-proofs against the day Claude Code adds native support (issue #29455 closed as duplicate; the feature is requested).
-- `.geminiignore` — Gemini CLI's officially-supported ignore file (gitignore-style syntax).
-- `.claude/settings.json` — Claude Code's officially-supported hard-enforcement mechanism via `permissions.deny` rules. This is what actually blocks reads in May 2026.
+- `CLAUDE.md` and `AGENTS.md` — identical twins, read by different AI agents (Claude Code reads `CLAUDE.md`, Codex reads `AGENTS.md`) at the start of every conversation in the project folder. They are the canonical wording of the house rules.
+- `PLAN.md` — the shape of the learner's project plan: the eight features in build order, and the "how we work" lines.
+- Support dotfiles — `.gitignore`, `.claudeignore`, and `.claude/settings.json` — configuration that helps agents work well in the learner's environment.
 
-## How to use
+## How these reach a learner's project
 
-When Phase 3 Chunk 0 scaffolds the thread project, copy every file in this directory into the new project's root (preserving the `.claude/` subdirectory). Then delete this template directory's contents from the new project — they should live at the project root, not inside `thread-project-template/`.
+Nothing copies this directory into a learner's folder, and no lesson links to it. The learner's agent never reads the course. The delivery path is the setup ask in `modules/04-thread-project/00-the-plan.md`: the learner says the eight features in order and the house rules in their own words, and tells the agent to write the rules into the file it reads on its own (`CLAUDE.md` or `AGENTS.md`, named in the ask) and the plan into the plan file. The lesson's read-back check and its fresh-conversation test are how the learner confirms the rules took.
 
-## Why two ignore files for Claude Code
+So this directory and that ask must say the same things — but they are not copies of each other. The ask restates the house rules in the learner's own voice, as one paragraph the learner says; `CLAUDE.md` / `AGENTS.md` carry the same rules written for the agent, one section each. The eight feature lines in `PLAN.md` are meant to match the ask's numbered list in order and meaning (identical text as of 2026-09-07; the lesson is edited more often than this directory, so check rather than assume). The earlier delivery path — a launch repository synced from this directory — is retired with the sandbox; do not reintroduce it.
 
-Claude Code respects `.gitignore` by default. For HARD enforcement of additional paths (paths git tracks but you don't want Claude Code to read — internal planning docs in `.planning/`, cached node_modules), the canonical mechanism is `.claude/settings.json` with `permissions.deny` rules. That's what enforces today.
+When you change a rule here, change the ask in Lesson 0 (and the `## How we work` lines in `PLAN.md`) in the same commit, and the other way round. The sync check, in either direction:
 
-We also ship `.claudeignore` because (a) it matches the learner's mental model of "AI tools have their own ignore file, like git does", (b) community tooling and editors can pick it up, and (c) when Anthropic ships native `.claudeignore` support — the feature request is active — this file becomes the canonical mechanism. Cost of shipping both: nothing. Cost of shipping only one: a learner who reads about `.claudeignore` elsewhere and wonders where ours is.
+- Same eight features, same order, same meaning, in `PLAN.md` and the ask.
+- Every rule the ask states has a section here: the learner isn't a programmer and is never handed anything to type or run; tools are installed only when a step first needs them, with the learner giving only their own approvals, checked before going on, and a failed install stops with what was tried and what the learner can do next; any administrator password or account sign-in is typed into the installer or official sign-in window the agent names, never into the chat; plain words, never code, error text, or file names as an explanation; stop and ask before anything that can't be undone; run the agreed checks and show results before "done"; on "save this as a working version", save with a one-line note and report whether the copy went up and whether the live copy rebuilt; start the app and give the address when asked to see it; say "I'm stuck" with at most three options; read the plan and the rules at the start of every conversation and open by saying where we are.
+- `CLAUDE.md` and `AGENTS.md` stay byte-identical (`cmp` them).
+
+`CLAUDE.md` and `AGENTS.md` are authored for agents and are exempt from the audience-vocabulary tiers, per `docs/COURSE-AUTHORING.md` Part 14. `PLAN.md` is learner-visible, so it stays in plain, jargon-free language even though the tiers don't formally apply to this directory.

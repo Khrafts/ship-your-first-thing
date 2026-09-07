@@ -35,7 +35,7 @@ export function makeRunnerModule(def: GameDef): GameModule<GameState> {
 
     getScore: (s) => s.score,
     getStage: (s) => s.stage,
-    hasMilestones: () => Boolean(def.milestoneEvery && def.milestoneEvery > 0),
+    hasMilestones: Boolean(def.milestoneEvery && def.milestoneEvery > 0),
     isIdle: (s) => s.phase === "idle",
     isOver: (s) => s.phase === "over",
     gameOverLine: (s) => def.gameOverLine(s.score, s.stage),

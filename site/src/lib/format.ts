@@ -26,7 +26,7 @@ export function formatDateTimeUtc(value: Date): string {
   return `${formatted} UTC`;
 }
 
-/** 0 → "Module 0", 3.5 → "Module 3.5". */
+/** 0 → "Module 0", 4 → "Module 4". */
 export function moduleLabel(number: number): string {
   return `Module ${number}`;
 }
@@ -37,4 +37,14 @@ export function formatMinutes(minutes: number): string {
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
   return rest === 0 ? `${hours} hr` : `${hours} hr ${rest} min`;
+}
+
+/** Site URL of a lesson, from any ref carrying its module + lesson slugs. */
+export function lessonHref(ref: { moduleSlug: string; lessonSlug: string }): string {
+  return `/modules/${ref.moduleSlug}/${ref.lessonSlug}`;
+}
+
+/** (2, "03") → "Module 2, Lesson 3". Lesson numbers are zero-padded strings. */
+export function lessonLabel(moduleNumber: number, lessonNumber: string): string {
+  return `${moduleLabel(moduleNumber)}, Lesson ${Number(lessonNumber)}`;
 }

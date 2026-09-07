@@ -16,28 +16,31 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 import { GITHUB_REPO_URL } from "@/lib/copy";
+import { contentRoot } from "./root";
+import { isScreenshotImagePath, screenshotRoute } from "./screenshots";
 import type { Lesson, LessonMeta, LessonRef, ModuleInfo } from "./types";
 
 export type { Lesson, LessonMeta, LessonRef, ModuleInfo, UpcomingModule } from "./types";
 export { UPCOMING_MODULES } from "./types";
+import { UPCOMING_MODULES } from "./types";
+import type { UpcomingModule } from "./types";
 
-/** Repo root holding modules/, GLOSSARY.md, SETUP.md. The site always runs
- *  with cwd = site/ (dev, build, start, Docker), so the parent directory is
- *  the default; CONTENT_ROOT overrides it for unusual layouts. */
-function contentRoot(): string {
-  const override = process.env.CONTENT_ROOT;
-  if (override && override.length > 0) {
-    return path.resolve(override);
-  }
-  return path.resolve(process.cwd(), "..");
+/** Upcoming modules that do NOT yet have a content directory. The static
+ *  UPCOMING_MODULES list lags behind the repo, so filter by what actually
+ *  loaded — otherwise a shipped module renders twice (once live, once as
+ *  "coming later"). */
+export function upcomingModules(modules: ModuleInfo[]): UpcomingModule[] {
+  const live = new Set(modules.map((mod) => mod.number));
+  return UPCOMING_MODULES.filter((mod) => !live.has(mod.number));
 }
 
 // ---------------------------------------------------------------------------
 // Link rewriting
 // ---------------------------------------------------------------------------
 
-/** Raw-content host for the GitHub fallback. Blob URLs serve an HTML page,
- *  so image targets must point at raw.githubusercontent.com instead. */
+/** Raw-content host for the GitHub fallback (images outside screenshots/,
+ *  e.g. diagrams). Blob URLs serve an HTML page, so image targets must point
+ *  at raw.githubusercontent.com instead. */
 const GITHUB_RAW_URL = GITHUB_REPO_URL.replace(
   "https://github.com/",
   "https://raw.githubusercontent.com/",
@@ -106,6 +109,12 @@ export function rewriteUrl(url: string, sourceDir: string): string {
     return `/modules/${moduleMatch[1]}${hash}`;
   }
 
+  if (isScreenshotImagePath(resolved)) {
+    // Course screenshots ship with the checkout, so serve them from it: the
+    // GitHub fallback below would show main's copy (missing for new files,
+    // un-redacted for privacy fixes) instead of the one this build renders.
+    return `${screenshotRoute(resolved)}${hash}`;
+  }
   if (IMAGE_EXTENSION.test(resolved)) {
     return `${GITHUB_RAW_URL}/main/${resolved}${hash}`;
   }
@@ -342,6 +351,7 @@ interface ParsedFrontmatter {
   prereqs: string[];
   updated: string;
   deviations: string[];
+  nextPractical: string | null;
 }
 
 function parseFrontmatter(data: Record<string, unknown>, fallbackModule: string): ParsedFrontmatter {
@@ -353,6 +363,10 @@ function parseFrontmatter(data: Record<string, unknown>, fallbackModule: string)
     prereqs: toStringArray(data.prereqs),
     updated: String(data.updated ?? ""),
     deviations: toStringArray(data.deviations),
+    nextPractical:
+      typeof data.next_practical === "string" && data.next_practical.length > 0
+        ? data.next_practical
+        : null,
   };
 }
 
@@ -511,7 +525,13 @@ export async function getLesson(
     prereqs: parsed.prereqs,
     updated: parsed.updated,
     deviations: parsed.deviations,
+    nextPractical: parsed.nextPractical,
   };
+
+  const nextPractical =
+    parsed.nextPractical === null
+      ? null
+      : (allLessons.find((l) => l.path === parsed.nextPractical) ?? null);
 
   return {
     ...ref,
@@ -519,6 +539,7 @@ export async function getLesson(
     html,
     prev: index > 0 ? allLessons[index - 1] : null,
     next: index < allLessons.length - 1 ? allLessons[index + 1] : null,
+    nextPractical,
   };
 }
 

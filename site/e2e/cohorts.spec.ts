@@ -4,19 +4,29 @@ import { signUp, uniqueEmail } from "./helpers";
 // Server-action round trips re-render the page; give them room.
 const ACTION_TIMEOUT = 15_000;
 
+// Session titles in week order, mirroring scripts/seed.ts SESSIONS.
+const SEEDED_SESSIONS = [
+  "Module 0 — Welcome & setup",
+  "Module 1 — How software works",
+  "Module 2 — Your agent and the machinery it drives",
+  "Module 3 — The loop in depth",
+];
+
 test.describe("cohorts", () => {
-  test("shows Cohort 1 with a 5-week schedule and a signed-out join prompt", async ({
+  test("shows Cohort 1 with the seeded 4-week schedule and a signed-out join prompt", async ({
     page,
   }) => {
     await page.goto("/cohorts");
     await expect(page.getByRole("heading", { name: "Cohort 1" })).toBeVisible();
 
+    // One row per session in scripts/seed.ts SESSIONS (Modules 0–3; the
+    // Module 3.5 week was retired with the module). Keep in step with the seed.
     const rows = page.locator("table tbody tr");
-    await expect(rows).toHaveCount(5);
-    for (let week = 1; week <= 5; week += 1) {
-      await expect(rows.nth(week - 1).locator("td").first()).toHaveText(
-        String(week),
-      );
+    await expect(rows).toHaveCount(SEEDED_SESSIONS.length);
+    for (const [i, title] of SEEDED_SESSIONS.entries()) {
+      const cells = rows.nth(i).locator("td");
+      await expect(cells.nth(0)).toHaveText(String(i + 1));
+      await expect(cells.nth(1)).toHaveText(title);
     }
 
     // Signed-out join control: "Sign in to join this cohort." with the

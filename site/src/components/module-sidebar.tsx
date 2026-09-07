@@ -4,7 +4,9 @@
 // page's own breadcrumb and prev/next navigation.
 
 import Link from "next/link";
+import { RouteTag, routeTagLabel } from "@/components/route-tag";
 import type { ModuleInfo } from "@/lib/content/types";
+import { lessonRole, moduleRole } from "@/lib/route";
 import type { UnlockState } from "@/lib/unlock";
 
 interface ModuleSidebarProps {
@@ -59,6 +61,10 @@ export function ModuleSidebar({
   const completedCount = mod.lessons.filter((lesson) =>
     unlock.completed.has(lesson.path),
   ).length;
+  const role = moduleRole(mod);
+  // Rows get a "ref" marker only where it disambiguates — inside a mixed
+  // module (Module 2). An all-reference module says so once, in its header.
+  const markReferenceRows = role === "mixed";
 
   return (
     <aside
@@ -73,6 +79,11 @@ export function ModuleSidebar({
           >
             {mod.shortTitle}
           </Link>
+          {role === "reference" && (
+            <p>
+              <RouteTag role="reference" />
+            </p>
+          )}
           {signedIn && (
             <p className="font-mono text-xs text-ink-faint">
               {completedCount}/{mod.lessons.length} complete
@@ -87,6 +98,16 @@ export function ModuleSidebar({
             const lessonUnlocked = unlock.unlockedLessons.has(lesson.path);
             const rowBase =
               "flex min-h-11 items-center gap-2 border-l-2 py-1.5 pl-3 pr-1";
+            const referenceMark =
+              markReferenceRows &&
+              lessonRole(mod.slug, lesson.path) === "reference" ? (
+                <span
+                  className="shrink-0 font-mono text-[0.625rem] uppercase tracking-wider text-ink-faint"
+                  title={routeTagLabel("reference")}
+                >
+                  ref
+                </span>
+              ) : null;
 
             if (isCurrent) {
               return (
@@ -101,6 +122,7 @@ export function ModuleSidebar({
                     <span className="min-w-0 flex-1 text-sm leading-snug">
                       {lesson.title}
                     </span>
+                    {referenceMark}
                     {completed && <CheckIcon />}
                   </span>
                 </li>
@@ -120,6 +142,7 @@ export function ModuleSidebar({
                     <span className="min-w-0 flex-1 text-sm leading-snug">
                       {lesson.title}
                     </span>
+                    {referenceMark}
                     <LockIcon />
                   </span>
                 </li>
@@ -138,6 +161,7 @@ export function ModuleSidebar({
                   <span className="min-w-0 flex-1 text-sm leading-snug">
                     {lesson.title}
                   </span>
+                  {referenceMark}
                   {completed && <CheckIcon />}
                 </Link>
               </li>

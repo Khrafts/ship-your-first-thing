@@ -16,7 +16,7 @@
 //   - read/write a per-game localStorage high score, guarded for private mode.
 //
 // Design note: the loop is ref-driven. React state mirrors ONLY the few values
-// the chrome renders (phase / score / stage / highScore). All hot-path data
+// the chrome renders (phase / score / stage / highScore / overLine). All hot-path data
 // lives in refs, so the rAF callback never closes over stale React state and we
 // never call setState in a way that cascades renders. Callbacks are declared in
 // strict top-down order (no forward references) to keep the React compiler's
@@ -133,6 +133,10 @@ export function useShipGame(mod: AnyGameModule): UseShipGameResult {
   const [phase, setPhase] = useState<Phase>("idle");
   const [score, setScore] = useState(0);
   const [stage, setStage] = useState(0);
+  // The game-over line is mirrored from the loop (set when a round ends,
+  // cleared otherwise) rather than derived during render, because deriving it
+  // would read stateRef during render — refs are not render inputs.
+  const [overLine, setOverLine] = useState("");
   const [highScore, setHighScore] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -147,17 +151,16 @@ export function useShipGame(mod: AnyGameModule): UseShipGameResult {
     setPhase("idle");
     setScore(0);
     setStage(0);
+    setOverLine("");
     // High score is loaded from storage in the reset effect below (on mount AND
     // on game change) — not read here, to avoid a localStorage read during
     // render and so a returning player's best shows on the very first paint.
   }
 
-  // hasMilestones is module-constant (its implementations ignore state), so it
-  // is safe to derive during render. overLine is only meaningful when over, and
-  // is guarded by `phase` so we never call gameOverLine on a mismatched state
-  // mid game-switch (phase resets to idle on switch, so the over card is hidden).
-  const hasMilestones = mod.hasMilestones(stateRef.current);
-  const overLine = phase === "over" ? mod.gameOverLine(stateRef.current) : "";
+  // hasMilestones is a property of the module, not of a round (a game either
+  // has the "stage x/5" scoreboard slot or it doesn't), so it is read straight
+  // off the module prop — no ref access during render.
+  const hasMilestones = mod.hasMilestones;
 
   // --- Sizing + theme color read (no React state; pure ref/DOM work) -----
   const resize = useCallback(() => {
@@ -245,6 +248,9 @@ export function useShipGame(mod: AnyGameModule): UseShipGameResult {
     setPhase(ph);
     setScore(m.getScore(st));
     setStage(m.getStage(st));
+    // Only meaningful when over; "" otherwise (React bails out on equal values,
+    // so this is as cheap as the setScore above).
+    setOverLine(ph === "over" ? m.gameOverLine(st) : "");
 
     if (ph === "over") {
       const prev = readHighScore(m.highScoreId);
@@ -298,6 +304,7 @@ export function useShipGame(mod: AnyGameModule): UseShipGameResult {
     setPhase("idle");
     setScore(0);
     setStage(0);
+    setOverLine("");
     primaryQueuedRef.current = true; // immediately start a fresh round.
     startLoop();
   }, [startLoop]);

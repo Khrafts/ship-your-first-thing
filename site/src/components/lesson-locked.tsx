@@ -27,19 +27,36 @@ export function LockIcon({ className }: { className?: string }) {
 interface LessonLink {
   title: string;
   href: string;
+  /** "Module 2, Lesson 3" — shown after the title when known. */
+  label?: string;
 }
+
+const linkClass =
+  "underline underline-offset-2 transition-colors duration-150 hover:text-ink";
 
 export function LessonLocked({
   signedIn,
-  prev,
+  gate,
   firstLesson,
 }: {
   signedIn: boolean;
-  /** The lesson whose completion unlocks this one (flat course order). */
-  prev: LessonLink | null;
+  /** The lesson whose completion unlocks this one — the previous lesson on
+   *  the practical route, which skips reference (Module 2 Lesson 3's gate
+   *  is Module 0 Lesson 6). Null only when nothing gates it. */
+  gate: LessonLink | null;
   /** First lesson of the course — the signed-out starting point. */
   firstLesson: LessonLink;
 }) {
+  const gateSentence = gate && (
+    <>
+      This lesson opens after you complete{" "}
+      <Link href={gate.href} className={linkClass}>
+        “{gate.title}”
+      </Link>
+      {gate.label && <> ({gate.label})</>}.
+    </>
+  );
+
   return (
     <div className="mt-10 rounded-md border border-line bg-surface p-8">
       <div className="flex items-center gap-3">
@@ -48,35 +65,26 @@ export function LessonLocked({
           This lesson is locked
         </h2>
       </div>
-      {signedIn && prev ? (
+      {signedIn && gate ? (
         <p className="mt-4 font-sans text-sm leading-relaxed text-ink-secondary">
-          Complete{" "}
-          <Link
-            href={prev.href}
-            className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
-          >
-            “{prev.title}”
-          </Link>{" "}
-          to unlock this lesson.
+          {gateSentence} Finish that one and come back — this page opens on
+          its own.
         </p>
       ) : (
         <div className="mt-4 font-sans text-sm leading-relaxed text-ink-secondary">
           <p>
-            Lessons unlock in order as you complete them.{" "}
-            <Link
-              href="/signin"
-              className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
-            >
+            Module 0 is open to everyone, and so are the reference lessons
+            (Module 1, and Module 2 Lessons 1–2). The rest of the practical
+            route opens one step at a time as you complete it.{" "}
+            <Link href="/signin" className={linkClass}>
               Sign in
             </Link>{" "}
             to track your progress.
           </p>
+          {gateSentence && <p className="mt-2">{gateSentence}</p>}
           <p className="mt-2">
             Start at the beginning:{" "}
-            <Link
-              href={firstLesson.href}
-              className="underline underline-offset-2 transition-colors duration-150 hover:text-ink"
-            >
+            <Link href={firstLesson.href} className={linkClass}>
               {firstLesson.title}
             </Link>
           </p>

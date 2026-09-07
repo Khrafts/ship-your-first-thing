@@ -1,113 +1,110 @@
 # BUDGET.md — Course costs, honestly
 
-**Last verified:** 2026-05-14
+**Last verified:** 2026-08-18. **Path 1 usage-limit correction:** 2026-09-07 (see the note under Path 1).
 **Freshness commitment:** This file is updated whenever a cost-affecting upstream changes. Check `WHAT-CHANGED.md` for the most recent revision date. If you spot stale numbers, file an issue tagged `freshness` (see `CONTRIBUTING.md`).
 
 ## Why this file exists
 
-Most coding courses pretend the tools are free, then learners hit a paywall in the middle of Module 4 and quit. This file does the opposite: three honest cost paths, named, with concrete numbers and a course-completion projection per path. Pick yours before you create accounts (Module 0 walks you through the triage).
+Most coding courses pretend the tools are free, then learners hit a paywall partway through and quit. This file does the opposite: the two honest cost tracks this course teaches, named, with concrete numbers, so you can pick yours before you create a single account. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) walks you through the same triage, at the moment you need it.
 
-## The three paths
+## The two tracks (and a third option)
 
-The course supports three named cost paths. All three reach the end of the thread project. They differ in friction, predictability, and how much they ask you to manage tokens manually.
+Every path through this course costs you something — money, or limits, or both. There's no free-forever option. What you're choosing between is: pay a predictable monthly amount for a larger usage allowance (Path 1), or pay nothing for a smaller one that can also change without much warning (Path 2). **Both can ask you to wait on a heavy day.** Both are honest paths.
 
-### Path 1: Claude Code Pro — predictable, recommended for most
+### Path 1: Claude Code desktop — predictable cost, not unlimited use
 
-| Item | Cost (as of 2026-05-08) |
+| Item | Cost |
 |---|---|
-| Claude Code Pro subscription | $17/mo billed annually, or $20/mo billed monthly |
-| GitHub account | Free |
-| GitHub Codespaces (free tier) | 120 core-hours/mo on a 2-core machine = 60 clock-hours/mo |
-| Vercel (hobby tier, course platform deploys + thread project) | Free for personal use |
-| Supabase (free tier, thread project only — Phases 3 onward) | Free |
+| Claude Code desktop (Pro) | $20/month billed monthly, or $17/month billed annually |
+| Everything else the course needs | Free (see the module rows below) |
 
-**Course-completion projection (Path 1):** ~$17–20/mo for the duration you take. A focused learner finishing Modules 0–7 in three months: **~$60 total**. A spread-out learner over six months: **~$120 total**.
+That $20 is the floor — there's no cheaper way to get Claude Code desktop, and no free plan includes it. What it buys: every lesson in this course, with a usage allowance that resets on a schedule. The allowance is real, not unlimited: on a heavy day the app can tell you to wait until it resets. Nothing in this course needs any paid extra turned on beyond the plan itself.
 
-**What "Pro" gives you:** A predictable monthly ceiling on Claude usage. You will not be surprised by a token bill. The trade-off is that Pro has rate limits — heavy days, you'll hit them. For non-technical learners, the predictability is worth it.
+> **Correction, 2026-09-07:** earlier versions of this file said Path 1 had "nothing that runs out" and "no built-in pauses". Anthropic's own help page — <https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan> — says Pro and Max plans include Claude Code with usage limits. That page was confirmed by the course maintainer on 2026-09-07; the wording above follows it.
 
-**Pick this path if:** You have $20/mo to spend on this and want the lowest cognitive overhead.
+**Pick Path 1 if:** you have $20/month you're comfortable spending on this course and you'd rather pay for a bigger, predictable allowance than manage a free one.
 
-### Path 2: Gemini CLI free tier — the genuinely-free path
+### Path 2: Codex, inside the ChatGPT desktop app — free to start
 
-| Item | Cost (as of 2026-05-08) |
+| Item | Cost |
 |---|---|
-| Google account (for Gemini API key) | Free |
-| Gemini CLI (the AI agent itself) | Free, open source, Google-maintained |
-| Gemini API free tier (the model behind Gemini CLI) | $0 with generous daily limits — re-verified by Phase 2 |
-| GitHub account + Codespaces + Vercel + Supabase | Free as in Path 1 |
+| ChatGPT desktop app + Codex (free tier) | $0 to start — no card, no subscription |
+| ChatGPT Plus (optional upgrade, same path) | Keeps Codex working the same way if the free tier ever narrows |
+| Everything else the course needs | Free (see the module rows below) |
 
-**Course-completion projection (Path 2):** **$0**. The catch is rate limits and tier behavior — Google's free-tier mechanics shift, and a heavy day may hit the daily cap. Phase 2 of this course re-verifies the current daily/monthly caps before lessons are authored.
+Codex is included on the free tier of ChatGPT, and that's genuinely free — this course installed it and made a first edit with it before writing a single Path 2 lesson. Two honest catches. First, OpenAI's own wording says Codex is on the Free plan "for a limited time." If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
 
-**What "free" actually means here:** The free tier is genuinely free, but it shapes how you work. You learn `/clear`, `/compact` (Claude Code) — `/clear`, `/compress`, `/stats` (Gemini CLI) as **token discipline** habits, not optional polish. Cost-careful learners often *prefer* this path because it teaches the discipline by force.
+**Pick Path 2 if:** $0 matters more to you than a bigger allowance, and you're fine with an occasional pause on a heavy day.
 
-**Trade-offs vs Claude Code Pro:**
-- **Plus:** Genuinely $0; no surprise bill possible.
-- **Plus:** Same loop shape — CLI, plan-then-execute, file-aware. The course teaches the loop once and demonstrates on both surfaces.
-- **Minus:** Tied to Google's free-tier behavior; if Google narrows the free tier mid-course, this path narrows with it.
-- **Minus:** Rate limits exist. Some Module 4 days may push the cap.
+### Switching is cheap
 
-**Pick this path if:** You're cost-conscious and willing to manage your token budget by hand.
+Nothing in this course locks you to the path you pick today. Lessons that meaningfully differ between the two tracks show both side by side, so switching later costs you exactly one thing: creating the account you skipped the first time.
 
-### Path 3: Claude Code via Anthropic API — token-careful
+### The third option: OpenCode desktop
 
-| Item | Cost (as of 2026-05-08) |
-|---|---|
-| Anthropic account + API access | Free to create; pay-as-you-go for tokens |
-| Claude Sonnet (recommended default) | ~$3 per million input tokens, ~$15 per million output tokens |
-| Claude Opus (only for "watch the smartest model fail" demos) | ~$15 per million input tokens, ~$75 per million output tokens |
-| GitHub + Codespaces + Vercel + Supabase | Free as in Paths 1 and 2 |
+There's a third agent app worth knowing exists: OpenCode desktop. It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build, and it's the least polished of the three — still in beta. Cost-wise, its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them; this course also hasn't verified how it saves your work, so there's no cost or safety story here as settled as Path 1 or Path 2's. This file names it so you know it exists — it isn't a path this course walks you through.
 
-**Course-completion projection (Path 3):** **$30–$200 total** depending on token discipline. A carefully-managed learner using Sonnet, `/clear` between tasks, and short scoped prompts: **~$30–$60**. A learner who keeps the entire conversation context loaded and re-prompts repeatedly: **$200+** — and at the high end, **single prompts can eat 30–90% of a 5-hour budget** in a long debugging session. The course teaches the discipline that keeps this path cheap, but the discipline is real and deliberate.
+### Retired: Gemini CLI
 
-**What "token-careful" means:** You will use `/clear`, `/compact`, `/context`, `/cost` (Module 3 covers them in depth). You will default to Sonnet, not Opus. You will start fresh sessions when context gets stale rather than letting it grow. This path turns into Path 1 (~$60–$120 total) if the discipline slips.
+Gemini CLI was this course's free track through 2026-08-12. It's retired — the free track is Path 2, Codex inside the ChatGPT desktop app. See [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md).
 
-**Pick this path if:** You're cost-conscious **and** technically curious enough to manage tokens deliberately.
+### No pay-per-use path
+
+Earlier versions of this course had a third path: pay only for what you use, by pasting a long code that identifies your account into a separate program and watching a running total so it didn't add up. That path is retired, along with the separate program it needed to run in. Both of this course's tracks live entirely inside one app window, and neither asks you to manage a running total by hand.
 
 ## Quick decision
 
-| Question | Path |
-|---|---|
-| Do you have $20/mo to spend on this? | **Path 1 — Claude Code Pro.** |
-| You want $0 and you're OK with rate limits? | **Path 2 — Gemini CLI free tier.** |
-| You're $0–$60-curious and willing to watch tokens? | **Path 3 — Anthropic API token-careful.** |
+Two questions, in order:
 
-Module 0 (`modules/00-welcome/03-cost-path-triage.md`) walks you through this triage in more detail before you create any accounts.
+| Question | Answer |
+|---|---|
+| Can you spend $20/month on this course? | **Yes → Path 1, Claude Code desktop.** Flat, predictable cost; a larger allowance that can still make you wait on a heavy day. |
+| (If no) Are you OK with an occasional wait on a heavy day, in exchange for $0? | **Yes → Path 2, Codex in the ChatGPT desktop app.** Free to start, upgradeable in place if you ever need to. |
+
+Switching later is cheap — see above. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) walks through this triage in more detail before you create any accounts.
 
 ## Module-by-module cost divergences
 
-This section grows as later phases author lessons. Phase 1 seeds the structure; Phases 2 and 3 fill in the specifics.
+### Module 0 (Welcome) — both tracks
 
-### Module 0 (Welcome) — all paths
+Lessons 1–5 use no AI. Lesson 6 is your first real use of your agent: it builds a small checklist page, you ask for one change, and you save it — a short session, well inside either path's allowance on an ordinary day. No new accounts beyond the two Lesson 4 creates.
 
-No AI tokens used. Free for all three paths.
+### Module 1 (Mental models) — both tracks
 
-### Module 1 (Mental models) — all paths
+No AI tokens used. Module 1 is reading and diagramming exercises. Free for both tracks.
 
-No AI tokens used. Module 1 is reading + diagramming exercises. Free for all three paths.
+### Modules 2 and 3 (Toolchain & The Loop) — both tracks
 
-### Modules 2 / 3 / 3.5 (Toolchain & The Loop)
+Expect AI use to stay light through these modules. Neither path's per-lesson cost should differ from its baseline: Path 1 stays inside its flat $20/month plan and its usage allowance, Path 2 inside the free ChatGPT allowance — either can ask you to wait on a heavy day.
 
-*Per-path cost notes will be added by Phase 2 once Module 2/3/3.5 lessons are authored. The expected pattern: Modules 2 and 3 introduce the loop; token use is light and concentrated in Module 3 worked examples. Phase 2 close (2026-05-14) replaced the legacy slash-command name in this file with `/context` (window usage, Claude Code) + `/cost` (spend, Claude Code); Gemini CLI's `/compress` + `/stats` are the corresponding moves on Path 2. See `WHAT-CHANGED.md` for the migration entry.*
+> **Note:** Module 3.5 (the code-reading module that sat between Modules 3 and 4) was retired 2026-08-12, alongside the rest of the terminal-era course. What used to be "Modules 2 / 3 / 3.5" is now Modules 2 and 3.
 
-### Module 4 (Thread project — design + build)
+### Module 4 (Thread project — build)
 
-*Per-path cost notes added by Phase 3. Expected pattern: highest token use of the course, especially Chunks 4 and 5 (Friends + Feed) where context windows grow.*
+Module 4 adds two more accounts: Supabase (your database) and Vercel (where the app goes live). Both are free tier — the lessons state that both free plans cover everything this module builds. Expect this to be the course's heaviest module for AI use, and the module where either path is most likely to ask you to wait; the divergence between paths is the same shape as every other module — Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance.
 
 ### Module 5 (Operating the build)
 
-*Per-path cost notes added by Phase 5. Watch-it-fail walkthroughs use Opus deliberately for the "smartest model fail" comparison; one-time small spike for Path 3 learners.*
+Module 5 adds no new accounts and no new costs — nothing new gets built, and the lessons need nothing beyond the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance, either with the same occasional-wait possibility.
+
+### Module 6 (After it's live)
+
+Module 6 adds no new accounts and no new costs. Its lessons say so directly: nothing to install, nothing to set up, and nothing to prepare — the module works on the app Module 5 left live, at the link it already has. Only one of its four lessons changes that app on purpose. Expect AI use in the same shape as every other module: Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance, either with the same occasional-wait possibility. The re-check this module has you run after any change happens in your browser, against your own live app — it costs about fifteen minutes of your time and nothing else.
+
+### Module 7 (Where to go from here)
+
+No AI tokens used, no accounts, nothing to install. Nothing in Module 7 runs — no build, no repair and no check — and its three lessons ask you to write things down rather than to ask your agent for anything. Free for both tracks. This is also where the list ends, because Module 7 is the last module.
 
 ## Hidden costs not on this table
 
 These are zero or near-zero today but the course names them so you're not surprised:
 
 - **Custom domain (optional):** ~$10–15/year if you want to own a domain for your deployed thread project. Vercel offers `*.vercel.app` subdomains free.
-- **Codespaces over the free tier:** if you exceed 120 core-hours/mo on a 2-core machine, GitHub bills $0.18/core-hour after that. Most learners don't hit this. Setting auto-stop to 30 minutes (default) keeps you safe.
 
 ## How this file stays accurate
 
-- Numbers above carry a `Last verified:` date. The freshness commitment is: when an upstream changes (Claude Code Pro pricing, Gemini API free-tier mechanics, Codespaces caps), this file updates within 30 days, and `WHAT-CHANGED.md` records the date.
-- Quarterly smoke test (per `CONTRIBUTING.md`) re-verifies cost paths.
+- Numbers above carry a `Last verified:` date. The freshness commitment is: when an upstream changes (Claude Code Pro pricing, ChatGPT's free-tier mechanics, Supabase or Vercel free-tier terms), this file updates within 30 days, and `WHAT-CHANGED.md` records the date.
+- Quarterly smoke test (per `CONTRIBUTING.md`) re-verifies both tracks.
 - If you find a number that's wrong, file an issue tagged `freshness`.
 
 ## Related artifacts
