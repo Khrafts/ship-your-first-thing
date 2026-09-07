@@ -75,7 +75,7 @@ All nine lessons are published — every link below is live. The filenames and t
 
 ## Before you start
 
-You need Modules 0 through 3 finished, all of them. Module 0 got your accounts and your agent app running; Module 1 gave you the shape of a web product; Module 2 gave you the machinery your agent drives; Module 3 gave you the loop. This module uses all four of them, in every chunk.
+You need three things finished: Module 0's build (Lesson 6), Module 2 Lesson 3, and Module 3. Module 0 got your accounts and your agent app running, and had it build your first page; Module 2 Lesson 3 gave you the save that survives one computer (Lessons 1 and 2 are optional support); Module 3 gave you the loop. Module 1 is the shape of a web product — read it in full if you like, or read each lesson the first time a chunk below names it, which every chunk does. This module uses all four, in every chunk.
 
 ## Navigation
 

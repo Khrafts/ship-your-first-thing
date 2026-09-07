@@ -72,7 +72,7 @@ That question is doing more work than it looks like. It takes the thing most lik
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes, and the same absence of a dashboard step.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes, and the same absence of a dashboard step.
 
 ### What your agent asked before it planned anything
 

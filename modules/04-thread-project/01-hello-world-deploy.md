@@ -74,7 +74,7 @@ When the plan matches, give it the go-ahead:
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes. The same run of steps, the same pauses, and the live link at the end.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes. The same run of steps, the same pauses, and the live link at the end.
 
 When this chunk was really built, the run finished with the agent saying the app was live, giving the link, and listing what it had done in plain words: it built the app first to confirm it was healthy, created the hosting project and connected it to the project's home page online, put the database settings on the live site as well as on the machine, deployed, and then opened the live address itself to confirm it loaded, showed the page, and had no sign-in wall in front of it. It also said something worth expecting: that it had not needed anything copied from a dashboard that time, because it already had what it needed — and that it would flag it clearly the moment a step did need one.
 

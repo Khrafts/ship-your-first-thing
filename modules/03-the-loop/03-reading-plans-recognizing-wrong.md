@@ -40,13 +40,13 @@ You may be waiting for a fourth: the one where you open up what your agent wrote
 
 ### An ask that has to be invented
 
-Your practice page is where Lesson 2 left it: your name, the tagline, today's date, and a button below the date that hides it and brings it back. You are also in a fresh conversation, because that was the last thing Lesson 2 had you do — which matters more here than it did there.
+Your practice page is where Lesson 2 left it: your name, the tagline, today's date, and a button below the date that hides it and brings it back. You are also in a fresh conversation, because that was the last thing Lesson 2 had you do — which matters more here than it did there. A fresh conversation may not know which folder it's in, so before the ask below: if the app asks which folder, or your agent seems unsure where the page is, point it at `loop-practice` again the way you did in Lesson 1, and say what's there — *"The practice page in this folder shows my name, a tagline, today's date, and a button that hides and shows the date."*
 
 Here is the new ask, and it is deliberately thin:
 
 > Add a list of 3 favorite books below the button.
 
-Read it once more as your agent has to read it. Which three books? Nothing in the folder says. Nothing earlier in the conversation says, because there is no earlier in the conversation. There is no place in the world it could look this up, since the answer exists only in your head and you did not say it out loud. That leaves it two options: ask you which books, or pick three. Watch which one it takes.
+Read it once more as your agent has to read it. Which three books? Nothing in the folder says. Nothing earlier in the conversation says, because there is no earlier in the conversation. There is no place in the world it could look this up, since the answer exists only in your head and you did not say it out loud. That leaves it three honest options and one dishonest one: ask you which books, put in labelled placeholders, tell you it picked three — or pick three and say nothing. Watch which one it takes. Whichever it is, this lesson works: the section after the two panels below covers each case, and all of them end at the same place.
 
 <!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
@@ -64,7 +64,17 @@ Read it once more as your agent has to read it. Which three books? Nothing in th
 > **The app asks:** Codex wants to change `index.html` — approve? — you approve.
 > **The agent:** Done — a short heading and three books in a list, sitting under the button. You didn't say which books, so I put in three that suit your tagline. Refresh the page and tell me what they should be.
 
-Two apps, two personalities, one outcome. The first one said nothing at all about where the titles came from; it described what it built, flagged a limit of its own checking, and stopped. The second mentioned that it had chosen for you — after the part about what it built, in the tone you would use for a detail rather than a problem. Neither of them refused, neither of them asked first, and neither of them could possibly have known. Both invented. That convergence is the lesson: this is not one app's flaw you can avoid by picking the other one.
+Two apps, two personalities, one outcome on the day. The first one said nothing at all about where the titles came from; it described what it built, flagged a limit of its own checking, and stopped. The second mentioned that it had chosen for you — after the part about what it built, in the tone you would use for a detail rather than a problem. Neither refused, neither asked first, and neither could possibly have known. Both invented. That convergence is the lesson: this is not one app's flaw you can avoid by picking the other one.
+
+### If yours did something else
+
+Agents change between the day a lesson is written and the day you run it, and the same ask doesn't always land the same way twice. Three other things yours may do, and what to do about each — all three end with the page in the same state, so Lesson 4 starts the same either way:
+
+- **It asked you which books.** Good — that's the honest answer, and worth noticing as a sign of a well-behaved session. Don't hand it three real ones; you'd lose the thing this lesson is for. Say: *"I haven't decided. Put in three made-up example books for now so I can see the layout."* Now you have an invented list on the page, and you know it's invented because you asked for it. Run the five patterns below on it anyway — the point is running them, not being fooled.
+- **It put in placeholders** — lines like "Book one" or "Your favorite book here" — and told you so. Also honest. Read the five patterns with the panels above as your example, then say: *"Replace the placeholders with three made-up example books, titles and authors, so I can see how a real list looks."* Same end state.
+- **It picked three and told you it had guessed.** Closest to the second panel above. It was still an invention presented as finished work; the disclosure just came with it. Run the five patterns as written.
+
+What you must not do is run the ask again and again until your agent fails the way the panels show. A lesson that needs a particular mistake to happen is a lesson you can't rely on, and this one doesn't: it needs a list on the page that isn't yours, however it got there.
 
 ### Now go and look
 
@@ -95,7 +105,7 @@ What the five have in common is the point of the list: every one of them is some
 Pattern 2 — output divergence. Watch the other four pass while it fails, because that is the part worth practicing:
 
 - **Visual:** there is a list below the button. Passes.
-- **Output:** those are not your favorite books, and nothing about the ask could have made them so. **Fails.**
+- **Output:** those are not your favorite books, and nothing about the ask could have made them so. **Fails.** (If your agent asked first or labelled its guess, this pattern still trips — the list is still not yours — it just tripped politely.)
 - **Plan-vs-actual:** there was barely a plan — the agent went straight to work — and what it said afterwards matches what it did. Passes.
 - **Narration:** everything the reply claimed is on the page. Passes.
 - **Something broken:** the page renders cleanly. Passes.
@@ -116,8 +126,8 @@ Which is why the fix is never "trust it less" in some general, anxious way. The 
 
 Run the under-specified ask on your own page and put all five patterns through their paces. Plan twenty-five to thirty minutes.
 
-1. **Confirm where you are.** Your practice page should show your name, your tagline, today's date, and a button below the date that hides it and brings it back. Click the button once each way to be sure. If it isn't there, run Lesson 2's exercise first.
-2. **Ask straight out, with no plan step.** Type: *"Add a list of 3 favorite books below the button."* Approve what the app asks you to approve. You know from Lesson 2 that asking for a plan first is the better habit — skipping it here is deliberate, so you can watch what an under-specified ask produces when nothing catches it early.
+1. **Confirm where you are.** Your practice page should show your name, your tagline, today's date, and a button below the date that hides it and brings it back. Click the button once each way to be sure. If it isn't there, run Lesson 2's exercise first. Then make sure your agent is looking at the right place: this is a fresh conversation, so if the app asks which folder — or your agent doesn't seem to know the page — point it at `loop-practice` and tell it what's on the page in one sentence.
+2. **Ask straight out, with no plan step.** Type: *"Add a list of 3 favorite books below the button."* Approve what the app asks you to approve. You know from Lesson 2 that asking for a plan first is the better habit — skipping it here is deliberate, so you can watch what an under-specified ask produces when nothing catches it early. **If your agent asks which books, or puts in placeholders,** use the one-line reply from "If yours did something else" above so the page ends up with three made-up example books on it. Don't repeat the ask hoping for a different behaviour.
 3. **Run the five patterns, in order,** with the browser tab refreshed and your agent's reply on screen:
    - **Visual divergence:** is there a list below the button at all?
    - **Output divergence:** are those your actual favorite books?
@@ -130,7 +140,7 @@ Run the under-specified ask on your own page and put all five patterns through t
    - What your next ask would be, in one sentence. That is the steer, and Lesson 4 is entirely about it.
 5. **Do not save this one.** No "save this as a working version" at the end of this lesson — and that is deliberate. This state is wrong on purpose: you save working versions, not broken ones. Lesson 4 makes it right first, and then you save it.
 
-Your deliverable is a practice page with three invented books on it, three sentences, and nothing saved.
+Your deliverable is a practice page with three books on it that aren't yours — invented outright, or made-up examples you asked for — three sentences, and nothing saved.
 
 ## Checkpoint
 
@@ -153,7 +163,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You wrote an ask that could not be answered honestly, watched your agent answer it anyway with three books it made up, and named the pattern that caught it while four other checks were saying everything looked fine. Then you left it broken on purpose, which is its own small skill: knowing that a wrong page is a thing you fix rather than a thing you save. Lesson 4 is where you fix it — the three-part steer, what to do when your agent does far more than you asked, and the point where starting over beats trying again.
+You wrote an ask that could not be answered honestly, watched how your agent handled a question it had no way to answer — inventing, guessing out loud, or asking — and named the pattern that caught the not-yours list while four other checks were saying everything looked fine. Then you left it broken on purpose, which is its own small skill: knowing that a wrong page is a thing you fix rather than a thing you save. Lesson 4 is where you fix it — the three-part steer, what to do when your agent does far more than you asked, and the point where starting over beats trying again.
 
 ## Navigation
 

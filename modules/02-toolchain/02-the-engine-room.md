@@ -52,7 +52,7 @@ There's one more piece of machinery down there — the one that keeps a copy of 
 
 ### The approval prompt is your porthole
 
-You met the approval prompt back in Module 0: your agent proposes, the app asks you, nothing touches your machine until you approve. Now you know what it's asking *about*. Every time your agent needs to send something below deck, the app stops and shows you the request first. That pause is the only window you have into the engine room — and it's enough of one.
+You met the approval prompt back in Module 0: your agent proposes, the app asks you — when it's set to ask — and you decide. Now you know what it's asking *about*. When the app is set to ask, each time your agent needs to send something below deck the app stops and shows you the request first, and that pause is your window into the engine room. When it's set to work inside your folder without asking, your window is the result instead: open your app and look, and whenever you want the request after the fact, ask *"what did you just change, in everyday words?"* Either way it's enough of a window.
 
 A good request tells you three things:
 

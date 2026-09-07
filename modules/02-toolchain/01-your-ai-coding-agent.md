@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to name your AI coding agent, name t
 
 ## Why this matters
 
-You're about to hand the writing of a real app to a program you've barely met. You already know what a deployed app is made of — code, database, who can do what, how it goes live — and you've seen the one control that guards everything this program does: the approval prompt. What you don't have yet is a read on the program itself — the three most common ways it can go wrong on you, named now so you recognize the shape the moment one shows up.
+You're about to hand the writing of a real app to a program you've met exactly once — for one checklist page, back in Module 0. You already know what a deployed app is made of — code, database, who can do what, how it goes live — and you've seen the control that can stop this program before it acts: the approval prompt. What you don't have yet is a read on the program itself — the three most common ways it can go wrong on you, named now so you recognize the shape the moment one shows up.
 
 ## Core read
 
@@ -28,7 +28,7 @@ This course teaches two of these apps, side by side, because they do the same jo
 
 A third app is worth knowing exists, even though this course doesn't teach it: **OpenCode desktop** (a third AI-coding-agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way — its free models are limited-time trial models that may learn from what you submit, this course hasn't verified how it saves your work, and it's the least polished of the three, still in beta. If someone mentions it, now you know what it is. This course sticks with the two apps above.
 
-A conversation with either app has a fixed shape. You say what you want, in your own words — the outcome, not the steps. The agent reads your files, works out a plan, and proposes changes. Then the app stops and asks you: the approval prompt you met in Module 0, the same "allow this change?" question, every time, for anything that touches your machine. You click approve, and the change happens. You click reject, and it doesn't. That three-beat rhythm — you say, it proposes, you approve — is the whole shape of working with an agent. The next lesson in this module opens that same approval prompt back up and goes deeper on what it's actually protecting.
+A conversation with either app has a fixed shape. You say what you want, in your own words — the outcome, not the steps. The agent reads your files, works out a plan, and proposes changes. Then — when the app is set to ask, which Module 0 showed you how to arrange — it stops and asks you: the approval prompt, the same "allow this change?" question, for the things that touch your machine. You click approve, and the change happens. You click reject, and it doesn't. And when the app isn't set to ask, the same control is still yours one step later: you look at the result and say what should be different. That three-beat rhythm — you say, it proposes, you approve — is the whole shape of working with an agent. The next lesson in this module opens that same approval prompt back up and goes deeper on what it's actually protecting.
 
 ### When your agent gets it wrong
 

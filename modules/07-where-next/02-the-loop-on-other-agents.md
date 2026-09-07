@@ -36,7 +36,7 @@ That is easy to write and hard to believe from inside the only window you have e
 - **You ask for the outcome and leave the method alone.** "Add today's date below the tagline" rather than a description of how to work out what today is. Any agent is better at the how than you are, and that is the arrangement rather than a limitation.
 - **You look at the running thing.** Your browser is where you check; the agent's own words are the second signal. Reading what it wrote was never your job, and it does not become your job in a different window.
 - **You name what you saw and what should be different.** One sentence, no apology, no starting over. That move is the same two halves in any window, and it is the one that gets used most.
-- **You approve or you decline, one change at a time.** The pause before anything touches your machine is the one control this whole course is built on.
+- **You approve or you decline what the app asks about, and you check the result whether or not it asked.** That pause — wherever the app is set to give it — plus the look at the running thing afterwards is the control this whole course is built on.
 - **You say "save this as a working version" when something works.** The sentence is yours; the machinery underneath belongs to the agent. That is the shape of an ask, not a feature of an app.
 - **You start a fresh conversation when the conversation is the problem.** Lesson 1 gave you the condition. It is a move you make, not a thing the app does for you.
 

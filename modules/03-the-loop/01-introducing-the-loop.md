@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to name the four steps of the AI-cod
 
 ## Why this matters
 
-You have an agent, you know what it runs for you below deck, and you know the sentence that saves your work. What you don't have yet is a way to talk about a session that is going badly — and sessions go badly routinely. You ask for something, what comes back isn't it, you ask again in slightly different words, and forty minutes later you have a strong feeling that this isn't working and no idea which part to change. Naming the four parts is what turns that feeling into a decision. The names outlive the app, too: the window will be redesigned, the buttons will move, and the four steps will still be the four steps.
+You have an agent, you've built one page with it, you know what it runs for you below deck, and you know the sentence that saves your work. What you don't have yet is a way to talk about a session that is going badly — and sessions go badly routinely. You ask for something, what comes back isn't it, you ask again in slightly different words, and forty minutes later you have a strong feeling that this isn't working and no idea which part to change. Naming the four parts is what turns that feeling into a decision. The names outlive the app, too: the window will be redesigned, the buttons will move, and the four steps will still be the four steps.
 
 > **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
@@ -38,7 +38,7 @@ One thing to carry through all four steps, because it changes how you read every
 
 ### Setup — your agent builds the practice page
 
-There is nothing to download for this module. The first thing you do is ask your agent to make you something to practice on — which is also your first look at the whole loop, end to end, on something real. Here is the exchange, in both apps. The sentence you type is the same either way, and you can use it word for word.
+There is nothing to download for this module. The first thing you do is ask your agent to make you something to practice on — a separate page from the checklist you built in Module 0, so nothing you use is underneath the mistakes this module makes on purpose. It's also the loop end to end, on something real, for the second time. Here is the exchange, in both apps. The sentence you type is the same either way, and you can use it word for word.
 
 <!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
@@ -60,7 +60,7 @@ There is nothing to download for this module. The first thing you do is ask your
 > **The app asks:** Codex wants to make changes to your files — approve? — you approve.
 > **The agent:** Made it and opened it. Have a look and tell me what the name and the tagline should actually say.
 
-Two apps, one sentence from you, and something exists that didn't exist before. Both of them did the same three things: said what they were going to do, stopped and waited for your approval, then reported back. That pause is the approval prompt from Module 2, and this is it happening on something real for the first time.
+Two apps, one sentence from you, and something exists that didn't exist before. Both of them did the same three things: said what they were going to do, paused where the app is set to ask, then reported back. That pause is the approval prompt you set up in Module 0 and opened up in Module 2. If your app is set so that it works inside the folder without asking, you'll see the first and third of those and not the pause — the page, not the pause, is what you check.
 
 Notice what your surfaces are here, because they don't change for the rest of the course. You have the chat window, where you say what you want and read what your agent says back. And you have a browser tab, where you look at the thing itself. That's it. There is no third place you're supposed to be looking, and nothing on this page is yours to open up and read.
 
@@ -134,13 +134,13 @@ That's the loop end to end: four steps, one iteration. Most real work chains sev
 Run the whole thing yourself, in your own app. Plan twenty to twenty-five minutes.
 
 1. **Open your agent app** and get to the tab or mode this course uses — Code for Claude Code desktop, Codex for the ChatGPT desktop app.
-2. **Run the setup ask.** Type: *"Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser."* Read each approval prompt before you approve it — this is the first time it's real. Everything it asks for on this step is safe to approve. When the page opens in your browser, leave that tab open; you'll come back to it several times this module.
+2. **Run the setup ask.** Type: *"Create a folder called `loop-practice` somewhere easy to find, with one page in it called `index.html` that shows my name and a one-line tagline, and open it in my browser."* Read each approval prompt before you approve it, the way you did in Module 0: approve what's about making this folder and page or opening it in your browser, and ask "what does this do, and why do you need it?" about anything else — installing something, connecting an account, reaching the internet. When the page opens in your browser, leave that tab open; you'll come back to it several times this module.
 3. **If the name or tagline is wrong,** tell it what they should say and let it fix them.
 4. **Set your intent.** Say it out loud or write it down: add today's date below the tagline.
 5. **Ask.** Type: *"Add today's date below the tagline."* Nothing else — resist the urge to explain how.
 6. **Evaluate.** Switch to the browser tab and refresh. Is today's date below the tagline? Read what your agent said, too, in case it told you something the page doesn't show.
 7. **Steer only if you need to.** One short follow-up naming what you saw and what should be different. Then refresh again.
-8. **Save it.** Say the sentence from Module 2: *"Save this as a working version, with a one-line note about what changed"* — the note being that the practice page now shows the date. This is the first time you've said it to something real, so your agent may need to do a little setup first and show you an approval prompt or two along the way. Approve them and let it work.
+8. **Save it.** Say the sentence from Module 2: *"Save this as a working version, with a one-line note about what changed"* — the note being that the practice page now shows the date. This is a new folder, so your agent may need to do a little setup first and may show you an approval prompt or two along the way. Approve the ones about this folder and let it work; if it offers to put a copy online, "not yet" is fine — this page is throwaway. Then ask it to confirm the save.
 
 Then write three sentences anywhere you like — a note on your phone, a scrap of paper, a document on your computer:
 
@@ -171,7 +171,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You met the loop end to end and ran one full iteration of it — on a page that didn't exist until you asked for it, in an app that stopped and checked with you before touching anything. You also said the save sentence for the first time on something real. The next three lessons take the same page and go one step deeper each time: Lesson 2 on the ask, Lesson 3 on evaluate, Lesson 4 on steer. By the end of the module you'll have run four iterations on the same page and seen every step from the inside.
+You met the loop end to end and ran one full iteration of it with the four steps named — on a page that didn't exist until you asked for it. You also said the save sentence again, on a second project. The next three lessons take the same page and go one step deeper each time: Lesson 2 on the ask, Lesson 3 on evaluate, Lesson 4 on steer. By the end of the module you'll have run four iterations on the same page and seen every step from the inside.
 
 ## Navigation
 

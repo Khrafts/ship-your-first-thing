@@ -2,6 +2,8 @@
 
 Module 1 is four bundled mental-model lessons covering the durable shape of any web product: how the browser talks to the server, how the server talks to the database, how access is gated, and how code goes live on the internet. Each bundle has its own analogy: a restaurant for the web, a filing cabinet plus inter-office mail for data, door staff plus a VIP list for auth, opening night plus prep cooks for deployment.
 
+This module is reference you can read at any time. If you arrived from Module 0 with a first page already built, you don't have to read it before Module 2: each Module 4 build lesson names the lesson here whose picture it uses, and on the course site this module never locks anything. Read it in full whenever you want the whole shape at once.
+
 This module is pre-loop. Every Loop check in Module 1 names `intent` — knowing the shape of what you want is the first step of the AI-coding loop, and Module 1 is where you build the intuition for shape.
 
 ## What this module builds

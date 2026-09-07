@@ -28,7 +28,7 @@ This lesson lives inside one step of the loop: the **ask** (writing a specific r
 
 A **planning conversation** (a session where you ask the agent to describe what it would do, without changing anything yet, [→ GLOSSARY](../../GLOSSARY.md#planning-conversation)) costs you a minute and changes nothing. You ask for the plan, you read it, you push back on the parts that aren't what you meant. An **execution conversation** (a session where you ask the agent to actually make the change, [→ GLOSSARY](../../GLOSSARY.md#execution-conversation)) is where the work — and the mess — happens. Every change might be the wrong change, and every wrong change is something you now have to notice and undo.
 
-So: plan first, then execute. Even on something small. The plan is the cheapest place in the whole process to catch a misunderstanding, because at that point the misunderstanding is one sentence you can correct instead of a page you have to walk back.
+So: plan first, then execute, whenever a wrong answer would cost you more than a minute. On a one-line change to a throwaway page you can skip it, the way you did in Module 0; on anything you'd mind redoing, ask for the plan. The plan is the cheapest place in the whole process to catch a misunderstanding, because at that point the misunderstanding is one sentence you can correct instead of a page you have to walk back.
 
 The important part is that planning is a **sentence**, not a button. You get a planning conversation by asking for one:
 

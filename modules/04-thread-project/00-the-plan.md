@@ -71,7 +71,7 @@ Two things in that ask are load-bearing. **One question at a time** stops the wa
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before it creates anything in your folder. The questions come one at a time, your answers go into the plan file, and the finished plan comes back to you in the conversation.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt, wherever it is set to ask, before it creates anything in your folder. The questions come one at a time, your answers go into the plan file, and the finished plan comes back to you in the conversation.
 
 Answer in your own voice and resist the urge to sound technical. "People post what they're reading and everyone can see it" is a better line in a plan than anything with the word *platform* in it, because in six conversations' time you can still tell whether the app in front of you matches it.
 

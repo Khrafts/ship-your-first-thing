@@ -60,7 +60,7 @@ That ask carries two jobs on purpose, and the plan that comes back should carry 
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes, and the same two-part run — the feature first, then the going-live half.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes, and the same two-part run — the feature first, then the going-live half.
 
 ### What "right away, then correct itself" is asking for
 

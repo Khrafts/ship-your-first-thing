@@ -8,6 +8,8 @@ This module is pre-loop — like Module 1, every Loop check names `intent`. The 
 
 By the end of this module, you can name your agent, name the app it lives in, catch its three most common failure modes, say what machinery your agent runs for you and decide what to do with an approval prompt, and say what happens to your work every time your agent saves it.
 
+If you arrived from Module 0 with your first page already built, Lesson 3 is the one to do next — it's the practical route's next step, and on the course site it opens as soon as Module 0 is complete. Lessons 1 and 2 are optional support you can read at any time.
+
 Each lesson builds on the last:
 
 - **Lesson 1 — Your AI coding agent:** you can name your agent, name its app, and state the smell-test for each of its three most common failure modes → sets up Lesson 2 by opening the same approval prompt back up and going deeper on what it's actually protecting.

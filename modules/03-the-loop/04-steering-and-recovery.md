@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to write a three-part steer, recogni
 
 ## Why this matters
 
-You are looking at a page with three books on it that were never yours, and you already know it is wrong. Knowing is not the same as fixing. The sentence you say next either lands in ten seconds, or it sends your agent off rebuilding half the page in a direction you never asked for — and then you have two problems where you had one. This lesson is the three moves that keep the second thing from happening: how to write the sentence, how to spot the moment your agent has run away with the job, and how to tell when saying it again is not going to work at all.
+You are looking at a page with three books on it that were never yours — invented, or made-up examples you asked for — and you already know it is wrong. Knowing is not the same as fixing. The sentence you say next either lands in ten seconds, or it sends your agent off rebuilding half the page in a direction you never asked for — and then you have two problems where you had one. This lesson is the three moves that keep the second thing from happening: how to write the sentence, how to spot the moment your agent has run away with the job, and how to tell when saying it again is not going to work at all.
 
 > **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
@@ -30,7 +30,7 @@ Most steers are undramatic. A steer is one more **ask** (writing a specific requ
 
 ### Steer #1 — fixing the invented list
 
-Start with the one in front of you. Your agent invented three books; you want a placeholder in their place until you decide what really goes there.
+Start with the one in front of you. Your page has three books on it that aren't yours, however they got there; you want a placeholder in their place until you decide what really goes there.
 
 > These books are not actually my favorites. Please replace with placeholder text saying "add your three favorite books here."
 
@@ -74,7 +74,7 @@ Now try the loosest ask in the lesson, on purpose:
 
 Read what you just asked for. "A real bookshelf" is a picture in your head and nowhere else — the placeholder text does not say how far to take it, and neither do you. An ask with no edges is an invitation, and what it invites is **over-engineering** (when your agent does much more than you asked for, because nothing in the ask said where to stop, [→ GLOSSARY](../../GLOSSARY.md#over-engineering)).
 
-The exchange below was approved so you can see the whole shape of the over-shoot. In your own run you may well see it coming when the app asks you to approve, and stop it there instead, which is the cheapest steer there is.
+The exchange below was approved so you can see the whole shape of the over-shoot. In your own run you may well see it coming when the app asks you to approve, and stop it there instead, which is the cheapest steer there is. You may also not get an over-shoot at all — a modest reply, or a question back about what you meant — and that is fine; the section after next says what to do then.
 
 <!-- Grounded in a real agent run, 2026-08-17; presented in the desktop app's framing. -->
 
@@ -128,7 +128,7 @@ Three sentences doing three jobs. "Too much" names the over-shoot without arguin
 > **The app asks:** Codex wants to change `index.html` — approve? — you approve.
 > **The agent:** Scaled it back. The books are a plain list again on a wooden background, with the lines further apart. Nothing else on the page changed.
 
-Both scaled back on the first try, and neither argued. The interesting difference is the last line of the first one: it flagged a side effect — your one sentence is now three rows — that you would otherwise have found on the page and wondered about. That is worth a decision, not a shrug. Refresh the page and take the sixty seconds: is the wood there, are the lines further apart, and is the placeholder still saying what you want it to say?
+If your agent never over-shot — it gave you a modest change, or asked what you meant — you skip this steer: answer with the small version ("a wooden background and a little more line spacing, nothing else") and the page lands in the same place. Both of the agents above scaled back on the first try, and neither argued. The interesting difference is the last line of the first one: it flagged a side effect — your one sentence is now three rows — that you would otherwise have found on the page and wondered about. That is worth a decision, not a shrug. Refresh the page and take the sixty seconds: is the wood there, are the lines further apart, and is the placeholder still saying what you want it to say?
 
 Notice what the over-shoot cost you: one wasted exchange and one approval. Not an afternoon. That is what steering is for, and most sessions never get worse than this.
 
@@ -138,7 +138,7 @@ Some sessions do get worse than that. You write the scope-steer and the next rep
 
 That is **drift** (when the agent loses the thread of what it agreed to do, usually deep into a long session, [→ GLOSSARY](../../GLOSSARY.md#drift)), and Lesson 2 gave you the smell-test: the latest reply is about something you did not ask for. It also gave you the limit — two tries. Past two clear restatements, more steering is not going to work, because the problem is no longer your wording. It is the conversation.
 
-So you do what Lesson 2 taught: **start a fresh conversation.**
+So you do what Lesson 2 taught: **start a fresh conversation.** Two practical things come with it. First, a fresh conversation may not know which folder you were in — so if the app asks, or if your agent seems lost, point it at the `loop-practice` folder again the way you did in Lesson 1. Second, the new conversation knows nothing about the old one, so your first ask has to say where things stand: what's on the page now and what you want changed. The example ask below does exactly that.
 
 Think of it the way you think about a meeting that has gone in circles. Nobody in the room is being difficult, everyone has heard everything twice, and the useful thing is not another lap — it is to stop, walk out, and come back at it from the top with one clear question. That is what a new conversation buys you. The hole your agent dug itself into was made of things it said and things you said back, and none of that follows it into the new conversation.
 
@@ -148,7 +148,7 @@ Two things make this cheap rather than frightening. The first is that your work 
 
 That sentence is always available, and the only thing it costs you is whatever happened since your last save. Your agent does the work of getting back there, and going back is not an admission that you failed — it is the reason you save. It is also why the gap between saves is worth keeping short: the sentence is cheap in proportion to how recently you used the other one.
 
-Notice how long that gap is right now. Lesson 3 ended unsaved on purpose, so your last working version is the page as it stood at the end of Lesson 2 — before any of the books existed. Rolling back today would take the list with it. That is the argument for saving the moment something works rather than at the end of an afternoon.
+Notice how long that gap is right now. Lesson 3 ended unsaved on purpose, so your last working version is the page as it stood at the end of Lesson 2 — before any of the books existed. Rolling back today would take the list with it. That is the argument for saving the moment something works rather than at the end of an afternoon. (If you do roll back during this lesson, put the placeholder back before the styling ask: *"Add a line below the button that says 'Add your three favorite books here.'"* Then carry on from there.)
 
 You have not had to reach for it in this lesson, because the scope-steer landed. When you do reach for it, what follows is the same either way — re-ask, with the edge you now know the first ask was missing:
 
@@ -186,21 +186,21 @@ Your page is working now, so finish it properly:
 
 ## Exercise
 
-Run the full steer sequence on your own page, over-shoot included. Plan twenty-five to thirty minutes.
+Run the full steer sequence on your own page — over-shoot included, if your agent gives you one. Plan twenty-five to thirty minutes.
 
-1. **Steer #1 — fix the invented list.** Your page should still show the three books your agent made up in Lesson 3. Type: *"These books are not actually my favorites. Please replace with placeholder text saying 'add your three favorite books here.'"* Approve what the app asks you to approve.
+1. **Steer #1 — fix the not-yours list.** Your page should still show the three books from Lesson 3 — invented, or the made-up examples you asked for. Type: *"These books are not actually my favorites. Please replace with placeholder text saying 'add your three favorite books here.'"* Approve what the app asks you to approve.
 2. **Go and look.** Refresh the browser tab. The books should be gone and your placeholder line should be sitting where they were. Click the show/hide button once each way to confirm nothing else broke.
 3. **Steer #2 — the loose ask.** Type: *"Make the list look like a real bookshelf"* and read the reply before you touch anything. Is the answer bigger than the ask? Is it adding things you never mentioned? **If what it proposes is much larger than what you asked for, decline it when the app asks you to approve** rather than approving and undoing it afterwards — then steer back with step 4. Approving it first is also fine; you will just be steering a shelf instead of a proposal.
-4. **Steer back to scope.** Type: *"Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else."*
+4. **Steer back to scope.** Type: *"Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else."* **If there was no over-shoot** — the reply was modest, a wooden background and not much more — or **if your agent asked what you meant** by a bookshelf, you don't need this steer: answer *"A wooden background and a little more line spacing. Nothing else."* and go on to step 5. The over-shoot is a thing to recognise when it happens, not a thing to make happen; the page ends up in the same state either way.
 5. **Go and look again.** Refresh. Wooden background, more space between the lines, placeholder text still saying what you want it to say — and check whether your agent flagged anything it changed on the side.
 6. **Reset the list so there is something to compare.** You are about to reach the same result by a second route, so put the page back to where that route starts. Type: *"Put the list back to plain placeholder text, nothing else."* Refresh and confirm the wood is gone.
-7. **Practice the fresh start.** Start a fresh conversation in your app and type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what one ask with an edge on it from the first word does in a conversation that has never heard of a bookshelf.
+7. **Practice the fresh start.** Start a fresh conversation in your app. If it asks which folder, or your agent doesn't seem to know where the page is, point it at `loop-practice` again. Then type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what one ask with an edge on it from the first word does in a conversation that has never heard of a bookshelf.
 8. **Save it.** Say: *"Save this as a working version — the practice page is done."*
 
 Then write four sentences, anywhere you like:
 
 - What the open-ended ask invited your agent to do.
-- The sentence you used to steer it back, and what it gave up.
+- The sentence you used to steer it back, and what it gave up — or, if there was nothing to pull back, what you said to keep it small.
 - What the fresh start produced, compared to the steered version.
 - Which of the two felt cleaner on this task — and whether you would reach for the same one next time.
 

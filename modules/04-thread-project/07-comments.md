@@ -62,7 +62,7 @@ Read the plan when it comes back. You are checking that it matches what you aske
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes — and the same stop in the middle, where the work waits on the step that is yours.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes — and the same stop in the middle, where the work waits on the step that is yours.
 
 ### Two questions before a single line of the plan
 

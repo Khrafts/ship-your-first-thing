@@ -76,7 +76,7 @@ When the plan matches, give it the go-ahead:
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes. The same run of steps, the same pauses, and a sign-in page waiting for you at the end.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes. The same run of steps, the same pauses, and a sign-in page waiting for you at the end.
 
 ### The checks you run
 

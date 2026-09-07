@@ -66,7 +66,7 @@ When the plan matches, give it the go-ahead:
 
 <!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
 
-**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt before anything in your folder changes — and the same stop in the middle, where the work waits on the step that is yours.
+**In the ChatGPT app (Codex):** the same shape, with the app's own approval prompt wherever it is set to ask before your folder changes — and the same stop in the middle, where the work waits on the step that is yours.
 
 ### What your agent raised before it built anything
 
