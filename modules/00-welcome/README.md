@@ -1,6 +1,6 @@
 # Module 0 — Welcome
 
-Module 0 gets you from nothing to a first working thing of your own: welcome, hardware check, cost-path triage (before you create any accounts), account creation, installing your agent app — and then, in the same sitting, having that agent build a page that's yours.
+Module 0 gets you from nothing to a first working thing of your own: pick a cost path, create two accounts, install your agent app, and then — in the same sitting — have that agent build a page that's yours.
 
 ## What this module builds
 
@@ -8,11 +8,11 @@ By the end of this module, you can open your agent app, signed in with exactly t
 
 Each lesson builds on the last:
 
-- **Lesson 1 — Welcome:** you know what the course is, who it's for, what you'll have built, and what it'll cost → sets up Lesson 2 by handing you the next question: will your computer even run the app this course is built around?
-- **Lesson 2 — Hardware check:** you know your computer can run the agent app for either of this course's two tracks, checked with a browser-comfort test instead of a spec sheet → sets up Lesson 3 by running that same honest-check habit on the thing that actually costs money: your AI tool.
-- **Lesson 3 — Cost-path triage:** you've picked one of this course's two tracks and know what it costs, in dollars → sets up Lesson 4 by telling you exactly which accounts to create and which to skip.
+- **Lesson 1 — Welcome:** you know what the course is, who it's for, and what you'll have built → sets up Lesson 2 by handing you the next question: will your computer run the app this course is built around?
+- **Lesson 2 — Check your computer:** you know your computer can run the agent app for either track, checked with a browser-comfort test instead of a spec sheet → sets up Lesson 3 by running the same honest check on the thing that costs money: your AI tool.
+- **Lesson 3 — Choose your plan:** you've picked one of this course's two tracks and know what it costs, in dollars → sets up Lesson 4 by telling you exactly which accounts to create and which to skip.
 - **Lesson 4 — Account creation:** you've created only the accounts your path requires (GitHub plus one AI-agent account) → sets up Lesson 5 by giving you the sign-in your agent app needs.
-- **Lesson 5 — Install your agent app:** you've installed your track's agent app, signed in, and met the approval prompt — plus the setting that decides how often you see it → sets up Lesson 6 by handing you an open, signed-in window with nothing in it yet.
+- **Lesson 5 — Install your agent app:** you've installed your track's agent app, signed in, and found the setting that decides how often it asks before acting → sets up Lesson 6 by handing you an open, signed-in window with nothing in it yet.
 - **Lesson 6 — Build your first thing:** your agent has built a checklist page from your own list, you've checked that it does what you asked, asked for one change, steered one mismatch, and saved a working version you can reopen without your agent → sets up the practical route the lesson closes with: Module 2 Lesson 3 saves this page properly, Module 3 runs the loop on a throwaway page, Module 4 builds the thing other people can visit — with Module 1's pictures read the first time a build needs them.
 
 The thread that ties it together: ask "what does this cost me?" before "how do I install it?" — and then, the moment the app is open, make something with it. Lesson 6 is the whole course in miniature: say what you want, look at what came back, say what should be different, save when it works.

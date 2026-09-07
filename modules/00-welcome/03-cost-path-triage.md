@@ -1,14 +1,14 @@
 ---
-title: "Cost-path triage"
+title: "Choose your plan"
 module: "00-welcome"
 lesson_number: 03
-est_minutes: 15
+est_minutes: 10
 prereqs: ["01-welcome", "02-hardware-check"]
-updated: "2026-08-15"
+updated: "2026-09-07"
 deviations: []
 ---
 
-# Cost-path triage
+# Choose your plan
 
 ## Learning objective
 
@@ -16,58 +16,54 @@ By the end of this lesson, you will have picked one of this course's two tracks 
 
 ## Why this matters
 
-The last lesson confirmed your computer can run either track. This one answers the question that actually decides which account you create next: what does each track cost you, in real dollars or real limits, before you sign up for anything? The biggest reason learners quit a course like this partway through is cost shock — a subscription renews for more than expected, or a free tool suddenly asks you to wait or pay. Five minutes here, before Lesson 4 creates an account, is what prevents that.
+Your computer can run either track. Now the question that decides which account you create next: what does each track cost you, in real dollars or real limits? The biggest reason learners quit a course like this is cost shock — a subscription renews for more than expected, or a free tool suddenly asks you to wait or pay. Five minutes here prevents that.
 
 ## Core read
 
 ### The honest premise
 
-Every path through this course costs you something — money, or limits, or both. There's no free-forever option, and this lesson isn't going to pretend otherwise. What you're choosing between is: pay a predictable monthly amount and get a track with no built-in interruptions (Path 1), or pay nothing and accept that the free allowance can run out on a busy day, or change, without much warning (Path 2). Both are honest paths. Neither is a trap, as long as you know which one you picked and why.
+Every path costs you something — money, or limits, or both. You're choosing between paying a predictable monthly amount for a larger allowance (Path 1), or paying nothing for a smaller one that can also change without much warning (Path 2). **Both can ask you to wait on a heavy day.** Both are honest paths, as long as you know which one you picked and why.
 
 ### Path 1 — Claude Code desktop (the paid track)
 
-Path 1 installs **Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)). It costs **$20/month billed monthly, or $17/month if you sign up for a year up front.** That's the floor — there's no cheaper way to get Claude Code, and no free plan includes it.
+Path 1 installs **Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)). It costs **$20/month, or $17/month if you pay for a year up front.** There's no cheaper way to get Claude Code, and no free plan includes it.
 
-What the $20 buys: every lesson in this course, every day, with nothing that runs out partway through a workday. You won't hit a wall in the middle of a build and have to wait for a clock to reset.
+What the $20 buys: every lesson in this course, with a usage allowance that resets on a schedule. The allowance is real, not unlimited: on a heavy day the app can tell you to wait until it resets. You don't need to turn on any paid extras for this course.
 
-Pick Path 1 if you have $20/month you're comfortable spending on this course and you'd rather pay for predictability than manage a free allowance.
+<!-- Tool claim source: https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan — Pro and Max plans include Claude Code with usage limits that reset; confirmed by the director 2026-09-07 and relayed in the correction-1 spec. This worker did not fetch the page (no external tools in scope). Replaced the earlier "nothing runs out" / "no built-in pauses" wording, which that page contradicts. -->
+
+Pick Path 1 if you have $20/month you're comfortable spending on this, and you'd rather pay for a bigger, predictable allowance than manage a free one.
 
 ### Path 2 — Codex, inside the ChatGPT desktop app (the free track)
 
-Path 2 installs the ChatGPT desktop app and uses **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)) from inside it. Codex is included on the **free tier** (the portion of a paid service you can use at no cost, usually capped by hours, requests, or limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) of ChatGPT — no card, no subscription, $0 to start. That's genuinely free, and it genuinely works: this course installed it and made a first edit with it before writing a single Path 2 lesson.
+Path 2 installs the ChatGPT desktop app and uses **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)) from inside it. Codex is included on ChatGPT's **free tier** (the portion of a paid service you can use at no cost, usually capped by hours, requests, or limits, [→ GLOSSARY](../../GLOSSARY.md#free-tier)) — no card, no subscription, $0 to start. This course installed it and made a first edit with it before writing a single Path 2 lesson.
 
-Two honest catches. First, OpenAI's own wording says Codex is on the Free plan **"for a limited time."** If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
+Two honest catches. First, OpenAI's own wording says Codex is on the Free plan **"for a limited time."** If that changes before you finish, the paid ChatGPT plans keep Codex working the same way, at a monthly cost. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The size of that allowance isn't published and can change.
 
-Pick Path 2 if $0 matters more to you than never waiting, and you're fine with an occasional pause on a heavy day.
+Pick Path 2 if $0 matters more to you than a bigger allowance.
 
-### The comparison, side by side
-
-Same two facts, side by side:
+### Side by side
 
 | | Path 1: Claude Code desktop | Path 2: Codex (ChatGPT desktop app) |
 |---|---|---|
 | Monthly cost | $20 ($17 if billed yearly) | $0 to start |
-| What you get | Every lesson, no built-in pauses | Every lesson, for free, for as long as the free tier lasts |
-| What runs out first | Nothing — $20 is a flat ceiling | Your free allowance on a busy day, or the free tier itself if OpenAI ever changes it |
+| What you get | Every lesson, with a larger usage allowance | Every lesson, free, for as long as the free tier lasts |
+| What can make you wait | Your usage allowance on a heavy day, until it resets | Your free allowance on a heavy day, or the free tier itself if OpenAI changes it |
 
-### The third option: OpenCode desktop
+### A third option, not taught here
 
-There's a third agent app worth knowing exists: **OpenCode desktop** (a third agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way, not for a first-ever build. Its free models are trial models offered for a limited time, and they may learn from what you submit while you're using them. This course also hasn't verified how it saves your work. And it's the least polished of the three — still in beta. This course names it so you know what it is, and doesn't walk you through it.
+**OpenCode desktop** (a third agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)) exists. It's built for people comfortable finding their own way, not for a first-ever build; its free models are trial models offered for a limited time and may learn from what you submit; and this course hasn't verified how it saves your work. This course names it so you know what it is, and doesn't walk you through it.
 
 ### Switching is cheap
 
-Nothing in this course locks you to the path you pick today. From here forward, lessons that meaningfully differ between the two tracks show both side by side, so switching later costs you exactly one thing: creating the account you skipped the first time.
-
-### No pay-per-use path
-
-Earlier versions of this course had a third path: pay only for what you use, by pasting in a long code that identifies your account and watching a running total so it didn't add up. That path is retired, along with the separate program it needed to run in. Both of this course's tracks live entirely inside one app window, and neither asks you to manage a running total by hand.
+Nothing locks you to the path you pick today. Lessons that differ between the two tracks show both side by side, so switching later costs you one thing: creating the account you skipped the first time.
 
 ## Exercise
 
-1. Reread the comparison above, out loud if that helps.
+1. Reread the table above.
 2. Say your path out loud, in one sentence: "I'm on Path 1" or "I'm on Path 2."
-3. Say your path's monthly cost out loud — a number, not a shrug: "$20 a month" or "$0 to start."
-4. Write your path down somewhere you'll see it before Lesson 4 — a note, a piece of paper, whatever you'll actually look at again.
+3. Say your path's monthly cost out loud — a number, not a shrug.
+4. Write your path down somewhere you'll see it before Lesson 4.
 
 ## Checkpoint
 
@@ -79,9 +75,9 @@ You've got this if you can:
 
 ## What you just did
 
-You picked a path and put a real number on it before creating a single account. That's the same discipline the last lesson used for hardware, aimed at money instead: check honestly, before you sign up. Lesson 4 is the payoff — you'll create exactly the account your path needs, nothing more.
+You picked a path and put a real number on it before creating a single account — knowing that either path can ask you to wait on a heavy day. Lesson 4 is the payoff: you'll create exactly the accounts your path needs, nothing more.
 
 ## Navigation
 
-[← Previous: Hardware check](./02-hardware-check.md)
+[← Previous: Check your computer](./02-hardware-check.md)
 [Next: Account creation →](./04-account-creation.md)

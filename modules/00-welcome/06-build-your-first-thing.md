@@ -19,7 +19,7 @@ By the end of this lesson, you will have a checklist page of your own — your i
 
 You have an installed app and an empty conversation, and this is the moment most people put the app down: nothing in it is yours yet. So this lesson makes something first — small, useful to you today, running in your browser inside the hour — and every lesson after it has something real to point back at.
 
-> **Following along:** This lesson runs in the app you installed in Lesson 5. It shows no sample conversation, on purpose: your agent's words will be its own, and the page in your browser is what you check. Plan thirty to forty-five minutes once your app is open. That number is a guess, not a measurement — this course hasn't yet timed real learners on this lesson.
+> **Following along:** This lesson shows no sample conversation, on purpose: your agent's words will be its own, and the page in your browser is what you check. Plan thirty to forty-five minutes once your app is open — a guess, not a measurement; this course hasn't yet timed real learners on it.
 
 ## Core read
 
@@ -31,7 +31,7 @@ Before you type anything, write down the title, the items, and one change you'd 
 
 ### Do: point your agent at a folder
 
-Make a new, empty folder on your Desktop called `my-first-thing`, then point your agent at it. In **Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)): open the **Code** tab, choose **Local**, click **Select folder**, and pick it. In the ChatGPT desktop app, using **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)): choose Codex instead of ordinary chat, then open a folder and pick it.
+Make a new, empty folder on your Desktop called `my-first-thing`, then point your agent at it. In **Claude Code desktop** (the paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)): open the **Code** tab, choose **Local**, click **Select folder**, and pick it. In the ChatGPT desktop app, using **Codex** (the coding agent inside the free-track ChatGPT desktop app, [→ GLOSSARY](../../GLOSSARY.md#codex)): choose Codex instead of ordinary chat, then open a folder and pick it. If Claude Code desktop says it needs a program before it can open the folder, the note in [Lesson 5](./05-install-your-agent-app.md) says what to do.
 
 <!-- Tool claim source: code.claude.com/docs/en/desktop-quickstart ("Select Local … Click Select folder and choose your project directory"), fetched 2026-09-07; learn.chatgpt.com/docs/quickstart ("Select Codex from the ChatGPT dropdown"; "Start a chat, create a project, or open a folder"), fetched 2026-09-07. Control names inside the ChatGPT desktop app were not confirmed on a live install; the sentence names the action, not a button. -->
 
@@ -65,15 +65,25 @@ Stop when the behavior works. The page doesn't have to be pretty.
 
 Now the change you wrote down, in one sentence: *"Add a button at the bottom that clears all the ticks."* Look again the same way: is it there, does it work, do ticks still stick?
 
+![A checklist page open in a browser, titled "Library visit". Six items with tick boxes: "Library card" and "Water bottle" are ticked and struck through; "Books to return", "Notebook", "Pen" and "Tote bag" are not. Below the last item is a button labelled "Clear all ticks".](../../screenshots/m0/06-build-your-first-thing/checklist-example.png)
+
+*One possible example, with sample items; your page may differ.*
+
 When it isn't what you meant — the button is at the top, an item got reworded — say what you saw and what should be different, and nothing about how: *"The button ended up at the top. Put it at the bottom, below the last item, and change nothing else."* If your agent says done and the page looks the same, refresh the page first, then say so. If two tries miss, say: *"Start over on this change: [your sentence]."*
 
 ### Do: save it
 
-When the checklist works and your change is in, say — word for word, because you'll say it for the rest of the course:
+The page needed nothing installed. Saving is different: it's the first thing in this course that may need a helper program your computer doesn't have yet, and your agent is the one who checks and installs it. Say:
+
+> Before you save, check whether this computer has everything you need to save working versions. If something is missing, tell me in plain words what it is and why you need it, then help me install it. Tell me before anything needs my approval, and tell me when it's ready.
+
+Approve what it explains is about saving in this folder. If it opens an installer window for you to click through, that's normal — it can't click for you. If that installer asks for your computer's administrator password, type it into the installer's own window — never into the chat, and your agent should never ask you to. It may ask for a name and an email to label your saves: give the same email you used for GitHub. If it says an install didn't work, don't repeat it blindly — say: *"The install didn't work. Tell me in plain words what happened and what you'd try next."* If two tries don't land, stop here: your page is still in its folder, and you can come back to this step in a fresh conversation later.
+
+When it says it's ready, say — word for word, because you'll say it for the rest of the course:
 
 > Save this as a working version, with a one-line note about what changed.
 
-Your agent does everything underneath. It may set something up in the folder first and, depending on your setting, the app may ask you to approve that — it's about this folder, so approve it. Then ask: *"Confirm the working version is saved, and tell me what the note says."* A save is real when your agent confirms it.
+Then ask: *"Confirm the working version is saved, and tell me what the note says."* A save is real when your agent confirms it.
 
 What that save is: the page's file, kept, so that *"take us back to the last saved working version"* can bring the file back if a later change goes wrong. What it isn't: it doesn't keep your ticks. Those live in your browser's memory for this page, not in the file, and clearing your browser's stored data clears them. And it's on this computer only — if your agent offers to put a copy online or connect an account, say *"Not yet."* Module 2 adds that half.
 
@@ -95,7 +105,7 @@ The core read is the exercise; this is the list to tick.
 4. **Open the page** in your browser; ask *"Tell me where the page is and how to open it"* if it didn't open.
 5. **Run the three checks,** ticks-stick first. Steer if anything misses.
 6. **Ask for your one change,** then check again.
-7. **Save,** and ask your agent to confirm the save and read you the note.
+7. **Check first, then save.** Say the check-first sentence; approve what's about saving in this folder; if an install fails twice, stop and come back later. Then say the save sentence, and ask your agent to confirm the save and read you the note.
 8. **Close everything and reopen the page from the folder.**
 
 Your deliverable: a checklist page with your items, ticks that survive closing and reopening, one change you asked for, and a saved working version your agent confirmed.
@@ -107,6 +117,7 @@ You've got this if you can:
 - Open your checklist from its folder, without your agent, and see your ticks where you left them.
 - Say the two-sentence shape for when the page isn't what you meant: what you saw, then what should be different.
 - Say what the saved version keeps (the page's file) and what it doesn't (your ticks).
+- Say what you do when saving needs something installed: ask your agent to check, explain, install and confirm — you approve, you never type commands.
 
 ## Where to go next
 
@@ -116,11 +127,11 @@ You've now done, once, what this course teaches: knew what you wanted, asked, ch
 2. **Module 3 — the loop.** The four moves you made today, one lesson each, on a separate throwaway page, so the first time you steer on purpose there's nothing you care about underneath.
 3. **Module 4 — the next useful build,** and the first other people can visit: a small social app, from an empty folder to a public address, one chunk at a time.
 
-**Module 1 is on demand.** It explains what's underneath a page like yours — where the page comes from, where information is kept, who's allowed in, how a thing goes public. Each Module 4 build lesson names the Module 1 lesson whose picture it uses, so you can read it the first time a build needs it; you don't have to read it first, and on the course site it never locks anything. The drawing exercises there are optional for you. Nothing on the site checks your exercises: a lesson you've read and decided to move past, you mark complete and move past.
+**Module 1 is on demand.** It explains what's underneath a page like yours — where the page comes from, where information is kept, who's allowed in, how a thing goes public. Each Module 4 build lesson names the Module 1 lesson whose picture it uses; read it the first time a build needs it. On the course site it never locks anything, and its drawing exercises are optional.
 
 ## What you just did
 
-You made a page that does something useful for you, in a folder on your own computer, by saying what you wanted rather than learning how it's built. You also met the two facts that shape every later lesson: your agent's "done" is a claim you check against the page, and the app's asking is a setting, not a guarantee. Module 1 sits next in the reading order and waits until a build needs it; the practical next step is the save system in Module 2, Lesson 3 — the half of today's save that survives this computer.
+You made a page that does something useful for you, in a folder on your own computer, by saying what you wanted rather than learning how it's built. You also met the two facts that shape every later lesson: your agent's "done" is a claim you check against the page, and the app's asking is a setting, not a guarantee. The practical next step is the save system in Module 2, Lesson 3 — the half of today's save that survives this computer.
 
 ## Navigation
 

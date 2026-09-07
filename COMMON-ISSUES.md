@@ -43,7 +43,7 @@
 2. If you'd rather pay for a track with no built-in pauses, Path 1 (Claude Code desktop, $20/month) is the alternative.
 3. Switching tracks costs you exactly one thing: creating the account you skipped the first time. Nothing else in this course locks you to the path you picked.
 
-**First seen in:** Module 0 cost-path triage.
+**First seen in:** Module 0, Choose your plan.
 
 ### Symptom: "The app is asking permission for something I don't understand"
 

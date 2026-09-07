@@ -28,7 +28,7 @@ Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducin
 
 ### ai-coding-agent
 A program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you, from inside its own app window. *Example: Claude Code desktop (Path 1) and Codex inside the ChatGPT desktop app (Path 2) are the two AI coding agents this course teaches.*
-Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 0 — Check your computer](./modules/00-welcome/02-hardware-check.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### api
 The contract between two programs about which questions can be asked and how the answers will look. *Example: "the Twitter API supports `GET /2/tweets/:id`."*
@@ -36,11 +36,11 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### api-key
 A long string that identifies your account when a program calls a paid (or rate-limited) service on your behalf. Treat it like a password: never paste it into a conversation you do not control, never let it into a public project. *Example: neither taught path asks you for one — you sign in to your agent app with a Claude account or a ChatGPT account, and the app carries your identity for you.*
-Used in: no current lesson. The pay-per-use path that needed a key was retired 2026-08-12; [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md) records that retirement.
+Used in: no current lesson. The pay-per-use path that needed a key was retired 2026-08-12; [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md) records that retirement.
 
 ### ask
 The "ask" step of the agent loop — writing a specific request the agent can act on, given the intent. *Example: turning the intent "I want today's date below the tagline" into the ask "Add today's date below the tagline."*
-Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
+Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md), [Module 3 — Check the plan and the result](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ### authentication
 Confirming you are who you claim to be. Sometimes shortened to "authn." *Example: a password check, or clicking a magic link sent to your email.*
@@ -76,7 +76,7 @@ Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-go
 
 ### claude-code
 Anthropic's AI coding agent, opening in its own desktop app window; this course's Path 1, the paid track. *Example: after installing it and signing in with a Claude account, you select the app's Code tab, point it at a project folder, and start asking for changes in plain language.*
-Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Check your computer](./modules/00-welcome/02-hardware-check.md), [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### code-editor
 A program for reading and editing source files by hand, with niceties like syntax highlighting and search across files. This course never asks you to open one — your agent app is the whole working environment. *Example: Module 2 Lesson 1 names it only to say there is no editor standing between you and the work.*
@@ -84,7 +84,7 @@ Used in: no lesson calls it out; [Module 2 — Your AI coding agent](./modules/0
 
 ### codex
 The AI coding agent that lives inside the ChatGPT desktop app; this course's Path 2, the free track. *Example: after signing in with a ChatGPT account, a switch next to the message box moves you from ordinary chat into Codex.*
-Used in: [Module 0 — Hardware check](./modules/00-welcome/02-hardware-check.md), [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Check your computer](./modules/00-welcome/02-hardware-check.md), [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Account creation](./modules/00-welcome/04-account-creation.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 0 — Build your first thing](./modules/00-welcome/06-build-your-first-thing.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### commit
 One saved working version of a project, carrying a one-line note about what changed. Your agent creates one when you tell it to save a working version. *Example: after a feature works, you say "save this as a working version, with a one-line note about what changed" — the agent makes the commit and confirms in plain words.*
@@ -92,7 +92,7 @@ Used in: [Module 4 overview](./modules/04-thread-project/README.md).
 
 ### context-window
 The amount of text an AI agent can see at once — your conversation history plus anything it has read. It is finite, and nothing announces when the older parts scroll out of it; what you feel from the outside is the agent answering about the wrong thing. *Example: replies deep into a long session stop matching what you asked for, so you start a fresh conversation and say what you want again in full.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+Used in: [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ### cookie
 A small piece of data the browser stores and re-sends to the same site on every request. *Example: a session cookie tells the server "this is the same Alice who logged in 5 minutes ago."*
@@ -118,7 +118,7 @@ Used in: no current lesson.
 
 ### deployment
 The act of moving an app from the machine it was built on to a public server so anyone on the internet can reach it. *Example: your agent saves the working version to GitHub, and Vercel builds and hosts the result at a public web address.*
-Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md), [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
+Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 4 overview](./modules/04-thread-project/README.md), [Module 4 — Put your app online](./modules/04-thread-project/01-hello-world-deploy.md), [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
 
 ### dns
 Domain Name System — the system that translates a human-readable URL into the IP address of the actual server. *Example: when you type `example.com`, DNS resolves it to `93.184.216.34` so the browser knows which server to ask.*
@@ -126,7 +126,7 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ### drift
 When an AI agent loses the thread of what it agreed to do — usually after a long session, after several scope-changes, or after the conversation history fills up. The agent stays fluent and confident, but starts working against an outdated version of the plan. *Example: an hour into a session, the agent changes something you told it to leave alone, because the "leave it alone" instruction is no longer in its working memory. Smell-test: the latest reply is about something you didn't ask for — restate what you want, from the top. Module 3 Lesson 2 goes deeper; Module 3 Lesson 4 teaches the recovery move, a fresh conversation and a tighter restart.*
-Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ## E
 
@@ -136,11 +136,11 @@ Used in: [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-an
 
 ### evaluate
 The "evaluate" step of the agent loop — reading the agent's output and deciding if it matches your intent. *Example: the agent says it added today's date; you open the page and confirm the date is there.*
-Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
+Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Check the plan and the result](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
 
 ### execution-conversation
 An AI-agent session where you ask the agent to actually make the change. Distinct from a planning conversation (no code-writing) which often precedes it. *Example: "OK, please proceed with the plan" opens an execution conversation.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+Used in: [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ## F
 
@@ -150,7 +150,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### free-tier
 The portion of a paid service you can use at no cost — usually capped by hours, requests, or rate limits. *Example: Codex is included on ChatGPT's free tier, which OpenAI's own wording says is offered "for a limited time."*
-Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md).
+Used in: [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md).
 
 ## G
 
@@ -166,7 +166,7 @@ Used in: [Module 0 — Welcome](./modules/00-welcome/01-welcome.md), [Module 0 �
 
 ### hallucination
 When an AI agent produces specific details that look correct but were invented — a file, a fact, a feature, a name it has no way of knowing. *Example: in Module 3 Lesson 3, both agents invented "favorite books" for a list, even though neither agent has any way of knowing the learner's actual favorites. Smell-test: it names something you never made or mentioned — ask "where did that come from?"*
-Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
+Used in: [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md), [Module 3 — Check the plan and the result](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md).
 
 ### html
 The markup language that describes the structure of a webpage — a tree of elements like headings, paragraphs, links, and images. *Example: `<h1>Hello</h1>` is an HTML element.*
@@ -220,7 +220,7 @@ Used in: [Module 7 — Where to go from here](./modules/07-where-next/03-where-t
 
 ### opencode-desktop
 A third AI-coding-agent desktop app — genuinely free and genuinely capable, but the least user-friendly of the three: its free models are trial models offered for a limited time that may learn from what you submit, this course hasn't verified how it saves your work, and it's the least polished of the three, still in beta. *Example: this course names it once so you know it exists, and does not walk you through it.*
-Used in: [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
+Used in: [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md), [Module 0 — Install your agent app](./modules/00-welcome/05-install-your-agent-app.md), [Module 2 — Your AI coding agent](./modules/02-toolchain/01-your-ai-coding-agent.md).
 
 ### over-engineering
 When an AI agent does MORE than asked — building or adding whole structures, extra styling, or content nobody mentioned for a small request, because nothing in the ask said where to stop. The fix is a scope-tightening steer that restates what you actually wanted and then puts an edge on it: "Nothing else." *Example: in Module 3 Lesson 4, the open-ended ask "make the list look like a real bookshelf" got the list rebuilt in place as upright spines standing on a plank, each spine carrying a label the agent invented — far more than the wooden background and the extra line spacing the learner actually wanted.*
@@ -234,7 +234,7 @@ Used in: no current lesson.
 
 ### planning-conversation
 An AI-agent session where you ask the agent to describe what it WOULD do without writing code yet. *Example: a prompt starting with "Plan:" and ending with "Don't make changes yet" opens a planning conversation.*
-Used in: [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md).
+Used in: [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md).
 
 ### pre-flight-question
 Before any irreversible step — anything pasted into a dashboard, anything run against data that already exists — a named question you ask the agent about consequences, and wait for the answer before continuing. *Example: before pasting a database file into the Supabase SQL Editor, asking "Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today." and waiting for the answer.*
@@ -250,7 +250,7 @@ Used in: [Module 6 — When what you paste isn't yours](./modules/06-after-live/
 
 ### publishable-key
 The one of Supabase's two dashboard keys that is safe to be seen — you copy it off the dashboard when the agent asks for it. The other key, labelled secret, never leaves the dashboard. *Example: pasting the value labelled "publishable key" — it begins `sb_publishable_` — from the Supabase API settings screen into the agent's chat when it asks for it during the first deploy.*
-Used in: [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md).
+Used in: [Module 4 — Put your app online](./modules/04-thread-project/01-hello-world-deploy.md).
 
 ### pull
 Bringing GitHub's saved state back down to the machine you are working on. Agent-performed. *Example: your agent does this before it starts work on a project whose newest saved version lives on GitHub.*
@@ -270,7 +270,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### rate-limit
 A cap on how many calls you can make to a service in a window of time, after which the service refuses or delays your calls until the window resets. *Example: on a free tier, once the day's allowance is used up the app asks you to wait before you can keep going.*
-Used in: no current lesson. [Module 0 — Cost-path triage](./modules/00-welcome/03-cost-path-triage.md) describes the free allowance running out without naming the cap.
+Used in: no current lesson. [Module 0 — Choose your plan](./modules/00-welcome/03-cost-path-triage.md) describes the free allowance running out without naming the cap.
 
 ### react
 The older and much larger thing Next.js is built on, and the name most answers you find on the internet about your own app are really about. *Example: knowing the name is what makes a search for help land on pages that are about the app you have rather than about something else entirely.*
@@ -352,7 +352,7 @@ Used in: [Module 1 — Where data lives, how programs talk](./modules/01-mental-
 
 ### steer
 The "steer" step of the agent loop — course-correcting when the agent's output does not match your intent. *Example: "The date appeared above the tagline; please put it below" is a steer.*
-Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Reading plans + recognizing wrong output](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
+Used in: [Module 3 — Introducing the loop](./modules/03-the-loop/01-introducing-the-loop.md), [Module 3 — Check the plan and the result](./modules/03-the-loop/03-reading-plans-recognizing-wrong.md), [Module 3 — Steering and recovery](./modules/03-the-loop/04-steering-and-recovery.md).
 
 ### supabase
 The service that gives the thread project an account system, a database, and file storage in one. You say its name in prompts to the agent and operate its dashboard — the SQL Editor, the key-copy screens — without learning its internals. *Example: the first deploy connects the empty app to a Supabase database before any feature exists.*
@@ -362,7 +362,7 @@ Used in: Module 4 Lessons [1](./modules/04-thread-project/01-hello-world-deploy.
 
 ### token-discipline
 The habits that keep agent sessions cheap and clear-headed — on a flat monthly plan and inside a free allowance alike. *Example: Module 3 teaches one of them and only one — start a fresh conversation between unrelated tasks, and again whenever a long one has gone muddy. The typed commands the course used to teach for the rest were retired 2026-08-16.*
-Used in: no current lesson names the phrase. [Module 3 — Planning vs execution conversations](./modules/03-the-loop/02-planning-vs-execution.md) teaches the habit.
+Used in: no current lesson names the phrase. [Module 3 — Plan before you build](./modules/03-the-loop/02-planning-vs-execution.md) teaches the habit.
 
 ### translation-key
 The mapping from the durable loop (Module 3) to other AI coding agents this course does not teach. *Example: a Module 7 lesson names what changes and what stays the same if you ever steer the loop from a different agent app.*
@@ -378,7 +378,7 @@ Used in: [Module 1 — How the web works](./modules/01-mental-models/01-how-the-
 
 ### vercel
 A service that runs your code on the public internet. It watches a GitHub repository, builds the code each time a new saved version arrives, and serves the result at a public web address. *Example: the thread project goes live on Vercel in Module 4.*
-Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 4 — Hello-world deploy](./modules/04-thread-project/01-hello-world-deploy.md), [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
+Used in: [Module 1 — How it goes live](./modules/01-mental-models/04-how-it-goes-live.md), [Module 4 — Put your app online](./modules/04-thread-project/01-hello-world-deploy.md), [Module 4 — Likes, then live](./modules/04-thread-project/08-likes-and-go-live.md).
 
 ## W
 

@@ -2,9 +2,9 @@
 title: "Your AI coding agent"
 module: "02-toolchain"
 lesson_number: 01
-est_minutes: 25
+est_minutes: 15
 prereqs: ["04-how-it-goes-live"]
-updated: "2026-08-15"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,69 +12,64 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to name your AI coding agent, name the app it lives in, and state — in your own words — the smell-test for each of its three most common failure modes.
+By the end of this lesson, you will be able to name your AI coding agent, name the app it lives in, and say — in your own words — how to spot each of the three most common ways it goes wrong, and what to say when it does.
 
 ## Why this matters
 
-You're about to hand the writing of a real app to a program you've met exactly once — for one checklist page, back in Module 0. You already know what a deployed app is made of — code, database, who can do what, how it goes live — and you've seen the control that can stop this program before it acts: the approval prompt. What you don't have yet is a read on the program itself — the three most common ways it can go wrong on you, named now so you recognize the shape the moment one shows up.
+You're about to hand the writing of a real app to a program you've met exactly once — for one checklist page, back in Module 0. You've seen the control that can stop it before it acts: the approval prompt. What you don't have yet is a read on the program itself — the three most common ways it goes wrong on you, named now so you recognize the shape the moment one shows up.
 
 ## Core read
 
 You want to delegate the writing.
 
-An **AI coding agent** (a program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)) is not a website you visit or a plugin bolted onto something else. It's the one app you installed in Module 0 — a normal desktop window, the kind you already knew how to download and open before this course. Inside that window you talk to it in plain language, the same way you'd write a message to someone, and it does the work of changing the files that make up your project. It doesn't wait for you to open a code editor first, because there isn't one — the agent app is the whole environment. It is where you'll spend nearly every remaining hour of this course.
+An **AI coding agent** (a program that reads your project files, plans changes, and writes code on your behalf — guided by a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)) is the one app you installed in Module 0. Inside its window you say what you want in plain language, and it changes the files that make up your project. There's no separate editor to open first — the agent app is the whole environment.
 
-This course teaches two of these apps, side by side, because they do the same job from different homes. If you picked the paid path, your agent is **Claude Code desktop** (Anthropic's AI coding agent, run from its own desktop app window; this course's paid track, [→ GLOSSARY](../../GLOSSARY.md#claude-code)) — you open it directly and work from its Code tab. If you picked the free path, your agent is **Codex** (the AI coding agent that lives inside the ChatGPT desktop app — the free-track counterpart to Claude Code desktop, [→ GLOSSARY](../../GLOSSARY.md#codex)) — you open the ChatGPT desktop app and switch into it from the message box. Different window, different name, same job: read your files, propose changes, wait for you to say yes. Every lesson from here shows both side by side, because the skill you're learning is the same on either one — only the app around it changes.
+This course teaches two of these apps side by side, because they do the same job from different homes. If you picked the paid path, your agent is **Claude Code desktop** (Anthropic's AI coding agent, run from its own desktop app window; this course's paid track, [→ GLOSSARY](../../GLOSSARY.md#claude-code)) — you work from its **Code** tab. If you picked the free path, your agent is **Codex** (the AI coding agent that lives inside the ChatGPT desktop app — the free-track counterpart to Claude Code desktop, [→ GLOSSARY](../../GLOSSARY.md#codex)) — you open the ChatGPT desktop app and switch into it from the message box. Different window, same job: read your files, propose changes, wait for you to say yes.
 
-A third app is worth knowing exists, even though this course doesn't teach it: **OpenCode desktop** (a third AI-coding-agent app, free and capable, but the least user-friendly of the three, [→ GLOSSARY](../../GLOSSARY.md#opencode-desktop)). It's genuinely free and genuinely capable, but it's built for people comfortable finding their own way — its free models are limited-time trial models that may learn from what you submit, this course hasn't verified how it saves your work, and it's the least polished of the three, still in beta. If someone mentions it, now you know what it is. This course sticks with the two apps above.
-
-A conversation with either app has a fixed shape. You say what you want, in your own words — the outcome, not the steps. The agent reads your files, works out a plan, and proposes changes. Then — when the app is set to ask, which Module 0 showed you how to arrange — it stops and asks you: the approval prompt, the same "allow this change?" question, for the things that touch your machine. You click approve, and the change happens. You click reject, and it doesn't. And when the app isn't set to ask, the same control is still yours one step later: you look at the result and say what should be different. That three-beat rhythm — you say, it proposes, you approve — is the whole shape of working with an agent. The next lesson in this module opens that same approval prompt back up and goes deeper on what it's actually protecting.
+A conversation with either app has a fixed shape. You say what you want — the outcome, not the steps. The agent reads your files, works out a plan, and proposes changes. When the app is set to ask (Module 0 showed you the setting), it stops at the approval prompt and you approve or reject. When it isn't set to ask, the same control is still yours one step later: you look at the result and say what should be different. You say, it proposes, you check — that's the whole rhythm.
 
 ### When your agent gets it wrong
 
-Three ways this goes sideways happen often enough, and matter enough, that this course names them now — each with the one thing to do about it.
+Three ways this goes wrong happen often enough to know on day one — each with the one thing to say.
 
-**Hallucination** (the agent states something that doesn't exist — a file, a fact, a feature — with the same confidence as something true, [→ GLOSSARY](../../GLOSSARY.md#hallucination)) shows up as a detail you never gave it. Smell-test: it names a thing you never made or mentioned. Ask it, plainly: "where did that come from?"
+**It makes things up.** It states a file, a fact or a feature that doesn't exist, as calmly as something true. (The word people use for this is **hallucination**, [→ GLOSSARY](../../GLOSSARY.md#hallucination).) How you spot it: it names a thing you never made or mentioned. What you say: *"Where did that come from?"*
 
-**Drift** (the work slides away from what you actually asked for, usually partway through a long session, [→ GLOSSARY](../../GLOSSARY.md#drift)) shows up as an answer to a question you didn't ask. Smell-test: the latest reply is about something you didn't ask for. Restate what you want, from the top, in your own words.
+**It wanders off what you asked.** Partway through a long conversation the replies are about something you didn't ask for. How you spot it: the latest reply doesn't match your last ask. What you say: restate what you want, from the top, in your own words.
 
-**Risk-blindness** (the agent proposes something that can't be undone with the same calm as a small fix, [→ GLOSSARY](../../GLOSSARY.md#risk-blindness)) shows up right at the approval prompt. Smell-test: any proposal that deletes something, sends something, or spends money gets one question first — "what could go wrong if we do this?" — and you wait for the answer before you approve.
+**It treats a risky change like a small one.** It proposes deleting, sending or spending with the same calm as fixing a typo. How you spot it: any proposal that deletes something, sends something, or spends money. What you say, before you approve: *"What could go wrong if we do this?"* — and wait for the answer.
 
-These three are not the whole list — they're the three worth knowing on day one. Module 3 goes deeper on hallucination and on drift; for risk-blindness, Module 5 puts you in front of a real one.
+Module 3 practises the first two on a throwaway page; Module 5 puts a real risky change in front of you.
 
-None of this makes your agent a search engine or a mind reader. It doesn't know your actual preferences unless you've told it. It isn't always right, and it doesn't know when it's wrong — confidence and correctness are two different things for it, and only one of them shows up on the screen. That's the whole reason this course spends an entire module, right after this one, on the skill of steering: noticing when the agent's output doesn't match what you asked for, and knowing what to do about it. You just met the three earliest, most common ways it goes sideways. Module 3 teaches the skill that catches all of them.
+For your agent, sounding sure and being right are two different things, and only one shows on the screen. You are the check.
 
 ## Exercise
 
-Plan 10 to 15 minutes. No installing — you already did that in Module 0.
+Plan 10 minutes. No installing — you already did that in Module 0.
 
-1. Open your agent app (the one you installed in Module 0) and get to the window this course uses — the Code tab in Claude Code desktop, or the Codex switch in the ChatGPT desktop app.
-2. In a scratch note — any plain-text file, a notes app, or paper — write one sentence naming your agent and the app it lives in.
-3. Write the three failure modes from this lesson, one line each, in your own words: what it looks like, and the one thing you'd do about it.
+1. Open your agent app and get to the window this course uses — the **Code** tab in Claude Code desktop, or the Codex switch in the ChatGPT desktop app.
+2. In a scratch note or on paper, write one sentence naming your agent and the app it lives in.
+3. Write the three ways it goes wrong, one line each, in your own words: what it looks like, and the one thing you'd say.
 4. Picture a proposal from your agent that deletes, sends, or spends something. Write the exact question you'd ask before you click approve.
-5. You don't need to keep the note afterward — the point is writing the three smell-tests once in your own words, not the file itself.
+
+You don't need to keep the note. The point is writing the three spot-it, say-it lines once in your own words.
 
 ## Checkpoint
 
 You've got this if you can:
 
 1. Name your AI coding agent and the app it lives in.
-2. Say, in your own words, the smell-test for hallucination, for drift, and for risk-blindness.
+2. Say, in your own words, how you'd spot each of the three ways it goes wrong, and what you'd say.
 
 ## Going deeper
 
 Optional, only if you're curious:
 
-- **Claude Code desktop's own documentation**, at `https://code.claude.com/docs`. Skim the quickstart; you don't need to memorize anything — the next lesson covers what you actually need.
-- **Codex's documentation inside ChatGPT's help site**, at `https://learn.chatgpt.com/codex`. Same advice: skim, don't memorize.
-
-## Loop check
-
-> **Loop check — intent.** Knowing which of the three smell-tests you're watching for — before you say what you want — changes the *intent* you bring into every session with your agent, all the way through this course. The loop itself lands in Module 3; the loop step this lesson reinforces is **intent**: knowing what could go wrong before you ask for anything.
+- **Claude Code desktop's own documentation**, at `https://code.claude.com/docs`. Skim the quickstart; you don't need to memorize anything.
+- **Codex's documentation**, at `https://learn.chatgpt.com/codex`. Same advice: skim, don't memorize.
 
 ## What you just did
 
-You named your agent, named the app it lives in, and met the three most common ways it can go sideways — each with the one question or move that catches it. The next lesson in this module opens the app back up and goes deeper on what's actually happening when you click approve.
+You named your agent and the app it lives in, and met the three most common ways it goes wrong — each with the one thing to say. The next lesson is what's happening when you click approve.
 
 ## Navigation
 

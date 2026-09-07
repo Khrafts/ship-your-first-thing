@@ -2,9 +2,9 @@
 title: "How it goes live"
 module: "01-mental-models"
 lesson_number: 04
-est_minutes: 35
+est_minutes: 25
 prereqs: ["03-who-can-do-what"]
-updated: "2026-05-09"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,21 +12,17 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to describe — in plain language and on paper — how an app moves from running on a developer's laptop to being available at a public URL anyone on the internet can visit.
+By the end of this lesson, you will be able to describe — in plain language and on paper — how an app moves from running on one computer to being available at a public web address anyone on the internet can visit.
 
 ## Why this matters
 
-Until now, every Module 1 mental model has lived inside a single private machine: a browser talking to a server (bundle 1), a server reading from a database (bundle 2), a sign-in flow gating access (bundle 3). This fourth lesson covers the question every real product has to answer last: how does this stop being a private thing on someone's laptop and become a public thing on the internet? The opening-night analogy makes it click. Your first deploy — a Hello-World page — is the first time you'll watch this pipeline run on your own project — but bringing the right mental model to that exercise saves you days of "why doesn't my deploy work?" debugging.
+Everything so far has lived inside one private building. The checklist page from Module 0 is the same: it works, but only on your computer, and nobody else can reach it. Every real product has to answer one more question: how does it stop being private and become public? Holding the picture in your head saves you a lot of "why can't my friend see it?" later.
 
 ## Core read
 
-Until now, your "club" is a private kitchen. The cook is testing recipes; the waiter is practicing carrying plates. Nobody from the public is inside. In web terms: the app is running on a developer's laptop.
+Until opening night, your restaurant is a private kitchen. The cook is testing recipes; nobody from the public is inside. In web terms: the app runs on your computer, and only your computer can see it.
 
-**Localhost** (one-line definition: a URL that means "this same computer," not the public internet, [→ GLOSSARY](../../GLOSSARY.md#localhost)) is the private kitchen.
-
-Opening night is **deployment** (one-line definition: the act of moving an app from the developer's laptop to a public server so anyone on the internet can reach it, [→ GLOSSARY](../../GLOSSARY.md#deployment)).
-
-The plumbing of opening night looks like this:
+Opening night is **deployment** (moving an app from one computer to a public one so anyone on the internet can reach it, [→ GLOSSARY](../../GLOSSARY.md#deployment)).
 
 ```mermaid
 flowchart LR
@@ -39,60 +35,52 @@ flowchart LR
 <details>
 <summary>Optional: same pipeline with the technical labels (Module 4 hands-on)</summary>
 
-> *Peek ahead — skim, don't memorize:* The private kitchen is your laptop running **localhost**. The recipe binder is **GitHub**, where your agent files each saved version of your project. The prep cooks are the **build server** (Vercel's). The public restaurant is the live site at a **public URL**. The whole pipeline — committed code, then build, then live URL — is called **CI/CD**. You'll watch your agent run this pipeline in Module 4, and Module 5 is where you operate what comes out of it; the kitchen-to-restaurant picture is the one to hold onto today.
+> *Peek ahead — skim, don't memorize:* The private kitchen is your own computer. The recipe binder is **GitHub**, where your agent files each saved version of your project. The prep cooks are Vercel's build machines. The public restaurant is the live site at a **public URL**. You'll watch your agent run this pipeline in Module 4; the kitchen-to-restaurant picture is the one to hold onto today.
 
 ```mermaid
 flowchart LR
-  Localhost["Localhost<br/>= private kitchen"] -->|git push| GitHub["GitHub<br/>= recipe binder"]
-  GitHub -->|trigger| Build["Build server<br/>= prep cooks"]
+  Laptop["Your computer<br/>= private kitchen"] -->|saved version| GitHub["GitHub<br/>= recipe binder"]
+  GitHub -->|trigger| Build["Build machines<br/>= prep cooks"]
   Build -->|deploy| Vercel["Vercel<br/>= public restaurant"]
   Vercel -->|public URL| Customers[Anyone on the internet]
 ```
 
 </details>
 
-You tell your agent to save your work, and it records the new version in **git** (one-line definition: a tool that tracks every version of every file in a project, [→ GLOSSARY](../../GLOSSARY.md#git)) and files a copy on **GitHub** (one-line definition: a website that hosts code repositories and runs developer tools on top of them, [→ GLOSSARY](../../GLOSSARY.md#github)) — that's the recipe binder, kept somewhere safe.
+You tell your agent to save your work. It records the new version with **git** (the tool that keeps every saved version, [→ GLOSSARY](../../GLOSSARY.md#git)) and files a copy on **GitHub** (the website that keeps those versions online, [→ GLOSSARY](../../GLOSSARY.md#github)). That's the recipe binder, kept somewhere safe.
 
-Then **Vercel** (one-line definition: a service that runs your code on the public internet, [→ GLOSSARY](../../GLOSSARY.md#vercel)) watches the recipe binder. When new recipes land, Vercel's prep cooks (build servers) read the new version, get the kitchen ready, and flip the sign on the door from "Closed" to "Open."
+**Vercel** (a service that runs your app on the public internet, [→ GLOSSARY](../../GLOSSARY.md#vercel)) watches the binder. When a new version lands, its prep cooks read it, get the kitchen ready, and flip the sign on the door from "Closed" to "Open." For your project, every version your agent files on GitHub goes through this automatically.
 
-That whole pipeline is **CI/CD** (one-line definition: continuous integration / continuous deployment — the automated path from "I committed code" to "it's live on the internet," [→ GLOSSARY](../../GLOSSARY.md#ci-cd)).
+Three things worth noticing now.
 
-For your thread project, every version your agent files on GitHub goes through this pipeline automatically.
+**Your computer is invisible to the internet.** Until the app is deployed, only you can see it. Showing it to a friend means deploying it.
 
-A few things confuse beginners here, and naming them now saves you debugging time later.
+**The binder is what gets served.** Vercel doesn't cook from your computer — it cooks from GitHub. A change your agent hasn't saved and filed there doesn't exist as far as opening night is concerned.
 
-**Localhost is invisible to the internet.** Until your app is deployed, only your laptop can see it. Showing it to a friend means deploying it. This sounds obvious until you spend an hour wondering why your friend can't see your localhost URL.
-
-**Deployment is not magic.** Vercel deploys are fast (often under 60 seconds) but they are real builds happening in real machines. When something works locally and breaks on Vercel, it's almost always because your laptop has something the deploy server doesn't. Module 5 of this course covers what to do when the live app misbehaves — describing what you see and steering the fix; for now, just know that "it works on my machine" is a category of bug that doesn't go away with deployment, only changes shape.
-
-**The recipe binder is the source of truth.** Vercel doesn't deploy from your laptop — it deploys from GitHub. Anything your agent hasn't saved and filed on GitHub may as well not exist when the build server starts cooking. Module 2 unpacks the daily rhythm of saving changes and keeping the recipe binder current.
+**Working here doesn't guarantee working there.** Deploys are real builds on real machines. When something works on your computer and breaks on the live site, it's usually because your computer has something the public kitchen doesn't. You don't diagnose that: you tell your agent what you see, on which address.
 
 ## Exercise
 
-Sketch the deploy pipeline. Plan 15 minutes.
+Sketch the path to public. Plan 10 minutes.
 
-On paper or [excalidraw.com](https://excalidraw.com), draw four boxes: `your laptop`, `saving`, `GitHub`, `Vercel`. Then draw arrows showing what travels between each pair: what goes from your laptop to GitHub? What does GitHub trigger at Vercel? What does Vercel produce? Add the public URL on the far right with an arrow pointing into "anyone on the internet." Don't look anything up. The point is to commit your current model to paper.
+On paper or at [excalidraw.com](https://excalidraw.com), draw four boxes: `your computer`, `saving`, `GitHub`, `Vercel`. Draw arrows showing what travels between each pair, and add the public web address on the far right with an arrow into "anyone on the internet." Don't look anything up.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Describe in one sentence why "it works on my localhost" doesn't mean "it works in production."
-2. Name one thing that has to be set up for a Vercel deploy to work that isn't in your code (for example: which GitHub repository Vercel watches, which configuration values the build needs, the deploy settings on the Vercel side).
+1. Say, in one sentence, why "it works on my computer" doesn't mean "it works for everyone."
+2. Name one thing that has to be set up for a deploy to work that isn't in your code (for example: which GitHub project Vercel watches, or the settings the build needs on the Vercel side).
 
 ## Going deeper
 
 Optional, only if you're curious:
 
-- Vercel's [docs on deploying a Next.js app](https://vercel.com/docs/frameworks/nextjs) — concrete and current.
-
-## Loop check
-
-> **Loop check — intent.** Module 1 is pre-loop, but every mental model you build here changes the *intent* you'll bring to your next AI-coding session. Knowing that going-live is a pipeline, not a flip of a switch, changes the *intent* you'll bring to debugging deployment failures: you'll know there are several places where something can go wrong (build server, configuration, the wires between GitHub and Vercel) before you start guessing. The loop step this lesson reinforces is **intent**: knowing the shape of the pipeline before you start asking why one of its steps failed.
+- Vercel's [docs on deploying](https://vercel.com/docs/frameworks/nextjs) — concrete and current.
 
 ## What you just did
 
-You sketched the deploy pipeline — the path every real product takes from a private laptop to a public URL. You separated "the code lives in git" from "the build runs at Vercel" from "the public URL is what anyone on the internet sees." That separation is the same separation an AI coding agent will assume when you ask it to fix a broken deploy. The "intent" step of the loop, taught in Module 3, is exactly this: knowing the shape of what you want the system to do before you start asking. You've now practiced it four times — the full set of Module 1 mental models is in your head.
+You sketched the path from a private computer to a public web address, and separated "the saved version lives on GitHub" from "the live site runs at Vercel." That's the full set of Module 1 pictures; Module 2 is the saving habit that keeps the binder current.
 
 ## Navigation
 

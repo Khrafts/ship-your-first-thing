@@ -1,4 +1,4 @@
-<!-- The agent writes this with you during Module 4's first lesson, from the ask in that lesson; the eight features below are the ones that ask lists, in the same words. -->
+<!-- The agent writes this with you during Module 4's first lesson, from the ask in that lesson; the eight features below are the ones that ask lists, in the same order. -->
 
 # [Your app's name]
 
@@ -29,6 +29,7 @@
 ## How we work
 
 - We agree on the plan above before we build anything.
+- This computer starts with none of the tools a web app needs. When a step first needs one, the agent says what it is and why, installs it, asks you only for the approvals only you can give, and checks it works before going on. An administrator password or an account sign-in goes straight into the installer or sign-in window it names, never into the chat. If an install fails, the agent stops and says what it tried and what your options are.
 - At the start of every conversation the agent reads this plan and the house rules, and opens by saying where we are and what comes next.
 - Every feature has a definition of done — a short list of checks, written into the feature's ask — that the agent runs and shows you before saying it's finished; a check it couldn't run is named as not run, never guessed.
 - After every feature that works, you say "save this as a working version" — and the agent does the saving, then says whether the copy went up and whether the live copy rebuilt.

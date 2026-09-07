@@ -1,6 +1,6 @@
 # BUDGET.md — Course costs, honestly
 
-**Last verified:** 2026-08-18
+**Last verified:** 2026-08-18. **Path 1 usage-limit correction:** 2026-09-07 (see the note under Path 1).
 **Freshness commitment:** This file is updated whenever a cost-affecting upstream changes. Check `WHAT-CHANGED.md` for the most recent revision date. If you spot stale numbers, file an issue tagged `freshness` (see `CONTRIBUTING.md`).
 
 ## Why this file exists
@@ -9,18 +9,20 @@ Most coding courses pretend the tools are free, then learners hit a paywall part
 
 ## The two tracks (and a third option)
 
-Every path through this course costs you something — money, or limits, or both. There's no free-forever option. What you're choosing between is: pay a predictable monthly amount and get a track with no built-in interruptions (Path 1), or pay nothing and accept that the free allowance can run out on a busy day, or change, without much warning (Path 2). Both are honest paths.
+Every path through this course costs you something — money, or limits, or both. There's no free-forever option. What you're choosing between is: pay a predictable monthly amount for a larger usage allowance (Path 1), or pay nothing for a smaller one that can also change without much warning (Path 2). **Both can ask you to wait on a heavy day.** Both are honest paths.
 
-### Path 1: Claude Code desktop — predictable
+### Path 1: Claude Code desktop — predictable cost, not unlimited use
 
 | Item | Cost |
 |---|---|
 | Claude Code desktop (Pro) | $20/month billed monthly, or $17/month billed annually |
 | Everything else the course needs | Free (see the module rows below) |
 
-That $20 is the floor — there's no cheaper way to get Claude Code desktop, and no free plan includes it. What it buys: every lesson in this course, every day, with nothing that runs out partway through a workday.
+That $20 is the floor — there's no cheaper way to get Claude Code desktop, and no free plan includes it. What it buys: every lesson in this course, with a usage allowance that resets on a schedule. The allowance is real, not unlimited: on a heavy day the app can tell you to wait until it resets. Nothing in this course needs any paid extra turned on beyond the plan itself.
 
-**Pick Path 1 if:** you have $20/month you're comfortable spending on this course and you'd rather pay for predictability than manage a free allowance.
+> **Correction, 2026-09-07:** earlier versions of this file said Path 1 had "nothing that runs out" and "no built-in pauses". Anthropic's own help page — <https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan> — says Pro and Max plans include Claude Code with usage limits. That page was confirmed by the course maintainer on 2026-09-07; the wording above follows it.
+
+**Pick Path 1 if:** you have $20/month you're comfortable spending on this course and you'd rather pay for a bigger, predictable allowance than manage a free one.
 
 ### Path 2: Codex, inside the ChatGPT desktop app — free to start
 
@@ -32,7 +34,7 @@ That $20 is the floor — there's no cheaper way to get Claude Code desktop, and
 
 Codex is included on the free tier of ChatGPT, and that's genuinely free — this course installed it and made a first edit with it before writing a single Path 2 lesson. Two honest catches. First, OpenAI's own wording says Codex is on the Free plan "for a limited time." If that changes before you finish the course, it doesn't strand you — the paid ChatGPT plans keep Codex working exactly the same way, at a monthly cost instead of free. Second, the free allowance is real, not unlimited: on a heavy day, the app may ask you to wait before you can keep going, or offer you a paid plan. The exact size of that allowance isn't published and can change, so treat "it might ask you to wait sometimes" as the honest expectation, not a specific number.
 
-**Pick Path 2 if:** $0 matters more to you than never waiting, and you're fine with an occasional pause on a heavy day.
+**Pick Path 2 if:** $0 matters more to you than a bigger allowance, and you're fine with an occasional pause on a heavy day.
 
 ### Switching is cheap
 
@@ -56,7 +58,7 @@ Two questions, in order:
 
 | Question | Answer |
 |---|---|
-| Can you spend $20/month on this course? | **Yes → Path 1, Claude Code desktop.** Flat, predictable, no built-in pauses. |
+| Can you spend $20/month on this course? | **Yes → Path 1, Claude Code desktop.** Flat, predictable cost; a larger allowance that can still make you wait on a heavy day. |
 | (If no) Are you OK with an occasional wait on a heavy day, in exchange for $0? | **Yes → Path 2, Codex in the ChatGPT desktop app.** Free to start, upgradeable in place if you ever need to. |
 
 Switching later is cheap — see above. [Module 0 Lesson 3](./modules/00-welcome/03-cost-path-triage.md) walks through this triage in more detail before you create any accounts.
@@ -65,7 +67,7 @@ Switching later is cheap — see above. [Module 0 Lesson 3](./modules/00-welcome
 
 ### Module 0 (Welcome) — both tracks
 
-No AI tokens used. Free for both tracks.
+Lessons 1–5 use no AI. Lesson 6 is your first real use of your agent: it builds a small checklist page, you ask for one change, and you save it — a short session, well inside either path's allowance on an ordinary day. No new accounts beyond the two Lesson 4 creates.
 
 ### Module 1 (Mental models) — both tracks
 
@@ -73,21 +75,21 @@ No AI tokens used. Module 1 is reading and diagramming exercises. Free for both 
 
 ### Modules 2 and 3 (Toolchain & The Loop) — both tracks
 
-Expect token use to stay light through these modules. Neither path's per-lesson cost should differ from its baseline: Path 1 stays inside the flat $20/month ceiling, Path 2 stays inside the free ChatGPT allowance, with the same occasional-wait possibility as any other day.
+Expect AI use to stay light through these modules. Neither path's per-lesson cost should differ from its baseline: Path 1 stays inside its flat $20/month plan and its usage allowance, Path 2 inside the free ChatGPT allowance — either can ask you to wait on a heavy day.
 
 > **Note:** Module 3.5 (the code-reading module that sat between Modules 3 and 4) was retired 2026-08-12, alongside the rest of the terminal-era course. What used to be "Modules 2 / 3 / 3.5" is now Modules 2 and 3.
 
 ### Module 4 (Thread project — build)
 
-Module 4 adds two more accounts: Supabase (your database) and Vercel (where the app goes live). Both are free tier — the lessons state that both free plans cover everything this module builds. Expect this to be the course's heaviest module for AI use; the divergence between paths is the same shape as every other module, not a new one — Path 1 stays inside its flat ceiling, Path 2 stays inside its free allowance.
+Module 4 adds two more accounts: Supabase (your database) and Vercel (where the app goes live). Both are free tier — the lessons state that both free plans cover everything this module builds. Expect this to be the course's heaviest module for AI use, and the module where either path is most likely to ask you to wait; the divergence between paths is the same shape as every other module — Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance.
 
 ### Module 5 (Operating the build)
 
-Module 5 adds no new accounts and no new costs — nothing new gets built, and the lessons need nothing beyond the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility.
+Module 5 adds no new accounts and no new costs — nothing new gets built, and the lessons need nothing beyond the live app and the sign-ins Module 4 already left you. Expect the same shape as every other module: Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance, either with the same occasional-wait possibility.
 
 ### Module 6 (After it's live)
 
-Module 6 adds no new accounts and no new costs. Its lessons say so directly: nothing to install, nothing to set up, and nothing to prepare — the module works on the app Module 5 left live, at the link it already has. Only one of its four lessons changes that app on purpose. Expect AI use in the same shape as every other module: Path 1 inside its flat $20/month ceiling, Path 2 inside its free allowance with the same occasional-wait possibility. The re-check this module has you run after any change happens in your browser, against your own live app — it costs about fifteen minutes of your time and nothing else.
+Module 6 adds no new accounts and no new costs. Its lessons say so directly: nothing to install, nothing to set up, and nothing to prepare — the module works on the app Module 5 left live, at the link it already has. Only one of its four lessons changes that app on purpose. Expect AI use in the same shape as every other module: Path 1 inside its flat $20/month plan and its allowance, Path 2 inside its free allowance, either with the same occasional-wait possibility. The re-check this module has you run after any change happens in your browser, against your own live app — it costs about fifteen minutes of your time and nothing else.
 
 ### Module 7 (Where to go from here)
 
