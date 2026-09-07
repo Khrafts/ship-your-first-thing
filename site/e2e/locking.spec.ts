@@ -49,7 +49,26 @@ test.describe("progression (signed out)", () => {
     await page.goto(MODULE_ZERO_LAST);
     const card = page.getByTestId("practical-next");
     await expect(card).toBeVisible();
-    await expect(card.getByRole("link")).toHaveAttribute("href", MODULE_TWO_SAVE_LESSON);
+    await expect(card.locator(`a[href="${MODULE_TWO_SAVE_LESSON}"]`)).toBeVisible();
+    // Signed out there is no completion control, so the card must not tell
+    // the reader only to "mark this lesson complete": it says the next step
+    // opens once this lesson is recorded complete and links sign-in.
+    await expect(card).toContainText("recording needs an account");
+    await expect(card.getByRole("link", { name: "sign in" })).toHaveAttribute("href", "/signin");
+    await expect(card).not.toContainText("Unlocks when you mark this lesson complete");
+  });
+
+  test("a reference lesson points back to the route, not at the reading-order next lesson", async ({ page }) => {
+    // Signed out, no progress: Module 2 Lesson 2 (reference) sends the
+    // reader to the start of the route; its "Next →" is the save lesson,
+    // which stays a locked placeholder.
+    await page.goto("/modules/02-toolchain/02-the-engine-room");
+    const card = page.getByTestId("practical-next");
+    await expect(card).toContainText("The practical route starts at");
+    await expect(card.getByRole("link")).toHaveAttribute("href", FIRST_LESSON_URL);
+    await expect(
+      page.getByText("Complete “Build your first thing” to unlock"),
+    ).toBeVisible();
   });
 
   test("Module 2 Lesson 3 is locked with a sign-in prompt", async ({ page }) => {

@@ -38,3 +38,13 @@ export function formatMinutes(minutes: number): string {
   const rest = minutes % 60;
   return rest === 0 ? `${hours} hr` : `${hours} hr ${rest} min`;
 }
+
+/** Site URL of a lesson, from any ref carrying its module + lesson slugs. */
+export function lessonHref(ref: { moduleSlug: string; lessonSlug: string }): string {
+  return `/modules/${ref.moduleSlug}/${ref.lessonSlug}`;
+}
+
+/** (2, "03") → "Module 2, Lesson 3". Lesson numbers are zero-padded strings. */
+export function lessonLabel(moduleNumber: number, lessonNumber: string): string {
+  return `${moduleLabel(moduleNumber)}, Lesson ${Number(lessonNumber)}`;
+}

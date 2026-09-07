@@ -26,7 +26,7 @@
 import { getModules } from "@/lib/content";
 import type { LessonRef, ModuleInfo } from "@/lib/content/types";
 import { getCompletedLessonPaths } from "@/lib/progress";
-import { chainLessons, isOnDemand, OPEN_MODULES } from "@/lib/route";
+import { chainLessons, chainPredecessor, isOnDemand, OPEN_MODULES } from "@/lib/route";
 
 export { ON_DEMAND_LESSONS, ON_DEMAND_MODULES, OPEN_MODULES } from "@/lib/route";
 
@@ -97,9 +97,7 @@ export function gatingLesson(
       }
     }
   }
-  const chain = chainLessons(modules);
-  const index = chain.findIndex((lesson) => lesson.path === lessonPath);
-  return index > 0 ? chain[index - 1] : null;
+  return chainPredecessor(modules, lessonPath);
 }
 
 /** Unlock state for the current viewer; userId null = signed out (no progress). */
