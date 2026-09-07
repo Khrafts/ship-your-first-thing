@@ -34,6 +34,8 @@ The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15
 
 **`git` in M0 is the named-install caveat, nothing more.** M0 L5 (`05-install-your-agent-app.md`) names it once, in the Windows-only caveat about what gets installed alongside the agent app, with a D-04 callout; M2 L3 (`03-the-save-system.md`) is where it becomes the machinery the agent operates on the learner's behalf. An M0 lesson may not use `git` for anything beyond that install caveat — no commits, no saving, no version history. (Before 2026-08-15 this contract listed `git` as Forbidden-until-M2, which contradicted the shipped M0 L5 caveat.)
 
+**M0 L6 (`06-build-your-first-thing.md`, added 2026-09-07) uses only Safe words plus the `Claude Code desktop` / `Codex` callouts.** The learner says "save this as a working version" and "take us back to the last saved working version"; the machinery underneath is never named (no `git`, `commit`, `GitHub`, `HTML`). App UI labels the learner must see or click — **Code**, **Local**, **Select folder**, **Manual**, **Auto** — appear as labels under the see-it rule, not as vocabulary. "Web page", "file", "folder", "browser", "tick", "checklist" are everyday Safe nouns.
+
 **`ChatGPT` rides along inside the `Codex` callout.** The lessons never write a standalone `**ChatGPT**` callout — the `**Codex**` callout defines the relationship in place ("the AI coding agent that lives inside the ChatGPT desktop app"), and the brand itself is an everyday consumer-app name at the audience floor. It is therefore classified Safe from M0 (see Safe above) rather than Requires-callout. Settled 2026-08-15; it had been listed as M2 Requires-callout, which no lesson honoured.
 
 ### Forbidden (deferred to a later module)
