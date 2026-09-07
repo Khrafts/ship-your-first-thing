@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 01
 est_minutes: 55
 prereqs: ["00-the-plan"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -58,9 +58,9 @@ While you are on the Supabase dashboard, do one small thing for yourself. Find t
 
 Open your agent and point it at the first feature in your plan:
 
-> Start a brand-new app, connect it to my database, and get it live at a public web address I can open from my phone. No features yet, just an empty page that's really online. Tell me what you'll do, and what you need from me, before you write anything.
+> Build the first feature on the plan, in this folder: start a brand-new app, connect it to my database, and get it live at a public web address I can open from my phone. No features yet, just an empty page that's really online. Tell me what you'll do, and what you need from me, before you write anything. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: the app opens at a public web address anyone with the link can reach; the page carries my project's name; the live page and the page on my own computer show the same thing; nothing labelled secret is anywhere a visitor to the live page could reach.
 
-That last sentence is the same planning-before-building move you ran all through Module 3, and it earns its place here for a reason this chunk makes obvious: the work involves two accounts, two services, and a public address, and you would rather hear the shape of that before it starts than piece it together afterwards.
+"Tell me what you'll do before you write anything" is the same planning-before-building move you ran all through Module 3, and it earns its place here for a reason this chunk makes obvious: the work involves two accounts, two services, and a public address, and you would rather hear the shape of that before it starts than piece it together afterwards. The list at the end of the ask is this chunk's definition of done, handed over before the build so that the agreement exists before the work does — the plan lesson's ritual, now in the ask where it belongs; every chunk from here does the same.
 
 Read what comes back and check one thing: does the plan it describes match what you asked for — an empty app, connected to your database, live at a public address that works from a phone? You are not judging how it intends to do any of it. If it has quietly added a sign-in page, or a first post, or anything else that is further down your plan's list, say so in one sentence and have it cut back to the one feature.
 
@@ -120,6 +120,22 @@ Your Vercel dashboard does have a settings screen listing what the live site kno
 
 When this chunk was really built, the live page came up at a real public address with no sign-in wall in the way: a near-black page with one line of centred text reading "thread project — online", and a second line under it saying the pipeline was live. Two lines of text on a dark background — and that is a success, because those two lines travelled from a database, through a hosting service, onto a screen that had nothing to do with the machine that made them.
 
+### Two places your app runs from now on
+
+Module 1's picture for going live had two rooms, and from this chunk on you are always standing in one of them. The private kitchen is the copy of your app that runs on your own computer: your agent starts it, it is alive only while it runs, and it is where every change lands first, before anything is saved. The public restaurant is the live link — the copy Vercel rebuilds and serves at the public address. They are two separate copies, and knowing which one you are looking at is half of every check in this module.
+
+Nothing double-clicks the kitchen copy open, the way the pages in Module 0 and Module 3 did. Your agent starts it and hands you an address to open in your browser. So there are two sentences to keep, and they are yours for the rest of the module:
+
+> Start the app on my computer and open it in my browser.
+
+> Stop the app and start it again, then tell me what you see.
+
+Say the first one whenever there is nothing to look at — after a fresh conversation, after you have closed the agent app between chunks, when a tab shows nothing or says it cannot connect. Say the second when a repair looks like it did nothing. A blank tab at home is not a broken app. It is usually an app that is not running, and the first sentence is the first thing to try before any steer.
+
+Which room gets checked: every chunk's checks run in the kitchen, on your own computer. The restaurant is checked here, on your phone, and again in the last lesson, with two accounts. In between, the live copy keeps changing with every save that goes up, and the section on saving below says exactly how.
+
+One thing the picture does not show, and this module would be dishonest to leave out. Your database is not in either room. Your Supabase project — the accounts, and soon the profiles, posts, follows and comments — is one place that both copies use. An account you make at home is an account on the live link, and the other way round; a switch you flip on the Supabase dashboard is flipped for both. Checking at home does not keep you away from the live copy's information, because they are the same information. Until the last lesson of this module, that is fine, for one reason: everything in this app is test accounts with made-up addresses and made-up posts, and nothing in it is anybody's real information. Keep it that way. Module 5 is where the same fact changes what you may do before you ask.
+
 ### When it goes sideways
 
 The steer to keep ready is the mismatch one: *"On my computer the page loads, but the public link is blank or shows an error. I want both to behave the same. Find out why and fix it."* You are not working out the cause. You are naming what you saw, on which screen, and handing it back.
@@ -138,11 +154,13 @@ It picked up, deployed, and confirmed the link. The lesson underneath is worth c
 
 ### Before it is allowed to say done
 
-Underneath both of your checks sits a layer that is your agent's job, not yours. Every chunk in this module carries a **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) — this chunk's list is at the end of this lesson, so you never have to invent one. Your agent runs those checks and reports what happened. Your side is the sentence you agreed on in the plan lesson, for when "done" arrives with nothing behind it: *"Run the checks we agreed on and show me the results first."*
+Underneath both of your checks sits a layer that is your agent's job, not yours. Every chunk in this module carries a **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) — you wrote this chunk's list into your ask, before the build, and the reference copy is at the end of this lesson. Your agent runs those checks and reports what happened, and if it could not run one, it says so rather than guessing; a check reported as not run is honest, and it is yours to run or to ask about, never to count as passed. Your side is the sentence you agreed on in the plan lesson, for when "done" arrives with nothing behind it: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
 The moment the live link loads on your phone, say the sentence: *"Save this as a working version."* Your agent does every part of what that involves — **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)), the project's home page online, all of it — and it never decides on its own that something is worth keeping. You decide; it saves. That saved version is your way back if the next chunk goes sideways, and from here every chunk ends with one.
+
+From this save on, a save is four things in a row, and only the first two happen on your computer. The files change in the kitchen as your agent works. A save keeps a version of them on this computer, with a note. The copy then goes up to the project's home page online — when the sending works, as Module 2 said. And Vercel rebuilds the public copy from what went up — when the rebuild works. So the live link shows the last version whose rebuild succeeded, which is usually your last save and is not guaranteed to be. It is never the half-finished middle of a chunk, which is one more reason to save only what you have checked. The saved version on this computer is real the moment your agent confirms it, note and all — it is your way back whether or not the copy went up or the public copy rebuilt. What the other two answers tell you is different: whether a copy now exists somewhere other than this computer, and whether the live link is showing the version you just checked. So when it says "saved", ask: *"Confirm the save, whether the copy went up, and whether the live copy rebuilt successfully."* Three answers, because they are three different things, and any one of them can fail while the others hold. If the upload or the rebuild failed, you still have your saved version; say what you saw and let your agent find out why. Wait for the rebuild to succeed only when the thing you are about to check is the latest public copy.
 
 ## Exercise
 
@@ -150,18 +168,18 @@ Build the first feature on the plan you wrote in the last lesson, in your own ag
 
 1. **Create the two accounts.** Supabase and Vercel, in your browser, one at a time. Ask your agent to walk you through each; you do the signing up and click the confirmation link in your email. Stop when you have a Supabase project with a dashboard and a Vercel account.
 2. **Look at your keys screen once.** On the Supabase dashboard, find the key labelled publishable and read its opening letters — `sb_publishable_`. That is all; you are not copying anything yet.
-3. **Open a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: no features, live at a public address, and tell me what you'll do before you write anything.
+3. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: no features, live at a public address, tell me what you'll do before you write anything — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 4. **Check the plan against your ask.** An empty app, connected to your database, live at a public address. If it has reached ahead into anything else on your plan's list, pull it back in one sentence.
 5. **Give the go-ahead** and approve the steps as the app asks you to.
 6. **If it asks you to copy a value, run the pre-flight first.** Check the label. Copy only the one labelled publishable. If it asks for the secret key, ask why this step needs it and where it will live, and wait for the answer. Some runs never ask you for anything — that is normal too.
-7. **Open the live link on your phone**, on your own data connection. Confirm the page loads and carries your project's name. If it fails on the phone while the app runs fine on your machine, use the mismatch steer and let your agent fix it before you go on.
-8. **Save it.** *"Save this as a working version."*
+7. **Open the live link on your phone**, on your own data connection. Confirm the page loads and carries your project's name. If there is no copy running at home to compare against, say: *"Start the app on my computer and open it in my browser."* If it fails on the phone while the app runs fine on your machine, use the mismatch steer and let your agent fix it before you go on.
+8. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully. The first answer is the one that gives you a version to go back to; the last answer is the one that says whether the public page is the one you just checked, so it is the one to wait for before you show anyone the live link.
 
 Write down one sentence for yourself before you close the app: what you saw on your phone, and where you were standing when you saw it. It is the first time something you directed existed in public.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. The app opens at a public web address that anyone with the link can reach.
 2. The page carries your project's name.

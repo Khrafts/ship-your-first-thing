@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 02
 est_minutes: 50
 prereqs: ["01-hello-world-deploy"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -58,11 +58,13 @@ That is so signing up does not wait on an email. With it off, the first time som
 
 Your own dashboard may not look identical — Supabase moves things around — but the switch is named the same, and it is the only one on that page you are touching today.
 
+One honest thing about that switch, and it is the first time this module says it out loud. It is a setting on your database, and your database is shared by the copy on your computer and the public copy alike — Lesson 1 said so. So from the save that carries this chunk, anybody who has your public address can create an account there, with no confirmation email, and it lands in the same place your own test accounts do. A long address that nobody has been told is not a lock: links get forwarded, addresses get remembered, and you have no way of knowing who has it. That is fine for now, for one reason — everything in this app until Lesson 8 is made-up addresses and made-up posts, and nothing in it is anybody's real information. Keep it that way: test accounts only, nothing you would mind a stranger reading, and no handing the link around as a finished thing until Lesson 8 has checked it live. Module 5 picks up what changes once real people are in it.
+
 ### Pointing your agent at the second feature
 
 Open your agent and point it at the second feature in your plan:
 
-> I want people to sign in with an email address and a password. If someone has never signed up before, signing in should create their account and let them straight in — no confirmation email. They stay signed in if they refresh the page, and there's a sign-out button. Plan this out before you write any code, and tell me what I need to set up.
+> I want people to sign in with an email address and a password. If someone has never signed up before, signing in should create their account and let them straight in — no confirmation email. They stay signed in if they refresh the page, and there's a sign-out button. Plan this out before you write any code, and tell me what I need to set up. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a brand-new email address can sign in and lands inside the app; refreshing the page keeps that person signed in; sign-out works, and a refresh afterwards leaves them signed out; a signed-out visitor cannot reach a page that needs an account.
 
 Read what comes back and check one thing: does the plan match what you asked for — an email and a password, an account created on first sign-in, still signed in after a refresh, a way to sign out? You are not judging how it intends to do any of it. If it has reached ahead into profiles or posts, say so in one sentence and have it cut back to the one feature.
 
@@ -104,7 +106,7 @@ Both checks are aimed at the same failure. Over a long back-and-forth an agent c
 
 ### Checking it yourself
 
-Open the running app and go through it in order. Each step is one thing to see.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. Each step is one thing to see.
 
 - Open the app while signed out. You should land on a sign-in page, not on the app itself.
 - Type an email address and a password and sign in. You should land in the app, signed in.
@@ -129,34 +131,34 @@ Two steers to keep ready. Both are the same move — name what you saw on screen
 
 That second one is not hypothetical. When this chunk was really built, the first press of the sign-in button produced a red error page instead of signing anyone in, and pressing it again after a reload did the same thing. Nobody on the learner side worked out why, and nobody had to: the move was to say what happened and where — a red error page, on pressing Sign in — and hand it back. Your agent reads the details itself. It found the cause and fixed it.
 
-One detail from that repair is worth keeping. After the fix went in, the same error kept appearing — and the fix was fine; the running app had not picked it up yet. So when a repair looks like it did nothing, say so and ask for one thing before you report the same problem twice: *"Nothing changed on my screen. Can you stop the app and start it again, then tell me what you see?"* Starting it up again is your agent's job, not yours.
+One detail from that repair is worth keeping. After the fix went in, the same error kept appearing — and the fix was fine; the running app had not picked it up yet. So when a repair looks like it did nothing, say so and ask for one thing before you report the same problem twice: *"Nothing changed on my screen. Can you stop the app and start it again, then tell me what you see?"* — the second of the two sentences Lesson 1 gave you. Starting it up again is your agent's job, not yours.
 
 A different kind of sideways: your agent keeps circling, reworking the same thing, losing track of what you asked. Do not keep arguing with it. Start a fresh conversation and begin this chunk again from your last saved version — the same recovery you learned in Module 3.
 
 ### Before it is allowed to say done
 
-Underneath your two checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson. Your agent runs those checks and reports what happened; your side is the sentence from the plan lesson, for when "done" arrives with nothing behind it: *"Run the checks we agreed on and show me the results first."*
+Underneath your two checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask; the reference copy is at the end of this lesson. Your agent runs those checks and reports what happened, naming any it could not run; your side is the sentence from the plan lesson, for when "done" arrives with nothing behind it: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
-Once you have signed in, refreshed, and signed out with your own hands, say the sentence: *"Save this as a working version."* Your agent does every part of what that involves — **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)), the project's home page online, all of it — and it never decides on its own that something is worth keeping. You decide; it saves. That saved version is what a fresh conversation sends you back to if the next chunk goes sideways.
+Once you have signed in, refreshed, and signed out with your own hands, say the sentence: *"Save this as a working version."* Your agent does every part of what that involves — **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)), the project's home page online, all of it — and it never decides on its own that something is worth keeping. You decide; it saves. That saved version is what a fresh conversation sends you back to if the next chunk goes sideways. When it says it is saved, ask it to confirm all three — saved on this computer, the copy went up, and the live copy rebuilt successfully — the way Lesson 1 set out. From this save on, the live link has a front door too.
 
 ## Exercise
 
 Build the second feature on your plan: a working front door on the app you put online last chunk. The deliverable is a running app you can sign in to, refresh, and sign out of — plus a saved version.
 
 1. **Flip the one switch that is yours.** Supabase dashboard → Authentication → Sign In / Providers → **Confirm email** off, then save the change. This is the part nobody can do for you.
-2. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: an email and a password, an account created on first sign-in, still signed in after a refresh, a sign-out button, and the plan before any code.
+2. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: an email and a password, an account created on first sign-in, still signed in after a refresh, a sign-out button, the plan before any code — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 3. **Check the plan against your ask.** You are checking that it matches what you asked for, not judging how it will do any of it. If it has reached ahead into profiles or posts, pull it back in one sentence.
 4. **Give the go-ahead** and approve the steps as the app asks you to.
-5. **Go through the running app in order:** land on the sign-in page while signed out, sign in with a made-up address and a password, refresh and stay signed in, sign out and land back at sign-in.
+5. **Go through the running app in order.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Then: land on the sign-in page while signed out, sign in with a made-up address and a password, refresh and stay signed in, sign out and land back at sign-in.
 6. **Run the refusal check.** In a private window that has never signed in, open a page that needs an account. It should bounce you to sign-in.
 7. **If anything is off, use the matching steer** — say what you saw on screen and hand it back. If a repair looks like it did nothing, ask your agent to stop the app and start it again before you report the same thing a second time.
-8. **Save it.** *"Save this as a working version."*
+8. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. A brand-new email address can sign in and lands inside the app.
 2. Refreshing the page keeps that person signed in.

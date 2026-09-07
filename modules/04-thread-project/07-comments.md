@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 07
 est_minutes: 55
 prereqs: ["06-feed"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -50,7 +50,7 @@ flowchart TD
 
 Open your agent and point it at the seventh feature in your plan:
 
-> Give each post its own page that anyone can open and read, including all of its comments — works even when I'm signed out. If I'm signed in, I can leave a comment. People can only edit or delete the comments they wrote themselves, never anyone else's. Plan this before you write any code, and tell me how you'll stop a signed-out visitor from posting.
+> Give each post its own page that anyone can open and read, including all of its comments — works even when I'm signed out. If I'm signed in, I can leave a comment. People can only edit or delete the comments they wrote themselves, never anyone else's. Plan this before you write any code, and tell me how you'll stop a signed-out visitor from posting. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: every post has a page a signed-out visitor can open and read, comments included; a signed-in person can leave a comment and it appears in the thread; only a comment's author can edit or delete it; a signed-out visitor has no way to comment.
 
 Read the plan when it comes back. You are checking that it matches what you asked for — a page anyone can open, a thread under it, comments only their own author can touch — and that the last part of your ask came back as something specific rather than a reassurance. When the plan matches, give it the go-ahead:
 
@@ -202,7 +202,7 @@ Here, the fences held. When this chunk was really built, all three of the attemp
 
 ### Checking it yourself
 
-Open the running app and go through it in order. The last two need your second account in another browser.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. The last two need your second account in another browser.
 
 - Open a post's page while signed out — the date on any post card is the link. The post is there and every comment under it is there.
 - Still signed out, look for somewhere to type. There isn't one. In its place is a way to sign in — the first refusal check.
@@ -228,7 +228,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-Underneath your two checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and its third item is the one this chunk exists for: only a comment's author can edit or delete it. Your agent runs the checks and reports what happened in plain words; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your two checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask — the reference copy is at the end of this lesson — and its third item is the one this chunk exists for: only a comment's author can edit or delete it. Your agent runs the checks and reports what happened in plain words, naming any it could not run; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 And after the section you just read, one thing about that report is worth saying out loud. A gate report is still words. It is a much better class of words — outcomes your agent went and produced rather than reasons it thought up — but the two pushes above are yours, and you run them whatever the report says.
 
@@ -238,27 +238,27 @@ And after the section you just read, one thing about that report is worth saying
 
 Look first, say the sentence second. When this chunk was really built, the save was held back through the whole of it — the dashboard step and the two-account walkthrough both — and then went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering nine files. The note on it read "a page for every post, with its comments".
 
-Same watch as the other database chunks: this one changed your database, so the file that changed it belongs in the same saved version as the page and the commenting — a version that saved half a change cannot rebuild the app it describes. Once you have clicked through the thread from both accounts and it holds: *"Save this as a working version."*
+Same watch as the other database chunks: this one changed your database, so the file that changed it belongs in the same saved version as the page and the commenting — a version that saved half a change cannot rebuild the app it describes. Once you have clicked through the thread from both accounts and it holds: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Exercise
 
 Build the seventh feature on your plan: give a post somewhere to be answered. The deliverable is a running app where every post has a page anyone can open and read, signed-in people can comment, and only a comment's author can change or remove it — plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: a page per post that anyone can open and read including its comments, commenting for signed-in people only, editing and deleting only your own, the plan before any code — and "tell me how you'll stop a signed-out visitor from posting."
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: a page per post that anyone can open and read including its comments, commenting for signed-in people only, editing and deleting only your own, the plan before any code, "tell me how you'll stop a signed-out visitor from posting" — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Answer whatever it asks before it plans.** If it offers you options, compare them on what each one drags into your app — one more page, something extra to count every time the feed loads — and take the cheaper one unless you want what the other is selling.
 3. **Read the plan against your ask.** You want the last part answered as something specific rather than a reassurance. If it lists more than one defense, you want it to say which one still stands when the others are gone.
 4. **Give the go-ahead** and approve the steps as the app asks you to:
 
    > That matches what I want. Go ahead.
 5. **When your agent tells you it has written a file for your database, run the pre-flight first:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* Wait for the answer — your profiles, posts, and follows are all in there now. Then do the step that is yours: Supabase dashboard → SQL Editor → **+** for a fourth query alongside the three already there → paste the whole file → Run → **Run query** on the "Potential issue detected" dialog, if its warning is accounted for by the answer you just got. If the dialog names anything the answer did not predict, press nothing — hand the disagreement back and wait. Wait for "Success. No rows returned" before you go on.
-6. **Walk the happy path.** Open a post's page from the date on a post card, sign in, leave a comment, then edit your own comment and watch the words change and `· edited` land on the date line.
+6. **Walk the happy path.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Open a post's page from the date on a post card, sign in, leave a comment, then edit your own comment and watch the words change and `· edited` land on the date line.
 7. **Run both refusal checks.** In a private window that has never signed in, open a post's page, read the whole thread, and look for any way to leave a comment — there should be none, or the attempt should refuse. Then, signed in as your second account in another browser, try to change *and* to remove a comment your first account wrote — and refresh afterwards to confirm the comment is still there, unchanged.
 8. **If either push goes through, use the matching steer** — say what you did and what you saw, and hand it back. If a page complains that something does not exist, go back to step 5.
-9. **Save it.** *"Save this as a working version."*
+9. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. Every post has a page a signed-out visitor can open and read, comments included.
 2. A signed-in person can leave a comment and it appears in the thread.

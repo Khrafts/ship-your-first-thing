@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 03
 est_minutes: 25
 prereqs: ["02-the-engine-room"]
-updated: "2026-08-15"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -88,7 +88,7 @@ One boundary to carry into the bigger builds, stated plainly so it never surpris
 
 Which is precisely why the ritual is worth the twenty seconds. Every save point you lay down shortens the distance that sentence can cost you.
 
-And because that sentence exists, experiments get cheap. "Try it and see" is a legitimate way to work when the failure case is one sentence away from undone. Module 3 teaches you when to reach for it — the signals that mean stop and go back rather than keep going. Module 4 is where you'll use it on something real.
+And because that sentence exists, experiments get cheap. "Try it and see" is a legitimate way to work when the failure case is one sentence away from undone. Module 3 teaches you when to reach for it — the signals that mean stop and go back rather than keep going — and has you say it once, on purpose, on a practice page that doesn't matter, so you've seen what it does before it counts. Module 4 is where you'll use it on something real.
 
 ### What you'll never be doing
 

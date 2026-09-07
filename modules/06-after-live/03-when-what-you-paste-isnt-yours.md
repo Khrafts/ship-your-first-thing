@@ -4,7 +4,7 @@ module: "06-after-live"
 lesson_number: "03"
 est_minutes: 35
 prereqs: ["02-adding-without-breaking"]
-updated: "2026-08-20"
+updated: "2026-09-07"
 deviations:
   - long-core-read
   - staged-comment-wording
@@ -118,11 +118,11 @@ Every part of that report that mattered survived the retyping. The steps, the do
 
 It is also the reason the fresh conversation goes first rather than second. The old conversation still has the whole message sitting in it. Continuing there means the sentence you did not want is still in the room, and nothing is gained by arguing with it.
 
-Nothing needed undoing in this story, because nothing ran. If something ever does get through — approved before you noticed — that is not a new problem and not one you handle yourself. Module 5 left the sentence for it:
+Nothing needed undoing in this story, because nothing ran. If something ever does get through — approved before you noticed — that is not a new problem and not one you handle yourself. Module 5 left the move for it, and on a live app it starts with a question, not the sentence: which saved version is the one from before the paste, what its note says, and what going back to it would change on your computer, on the live link, and not at all. Going back brings the files back; what people have typed into the app since, and anything changed on a dashboard, stay as they are — and if what got through touched either of those, the answer to that question is where you find out, because going back alone will not put it right. The question, and what to do with the answer, is in [Module 5 Lesson 5, Move 3](../05-operating/05-the-day-something-breaks.md#move-3--go-back-when-forward-is-losing); ask it before the sentence. Then:
 
-> "Take us back to the last saved working version."
+> "Take us back to the saved working version whose note says ___."
 
-Your agent does every part of that, the same as it does the saving. Your side is the sentence.
+Your agent does every part of that, the same as it does the saving. Your side is the question, the sentence, and the check afterwards.
 
 ### The name for it
 

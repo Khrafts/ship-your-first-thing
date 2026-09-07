@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 04
 est_minutes: 50
 prereqs: ["03-profile"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -54,7 +54,7 @@ flowchart LR
 
 Open your agent and point it at the fourth feature in your plan:
 
-> I want signed-in people to write a short text post, with an optional picture, that appears on their profile. They should be able to edit or delete their own posts, but nobody else's. And anyone, even signed-out visitors, should be able to read posts on a profile. Plan this out before you write any code, and tell me how you'll make sure one person can't edit a post to make it look like someone else wrote it.
+> I want signed-in people to write a short text post, with an optional picture, that appears on their profile. They should be able to edit or delete their own posts, but nobody else's. And anyone, even signed-out visitors, should be able to read posts on a profile. Plan this out before you write any code, and tell me how you'll make sure one person can't edit a post to make it look like someone else wrote it. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a signed-in person can write, edit, and delete their own post, with an optional picture; the post still shows the right author after an edit; a signed-out visitor can read posts and has no way to write, edit, or delete one; a signed-out attempt to store a post under somebody else's name is refused — tell me that in plain words, not as output for me to read.
 
 Read what comes back. You are checking that the plan matches what you asked for — write, edit, delete, your own only, an optional picture, readable by anyone — and that it answered the last part with something specific rather than a reassurance. You are not grading how it intends to do any of it. You needed the answer to exist, and you needed to look for it.
 
@@ -148,7 +148,7 @@ You are not decoding that sentence. The database wrote it, not you, and the only
 
 ### Checking it yourself
 
-Open the running app and go through it in order. Each step is one thing to see.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. Each step is one thing to see.
 
 - Write a post and save it. It should appear on your own profile where the empty area was, with its date on it.
 - Write a second post with a picture attached. The picture should show in the post.
@@ -177,7 +177,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and one of its four items is the outside-the-app attempt — the push you cannot make yourself. Your agent runs the checks and reports what happened; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask — the reference copy is at the end of this lesson — and one of its four items is the outside-the-app attempt, the push you cannot make yourself. Your agent runs the checks and reports what happened, naming any it could not run; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
@@ -185,13 +185,13 @@ Underneath your three checks sits the layer that is your agent's job. This chunk
 
 Look first, say the sentence second. When this chunk was really built the saving was held back on purpose until the app had been clicked through, and then the whole chunk went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version carrying four things: the file for the database, the code behind writing and editing and deleting, the edit page, and the profile page that now lists posts.
 
-That first item is the one to watch. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."*
+That first item is the one to watch. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Exercise
 
 Build the fourth feature on your plan: give the profile you built last chunk something to hold. The deliverable is a running app where you can write, edit, and delete your own posts with an optional picture, where a signed-out visitor can read them and change nothing — plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: a short text post with an optional picture, on your own profile, edit and delete your own only, readable by anyone signed out, the plan before any code — and the question about how one person can't edit a post to make it look like someone else wrote it.
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: a short text post with an optional picture, on your own profile, edit and delete your own only, readable by anyone signed out, the plan before any code, the question about how one person can't edit a post to make it look like someone else wrote it — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Check the plan against your ask**, including that last part. You want a specific answer there, not a reassurance. If it raises a limit of what you asked for, decide and say so; "leave that for another time" is a fine answer.
 3. **Give the go-ahead** and approve the steps as the app asks you to.
 4. **When your agent tells you it has written a file for your database, run the pre-flight first:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* Wait for the answer — your database has your profile in it now, so this one is not a formality. Then do the step that is yours: Supabase dashboard → SQL Editor → **+** for a new query alongside the old one → paste the whole file → Run → **Run query** on the dialog, if its warning is accounted for by the answer you just got. Wait for "Success. No rows returned" before you go on. If you never ran the profile file from last chunk, run that one first.
@@ -200,14 +200,14 @@ Build the fourth feature on your plan: give the profile you built last chunk som
    > With nobody signed in at all, try storing a post with someone else's name on it as the author, and show me exactly what came back.
 
    You want one thing back, in plain words: that it was refused rather than stored. You are not reading the output — your agent read it and tells you which happened. If it came back stored, stop here and use the first steer below.
-6. **Go through the running app in order:** write a post; write one with a picture; edit the first and watch the name stay yours; delete one and reload. Then run the first refusal check — sign out, open your own profile address, read the posts, and find nothing on the page to write, edit, or delete with.
+6. **Go through the running app in order.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Then: write a post; write one with a picture; edit the first and watch the name stay yours; delete one and reload. Then run the first refusal check — sign out, open your own profile address, read the posts, and find nothing on the page to write, edit, or delete with.
 7. **Run the second refusal check.** Sign in as your second person, find the first person's post, and *try* to edit or delete it — including by typing its editing address straight into the address bar. Refresh afterwards and confirm the post is unchanged.
 8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4.
-9. **Save it.** *"Save this as a working version."*
+9. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. A signed-in person can write, edit, and delete their own post, with an optional picture.
 2. The post still shows the right author after an edit.

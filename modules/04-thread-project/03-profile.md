@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 03
 est_minutes: 50
 prereqs: ["02-sign-in"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -52,7 +52,7 @@ flowchart LR
 
 Open your agent and point it at the third feature in your plan:
 
-> I want signed-in people to create a profile with a display name, a short bio, and a photo they upload from their computer. Anyone can view any profile, but a person can only edit their own. The profile page should leave an empty area where that person's posts will appear later. Plan this out before you write any code, and tell me where the uploaded photos get stored.
+> I want signed-in people to create a profile with a display name, a short bio, and a photo they upload from their computer. Anyone can view any profile, but a person can only edit their own. The profile page should leave an empty area where that person's posts will appear later. Plan this out before you write any code, and tell me where the uploaded photos get stored. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a signed-in person can set a name, a bio, and a photo, and all three are still there after a refresh; anyone can view any profile, signed in or not; only the owner of a profile sees anything that would change it; the photo survives signing out and signing back in.
 
 Read what comes back and check that it matches what you asked for — a name, a bio, an uploaded photo, anyone can view, only the owner can edit, an empty space left for posts — and that it answered the last part and told you where the photos will live.
 
@@ -132,7 +132,7 @@ That is what a good answer to an intent question looks like: it says what was bu
 
 ### Checking it yourself
 
-Open the running app and go through it in order. Each step is one thing to see.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. Each step is one thing to see.
 
 - Open your own profile — signed in, from the link on the home page. Before you have set anything, it should tell you the profile is not set up yet, offer a way to set it up, and already show a posts area with nothing in it.
 - Set a display name and a bio, choose a photo file, and save. You should land back on your profile page with the photo, the name, and the bio on it. Refresh the page: all three still there.
@@ -160,7 +160,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and it grows more specific than the last one's because there is more that can quietly not work. Your agent runs those checks and reports what happened. Your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask — the reference copy is at the end of this lesson — and it grows more specific than the last one's because there is more that can quietly not work. Your agent runs those checks and reports what happened, naming any it could not run. Your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
@@ -168,25 +168,25 @@ This chunk's **definition of done** (a one-line definition: the checks your agen
 
 This chunk is bigger than the last one. When it was really built the agent had written seven files and deliberately saved none of them, then asked whether to make the saves it had planned or wait until each piece had been checked against a real database. They waited. Once the app had been clicked through, the work went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as four saved versions in order: the file for the database, the profile page anyone can read, the edit form with the photo upload, and the link to it from the home page.
 
-Look first, say the sentence second — the habit worth keeping on any chunk that changes the database or accepts a file. When you have clicked through it and it holds: *"Save this as a working version."*
+Look first, say the sentence second — the habit worth keeping on any chunk that changes the database or accepts a file. When you have clicked through it and it holds: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Exercise
 
 Build the third feature on your plan: a profile page for the people who can now sign in. The deliverable is a running app where you can set a name, a bio, and a photo, where a signed-out visitor can read them and cannot change them — plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: name, bio, uploaded photo, anyone views, only the owner edits, an empty area left for posts, and the plan before any code.
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: name, bio, uploaded photo, anyone views, only the owner edits, an empty area left for posts, the plan before any code — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Check the plan against your ask**, including the part about where the photos will live. If it asks you a question first, answer the ones about what you want; "you choose" is a fine answer to the rest.
 3. **Give the go-ahead** and approve the steps as the app asks you to.
 4. **When your agent tells you it has written a file for your database, run the pre-flight first:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* Wait for the answer. Then do the step that is yours: Supabase dashboard → SQL Editor → new query → paste the whole file → Run → **Run query** on the dialog, if its warning is accounted for by the answer you just got. Wait for "Success. No rows returned" before you go on. Nothing on the profile pages works until this is done.
-5. **Go through the running app in order:** the empty profile with its posts area; saving a name, a bio, and a photo and refreshing; a second account opening your profile and getting a read-only page; and an edit that leaves the photo box empty without losing the photo.
+5. **Go through the running app in order.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Then: the empty profile with its posts area; saving a name, a bio, and a photo and refreshing; a second account opening your profile and getting a read-only page; and an edit that leaves the photo box empty without losing the photo.
 6. **Run the refusal check.** Signed out, open your profile's address directly and *try* to change something. You should be able to read everything and change nothing.
 7. **Ask the intent question once:** *"Who is allowed to upload a photo, and where does each person's photo go?"* Hold the answer against what you asked for, and say so if it does not match.
 8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4.
-9. **Save it.** *"Save this as a working version."*
+9. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. A signed-in person can set a name, a bio, and a photo, and all three are still there after a refresh.
 2. Anyone can view any profile, signed in or not.

@@ -2,9 +2,9 @@
 title: "Steering and recovery"
 module: "03-the-loop"
 lesson_number: 04
-est_minutes: 55
+est_minutes: 60
 prereqs: ["03-reading-plans-recognizing-wrong"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations: []
 ---
 
@@ -12,11 +12,11 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to write a three-part steer, recognize when your agent has done far more than you asked and pull it back to scope, and know when starting a fresh conversation beats writing another steer.
+By the end of this lesson, you will be able to write a three-part steer, recognize when your agent has done far more than you asked and pull it back to scope, go back to a saved working version on purpose and check what it gave you back, and know when starting a fresh conversation beats writing another steer.
 
 ## Why this matters
 
-You are looking at a page with three books on it that were never yours — invented, or made-up examples you asked for — and you already know it is wrong. Knowing is not the same as fixing. The sentence you say next either lands in ten seconds, or it sends your agent off rebuilding half the page in a direction you never asked for — and then you have two problems where you had one. This lesson is the three moves that keep the second thing from happening: how to write the sentence, how to spot the moment your agent has run away with the job, and how to tell when saying it again is not going to work at all.
+You are looking at a page with three books on it that were never yours — invented, or made-up examples you asked for — and you already know it is wrong. Knowing is not the same as fixing. The sentence you say next either lands in ten seconds, or it sends your agent off rebuilding half the page in a direction you never asked for — and then you have two problems where you had one. This lesson is the three moves that keep the second thing from happening: how to write the sentence, how to spot the moment your agent has run away with the job, and how to tell when saying it again is not going to work at all. It is also where you say the sentence that takes you back to solid ground — once, on purpose, on a page where nothing is at stake — so that the first time you need it on something real, it is not new.
 
 > **Following along:** Run this lesson in the app you picked in Module 0. Every exchange is shown for both apps; you only run your own. The panels show the shape of each exchange — your agent's exact words will differ, and that is normal.
 
@@ -65,6 +65,14 @@ Two ways to get this wrong, and they fail in opposite directions.
 The first is **"fix it."** Two words, no information. Your agent knows something displeased you and has to guess which thing — so it guesses, and now you are steering the guess as well as the original problem.
 
 The second is over-correcting: answering a small problem with a long list of instructions about how to solve it. It feels safer, and it does the opposite. A pile of specifics invites a pile of work, and you end up steering a bigger result than the one you were unhappy with. Two specific sentences beat ten. Short steers usually land in one pass; long ones usually need a steer of their own.
+
+### Lay down a save point first
+
+Before the next ask, look at what you have. Refresh the page: the books are gone, the placeholder line is where they were, and the show/hide button still works. That is a working page — and Lesson 3 ended unsaved on purpose, so right now your last saved version is the page as it stood at the end of Lesson 2, before any of the books existed. Close that gap now:
+
+> Save this as a working version — the list is placeholder text.
+
+Then ask it to confirm the save and read you the note, the way you did in Module 0. A save is real when your agent confirms it, so wait for that before you go on. If it offers to put a copy online, "not yet" still applies — this page is throwaway. This save matters more than it looks: the next ask is loose on purpose, and the section after it spends this save point. You are going to come back to exactly this page — no wood, no extra spacing — by saying one sentence. Twenty seconds here is what makes the loose ask cheap.
 
 ### Steer #2 — the open-ended ask
 
@@ -146,15 +154,21 @@ Two things make this cheap rather than frightening. The first is that your work 
 
 > Take us back to the last saved working version.
 
-That sentence is always available, and the only thing it costs you is whatever happened since your last save. Your agent does the work of getting back there, and going back is not an admission that you failed — it is the reason you save. It is also why the gap between saves is worth keeping short: the sentence is cheap in proportion to how recently you used the other one.
+That sentence is always available. What it costs you, in this folder, is whatever changed in the files since your last save — nothing else in this lesson is anywhere but those files. Your agent does the work of getting back there, and going back is not an admission that you failed — it is the reason you save. It is also why the gap between saves is worth keeping short: the sentence is cheap in proportion to how recently you used the other one.
 
-Notice how long that gap is right now. Lesson 3 ended unsaved on purpose, so your last working version is the page as it stood at the end of Lesson 2 — before any of the books existed. Rolling back today would take the list with it. That is the argument for saving the moment something works rather than at the end of an afternoon. (If you do roll back during this lesson, put the placeholder back before the styling ask: *"Add a line below the button that says 'Add your three favorite books here.'"* Then carry on from there.)
+Look at how short that gap is right now. Your last save is the placeholder page from a few minutes ago; everything since it is the wood and the line spacing. That is the shape you want the gap to have — small enough that going back is a shrug — and it is the argument for saving the moment something works rather than at the end of an afternoon.
 
-You have not had to reach for it in this lesson, because the scope-steer landed. When you do reach for it, what follows is the same either way — re-ask, with the edge you now know the first ask was missing:
+So say it now, on purpose, while nothing is at stake. The exercise walks it through step by step; the shape is: say the sentence, approve if the app asks (it is about this folder), refresh the page. What you should see is the page from the save point — the placeholder line back, the wood gone, the show/hide button still working. What you should hear, when you ask *"Confirm which saved version we're on now, and read me its note,"* is the note you gave it a few minutes ago. Three things to notice while it happens, because they are what you will want to know on the day this sentence is not a rehearsal. Your agent brought the *file* back. The browser tab may still be showing the wood: it changes only when the page is reloaded, and whether your agent reloads it for you or leaves that to you varies — so refresh, and check the page rather than the reply. The app asked before it did it, or didn't, depending on your setting — and the page was the check either way. And going back cost you exactly what the gap held: one wooden background, which you can have back in one ask.
+
+<!-- The go-back rehearsal (this paragraph and exercise steps 2, 6, 7) was authored 2026-09-07 without a recorded agent run; no transcript panel is shown for it, by design (the browser page is the check). Claimed: the saved file returns, the browser tab shows the restored page once reloaded (by the agent or by the learner refreshing), the app may or may not show an approval depending on the setting, the agent confirms which version it is on. Not verified on a live install: whether either agent asks for confirmation before discarding changes, whether it reloads the browser tab itself, and the wording of its report. The director's separate desktop restore trial is the evidence for those. -->
+
+If the page does not come back the way the save point left it, the exercise says what to do — and the first thing it says is not to save what is on the page now. A save point is a working version you looked at and were happy with; a wooden background with a note calling it "placeholder" is neither.
+
+When you do reach for it — today on purpose, one day because you have to — what follows is the same either way: a fresh conversation, and a re-ask with the edge you now know the first ask was missing:
 
 > The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else.
 
-Run that against a page at the placeholder stage, in a conversation with no history behind it, and it lands in one pass: the wood goes on, the lines get more room, and nothing else moves. Your agent says as much without being asked — heading, button, footer and background all untouched. No shelf, no invented labels, no side effect to decide about afterwards.
+Run that against the page you just went back to — at the placeholder stage, in a conversation with no history behind it — and it lands in one pass: the wood goes on, the lines get more room, and nothing else moves. Your agent says as much without being asked — heading, button, footer and background all untouched. No shelf, no invented labels, no side effect to decide about afterwards.
 
 The lesson is not that starting over is better. It is that the tighter ask was always available: "Nothing else" did in the first sentence what the scope-steer had to do in the third, and it did it before anything was built.
 
@@ -186,25 +200,30 @@ Your page is working now, so finish it properly:
 
 ## Exercise
 
-Run the full steer sequence on your own page — over-shoot included, if your agent gives you one. Plan twenty-five to thirty minutes.
+Run the full steer sequence on your own page — over-shoot included, if your agent gives you one — and the way back to a saved version, once, on purpose. Plan thirty to thirty-five minutes.
 
 1. **Steer #1 — fix the not-yours list.** Your page should still show the three books from Lesson 3 — invented, or the made-up examples you asked for. Type: *"These books are not actually my favorites. Please replace with placeholder text saying 'add your three favorite books here.'"* Approve what the app asks you to approve.
-2. **Go and look.** Refresh the browser tab. The books should be gone and your placeholder line should be sitting where they were. Click the show/hide button once each way to confirm nothing else broke.
+2. **Go and look, then save.** Refresh the browser tab. The books should be gone and your placeholder line should be sitting where they were. Click the show/hide button once each way to confirm nothing else broke. Then say: *"Save this as a working version — the list is placeholder text."* Ask: *"Confirm the working version is saved, and tell me what the note says."* If it offers to put a copy online, "not yet" — this page is throwaway. Don't go on to step 3 until you have heard the confirmation; step 6 depends on this save.
 3. **Steer #2 — the loose ask.** Type: *"Make the list look like a real bookshelf"* and read the reply before you touch anything. Is the answer bigger than the ask? Is it adding things you never mentioned? **If what it proposes is much larger than what you asked for, decline it when the app asks you to approve** rather than approving and undoing it afterwards — then steer back with step 4. Approving it first is also fine; you will just be steering a shelf instead of a proposal.
 4. **Steer back to scope.** Type: *"Too much. I just want the list to have a wooden background and a little more line spacing. Nothing else."* **If there was no over-shoot** — the reply was modest, a wooden background and not much more — or **if your agent asked what you meant** by a bookshelf, you don't need this steer: answer *"A wooden background and a little more line spacing. Nothing else."* and go on to step 5. The over-shoot is a thing to recognise when it happens, not a thing to make happen; the page ends up in the same state either way.
 5. **Go and look again.** Refresh. Wooden background, more space between the lines, placeholder text still saying what you want it to say — and check whether your agent flagged anything it changed on the side.
-6. **Reset the list so there is something to compare.** You are about to reach the same result by a second route, so put the page back to where that route starts. Type: *"Put the list back to plain placeholder text, nothing else."* Refresh and confirm the wood is gone.
-7. **Practice the fresh start.** Start a fresh conversation in your app. If it asks which folder, or your agent doesn't seem to know where the page is, point it at `loop-practice` again. Then type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what one ask with an edge on it from the first word does in a conversation that has never heard of a bookshelf.
-8. **Save it.** Say: *"Save this as a working version — the practice page is done."*
+6. **Go back on purpose.** Say: *"Take us back to the last saved working version."* If the app asks you to approve it, it's about this folder — approve. If your agent asks which version, say: *"The one whose note says the list is placeholder text."* If it asks whether you're sure, because going back drops everything since the save: yes, that's the point — the wood is what you're giving up. Then refresh the page. **Expect:** the wooden background is gone, the placeholder line is back under the button, the date is still there, and the show/hide button still works. Now ask: *"Confirm which saved version we're on now, and read me its note."* You should hear the note from step 2. If the page and the note both match, skip step 7 and go to step 8. If the picture is different, say what you see — it will be one of these:
+   - **The wood is still there after the refresh.** Say: *"I refreshed and the wooden background is still there. Which saved version are we on, and what does its note say?"* If the note is the one from step 2, say: *"Take us back to that one, and tell me when it's done,"* then refresh again. If the note is about the show/hide button — that is Lesson 2's save — or your agent says there is no saved version, the step-2 save didn't land: go to step 7.
+   - **The placeholder line is missing and so is the wood** — name, tagline, date, button, and nothing under it. The page went back to Lesson 2's save, which means the step-2 save didn't land. Go to step 7.
+   - **Anything else** — a blank page, red text where the list was. Say what you see in the plainest words you have and hand it back: *"The page went blank after going back."* Once the page is showing again, check it against **Expect** above; if it still isn't the save point's page, go to step 7.
+7. **Only if step 6 didn't land — rebuild the save point, then go back again.** Don't save what's on the page now: it has the wood on it, and a save point is a working version you looked at, not a label. Put the page back to where step 2 left it: *"Put the list back to plain placeholder text saying 'Add your three favorite books here', with no wooden background and the normal line spacing. Change nothing else."* Refresh: placeholder line, no wood, button works. Now save it: *"Save this as a working version — the list is placeholder text."* Ask it to confirm the save and read you the note, and do not go on without hearing it. Then make the change again, small this time: *"Give the list a wooden background and a little more line spacing. Nothing else."* Refresh: wood. Now say the sentence again: *"Take us back to the last saved working version."* Approve if the app asks, refresh. **If the placeholder is back and the wood is gone,** ask for the confirmation and the note as in step 6, and go on to step 8. **If it still isn't** — you have now saved with a confirmation, changed, and gone back, and the page didn't follow — stop repeating. Say: *"Going back to the saved version isn't bringing the placeholder page back. Tell me in plain words what's stopping it."* Whatever the answer, have it put the page at placeholder for now — *"Put the list back to plain placeholder text, no wooden background, nothing else"* — carry on to step 8, and put what happened in your fifth sentence below. The way back didn't work in this folder today; that is a thing to settle with your agent before Module 4, where the sentence is not a rehearsal.
+8. **Practice the fresh start.** Start a fresh conversation in your app. If it asks which folder, or your agent doesn't seem to know where the page is, point it at `loop-practice` again. The page is at the placeholder stage because you went back to it. Now type the tighter version of the same ask: *"The practice page has a list of placeholder text. Give the list a wooden background and comfortable line spacing. Nothing else."* Watch what one ask with an edge on it from the first word does in a conversation that has never heard of a bookshelf.
+9. **Save it.** Say: *"Save this as a working version — the practice page is done."*
 
-Then write four sentences, anywhere you like:
+Then write five sentences, anywhere you like:
 
 - What the open-ended ask invited your agent to do.
 - The sentence you used to steer it back, and what it gave up — or, if there was nothing to pull back, what you said to keep it small.
+- What going back to the saved version gave you back, and what it left alone — including whether the browser tab changed on its own or only when you refreshed.
 - What the fresh start produced, compared to the steered version.
 - Which of the two felt cleaner on this task — and whether you would reach for the same one next time.
 
-Your deliverable is a finished practice page, saved as a working version, and four sentences.
+Your deliverable is a finished practice page, saved as a working version, and five sentences.
 
 ## Checkpoint
 
@@ -213,6 +232,7 @@ You've got this if you can:
 1. Write a steer in its three parts — what was wrong, what you want, and any limit you want held.
 2. Name the two things that give over-engineering away, and write the sentence that pulls a run-away ask back to scope.
 3. Say when you stop steering and start a fresh conversation instead.
+4. Say what going back to a saved version gave you back, and what it left alone.
 
 ## Going deeper
 
@@ -228,7 +248,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You took a wrong page and made it right in one sentence, then watched your agent turn a loose ask into a bookshelf nobody wanted and pulled it back with three more. You practiced the move that beats steering when steering has stopped working, and you finished the page and saved it. That is the whole loop, run end to end on something real: Module 4 hands you a project worth building and you run the same four moves on it, for weeks instead of an afternoon.
+You took a wrong page and made it right in one sentence, then watched your agent turn a loose ask into a bookshelf nobody wanted and pulled it back with three more. You went back to a save point on purpose and watched the page come back the way you had left it, you practiced the move that beats steering when steering has stopped working, and you finished the page and saved it. That is the whole loop, run end to end on something real: Module 4 hands you a project worth building and you run the same four moves on it, for weeks instead of an afternoon.
 
 ## Navigation
 

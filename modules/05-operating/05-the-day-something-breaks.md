@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "05"
 est_minutes: 30
 prereqs: ["04-caught-before-it-ran"]
-updated: "2026-08-19"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -13,7 +13,7 @@ deviations:
 
 ## Learning objective
 
-By the end of this lesson, you will be able to run the four moves that cover the day your live app stops behaving: describe what you see and hand it over, re-run the checks that used to pass after any fix, ask to be taken back to the last saved working version, and start a fresh conversation when the conversation itself has become the problem.
+By the end of this lesson, you will be able to run the four moves that cover the day your live app stops behaving: describe what you see and hand it over, re-run the checks that used to pass after any fix, ask what going back to a saved working version would and would not undo before asking for it, and start a fresh conversation when the conversation itself has become the problem.
 
 ## Why this matters
 
@@ -75,15 +75,23 @@ Then the last one: the thing that was broken this morning, done again from the o
 
 Some fixes do not land. You describe, your agent changes something, you look — and it is not better, it is differently wrong. Round two makes it differently wrong again. Somewhere in there you cross from fixing into digging, and the useful thing is not another round.
 
-Every time you said *"Save this as a working version"* you left yourself a place to stand. All of them are still there. So you say:
+Every time you said *"Save this as a working version"* you left yourself a place to stand. All of them are still there, and you have used one: in Module 3, on the practice page, you said the sentence on purpose and watched the placeholder come back. It is the same sentence here. What is different is what stands around the files now — and that is why, on a live app, a question goes in front of it.
 
-> "Take us back to the last saved working version."
+The question first. Going back restores the files your agent wrote — the pages, the plan, the settings that live in the project. It does not undo anything that happened outside those files: what people have typed into your app since then stays where it is stored, an email that went out stays sent, anything you changed on a dashboard stays changed. Module 2 said this when you first met the sentence; this is the day it stops being a footnote, because on a live app the part outside the files is the part other people are using. So before the sentence, ask:
 
-Your agent does every part of that. There is nothing for you to find, nothing to choose from, nothing to open — the going-back is machinery, and machinery has been your agent's side of this arrangement since Module 2. Your side is the sentence.
+> "Which saved working version is the one from before this started, and what does its note say? If we go back to it, what changes on my computer, what changes on the live link, and what stays exactly as it is — what people have typed in, and anything on a dashboard?"
 
-Two things worth holding about it. The first is that going back is not a defeat; it is the reason the saving was worth doing. What it costs you is whatever happened since that save and not one thing more, which is the whole argument for saying the save sentence often rather than at the end of the day.
+Then wait for the answer, in plain words. The version it names should be the one whose note describes the app as it was when it last worked; if the newest save is not that one — you saved something this morning that turned out to be part of the problem — say so: *"Not that one; the one whose note says ___."* And the list of what stays as it is should hold no surprise. This is the same shape as every question this module has put in front of a change that cannot be taken back, and it belongs here for the same reason: once the live copy has moved, the people using it have moved with it.
 
-The second is that going back is itself a change, so Move 2 applies to it too. Run the ritual after a restore, the same as after a fix. Then hand the problem over again, from the description you already wrote in Move 1 — which is still accurate, still yours, and still the only sentence in the exchange nobody else could have supplied.
+Then the sentence, with the version you agreed on named in it:
+
+> "Take us back to the saved working version whose note says ___."
+
+Your agent does every part of that. There is nothing for you to find, nothing to choose from, nothing to open — the going-back is machinery, and machinery has been your agent's side of this arrangement since Module 2. Your side is the question, the sentence, and the check.
+
+Two things worth holding about it. The first is that going back is not a defeat; it is the reason the saving was worth doing. What it hands back is the files as they were at that save, and what it costs you is the work your agent wrote since — which is the argument for saying the save sentence often rather than at the end of the day. What it does not hand back is anything outside the files, and no save point ever claimed to.
+
+The second is that going back is itself a change, so Move 2 applies to it too. Run the ritual after a restore, the same as after a fix — on the live link, not only on your computer. If the live link is still showing what it showed this morning, say so, and ask what it would take to bring the live copy in line with the version you went back to and what that would change, before you say yes. Then ask the question Module 2 gave you for afterwards — *"What outside the files might not match the version we went back to?"* — and hand the problem over again, from the description you already wrote in Move 1, which is still accurate, still yours, and still the only sentence in the exchange nobody else could have supplied.
 
 ### Move 4 — When the conversation itself is the problem, start fresh
 
@@ -95,26 +103,27 @@ You carry two things across. The plan comes with you by itself — your project'
 
 ### The order is the point
 
-Move 1 always, and first. Move 2 always, after any fix and after any going-back. Moves 3 and 4 are the ones you reach for when forward has stopped paying, and the only real mistake available with either of them is reaching late. Both cost one conversation and, at most, one save's worth of work. An afternoon of rounds costs more than that every time.
+Move 1 always, and first. Move 2 always, after any fix and after any going-back. Moves 3 and 4 are the ones you reach for when forward has stopped paying, and the only real mistake available with either of them is reaching late. Both cost one conversation and the work your agent wrote since the save you go back to — and neither hands back anything that happened outside the files, which is what the question in front of Move 3 is for. An afternoon of rounds costs more than that every time.
 
 Notice what none of the four asks of you. Not to know what broke. Not to have a theory. Not to open, read, or judge anything your agent wrote — not on a calm day and not on this one. What they ask is that you look at your app, say what it is doing, and keep saying it until the app agrees with you again.
 
 ## Exercise
 
-A rehearsal. Nothing on your app breaks, nothing changes, and the one thing you actually send is a question. The deliverable is one written message plus one written-down answer from your agent.
+A rehearsal. Nothing on your app breaks, nothing changes, and the only thing you actually send is a question. The going-back sentence is not said today: you said it once in Module 3, on the practice page, and on a live app it waits for the question in front of it. The deliverable is one written message plus one written-down answer from your agent.
 
 1. **Set the scene.** Picture opening your live link on your phone and finding that every profile comes up blank — yours, alice's, bob's. Everything else looks normal: the home page loads, the feed has posts on it, and you have not touched the project since last week.
 2. **Write the message from memory.** Before looking back at this lesson, write what you would send. Where you were looking, what the page showed, since when — and the handover.
 3. **Compare it with the one in this lesson.** *"On my live link, opening any profile shows a blank page since this morning. Find out why and fix it."* Check yours for the three jobs, then check it for what should not be there: a guess at the cause, a suggestion about where to look, anything that would have needed you to open something first.
-4. **Ask the real question.** Open your agent app and ask, in your own words: *"What is the last saved working version of this project, and when was it saved?"* Nothing about your app changes — it is a question. If your agent asks to run something so it can go and look, that is safe to approve. Write the answer down.
-5. **Look at the gap.** With that answer in front of you, ask yourself what going back would cost you today. If the honest answer is "more than I would like", the fix is not to remember harder on the bad morning. It is to say *"Save this as a working version"* more often on the ordinary ones.
+4. **Ask the question that goes in front of the sentence.** Open your agent app and ask, in your own words: *"Which saved working version is the last one from when the app was working, and what does its note say? If we went back to it, what would change on my computer, what would change on the live link, and what would stay exactly as it is — what people have typed in, and anything on a dashboard?"* Nothing about your app changes — it is a question, and going back is not what you are doing today. If your agent asks to run something so it can go and look, that is safe to approve; if it offers to go ahead and go back, say *"Not today — just the answer."* Write the answer down: the version, its note, and the list of what would stay as it is.
+5. **Look at the gap.** With that answer in front of you, ask yourself two things. What would going back cost you today, in your agent's work? If the honest answer is "more than I would like", the fix is not to remember harder on the bad morning; it is to say *"Save this as a working version"* more often on the ordinary ones. And what would it not bring back? Whatever your agent listed as staying put is the part of your app that lives outside the files — which is why on the day itself the question, not the sentence, is the first thing you say.
 
 ## Checkpoint
 
-You've got this if you can do both:
+You've got this if you can do all three:
 
 1. Say the four moves in order without looking them up, and say which two you run every single time and which two you reach for when going forward has stopped paying.
 2. Write the message for a live app whose profiles have gone blank, and say what done means for that fix in one line before you hand it over — and then say what happens after your agent reports it finished: what gets re-run, who runs each part of it, and the sentence you send if "done" arrives without the results.
+3. Say what going back to a saved version restores and what it leaves exactly as it is on a live app, and the question you ask before saying the sentence.
 
 ## Going deeper
 
@@ -129,7 +138,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You wrote the message you would send on a morning that starts badly, and you asked your agent the one question that tells you what a bad morning would cost you as things stand right now. That closes this module. You can re-test any app you build as two people at once; you have watched three builds fail in three different ways and written the message that hands each one back; and you now have four moves for the day it is your own link, with somebody on the other end of it waiting. At the end of Module 4 your app was live. It is operated now, which is a different thing and the one that lasts. Module 6 is about changing it while keeping it that way.
+You wrote the message you would send on a morning that starts badly, and you asked your agent the question that tells you what a bad morning would cost you as things stand right now — and what going back would not bring back. That closes this module. You can re-test any app you build as two people at once; you have watched three builds fail in three different ways and written the message that hands each one back; and you now have four moves for the day it is your own link, with somebody on the other end of it waiting. At the end of Module 4 your app was live. It is operated now, which is a different thing and the one that lasts. Module 6 is about changing it while keeping it that way.
 
 ## Navigation
 

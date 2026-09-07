@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 05
 est_minutes: 50
 prereqs: ["04-posts"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -52,7 +52,7 @@ flowchart TD
 
 Open your agent and point it at the fifth feature in your plan:
 
-> I want people to follow each other. On someone else's profile, a button says Follow; once I tap it, it changes to Unfollow. My own page shows two lists: who I follow, and who follows me. Me following someone should NOT make them follow me, and I should never be able to follow myself. Plan this before you write any code, and tell me what could go wrong.
+> I want people to follow each other. On someone else's profile, a button says Follow; once I tap it, it changes to Unfollow. My own page shows two lists: who I follow, and who follows me. Me following someone should NOT make them follow me, and I should never be able to follow myself. Plan this before you write any code, and tell me what could go wrong. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: Follow flips to Unfollow and back on somebody else's profile; the two lists update on both profiles — the follower on one, the followed on the other; following is one-way, so following somebody never puts me in their Following list; following myself is impossible, and not only because the button is hidden.
 
 Read what comes back. You are checking that the plan matches what you asked for — a button that flips, two lists, one direction, no following yourself — and that the last part came back as a list of specific things rather than a reassurance. If it names something it is deliberately leaving out, that is fine and worth noting; a list of what is not being built is the difference between a gap and a surprise.
 
@@ -146,7 +146,7 @@ And the two failures in this chunk are the quiet kind. A missing self-follow rul
 
 ### Checking it yourself
 
-Open the running app and go through it in order. Three of these need the second account, and that is not optional here — the mirror bug is invisible from your own screen.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. Three of these need the second account, and that is not optional here — the mirror bug is invisible from your own screen.
 
 - Open a second person's profile while signed in as yourself. The button reads Follow.
 - Tap it. It flips to Unfollow right away. Tap again — back to Follow. Tap once more and leave it following.
@@ -160,7 +160,7 @@ Open the running app and go through it in order. Three of these need the second 
 
 When this chunk was really built, the flip, both lists, and the self-follow fence all held. Alice opened Bob's profile, tapped Follow, watched it read Unfollow, tapped back to Follow, and tapped once more to leave it following. Her own page listed Bob under Following — shown as "Unnamed", because Bob had never set up a profile and that is the app's fallback for a person with no name yet — and her Followers list read "Nobody is following you yet." Signed in as Bob in a second browser, Alice was under his Followers and his Following list read "You aren't following anyone yet." One direction, confirmed from both ends. Neither account saw a Follow button on its own page.
 
-One wrinkle worth naming because it may happen to you. The app had been left alone between chunks and had stopped running, so the first page opened after the dashboard step showed an error instead. Saying "the app page shows an error" was the entire fix — the agent worked out that its own way of checking whether the app was running had fooled it, and started the app again. You did not diagnose that. You reported a screen.
+One wrinkle worth naming because it may happen to you. The app had been left alone between chunks and had stopped running, so the first page opened after the dashboard step showed an error instead — the blank-tab-at-home case Lesson 1 warned about, and the first sentence from that lesson is the one to say. That day, saying "the app page shows an error" was the entire fix — the agent worked out that its own way of checking whether the app was running had fooled it, and started the app again. You did not diagnose that. You reported a screen.
 
 ### When it goes sideways
 
@@ -180,7 +180,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-Underneath your four checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson. Your agent runs those checks and reports what happened in plain words; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your four checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask; the reference copy is at the end of this lesson. Your agent runs those checks and reports what happened in plain words, naming any it could not run; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
@@ -188,7 +188,7 @@ Underneath your four checks sits the layer that is your agent's job. This chunk'
 
 Look first, say the sentence second. When this chunk was really built the saving was held back on purpose through the whole exchange above — the dashboard step and both accounts — and then the chunk went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version carrying three things: the file for the database, the code behind following and unfollowing, and the profile page that now shows a button and two lists. The note on it read "follow and unfollow, one direction only".
 
-That first item is the same one to watch as last chunk. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."*
+That first item is the same one to watch as last chunk. This chunk changed your database, so the file that changed it belongs in the saved version alongside the rest — otherwise the saved version cannot rebuild the app it describes. Once you have clicked through it and it holds: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 Your agent may also offer two things for later, neither of them a fault in what you just checked: a follower count on every profile, and some way to *find* people. Right now the only route to another person's profile is knowing its address and typing it in. That is worth sitting with for a moment — you have just built following, and there is still nobody to follow unless you go and fetch an address by hand. The next chunk is where the app starts bringing things to you instead.
 
@@ -196,19 +196,19 @@ Your agent may also offer two things for later, neither of them a fault in what 
 
 Build the fifth feature on your plan: connect the islands. The deliverable is a running app where you can follow and unfollow a second person from their profile, where both lists show on a profile and only run one way — plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: a button that flips between Follow and Unfollow on somebody else's profile, two lists on your own page, following someone must not make them follow you back, no following yourself, the plan before any code — and "tell me what could go wrong."
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: a button that flips between Follow and Unfollow on somebody else's profile, two lists on your own page, following someone must not make them follow you back, no following yourself, the plan before any code, "tell me what could go wrong" — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Check the plan against your ask.** You want the last part answered as a list of specific things rather than a reassurance. If it names what it is deliberately leaving out, note it and move on.
 3. **Give the go-ahead** and approve the steps as the app asks you to.
 4. **When your agent tells you it has written a file for your database, run the pre-flight first:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* Wait for the answer — your profile and your posts are in there now. Then do the step that is yours: Supabase dashboard → SQL Editor → **+** for a new query alongside the old ones → paste the whole file → Run → **Run query** on the dialog, if its warning is accounted for by the answer you just got. Wait for "Success. No rows returned" before you go on.
-5. **Go through the running app in order:** open a second person's profile, tap Follow, watch it flip to Unfollow and back, and leave it following. Then open your own page and find that person under Following with your Followers list empty.
+5. **Go through the running app in order.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Then: open a second person's profile, tap Follow, watch it flip to Unfollow and back, and leave it following. Then open your own page and find that person under Following with your Followers list empty.
 6. **Run the plain check from the other side.** Sign in as the second person in another browser. You should be under their Followers, and their Following list should be empty.
 7. **Run all three refusal checks.** Still signed in as that second person, try to take the first account back out of their Followers, or to change its Following list from their side — there should be no control that does either, and a refresh should leave both lists alone. Then, on either of your own profiles, look for a Follow button and press it if it is there. Then open a private window that has never signed in, open a profile with followers on it, read both lists, and find nothing on the page that would follow, unfollow, or change either one.
-8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4. If the app will not load at all, say so; it may only need starting again.
-9. **Save it.** *"Save this as a working version."*
+8. **If anything is off, use the matching steer** — say what you did and what you saw, and hand it back. If the pages complain that something does not exist, go back to step 4. If the app will not load at all, it may only need starting again: *"Start the app on my computer and open it in my browser."*
+9. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. Follow flips to Unfollow and back on somebody else's profile.
 2. The two lists update on both profiles — the follower on one, the followed on the other.

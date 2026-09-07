@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: "08"
 est_minutes: 65
 prereqs: ["07-comments"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -48,7 +48,7 @@ flowchart TD
 
 Open your agent and point it at the eighth and last feature in your plan:
 
-> Add a like button to each post. Only signed-in people can like, and anyone can see the total count. When I click like, the number should change right away — I don't want to wait — but if the save fails, it should fix itself back to the real number. Plan it before you write any code. Then I want to put the whole app online and test it with two accounts.
+> Add a like button to each post. Only signed-in people can like, and anyone can see the total count. When I click like, the number should change right away — I don't want to wait — but if the save fails, it should fix itself back to the real number. Plan it before you write any code. Then I want to put the whole app online and test it with two accounts. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: the like count moves the instant its button is clicked and matches the real number after a refresh; only signed-in people can like; the live site passes the two-browser, two-account walkthrough end to end — and for that last one, tell me which parts you checked yourself and which you are leaving to me.
 
 That ask carries two jobs on purpose, and the plan that comes back should carry both. Read it against what you asked for: likes for signed-in people only, a total anybody can see, a number that moves at once and corrects itself when it has to, and then the going-live half. When the plan matches, give it the go-ahead:
 
@@ -125,7 +125,7 @@ Wait for an answer you are happy with before you press anything. Your own dashbo
 
 Before the checks, one thing about the other half of your ask. Putting the whole app online is not a step your agent takes at the end, and knowing why makes the last of the three checks make sense.
 
-Your app has had a public address since the very first chunk, and **Vercel** (a one-line definition: the service that runs your code on the public internet and serves it at a web address, [→ GLOSSARY](../../GLOSSARY.md#vercel)) has been watching your project's home page online ever since, rebuilding the live copy each time you said *save this as a working version*. So the live app is not new. What is new is that anybody has looked at it. Seven chunks of checking happened on the machine that built the thing, which is the one place on earth where every connection setting is already sitting there because your agent put it there while it worked.
+Your app has had a public address since the very first chunk, and **Vercel** (a one-line definition: the service that runs your code on the public internet and serves it at a web address, [→ GLOSSARY](../../GLOSSARY.md#vercel)) has been rebuilding the live copy from each save that went up ever since — the chain Lesson 1 laid out, and the reason you have asked after every save whether the rebuild succeeded. So the live app is not new. What is new is that anybody has looked at it properly. Seven chunks of checking happened on the machine that built the thing, which is the one place on earth where every connection setting is already sitting there because your agent put it there while it worked.
 
 That is what the third check is for. The **deploy** (a one-line definition: moving an app off your own machine to a public address anyone on the internet can reach, [→ GLOSSARY](../../GLOSSARY.md#deployment)) can carry every line of your code and still not carry every setting your code needs, and the symptom is precise and confusing: everything works at home and one thing goes dead on the live link. Likes are a good tripwire for it because clicking like is the first thing anybody does.
 
@@ -176,6 +176,8 @@ Two different browsers, not two tabs — two tabs share a sign-in and you will e
 
 If any of that behaves differently from how it behaved at home, you have the live-parity check above, and the one row on the settings screen to read before you hand it back.
 
+The two people in that walkthrough are still your two made-up accounts, and that is the point: the moment it passes is the moment the link stops being a test thing, and the accounts made after it may belong to real people. One thing to settle before you hand it to anybody. Everything in the app right now is test accounts and made-up posts, and going public does not clear them — they stay until somebody removes them. Whether they stay or go is your call, and it is a change to a database with things in it, so it goes through the question above first.
+
 ### What the checks are actually for
 
 The like button is the smallest feature in this module and the one most people would skip checking. That is exactly why it is the one that goes live in front of two accounts. A count that is wrong is not a broken app — nothing crashes, nothing errors, no page goes blank. It is an app that tells everybody a small lie every time they look at it, and it looks completely healthy while it does. The refresh is the only instrument that separates a number that worked from a number that moved.
@@ -184,7 +186,7 @@ And the go-live half is the whole module's argument in one action. Everything yo
 
 ### Checking it yourself
 
-Open the running app and go through it in order. The first three are at home; the rest are on the live link with your second account in another browser.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. The first three are at home; the rest are on the live link with your second account in another browser.
 
 - Click like on a post — the count jumps the moment you click, before anything finishes loading.
 - Refresh — the number is still the one you saw, and clicking again takes it back down.
@@ -206,7 +208,7 @@ And the familiar one, which matters more in a chunk this long: if your agent sta
 
 ### Before it is allowed to say done
 
-Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and its third item is the module's own finish line rather than the feature's. Your agent runs the checks and reports what happened in plain words; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask — the reference copy is at the end of this lesson — and its third item is the module's own finish line rather than the feature's. Your agent runs the checks and reports what happened in plain words, naming any it could not run — and the two-browser walkthrough is the one it is most likely to name, honestly, as yours; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 Take that report seriously and run your three anyway. This is the last chunk, so it is worth saying plainly what eight of them have been teaching: the report is the best class of words available — outcomes your agent went and produced — and it is still words. The two-browser walkthrough is yours.
 
@@ -214,28 +216,28 @@ Take that report seriously and run your three anyway. This is the last chunk, so
 
 Look first, say the sentence second — with one order to keep. This chunk changed your database, so the save that carries the change belongs in place *before* you go two-account testing on the live link: a version that saved half a change cannot rebuild the app it describes, and the live copy is built from what was saved.
 
-So: once likes work at home and the count survives a refresh, say it — *"Save this as a working version."* Your agent does every part of what that involves through **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) and the project's home page online. Then let the live copy catch up, and run the walkthrough against it. If the walkthrough turns something up, fix it and save again. The last save of this module is the one that has been through two browsers.
+So: once likes work at home and the count survives a refresh, say it — *"Save this as a working version."* Your agent does every part of what that involves through **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) and the project's home page online. Then ask it to confirm all three — saved on this computer, the copy went up, and the live copy rebuilt successfully — and do not start the walkthrough until the third answer is yes: a walkthrough against a live copy that never rebuilt is a walkthrough of the previous chunk. If the walkthrough turns something up, fix it and save again. The last save of this module is the one that has been through two browsers.
 
 ## Exercise
 
 Build the eighth and last feature on your plan, then prove the whole app live. The deliverable is a public link where two accounts in two different browsers behave correctly toward each other, plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: likes for signed-in people only, a total anybody can see, a number that moves right away and fixes itself back if the save fails, the plan before any code — and the second half, putting the whole app online and testing it with two accounts.
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: likes for signed-in people only, a total anybody can see, a number that moves right away and fixes itself back if the save fails, the plan before any code, and the second half — putting the whole app online and testing it with two accounts — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Read the plan against your ask**, and confirm it answers both halves rather than only the button.
 3. **Give the go-ahead** and approve the steps as the app asks you to:
 
    > That matches what I want. Build the likes, then walk me through putting it online.
 4. **Before you approve anything that touches your database, ask the question** — *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."* — and wait for the answer. Your profiles, posts, follows and comments are all in there now. That question is due before the dashboard paste and before any fix your agent proposes that goes near the same place.
 5. **Do the step that is yours:** Supabase dashboard → SQL Editor → a fifth query beside the four already there → paste the whole file → Run. If the "Potential issue detected" dialog appears and its warning is accounted for by the answer you got, press **Run query**. If it names anything the answer did not predict, press nothing — hand the disagreement back and wait.
-6. **Run the two like checks at home.** Click like and watch the number move at once; refresh and confirm it agrees. Then, in a private window that has never signed in, open a post with likes on it — the count reads, and there is nothing to press.
-7. **Save it.** *"Save this as a working version."* Do this before the live walkthrough, so the live copy is built from the finished chunk.
+6. **Run the two like checks at home.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Click like and watch the number move at once; refresh and confirm it agrees. Then, in a private window that has never signed in, open a post with likes on it — the count reads, and there is nothing to press.
+7. **Save it.** *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully. Do this before the live walkthrough, and wait for the third answer to be yes, so the live copy you walk through is built from the finished chunk.
 8. **Run the module's walkthrough on the live link.** Two different browsers, two different people: follow, post, comment, like, and a signed-out third window that can read everything and press nothing.
 9. **If the live link behaves differently from home,** open the Vercel settings screen, read the `NEXT_PUBLIC_SUPABASE_URL` row, and tell your agent whether it holds your own Supabase project's address — the one your Supabase dashboard shows for that project — then use the mismatch steer and let it fix the live site.
-10. **Save the version that has been through two browsers.**
+10. **Save the version that has been through two browsers,** and ask for the same three confirmations. The live link is a real product from the moment that last rebuild succeeds.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. The like count moves the instant its button is clicked, and matches the real number after a refresh.
 2. Only signed-in people can like.

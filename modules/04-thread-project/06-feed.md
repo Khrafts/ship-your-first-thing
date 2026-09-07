@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 06
 est_minutes: 50
 prereqs: ["05-follow"]
-updated: "2026-08-17"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -56,7 +56,7 @@ Take your name out of that handful and nothing breaks. No error, no blank page, 
 
 Open your agent and point it at the sixth feature in your plan:
 
-> Build me a home feed. When I'm signed in, it should show the newest posts from the people I follow, and it should also include my own posts, all mixed together with the newest first. Plan how you'll do this before writing any code.
+> Build me a home feed. When I'm signed in, it should show the newest posts from the people I follow, and it should also include my own posts, all mixed together with the newest first. Plan how you'll do this before writing any code. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: the feed shows the newest posts from the people I follow and my own posts, newest first, in one stream; a person who follows nobody at all still sees their own posts on their feed; a new post from a followed account appears in the feed after a refresh.
 
 Read the plan when it comes back. You are checking two things: that it says your own posts are included, and that it names how you will be able to tell — in things you can see by clicking, not in reassurance. If it does not name the case where you follow nobody at all, ask for it before you approve anything:
 
@@ -150,7 +150,7 @@ Do not go looking for the step. And if your agent does hand you a file for your 
 
 ### Checking it yourself
 
-Open the running app and go through it in order. Most of this needs both accounts, and the first two are the ones that matter most.
+Open the running app — the copy on your own computer, started with the sentence from Lesson 1 if nothing is open — and go through it in order. Most of this needs both accounts, and the first two are the ones that matter most.
 
 - Sign in as the account that follows nobody. The feed says, in plain words, that it is empty.
 - Write a post from that account's profile, then go Home. Your own post is in the feed — with zero people followed. That is the first check.
@@ -187,7 +187,7 @@ And the familiar one: if your agent keeps circling — reworking the same thing,
 
 ### Before it is allowed to say done
 
-Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is at the end of this lesson, and its middle item is the one this chunk exists for: a person who follows nobody still sees their own posts. Your agent runs the checks and reports what happened; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
+Underneath your three checks sits the layer that is your agent's job. This chunk's **definition of done** (a one-line definition: the checks your agent must run and show you, in plain words, before it is allowed to say a piece of work is finished, [→ GLOSSARY](../../GLOSSARY.md#definition-of-done)) is the list you wrote into your ask — the reference copy is at the end of this lesson — and its middle item is the one this chunk exists for: a person who follows nobody still sees their own posts. Your agent runs the checks and reports what happened, naming any it could not run; your side stays one sentence: *"Run the checks we agreed on and show me the results first."*
 
 ### Saving it
 
@@ -199,13 +199,13 @@ Look first, say the sentence second. When this chunk was really built, the check
 
 It went into **git** (a one-line definition: the tool from Module 2 that keeps every version of your project so you can go back to one, [→ GLOSSARY](../../GLOSSARY.md#git)) as one saved version covering six files — two new ones and four changed, including the profile page, which now shows posts using the same piece the feed does. The note on it read "a home feed of the people you follow, and yourself".
 
-What to watch this time is different from the last three chunks. There is no database file in this saved version, because this chunk did not touch your database. What matters instead is that the profile page changed in this chunk too, so it belongs in the same saved version as the feed — a version that saved half of a change cannot rebuild the app it describes. Once you have clicked through the feed and it holds, open a profile and confirm posts still look the way they did before. Then: *"Save this as a working version."*
+What to watch this time is different from the last three chunks. There is no database file in this saved version, because this chunk did not touch your database. What matters instead is that the profile page changed in this chunk too, so it belongs in the same saved version as the feed — a version that saved half of a change cannot rebuild the app it describes. Once you have clicked through the feed and it holds, open a profile and confirm posts still look the way they did before. Then: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Exercise
 
 Build the sixth feature on your plan: give following a payoff. The deliverable is a running app with one home feed carrying your own posts and the posts of everyone you follow, newest first — plus a saved version.
 
-1. **Start a fresh conversation and give it the ask.** The one from this lesson, word for word or in your own words with the same limits in it: one home feed for a signed-in person, the newest posts from the people they follow, their own posts mixed in, newest first, the plan before any code.
+1. **Start a fresh conversation and give it the ask.** With your project folder selected — if the app asks which folder, or your agent does not open by saying where you are in the plan, point it at the folder again and say: *"Read the plan and the house rules, and tell me where we are."* Then the ask from this lesson, word for word or in your own words with the same limits in it: one home feed for a signed-in person, the newest posts from the people they follow, their own posts mixed in, newest first, the plan before any code — and the checks from the definition of done at the end of this lesson, written into the ask before you send it.
 2. **Answer whatever it asks before it plans.** If it offers to write the post display once and use it in both the feed and the profile, say yes. If it tells you two instructions in your own project contradict each other, pick one — following the patterns already working in the project is a fine answer.
 3. **Read the plan, and if it does not name the case that matters, ask for it:**
 
@@ -215,15 +215,15 @@ Build the sixth feature on your plan: give following a payoff. The deliverable i
 4. **Give the go-ahead** and approve the steps as the app asks you to:
 
    > That's exactly what I want — my own posts included, newest first. Go ahead.
-5. **Run the check that decides this chunk.** Sign in as your second account — the one that follows nobody — write a post from its profile, and go Home. Your own post should be on your feed, on an account that follows no one at all. If it is not, use the first steer below.
+5. **Run the check that decides this chunk.** If nothing is open, or the tab says it cannot connect, say: *"Start the app on my computer and open it in my browser."* Sign in as your second account — the one that follows nobody — write a post from its profile, and go Home. Your own post should be on your feed, on an account that follows no one at all. If it is not, use the first steer below.
 6. **Check the rest from your first account** — the one that followed the second last chunk — in another browser: both people's posts in one stream rather than two blocks, and newest at the top after you post again.
 7. **Run both refusal checks.** Still signed in as the account that does the following, find a post in its feed that the other account wrote and try to edit or delete it from there — Edit should be on your own posts and nowhere else, and after a refresh their post is unchanged. Then, in a private window that has never signed in, open the home page — you should land on sign-in rather than on somebody's feed — and open a profile address directly to confirm the posts on it still read.
 8. **If anything is off, use the matching steer** — say what you saw and hand it back.
-9. **Save it.** Open a profile first and confirm posts still look right there, then: *"Save this as a working version."*
+9. **Save it.** Open a profile first and confirm posts still look right there, then: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
 
 ## Definition of done
 
-Before you accept "done", your agent shows you the results of these checks, in plain words:
+You wrote these into the ask; this is the reference copy. Before you accept "done", your agent shows you the results of these checks, in plain words:
 
 1. The feed shows the newest posts from the people the signed-in person follows and their own posts, newest first, in one stream.
 2. A person who follows nobody at all still sees their own posts on their feed.

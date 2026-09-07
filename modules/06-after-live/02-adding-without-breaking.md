@@ -4,7 +4,7 @@ module: "06-after-live"
 lesson_number: "02"
 est_minutes: 55
 prereqs: ["01-a-bug-report-arrives"]
-updated: "2026-08-20"
+updated: "2026-09-07"
 deviations:
   - long-core-read
 ---
@@ -136,11 +136,11 @@ Three moves, in order.
 
 **Then run the whole net again** when the repair comes back — not only the scenario that failed. A repair is a change, and a change is what the trigger is about.
 
-If the same scenario keeps failing across two or three rounds, stop steering it. Module 5 left you the sentence for exactly this:
+If the same scenario keeps failing across two or three rounds, stop steering it. Module 5 left you the move for exactly this, and on a live app it is a question and then a sentence, in that order. Ask first — which saved version is the one from before this feature started, what its note says, and what going back to it would change on your computer, on the live link, and not at all — and wait for the answer. Going back brings the files back; what people have typed in since, and anything you changed on a dashboard, stay as they are. The version you want is the last save that passed the net. The full question, and what to do with the answer, is in [Module 5 Lesson 5, Move 3](../05-operating/05-the-day-something-breaks.md#move-3--go-back-when-forward-is-losing); ask it before the sentence, every time. Then the sentence, with the version you agreed on named in it:
 
-> "Take us back to the last saved working version."
+> "Take us back to the saved working version whose note says ___."
 
-Your agent does every part of that, the same as it does the saving; your side is the sentence. Then start a fresh conversation and begin this feature again from your last saved version — and because going back is itself a change, the net runs after a restore too, the same as after a fix. The saved version is why that is a small decision rather than a frightening one.
+Your agent does every part of that, the same as it does the saving; your side is the question, the sentence, and the check. Then start a fresh conversation and begin this feature again from that saved version — and because going back is itself a change, the net runs after a restore too, on the live link, the same as after a fix. The saved version is why that is a small decision rather than a frightening one.
 
 ### Saving it
 

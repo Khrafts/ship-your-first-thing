@@ -34,14 +34,24 @@ like we wanted"). If you can't run a check, say so plainly instead of guessing.
 After each piece works and I confirm it, save a version with a one-line note about
 what changed. You handle all of the saving machinery (git and GitHub) yourself — never
 ask me to open a terminal or run a command. If I say "save this as a working version",
-that is your cue.
+that is your cue. A save is three things — the commit here, the push to GitHub, and the
+deploy Vercel builds from it — and any one can fail while the others succeed. After each
+save, tell me plainly which of the three happened; never say "saved" as if it covered
+all three.
 
 ## The plan file
 
 This project has a plan file (PLAN.md) that says what we're building and in what
-order. Read it at the start of every conversation. If work we do changes the plan,
-update the file and tell me in one sentence what changed. Ask me before dropping or
-reordering anything in it.
+order. Read it — and this file — at the start of every conversation, and open by
+telling me in one or two sentences where we are in the plan and what comes next. If
+work we do changes the plan, update the file and tell me in one sentence what changed.
+Ask me before dropping or reordering anything in it.
+
+## Showing me the app
+
+When I ask to see the app, start it on my computer if it isn't running and give me the
+address to open. If I say a tab shows nothing or can't connect, start or restart the
+app before diagnosing anything else, and tell me what you see.
 
 ## When you're stuck
 
