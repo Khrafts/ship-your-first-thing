@@ -32,7 +32,7 @@ When a lesson has drifted from what a tool actually does now, the fix is the les
 
 ### Refreshing a Module 3 conversation panel
 
-Every Module 3 ask is shown twice — once in Claude Code desktop, once in the ChatGPT app (Codex) — as a prose conversation panel, not a terminal transcript. This is the canonical refresh protocol (the historical per-lesson capture copies live inside the collapsed `WHAT-CHANGED.md` entries). When either app's behavior visibly drifts from what a lesson's panels show, open a PR that:
+Module 3's recorded conversation panels come from Claude Code. Codex and OpenCode use the same learner prompts, but their exchanges have not yet been recorded. Keep that distinction visible. When refreshing or adding a panel, open a PR that:
 
 1. Re-runs that lesson's asks in the named app, against the `loop-practice` page in its per-lesson state.
 2. Updates the panel wording to match what the app actually did — real behavior, never idealized. Do not clean up hallucinations or over-engineering; they are the pedagogy the lesson teaches the learner to recognize.
@@ -67,15 +67,16 @@ The script enforces (and exits non-zero on violation):
 - No tutorial fiction phrases (the *frictionless-clicks* trope) — LESSON-12
 - No filler prose (the *fast-paced-world* opener) — LESSON-12
 - No GitHub-specific admonitions like the bracketed-bang note syntax — Phase 1 D-18 (universal `> **Note:**` blockquotes only)
-- Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md` (case-insensitive)
+- Every `GLOSSARY.md#anchor` used in lessons resolves to a `### anchor` entry in `GLOSSARY.md` (case-insensitive). Lessons link a term directly — `[term](../../GLOSSARY.md#anchor)` — and keep the definition in the glossary; the older bracketed-definition shape is retired (check #12a rejects it)
 - Every relative path from a lesson to a repo-root cross-cutting doc (`GLOSSARY.md`, `BUDGET.md`, `CHEATSHEET.md`, `COMMON-ISSUES.md`, `CONTRIBUTING.md`, `WHAT-CHANGED.md`, `VERSIONS.md`, `LICENSING.md`, `README.md`, `SETUP.md`) resolves to a real file (the broken-relative-path check catches the bare-`GLOSSARY.md#anchor` 404 bug shape) — added in Plan 01-8
-- Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must appear inside the D-04 vocab-callout the first time it appears; every term marked `Forbidden` must not appear bare. Today the prose across M0–M7 has known gaps against the strict contract — those are surfaced as `WARN` lines (run `./scripts/voice-lint.sh | grep -c '^WARN'` for the live count) and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. The check scans **M0–M7**. — added in Plan 01-8; extended to M2–M3.5 on 2026-06-08, then to M4, M5, M6 and M7 as each of those modules shipped (the runner guards each block on the module directory existing). The Module 3.5 scan block went away with that module's retirement on 2026-08-12
+- Jargon-density check against `docs/audience-vocabulary.md`: every term marked `Requires-callout` in a lesson must be linked to its glossary anchor somewhere in that lesson; every term marked `Forbidden` must not appear bare. Today the prose across M0–M7 has known gaps against the strict contract — those are surfaced as `WARN` lines (run `./scripts/voice-lint.sh | grep -c '^WARN'` for the live count) and triaged via the editorial backlog rather than hard-failing the lint. New lessons should aim for clean strict output. The check scans **M0–M7**. — added in Plan 01-8; extended to M2–M3.5 on 2026-06-08, then to M4, M5, M6 and M7 as each of those modules shipped (the runner guards each block on the module directory existing). The Module 3.5 scan block went away with that module's retirement on 2026-08-12
 - Check #9 (debugging-framing) flags lesson prose under `modules/` drifting into agent-owned mechanics — WARN-only, per CLAUDE.md hard rule 12. The runner scans every `*.md` under `modules/` **except `README.md`**, and within a scanned file it skips front-matter, fenced code blocks, and blockquote lines — so a module README, a code fence, or a `>` callout never trips it
 - Check #11 (glossary `Used in:` citations) validates each `Used in:` line in `GLOSSARY.md` against the lessons it names: every cited lesson must exist, must either link that anchor or name the term, and a line that claims usage must name at least one lesson. This is the reverse direction of the anchor check above, which cannot see a citation left stale by a later lesson edit. Entries that self-declare no lesson uses the term (`Used in: no current lesson…`) are deliberate landing pads — the existence check still applies to any lesson they cite for context, the term check does not. WARN-only
+- Check #12 (prompt-and-callout bloat, added 2026-09-08) flags a lesson that still uses the bracketed-definition callout shape (12a), and a fenced ` ```prompt ` block — the format for everything a learner copies and sends to their agent — that names a technology chore such as npm, a terminal, SQL, a migration or an .env file (12b). Prompts describe what the learner wants; the agent chooses how. Check 12a is a violation; 12b is a review warning.
 
 ## Tooling / package manager
 
-Lessons + thread project use **npm**; the course platform at `site/` uses **pnpm**. Both are valid; pick npm in lesson code unless a platform PR explicitly says otherwise.
+The course platform at `site/` uses **pnpm**. Lessons name no package manager, runtime or command — the learner's agent chooses and installs whatever a project needs, so nothing under `modules/` should tell a contributor (or a learner) which one to use.
 
 If the script reports violations, fix them before pushing. `WARN` lines do not fail the lint but flag content that the strict contract would reject; please fix new `WARN` lines you introduce.
 
@@ -100,7 +101,7 @@ This ritual is the course's freshness cadence, and it is documented and ready to
 
 Once per quarter, the maintainer (or any willing contributor) does this:
 
-1. Install a clean copy of an agent app — Claude Code desktop or Codex in the ChatGPT desktop app — following [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) (the course retired the GitHub Codespaces launch flow 2026-08-12; see `WHAT-CHANGED.md`).
+1. Install a clean copy of one of the three agent apps — Claude Code in the Claude desktop app, Codex in the ChatGPT desktop app, or OpenCode desktop — following [Module 0 Lesson 5](./modules/00-welcome/05-install-your-agent-app.md) (the course retired the GitHub Codespaces launch flow 2026-08-12; see `WHAT-CHANGED.md`). Rotate which app gets the clean install each quarter.
 2. Walk through Module 0 → Module 4 Chunk 2 (the sign-in chunk in the thread project, `modules/04-thread-project/02-sign-in.md`).
 3. Note any deviation between what's written and what actually happens.
 4. **Re-check every dated external link** — the step below, in this same pass. Deviations it turns up are deviations for step 5 like any other.

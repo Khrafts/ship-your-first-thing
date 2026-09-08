@@ -5,7 +5,7 @@
 **Three categories per module:**
 
 1. **Safe** — terms a learner at this point in the course already knows or can infer from everyday usage. Use freely without a callout.
-2. **Requires-callout** — terms the learner has not seen before in the course. First use in any lesson MUST follow the D-04 vocab callout pattern: `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#term))`. Subsequent uses inside the same lesson can drop the callout.
+2. **Requires-callout** — terms the learner has not seen before in the course. First use in any lesson MUST be a direct glossary link — `[term](../../GLOSSARY.md#term)` — with the definition kept in `GLOSSARY.md` and the sentence saying in plain words what the learner does with the thing. Subsequent uses inside the same lesson can drop the link. *(Amended 2026-09-08: the parenthetical `**term** (one-line definition, [→ GLOSSARY](…))` shape is retired as prose bloat; check #12a WARNs on it, and check #6 accepts the direct link as the callout.)*
 3. **Forbidden** — terms reserved for a later module. Do NOT use them in this module's prose, even with a callout. If the concept is unavoidable, use an analogy or defer to "you'll meet this in Module N."
 
 The contract is incremental: every term Safe in M1 was Safe-or-Requires-callout in M0. A term added at any module joins the Safe set for every later module.
@@ -22,19 +22,19 @@ Everyday computing nouns the audience already uses:
 
 - file, folder, browser, tab, window, menu, button, link, click, type, search, save, copy, paste, password, account, sign in, sign out, email, phone, message, internet, app, conversation, new chat, approve/reject (the buttons), approval prompt (the agent app's own approve-or-decline dialog — the compound is Safe from M0; the prompt-engineering sense of "prompt" stays reserved for M3+), download, install, dashboard, URL (as a "web address" — the structural details land in M1), ChatGPT (a consumer app brand the audience floor already meets in everyday use — see the ride-along note under Requires-callout)
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 Tool nouns introduced in M0 that the audience hasn't met:
 
 - markdown, GitHub (as a *site*, distinct from "git"), repository (or repo), code editor, AI coding agent, API key, free tier, rate limit, token (as in AI-tool token, distinct from auth token in M1)
 
-The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15; the rebuilt M0 lessons already introduce each with a D-04 callout):
+The agent-app tool nouns M0 names on the way to installing one (added 2026-08-15; the M0 lessons link each on first use):
 
-- Claude Code desktop (the paid track's agent app), Codex (the free track's agent app, which lives inside the ChatGPT desktop app), OpenCode desktop (named once as a third alternative and never taught), git (M0's narrow sense only — see the scope note below)
+- Claude Code (the Code tab of the Claude desktop app; the paid track), Codex (the coding agent inside the ChatGPT desktop app; included on every ChatGPT plan), OpenCode desktop (the open-source app on free models; the third taught track since 2026-09-08 — no longer a footnote), git (M0's narrow sense only — see the scope note below)
 
-**`git` in M0 is the named-install caveat, nothing more.** M0 L5 (`05-install-your-agent-app.md`) names it once, in the Windows-only caveat about what gets installed alongside the agent app, with a D-04 callout; M2 L3 (`03-the-save-system.md`) is where it becomes the machinery the agent operates on the learner's behalf. An M0 lesson may not use `git` for anything beyond that install caveat — no commits, no saving, no version history. (Before 2026-08-15 this contract listed `git` as Forbidden-until-M2, which contradicted the shipped M0 L5 caveat.)
+**`git` in M0 is the named-install caveat, nothing more.** M0 L5 (`05-install-your-agent-app.md`) names it once, in the Windows-only caveat about what gets installed alongside the agent app, with a glossary link; M2 L3 (`03-the-save-system.md`) is where it becomes the machinery the agent operates on the learner's behalf. An M0 lesson may not use `git` for anything beyond that install caveat — no commits, no saving, no version history. (Before 2026-08-15 this contract listed `git` as Forbidden-until-M2, which contradicted the shipped M0 L5 caveat.)
 
-**M0 L6 (`06-build-your-first-thing.md`, added 2026-09-07) uses only Safe words plus the `Claude Code desktop` / `Codex` callouts.** The learner says "save this as a working version" and "take us back to the last saved working version"; the machinery underneath is never named (no `git`, `commit`, `GitHub`, `HTML`). App UI labels the learner must see or click — **Code**, **Local**, **Select folder**, **Manual**, **Auto** — appear as labels under the see-it rule, not as vocabulary. "Web page", "file", "folder", "browser", "tick", "checklist" are everyday Safe nouns.
+**M0 L6 (`06-build-your-first-thing.md`, added 2026-09-07) uses only Safe words plus the `Claude Code desktop` / `Codex` / `OpenCode desktop` links.** The learner says "save this as a working version" and "take us back to the last saved working version"; the machinery underneath is never named (no `git`, `commit`, `GitHub`, `HTML`). App UI labels the learner must see or click — **Code**, **Local**, **Select folder**, **Manual**, **Auto** — appear as labels under the see-it rule, not as vocabulary. "Web page", "file", "folder", "browser", "tick", "checklist" are everyday Safe nouns.
 
 **`ChatGPT` rides along inside the `Codex` callout.** The lessons never write a standalone `**ChatGPT**` callout — the `**Codex**` callout defines the relationship in place ("the AI coding agent that lives inside the ChatGPT desktop app"), and the brand itself is an everyday consumer-app name at the audience floor. It is therefore classified Safe from M0 (see Safe above) rather than Requires-callout. Settled 2026-08-15; it had been listed as M2 Requires-callout, which no lesson honoured.
 
@@ -56,7 +56,7 @@ Reserved for M2+:
 
 Reserved for M3+: prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0 — see Safe above), context window. *(`/clear` and `/compact` left this list on 2026-08-16: they never become legal at M3 — they are retired course surface in every module, listed in the bucket above. `/tokens` was removed on 2026-08-15 for the same kind of reason: it is a deprecated command name the Module 3 section bans outright, not a term that becomes legal at M3.)*
 
-**M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace or Node — Codespace is retired course surface under Hard Rule 15, not a deferred noun to define later. It names `git` exactly once, in M0 L5's Windows install caveat with a D-04 callout (see the scope note above), and never as something the learner operates. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a D-04 callout on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
+**M0 rewrite implications (desktop-app shape, 2026-08-12):** M0 never names a Codespace or Node.js in learner prose — Codespace is retired course surface under Hard Rule 15, and Node.js is first named in M2 L2 (see the Module 2 section). It names `git` exactly once, in M0 L5's Windows install caveat with a glossary link (see the scope note above), and never as something the learner operates. M0 instead introduces the **AI coding agent** desktop app (Claude Code desktop, or Codex in the ChatGPT desktop app) as the learner's whole working environment via a glossary link on first use, and the prose describes only what the agent app does and what the learner sees in it — never installed tooling, a pre-baked image, or anything running on a machine the learner operates directly. "Pure markdown" still gets a callout for **markdown**; there is no Codespace-shaped sentence left to rewrite.
 
 ---
 
@@ -72,7 +72,7 @@ All M0 Safe + all M0 Requires-callout. Plus terms M1's analogies introduce as Sa
 - filing cabinet, drawer, index card, paperwork, receptionist, clerk, inter-office mail (bundle 2 analogy)
 - door staff, ID, hand stamp, VIP list, velvet rope, opening night, recipe binder, prep cooks, private kitchen, public restaurant (bundle 3+4 analogies)
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 Technical nouns M1 intentionally defines:
 
@@ -109,14 +109,15 @@ Audience floor: M1 complete. Every M1 Requires-callout term (HTTP, DNS, server, 
 ### Safe (no callout needed)
 
 - All M0 Safe + all M0 Requires-callout + all M1 Safe + all M1 Requires-callout.
+- Node.js (added 2026-09-08 — named once, in M2 L2's "three names you will hear", as the engine that runs the app's code on the learner's computer while they build; the agent installs it the first time a step needs it, and the learner never opens or runs it. Safe rather than Requires-callout because the lesson's one-line plain-words gloss is the whole exposure; a glossary entry exists at `nodejs` for anyone who wants more, and linking it is optional. "Node" / "runtime" as mechanics stay out — see Forbidden below.)
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced Requires-callout on first use and is Safe after:
 
-- **Claude Code desktop** — one of the course's two taught agent apps.
-- **Codex** — the coding agent inside the ChatGPT desktop app; the course's other taught track, alongside Claude Code desktop. This callout is also where the ChatGPT relationship gets defined — the brand name itself is Safe from M0 and gets no callout of its own (its standalone **ChatGPT** row was removed here on 2026-08-15; see the M0 ride-along note).
-- **OpenCode desktop** — named once as a third alternative agent app; not taught in this course.
+- **Claude Code desktop** — one of the course's three taught agent apps (the Code tab of the Claude desktop app).
+- **Codex** — the coding agent inside the ChatGPT desktop app; the second taught track. This link is also where the ChatGPT relationship gets defined — the brand name itself is Safe from M0 and gets no link of its own (its standalone **ChatGPT** row was removed here on 2026-08-15; see the M0 ride-along note).
+- **OpenCode desktop** — the third taught track since 2026-09-08: the open-source agent app on free models, with the same install / open-folder / first-ask / save flow as the other two.
 - git (as a CONCEPT the agent operates on the learner's behalf — the learner names it and watches the agent use it; the noun was M0 Requires-callout for the Windows install caveat only, and M1 Requires-callout in its own right as a tool distinct from GitHub the site; M2 re-introduces it as something the agent DOES, not a tool the learner runs)
 - GitHub (re-introduced as the account the agent saves work TO, distinct from M1's "GitHub-as-host" site definition)
 - repository (as a git artifact — a saved project's home on GitHub; the learner sees its name and URL, never operates git on it directly)
@@ -131,15 +132,17 @@ New tool nouns introduced in M2 (in lesson order per D-20). Each is introduced R
 
 ### Forbidden (deferred to a later module)
 
-**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; amended 2026-08-16 — the slash commands never become legal in a later module either: the Module 3 reshoot retired typed commands and teaches "start a fresh conversation" instead, so `slash command` is Forbidden there too — see the Module 3 section):
+**Retired course surface — agent territory under Hard Rule 15** (added 2026-08-12, desktop-app remake; amended 2026-08-16 — the slash commands never become legal in a later module either: the Module 3 reshoot retired typed commands and teaches "start a fresh conversation" instead, so `slash command` is Forbidden there too — see the Module 3 section; amended 2026-09-08 — `Node.js` as a *name the agent will say* moved to Requires-callout above, so M2 can tell Git, GitHub and Node.js apart; the runtime as a thing the learner installs or operates stays retired):
 
-- terminal (one boundary-naming exception — the M0 note applies here too), command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost, `/clear`, `/compact`, `/context`, `/cost`
+- terminal (one boundary-naming exception — the M0 note applies here too), command line, CLI, shell, Codespace, sandbox, npm, runtime (Node.js as mechanics — what a runtime is or does — not the name), package manager, IDE, localhost, `/clear`, `/compact`, `/context`, `/cost`
 
 **Boundary-naming exception (`terminal`).** Same exception as M0's, recorded there in full: M2 L2 (`02-the-engine-room.md`) may name `terminal` inside the off-contract smell-test — the list of requests that mean the learner is being handed the wrong kind of instruction — and in the exercise that rehearses it. The word appears only in a sentence that refuses it, never in an instruction. The lint surfaces these as WARN lines; they are contract-sanctioned. Added 2026-08-15.
 
 Reserved for M3+:
 
-- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, agent loop, planning conversation, execution conversation, intent (as named loop step), ask (as named loop step), evaluate (as named loop step), steer (as named loop step), hallucination *(anchor-lesson exception applies — see note below)*, drift *(anchor-lesson exception applies — see note below; M3 L2 and M3 L4 teach it in depth)*
+- prompt (the prompt-engineering sense; the compound "approval prompt" is Safe from M0), context window, agent loop, planning conversation, execution conversation, hallucination *(anchor-lesson exception applies — see note below)*, drift *(anchor-lesson exception applies — see note below; M3 L2 and M3 L4 teach it in depth)*
+
+*(`intent`, `ask`, `evaluate` and `steer` left this bullet on 2026-09-08: the reshaped Module 3 teaches the four moves in everyday English — you decide what you want, you ask, you look, you say what should be different — and never as named loop-step nouns, so the words are plain verbs and Safe in every module. The glossary keeps their entries as reference for contributors.)*
 
 *(`/clear`, `/compact`, `/context` and `/cost` left this bullet on 2026-08-16 — they never become legal at M3; they stay in the retired-course-surface bucket above, Forbidden in every module.)*
 
@@ -155,9 +158,9 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M2 rewrite implications:** M2 no longer teaches tools as things the learner installs and runs by hand — that hands-on, terminal-and-package-manager shape is retired under Hard Rule 15. Instead M2 introduces the agent (Claude Code desktop, or Codex in the ChatGPT desktop app) and names the machinery the agent drives on the learner's behalf: git, GitHub, commits, packages, dependencies. The lesson body uses each term with a D-04 callout on first use and then drops the callout, but the callout defines what the learner SEES or SAYS (the agent reports "saved to GitHub"; the learner asks for a feature) — never a mechanism the learner performs themselves. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — that framing described a retired hands-on step; describe what the agent does and what the learner observes instead.
+**M2 rewrite implications:** M2 no longer teaches tools as things the learner installs and runs by hand — that hands-on, terminal-and-package-manager shape is retired under Hard Rule 15. Instead M2 introduces the agent (Claude Code in the Claude desktop app, Codex in the ChatGPT desktop app, or OpenCode desktop) and names the machinery the agent drives on the learner's behalf: Git, GitHub, Node.js, commits, packages, dependencies — each named once, at the point the agent will first say it, with the agent doing the installing and setting up. The lesson body links each term on first use and then drops the link, and the sentence around the link says what the learner SEES or SAYS (the agent reports "saved to GitHub"; the learner asks for a feature) — never a mechanism the learner performs themselves. Avoid mechanical descriptions ("a runtime is a software environment that executes...") — that framing described a retired hands-on step; describe what the agent does and what the learner observes instead.
 
-**Anchor-lesson exception (`hallucination`, `drift`, `risk-blindness`).** All three are Forbidden as concept terms in M2 prose, with ONE exception: **M2 L1** (`01-your-ai-coding-agent.md`) is the Tenet 6 anchor lesson and introduces each with a D-04 callout in the "notice the name" framing, each paired with its own one-line smell-test and a pointer to where it goes deeper (M3 for hallucination and drift, M5 for risk-blindness). Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L1. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception. *(Anchor duty moved from the former M2 L6, `06-ai-coding-agents.md`, on 2026-08-15 — that lesson was deleted when the remake collapsed Module 2 to three lessons; `drift` and `risk-blindness` were classified here in the same pass, having been anchored in the lesson but absent from this tier.)*
+**Anchor-lesson exception (`hallucination`, `drift`, `risk-blindness`).** All three are Forbidden as concept terms in M2 prose, with ONE exception: **M2 L1** (`01-your-ai-coding-agent.md`) is the Tenet 6 anchor lesson. As shipped on 2026-09-08 it names only `hallucination` (linked to the glossary); it describes the other two in plain words — "it loses the thread", "it treats a risky change like a small one" — each paired with its own one-line smell-test and a pointer to where it goes deeper (M3 for hallucination and drift, M5 for risk-blindness). Naming a failure mode in plain words with its smell-test satisfies Hard Rule 14; the glossary entries for `drift` and `risk-blindness` stay as reference and self-declare that no lesson says the word. Every *other* M2 lesson defers — it names the failure mode in plain words ("the agent invents commands or packages that don't exist") and points to M2 L1. This resolves the apparent contradiction between the Forbidden tier and the shipped anchor lesson. The general principle (any module's anchor lesson may introduce an otherwise-Forbidden failure-mode term) lives in `docs/COURSE-AUTHORING.md` Part 7 § The anchor-lesson exception. *(Anchor duty moved from the former M2 L6, `06-ai-coding-agents.md`, on 2026-08-15 — that lesson was deleted when the remake collapsed Module 2 to three lessons; `drift` and `risk-blindness` were classified here in the same pass, having been anchored in the lesson but absent from this tier.)*
 
 ---
 
@@ -168,18 +171,15 @@ Audience floor: M2 complete. Every M2 Requires-callout term is now Safe.
 ### Safe (no callout needed)
 
 - All M0/M1/M2 Safe + all M2 Requires-callout.
+- intent, ask, evaluate, steer — everyday verbs (2026-09-08; see the rewrite note below).
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 - prompt
 - context window
 - agent loop
 - planning conversation
 - execution conversation
-- intent (as named loop step, distinct from the everyday noun "intent")
-- ask (as named loop step)
-- evaluate (as named loop step)
-- steer (as named loop step)
 - hallucination (AI-output sense)
 - drift (the agent-behaviour sense — first named by M2's anchor lesson; M3 L2 and M3 L4 are where the smell-test and the recovery are taught)
 - over-engineering (M3 L4 callouts it today)
@@ -198,7 +198,7 @@ Reserved for M4+:
 
 - env var, environment variable, NEXT_PUBLIC, secret key, publishable key, JWT, RLS, WITH CHECK, USING, server action, revalidatePath, Supabase
 
-**M3 rewrite implications:** M3 lessons introduce the loop-step nouns (intent / ask / evaluate / steer) with D-04 callouts in L1 and use them freely after. The session-reset move is the plain phrase "start a fresh conversation" — no typed command is ever taught.
+**M3 rewrite implications:** M3 teaches the four moves as everyday verbs (decide what you want, ask, look, say what should be different), not as named nouns — `intent`, `ask`, `evaluate` and `steer` are Safe English words in every module since 2026-09-08 and get no link. Terms it does introduce (`hallucination`; `context window`, `agent loop`, `planning conversation`, `execution conversation`, `drift`, `over-engineering` if a lesson ever says them) get a glossary link on first use. The session-reset move is the plain phrase "start a fresh conversation" — no typed command is ever taught.
 
 ---
 
@@ -212,21 +212,21 @@ Reserved for M4+:
 
 Audience floor: M3 complete. (Module 3.5 is retired 2026-08-12 — see its tombstoned section above; M4 now inherits directly from M3 rather than M3.5.)
 
-**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors; the learner states intent, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and tells the agent to save each working chunk. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
+**Pedagogical layer for M4+: the Execution-Floor Boundary** (CLAUDE.md hard rule 13; `docs/COURSE-AUTHORING.md` Part 6). The learner ships code via the agent — the agent authors and chooses every tool and service; the learner states intent, answers only questions about behaviour, cost, privacy and account access, observes the running app, runs the phase's check inventory (refusal checks + pre-flight questions), and tells the agent to save each working chunk. **Outcome-first asks (2026-09-08):** no M4+ ask names a service, a file, a command, SQL, or a storage choice; the service names below appear in lessons only where they describe what happened in the course's own build ("when this chunk was really built, the agent used Supabase") or where a screenshot shows a dashboard the agent may send the learner to. **The say-it-or-see-it rule (locked 2026-07-27) governs every term below:** a technical term may appear in an M4+ lesson ONLY if the learner must *say* it to the agent or *see* it in the running app or on a dashboard screen they operate themselves. Terms that existed only to be scanned for in the agent's diff or migration are cut — the learner never reads, scans, or judges anything the agent wrote. Where a term was cut, the observation it pointed at survives in behavioural form.
 
 ### Safe (no callout needed)
 
 - All M0/M1/M2/M3 Safe + all M3 Requires-callout. (M3.5 contributed no terms — it is retired; see its tombstoned section above. The terms M4 used to inherit from it — Next.js, React, `'use client'`, hydration, file tree — are re-homed to the "Reserved for Module 7's curiosity track" bullet under Forbidden below, and no current M4 lesson uses any of them.)
 - **plan** / **plan file** — the file the agent reads back to the learner in plain words at the start of every conversation. The learner says "the plan" and hears its contents; they never open or edit the file directly, so the term carries no mechanism to define and needs no callout.
 
-### Requires-callout (D-04 pattern on first use; every entry passes say-it-or-see-it)
+### Requires-callout (glossary link on first use; every entry passes say-it-or-see-it)
 
 Build-phase nouns the learner says to the agent or sees on a screen they operate:
 
-- **Supabase** — introduce as "the service that gives the thread project an account system, a database, and file storage in one." The learner says it in prompts and operates its dashboard (SQL Editor, key-copy screens); doesn't learn Supabase internals.
-- **env var** / **environment variable** — introduce as "a named setting the deployed app reads at runtime that isn't checked into git (typically a secret)." The learner sees env vars listed on the Vercel settings screen; when the live site misbehaves but the local app works, the question to ask the agent is "is a setting missing on the live site?" GLOSSARY anchor `environment-variable` must exist before first callout.
-- **`NEXT_PUBLIC_SUPABASE_URL`** — the one env-var name the learner really reads and compares themselves, on the Vercel settings screen, when checking that the live site points at the same Supabase project as their machine. The learner never learns the `NEXT_PUBLIC_` build rule; the agent decides which values need which prefix. The real key system is publishable/secret keys (`sb_publishable_…`, plus `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on the settings screen); `NEXT_PUBLIC_SUPABASE_ANON_KEY` is retired and must not appear as a current claim in a lesson.
-- **secret key** / **publishable key** — "Supabase's settings screen shows two keys; one is safe to be seen, one must never be." The learner copies the publishable one off the dashboard when the agent asks for it, and never pastes the secret one anywhere public; the agent uses each correctly in config. GLOSSARY anchor `publishable-key` must exist before first callout (see the model callout in rule 1 below).
+- **Supabase** — the service the agent chose in the course's own build for accounts, database and file storage. The learner never says it in an ask (the agent chooses the services); it appears where a lesson narrates the real build or shows a dashboard screenshot, linked on first use. The learner meets its dashboard only when the agent sends them there — to create the account, flip a named setting, copy the publishable key, or paste one file as a fallback.
+- **Vercel** — the hosting service the agent chose in the course's own build; same rule as Supabase. Safe from M1 as a name, linked on first M4 use.
+- **secret key** / **publishable key** — "a service's dashboard shows two keys; one is safe to be seen, one must never be." If the agent asks, the learner copies the publishable one off the dashboard, and never pastes the secret one anywhere; an agent that asks for the secret one gets a question. GLOSSARY anchor `publishable-key` (covers both).
+*Retired from this tier 2026-09-08 and listed under the M4 cut list below: env var / environment variable and `NEXT_PUBLIC_SUPABASE_URL`. M4 L8 used to send the learner to read one row of the Vercel settings screen; the agent now compares live settings itself and the learner reports the symptom. `GLOSSARY.md#environment-variable` stays as a self-declaring entry. (This note is deliberately not a bullet: check #6's extractor reads every bullet in this section as a term.)*
 
 The named skills the learner runs on every chunk:
 
@@ -262,12 +262,14 @@ Re-homed here 2026-08-17 from the M3.5 orphan list (Module 3.5 is retired; these
 
 **Cut by the 2026-07-27 re-cut (fail say-it-or-see-it; may not appear in an M4 lesson body at all — not as a concept, not as a scan-target):** `RLS`, `WITH CHECK`, `USING`, `auth.uid()`, `OR author_id = auth.uid()`, `check (follower_id <> following_id)`, `follows_follower_idx` / `follows_following_idx`, `Server Action`, `revalidatePath`, `useOptimistic`, `async` / `await`, `cookies()` / `headers()` / `params`, `DROP TABLE`, the `NEXT_PUBLIC_` prefix as a standalone topic. These lived only inside code the agent wrote; each one's risk now surfaces as a refusal check or a pre-flight question instead (see the phase CONTEXT gates). Pasted dashboard code may *contain* such strings — that is cargo, not vocabulary; the lesson never asks the learner to read it.
 
+**Cut 2026-09-08 (technology chores the agent now owns):** `env var`, `environment variable`, `NEXT_PUBLIC_SUPABASE_URL`, `SQL Editor` as a step a lesson dictates, `migration`. A dashboard paste survives only as a *fallback the agent may hand the learner* (M4 L3 shows the shape once; later lessons say "the way Lesson 3 showed"), never as a step every learner performs. A learner ask may not name `Supabase`, `Vercel`, or any other service — the agent chooses them.
+
 ### M4 say-it-or-see-it introduction rule (per Hard Rule 13; replaced the SYMPTOM-only rule 2026-07-27)
 
 Every M4 Requires-callout term must name something the learner *says* to the agent or *sees* on a screen they operate — never something to find in the agent's code, and never a CONCEPT to understand from first principles.
 
-1. **The D-04 callout defines what the learner does with the term**, not the mechanism. Wrong: `**publishable key** (a one-line definition: the JWT-shaped anon-role credential embedded in the client bundle...)`. Right: `**publishable key** (a one-line definition: the one of Supabase's two keys that is safe to be seen — you copy it off the dashboard when the agent asks; the other key never leaves the dashboard, [→ GLOSSARY](../../GLOSSARY.md#publishable-key))`.
-2. **Surrounding prose does not exceed the callout's depth.** If the callout is operational, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The callout is both floor and ceiling.
+1. **The sentence around the link says what the learner does with the term**, not the mechanism, and the bracketed definition is gone. Wrong: `**publishable key** (a one-line definition: the JWT-shaped anon-role credential embedded in the client bundle...)`. Right: `The only key you ever copy is the one labelled as safe to be seen — on Supabase it is the [publishable key](../../GLOSSARY.md#publishable-key).`
+2. **Surrounding prose does not exceed the glossary entry's depth.** If the entry is operational, the next paragraph cannot start "behind the scenes, Postgres re-evaluates...". The entry is both floor and ceiling.
 3. **The check inventory is the bridge between intent and recovery.** Each chunk maps to refusal checks and pre-flight questions in the phase's CONTEXT.md (`.planning/phases/NN-name/NN-CONTEXT.md`). The lesson states the intent; the check inventory tests the fence; the agent owns everything in between.
 
 **M4 rewrite implications:** the re-cut against this contract landed with the M4 restructure on 2026-08-18. All nine shipped M4 lessons — the plan lesson plus the eight build lessons — are written against it, and none uses the retired SYMPTOM-only scan form it replaced, so they are the precedent for anything written next. When further build chunks are planned, this contract is what the planner uses to keep them on the Execution Floor. The phase's CONTEXT.md MUST be locked before plan-phase runs (CLAUDE.md hard rule 13).
@@ -282,7 +284,7 @@ Audience floor: M4 complete. Every M4 Requires-callout term is now Safe (still s
 
 - All M0–M4 Safe + all M4 Requires-callout.
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 - **watch-it-fail walkthrough** — a story where the agent fails on a known-bad pattern and you practice the recovery. Callout home: Lesson 02 (`02-the-fence-that-was-down.md`); the README may pre-name it in plain words.
 - **multi-account testing** — the two-browser, alice+bob ritual: signing in as two real accounts at once to surface bugs single-user testing misses; first-class skill per LESSON-13. Callout home: Lesson 01 (`01-two-people-one-app.md`).
@@ -320,7 +322,7 @@ Audience floor: M5 complete.
 
 - All M0–M5 Safe + all M5 Requires-callout.
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 - **bug report** — introduce as "someone tells you the deployed app does something wrong; you reproduce it, then write a planning conversation."
 - **reproduce** (in the bug-reproduction sense) — "open the deployed app, follow the steps, confirm you see the same wrong thing."
@@ -366,14 +368,14 @@ Module 7 is the only module where the **forbidden lists from prior modules** can
 
 **The agents Module 7 names — LOCKED 2026-08-21** (Phase 7 escape-valve adjudication; replaces the retired pre-remake roster):
 
-- **OpenCode desktop** — already the course's named third alternative, and already characterised in `modules/00-welcome/03-cost-path-triage.md`, `modules/00-welcome/05-install-your-agent-app.md`, `modules/02-toolchain/01-your-ai-coding-agent.md` and `SETUP.md`. Naming it in M7 adds no new proper noun and no fresh verification claim.
+- **The three taught apps** — Claude Code in the Claude desktop app, Codex in the ChatGPT desktop app, and OpenCode desktop (the third taught track since 2026-09-08). M7 L2 names all three as the apps the course *has* taught, and says honestly which of them the thread project was actually built in.
 - **Agents that live inside a code editor** — named as a *category*, never by product. The retired list collapsed two things: an editor and two editor extensions, all one category. Product names in that category churn faster than the quarterly smoke-test can verify, and the loop's translation is identical across every one of them, so the category is the durable fact and the roster is a maintenance liability.
 
-The taught tracks are unchanged — Claude Code desktop, and Codex in the ChatGPT desktop app (CLAUDE.md hard rule 15). **Naming is not teaching:** M7 names these to place them, never with install steps or a walkthrough. No further product name enters Module 7 without a gate amendment.
+**Naming is not teaching:** M7 names the editor-agent category to place it, never with install steps or a walkthrough. No further product name enters Module 7 without a gate amendment.
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
-- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents this course does not teach." Which agents those are is the locked list under "Module 7 is the escape valve" above; the definition clause stays agent-agnostic on purpose, because it has to fit on one line inside a D-04 callout.
+- **translation key** — "the mapping from the loop (Module 3) to other AI coding agents this course does not teach." Which agents those are is the locked list under "Module 7 is the escape valve" above; the definition clause stays agent-agnostic on purpose, because it has to fit on one line inside a one-line glossary entry.
 - **curated resources** — Module 7's external pointers; date-stamped per the link-freshness model (`CONTRIBUTING.md` § Quarterly smoke-test ritual).
 
 Added 2026-08-21 by the escape-valve adjudication, because the five surviving pointers cannot be written without saying these words. Tiering them here is what makes check #6 able to see them — the untiered-noun gap that let `framework` reach Module 6 undetected is closed for M7 by tiering ahead of the lesson, not after it:
@@ -391,7 +393,7 @@ Added 2026-08-21 with Lesson 3 itself, under the standing obligation below — t
 
 **Published titles in link text are exempt, and only there.** A technical noun that reaches a Module 7 lesson only inside a linked page's verbatim published title — `Client Components` and `LLM` in Lesson 3's pointer links, and `API keys` with them — is a citation of somebody else's page rather than a course use of the word, so it is not tiered and owes no callout; prose may not lean on it, and the first time a lesson says such a noun outside the link text it is a new introduction and the standing obligation above applies in full.
 
-**`session hygiene` ships untiered and gets no GLOSSARY anchor — a ruling, not an oversight.** Lesson 1's title term is that lesson's own plain-English label for a behaviour it defines in full on first use ("housekeeping on the session rather than on the work"), which is exactly what a D-04 callout would have achieved, and it names no technology the learner says to an agent or reads off a screen. The anchor is refused for a second reason worth recording: `GLOSSARY.md` already ships `### session` in the staying-signed-in sense — the sense Lesson 3's first pointer sends the learner to read about — so a `session-hygiene` anchor would seat two unrelated meanings of the same word side by side in the one place a learner goes to tell meanings apart. Re-open either decision with a gate amendment, not in passing.
+**`session hygiene` ships untiered and gets no GLOSSARY anchor — a ruling, not an oversight.** Lesson 1's title term is that lesson's own plain-English label for a behaviour it defines in full on first use ("housekeeping on the session rather than on the work"), which is exactly what a glossary link would have achieved, and it names no technology the learner says to an agent or reads off a screen. The anchor is refused for a second reason worth recording: `GLOSSARY.md` already ships `### session` in the staying-signed-in sense — the sense Lesson 3's first pointer sends the learner to read about — so a `session-hygiene` anchor would seat two unrelated meanings of the same word side by side in the one place a learner goes to tell meanings apart. Re-open either decision with a gate amendment, not in passing.
 
 ### M7 IS where deeper explanation lives — for the entries that survived adjudication
 
@@ -416,7 +418,9 @@ When a new lesson introduces a new technical noun:
 1. The author classifies it (Safe / Requires-callout / Forbidden) for THIS module and every subsequent module.
 2. The author adds it to this contract in the same PR.
 3. The author adds a `### {anchor}` entry to GLOSSARY.md.
-4. voice-lint.sh (Plan 01-8) verifies the lesson uses the callout pattern on first use of any Requires-callout term and never uses Forbidden terms.
+4. voice-lint.sh (Plan 01-8) verifies the lesson links any Requires-callout term to its glossary anchor and never uses Forbidden terms.
+
+**Prompts are outside the tiers (2026-09-08).** Text inside a fenced ` ```prompt ` block is what the learner *says* to the agent, so it passes say-it by construction and check #6 skips it. What a prompt may not do is name a technology chore — that is check #12b's job, and the rule is CLAUDE.md hard rule 16.
 
 When a term that was Forbidden becomes legal in a later module:
 
@@ -425,6 +429,6 @@ When a term that was Forbidden becomes legal in a later module:
 
 This file is authoritative. If a lint flags a violation that the lesson author believes is correct, update the contract first, then the lesson — never silently bypass.
 
-**Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are now Claude Code desktop and Codex in the ChatGPT desktop app, with OpenCode desktop named once as a third alternative (CLAUDE.md hard rule 15). The M3 section carried a transitional exception until its lessons were reshot: **that exception closed 2026-08-16.** Module 3 now presents Claude Code desktop and Codex in parallel and teaches "start a fresh conversation" as the session-reset move, so no typed command becomes legal at M3 — `slash command` is Forbidden in the M3 section, and `/clear`/`/compact`/`/context`/`/cost` stay in the retired-course-surface bucket of every module's Forbidden tier.
+**Gemini CLI retired 2026-08-12 with the remake.** Every `Gemini CLI` row is removed from this contract's tier lists. The taught tracks are Claude Code (Claude desktop app), Codex (ChatGPT desktop app), and — since 2026-09-08 — OpenCode desktop (CLAUDE.md hard rule 15). The M3 section carried a transitional exception until its lessons were reshot: **that exception closed 2026-08-16.** Module 3 now presents Claude Code desktop and Codex in parallel and teaches "start a fresh conversation" as the session-reset move, so no typed command becomes legal at M3 — `slash command` is Forbidden in the M3 section, and `/clear`/`/compact`/`/context`/`/cost` stay in the retired-course-surface bucket of every module's Forbidden tier.
 
 **`magic link` retired from every tier list 2026-08-17.** The thread project's sign-in has been an email address and a password since 2026-07-25, and Module 4's own tier lists name no emailed sign-in link, so the term's `Reserved for M1+` / `Reserved for M4+` rows in the Module 0, 1, 2, and 3 sections were forward-references to a lesson that no longer teaches it. The term now has no active tier in any module. (`GLOSSARY.md`'s `authentication` entry still uses a magic link as one everyday *example* of proving who you are — that is illustration, not a course term, and it stays.)

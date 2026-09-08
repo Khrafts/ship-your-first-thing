@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "01"
 est_minutes: 45
 prereqs: ["04-thread-project (all nine lessons)"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -45,7 +45,9 @@ From now on, run all four **after any change** to your app: a fix, a new feature
 
 Write a message with three parts: what you did, what you saw, and what should have been true. Then hand it over. Say the first check comes back wrong:
 
-> "Signed in as alice, I followed bob. Then I looked at bob's profile in the other browser, and alice is in his Following list as well as his Followers. Following somebody should never make them follow me back. Find out why and fix it, then I'll run the same check again."
+```prompt
+Signed in as alice, I followed bob. Then I looked at bob's profile in the other browser, and alice is in his Following list as well as his Followers. Following somebody should never make them follow me back. Find out why and fix it, then I'll run the same check again.
+```
 
 Leave out any guess about the cause. You are the only person who saw what the app did, and that is the whole of what you add. A guess points your agent somewhere it has no reason to look.
 

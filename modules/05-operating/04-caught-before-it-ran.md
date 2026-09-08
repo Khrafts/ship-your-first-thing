@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "04"
 est_minutes: 30
 prereqs: ["03-the-missing-post"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations:
   - staged-comment-wording
 ---
@@ -24,15 +24,17 @@ Nothing in this lesson touches your app. You rehearse the question now and ask i
 
 An app that had been live for a while, with real people's comments on it. Something in the comments started behaving oddly. The owner said what they saw and handed it over.
 
-Their agent came back with an explanation and a file for the database, the same kind of file that had gone into the dashboard five times during the build. Paste this in, it said, and that clears it. Nothing about it looked different from the five before, and every one of those had only added things.
+Their agent came back with an explanation and a change to the database, the same kind of change it had made five times during the build — this time as a file to paste into the dashboard. Paste this in, it said, and that clears it. Nothing about it looked different from the five before, and every one of those had only added things.
 
 ## The question
 
 They did not paste it. First, the question you have asked before every database change since Module 4:
 
-> **BEFORE YOU APPROVE ANYTHING THAT TOUCHES THE DATABASE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
+```prompt
+Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today.
+```
 
-Ask it every time: before a dashboard paste, and before anything your agent proposes that goes near the place your app keeps things. Then wait. The answer should name what already exists and say what happens to each thing. "It's fine" is not an answer; ask again.
+Ask it every time: before anything your agent proposes that goes near the place your app keeps things, whether it runs the change itself or hands you something to paste. Then wait. The answer should name what already exists and say what happens to each thing. "It's fine" is not an answer; ask again.
 
 <!-- Staged walkthrough story (known-bad pattern; the 2026-07 build produced no such proposal — no archived run exists for it). -->
 
@@ -46,21 +48,27 @@ Nothing happened. The file stayed in the chat. Every comment stayed where it was
 
 You still have the problem the change was meant to fix, so what you want is not *no*. It is *the other version of this*:
 
-> "This would delete a table that may have real data in it — is there a way to make this change that keeps what's already there?"
+```prompt
+This would delete a table that may have real data in it — is there a way to make this change that keeps what's already there?
+```
 
 The first half repeats what you were told. The second half asks for another route. How that is done is your agent's job.
 
-In that build, what came back changed what needed changing and left every comment in place. The owner asked the question again of the new version, because it is a question about the change in front of you, not a toll paid once. The second answer said nothing existing would be removed. That is the one that got pasted.
+In that build, what came back changed what needed changing and left every comment in place. The owner asked the question again of the new version, because it is a question about the change in front of you, not a toll paid once. The second answer said nothing existing would be removed. That is the one that went in.
 
 ## The dashboard's own warning
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c6); presented in the desktop app's framing. -->
 
-When you paste something into your Supabase dashboard and press Run, the dashboard sometimes stops you with its own warning, headed "Potential issue detected", saying the query includes destructive operations and may permanently change or remove data, with **Run query** and **Cancel** buttons.
+When your agent hands you something to paste and the service's dashboard runs it, the dashboard sometimes stops you with its own warning. On [Supabase](../../GLOSSARY.md#supabase), where this course's build ran, it is headed "Potential issue detected", says the query includes destructive operations and may permanently change or remove data, and offers **Run query** and **Cancel**.
 
-The rule is a comparison. If the answer you already have explains the warning, **Run query** is the way through. If the warning names something your answer never mentioned, or you never asked, press nothing and paste the warning's words back to your agent.
+The rule is a comparison. If the answer you already have explains the warning, continuing is the way through. If the warning names something your answer never mentioned, or you never asked, press nothing and hand the warning's words back:
 
-When this course's own build met that dialog, the answer had already said nothing existing would be touched, so **Run query** was the right press.
+```prompt
+The dashboard says this may permanently change or remove data, and that's not what you told me before I pasted it. What in this change removes anything, and what happens to what is already in my database if it runs?
+```
+
+When this course's own build met that dialog, the answer had already said nothing existing would be touched, so continuing was the right press.
 
 <!-- Staged walkthrough story (known-bad pattern; the 2026-07 build produced no such proposal — no archived run exists for it). -->
 
@@ -74,7 +82,7 @@ You are mid-fix and want it over. The change looks small. The last five went fin
 
 Nothing runs. Write two lines and compare them with the ones above.
 
-1. Picture your agent coming back mid-fix with a file for your database, on an app where alice and bob have real posts and comments.
+1. Picture your agent coming back mid-fix with a change to your database, on an app where alice and bob have real posts and comments.
 2. From memory, write the question you would send before pasting it.
 3. Compare with the one above. Yours must ask whether anything existing is removed or overwritten, and ask for the list of exactly what changes.
 4. Now picture the answer saying the comments would go along with their table. Write the one line you send back.

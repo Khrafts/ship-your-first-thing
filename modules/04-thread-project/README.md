@@ -2,7 +2,7 @@
 
 This is where you stop practicing and start shipping. Across nine lessons you build one real product — a small social app where people sign in, keep a profile, write posts, follow each other, read a feed, comment, and like. The first lesson writes down what you're building; the eight after it build it, one feature at a time. Each feature ends with something you can see in a browser and a saved version you can go back to.
 
-Your coding agent writes every line of code and installs anything the project needs. You decide what gets built, look at the running app, try the things that should be refused, and say when to save. Every ask in this module is written once and works in either app you might have picked in Module 0.
+Your coding agent writes every line of code, chooses every tool and service, and installs anything the project needs. You decide what gets built, look at the running app, try the things that should be refused, and say when to save. Every ask in this module is written once and works in whichever of the three apps you picked in Module 0.
 
 ## What this module builds
 
@@ -22,16 +22,36 @@ Done looks like this: you open the live link in two different browsers, sign in 
 
 ## How this module works
 
-**Your agent owns the code** — how the data is shaped, the rules about who may see and change what, which files to touch, every error, and every tool that has to be installed. None of that is taught here, and you are never asked to write, read, or repair it.
+**Your agent owns the code and the choices underneath it** — which services hold your accounts and data, where the app is hosted, how the data is shaped, the rules about who may see and change what, which files to touch, every error, and every tool that has to be installed. None of that is taught here, and you are never asked to write, read, or repair it.
 
 **You own four things:**
 
 1. **Saying what you want.** "Signed-out visitors should be able to read the posts on my profile but not write one." What, not how. Every ask starts from the plan you write in Lesson 0.
-2. **Looking at the running app.** Open it, click things, sign out and look again, sign in as a second person in a second browser. Almost everything that goes wrong is visible from the outside. The running app is the copy your agent starts on your own computer — when nothing is open, say *"Start the app on my computer and open it in my browser."* The live link is the other copy, rebuilt from each save that goes up. Both copies use the same database.
-3. **Running each lesson's checks.** Short lists of things to try in the running app, and one question to ask before anything you can't take back. The two shapes are below.
-4. **Saying when to save.** The moment a feature works: *"Save this as a working version."* Then ask for all three parts of the answer — saved on this computer, the copy went up, and the live copy rebuilt successfully — because each can fail while the others hold. The saved version on this computer is your way back the moment your agent confirms it. When your agent has been heading the wrong way for several turns, start a fresh conversation with the same folder selected and restart the chunk from that saved version.
+2. **Looking at the running app.** Open it, click things, sign out and look again, sign in as a second person in a second browser. Almost everything that goes wrong is visible from the outside. The running app is the copy your agent starts on your own computer — when nothing is open, say:
 
-**Nothing needs installing by you.** Assume this computer has none of the tools a web app needs. One of the house rules you give your agent in Lesson 0 is that whenever a step needs a tool that isn't here, it installs it, tells you what it's for, asks you only for the approvals only you can give, and checks it works before going on. If an install fails, it stops and tells you what it tried and what you can do next. You never type a command.
+   ```prompt
+   Start the app on my computer and open it in my browser.
+   ```
+
+   The live link is the other copy, rebuilt from each save that goes up. Both copies use the same database.
+3. **Running each lesson's checks.** Short lists of things to try in the running app, and one question to ask before anything you can't take back. The two shapes are below.
+4. **Saying when to save.** The moment a feature works:
+
+   ```prompt
+   Save this as a working version.
+   ```
+
+   Then ask for all three parts of the answer — saved on this computer, the copy went up, and the live copy rebuilt successfully — because each can fail while the others hold. The saved version on this computer is your way back the moment your agent confirms it. When your agent has been heading the wrong way for several turns, start a fresh conversation with the same folder selected and restart the chunk from that saved version.
+
+**Nothing needs installing or setting up by you.** Assume this computer has none of the tools a web app needs. One of the house rules you give your agent in Lesson 0 is that whenever a step needs a tool, a service, or an account, it tells you what it's for, does the installing and setting up itself, and asks you only for the things only you can do — creating an account in your browser, typing a password into a sign-in window it names, or saying yes to spending money. You never type a command and never paste a password into the conversation. The house rules are an agreement, not a setting the app enforces — which is why every lesson keeps its checks.
+
+**When your agent asks you a technical question**, it is asking you to make a choice it should make. Hand it back:
+
+```prompt
+You choose — pick the simplest option that's easy to change later, and tell me in one line what you picked. Only ask me about things that change what people see, what it costs, who can see what, or which accounts I need to sign in to.
+```
+
+Questions about *what the app does* are yours to answer in your own words. Questions about how it is built are not.
 
 ## What your checks look like
 
@@ -43,15 +63,27 @@ Two moves, and neither asks you to look at anything your agent wrote.
 >
 > **EXPECT:** reading works, and every way of changing anything is missing, switched off, or bounces you to the sign-in page.
 >
-> **IF IT WORKS:** hand it back in one sentence — *"While signed out I could delete a post. A signed-out visitor should only be able to read. Fix that."*
+> **IF IT WORKS,** hand it back in one sentence:
 
-**Ask before anything you can't take back.** Ahead of anything you paste into a dashboard, and ahead of anything that changes information already in your project:
+```prompt
+While signed out I could delete a post. A signed-out visitor should only be able to read. Fix that.
+```
 
-> **BEFORE YOU PASTE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
->
-> **THEN:** if the dashboard's own warning matches the answer you got, continue. If the warning names something the answer didn't predict — or you never asked — press nothing, and hand the warning's words back to your agent.
+**Ask before anything you can't take back.** Before your agent changes information that already exists in your project — and before anything it asks you to type or paste into a dashboard:
 
-**And one thing your agent does.** Every ask in this module ends with the short list of checks your agent must run and show you before it may say "done". If "done" arrives without that report, say *"Run the checks we agreed on and show me the results first."* If it says it could not run one of the checks, that check is yours to run or ask about — never to count as passed.
+```prompt
+Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today.
+```
+
+If a dashboard shows its own warning, and the warning matches the answer you got, continue. If the warning names something the answer didn't predict — or you never asked — press nothing, and hand the warning's words back to your agent.
+
+**And one thing your agent does.** Every ask in this module ends with the short list of checks your agent must run and show you before it may say "done". If "done" arrives without that report:
+
+```prompt
+Run the checks we agreed on and show me the results first.
+```
+
+If it says it could not run one of the checks, that check is yours to run or ask about — never to count as passed.
 
 ## Lessons in this module
 

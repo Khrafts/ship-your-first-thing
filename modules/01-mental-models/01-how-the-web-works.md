@@ -26,7 +26,7 @@ You're a customer. You sit down, and a waiter hands you a menu. You decide what 
 
 That choreography — customer / waiter / kitchen — is the shape of the web.
 
-The customer is your **browser** (a program on your computer that knows how to ask servers for pages and show them, [→ GLOSSARY](../../GLOSSARY.md#browser)). The kitchen is the **server** (a program on a remote computer, waiting for requests, [→ GLOSSARY](../../GLOSSARY.md#server)). The waiter is **HTTP** (the language the web uses to carry requests and responses between them, [→ GLOSSARY](../../GLOSSARY.md#http)). The waiter doesn't cook and doesn't eat — it only carries paper between the dining room and the kitchen.
+The customer is your [browser](../../GLOSSARY.md#browser). The kitchen is the [server](../../GLOSSARY.md#server). The waiter is [HTTP](../../GLOSSARY.md#http). The waiter doesn't cook and doesn't eat — it only carries paper between the dining room and the kitchen.
 
 ```mermaid
 flowchart LR
@@ -57,9 +57,9 @@ flowchart LR
 
 </details>
 
-The order ticket is a **request** ("give me the page at this address", [→ GLOSSARY](../../GLOSSARY.md#request)). What comes back is the **response** (the server's reply, [→ GLOSSARY](../../GLOSSARY.md#response)): the dish, plus a slip saying how it went. The slip is an **HTTP status code** (a three-digit number, [→ GLOSSARY](../../GLOSSARY.md#http-status-code)). When a page shows you "404", you're reading the slip: "you ordered something we don't make." A "500" means the kitchen caught fire.
+The order ticket is a [request](../../GLOSSARY.md#request). What comes back is the [response](../../GLOSSARY.md#response): the dish, plus a slip saying how it went. The slip is a three-digit [HTTP status code](../../GLOSSARY.md#http-status-code). When a page shows you "404", you're reading the slip: "you ordered something we don't make." A "500" means the kitchen caught fire.
 
-What's on the dish is **HTML** (the text that describes the structure of a page, [→ GLOSSARY](../../GLOSSARY.md#html)). It usually points at other files the page needs — the styling, the pictures — and the browser fetches each of those with a fresh trip to the kitchen. Loading one page often means a dozen round trips.
+What's on the dish is [HTML](../../GLOSSARY.md#html), the text a page is written in. It usually points at other files the page needs — the styling, the pictures — and the browser fetches each of those with a fresh trip to the kitchen. Loading one page often means a dozen round trips.
 
 ```mermaid
 sequenceDiagram

@@ -4,7 +4,7 @@ module: "07-where-next"
 lesson_number: "01"
 est_minutes: 25
 prereqs: ["06-after-live (all four lessons)"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -30,14 +30,26 @@ The loop's four moves all point at the work. These three point at the conditions
 
 **When**, either of two:
 
-- A fresh conversation reached the same wall, the same way, twice. The conversation was not the problem, so put the same ask in front of the other app.
-- Your app is not available or not affordable today. [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) said this when you picked a path: nothing locks you to it, and switching costs one thing, creating the account you skipped.
+- A fresh conversation reached the same wall, the same way, twice. The conversation was not the problem, so put the same ask in front of one of the other two apps.
+- Your app is not available or not affordable today. [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) said this when you picked a track: nothing locks you to it, and switching costs one thing, creating the account you skipped.
 
 **The mistake to avoid:** switching is not a way to get a better answer to the same loose ask. [Module 3 Lesson 4](../03-the-loop/04-steering-and-recovery.md) showed a loose bookshelf ask getting a bookshelf nobody wanted; a different app given the same loose ask has the same room to over-shoot. The switch is worth exactly one try. If the other app clears the wall, the wall was the app's. If it lands in the same place, "both of them do this, here is what I asked" is the best sentence you can hand the person Module 6 taught you to find.
 
 **Skip this move** when what is at stake is money, other people's information, or something that cannot be taken back. A second agent does not make that smaller. Go straight to move three.
 
-**In a new app**, your first ask can be: *"Is everything you need installed on this computer? Check, install whatever is missing — ask me first if it needs my approval — and tell me when it's ready."* If it says an install didn't work, don't repeat it blindly — say: *"The install didn't work. Tell me in plain words what happened and what you'd try next."* If two tries don't land, stop there; nothing is lost.
+**In a new app**, point it at the same project folder and your first ask can be:
+
+```prompt
+Read the plan and the house rules in this folder, and tell me where we are. Then check whether everything you need is installed on this computer, install whatever is missing — ask me only for the things only I can do — and tell me when it's ready.
+```
+
+If it says an install didn't work, don't repeat it blindly:
+
+```prompt
+The install didn't work. Tell me in plain words what happened and what you'd try next.
+```
+
+If two tries don't land, stop there; nothing is lost.
 
 ## Move three — leave the keyboard
 
@@ -49,7 +61,13 @@ The second is stopping for today with nobody to hand it to. Three signals, all c
 - You cannot say in one plain sentence what you are trying to do. Not what is broken; what you *want*.
 - It is late, and the thing waiting at the approval prompt is the kind of thing you would rather be awake for.
 
-**What to do:** say *"Save this as a working version"*, then close the lid. Your work was never in the conversation; the folder and files stay where they are. Tomorrow starts in a fresh conversation. Nothing in the conversation will notice the hour for you: your agent proposes the thing that cannot be undone in the same calm voice as a spelling fix, and [Module 2 Lesson 1](../02-toolchain/01-your-ai-coding-agent.md) gave you the question that catches that. That question cannot catch that it is eleven at night. Only you can.
+**What to do:**
+
+```prompt
+Save this as a working version.
+```
+
+Then close the lid. Your work was never in the conversation; the folder and files stay where they are. Tomorrow starts in a fresh conversation. Nothing in the conversation will notice the hour for you: your agent proposes the thing that cannot be undone in the same calm voice as a spelling fix, and [Module 2 Lesson 1](../02-toolchain/01-your-ai-coding-agent.md) gave you the question that catches that. That question cannot catch that it is eleven at night. Only you can.
 
 ## Telling them apart
 
@@ -65,8 +83,8 @@ Nothing runs. Write one short card you keep. About fifteen minutes.
 
 1. Write the three moves in your own words, one line each, and next to each the signal *you* will actually notice on your worst afternoon.
 2. Write your number: how many times you will restate something before you start fresh. Module 3 said two. Pick yours and write it down, because the number you pick calmly is not the one you will pick at hour three.
-3. Price the switch in one line: what moving to the other app would cost you today. Name the account you skipped in Module 0 and whether you have it.
-4. Write your stopping sentence: the one you say to yourself, and the one you say to your agent first, *"Save this as a working version."*
+3. Price the switch in one line: what moving to another of the three apps would cost you today. Name the accounts you skipped in Module 0 and whether you have them.
+4. Write your stopping sentence: the one you say to yourself, and the one you say to your agent first, *save this as a working version.*
 5. Name two tools with nothing to do with AI where you have gone round in circles, and which of the three moves you eventually made, or wish you had made sooner.
 6. Keep it with the four things Module 6 left you.
 

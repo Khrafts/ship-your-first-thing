@@ -1,0 +1,30 @@
+[
+  {
+    "file": "screenshots/m0/05-install-your-agent-app/claude-first-session.png",
+    "source_sha256": "4f3773849d3682a47a9e2a4e2c5ab404bcb6a5739c866d057fa785cf90b776f3",
+    "sha256": "eb88274063bf5f2297570bd411cdb04c0854b626c1ae863ac2412129007d35e3",
+    "capture_date": "2026-09-08",
+    "notes": "Two actual crops; rest of app excluded. Project name Gaussian-blurred. Auto is the observed permission mode; no setting changed."
+  },
+  {
+    "file": "screenshots/m0/05-install-your-agent-app/codex-first-session.png",
+    "source_sha256": "0660e8a8b383dace5e086b37a7277ea78fd24bda6b91f16276ffd7a11f94fe26",
+    "sha256": "e5e750fd3f4a320b1eab09160aa15f6dde800d21d5deacafd39209e900cc6073",
+    "capture_date": "2026-09-08",
+    "notes": "Two actual crops; sidebar history, profile and usage banner excluded. Project name Gaussian-blurred. Permission setting unchanged."
+  },
+  {
+    "file": "screenshots/m0/05-install-your-agent-app/opencode-first-session.png",
+    "source_sha256": "00887b73ae1ac16f1d45b2e3d5f5df90f26879f7d6d1ae4e62aa10c6af42c25c",
+    "sha256": "eca2cb2071710dab81efbdf716fc655ae57276609aa836e4ae191213746c11c1",
+    "capture_date": "2026-09-08",
+    "notes": "Actual composer crop, original unrelated tab excluded. Project name Gaussian-blurred; No Git kept as a real UI label."
+  },
+  {
+    "file": "screenshots/m0/05-install-your-agent-app/opencode-free-models.png",
+    "source_sha256": "39f81d8ac9087566998f22e7092bc9193944e6edba3044640863a713a81ec118",
+    "sha256": "838710ff7157c26ee66f1f3fc3cb04c63961e2b4f5e0fcd55182ebc8932766d3",
+    "capture_date": "2026-09-08",
+    "notes": "Actual modal crop. Unrelated app tab and project excluded; model names/prices are observed UI, not generated."
+  }
+]

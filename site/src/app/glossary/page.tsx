@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProseHtml } from "@/components/prose-html";
 import { getGlossaryHtml } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -18,10 +19,7 @@ export default async function GlossaryPage() {
           Every domain and tool term the course uses, defined in plain
           language. Lessons link here the first time a term appears.
         </p>
-        <div
-          className="prose mt-12"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <ProseHtml html={html} className="prose mt-12" />
       </div>
     </div>
   );

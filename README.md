@@ -11,7 +11,15 @@ An open-source, self-paced course that teaches non-technical people to ship a re
 
 ## What this is
 
-This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons. The same content is also wrapped by a Next.js platform (built, in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces, and this repository stays canonical — on day one you only need a browser to read it. The hands-on modules run inside a desktop agent app — Claude Code desktop or Codex in the ChatGPT desktop app — and Module 0 walks you through choosing and installing yours. An ordinary fresh computer is fine: once the app is running, your agent installs each tool a step needs the first time it needs it, with your approval, and you never type a command.
+This repository is the canonical source of truth for the course: plain markdown files arranged into modules, each made of lessons. The same content is also wrapped by a Next.js platform (in `site/`) that adds accounts, per-lesson progress tracking, and cohort schedules; once it deploys to Railway it will serve at https://shipyourfirstthing.com. The lessons are identical on both surfaces — on day one you only need a browser to read it.
+
+The hands-on modules run inside a desktop agent app. The course teaches three, in parallel, and Module 0 helps you choose and install one:
+
+- **Claude Code desktop** — Anthropic's agent, in the Claude desktop app's Code tab. Paid ($20/month).
+- **Codex, inside the ChatGPT desktop app** — OpenAI's agent. Included on every ChatGPT plan, including the free one.
+- **OpenCode desktop** — an open-source agent app with free models included, no account needed to start.
+
+An ordinary fresh computer is fine: once the app is running, your agent installs each tool a step needs the first time it needs it, with your approval, and you never type a command. You describe what you want; the agent makes the technical decisions.
 
 The course is designed to be picked up cold. A learner who has never written production code should be able to open this course in a browser, start at Module 0, and follow the practical route below without needing a workshop, a video, or a person to answer questions live. The "and recover when the AI gets it wrong" part is the differentiator: the modules teach the durable AI-coding loop alongside the agent that does the building, so by the end you can both ship a thing and get unstuck when the model produces something broken.
 
@@ -26,10 +34,10 @@ The course is designed to be picked up cold. A learner who has never written pro
 
 ## How to use this course
 
-1. Start with [Module 0 — Welcome](./modules/00-welcome/README.md). It checks your hardware, helps you choose a cost path before you create any accounts, gets your agent app installed — and then, in the same sitting, has that agent [build your first thing](./modules/00-welcome/06-build-your-first-thing.md): a checklist page that's yours, checked in your browser, changed once, and saved.
+1. Start with [Module 0 — Welcome](./modules/00-welcome/README.md). It checks your hardware, helps you choose a cost path before you create any account, gets your agent app installed — and then, in the same sitting, has that agent [build your first thing](./modules/00-welcome/06-build-your-first-thing.md): a small page you chose, checked in your browser, changed once, and saved.
 2. Then follow the practical route: [Module 2, Lesson 3 — the save system](./modules/02-toolchain/03-the-save-system.md) → [Module 3 — the loop](./modules/03-the-loop/README.md) → [Module 4 — the thread project](./modules/04-thread-project/README.md), then Modules 5 to 7. Module 1 and the first two lessons of Module 2 are theory you read on demand; each Module 4 build lesson names the Module 1 lesson whose picture it uses. On the course site, Module 0 is open without an account and the on-demand lessons never lock anything.
-3. You don't need developer tools before you start. Module 0, Lesson 5 installs the agent app; Claude Code desktop needs one helper program (Git) before it can open a folder — Windows computers don't have it, most Macs do — and that lesson walks you through the official installer and what to do if the app says a program is missing; the agent can't install that one for you, because it isn't running yet. Everything a later step needs, your agent installs the first time it's needed, explaining what and why in plain words; you give the approval. Any administrator password or account sign-in goes straight into the system's installer or the official sign-in window, never into the agent chat. If an install fails, the lesson tells you what to say next.
-4. When something breaks, check [`COMMON-ISSUES.md`](./COMMON-ISSUES.md). When a page doesn't match what you see, the Fast answers table in [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) (a record kept up to 2026-08-22) is the quickest route; on the course site, the lesson chat is the live one.
+3. You don't need developer tools or a GitHub account before you start. Your first build needs nothing installed. Git, GitHub and Node.js each arrive at the lesson that first needs them, installed or set up by your agent with your approval — the one exception is Claude Code desktop on Windows, which needs Git before it can open a folder, and Module 0 Lesson 5 links the installer. Any administrator password or account sign-in goes into the system's installer or the official sign-in window, never into the agent chat.
+4. When something breaks, check [`COMMON-ISSUES.md`](./COMMON-ISSUES.md). When a page doesn't match what you see, the app moved and the skill didn't; on the course site, the lesson chat can reconcile the difference. Reusable prompts for planning, checking, saving and recovery are collected in [`CHEATSHEET.md`](./CHEATSHEET.md).
 
 ## Table of contents
 
@@ -52,7 +60,7 @@ The course is designed to be picked up cold. A learner who has never written pro
 - [COMMON-ISSUES.md](./COMMON-ISSUES.md)
 - [BUDGET.md](./BUDGET.md)
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [WHAT-CHANGED.md](./WHAT-CHANGED.md)
+- [WHAT-CHANGED.md](./WHAT-CHANGED.md) (a record kept up to 2026-08-22)
 - [VERSIONS.md](./VERSIONS.md)
 
 **Templates**
@@ -76,4 +84,4 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## A note on freshness
 
-AI tools change every few months — model versions, app behavior, default settings, even what the tools are called. The course's loop (intent → ask → evaluate → steer) is durable; the keystrokes are not. If reality drifts from a page, check the Fast answers in [`WHAT-CHANGED.md`](./WHAT-CHANGED.md) — a record kept up to 2026-08-22 — or ask the lesson chat on the course site, before you assume the lesson is wrong.
+AI tools change every few months — model versions, app behavior, default settings, even what the tools are called. The course's loop (intent → ask → evaluate → steer) is durable; the keystrokes are not. Product claims in the lessons cite the official page they came from, with the date it was checked. If reality drifts from a page, ask the lesson chat on the course site before you assume the lesson is wrong.

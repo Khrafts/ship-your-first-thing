@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 04
 est_minutes: 50
 prereqs: ["03-profile"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -24,61 +24,87 @@ A signed-in person writes a short post, attaches one picture if they want, and i
 
 ## The ask
 
-Start a fresh conversation with your project folder selected. If your agent does not open by saying where you are in the plan, say: *"Read the plan and the house rules, and tell me where we are."* Then:
+Start a fresh conversation with your project folder selected. If your agent does not open by saying where you are in the plan, say:
 
-> I want signed-in people to write a short text post, with an optional picture, that appears on their profile. They should be able to edit or delete their own posts, but nobody else's. And anyone, even signed-out visitors, should be able to read posts on a profile. Plan this out before you write any code, and tell me how you'll make sure one person can't edit a post to make it look like someone else wrote it. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a signed-in person can write, edit, and delete their own post, with an optional picture; the post still shows the right author after an edit; a signed-out visitor can read posts and has no way to write, edit, or delete one; a signed-out attempt to store a post under somebody else's name is refused — tell me that in plain words, not as output for me to read.
+```prompt
+Read the plan and the house rules, and tell me where we are.
+```
+
+Then:
+
+```prompt
+I want signed-in people to write a short text post, with an optional picture, that appears on their profile. They should be able to edit or delete their own posts, but nobody else's. And anyone, even signed-out visitors, should be able to read posts on a profile. Plan this out before you write any code, and tell me how you'll make sure one person can't edit a post to make it look like someone else wrote it. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a signed-in person can write, edit, and delete their own post, with an optional picture; the post still shows the right author after an edit; a signed-out visitor can read posts and has no way to write, edit, or delete one; a signed-out attempt to store a post under somebody else's name is refused — tell me that in plain words, not as output for me to read.
+```
 
 Check the plan against what you asked for — write, edit, delete, your own only, an optional picture, readable by anyone — and that the last part came back as something specific rather than a reassurance. You are not grading how; you need the answer to exist. Then:
 
-> That matches what I want. Go ahead and build it.
+```prompt
+That matches what I want. Go ahead and build it.
+```
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c3); presented in the desktop app's framing. -->
 
-Your agent may raise something first. When this chunk was really built, it pointed out that display names are not unique — two people can both call themselves Alice — and offered chosen handles as a fix, calling it a product decision rather than a fault. "Leave handles for another time" was the answer. Say yes or say later; do not skip past it. Then approve the steps as the app asks, until it stops for the dashboard step.
+Your agent may raise something first. When this chunk was really built, it pointed out that display names are not unique — two people can both call themselves Alice — and offered chosen handles as a fix, calling it a product decision rather than a fault. That one *is* yours: it changes what people see. "Leave handles for another time" was the answer. Say yes or say later; do not skip past it. Then approve the steps as the app asks.
 
-<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
+<!-- CODEX / OPENCODE VERIFICATION SLOT: verify wording and app behavior against a real run in each app — user-assisted evidence pass -->
 
-## The step only you can do
+## Before anything touches your database
 
-Same shape as last chunk: your agent writes a file for your database and cannot run it; you paste it from your **Supabase** (a one-line definition: the service that holds your app's accounts and database — you open its dashboard when a lesson says to, [→ GLOSSARY](../../GLOSSARY.md#supabase)) dashboard. Two differences: this file needs the profile file to have run first, so if you never ran that one, run it first; and in the SQL Editor you open a *new* query beside the one left from last chunk rather than typing over it.
+Posts need somewhere to live, so your database changes shape again. Your database has your profile in it now, so this is the first time the question is asked of something you could lose. Before you approve the change:
 
-> **BEFORE YOU PASTE:** *"Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today."*
+```prompt
+Does this remove or overwrite anything that is already in my database? List exactly what changes for data that exists today.
+```
 
-Wait for the answer. Your database has your profile in it now, so this is the first time the question is asked of something you could lose.
-
-Then: Supabase dashboard → SQL Editor → **+** for a new query → paste the whole file → Run.
-
-![The Supabase dashboard, on the SQL Editor page. A numbered marker ① points to the small "+" button at the top of the editor, beside the tab of the query left over from the last chunk — pressing it opens a new, empty query alongside the old one. Marker ② points to the large query area in the middle, holding the whole file your agent wrote, scrolled to its last lines. Marker ③ points to the green Run button at the top right, which you press once the file is in.](../../screenshots/m4/04-posts/run-posts-migration.png)
-
-The same "Potential issue detected" dialog appears, for the same reason as last chunk. If its warning is accounted for by the answer you got, press **Run query**. If not — or you skipped the question — press nothing: *"The dialog says the query may permanently change or remove data. You told me nothing existing would change. Which is it?"* The Results pane reads "Success. No rows returned" when it runs.
+If your agent hands you something to paste instead of making the change itself, do it the way [Lesson 3](./03-profile.md) showed: the screen it names, the whole file, and the dashboard's warning held against the answer you got. If the warning names something the answer did not predict, press nothing and hand its words back.
 
 ## Check it
 
-Open the running app — *"Start the app on my computer and open it in my browser"* if nothing is open. In order: write a post (it appears on your profile with its date); write a second one with a picture; edit the first; delete one and reload.
+Open the running app — if nothing is open:
+
+```prompt
+Start the app on my computer and open it in my browser.
+```
+
+In order: write a post (it appears on your profile with its date); write a second one with a picture; edit the first; delete one and reload.
 
 > **TRY THIS:** edit one of your own posts and save it.
 >
 > **EXPECT:** the edit lands, and the post still shows you as its author.
 >
-> **IF THE AUTHOR LINE CHANGES, OR THE EDIT SILENTLY VANISHES:** *"I edited my post and ⟨what you saw⟩. An edit should change the words, never whose post it is. Find out why and fix it."*
+> **IF THE AUTHOR LINE CHANGES, OR THE EDIT SILENTLY VANISHES:**
+
+```prompt
+I edited my post and ⟨what you saw⟩. An edit should change the words, never whose post it is. Find out why and fix it.
+```
 
 > **TRY THIS:** open a private window that has never signed in, and open a profile with posts on it. Read them. Then look for any way to write, edit, or delete one.
 >
 > **EXPECT:** every post readable, pictures loading — and no box to write in, no Edit link, no Delete anywhere.
 >
-> **IF IT WORKS:** *"While signed out I could ⟨what you did⟩. A signed-out visitor should only be able to read. Fix that."*
+> **IF IT WORKS:**
+
+```prompt
+While signed out I could ⟨what you did⟩. A signed-out visitor should only be able to read. Fix that.
+```
 
 > **TRY THIS:** sign in as your second account, find a post the first account wrote, and try to edit or delete it — including by typing that post's editing address straight into the address bar.
 >
 > **EXPECT:** no controls, or refusal — and after a refresh the post is unchanged.
 >
-> **IF IT WORKS:** *"As ⟨account B⟩ I could ⟨edit/delete⟩ ⟨account A⟩'s post. Only its owner should be able to. Fix that."*
+> **IF IT WORKS:**
+
+```prompt
+As ⟨account B⟩ I could ⟨edit/delete⟩ ⟨account A⟩'s post. Only its owner should be able to. Fix that.
+```
 
 One push nobody can make by clicking: storing a post with somebody else's name on it from outside the app entirely. That one your agent attempts, and you ask for:
 
-> With nobody signed in at all, try storing a post with someone else's name on it as the author, and show me exactly what came back.
+```prompt
+With nobody signed in at all, try storing a post with someone else's name on it as the author, and tell me in plain words what came back.
+```
 
-You want one thing back, in plain words: refused rather than stored. If it came back stored, stop and use the first steer below.
+You want one thing back: refused rather than stored. If it came back stored, stop and use the first steer below.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c3). -->
 
@@ -88,14 +114,28 @@ Your agent will describe the fences it built in the same calm tone whether or no
 
 ## If something is wrong
 
-- *"I edited my post and the author name changed to someone else — that should never be possible. Find out why and fix it so a post always keeps its real author."*
-- *"I signed out, opened a profile, and the posts were gone or it made me sign in. Anyone should be able to read posts. Find out why and fix it."*
-- **A page says something does not exist** — "table not found" or wording close to it: go back to the paste step, run it, reload.
+```prompt
+I edited my post and the author name changed to someone else — that should never be possible. Find out why and fix it so a post always keeps its real author.
+```
+
+```prompt
+I signed out, opened a profile, and the posts were gone or it made me sign in. Anyone should be able to read posts. Find out why and fix it.
+```
+
+- **A page says something does not exist** — "table not found" or wording close to it: the database change never went in. Say so, and your agent goes back to that step.
 - **Your agent keeps circling:** start a fresh conversation and begin this chunk again from your last saved version.
 
 ## Save it
 
-Look first, say the sentence second. Once you have clicked through it and it holds: *"Save this as a working version."* Then ask it to confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
+Look first, say the sentence second. Once you have clicked through it and it holds:
+
+```prompt
+Save this as a working version.
+```
+
+```prompt
+Confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
+```
 
 ## What "done" means
 
@@ -106,7 +146,11 @@ You wrote these into the ask. Before you accept "done", your agent shows you the
 3. A signed-out visitor can read posts and has no way to write, edit, or delete one.
 4. The signed-out attempt to store a post under somebody else's name was refused — reported in plain words, not as output for you to read.
 
-If your agent says "done" without showing these, say: "Run the checks we agreed on and show me the results first."
+If your agent says "done" without showing these:
+
+```prompt
+Run the checks we agreed on and show me the results first.
+```
 
 You're done when a signed-out window can read your posts and change nothing, your own edit keeps your name on the post, the second account is refused, and you have a saved version. Every profile is still an island; next you let one person follow another.
 

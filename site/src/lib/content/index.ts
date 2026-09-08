@@ -16,6 +16,7 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 import { GITHUB_REPO_URL } from "@/lib/copy";
+import rehypePromptBlocks from "./prompt-blocks";
 import { contentRoot } from "./root";
 import { isScreenshotImagePath, screenshotRoute } from "./screenshots";
 import type { Lesson, LessonMeta, LessonRef, ModuleInfo } from "./types";
@@ -265,8 +266,16 @@ function dropLessonListSection(tree: HastRoot): void {
  * diagrams (and the source stays readable without JavaScript). Raw HTML
  * (`<details><summary>` disclosures) passes through; headings get slug ids so
  * glossary anchors like #browser resolve. The leading h1 is dropped post-slug
- * (see dropLeadingH1) because pages render their own h1 chrome.
+ * (see dropLeadingH1) because pages render their own h1 chrome. `prompt`
+ * fences become copyable prompt blocks (see ./prompt-blocks.ts).
+ *
+ * Exported as renderCourseMarkdown for tests that need the exact pipeline on
+ * synthetic markdown; the app itself only calls it through the loaders below.
  */
+export async function renderCourseMarkdown(markdown: string, sourceDir: string): Promise<string> {
+  return renderMarkdown(markdown, sourceDir);
+}
+
 async function renderMarkdown(markdown: string, sourceDir: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
@@ -281,6 +290,7 @@ async function renderMarkdown(markdown: string, sourceDir: string): Promise<stri
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
+    .use(rehypePromptBlocks)
     .use(() => (tree) => {
       dropLeadingH1(tree as unknown as HastRoot);
       dropNavigationSection(tree as unknown as HastRoot);

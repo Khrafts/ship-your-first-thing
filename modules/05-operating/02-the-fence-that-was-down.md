@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "02"
 est_minutes: 40
 prereqs: ["01-two-people-one-app"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -50,7 +50,9 @@ Two windows, as in Lesson 1: alice in your everyday browser, bob in a different 
 
 ## If it goes through: the message
 
-> "Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again."
+```prompt
+Signed in as bob, I edited a comment alice wrote, and the change stuck. Only a comment's author should be able to change it. Find out what allows this and fix it, then I'll run the same check again.
+```
 
 Swap in your own names and what you actually tried. Four things, in order: who you were signed in as, what you did, what you saw, what should have been true. Leave out any guess at the cause. A guess is the one thing in the message that can do damage.
 

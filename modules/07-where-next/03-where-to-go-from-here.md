@@ -4,7 +4,7 @@ module: "07-where-next"
 lesson_number: "03"
 est_minutes: 25
 prereqs: ["02-the-loop-on-other-agents"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -26,16 +26,16 @@ One question sorts anything you feel behind on: **if I learned this, what could 
 
 ## Five pointers
 
-Each names a topic, says who should follow it and who should skip it, and links to a page this course does not control. None of the five teaches its topic. Each link carries the date somebody last opened it and confirmed it still reaches what the line says.
+Each names a topic, says who should follow it and who should skip it, and links to a page this course does not control — [curated resources](../../GLOSSARY.md#curated-resources), not curriculum. None of the five teaches its topic. Each link carries the date somebody last opened it and confirmed it still reaches what the line says.
 
 > **If a link is dead:** nothing here touches your app. On the course site, open the lesson chat ("Ask about this lesson"), say which pointer you were following, and it can tell you what to search for instead.
 
-**1. The rules about who can see and change what.** Your app already has them: Module 4 put them in, and Module 5 had you sign in as a second person and try to break one. Their name is **Row Level Security** (the rules deciding, one record at a time, who may read a thing and who may change it, [→ GLOSSARY](../../GLOSSARY.md#row-level-security)). The other half of the same question is how an app keeps knowing it is still you after you signed in. **Follow this if** you are about to let other people into this app, or it holds anything a person would mind a stranger reading. **Skip it if** the app stays yours alone.
+**1. The rules about who can see and change what.** Your app already has them: Module 4 put them in, and Module 5 had you sign in as a second person and try to break one. Their name is [Row Level Security](../../GLOSSARY.md#row-level-security). The other half of the same question is how an app keeps knowing it is still you after you signed in. **Follow this if** you are about to let other people into this app, or it holds anything a person would mind a stranger reading. **Skip it if** the app stays yours alone.
 
 - [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security) — Supabase's own page on those rules, with worked examples including the one your app already lives under. **Link last verified: 2026-08-21.**
 - [User sessions](https://supabase.com/docs/guides/auth/sessions) — Supabase's own page on what "still signed in" is made of, how long it lasts, and what ends it. **Link last verified: 2026-08-21.**
 
-**2. What the app is built out of, and why parts of it run in two places.** Your app is built with **Next.js** (the name printed on your own project screen, [→ GLOSSARY](../../GLOSSARY.md#nextjs)), which is built on **React** (the larger thing underneath it, and the name most answers on the internet are really about, [→ GLOSSARY](../../GLOSSARY.md#react)). Some of your page is finished before it reaches the person looking at it; the rest comes alive once it arrives in their browser. The first kind is called **Server Components** (the parts of a page put together before being sent, as opposed to the parts that wake up after they arrive, [→ GLOSSARY](../../GLOSSARY.md#server-components)), and which side a piece lands on decides whether it can answer a click. **Follow this if** you keep asking for things that answer a click, or you will search the internet for help with your app or describe it to another person; these are the words those conversations use. **Skip it if** you are finished building.
+**2. What the app is built out of, and why parts of it run in two places.** When this course's app was built, the agent chose [Next.js](../../GLOSSARY.md#nextjs), which is built on [React](../../GLOSSARY.md#react) — the name most answers on the internet are really about. Ask your agent what yours is built with; the name is on your hosting dashboard too. Some of your page is finished before it reaches the person looking at it; the rest comes alive once it arrives in their browser. The first kind is called [Server Components](../../GLOSSARY.md#server-components), and which side a piece lands on decides whether it can answer a click. **Follow this if** you keep asking for things that answer a click, or you will search the internet for help with your app or describe it to another person; these are the words those conversations use. **Skip it if** you are finished building.
 
 - [Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) — Next.js's own page on the split and the reasons a piece goes on one side rather than the other. **Link last verified: 2026-08-21.**
 
@@ -43,11 +43,17 @@ Each names a topic, says who should follow it and who should skip it, and links 
 
 - [LLM Prompt Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html) — a security industry group's catalogue of the shapes this takes and the defences against them, written for people building these systems. **Link last verified: 2026-08-21.**
 
-**4. Checks that run themselves.** Since Module 4 your agent has shown you its checks before saying done. This is the same checks written down once, so they can be re-run on demand. Such a check is called an **automated test** (a check written down in a form your agent can run again and report on, [→ GLOSSARY](../../GLOSSARY.md#automated-test)). You ask for them the way you ask for anything: *"Write tests for what we just built, run them, and show me the results."* You say what should be true; your agent writes and runs them; what comes back is passes and failures in plain words. **Follow this if** you will still be changing this app in six months and are tired of clicking through the same five things by hand. **Skip it if** the app is finished.
+**4. Checks that run themselves.** Since Module 4 your agent has shown you its checks before saying done. This is the same checks written down once, so they can be re-run on demand. Such a check is called an [automated test](../../GLOSSARY.md#automated-test). You ask for them the way you ask for anything:
+
+```prompt
+Write tests for what we just built, run them, and show me the results in plain words.
+```
+
+You say what should be true; your agent writes and runs them; what comes back is passes and failures in plain words. **Follow this if** you will still be changing this app in six months and are tired of clicking through the same five things by hand. **Skip it if** the app is finished.
 
 - [Testing](https://nextjs.org/docs/app/guides/testing) — Next.js's own page on the ways of doing this for an app built like yours. A page to hand your agent, not one to work from. **Link last verified: 2026-08-21.**
 
-**5. The keys, and the day one leaks.** Two of the values your app runs on are keys, and in Module 4 you copied one off a dashboard yourself: one of the pair is meant to be seen, the other never leaves the dashboard. The topic is the day you think one has gone somewhere it should not have. This lesson does not write down what to do that day, because both companies keep the procedure on their own pages and those pages change. **Follow this if** your app holds anything belonging to other people, or you have any reason to think a key has been somewhere it should not. **Skip it if** your app has no accounts and no data but your own.
+**5. The keys, and the day one leaks.** Two of the values your app runs on are keys, and in Module 4 you may have copied one off a dashboard yourself: one of the pair is meant to be seen, the other never leaves the dashboard. The topic is the day you think one has gone somewhere it should not have. This lesson does not write down what to do that day, because both companies keep the procedure on their own pages and those pages change. **Follow this if** your app holds anything belonging to other people, or you have any reason to think a key has been somewhere it should not. **Skip it if** your app has no accounts and no data but your own.
 
 - [Understanding API keys](https://supabase.com/docs/guides/api/api-keys) — Supabase's own page on the two keys: which is safe to be seen, which is not, and what its dashboard offers when one has to be replaced. **Link last verified: 2026-08-21.**
 - [Rotating environment variables](https://vercel.com/docs/environment-variables/rotating-secrets) — Vercel's own page on swapping a value your live site runs on without the site going down. **Link last verified: 2026-08-21.**

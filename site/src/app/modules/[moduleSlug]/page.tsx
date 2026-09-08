@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
+import { ProseHtml } from "@/components/prose-html";
 import { RouteTag } from "@/components/route-tag";
 import { getModule, getModuleReadmeHtml, getModules } from "@/lib/content";
 import type { LessonRef, ModuleInfo } from "@/lib/content/types";
@@ -305,10 +306,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         </ol>
 
         <div className="mt-14 border-t border-line pt-10">
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: readmeHtml }}
-          />
+          <ProseHtml html={readmeHtml} />
         </div>
       </div>
     </div>

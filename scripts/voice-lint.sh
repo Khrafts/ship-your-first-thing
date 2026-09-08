@@ -16,7 +16,8 @@
 #      (case-insensitive; permissive anchor charset).
 #   5. Broken relative paths from modules/**/*.md to repo-root cross-cutting docs (GLOSSARY.md, BUDGET.md, etc.).
 #   6. Jargon-density: terms marked Forbidden in docs/audience-vocabulary.md must not appear bare in that module's
-#      lessons; terms marked Requires-callout must appear inside a D-04 vocab-callout the first time they appear.
+#      lessons; terms marked Requires-callout must be linked to their GLOSSARY.md anchor somewhere in the lesson
+#      (`[term](../../GLOSSARY.md#anchor)`; the link text may be longer than the term, e.g. `[Claude Code desktop]`).
 #   7. Mermaid `<br>` / `<br/>` outside quoted node labels — GitHub's Mermaid renderer rejects HTML break tags in
 #      sequenceDiagram Notes, sequenceDiagram messages, and flowchart edge labels. Only `["..."]` node labels accept them.
 #   8. (retired 2026-08-16) M3 dual-agent rendering — removed with the desktop-app reshoot of Module 3.
@@ -26,6 +27,12 @@
 #      itself; the file stays on disk but its entry shape is no longer gated.
 #  11. Glossary `Used in:` citations — WARN-only. Every lesson a GLOSSARY.md entry cites must exist,
 #      and must either link that anchor or name the term. See the scan_glossary_used_in comment.
+#  12. Prompt-and-callout bloat (added 2026-09-08). 12a — VIOLATION: the retired parenthetical vocab
+#      callout `**term** (definition, [→ GLOSSARY](...))` in a lesson; the required form is a direct
+#      link `[term](../../GLOSSARY.md#anchor)`. Promoted from WARN the same day, once no lesson carried
+#      the old shape. 12b — WARN-only: a technology chore named inside a fenced `prompt` block (npm,
+#      node, terminal, SQL, migration, .env, localhost, …) — learner prompts describe behaviour; the
+#      agent owns setup and technical decisions.
 #
 # Note: `set -e` is intentionally omitted; grep returns 1 on no-match, which is our happy path.
 # Code review findings closed: WR-01..WR-05, IN-04 (see .planning/phases/01-foundation-front-door/01-REVIEW.md).
@@ -395,7 +402,7 @@ extract_vocab_terms() {
 # Strip transient content from a lesson body for jargon-density bare-term checks.
 # Read from stdin, write to stdout. In-memory only.
 # Applies (in order): frontmatter, fenced code blocks, blockquote lines, inline code spans,
-# Markdown link destinations + image destinations, D-04 callout definition clauses.
+# Markdown link destinations + image destinations, retired parenthetical callout definition clauses.
 strip_lesson_for_bare_check() {
   awk '
     BEGIN { in_front = 0; in_fence = 0; front_seen = 0 }
@@ -410,7 +417,7 @@ strip_lesson_for_bare_check() {
       # Fenced code blocks.
       if (line ~ /^```/) { in_fence = !in_fence; next }
       if (in_fence) next
-      # Blockquote lines (D-04 callouts inside blockquote stripping handled by per-line "> " removal).
+      # Blockquote lines.
       if (line ~ /^> /) next
       print line
     }
@@ -422,7 +429,7 @@ strip_lesson_for_bare_check() {
     # Strip Markdown link destinations: keep [text], drop (dest).
     # We only need to drop (dest) so terms inside dest URLs are not counted.
     s/\]\([^)]*\)/]/g
-    # Strip D-04 callout definition clauses: **term** (anything-up-to-closing-paren) → drop whole span.
+    # Strip retired parenthetical callout clauses: **term** (anything-up-to-closing-paren) → drop whole span.
     # Handles **term** followed by optional spaces and then a (...).
     s/\*\*[^*]+\*\* *\([^)]*\)//g
   '
@@ -445,7 +452,10 @@ find_first_line() {
   fi
 }
 
-# Check whether a Requires-callout pattern (D-04 callout) for term exists in the lesson body.
+# Check whether a Requires-callout term is introduced in the lesson: a plain glossary link whose
+# link text contains the term as a whole word (`[Claude Code desktop](../../GLOSSARY.md#claude-code)`
+# introduces "Claude Code"; plural and possessive forms count). The retired parenthetical shape is
+# still accepted here so an unmigrated lesson reports the real gap (check #12a) rather than two.
 # Args: $1 = file, $2 = term (case-insensitive search). Returns 0 if found, 1 otherwise.
 has_d04_callout() {
   local file="$1"
@@ -453,8 +463,7 @@ has_d04_callout() {
   # Escape regex metacharacters in term (we only support plain words / words-with-spaces).
   local term_esc
   term_esc=$(printf '%s' "$term" | sed -E 's/[][\\.^$*+?(){}|]/\\&/g')
-  # Pattern: **term** (...[→ GLOSSARY](...))
-  # Use grep -iE; the pattern spans one line (callouts are inline).
+  grep -qiE "\[([^]]*[^]A-Za-z0-9])?${term_esc}(s|es|'s)?([^]A-Za-z0-9][^]]*)?\]\([^)]*GLOSSARY\.md#[^)]*\)" "$file" 2>/dev/null && return 0
   grep -qiE "\*\*${term_esc}\*\* *\([^)]*\[→ GLOSSARY\]\([^)]*\)\)" "$file" 2>/dev/null
 }
 
@@ -503,12 +512,19 @@ check_lesson_against_module_contract() {
     fi
   }
 
-  # Pre-strip the lesson body once.
+  # Pre-strip the lesson body once. "approval prompt" is a Safe compound from M0 (the agent app's
+  # own approve-or-decline dialog — docs/audience-vocabulary.md, Module 0 Safe list), so it is
+  # removed before either arm looks for the bare word "prompt".
   local stripped
-  stripped=$(strip_lesson_for_bare_check < "$lesson")
+  stripped=$(strip_lesson_for_bare_check < "$lesson" | sed -E 's/approval prompts?//gI')
+  # The Requires-callout arm reads the raw lesson so a link anywhere (including inside a
+  # blockquote) counts; strip the same Safe compound and the ```prompt fence markers first —
+  # a fence marker names a format, not the term.
+  local raw_for_requires
+  raw_for_requires=$(sed -E 's/approval prompts?//gI; /^[[:space:]]*(> *)?```/d' "$lesson")
 
   # --- Forbidden bare-term check ---
-  local term acronyms="API HTTP DNS SQL JWT RLS CI/CD"
+  local term acronyms="API HTTP DNS SQL JWT RLS CI/CD USING NEXT_PUBLIC"
   while IFS= read -r term; do
     [ -z "$term" ] && continue
 
@@ -561,14 +577,14 @@ check_lesson_against_module_contract() {
     fi
   done <<< "$forbidden_terms"
 
-  # --- Requires-callout: term used but no D-04 callout in the lesson ---
+  # --- Requires-callout: term used but never linked to its glossary anchor in this lesson ---
   while IFS= read -r term; do
     [ -z "$term" ] && continue
     local term_esc
     term_esc=$(printf '%s' "$term" | sed -E 's/[][\\.^$*+?(){}|]/\\&/g')
-    if grep -qiwE -- "$term_esc" "$lesson" 2>/dev/null; then
+    if printf '%s\n' "$raw_for_requires" | grep -qiwE -- "$term_esc" 2>/dev/null; then
       if ! has_d04_callout "$lesson" "$term"; then
-        emit_finding "$severity" "(jargon-density callout-missing): $lesson: term '$term' used without D-04 callout for module $mlabel"
+        emit_finding "$severity" "(jargon-density callout-missing): $lesson: term '$term' used without a glossary link for module $mlabel"
       fi
     fi
   done <<< "$requires_terms"
@@ -746,7 +762,7 @@ scan_mermaid_br() {
 # (CLAUDE.md hard rule 12) is a course-wide invariant, not a per-module one.
 #
 # Patterns (case-insensitive, applied to stripped lesson body — frontmatter, fenced code,
-# blockquote, inline code, link destinations, D-04 callout definitions are stripped first):
+# blockquote, inline code, link destinations, retired parenthetical callout definitions are stripped first):
 #
 #   9a: bare "stack trace" — Forbidden; agent's job to read it
 #   9b: "common mistakes" — implies the learner debugs
@@ -801,7 +817,7 @@ scan_debugging_framing() {
         work = $0
         # Strip inline code spans
         gsub(/`[^`]*`/, "", work)
-        # Strip D-04 callout definition clauses: **term** (...)
+        # Strip retired parenthetical callout clauses: **term** (...)
         gsub(/\*\*[^*]+\*\* *\([^)]*\)/, "", work)
         # Strip image markdown !alt(dest)
         gsub(/!\[[^]]*\]\([^)]*\)/, "", work)
@@ -901,9 +917,9 @@ scan_debugging_framing() {
 # ("no current lesson.", "no lesson calls it out; ...") states outright that no lesson uses
 # the term. These are deliberate landing pads, and any lesson such a line goes on to cite is
 # named for context ("... records that retirement", "... names it in passing") rather than as
-# a usage claim. 11b is skipped for them; 11a still applies. Twelve entries self-declare
-# today and five of them cite a lesson that does not name the term — without this carve-out
-# the check would emit five false positives against deliberate, verified content.
+# a usage claim. 11b is skipped for them; 11a still applies. Several such entries cite a lesson
+# that does not name the term on purpose — without this carve-out the check would flag
+# deliberate, verified content.
 #
 # Declared surface forms accepted by 11b, matched case-insensitively against the lesson with
 # markdown link destinations stripped — stripping the destinations is what stops the anchor's
@@ -929,13 +945,10 @@ scan_debugging_framing() {
 #     how the Module 1 defect was repaired. The check cannot tell a truthful landing pad from a
 #     citation silenced to dodge the check. Second-guessing it would warn on five true statements,
 #     so the carve-out stands and this stays a human-review responsibility.
-#   - The link arm is a three-stage pipeline ending in `grep -q` under `set -o pipefail`. If
-#     `grep -q` exited on a match while an upstream stage still had output to write, the SIGPIPE
-#     would surface as a non-zero pipeline status and a real match would read as a miss. It cannot
-#     bite at present scale — no lesson emits enough anchor lines to fill a pipe buffer before
-#     `grep -q` returns — but a future stage that buffers more, or a lesson with far more glossary
-#     references, would put it in range. Rework the arm rather than adding a `|| true` if that day
-#     comes: `|| true` would mask a genuine failure of the same pipeline.
+#   - (Closed 2026-09-08.) Both arms used to end in `grep -q` under `set -o pipefail`, and the
+#     prose arm did bite: a term matched near the top of a long lesson, `grep -q` exited, the
+#     `sed` upstream took SIGPIPE, and the real match read as a miss. Both arms now end in
+#     `grep -c`, which consumes its whole input.
 glossary_term_regex() {
   local t out
   t=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
@@ -1017,18 +1030,96 @@ scan_glossary_used_in() {
       # references, using check #4's anchor charset, and compare whole-string with `grep -qxF`.
       # That settles the boundary by construction and interpolates the anchor into no pattern at
       # all, so a future anchor containing a regex metacharacter cannot widen the match.
-      if grep -oE 'GLOSSARY\.md#[A-Za-z0-9._-]+' "$path" \
-        | sed -E 's|.*GLOSSARY\.md#||' | grep -qxF "$anchor"; then
+      # Both arms end in `grep -c`, which reads its whole input, so an early match can never
+      # close the pipe on the upstream stage (a `grep -q` here made a real match in a long
+      # lesson read as a miss under pipefail — seen on M3 L4 for "steer", 2026-09-08).
+      if [ "$(grep -oE 'GLOSSARY\.md#[A-Za-z0-9._-]+' "$path" \
+        | sed -E 's|.*GLOSSARY\.md#||' | grep -cxF "$anchor")" -gt 0 ]; then
         continue
       fi
       rx=$(glossary_term_regex "$anchor")
-      if sed -E 's/\]\([^)]*\)/]/g' "$path" | grep -qiE "$rx"; then
+      if [ "$(sed -E 's/\]\([^)]*\)/]/g' "$path" | grep -ciE "$rx")" -gt 0 ]; then
         continue
       fi
       echo "WARN (glossary-used-in 11b): $glossary:$lineno: entry \"$anchor\" cites $rel, but that lesson neither links #$anchor nor names the term — the citation may have been falsified by a later edit"
       WARN_COUNT=$((WARN_COUNT + 1))
     done <<< "$targets"
   done < "$glossary"
+}
+
+# Prompt-and-callout bloat check (#12). Added 2026-09-08 with the outcome-first revision.
+#
+# 12a — legacy parenthetical vocab callout. The course used to define every Requires-callout
+#       term inline: `**term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#anchor))`.
+#       Those clauses read as interruptions, so the required form is now a plain direct link —
+#       `[term](../../GLOSSARY.md#anchor)` — with the definition living in GLOSSARY.md. Any
+#       surviving parenthetical form under modules/ or thread-project-template/ is a VIOLATION
+#       (promoted from WARN once every lesson had migrated) so it does not creep back. Root docs
+#       that quote the pattern as an illustration are not scanned.
+#
+# 12b — technology chore inside a fenced `prompt` block. Everything a learner copies and sends
+#       to their agent lives in a ```prompt fence. Those prompts describe the behaviour the
+#       learner wants; they never dictate tools, files, commands or storage. A prompt that names
+#       npm, Node, a terminal, SQL, a migration, an .env file, a package file or localhost has
+#       drifted into the agent's territory. Word-boundary matched, case-insensitive.
+#
+# 12a blocks (VIOLATION_COUNT); 12b is WARN-only (WARN_COUNT) — reviewers triage prompt wording.
+scan_prompt_bloat() {
+  local mode="$1"
+  echo "==> Scanning lessons for retired vocab callouts (VIOLATION) and technology chores inside prompt fences (WARN-only) — check #12..."
+
+  local files=()
+  if [ "$mode" = "fixtures" ]; then
+    local f
+    for f in scripts/voice-lint-fixtures/12-*.md; do
+      [ -f "$f" ] && files+=("$f")
+    done
+  else
+    local lessons_list
+    lessons_list=$(find modules thread-project-template -type f -name '*.md' 2>/dev/null || true)
+    while IFS= read -r f; do
+      [ -n "$f" ] && [ -f "$f" ] && files+=("$f")
+    done <<< "$lessons_list"
+  fi
+
+  [ "${#files[@]}" -eq 0 ] && return
+
+  local chore_rx='(^|[^A-Za-z0-9_])(npm|pnpm|yarn|node\.js|nodejs|terminal|command line|sql|migration|migrations|\.env|env var|environment variable|package\.json|localhost)([^A-Za-z0-9_]|$)'
+  local file lineno line fence in_prompt in_other
+  for file in "${files[@]}"; do
+    lineno=0; in_prompt=0; in_other=0
+    while IFS= read -r line || [ -n "$line" ]; do
+      lineno=$((lineno + 1))
+      # Track fences. A ```prompt fence opens a prompt; any other ``` toggles an ordinary fence.
+      # Fences may be indented (inside a list item) or blockquoted; strip that prefix first.
+      fence=$(printf '%s' "$line" | sed -E 's/^[[:space:]]*(> *)?//')
+      if [ "$in_prompt" -eq 0 ] && [ "$in_other" -eq 0 ]; then
+        case "$fence" in
+          '```prompt'*) in_prompt=1; continue ;;
+          '```'*) in_other=1; continue ;;
+        esac
+      elif [ "$in_prompt" -eq 1 ]; then
+        case "$fence" in
+          '```'*) in_prompt=0; continue ;;
+        esac
+        if printf '%s' "$line" | grep -qiE "$chore_rx"; then
+          echo "WARN (prompt-bloat 12b): $file:$lineno: a learner prompt names a technology chore — prompts describe behaviour; setup, tools and storage are the agent's to choose"
+          WARN_COUNT=$((WARN_COUNT + 1))
+        fi
+        continue
+      else
+        case "$fence" in
+          '```'*) in_other=0; continue ;;
+        esac
+        continue
+      fi
+      # 12a: legacy parenthetical callout, outside fences.
+      if printf '%s' "$line" | grep -qE '\*\*[^*]+\*\* *\([^)]*\[→ GLOSSARY\]\([^)]*GLOSSARY\.md#[^)]*\)\)'; then
+        echo "VIOLATION (callout-bloat 12a): $file:$lineno: retired parenthetical vocab callout — use a direct link [term](../../GLOSSARY.md#anchor) and keep the definition in GLOSSARY.md"
+        VIOLATION_COUNT=$((VIOLATION_COUNT + 1))
+      fi
+    done < "$file"
+  done
 }
 
 # ===== Self-test mode =====
@@ -1089,6 +1180,20 @@ run_self_test() {
     fail=1
   else
     echo "  self-test OK: jargon-density fixture tripped $((after - before)) violations"
+  fi
+
+  # Plain glossary links must satisfy the Requires-callout arm (fixture 06 carries two: an exact
+  # link text, and a link whose text is longer than the term). Neither may WARN as callout-missing.
+  if grep -qE "term 'AI coding agent' used without" /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: jargon-density flagged 'AI coding agent' as callout-missing although the fixture links it with a plain [AI coding agent](../../GLOSSARY.md#ai-coding-agent)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif grep -qE "term 'Claude Code' used without" /tmp/voice-lint-selftest.out; then
+    echo "SELFTEST FAIL: jargon-density flagged 'Claude Code' as callout-missing although the fixture links it as [Claude Code desktop](../../GLOSSARY.md#claude-code)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: plain glossary links (exact and longer link text) satisfy the Requires-callout arm"
   fi
 
   # Vocab term extractor comma-clause fix (fixture 06-vocab-extractor-comma-clause) — proves
@@ -1175,6 +1280,26 @@ run_self_test() {
     echo "  self-test OK: glossary-used-in fixture tripped $((after - before)) WARNs (11a + 11b + 11c) and left the self-declaring entry alone"
   fi
 
+  # Prompt-and-callout bloat (fixture 12). The fixture carries one retired parenthetical callout
+  # (12a — VIOLATION) and two ```prompt fences naming a technology chore (12b — WARN), one
+  # top-level and one indented inside a list item; a clean prompt fence in the same file must NOT warn.
+  local vbefore=$VIOLATION_COUNT
+  before=$WARN_COUNT
+  scan_prompt_bloat fixtures >/tmp/voice-lint-selftest.out 2>&1 || true
+  after=$WARN_COUNT
+  local vafter=$VIOLATION_COUNT
+  if [ "$((vafter - vbefore))" -ne 1 ]; then
+    echo "SELFTEST FAIL: prompt-bloat fixture (12) produced $((vafter - vbefore)) VIOLATION(s) from arm 12a; expected exactly 1 (the retired parenthetical callout)"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  elif [ "$((after - before))" -ne 2 ]; then
+    echo "SELFTEST FAIL: prompt-bloat fixture (12) produced $((after - before)) WARN(s) from arm 12b; expected exactly 2 (top-level + indented chore) — the clean prompt fence must not warn"
+    cat /tmp/voice-lint-selftest.out
+    fail=1
+  else
+    echo "  self-test OK: prompt-bloat fixture produced 1 VIOLATION (12a) and 2 WARNs (12b top-level + indented) and left the clean prompt alone"
+  fi
+
   if [ "$fail" -ne 0 ]; then
     echo "==> voice-lint.sh --self-test: FAIL"
     exit 1
@@ -1197,6 +1322,7 @@ scan_jargon_density default
 scan_mermaid_br default
 scan_debugging_framing default
 scan_glossary_used_in default
+scan_prompt_bloat default
 
 if [ "$VIOLATION_COUNT" -eq 0 ]; then
   echo "==> voice-lint.sh: PASS (0 violations)"

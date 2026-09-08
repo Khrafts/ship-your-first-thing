@@ -24,13 +24,13 @@ Picture the door of a private club.
 
 There's a person at the door, a list, a hand stamp, and inside, a VIP room behind a velvet rope.
 
-When you walk up, the door staff asks: "are you who you say you are?" You hand over your ID; they check it's real and the photo matches. That's **authentication** (confirming you are who you claim to be, [→ GLOSSARY](../../GLOSSARY.md#authentication)) — a question about *identity*.
+When you walk up, the door staff asks: "are you who you say you are?" You hand over your ID; they check it's real and the photo matches. That's [authentication](../../GLOSSARY.md#authentication) — a question about *identity*.
 
-Then they ask: "are you on the list?" The VIP list says who may go into the VIP room. That's **authorization** (deciding what you're allowed to do once you're identified, [→ GLOSSARY](../../GLOSSARY.md#authorization)) — a question about *permissions*.
+Then they ask: "are you on the list?" The VIP list says who may go into the VIP room. That's [authorization](../../GLOSSARY.md#authorization) — a question about *permissions*.
 
 Two different questions. The door staff might let you in (your ID is real) but turn you away at the rope (you're not on the list). "I logged in" is not the same as "I'm allowed to do this."
 
-Then they stamp your hand. The stamp lets you step out and back in without showing ID again. That's a **session** (a remembered "yes, you're you", [→ GLOSSARY](../../GLOSSARY.md#session)). Your agent handles how the browser carries the stamp; what you'll notice is that you stay signed in when you refresh the page.
+Then they stamp your hand. The stamp lets you step out and back in without showing ID again. That's a [session](../../GLOSSARY.md#session). Your agent handles how the browser carries the stamp; what you'll notice is that you stay signed in when you refresh the page.
 
 ```mermaid
 sequenceDiagram

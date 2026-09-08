@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 02
 est_minutes: 15
 prereqs: ["01-your-ai-coding-agent"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -12,7 +12,7 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will be able to say what kinds of machinery your agent runs for you without your involvement, and — shown an approval prompt — decide whether to approve it, ask for it in everyday words first, or refuse it and steer your agent back.
+By the end of this lesson, you will be able to say what kinds of machinery your agent runs for you without your involvement, tell apart the three names it will mention most, and — shown an approval prompt or a technical question — decide whether to approve, ask for it in everyday words first, hand the decision back, or refuse and steer.
 
 ## Why this matters
 
@@ -36,19 +36,31 @@ flowchart TB
 
 ### What's down there
 
-Three kinds of machinery, described by what they're for — you don't need their names, and this course never teaches them:
+Three kinds of machinery, described by what they're for:
 
 - **Something that translates** what gets written for your project into the form a computer can run, again every time anything changes.
 - **Something that fetches parts** — ready-made pieces other people wrote (handling dates, sending email, drawing a calendar) — and keeps track of which ones your project relies on.
 - **Something that assembles** the translated instructions and borrowed parts into the thing your browser can open.
 
-You will never operate any of these. A fresh computer has none of them, and that's fine: the first time a step needs one, you ask your agent to check what's missing, explain it in plain words, and install it — you approve, and if an installer window opens for you to click through, you click through it. Your agent operates them from then on, and the way you experience all three is the way a passenger experiences a turbine: your app runs.
+You will never operate any of these. The first time a step needs one, your agent tells you what's missing, explains why in plain words, and installs it — you approve. The way you experience all three is the way a passenger experiences a turbine: your app runs.
 
-There's one more piece down there — the one that keeps a copy of every working version of your project. That one gets the next lesson, because you'll be telling your agent when to use it.
+### Three names you will hear
+
+Your agent will say three names often enough that you should be able to tell them apart. That's all you need — not how any of them works.
+
+- [Git](../../GLOSSARY.md#git) — the save machinery on your computer. It keeps every working version of your project so you can go back to one. The next lesson is about the two sentences you say to it, through your agent.
+- [GitHub](../../GLOSSARY.md#github) — a website. It keeps a copy of those saved versions online, so your project survives your computer. It's the only one of the three you'll ever open yourself, in your browser.
+- [Node.js](../../GLOSSARY.md#nodejs) — the engine that runs your app's code on your computer while you build it. A plain page like your first one doesn't need it. Your agent installs it if a later project needs it.
+
+Your computer may already have Git or Node.js. Your agent checks first and installs only what the next step needs. GitHub needs an account, not an installation. The one exception — an app that wants Git before it will open a folder — is covered in Module 0 Lesson 5, because the agent isn't running yet at that point.
 
 ### The approval prompt is your porthole
 
-When the app is set to ask, each time your agent needs to send something below deck the app stops and shows you the request first. That pause is your window into the engine room. When it's set to work inside your folder without asking, your window is the result instead: open your app and look, and whenever you want the request after the fact, ask *"What did you just change, in everyday words?"*
+When the app is set to ask, each time your agent needs to send something below deck the app stops and shows you the request first. That pause is your window into the engine room. When it's set to work inside your folder without asking, your window is the result instead: open your app and look, and whenever you want the request after the fact, ask:
+
+```prompt
+What did you just change, in everyday words?
+```
 
 A good request tells you three things:
 
@@ -60,9 +72,21 @@ Here's one that does all three: *"I'd like to bring in a ready-made piece for ha
 
 Plenty of them won't look like that. Some are two lines of machine text and a pair of buttons. When that happens, you have one move, and it is always available:
 
-> **"Explain what this does in everyday words before I say yes."**
+```prompt
+Explain what this does in everyday words before I say yes.
+```
 
 There is no number of times that counts as too many. An agent that can't explain what it's about to do in words you understand hasn't earned the click yet. Wait for the explanation, then decide.
+
+### When your agent asks you a technical question
+
+Sometimes the crew comes up on deck with a question that belongs below: "Should I use version control for this?", "Which framework do you prefer?", "Which language should I write it in?" You don't have to know. Those are the agent's decisions, and there is one reply that hands them back:
+
+```prompt
+I don't have a preference. Choose the simplest option that's easy to change later, and tell me what you chose.
+```
+
+The questions you *do* answer are about your app, not about technology: how it should behave, what it may cost, who can see your information, and which accounts you're willing to sign in to. The house rule from Module 0 Lesson 6 says this to your agent up front.
 
 ### When someone hands you a wrench
 
@@ -74,9 +98,11 @@ Your agent proposes, and you approve. That only runs in one direction. If it eve
 
 None of those are your job on this course. Your steer is one sentence:
 
-> **"That's your job — do it yourself and tell me what happened in plain words."**
+```prompt
+That's your job — do it yourself and tell me what happened in plain words.
+```
 
-Then let it. (Clicking through an installer window your agent opened and explained is not a wrench — it can't click for you. Typing commands is.)
+Then let it. (Clicking through an installer window your agent opened and explained is not a wrench. Typing commands is.)
 
 The same rule covers everything outside your app. A search result, a video, a forum answer that opens with "first, open a terminal" is advice for someone already standing in the engine room. Close it, come back to your agent, and describe the problem to it instead.
 
@@ -84,22 +110,24 @@ The same rule covers everything outside your app. A search result, a video, a fo
 
 Plan 10 minutes. Paper or a notes app — nothing here goes into your project.
 
-1. Write down the three-part test for a good request: what it will do, why, what changes.
-2. Below are four made-up approval prompts. For each, write which you'd do — **approve**, **ask for it in everyday words first**, or **refuse and steer** — and one line saying why.
+1. Write the three names — Git, GitHub, Node.js — with one plain phrase each for what it's for.
+2. Below are five made-up things your agent might say. For each, write which you'd do — **approve**, **ask for it in everyday words first**, **hand the decision back**, or **refuse and steer** — and one line saying why.
    - **A.** "I'd like to bring in a ready-made piece for handling dates, so your posts can show '3 minutes ago'. It adds one borrowed part to your project. Nothing you already have working changes."
    - **B.** "Run setup?" — followed by two lines of machine text you can't read, and two buttons.
    - **C.** "Open a terminal on your computer, run the setup command, and paste back what it prints."
    - **D.** "I'll clear out your existing entries so the new format applies cleanly." (Last lesson gave you the exact question to ask about this one.)
+   - **E.** "Do you want me to set up version control for this project, and if so, which branching strategy?"
 3. For the one you'd refuse, write out the sentence you'd send back, in your own words.
 
-Your deliverable is four judgements with a reason each, plus one steer sentence.
+Your deliverable is five judgements with a reason each, plus one steer sentence.
 
 ## Checkpoint
 
 You've got this if you can:
 
-1. Name the three kinds of machinery your agent runs below deck — in everyday words, no tool names — and say who operates them.
-2. Take an approval prompt you didn't write and say which of the three you'd do with it — approve, ask for it in everyday words first, or refuse and steer — and why.
+1. Name the three kinds of machinery your agent runs below deck — in everyday words — and say who operates them.
+2. Tell Git, GitHub and Node.js apart in one phrase each, and say which one you ever open yourself.
+3. Take an approval prompt or a technical question you didn't write and say which of the four moves you'd make with it, and why.
 
 ## Going deeper
 
@@ -109,7 +137,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You drew the line between your deck and the engine room, and you practiced the one control that crosses it — reading an approval prompt and deciding what to do with it, including refusing the one that tried to hand you a wrench. Next comes the single piece of machinery down there that you *will* give orders about: the one that keeps a copy of every working version of your project.
+You drew the line between your deck and the engine room, learned the three names that cross it, and practiced the controls that cross it with them — reading an approval prompt, handing a technical decision back, and refusing the one that tried to hand you a wrench. Next comes the single piece of machinery down there that you *will* give orders about: the one that keeps a copy of every working version of your project.
 
 ## Navigation
 

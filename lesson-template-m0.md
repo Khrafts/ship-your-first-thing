@@ -24,7 +24,9 @@ deviations: []
 
 <!-- LESSON-03 — Adapt length to topic. M0 reads can be shorter than M1 (200–800 words is fine for Module 0; 600–1500 is the M1+ norm). -->
 
-<!-- LESSON-04 vocab callout pattern: **term** (one-line definition, [→ GLOSSARY](../../GLOSSARY.md#term))
+<!-- LESSON-04 vocab pattern: link the term on first use — [term](../../GLOSSARY.md#term) —
+     and keep the definition in GLOSSARY.md; no bracketed definition in the sentence.
+     Copyable prompts go in top-level ```prompt fences (CLAUDE.md hard rule 16).
      The `../../` prefix is correct for M0 lessons at modules/00-welcome/lesson.md
      (two directories deep from repo root, where GLOSSARY.md lives). -->
 
@@ -49,5 +51,5 @@ deviations: []
 - **Build-first entry (2026-09-07):** M0 L6 is a hands-on build under the M0 vocabulary tier — the learner's verb is "save", no machinery is named (`git` stays install-caveat-only), and no sample agent conversation is shown (the page in the browser is what the learner checks). Its core read runs longer than the M0 norm (~1,000 words) because it is the exercise. See `docs/COURSE-AUTHORING.md` Part 1 § The build-first entry.
 - **Optional sections:** Loop check and going-deeper are optional in M0. If you include either, follow the same patterns as `lesson-template.md`.
 - **Tenet 4 — narrative coherence:** Honor the M0 module spine (`modules/00-welcome/README.md` § What this module builds). "Why this matters" may build on the prior lesson's payoff; "What you just did" names what's next. See `docs/COURSE-AUTHORING.md` Part 3.
-- **Audience-aware vocabulary contract (M0 baseline):** Module 0 lessons rewrite against the M0 section of `docs/audience-vocabulary.md`. The M0 audience has not met HTTP, DNS, server, database, schema, SQL, deployment, or any auth term — those are Forbidden in M0. So is the entire terminal/Codespace surface (command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost) — that machinery is agent territory under Hard Rule 15 and never appears in learner-facing M0 prose; the learner's surfaces are the agent app, the browser, and their phone. The terms M0 introduces (markdown, GitHub as a site, repo, code editor, AI coding agent, API key, free tier, rate limit, token) require the D-04 callout on first use. `scripts/voice-lint.sh` (Plan 01-8) verifies the contract.
+- **Audience-aware vocabulary contract (M0 baseline):** Module 0 lessons rewrite against the M0 section of `docs/audience-vocabulary.md`. The M0 audience has not met HTTP, DNS, server, database, schema, SQL, deployment, or any auth term — those are Forbidden in M0. So is the entire terminal/Codespace surface (command line, CLI, shell, Codespace, sandbox, npm, Node/runtime, package manager, IDE, localhost) — that machinery is agent territory under Hard Rule 15 and never appears in learner-facing M0 prose; the learner's surfaces are the agent app, the browser, and their phone. The terms M0 introduces (markdown, GitHub as a site, repo, code editor, AI coding agent, API key, free tier, rate limit, token) get a direct glossary link on first use. `scripts/voice-lint.sh` (Plan 01-8) verifies the contract.
 - **D-18:** SSG-portability rules apply.
