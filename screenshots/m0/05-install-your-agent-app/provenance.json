@@ -26,5 +26,16 @@
     "sha256": "838710ff7157c26ee66f1f3fc3cb04c63961e2b4f5e0fcd55182ebc8932766d3",
     "capture_date": "2026-09-08",
     "notes": "Actual modal crop. Unrelated app tab and project excluded; model names/prices are observed UI, not generated."
+  },
+  {
+    "file": "screenshots/m0/05-install-your-agent-app/codex-mode-switch.png",
+    "source_sha256s": [
+      "9f7a19e2cddea3208ba588d2bcd6531c6282db1f13d1059e2eaab5c6c65f6645",
+      "4001f45dc93803f27581d0b92e212c395f8f50351fd616a60ad7a4c7f71e0510",
+      "29233da84e4d7713bec89ab62dcdf4120e1ffe0a218cec19f4015d540017a063"
+    ],
+    "sha256": "31ab98e69377ee9cbe0664b0f689cda79389058395ff247027905642a3bbb7d2",
+    "capture_date": "2026-09-08",
+    "notes": "Three sequential real app crops: ChatGPT selector, open menu, Codex selected. Cropped before project/history/account data; no private content remains. Numbered labels and outlines added; app pixels otherwise unchanged apart from resizing."
   }
 ]

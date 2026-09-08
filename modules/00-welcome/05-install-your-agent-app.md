@@ -44,7 +44,13 @@ Start by installing the desktop app for your path. Windows users choosing Claude
 
 **Sign in** with the ChatGPT account from the last lesson.
 
-**Switch to Codex.** The app opens in ordinary chat. Codex is a mode inside it: switch to **Codex** at the top of the sidebar, then choose **New chat**. Above the message box choose your project and **Local**, and pick a folder. Type what you want in the message box. The permission setting sits below it.
+**Switch to Codex.** Click **ChatGPT ▾** at the top left of the sidebar, then choose **Codex** from the menu. The label changes to **Codex**. This is the switch between the two areas of the same app.
+
+![Three steps in the ChatGPT desktop app: 1, click ChatGPT and the arrow at the top left; 2, the menu shows ChatGPT and Codex, with Codex highlighted; 3, the sidebar label now reads Codex.](../../screenshots/m0/05-install-your-agent-app/codex-mode-switch.png)
+
+*Actual macOS app, 8 September 2026. Private content cropped out.*
+
+**Start a conversation.** Choose **New chat**. Above the message box choose your project and **Local**, and pick a folder. Type what you want in the message box. The permission setting sits below it.
 
 ![Codex inside the ChatGPT desktop app: two cropped areas. Left, the sidebar with Codex selected at the top and New chat below it. Right, the task view with the project and Local above the message box, the message box reading "Do anything", and a permission setting labelled "Approve for me" below it. Numbered labels: 1 use Codex mode then New chat; 2 choose your project and Local; 3 describe what you want; 4 review the permission setting.](../../screenshots/m0/05-install-your-agent-app/codex-first-session.png)
 
