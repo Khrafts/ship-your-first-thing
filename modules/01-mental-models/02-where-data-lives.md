@@ -22,15 +22,15 @@ Every product you build moves information between three places: a person's scree
 
 Imagine a small office.
 
-In the back, there's a metal **filing cabinet** — the **database** (where an app's information is stored, [→ GLOSSARY](../../GLOSSARY.md#database)). It has labeled drawers: one for `users`, one for `posts`, one for `comments`. Inside each drawer are index cards; each card is a **row** (one record — one user, one post, [→ GLOSSARY](../../GLOSSARY.md#row)). Every card in a drawer has the same printed fields — a user card has an id, an email, a display name.
+In the back, there's a metal **filing cabinet** — the [database](../../GLOSSARY.md#database). It has labeled drawers: one for `users`, one for `posts`, one for `comments`. Inside each drawer are index cards; each card is a [row](../../GLOSSARY.md#row). Every card in a drawer has the same printed fields — a user card has an id, an email, a display name.
 
 The cabinet doesn't know who needs the cards. It just stores them.
 
-Now the rest of the office. Clerks sit at desks — each clerk is a **server** (a program waiting for requests, [→ GLOSSARY](../../GLOSSARY.md#server)). A customer walks up to the front desk and asks, "what posts has Alice written?" The receptionist takes the question to a clerk; the clerk opens the `posts` drawer, finds every card that names Alice, copies the relevant fields onto a piece of paper, and hands it back. The customer never touches the cabinet.
+Now the rest of the office. Clerks sit at desks — each clerk is a [server](../../GLOSSARY.md#server). A customer walks up to the front desk and asks, "what posts has Alice written?" The receptionist takes the question to a clerk; the clerk opens the `posts` drawer, finds every card that names Alice, copies the relevant fields onto a piece of paper, and hands it back. The customer never touches the cabinet.
 
-The paper with the question is a **request** ([→ GLOSSARY](../../GLOSSARY.md#request)); the paper with the answer is a **response** ([→ GLOSSARY](../../GLOSSARY.md#response)); carrying them back and forth is **HTTP** ([→ GLOSSARY](../../GLOSSARY.md#http)) — the waiter from the last lesson.
+The paper with the question is a [request](../../GLOSSARY.md#request); the paper with the answer is a [response](../../GLOSSARY.md#response); carrying them back and forth is [HTTP](../../GLOSSARY.md#http) — the waiter from the last lesson.
 
-The set of forms the receptionist accepts — "show me the posts", "here's a new post, please file it" — is the **API** (the agreed list of questions one program will answer for another, [→ GLOSSARY](../../GLOSSARY.md#api)). It's finite and written down.
+The set of forms the receptionist accepts — "show me the posts", "here's a new post, please file it" — is the [API](../../GLOSSARY.md#api). It's finite and written down.
 
 So the office has three layers: the cabinet stores the cards, the clerks open it on behalf of whoever asks, and the forms are how you ask.
 
@@ -94,7 +94,7 @@ sequenceDiagram
 
 </details>
 
-The browser never opens the cabinet. It only hands forms to the receptionist. The server is the thing that turns a form into a question for the cabinet — written in **SQL** (the language servers use to ask a database for cards, [→ GLOSSARY](../../GLOSSARY.md#sql)) — and turns the cards into an answer. Your agent writes the SQL; you'll hear the word when it does.
+The browser never opens the cabinet. It only hands forms to the receptionist. The server is the thing that turns a form into a question for the cabinet — written in [SQL](../../GLOSSARY.md#sql) — and turns the cards into an answer. Your agent writes the SQL; you'll hear the word when it does.
 
 One thing worth noticing now: **the database is not "in the cloud" in any meaningful way.** It runs on a specific computer that a hosting company runs for you. Inside the wires, it's still a cabinet with drawers and cards.
 

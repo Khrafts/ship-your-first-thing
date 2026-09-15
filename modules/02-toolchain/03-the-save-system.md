@@ -4,7 +4,7 @@ module: "02-toolchain"
 lesson_number: 03
 est_minutes: 25
 prereqs: ["02-the-engine-room"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to tell your agent — in one senten
 
 ## Why this matters
 
-Whether you came here straight from the checklist you built in Module 0 or through the two lessons before this one, you've already used the machinery this lesson is about — once, when you said "save this as a working version." Here's why it earns a lesson of its own: you're about to spend weeks changing a project you don't read yourself, one change at a time, and some of those changes will turn out wrong. Without somewhere to fall back to, every one of them is a gamble with everything you've built so far. With somewhere to fall back to, the worst afternoon of your project costs you an afternoon.
+Whether you came here straight from the page you built in Module 0 or through the two lessons before this one, you've already used the machinery this lesson is about — once, when you said "save this as a working version." Here's why it earns a lesson of its own: you're about to spend weeks changing a project you don't read yourself, one change at a time, and some of those changes will turn out wrong. Without somewhere to fall back to, every one of them is a gamble with everything you've built so far. With somewhere to fall back to, the worst afternoon of your project costs you an afternoon.
 
 ## Core read
 
@@ -26,9 +26,9 @@ Your project works exactly this way, with one difference: the save points aren't
 
 ### The two names under it
 
-The save system itself is **git** (the machinery that records a complete working version of your project each time your agent saves one, so any of them can be returned to later, [→ GLOSSARY](../../GLOSSARY.md#git)). It runs in the background, operated entirely by your agent. A fresh computer may not have it: that's what the check-first sentence from Module 0 is for, and your agent installs it with your approval the first time a save needs it.
+The save system itself is [Git](../../GLOSSARY.md#git). It runs in the background, operated entirely by your agent, and it records a complete working version of your project each time your agent saves one. A fresh computer may not have it; your agent installs it, with your approval, the first time a save needs it.
 
-The cloud save is **GitHub** (the site where your project gets its own home page on the internet, holding a copy of every version your agent saves, [→ GLOSSARY](../../GLOSSARY.md#github)) — the account you created in Module 0. Once connected, your project has a home page there, at a normal web address you can open in your browser. If your laptop stopped working tonight, the project would still be there tomorrow, and so would every version your agent had saved.
+The cloud save is [GitHub](../../GLOSSARY.md#github): a website where your project gets a home page of its own, holding a copy of every version your agent saves. If your laptop stopped working tonight, the project would still be there tomorrow.
 
 Your agent operates both. Your verb is "save." And they're two separate things: the save point lives on your computer, and the copy on GitHub exists only once your agent has connected the project to it — which is why the Module 0 save was on this computer only.
 
@@ -48,15 +48,43 @@ flowchart LR
 
 One sentence, and it doesn't change for the rest of this course:
 
-> **"Save this as a working version, with a one-line note about what changed."**
+```prompt
+Save this as a working version, with a one-line note about what changed.
+```
 
 Say it after every working chunk. What counts as working is not the agent announcing it finished — it's you opening your app in your browser and seeing the thing you wanted do the thing you wanted.
 
-Everything after your sentence belongs to your agent. It records the version, writes the note, and — once the project is connected to GitHub — sends the copy up too. The first time you want the cloud copy, you say so (*"Put a copy of this project on GitHub"*); your agent walks you through signing in to your GitHub account in your browser, and from then on it sends each save up as well. Connecting may need something set up first — a helper program, or a name and email to label your saves. Say the check-first sentence before you ask, approve what's about saving and GitHub, type any administrator password into the installer's own window rather than the chat, give the same email you used for GitHub if it asks, and if an install fails twice, stop and say *"Tell me in plain words what happened and what you'd try next."*
+Everything after your sentence belongs to your agent. It records the version, writes the note, and — once the project is connected to GitHub — sends the copy up too.
 
-A save is real when your agent confirms it. If it's quiet, ask: *"Confirm the working version is saved on this computer, and whether the copy on GitHub is up to date."* Two answers, because they are two different things: the save here can succeed while the copy up there doesn't go. If the copy didn't go up, the save on this computer is still real. Ask what it needs to send the copy; do it if the answer is signing in to GitHub in your browser, and ask *"What does this do?"* first if the answer is anything else.
+A save is real when your agent confirms it. If it's quiet, ask:
+
+```prompt
+Confirm the working version is saved on this computer, and whether the copy on GitHub is up to date.
+```
+
+Two answers, because they are two different things: the save here can succeed while the copy up there doesn't go. If the copy didn't go up, the save on this computer is still real. Ask what it needs to send the copy; do it if the answer is signing in to GitHub in your browser, and ask first if the answer is anything else:
+
+```prompt
+What does this do?
+```
 
 The one-line note matters. "Added the like button under each post" means something weeks later; "update" means nothing. You never read that list yourself — your agent reads it back to you when you need to pick a version to return to, and a list full of "update" leaves neither of you anything to go on.
+
+### The GitHub account — the one thing that's yours to create
+
+This is the first lesson that needs GitHub, so this is where you create the account: in your browser, at [github.com](https://github.com), with an email you'll keep using and a real-looking username — it's your public identity there. Creating the account is a person's job; everything on it afterwards is your agent's.
+
+Then, the first time you want the cloud copy, you say so:
+
+```prompt
+Put a copy of this project on GitHub, then save this as a working version with a one-line note about what changed.
+```
+
+Your agent walks you through signing in to GitHub in your browser, and from then on it sends each save up as well. Connecting may need something set up first — Git, or a name and email to label your saves. Approve what's about saving and GitHub, type any administrator password into the installer's own window rather than the chat, give the same email you used for GitHub if it asks, and if an install fails twice, stop and say:
+
+```prompt
+Tell me in plain words what happened and what you'd try next.
+```
 
 ### Save small and often
 
@@ -66,23 +94,27 @@ The mistake every new player makes: playing for three hours without touching a s
 
 When something has gone wrong — the app stopped working, the last hour made things worse, you've lost the thread of what changed — you have one sentence:
 
-> **"Take us back to the last saved working version."**
+```prompt
+Take us back to the last saved working version.
+```
 
 It is always available, it is not an admission of failure, and there is no number of times that counts as too many. Your agent does the whole thing. What you get back is the project's *files* exactly as they were at your last save point; you lose only what happened to them after it.
 
-One boundary, stated plainly so it never surprises you: going back restores what your agent wrote — the pages, the settings, the plan. It doesn't undo things that happened *outside* those files. Once your app is live, what other people typed in lives somewhere else and stays as it is; an email that was sent stays sent; a change made on a dashboard stays made. (Your checklist's ticks live in your browser, not in the file, so a restore doesn't bring those back either.) After going back, open the app and check it, and ask: *"What outside the files might not match the version we went back to?"*
+One boundary, stated plainly so it never surprises you: going back restores what your agent wrote — the pages, the settings, the plan. It doesn't undo things that happened *outside* those files. Once your app is live, what other people typed in lives somewhere else and stays as it is; an email that was sent stays sent; a change made on a dashboard stays made. (If your first page remembered anything in the browser — ticks, a name — that lives in your browser, not in the file, so a restore doesn't bring it back either.) After going back, open the app and check it, and ask:
+
+```prompt
+What outside the files might not match the version we went back to?
+```
 
 Because that sentence exists, experiments get cheap. Module 3 has you say it once, on purpose, on a practice page that doesn't matter, so you've seen what it does before it counts.
 
 ### What you'll never be doing
 
-No lesson in this course will hand you a save command to type, two disagreeing versions to untangle by hand, or a list of past versions to read. If a search result or a video does, it's written for someone standing in the engine room. Close it, come back to your agent, and say what you want in your own words. And if your agent is the one handing you the wrench, you have the sentence from last lesson:
-
-> **"That's your job — do it yourself and tell me what happened in plain words."**
+No lesson in this course will hand you a save command to type, two disagreeing versions to untangle by hand, or a list of past versions to read. If a search result or a video does, it's written for someone standing in the engine room. Close it and say what you want to your agent instead. If your agent is the one handing you the wrench, you have the sentence from last lesson.
 
 ## Exercise
 
-Plan 15 to 20 minutes. Steps 1–3 are an optional warm-up on paper — skip them if you'd rather go straight to the real thing. Step 4 is the exercise, and it uses the checklist page from Module 0.
+Plan 15 to 20 minutes. Steps 1–3 are an optional warm-up on paper — skip them if you'd rather go straight to the real thing. Step 4 is the exercise, and it uses the page from Module 0.
 
 1. Write out the save sentence and the recovery sentence, each once as they appear above and once in your own words.
 2. For each of these four moments, write **save now** or **not yet**, plus one line saying why:
@@ -91,9 +123,25 @@ Plan 15 to 20 minutes. Steps 1–3 are an optional warm-up on paper — skip the
    - Sign-in works and you've just watched it work. You're about to try adding photo uploads, which you suspect will be messy.
    - It's six in the evening and three separate things are half-working.
 3. Write one sentence: where does your project live once it's connected to GitHub, and what would still be true about it if your laptop died tonight?
-4. **Now do it for real, on the checklist from Module 0.** Open your agent app, point it at the `my-first-thing` folder, and say first: *"Before we connect this project to GitHub, check whether this computer has everything you need to save working versions and to put a copy on GitHub. If something is missing, tell me in plain words what it is and why, help me install it, tell me before anything needs my approval, and tell me when it's ready."* Approve what's about saving and GitHub; click through any installer it opens for you (an administrator password goes into the installer's own window, never into the chat); give the same email you used for GitHub if it asks for a name and email. If an install fails twice, stop — your checklist is still in its folder — and come back in a fresh conversation. When it says it's ready, say: *"Put a copy of this project on GitHub, then save this as a working version with a one-line note about what changed."* Your agent will take you through signing in to the GitHub account you created in Module 0 — approve what's about your folder and that sign-in, and ask *"What does this do?"* about anything else. When it says it's done, ask: *"Confirm the working version is saved on this computer, confirm the copy on GitHub is up to date, and give me the web address of the project's home page."* Open that address in your browser: your checklist's name should be on it. That page is the cloud save. If your agent says the copy didn't go up, the save on this computer is still real — ask what it needs to send the copy, and do it if it's a GitHub sign-in in your browser. From now on, that same two-part question is how you know both halves of a save happened.
+4. **Now do it for real, on the page from Module 0.**
+   1. Create your GitHub account in your browser if you don't have one, and confirm you can sign in.
+   2. Open your agent app, point it at the folder from Module 0, and say:
 
-Your deliverable is a checklist that now has a home page on GitHub, with your agent confirming both the save on this computer and the copy up there.
+      ```prompt
+      Before we connect this project to GitHub, check whether this computer has everything you need to save working versions and to put a copy on GitHub. If something is missing, tell me in plain words what it is and why, help me install it, tell me before anything needs my approval, and tell me when it's ready.
+      ```
+
+      Approve what's about saving and GitHub; click through any installer it opens for you (an administrator password goes into the installer's own window, never into the chat); give the same email you used for GitHub if it asks for a name and email. If an install fails twice, stop — your page is still in its folder — and come back in a fresh conversation.
+   3. When it says it's ready, send the "put a copy on GitHub" sentence from the core read. Your agent will take you through signing in to GitHub — approve what's about your folder and that sign-in, and use the explanation prompt from the core read for anything else.
+   4. When it says it's done, ask:
+
+      ```prompt
+      Confirm the working version is saved on this computer, confirm the copy on GitHub is up to date, and give me the web address of the project's home page.
+      ```
+
+      Open that address in your browser: your project's name should be on it. That page is the cloud save. If your agent says the copy didn't go up, the save on this computer is still real — ask what it needs to send the copy, and do it if it's a GitHub sign-in in your browser.
+
+Your deliverable is a page that now has a home page on GitHub, with your agent confirming both the save on this computer and the copy up there.
 
 ## Checkpoint
 
@@ -111,7 +159,7 @@ Optional, only if you're curious:
 
 ## What you just did
 
-You learned the one sentence that lays down a save point and the one sentence that returns you to it, and you gave the checklist from Module 0 the half its first save was missing: a copy that survives this computer. That's the whole of your relationship with the machinery that keeps your work safe: two sentences, said at the right moments, with your agent doing everything underneath. Module 3 is where both sentences land in a real conversation, as you work with your agent through a change from start to finish.
+You learned the one sentence that lays down a save point and the one sentence that returns you to it, and you gave the page from Module 0 the half its first save was missing: a copy that survives this computer. That's the whole of your relationship with the machinery that keeps your work safe: two sentences, said at the right moments, with your agent doing everything underneath. Module 3 is where both sentences land in a real conversation, as you work with your agent through a change from start to finish.
 
 ## Navigation
 

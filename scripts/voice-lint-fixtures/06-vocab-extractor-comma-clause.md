@@ -14,6 +14,6 @@ fragment is not.
 
 ## Module Fixture (MF)
 
-### Requires-callout (D-04 pattern on first use)
+### Requires-callout (glossary link on first use)
 
 - **Widget** — introduce as "the gadget that gives the fixture an alarm clock, a widget, and a gizmo in one." The learner never treats the fixture's definition prose (the *fake* parenthetical annotation) as if it were a term.

@@ -4,7 +4,7 @@ module: "04-thread-project"
 lesson_number: 02
 est_minutes: 50
 prereqs: ["01-hello-world-deploy"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -33,47 +33,71 @@ flowchart LR
   App -->|sign out| Login
 ```
 
-## Before you ask
-
-One switch on a screen your agent cannot reach. Open your **Supabase** (a one-line definition: the service that holds your app's accounts and database — you open its dashboard when a lesson says to, [→ GLOSSARY](../../GLOSSARY.md#supabase)) dashboard, go to Authentication → Sign In / Providers, turn **Confirm email** off, and press **Save changes**.
-
-![The Supabase dashboard, on the Authentication section's "Sign In / Providers" page. A numbered marker ① points to "Sign In / Providers" in the left sidebar — the page you open. Marker ② points to the "Confirm email" switch on the right, shown turned off, which is what you are changing. Marker ③ points to the "Save changes" button below it, which you press afterwards.](../../screenshots/m4/02-sign-in/confirm-email-off.png)
-
-With it off, the first time someone signs in with an address nobody has used before, their account is created and they are let straight in — no waiting on an email. Your dashboard may not look identical (Supabase moves things around), but the switch is named the same.
-
-One honest thing about that switch. It is a setting on your database, which the copy on your computer and the public copy share. So from the save that carries this chunk, anybody who has your public address can create an account there. A long address nobody has been told is not a lock — links get forwarded. That is fine for now because everything in this app until Lesson 8 is made-up addresses and made-up posts. Keep it that way: test accounts only, nothing you would mind a stranger reading, and no handing the link around until Lesson 8 has checked it live.
-
 ## The ask
 
-Start a fresh conversation with your project folder selected. If your agent does not open by saying where you are in the plan, say: *"Read the plan and the house rules, and tell me where we are."* Then:
+Start a fresh conversation with your project folder selected. If your agent does not open by saying where you are in the plan, say:
 
-> I want people to sign in with an email address and a password. If someone has never signed up before, signing in should create their account and let them straight in — no confirmation email. They stay signed in if they refresh the page, and there's a sign-out button. Plan this out before you write any code, and tell me what I need to set up. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a brand-new email address can sign in and lands inside the app; refreshing the page keeps that person signed in; sign-out works, and a refresh afterwards leaves them signed out; a signed-out visitor cannot reach a page that needs an account.
+```prompt
+Read the plan and the house rules, and tell me where we are.
+```
+
+Then:
+
+```prompt
+I want people to sign in with an email address and a password. If someone has never signed up before, signing in should create their account and let them straight in — no confirmation email. They stay signed in if they refresh the page, and there's a sign-out button. Plan this out before you write any code, and tell me what I need to set up — if a setting has to change on one of my accounts, tell me which screen and what to change, and I'll do it. Before you say "done", run these checks and show me the results in plain words — if you can't run one, say so instead of guessing: a brand-new email address can sign in and lands inside the app; refreshing the page keeps that person signed in; sign-out works, and a refresh afterwards leaves them signed out; a signed-out visitor cannot reach a page that needs an account.
+```
 
 Check the plan against what you asked for — an email and a password, an account created on first sign-in, still signed in after a refresh, a way to sign out. If it has reached ahead into profiles or posts, say so in one sentence and have it cut back. Then:
 
-> That matches what I want. Go ahead and build it.
+```prompt
+That matches what I want. Go ahead and build it.
+```
 
-<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c1); presented in the desktop app's framing. -->
+<!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c1); presented in the desktop app's framing. The "tell me which screen" clause was added 2026-09-08 when the Confirm-email switch stopped being a step the lesson dictates and became one the agent asks for; not re-run. -->
 
 Approve the steps as the app asks — more of them than the empty page needed. If your agent says it needs to install something first, that is the house rule from Lesson 0 at work; approve it and let it confirm the tool works.
 
-<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass -->
+<!-- CODEX / OPENCODE VERIFICATION SLOT: verify wording and app behavior against a real run in each app — user-assisted evidence pass -->
+
+## If your agent sends you to a dashboard
+
+"No confirmation email" is usually a switch on the service that holds your accounts, and your agent may not be able to reach it. If it tells you which screen to open and what to change, do that and nothing else on that screen. When this chunk was really built on [Supabase](../../GLOSSARY.md#supabase), the switch was under Authentication → Sign In / Providers, called **Confirm email**, turned off and then saved:
+
+![The Supabase dashboard, on the Authentication section's "Sign In / Providers" page. A numbered marker ① points to "Sign In / Providers" in the left sidebar — the page you open. Marker ② points to the "Confirm email" switch on the right, shown turned off, which is what you are changing. Marker ③ points to the "Save changes" button below it, which you press afterwards.](../../screenshots/m4/02-sign-in/confirm-email-off.png)
+
+Your dashboard may not look identical, and your agent may have chosen a different service; the switch your agent names is the one to change.
+
+One honest thing about that switch. It is a setting on the place your accounts live, which the copy on your computer and the public copy share. So from the save that carries this chunk, anybody who has your public address can create an account there. A long address nobody has been told is not a lock — links get forwarded. That is fine for now because everything in this app until Lesson 8 is made-up addresses and made-up posts. Keep it that way: test accounts only, nothing you would mind a stranger reading, and no handing the link around until Lesson 8 has checked it live.
 
 ## Check it
 
-Open the running app — if nothing is open, or the tab says it cannot connect: *"Start the app on my computer and open it in my browser."* Go through it in order: land on the sign-in page while signed out; sign in with a made-up address and a password; refresh and stay signed in; sign out and land back at sign-in.
+Open the running app — if nothing is open, or the tab says it cannot connect:
+
+```prompt
+Start the app on my computer and open it in my browser.
+```
+
+Go through it in order: land on the sign-in page while signed out; sign in with a made-up address and a password; refresh and stay signed in; sign out and land back at sign-in.
 
 > **TRY THIS:** sign in, then refresh the page. Then sign out and refresh again.
 >
 > **EXPECT:** still signed in after the first refresh; still signed out after the second.
 >
-> **IF NOT:** say which half failed — *"I get signed out the moment I refresh the page. Staying signed in across a reload is part of what sign-in means. Find out why and fix it."*
+> **IF NOT,** say which half failed:
+
+```prompt
+I get signed out the moment I refresh the page. Staying signed in across a reload is part of what sign-in means. Find out why and fix it.
+```
 
 > **TRY THIS:** in a private window that has never signed in, open a page that needs an account.
 >
 > **EXPECT:** you land on sign-in, or it refuses.
 >
-> **IF YOU GET STRAIGHT IN:** *"Signed out, I can still open ⟨page⟩. That should need an account. Fix that."*
+> **IF YOU GET STRAIGHT IN:**
+
+```prompt
+Signed out, I can still open ⟨page⟩. That should need an account. Fix that.
+```
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c1). -->
 
@@ -83,9 +107,20 @@ When this chunk was really built, opening the app while signed out bounced to a 
 
 Name what you saw on screen and hand it back:
 
-- *"I signed in fine, but the moment I refresh the page it signs me back out — that's not what I want. Find out why and fix it."*
-- *"I get an error page when I press the sign-in button instead of being signed in. Find out why and fix it."*
-- **A repair looks like it did nothing:** *"Nothing changed on my screen. Can you stop the app and start it again, then tell me what you see?"* — before you report the same problem twice.
+```prompt
+I signed in fine, but the moment I refresh the page it signs me back out — that's not what I want. Find out why and fix it.
+```
+
+```prompt
+I get an error page when I press the sign-in button instead of being signed in. Find out why and fix it.
+```
+
+- **A repair looks like it did nothing** — before you report the same problem twice:
+
+  ```prompt
+  Nothing changed on my screen. Stop the app and start it again, then tell me what you see.
+  ```
+
 - **Your agent keeps circling:** start a fresh conversation and begin this chunk again from your last saved version.
 
 <!-- Grounded in the real thread-project build run, 2026-07 (archived evidence m4-c1). -->
@@ -94,7 +129,17 @@ The error-page steer is not hypothetical: when this chunk was really built, the 
 
 ## Save it
 
-Once you have signed in, refreshed, and signed out with your own hands: *"Save this as a working version."* Then ask it to confirm all three — saved on this computer, the copy went up, and the live copy rebuilt successfully. From this save on, the live link has a front door too.
+Once you have signed in, refreshed, and signed out with your own hands:
+
+```prompt
+Save this as a working version.
+```
+
+```prompt
+Confirm all three: saved on this computer, the copy went up, and the live copy rebuilt successfully.
+```
+
+From this save on, the live link has a front door too.
 
 ## What "done" means
 
@@ -105,7 +150,11 @@ You wrote these into the ask. Before you accept "done", your agent shows you the
 3. Sign-out works, and a refresh afterwards leaves them signed out.
 4. A signed-out visitor cannot reach a page that needs an account.
 
-If your agent says "done" without showing these, say: "Run the checks we agreed on and show me the results first."
+If your agent says "done" without showing these:
+
+```prompt
+Run the checks we agreed on and show me the results first.
+```
 
 You're done when you can sign in with an invented address, stay signed in across a refresh, sign out, and be bounced from a private window — and you have a saved version. Next: a profile, because right now your app knows who someone is and nothing else about them.
 

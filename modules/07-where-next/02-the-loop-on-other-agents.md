@@ -4,17 +4,17 @@ module: "07-where-next"
 lesson_number: "02"
 est_minutes: 20
 prereqs: ["01-session-hygiene"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
 # The loop on other agents
 
-By the end of this lesson you can say which parts of the way you work carry over to any agent app, what changes when the app changes, and the six questions to ask an app you have never opened.
+By the end of this lesson you can say which parts of the way you work carry over to any agent app, what changes when the app changes, and the six questions to ask an app you have never opened — the [translation key](../../GLOSSARY.md#translation-key) from this course's loop to any other agent.
 
 > **Last verified:** 2026-08-21. If your agent behaves differently from what this lesson describes, open the lesson chat on the course site ("Ask about this lesson") and tell it what you see. Change log: [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
-Nothing in this module runs, and nothing touches your app. This lesson names other agent apps; it does not ask you to get one.
+Nothing in this module runs, and nothing touches your app. This lesson is about agent apps this course does not teach; it does not ask you to get one.
 
 Open a different agent app and none of the furniture is where you left it. For the first ten minutes it is hard to tell whether you have lost your skill or only your bearings. This list tells them apart.
 
@@ -36,7 +36,7 @@ Three limits travel too, because they belong to the agent, not the window. It ha
 - Where you type and where the reply lands, and whether it is its own app or a mode inside a larger one.
 - What the approval moment looks like, how it words the question, and whether a setting changes how often it asks. The pause is the durable part; the dialog is not.
 - What it calls starting over: a button, a menu item, a new tab.
-- What it costs, and what happens when you reach the end of what it gives you. [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) priced the two apps here; only the habit of finding out in advance transfers.
+- What it costs, and what happens when you reach the end of what it gives you. [Module 0 Lesson 3](../00-welcome/03-cost-path-triage.md) priced the three apps here; only the habit of finding out in advance transfers.
 - Where the work lands on your computer, and whether the app tells you.
 - The personality. Give two apps the same sentence and the replies come back shaped differently. That is not a ranking.
 
@@ -44,7 +44,19 @@ Three limits travel too, because they belong to the agent, not the window. It ha
 
 Most of these you can answer in the first ten minutes, mostly by asking the agent itself.
 
-1. **Is everything you need installed?** Ask it: *"Check whether everything you need is installed on this computer. Install whatever is missing — ask me first if it needs my approval — and tell me when it's ready."* If an install fails: *"The install didn't work. Tell me in plain words what happened and what you'd try next."* Two failed tries means stop, not a third.
+1. **Is everything you need installed?** Ask it:
+
+   ```prompt
+   Check whether everything you need is installed on this computer. Install whatever is missing — ask me only for the things only I can do — and tell me when it's ready.
+   ```
+
+   If an install fails:
+
+   ```prompt
+   The install didn't work. Tell me in plain words what happened and what you'd try next.
+   ```
+
+   Two failed tries means stop, not a third.
 2. **Where does it stop and check with me?** Have it change something small and watch for the pause. If nothing ever stops to ask, you are in a different arrangement from the one this course taught, and it is worth knowing that.
 3. **Where does the work land?** Ask which folder on this computer, and what it is called.
 4. **What is the running thing, and where do I look at it?** In this course the answer was always a browser tab. Get the equivalent open before you ask for anything real.
@@ -53,11 +65,9 @@ Most of these you can answer in the first ten minutes, mostly by asking the agen
 
 ## What this course can and cannot tell you
 
-**OpenCode desktop** you met by name in Module 0: free and capable, the least user-friendly of the three, built for people comfortable finding their own way, and this course has not verified how it saves your work. Set that next to question 5.
+**The three apps this course teaches** — Claude Code in the Claude desktop app, Codex in the ChatGPT desktop app, and OpenCode desktop — all answer the six questions, and Module 0 gave you the answers for the one you picked. Switching between them is Lesson 1's move two. The course has gone further in some than in others: the thread project was built once, in one of them, and the other two have been used for the first edits and not for a full build. Where a lesson says what really happened, it says which app it happened in.
 
-**Agents that live inside a code editor** are named as a category, never by product. A code editor is the window developers keep code in, and there are agents that work from inside one. The names change faster than anyone can re-check them, and a window full of code is not one of the places this course put you.
-
-The caveat: of the two apps this course teaches, it has gone much further in one than in the other. The free track was installed and used for a first edit, and no further. It has not worked in OpenCode desktop or in an editor agent, so it cannot tell you how either behaves, what either costs, or whether either is any good. The claim here is only that the seven lines above are what working with an agent is made of. There is no recommendation on this page; Lesson 1 gave you the conditions for switching.
+**Agents that live inside a code editor** are named as a category, never by product. A code editor is the window developers keep code in, and there are agents that work from inside one. The names change faster than anyone can re-check them, and a window full of code is not one of the places this course put you. This course has not worked in one, so it cannot tell you how any of them behaves, what it costs, or whether it is any good. The claim here is only that the seven lines above are what working with an agent is made of. There is no recommendation on this page; Lesson 1 gave you the conditions for switching.
 
 ## Your turn
 

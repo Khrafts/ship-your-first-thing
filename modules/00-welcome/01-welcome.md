@@ -4,7 +4,7 @@ module: "00-welcome"
 lesson_number: 01
 est_minutes: 10
 prereqs: []
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -22,9 +22,9 @@ Most coding courses promise too much and deliver something close enough to feel 
 
 This course is **Ship Your First Thing**: a self-paced course for people who have never written code and want to build a real product anyone on the internet can visit. By the end, you will have built a small social app — sign-up, profile, posts, follows, feed, comments, likes — running at a public web address.
 
-You won't write the code. An **AI coding agent** (a program that reads your project files and writes code on your behalf, based on a conversation with you, [→ GLOSSARY](../../GLOSSARY.md#ai-coding-agent)) writes it. Your job is to say what you want, look at what came back, and say what should be different. That skill — noticing when the AI got it wrong and steering it back — is what this course teaches.
+You won't write the code. An [AI coding agent](../../GLOSSARY.md#ai-coding-agent) writes it: a program that reads your project and changes it based on a conversation with you. Your job is to say what you want, look at what came back, and say what should be different. That skill — noticing when the AI got it wrong and steering it back — is what this course teaches.
 
-The course lives on **GitHub** (a website that hosts code projects — where a project's saved versions live, on a page of its own on the internet, [→ GLOSSARY](../../GLOSSARY.md#github)). You can read it there, or on the course site, which shows the same lessons and tracks your progress.
+The course lives on [GitHub](../../GLOSSARY.md#github), a website that hosts projects. You can read it there, or on the course site, which shows the same lessons and tracks your progress.
 
 **This course is for you if:**
 
@@ -43,10 +43,10 @@ It is not for people who already write code for a living — it will be too slow
 **What this course is honest about:**
 
 - AI tools change every few months. When a lesson's steps no longer match what's on your screen, the steps shifted, not the skill.
-- Both paths have a usage allowance that can run out on a busy day and make you wait. One costs about $20/month, one is free to start. Lesson 3 helps you choose.
+- Every path has a usage allowance that can run out on a busy day and make you wait. One costs about $20/month; two are free to start. Lesson 3 helps you choose.
 - You will get stuck. The course expects this.
 
-> **Note:** Seeing something different from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Note:** Seeing something different from what a lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says.
 
 **How to move through this course:**
 
@@ -58,7 +58,7 @@ It is not for people who already write code for a living — it will be too slow
 
 Five minutes:
 
-1. Know that two cost paths are coming — one about $20/month, one free to start, and both can ask you to wait on a heavy day. Don't pick yet; Lesson 3 walks you through it.
+1. Know that three cost paths are coming — one about $20/month, two free to start, and all three can ask you to wait on a heavy day. Don't pick yet; Lesson 3 walks you through it.
 2. Look at the list of Module 0 lessons in [the module README](./README.md), so you know what the next five lessons ask of you.
 
 ## Checkpoint
@@ -66,7 +66,7 @@ Five minutes:
 You've got this if you can:
 
 - Say what you'll have built when the course is done.
-- Name the two cost paths in one phrase each.
+- Name the three cost paths in one phrase each.
 - Say where you'd look first when a lesson doesn't match what you see (on the course site, the lesson chat — "Ask about this lesson").
 
 ## What you just did

@@ -13,7 +13,11 @@ Module 4 ended with your app live and walked through by two accounts. Nothing ne
 
 Your agent owns the code, the rules, every error, and every fix. You own saying what you want, looking at the running app, running the checks, and saying when to save. You never read code, files, or error text. You describe what you see.
 
-If your agent ever says something it needs is not installed on this computer, you do not install it yourself. Say: *"Install whatever is missing. Ask me first if it needs my approval, and tell me when it's ready."*
+If your agent ever says something it needs is not installed or set up, you do not do it yourself:
+
+```prompt
+Install or set up whatever is missing. Ask me only for the things only I can do, and tell me when it's ready.
+```
 
 ## Lessons
 

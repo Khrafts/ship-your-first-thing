@@ -4,7 +4,7 @@ module: "06-after-live"
 lesson_number: "01"
 est_minutes: 40
 prereqs: ["05-operating (all five lessons)"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -14,7 +14,7 @@ By the end of this lesson you can take a fault somebody else reported, see it in
 
 > **Last verified:** 2026-08-20. If your agent behaves differently from what this lesson describes, open the lesson chat on the course site ("Ask about this lesson") and tell it what you see. Change log: [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
 
-This lesson follows a repair in a build that was not yours, then has you run the after-a-change checks on your own app.
+This lesson follows a repair in a build that was not yours, then has you run the after-a-change checks on your own app. A [bug report](../../GLOSSARY.md#bug-report) is somebody telling you the live app does something wrong; the first move is to go and see it yourself.
 
 ## The message
 
@@ -38,7 +38,9 @@ Stop there. You know the press lands and the screen does not show it. Why is you
 
 ## What you hand over
 
-> "On my live app, signed in as bob on my phone: I pressed Follow on alice's profile and nothing on the page changed — the button still said Follow and the count didn't move. I reloaded the page and it had actually followed her. Somebody using the app hit this and thought the button was dead. Find out why the page doesn't show it and fix it, then I'll run the same check again."
+```prompt
+On my live app, signed in as bob on my phone: I pressed Follow on alice's profile and nothing on the page changed — the button still said Follow and the count didn't move. I reloaded the page and it had actually followed her. Somebody using the app hit this and thought the button was dead. Find out why the page doesn't show it and fix it, then I'll run the same check again.
+```
 
 Who you were signed in as, what you did, what you saw, what should have been true, then the handover. Two things are deliberately missing. No guess at the cause: you found a second symptom, not the problem, and a sentence like *the page isn't reloading after the follow saves* points your agent at machinery you have not seen. And not the reporter's own words: you went and looked, and you sent what you saw.
 
@@ -46,9 +48,17 @@ Who you were signed in as, what you did, what you saw, what should have been tru
 
 ## When the repair comes back
 
-Nobody planned this fix, so you say what done means when you hand it over: *"Done is that pressing Follow changes the button and the count on the spot, without a reload."* Which checks prove that, and running them, is your agent's job. If the work comes back reported finished with no results:
+Nobody planned this fix, so you say what done means when you hand it over:
 
-> "Run the checks we agreed on and show me the results first."
+```prompt
+Done is that pressing Follow changes the button and the count on the spot, without a reload. Run that check and show me the result before you say done.
+```
+
+Which checks prove that, and running them, is your agent's job. If the work comes back reported finished with no results:
+
+```prompt
+Run the checks we agreed on and show me the results first.
+```
 
 Then the four checks from [Module 5 Lesson 1](../05-operating/01-two-people-one-app.md), in order, on the live link. A fix can break something else that was working, and the fix report will not say so. Run all four after any change, not only the changes that feel risky.
 

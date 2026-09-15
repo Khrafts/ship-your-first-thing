@@ -2,9 +2,9 @@
 title: "Account creation"
 module: "00-welcome"
 lesson_number: 04
-est_minutes: 15
+est_minutes: 10
 prereqs: ["03-cost-path-triage"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -12,54 +12,48 @@ deviations: []
 
 ## Learning objective
 
-By the end of this lesson, you will have created exactly the two accounts your track needs — nothing more — and confirmed you can sign in to both in your browser.
+By the end of this lesson, you will have created exactly the account your track needs — one, or none — and confirmed you can sign in to it in your browser.
 
 ## Why this matters
 
-You picked your track and put a number on it. This lesson creates the two accounts that track needs, in your browser, and nothing else. The accounts your project itself will need wait until Module 4, when you're minutes away from using them instead of leaving them idle for weeks.
+You picked your track and put a number on it. This lesson creates the one account that track needs, in your browser, and nothing else. Every other account this course uses — the one that keeps a copy of your work, the ones your finished app runs on — waits until the lesson that first needs it, so it's minutes away from being used instead of idle for weeks.
 
 ## Core read
 
-Create them in this order: GitHub first, since both tracks need it, then your track's account.
+### Your track's account
 
-### Account 1: GitHub
-
-Every learner creates a **GitHub** (a website that hosts code projects — where a project's saved versions live, on a page of its own on the internet, [→ GLOSSARY](../../GLOSSARY.md#github)) account. Sign up at [github.com](https://github.com) in your browser, with an email you'll keep using. Pick a real-looking username — it's your public identity there.
-
-For now, GitHub is where this course's material lives. Later, your own project gets a home there, and your agent handles everything that happens on it — saving versions, keeping them in sync. Creating the account is the one part that's always a person's job.
-
-If GitHub asks for email or phone verification and the message doesn't arrive, wait — don't create a second account.
-
-> **Note:** Seeing a verification screen that looks different from what this lesson describes? On the course site, open the lesson chat ("Ask about this lesson") and tell it what GitHub is showing you versus what this lesson says — it can help you reconcile the difference against this exact lesson.
-
-### Account 2: your track's account
-
-> If you're on **Path 1**: create a Claude account at [claude.ai](https://claude.ai). This is the account you'll sign into **Claude Code desktop** (this course's paid-track agent app, opening in its own window on your computer, [→ GLOSSARY](../../GLOSSARY.md#claude-code)) in the next lesson.
+> If you're on **Path 1**: create a Claude account at [claude.ai](https://claude.ai). You'll sign into [Claude Code desktop](../../GLOSSARY.md#claude-code) with it in the next lesson, and it's where the $20/month plan is bought.
 >
-> If you're on **Path 2**: create a ChatGPT account at [chatgpt.com](https://chatgpt.com). This is the account you'll sign into the ChatGPT desktop app in the next lesson, where **Codex** (the coding agent inside the ChatGPT desktop app — the free-track counterpart to Claude Code desktop, [→ GLOSSARY](../../GLOSSARY.md#codex)) lives.
+> If you're on **Path 2**: create a ChatGPT account at [chatgpt.com](https://chatgpt.com). You'll sign into the ChatGPT desktop app with it in the next lesson, where [Codex](../../GLOSSARY.md#codex) lives. The free plan is enough.
+>
+> If you're on **Path 3**: nothing to create. [OpenCode desktop](../../GLOSSARY.md#opencode-desktop)'s free models work without an account.
 
-Either account can share the email you used for GitHub, or use a different one — whichever you'll remember.
+Use an email you'll keep using. Creating an account is always a person's job — your agent never does it for you, and never needs your password.
 
-**Accounts you do NOT need yet:** once you start building, this course uses two more — one to hold your project's information, one to put it on the internet. Skip both today. Module 4 creates them right when you're about to use them.
+### Accounts you do NOT need yet
 
-That's it. Two accounts, no more.
+- **GitHub** — the website that keeps a safe copy of your saved work. You create it in [Module 2, Lesson 3](../02-toolchain/03-the-save-system.md), the first time your agent is about to use it.
+- **The two your finished app runs on** — one to hold its information, one to put it on the internet. Module 4 creates each one right when the build first needs it.
+
+That's it. One account or none.
+
+> **Note:** If a sign-up asks for email or phone verification and the message doesn't arrive, wait — don't create a second account. If the screen looks different from what this lesson describes, the app moved; on the course site, the lesson chat ("Ask about this lesson") can reconcile the difference.
 
 ## Exercise
 
-1. Create your GitHub account (if you don't already have one) in your browser. Confirm you can sign in.
-2. Create your track's account — Claude for Path 1, ChatGPT for Path 2. Confirm you can sign in to that one too.
+1. Create your track's account — Claude for Path 1, ChatGPT for Path 2, nothing for Path 3. Confirm you can sign in to it in your browser.
+2. Say, in one sentence, why you're not creating any other account today.
 
 ## Checkpoint
 
 You've got this if you can:
 
-- Sign into your GitHub account, in your browser.
-- Sign into your track's account (Claude or ChatGPT), in your browser.
-- Say, in one sentence, why you're not creating any other accounts yet.
+- Sign into your track's account in your browser (Paths 1 and 2).
+- Name the account you'll create later and the lesson that creates it (GitHub, in Module 2 Lesson 3).
 
 ## What you just did
 
-You created exactly the two accounts you need. Next lesson, those two accounts stop being login screens and become the app you'll spend the rest of this course working inside.
+You created exactly the account you need. Next lesson, that sign-in becomes the app you'll spend the rest of this course working inside.
 
 ## Navigation
 

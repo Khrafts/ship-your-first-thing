@@ -290,3 +290,124 @@
 .prose details .mermaid-figure {
   margin: 1rem 0 0.25rem;
 }
+
+/* Prompt blocks: a `prompt` fence, upgraded by src/lib/content/prompt-blocks.ts
+   into a labelled card with a copy control. The text is what the learner
+   pastes into their agent app, so it reads as prose (serif, wrapped), not as
+   code (mono, scrolling). Label and button sit outside the <pre> and are
+   unselectable, so a hand-made selection copies only the prompt. */
+.prose .prompt-block {
+  margin: 1.5rem 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.prose .prompt-block-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.125rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.prose .prompt-block-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.prose .prompt-copy-status {
+  margin-left: auto;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink-secondary);
+  text-align: right;
+}
+
+/* Bar without a status: the button still sits at the right edge. */
+.prose .prompt-copy-status:empty + .prompt-copy {
+  margin-left: auto;
+}
+
+.prose .prompt-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.prose .prompt-copy:hover {
+  border-color: var(--ink);
+}
+
+.prose .prompt-copy:active {
+  background: var(--surface-raised);
+}
+
+/* Keyboard focus: the global :focus-visible ring (app/globals.css), restated
+   here so the ring always clears the card border. */
+.prose .prompt-copy:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Touch: a 44px target. */
+@media (pointer: coarse) {
+  .prose .prompt-copy {
+    min-height: 2.75rem;
+    min-width: 4.5rem;
+    padding: 0 1rem;
+  }
+}
+
+.prose .prompt-block pre.prompt-block-text {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 1rem 1.125rem 1.125rem;
+  overflow-x: visible;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.prose .prompt-block pre.prompt-block-text code {
+  font-family: inherit;
+  font-size: inherit;
+  white-space: inherit;
+  background: transparent;
+  padding: 0;
+}
+
+/* Prompt blocks inside a disclosure or blockquote sit on the raised surface
+   so the card still reads as a card. */
+.prose details .prompt-block,
+.prose blockquote .prompt-block {
+  background: var(--paper);
+}
+
+.prose blockquote .prompt-block {
+  margin: 1rem 0;
+}

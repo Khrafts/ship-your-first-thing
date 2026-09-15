@@ -4,7 +4,7 @@ module: "03-the-loop"
 lesson_number: 03
 est_minutes: 35
 prereqs: ["02-planning-vs-execution"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -18,11 +18,11 @@ By the end of this lesson, you will be able to run five checks that flag wrong o
 
 The page changed, the reply sounded pleased with itself, and you believed it. That is how most bad afternoons with these tools start — not with an obvious failure, but with a confident one. Your agent writes the same way whether it worked from something real or invented the whole thing, so "it looks fine" is a feeling rather than a check. What you need is a short list of specific things to look at, small enough to run every time.
 
-> **Last verified:** 2026-08-17. Seeing your agent behave differently from what this lesson shows? On the course site, open the lesson chat ("Ask about this lesson") and tell it what you see versus what the lesson says — it can help you reconcile the difference against this exact lesson. For the full record of changes, see [`WHAT-CHANGED.md`](../../WHAT-CHANGED.md).
+> **Last verified:** 2026-08-17. If your agent behaves differently from what this lesson shows, the app moved and the steps didn't. On the course site, the lesson chat ("Ask about this lesson") can reconcile what you see against this exact lesson.
 
 ## Core read
 
-Your agent is fluent, and fluency is the wrong signal to trust: it does not sound less certain when guessing. When it has nothing to go on, it makes something up and presents it as finished work. The word people use for this is **hallucination** ([→ GLOSSARY](../../GLOSSARY.md#hallucination)); the tell is one line: **it names something you never made or mentioned.** This lesson is where you catch one on purpose, on your own page.
+Your agent is fluent, and fluency is the wrong signal to trust: it does not sound less certain when guessing. When it has nothing to go on, it makes something up and presents it as finished work. The word people use for this is [hallucination](../../GLOSSARY.md#hallucination); the tell is one line: **it names something you never made or mentioned.** This lesson is where you catch one on purpose, on your own page.
 
 What you check against — three things, only three:
 
@@ -34,11 +34,17 @@ There is no fourth where you open what your agent wrote and check it yourself. T
 
 ### An ask that has to be invented
 
-Your practice page is where Lesson 2 left it: name, tagline, today's date, and a button that hides and shows the date. You are in a fresh conversation, which may not know which folder it's in. If the app asks which folder, or your agent seems unsure where the page is, point it at `loop-practice` again the way you did in Lesson 1, and say what's there — *"The practice page in this folder shows my name, a tagline, today's date, and a button that hides and shows the date."*
+Your practice page is where Lesson 2 left it: name, tagline, today's date, and a button that hides and shows the date. You are in a fresh conversation, which may not know which folder it's in. If the app asks which folder, or your agent seems unsure where the page is, point it at `loop-practice` again and say what's there:
+
+```prompt
+The practice page in this folder shows my name, a tagline, today's date, and a button that hides and shows the date.
+```
 
 The new ask is deliberately thin:
 
-> Add a list of 3 favorite books below the button.
+```prompt
+Add a list of 3 favorite books below the button.
+```
 
 Which three books? The answer exists only in your head. Your agent can ask you, put in labelled placeholders, tell you it picked three — or pick three and say nothing. Watch which one it takes. Your agent's exact words will differ from the run below.
 
@@ -50,7 +56,7 @@ Which three books? The answer exists only in your head. Your agent can ask you, 
 > **The app asks:** Allow changes to `index.html`? — you approve.
 > **The agent:** Added below the button, above the footer line: a small heading and a three-item list, each line a title with its author beside it in a quieter grey. […]
 
-<!-- CODEX VERIFICATION SLOT: verify wording and UI behavior against a real Codex run — user-assisted evidence pass. No Codex transcript is shown: the illustrative Codex panel that sat under this slot at 2c1c329 was never verified against a real run and was removed in the 2026-09-07 plain-language pass. -->
+<!-- CODEX / OPENCODE VERIFICATION SLOT: verify wording and UI behavior against a real run of each — user-assisted evidence pass. -->
 
 It did not ask first, and it could not possibly have known. It invented.
 
@@ -58,8 +64,18 @@ It did not ask first, and it could not possibly have known. It invented.
 
 Agents change between the day a lesson is written and the day you run it. Three other things yours may do — all three end with the page in the same state, so Lesson 4 starts the same either way:
 
-- **It asked you which books.** That's the honest answer. Don't hand it three real ones; you'd lose the thing this lesson is for. Say: *"I haven't decided. Put in three made-up example books for now so I can see the layout."* Now you have an invented list, and you know it's invented because you asked for it. Run the five checks on it anyway.
-- **It put in placeholders** — lines like "Book one" or "Your favorite book here" — and told you so. Also honest. Say: *"Replace the placeholders with three made-up example books, titles and authors, so I can see how a real list looks."* Same end state.
+- **It asked you which books.** That's the honest answer. Don't hand it three real ones; you'd lose the thing this lesson is for. Say:
+
+  ```prompt
+  I haven't decided. Put in three made-up example books for now so I can see the layout.
+  ```
+
+- **It put in placeholders** — lines like "Book one" or "Your favorite book here" — and told you so. Also honest. Say:
+
+  ```prompt
+  Replace the placeholders with three made-up example books, titles and authors, so I can see how a real list looks.
+  ```
+
 - **It picked three and told you it had guessed.** Still an invention presented as finished work; the disclosure just came with it. Run the five checks as written.
 
 Do not run the ask again and again until your agent fails the way the panel shows. This lesson needs a list on the page that isn't yours, however it got there.
@@ -76,11 +92,19 @@ All three books are real, and the list looks like it belongs. The invented part 
 
 **2. It's there, and it's wrong.** Something appeared, in the right place, and the content is not what you meant. The book list. A date that shows yesterday. A tagline that came back rewritten when you never asked.
 
-**3. The plan promised more than the reply claims.** Only exists if you asked for a plan first. If the plan mentioned styling the list to match the page and the reply never mentions styling, that gap is worth one sentence: "Your plan mentioned styling the list to match the page — did that part happen?"
+**3. The plan promised more than the reply claims.** Only exists if you asked for a plan first. If the plan mentioned styling the list to match the page and the reply never mentions styling, that gap is worth one sentence:
+
+```prompt
+Your plan mentioned styling the list to match the page — did that part happen?
+```
 
 **4. It says it did something the page doesn't show.** The reply mentions a button to clear the list; you refresh and there is no such button. Believe the page.
 
-**5. Something looks broken.** A block of red text where content should be. A region gone blank. Half the page missing. You do not read it or work out what it means — you say what you see and where: *"there's a red block of text where the book list should be, and everything below it is gone."*
+**5. Something looks broken.** A block of red text where content should be. A region gone blank. Half the page missing. You do not read it or work out what it means — you say what you see and where:
+
+```prompt
+There's a red block of text where the book list should be, and everything below it is gone.
+```
 
 ### Which one caught the books
 
@@ -105,7 +129,13 @@ The same thing covers a second case: your agent's knowledge stops at a date, and
 Run the thin ask on your own page and put all five checks through their paces. Plan twenty minutes.
 
 1. **Confirm where you are.** Your practice page should show your name, your tagline, today's date, and a button that hides and shows the date. Click the button once each way. If it isn't there, run Lesson 2's exercise first. This is a fresh conversation, so if the app asks which folder — or your agent doesn't seem to know the page — point it at `loop-practice` and tell it what's on the page in one sentence.
-2. **Ask straight out, with no plan step.** Type: *"Add a list of 3 favorite books below the button."* Approve what the app asks. Skipping the plan is deliberate here, so you can watch what a thin ask produces when nothing catches it early. **If your agent asks which books, or puts in placeholders,** use the one-line reply from "If yours did something else" so the page ends up with three made-up example books on it. Don't repeat the ask hoping for a different behaviour.
+2. **Ask straight out, with no plan step:**
+
+   ```prompt
+   Add a list of 3 favorite books below the button.
+   ```
+
+   Approve what the app asks. Skipping the plan is deliberate here, so you can watch what a thin ask produces when nothing catches it early. If your agent asks which books, or puts in placeholders, use the matching reply from "If yours did something else". Don't repeat the ask hoping for a different behaviour.
 3. **Run the five checks, in order,** with the browser tab refreshed and your agent's reply on screen:
    - Is there a list below the button at all?
    - Are those your actual favorite books?

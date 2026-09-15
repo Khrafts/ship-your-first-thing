@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ProseHtml } from "@/components/prose-html";
 import { DOC_SLUGS, getDocHtml } from "@/lib/content";
 
 interface DocPageProps {
@@ -34,10 +35,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <h1 className="font-serif text-4xl tracking-tight text-ink">
           {doc.title}
         </h1>
-        <div
-          className="prose mt-12"
-          dangerouslySetInnerHTML={{ __html: doc.html }}
-        />
+        <ProseHtml html={doc.html} className="prose mt-12" />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "05"
 est_minutes: 30
 prereqs: ["04-caught-before-it-ran"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -22,13 +22,19 @@ On a break-day you did not pick the time or the feature, and the app stays up wi
 
 Three things: **where** you were looking (your live link, on your phone or in a browser), **what the page showed**, in the plainest words you own, and **since when** ("this morning", "since Friday").
 
-> "On my live link, opening any profile shows a blank page since this morning. Find out why and fix it."
+```prompt
+On my live link, opening any profile shows a blank page since this morning. Find out why and fix it.
+```
 
 No guess at the cause. *Find out why* is the whole instruction.
 
 A page that has fallen over can be described without reading it. A block of red text where your feed used to be, an empty page, a section that has gone: say where it is and what it replaced. Reading the words in it is your agent's job.
 
-If your agent says something it needs is not installed on this computer, say: *"Install whatever is missing. Ask me first if it needs my approval, and tell me when it's ready."*
+If your agent says something it needs is not installed or set up:
+
+```prompt
+Install or set up whatever is missing. Ask me only for the things only I can do, and tell me when it's ready.
+```
 
 ## Move 2 — After any fix, re-run the checks
 
@@ -36,9 +42,17 @@ A fix is a change, and a change can break something else that was working. The f
 
 Two sets of checks run after any fix.
 
-**Your agent's.** Nobody planned this fix, so you say what done means when you hand it over: *"Done is that I can open any profile and see it."* If the work comes back without results:
+**Your agent's.** Nobody planned this fix, so you say what done means when you hand it over:
 
-> "Run the checks we agreed on and show me the results first."
+```prompt
+Done is that I can open any profile and see it. Run that check and show me the result before you say done.
+```
+
+If the work comes back without results:
+
+```prompt
+Run the checks we agreed on and show me the results first.
+```
 
 **Yours.** The four checks from [Lesson 1](./01-two-people-one-app.md), in order, on the live link. Then the thing that was broken this morning, done again from the outside. That closes it, not the report.
 
@@ -52,17 +66,31 @@ Some fixes do not land. You describe, your agent changes something, and it is di
 
 So on a live app, ask before you say the sentence:
 
-> "Which saved working version is from before this started, and what does its note say? If we go back to it, what changes on my computer, what changes on the live link, and what stays exactly as it is — including anything people have typed in and anything on a dashboard?"
+```prompt
+Which saved working version is from before this started, and what does its note say? If we go back to it, what changes on my computer, what changes on the live link, and what stays exactly as it is — including anything people have typed in and anything on a dashboard?
+```
 
-Wait for the answer. The version it names should be the one whose note describes the app as it was when it last worked. If the newest save is not that one, because you saved something this morning that turned out to be part of the problem, say so: *"Not that one; the one whose note says ___."* The list of what stays as it is should hold no surprise.
+Wait for the answer. The version it names should be the one whose note describes the app as it was when it last worked. If the newest save is not that one, because you saved something this morning that turned out to be part of the problem, say so:
 
-Then the sentence, with the version you agreed on:
+```prompt
+Not that one; the one whose note says ___.
+```
 
-> "Take us back to the saved working version whose note says ___."
+The list of what stays as it is should hold no surprise. Then the sentence, with the version you agreed on:
 
-Your agent does all of it. Going back costs you the work since that save, which is the reason to say *"Save this as a working version"* often on ordinary days.
+```prompt
+Take us back to the saved working version whose note says ___.
+```
 
-**After a restore**, run the four checks again on the live link, because going back is itself a change. If the live link still shows what it showed this morning, say so and ask what it would take to bring the live copy in line with the version you went back to, and what that would change, before you say yes. Then ask: *"What outside the files might not match the version we went back to?"* Then hand the problem over again, from the description you wrote in Move 1.
+Your agent does all of it. Going back costs you the work since that save, which is the reason to say *save this as a working version* often on ordinary days.
+
+**After a restore**, run the four checks again on the live link, because going back is itself a change. If the live link still shows what it showed this morning, say so and ask what it would take to bring the live copy in line with the version you went back to, and what that would change, before you say yes. Then:
+
+```prompt
+What outside the files might not match the version we went back to?
+```
+
+Then hand the problem over again, from the description you wrote in Move 1.
 
 ## Move 4 — Start a fresh conversation
 
@@ -83,8 +111,14 @@ A rehearsal. Nothing on your app changes. The only thing you send is a question.
 1. Picture opening your live link on your phone and finding every profile blank: yours, alice's, bob's. Everything else looks normal, and you have not touched the project since last week.
 2. From memory, write the message you would send: where, what the page showed, since when, and the handover.
 3. Compare with the one in Move 1. Check for what should not be there: a guess at the cause, a suggestion about where to look.
-4. Open your agent app and ask the Move 3 question in your own words: which saved working version is the last one from when the app was working, what its note says, and what would change on your computer, on the live link, and not at all if you went back to it. If your agent asks to run something so it can look, approve it. If it offers to go ahead and go back, say *"Not today — just the answer."* Write the answer down: the version, its note, and the list of what would stay as it is.
-5. Look at the gap. What would going back cost you today? If the honest answer is "more than I would like", say *"Save this as a working version"* more often. What would it not bring back? Whatever your agent listed as staying put is the part of your app that lives outside the files.
+4. Open your agent app and ask the Move 3 question in your own words: which saved working version is the last one from when the app was working, what its note says, and what would change on your computer, on the live link, and not at all if you went back to it. If your agent asks to run something so it can look, approve it. If it offers to go ahead and go back:
+
+   ```prompt
+   Not today — just the answer.
+   ```
+
+   Write the answer down: the version, its note, and the list of what would stay as it is.
+5. Look at the gap. What would going back cost you today? If the honest answer is "more than I would like", say *save this as a working version* more often. What would it not bring back? Whatever your agent listed as staying put is the part of your app that lives outside the files.
 
 ## Next
 

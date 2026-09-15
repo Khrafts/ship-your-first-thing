@@ -4,7 +4,7 @@ module: "05-operating"
 lesson_number: "03"
 est_minutes: 30
 prereqs: ["02-the-fence-that-was-down"]
-updated: "2026-09-07"
+updated: "2026-09-08"
 deviations: []
 ---
 
@@ -30,7 +30,7 @@ Every problem you have found so far was an event: a page that would not load, a 
 
 ## The check
 
-> Post something, open your feed, and look for it.
+Post something, open your feed, and look for it.
 
 There: pass. Not there: caught. You do not need to know why.
 
@@ -58,11 +58,15 @@ This failure has two faces, so there are two messages.
 
 If your feed came back completely empty:
 
-> "I posted something and then opened my feed, and it's completely empty even though I can see the post on my profile. Find out why my own posts aren't in my feed and fix it."
+```prompt
+I posted something and then opened my feed, and it's completely empty even though I can see the post on my profile. Find out why my own posts aren't in my feed and fix it.
+```
 
 If your feed has plenty on it but never your own:
 
-> "I see posts from people I follow, but never my own. I want both in the feed. Find out why and fix it."
+```prompt
+I see posts from people I follow, but never my own. I want both in the feed. Find out why and fix it.
+```
 
 Swap in your own words for what you saw. The clause *even though I can see the post on my profile* is a second observation, not a theory: it tells your agent the post exists. Observations are safe to add. Guesses at the cause are not.
 

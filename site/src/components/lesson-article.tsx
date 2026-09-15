@@ -11,8 +11,9 @@
 // theme changes. We therefore stash each diagram's source on its figure
 // (data-mermaid-src) and re-render from it whenever the resolved theme changes.
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useTheme } from "@/components/theme-provider";
+import { usePromptCopy } from "@/components/use-prompt-copy";
 import type { ResolvedTheme } from "@/lib/theme";
 
 type MermaidApi = typeof import("mermaid").default;
@@ -99,6 +100,12 @@ let renderSequence = 0;
 export function LessonArticle({ html }: { html: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
+  const markup = useMemo(() => ({ __html: html }), [html]);
+
+  // Copy buttons on `prompt` fences (see src/lib/prompt-copy.ts). Bound by
+  // delegation like the lightbox below, and independent of the Mermaid
+  // effect: a theme flip re-renders diagrams but never touches prompt blocks.
+  usePromptCopy(containerRef, html);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -263,7 +270,7 @@ export function LessonArticle({ html }: { html: string }) {
     <div
       ref={containerRef}
       className="prose"
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={markup}
     />
   );
 }

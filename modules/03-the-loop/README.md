@@ -2,7 +2,7 @@
 
 Module 3 is the four moves you make with your agent, one lesson each: know what you want, ask, look at what came back, say what should be different.
 
-Every lesson runs the same worked example on one practice page — a page your agent creates for you in Lesson 1 and you watch change in your browser after every step. Exchanges are shown from a real Claude Code desktop run. The ChatGPT app with Codex takes the same sentences, but its replies were not recorded for this module — you run only the app you picked in Module 0, and check the same page either way.
+Every lesson runs the same worked example on one practice page — a page your agent creates for you in Lesson 1 and you watch change in your browser after every step. Exchanges are shown from a real Claude Code desktop run. Codex and OpenCode take the same sentences; their replies were not recorded for this module. You run only the app you picked in Module 0, and check the same page either way.
 
 ## What this module builds
 
@@ -26,7 +26,7 @@ The thread that ties it together: the four moves are durable and the app around 
 
 ## Worked example
 
-All four lessons move the same practice page forward, one step at a time. There is nothing to download and nothing to install: in Lesson 1 you ask your agent to make the page — a folder called `loop-practice` with one page in it called `index.html`, showing your name and a one-line tagline — and to open it in your browser. Saving is the first thing that may need something set up on a fresh computer; Lesson 1's exercise has your agent check and install it.
+All four lessons move the same practice page forward, one step at a time. There is nothing to download and nothing to install: in Lesson 1 you ask your agent to make the page — a folder called `loop-practice` with one page in it, showing your name and a one-line tagline — and to open it in your browser.
 
 From there the state chain runs across the module. Lesson 1 adds today's date below the tagline. Lesson 2 adds a button that shows and hides the date. Lesson 3 asks for a list of three favorite books and gets back three the agent made up. Lesson 4 steers that list back to placeholder text and saves it, lets a loose ask put a wooden background on it, goes back to that save on purpose and checks the placeholder came back, then gives the list its look from a fresh conversation and saves the page finished.
 

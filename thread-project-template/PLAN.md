@@ -29,7 +29,8 @@
 ## How we work
 
 - We agree on the plan above before we build anything.
-- This computer starts with none of the tools a web app needs. When a step first needs one, the agent says what it is and why, installs it, asks you only for the approvals only you can give, and checks it works before going on. An administrator password or an account sign-in goes straight into the installer or sign-in window it names, never into the chat. If an install fails, the agent stops and says what it tried and what your options are.
+- This computer starts with none of the tools a web app needs, and no accounts exist yet. When a step first needs a tool, a service, or an account, the agent says what it is for and what it costs, sets it up, asks you only for the things only you can do (an account created in your browser, a password typed into a sign-in window it names, a yes to spending money), and checks it works before going on. Nothing sensitive ever goes into the chat. If a step fails, the agent stops and says what it tried and what your options are.
+- Technical choices are the agent's. It picks the simplest option that is easy to change later and says in one line what it picked; it asks you only about what people see, what it costs, who can see what, or which accounts you need to sign in to.
 - At the start of every conversation the agent reads this plan and the house rules, and opens by saying where we are and what comes next.
 - Every feature has a definition of done — a short list of checks, written into the feature's ask — that the agent runs and shows you before saying it's finished; a check it couldn't run is named as not run, never guessed.
 - After every feature that works, you say "save this as a working version" — and the agent does the saving, then says whether the copy went up and whether the live copy rebuilt.

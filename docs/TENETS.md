@@ -19,7 +19,7 @@ Each tenet below states what it is and why it exists, then points to where it's 
 **Why this exists.** A learner with the right mental model can reason about almost any product; a learner buried in jargon stalls at the first unfamiliar word. Every "you already know X" assumption silently excludes the audience the course exists for — if a learner can't follow because of an undefined term, the course failed at line 1 of that lesson. Mechanics belong to the agent; frameworks belong to the learner.
 
 **Operationalized:** `COURSE-AUTHORING.md` Part 1 (audience floor + three-tier vocab contract). `docs/audience-vocabulary.md` is the authoritative per-module term list.
-**Enforced:** hard rule 4 (D-04 callout) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler) — *ENFORCED (WARN) for M0–M7*.
+**Enforced:** hard rules 4 and 5 (direct glossary links, no parenthetical definitions) · voice-lint check #6 (jargon-density), #1 (tutorial fiction), #2 (filler), #12a (callout bloat) — *ENFORCED (WARN) for M0–M7*.
 
 ---
 
@@ -58,12 +58,12 @@ Each tenet below states what it is and why it exists, then points to where it's 
 
 ### Tenet 5 — Bare minimum to steer, not to code
 
-**Plain statement.** The course teaches the *minimum* needed for the learner to confidently steer an AI agent to a useful product. It does NOT teach the learner to code. Every section in every lesson is either "the agent owns this" or "the learner owns this" — never both. Mechanics the agent owns are not taught at the audience floor; when a term must be named to ground a steer, it's introduced as a SYMPTOM, not a concept.
+**Plain statement.** The course teaches the *minimum* needed for the learner to confidently steer an AI agent to a useful product. It does NOT teach the learner to code. Every section in every lesson is either "the agent owns this" or "the learner owns this" — never both. Mechanics the agent owns are not taught at the audience floor; when a term must be named to ground a steer, it's introduced as a SYMPTOM, not a concept. The learner's prompts describe the outcome they want and the constraints they care about (cost, privacy, who can see what); every tool, service, storage and setup decision is the agent's, and a technical question from the agent is handed back, not answered.
 
 **Why this exists.** The agent is faster, better, and more current at parsing code, reading errors, designing schemas, applying framework patterns, and chasing types. The learner is better at knowing what they want, recognizing when the agent missed the point, applying a smell-test, and asking for help. Teaching the learner to do the agent's job wastes their most precious resource — attention — at the exact moment the loop most needs it.
 
 **Operationalized:** `COURSE-AUTHORING.md` Part 6 (M4+ execution floor + test gates). Run the check inventory and test gate against each M4+ section *as you write it*.
-**Enforced:** hard rules 12 + 13 · voice-lint check #9 (debugging-framing, WARN-only) — mostly GUIDANCE (review).
+**Enforced:** hard rules 12, 13 + 16 · voice-lint check #9 (debugging-framing, WARN-only), #12b (technology chores inside prompt fences, WARN-only) — mostly GUIDANCE (review).
 
 ---
 
@@ -92,7 +92,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 
 1. **Read this file before reading anything else.** TENETS.md is the first read for every authoring task.
 2. **Read `docs/COURSE-AUTHORING.md` for the operational playbook.** The tenets state WHAT; COURSE-AUTHORING explains HOW.
-3. **Read CLAUDE.md for the hard rules.** Fifteen hard rules. Don't violate without explicit user permission.
+3. **Read CLAUDE.md for the hard rules.** Sixteen hard rules. Don't violate without explicit user permission.
 4. **Run `scripts/voice-lint.sh` before every commit.** Exit code 0 is the gate. WARNs document the editorial backlog; VIOLATIONs block. Don't read "exit 0" as "contract satisfied" — check #6 only surfaces vocab gaps as WARN, and only for M0–M7.
 5. **Check the audience-vocabulary contract for the target module before writing.** Forbidden / Requires-callout / Safe / SYMPTOM-only.
 6. **For M4+ sections, apply the check inventory and test gate section-by-section as you write** (COURSE-AUTHORING Part 6). Symptom-and-steer is harder to retrofit than to draft.
@@ -121,7 +121,7 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 
 ## Cross-references
 
-- `CLAUDE.md` — hard rules 1–15 (enforcement layer).
+- `CLAUDE.md` — hard rules 1–16 (enforcement layer).
 - `docs/COURSE-AUTHORING.md` — the authoring playbook (operational layer). Part 1 vocab · Part 3 coherence · Part 6 M4+ execution floor + test gates · Part 7 AI-limitation.
 - `docs/audience-vocabulary.md` — per-module termlist contract (the authoritative term list).
 - `.planning/PROJECT.md` Key Decisions — the historical decision log (gitignored; maintainer-only, not present in a fork).
@@ -130,5 +130,5 @@ The tenets mostly reinforce each other, but two pairs pull apart in practice. Th
 
 ---
 
-*Last updated: 2026-06-08 — Tenet renumber + coherence. Old Tenet 1 (accessible) and old Tenet 4 (assumes nothing technical) merged into the new Tenet 1 ("Meet a non-technical reader where they are"). New Tenet 4 ("Coherent through-line") added. Tenets 2, 3, 5, 6 unchanged in meaning; T5 (steer) and T6 (AI limitations) keep their numbers. Per-tenet structure trimmed to Plain statement + Why + Operationalized/Enforced pointers (the HOW moved to COURSE-AUTHORING). Earlier log entries elsewhere (e.g. WHAT-CHANGED.md before this date) reference the old six-tenet numbering.*
+*Last updated: 2026-09-08 — outcome-first prompts folded into Tenet 5's plain statement; enforcement lines point at hard rules 5 and 16 and lint check #12. Earlier: 2026-06-08 — Tenet renumber + coherence. Old Tenet 1 (accessible) and old Tenet 4 (assumes nothing technical) merged into the new Tenet 1 ("Meet a non-technical reader where they are"). New Tenet 4 ("Coherent through-line") added. Tenets 2, 3, 5, 6 unchanged in meaning; T5 (steer) and T6 (AI limitations) keep their numbers. Per-tenet structure trimmed to Plain statement + Why + Operationalized/Enforced pointers (the HOW moved to COURSE-AUTHORING). Earlier log entries elsewhere (e.g. WHAT-CHANGED.md before this date) reference the old six-tenet numbering.*
 *Original lock: 2026-05-18 — six tenets consolidated from PROJECT.md philosophy + CLAUDE.md hard rules + COURSE-AUTHORING.md parts + audience-vocabulary contract + voice-lint checks + per-phase CONTEXT decision logs.*
